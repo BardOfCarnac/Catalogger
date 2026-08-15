@@ -1,0 +1,56 @@
+{
+  "dataset_version": "1.24",
+  "format_version": "0.2.0",
+  "tables": {
+    "items": {
+      "rows": 1275,
+      "parts": [
+        {"path":"data/catalog/items.v1.24.part01.json.gz","rows":200,"sha256":"be5a26765d68485fdc0c2d886aafd2ba9fdab8694dbee85c15b4ab50862c945e","compressed_bytes":4666},
+        {"path":"data/catalog/items.v1.24.part02.json.gz","rows":200,"sha256":"21e074b96c9845fd899b7564282f518cadd78f20e06ede532a114f1cca8bb0ce","compressed_bytes":4712},
+        {"path":"data/catalog/items.v1.24.part03.json.gz","rows":200,"sha256":"5751c4f9d03f98b0d642ae4a2269681cfa03eaef06a1b160d65a5d2d1042d58e","compressed_bytes":4630},
+        {"path":"data/catalog/items.v1.24.part04.json.gz","rows":200,"sha256":"9c9bb08710276630931d51c8e51d11213a10061db9f7fe68a96db7211be27f40","compressed_bytes":4728},
+        {"path":"data/catalog/items.v1.24.part05.json.gz","rows":200,"sha256":"5dc79952e77aef1c832b3cee3fdd6916b4fa9872092ae203759e173da169af66","compressed_bytes":4408},
+        {"path":"data/catalog/items.v1.24.part06.json.gz","rows":200,"sha256":"972c3a24873504c6329af0934ae7aec33fbd9137389f74557d3f64f29e0d8eaf","compressed_bytes":4739},
+        {"path":"data/catalog/items.v1.24.part07.json.gz","rows":75,"sha256":"377e7ce81c5e1cf988513ee2fac1e4a6e865735e06d7630794ff072797e69fc4","compressed_bytes":2000}
+      ]
+    },
+    "item-classifications": {
+      "rows": 1313,
+      "parts": [
+        {"path":"data/catalog/item-classifications.v1.24.part01.json.gz","rows":1000,"sha256":"f5387f760f9e2ebf2ac7582f075749df8e9e5454eef29b16b5d687b86bcf895b","compressed_bytes":4377},
+        {"path":"data/catalog/item-classifications.v1.24.part02.json.gz","rows":313,"sha256":"cd435a95833a75bffcf12d9f633c2ccc7cb43ab234feedc9bbb4135b4f8a5eda","compressed_bytes":1833}
+      ]
+    },
+    "item-sources": {
+      "rows": 1709,
+      "parts": [
+        {"path":"data/catalog/item-sources.v1.24.part01.json.gz","rows":1000,"sha256":"846e622d4b846f1e171a30db21ca11eefe852b6e88e0826584e19d6b475e57ed","compressed_bytes":5937},
+        {"path":"data/catalog/item-sources.v1.24.part02.json.gz","rows":709,"sha256":"3985ac0ef276957a071d1bbdffa1629203d7039ed8ea10122d24798f12a96e1f","compressed_bytes":3737}
+      ]
+    },
+    "item-manufacturers": {
+      "rows": 482,
+      "parts": [
+        {"path":"data/catalog/item-manufacturers.v1.24.json.gz","rows":482,"sha256":"0fa710bcfd72568e4ef788be45df62ce53f58ef5ffa1d48e268e2134a229a522","compressed_bytes":1879}
+      ]
+    },
+    "index-listings": {
+      "rows": 1316,
+      "parts": [
+        {"path":"data/audit/index-listings.v1.24.part01.json.gz","rows":200,"sha256":"8a97a391335224feda73743413d3540f3aa5bbafb5d7f7092d1978a1b9c78978","compressed_bytes":6729},
+        {"path":"data/audit/index-listings.v1.24.part02.json.gz","rows":200,"sha256":"f0d442dc2366ff0e9325fc13a4faec7896a642ba2d16f3f6bae4b533ff4fb07b","compressed_bytes":6492},
+        {"path":"data/audit/index-listings.v1.24.part03.json.gz","rows":200,"sha256":"688be649747445f9d3a5e6ae01cd3f6f70674df7131746a9ad3f450d6a23ab07","compressed_bytes":6653},
+        {"path":"data/audit/index-listings.v1.24.part04.json.gz","rows":200,"sha256":"96ee50ef4cca3707af3de9187efc1b9d51733dc450a20fdf31d9339e442f391e","compressed_bytes":6450},
+        {"path":"data/audit/index-listings.v1.24.part05.json.gz","rows":200,"sha256":"3e695191919422fc5e37bb73e5d8c79d34c875dbd4ede20e14ad0229c20980c0","compressed_bytes":5696},
+        {"path":"data/audit/index-listings.v1.24.part06.json.gz","rows":200,"sha256":"e8a8f0daebfdc7a67e54e26cacf6c8a0ae399495801f3b9b07119e6b6c56de82","compressed_bytes":6408},
+        {"path":"data/audit/index-listings.v1.24.part07.json.gz","rows":116,"sha256":"534b314d1e688f1f972fc5a6e7c24f275026ad440a5c5a5022283398075f5b64","compressed_bytes":3437}
+      ]
+    },
+    "resolution-log": {
+      "rows": 50,
+      "parts": [
+        {"path":"data/audit/resolution-log.v1.24.json.gz","rows":50,"sha256":"c9f8b3294d9e9c54d8ce7d6be92251bdd5db88d5bf8c944e345805e42f69eb23","compressed_bytes":3160}
+      ]
+    }
+  }
+}
