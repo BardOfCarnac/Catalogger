@@ -1,0 +1,35 @@
+{
+  "version": "0.1.0",
+  "note": "Vend-R departments are an application taxonomy layered over the Night Market Index source taxonomy. Source classification is always retained.",
+  "departments": [
+    {"id":"weapons","name":"Weapons","description":"Firearms, melee weapons, bows, launchers and reusable weapon systems."},
+    {"id":"ammunition-ordnance","name":"Ammunition & Ordnance","description":"Ammunition, grenades, explosives and expendable weapon payloads."},
+    {"id":"weapon-parts","name":"Weapon Parts & Accessories","description":"Attachments, magazines, scopes, rebuilds and weapon modifications."},
+    {"id":"armor-protection","name":"Armor & Protection","description":"Armor, shields and worn protective equipment."},
+    {"id":"cyberware","name":"Cyberware","description":"Installed augmentation, cyberlimbs, optics, neuralware, FBCs and related alternatives."},
+    {"id":"medical-chemical","name":"Medical & Chemical","description":"Pharmaceuticals, poisons, street drugs and medical/chemical supplies."},
+    {"id":"electronics-comms","name":"Electronics & Communications","description":"Agents, electronics, computers, cameras, scanners and communications gear."},
+    {"id":"netrunning","name":"NET & Netrunning","description":"Cyberdecks, programs, Black ICE, architecture components and Netrunner equipment."},
+    {"id":"drones-robotics","name":"Drones & Robotics","description":"Personal drones, active-defense drones, cyberpets and robotic systems."},
+    {"id":"fashion-personal","name":"Fashion & Personal","description":"Fashion, clothing, cosmetic and personal-style products."},
+    {"id":"general-equipment","name":"General Equipment","description":"Tools, survival equipment, containers and miscellaneous physical gear."},
+    {"id":"food-consumables","name":"Food, Drink & Consumables","description":"Foodstuffs, drinks and ordinary consumables."},
+    {"id":"vehicles-mobility","name":"Vehicles & Mobility","description":"Vehicles, personal mobility devices, vehicle parts and upgrades."},
+    {"id":"housing-property","name":"Housing & Property","description":"Housing, furniture, home accessories and headquarters improvements."},
+    {"id":"services-entertainment","name":"Services & Entertainment","description":"Services, lodging, professional work, entertainment and subscriptions."},
+    {"id":"virtual-goods-games","name":"Virtual Goods & Games","description":"Games, virtual goods, TCG products and in-world digital entertainment."}
+  ],
+  "commodity_traits": [
+    {"id":"durable","description":"A reusable physical product."},
+    {"id":"consumable","description":"Stock is consumed or depleted through use."},
+    {"id":"software","description":"Digital software or program."},
+    {"id":"service","description":"A service rather than a stocked physical object."},
+    {"id":"subscription","description":"A recurring service or entitlement."},
+    {"id":"property","description":"Housing, property or a large fixed asset."},
+    {"id":"vehicle","description":"A vehicle or personal mobility platform."},
+    {"id":"installed","description":"Normally fitted or installed into another system/person."},
+    {"id":"virtual","description":"An in-world virtual item or currency."}
+  ],
+  "shop_tags": [],
+  "source_subcategories": ["Active Defenses (Costs can change if DVs change)","Agents","Air Vehicle Types","Air Vehicles","Ammunition","Apps and Software","Armor","Assault Rifles","Assisted Combat Power Armor (ACPA)","Attacker Programs","Bicycle Upgrades","BioExotic Packages","Black ICE","Booster Programs","Borgware","Bows and Crossbows","Chipware","Cyberaudio","Cyberdeck Hardware","Cyberdecks","Cyberfingers","Cyberlimbs","Cyberoptics","Cyberpets®","Cyberware Alternatives","Cyberware Enhancements","Defender Programs","Demons","Drinks (and similar substances served in bars and pubs)","Elflines Online the TCG Cards","Emplaced Defenses","Environmental Defenses","Explosives","External Body Cyberware","External Linear Frames","FBC Bodies","Fashion Linings","Fashion Styles","Fashionware","Foodstuffs","Furniture Sets","General","General Gear","Grenade Launchers","Grenades","Ground Vehicle Types","Ground Vehicles","Headquarters Improvements","Heavy Melee Weapons","Heavy Pistols","Heavy SMG","Home Accessories","Housing","In-Game Armory (cost is in in-game currency)","In-Game Purchases","Internal Body Cyberware","Lifestyle","Light Melee Weapons","Machine Guns","Medical Services","Medium Melee Weapons","Medium Pistols","NET Architecture","Netrunning Accessories","Neuralware","Personal Drones","Pharmaceuticals","Poisons","Punknaught Parts","Rocket Launchers","SMG","Sea Vehicle Types","Sea Vehicles","Shotguns","Sniper Rifles","Specific Fashions","Street Drugs","Thrown Weapons","Unique Vehicles","Vehicle Upgrades","Very Heavy Melee Weapons","Very Heavy Pistols","Weapon Attachments"]
+}
