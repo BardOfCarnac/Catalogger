@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "status": "seed",
+  "note": "These are generator templates, not saved shops. A generated shop stores its realized values and no longer depends on later archetype changes.",
+  "archetypes": [
+    {"id":"general-store","name":"General Store","primary_departments":["general-equipment","food-consumables"],"secondary_departments":["electronics-comms","fashion-personal"]},
+    {"id":"weapons-dealer","name":"Weapons Dealer","primary_departments":["weapons","ammunition-ordnance","weapon-parts"],"secondary_departments":["armor-protection"]},
+    {"id":"military-surplus","name":"Military Surplus","primary_departments":["weapons","armor-protection","general-equipment"],"secondary_departments":["ammunition-ordnance","weapon-parts"]},
+    {"id":"pawn-shop","name":"Pawn Shop","primary_departments":["general-equipment","electronics-comms"],"secondary_departments":["weapons","fashion-personal"]},
+    {"id":"cyberware-clinic","name":"Cyberware Clinic","primary_departments":["cyberware","medical-chemical"],"secondary_departments":["electronics-comms"]},
+    {"id":"pharmacy","name":"Pharmacy / Medtech Supplier","primary_departments":["medical-chemical"],"secondary_departments":["general-equipment"]},
+    {"id":"electronics-shop","name":"Electronics Shop","primary_departments":["electronics-comms"],"secondary_departments":["general-equipment","virtual-goods-games"]},
+    {"id":"netrunner-supplier","name":"Netrunner Supplier","primary_departments":["netrunning","electronics-comms"],"secondary_departments":["cyberware"]},
+    {"id":"drone-robotics","name":"Drone & Robotics Dealer","primary_departments":["drones-robotics","electronics-comms"],"secondary_departments":["general-equipment"]},
+    {"id":"fashion-boutique","name":"Fashion Boutique","primary_departments":["fashion-personal"],"secondary_departments":["armor-protection"]},
+    {"id":"vehicle-dealer","name":"Vehicle Dealer / Yard","primary_departments":["vehicles-mobility"],"secondary_departments":["general-equipment"]},
+    {"id":"housing-furnishings","name":"Housing & Furnishings","primary_departments":["housing-property"],"secondary_departments":["electronics-comms","general-equipment"]},
+    {"id":"entertainment-vendor","name":"Entertainment Vendor","primary_departments":["services-entertainment","virtual-goods-games"],"secondary_departments":["electronics-comms"]},
+    {"id":"night-market-stall","name":"Night Market Stall","primary_departments":[],"secondary_departments":[],"special_rules":["specialist-or-mixed-stock"]}
+  ]
+}
