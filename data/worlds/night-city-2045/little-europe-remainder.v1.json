@@ -98,7 +98,7 @@
           "secondary_departments": [],
           "breadth_profile": "medium",
           "depth_profile": "shallow",
-          "supply_capability": "bespoke",
+          "supply_capability": "specialist",
           "price_tier_center": "Luxury",
           "pricing_style": "premium",
           "channel_weights": {"specialist": 6, "direct_order": 7, "retail": 2},
