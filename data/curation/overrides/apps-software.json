@@ -1,0 +1,364 @@
+[
+  {
+    "item_id": "VENDR-0448",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Security & Tactical Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "specialist", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "security", "tech"], "use": ["security", "technical"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0449",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Information & Assistant Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "corporate"], "use": ["communications", "technical"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0450",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Communications Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "corporate"], "use": ["communications"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0451",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Social Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["communications", "entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0452",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Information & Assistant Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "corporate", "executive"], "use": ["communications", "technical"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0453",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Subscription Apps"],
+      "commodity_kind": "subscription",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0454",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Agent Games"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "performer"], "use": ["entertainment"], "character": ["showy"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0455",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Elflines Online"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0456",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Elflines Online Utilities"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment", "technical"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0457",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Network & Social Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "corporate"], "use": ["communications", "entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0458",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Biometric Security Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["specialist", "corporate", "institutional", "direct_order"],
+      "affinity_tags": {"audience": ["security", "tech", "corporate"], "use": ["security", "surveillance", "technical"], "character": ["professional", "discreet"]},
+      "product_identity": "generic"
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0459",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "General Utility Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "tech"], "use": ["technical"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0460",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Databases", "Law-Enforcement Databases"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["institutional", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["law_enforcement", "security"], "use": ["security", "surveillance", "technical"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0461",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Biometric Security Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["specialist", "corporate", "institutional", "direct_order"],
+      "affinity_tags": {"audience": ["security", "tech", "corporate"], "use": ["security", "surveillance", "technical"], "character": ["professional", "discreet"]},
+      "product_identity": "generic"
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0462",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Agent Games"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0463",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Agent Games"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0464",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Game Software"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "specialist", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "performer"], "use": ["entertainment"], "character": ["novelty"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0465",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Game Software"],
+      "commodity_kind": "durable_good",
+      "quantity_profile": "low_stock",
+      "allowed_conditions": ["used"],
+      "default_condition": "used",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "street", "pawn"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment", "collecting"], "character": ["collector_grade"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0466",
+    "set": {
+      "department": "virtual-goods-games",
+      "classification_path": ["Virtual Goods & Games", "Video Games", "Game Software"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0467",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Subscription Apps"],
+      "commodity_kind": "subscription",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "performer"], "use": ["entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0468",
+    "set": {
+      "department": "medical-chemical",
+      "classification_path": ["Medical & Chemical", "Medical Software", "Remote Medical Assistance"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "specialist", "institutional", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["medical", "civilian"], "use": ["medical", "communications"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0469",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Monitoring & Security Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "specialist", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "security", "tech"], "use": ["security", "surveillance", "technical"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0470",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Databases", "City Information Databases"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "corporate", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "corporate"], "use": ["communications", "technical"], "character": ["professional"]}
+    },
+    "requires_item_curation": false
+  },
+  {
+    "item_id": "VENDR-0471",
+    "set": {
+      "department": "electronics-comms",
+      "classification_path": ["Electronics & Communications", "Software & Apps", "Communications & Posting Apps"],
+      "commodity_kind": "software",
+      "quantity_profile": "continuous",
+      "allowed_conditions": ["not_applicable"],
+      "default_condition": "not_applicable",
+      "supply_profile": "regular",
+      "market_channels": ["retail", "direct_order"],
+      "affinity_tags": {"audience": ["civilian", "performer"], "use": ["communications", "entertainment"], "character": []}
+    },
+    "requires_item_curation": false
+  }
+]
