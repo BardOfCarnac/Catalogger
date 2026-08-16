@@ -1,0 +1,139 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-europe-remainder-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [58, 59, 63],
+    "note": "Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "name": "Continental Brands Vertical Neighborhood",
+      "entity_type": "container",
+      "district": "Little Europe",
+      "map_no": 6,
+      "book_page": 58,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 58",
+      "source_summary": "Residential complex laid out to resemble old-world markets; the apparent storefronts are largely disguised conapt entrances rather than public shops.",
+      "stock_policy": "NO_STOCK",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CORRECT_TO_CONTAINER_CONTEXT",
+        "note": "The building itself is not a retail/service business despite its market-like presentation."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-058-FAST-EDDIE-GUIDE",
+      "name": "Fast Eddie",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "district": "Little Europe",
+      "book_page": 58,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 58",
+      "source_summary": "Local guide who helps visitors navigate the confusing Vertical Neighborhood.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Fast Eddie", "role": "Fixer", "rank": 1},
+      "services": [
+        {"service_key": "vertical-neighborhood-guide", "label": "Guide through the Vertical Neighborhood", "price_eb": 10}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "name": "Everything and More",
+      "entity_type": "seller",
+      "district": "Little Europe",
+      "map_no": 10,
+      "book_page": 59,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 59",
+      "source_summary": "Former department store reduced to a larger-than-average upscale bodega serving nearby residents.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:little-europe:everything-and-more:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": ["electronics-comms", "fashion-personal"],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "specials": [0, 2]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "name": "Torrell and Chiang’s",
+      "entity_type": "hybrid",
+      "district": "Little Europe",
+      "map_no": 23,
+      "book_page": 63,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 63",
+      "source_summary": "High-end bespoke tailor specialising in fashion and discreet armor, with cleaning services and off-the-rack stalls at high-end Night and Midnight Markets.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:little-europe:torrell-and-chiang:v1",
+        "overrides": {
+          "primary_departments": ["fashion-personal", "armor-protection"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "shallow",
+          "supply_capability": "bespoke",
+          "price_tier_center": "Luxury",
+          "pricing_style": "premium",
+          "channel_weights": {"specialist": 6, "direct_order": 7, "retail": 2},
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "bespoke-tailoring", "label": "Bespoke high-end tailoring"},
+        {"service_key": "discreet-armor-tailoring", "label": "Discreet custom armor integrated into clothing"},
+        {"service_key": "specialist-dry-cleaning", "label": "Specialist dry cleaning"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "HYBRID_DIRECT_EVENT",
+        "decision": "CONFIRMED_AND_SPLIT_EVENT_CHANNEL"
+      }
+    },
+    {
+      "entity_id": "NC2045-EVENT-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-MARKET-STALLS",
+      "name": "Torrell and Chiang’s Market Stalls",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "district": "Little Europe",
+      "book_page": 63,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 63",
+      "source_summary": "Off-the-rack T&C stalls appearing at high-end Night Markets and Midnight Markets.",
+      "review_status": "source_reviewed",
+      "stock_policy": "EVENT_ONLY",
+      "event_profile": {
+        "markets": ["Night Market", "Midnight Market"],
+        "known_departments": ["fashion-personal", "armor-protection"],
+        "stock_character": "off_the_rack"
+      }
+    }
+  ]
+}
