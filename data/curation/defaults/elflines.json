@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "taxonomy_version": "0.2.0",
+  "source_category": "Elflines Online",
+  "defaults": [
+    {"source_category":"Elflines Online","source_subcategory":"In-Game Purchases","department":"virtual-goods-games","classification_path":["Virtual Goods & Games","Elflines Online","In-Game Purchases"],"commodity_kind":"virtual_good","quantity_profile":"continuous","allowed_conditions":["not_applicable"],"default_condition":"not_applicable","supply_profile":"regular","market_channels":["retail","direct_order"],"audience_tags":["civilian","collector"],"use_tags":["entertainment","collecting"],"character_tags":["novelty"],"requires_item_curation":false},
+    {"source_category":"Elflines Online","source_subcategory":"In-Game Armory (cost is in in-game currency)","department":"virtual-goods-games","classification_path":["Virtual Goods & Games","Elflines Online","In-Game Armory"],"commodity_kind":"virtual_good","quantity_profile":"continuous","allowed_conditions":["not_applicable"],"default_condition":"not_applicable","supply_profile":"regular","market_channels":["direct_order"],"audience_tags":["civilian"],"use_tags":["entertainment"],"character_tags":["novelty"],"requires_item_curation":false},
+    {"source_category":"Elflines Online","source_subcategory":"Elflines Online the TCG Cards","department":"virtual-goods-games","classification_path":["Virtual Goods & Games","Trading Card Games","Elflines Online TCG"],"commodity_kind":"durable_good","quantity_profile":"normal_stock","allowed_conditions":["new","used","refurbished","damaged","salvaged"],"default_condition":"new","supply_profile":"regular","market_channels":["retail","specialist","street","pawn"],"audience_tags":["civilian","collector"],"use_tags":["entertainment","collecting"],"character_tags":["collector_grade","novelty"],"requires_item_curation":false}
+  ]
+}
