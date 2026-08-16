@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build Vend-R commercial profiles from source defaults plus item-level curation."""
 import gzip, json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +29,7 @@ override_rows=load_json(DATA/"curation/item-overrides.json")
 for path in sorted((DATA/"curation/overrides").glob("*.json")):
     override_rows.extend(load_json(path))
 item_tags=load_json(DATA/"curation/item-tags.json")
+identity_rules=load_json(DATA/"curation/product-identity.json")
 
 version=default_docs[0]["version"]
 tax_version=default_docs[0]["taxonomy_version"]
@@ -70,17 +71,18 @@ GENERIC_NAMES={
     "Gyrocopter","Helicopter","Cabin Cruiser","Jetski","Speedboat","Yacht"
 }
 
+identity_exact={row["item_id"]:row for row in identity_rules["exact"]}
+branded_buckets={
+    (row["source_category"],row["source_subcategory"])
+    for row in identity_rules["branded_source_buckets"]
+}
+
 def union(values):
     out=[]; seen=set()
     for v in values:
         if v not in seen:
             seen.add(v); out.append(v)
     return out
-
-def infer_identity(item):
-    if mfrs_by_item.get(item["id"]): return "branded"
-    if item["name"] in GENERIC_NAMES: return "generic"
-    return None
 
 def apply_override(profile, override):
     if not override: return
@@ -103,6 +105,55 @@ def apply_override(profile, override):
     if "requires_item_curation" in override:
         profile["requires_item_curation"]=bool(override["requires_item_curation"])
 
+def finalize_identity(item, profile, mapped, override):
+    """Resolve generic/branded/bespoke/unique after all item-level curation."""
+    iid=item["id"]
+
+    # Exact second-pass editorial decisions can deliberately correct an older override.
+    if iid in identity_exact:
+        row=identity_exact[iid]
+        profile["product_identity"]=row["identity"]
+        profile["product_identity_origin"]="exact-curation"
+        if row.get("reason"):
+            profile["curation_notes"].append(row["reason"])
+        return
+
+    # Existing explicit curation is stronger than automated naming inference.
+    explicit=(override or {}).get("set",{}).get("product_identity")
+    if explicit is not None:
+        profile["product_identity"]=explicit
+        profile["product_identity_origin"]="item-override"
+        return
+
+    # Manufacturer linkage is strong evidence of a specific commercial product/model.
+    if mfrs_by_item.get(iid):
+        profile["product_identity"]="branded"
+        profile["product_identity_origin"]="manufacturer"
+        return
+
+    # These are unmistakable generic catalogue/rules objects.
+    if item["name"] in GENERIC_NAMES:
+        profile["product_identity"]="generic"
+        profile["product_identity_origin"]="explicit-generic"
+        return
+
+    # Explicit trademark styling is direct naming evidence even without a manufacturer row.
+    if "®" in item["name"] or "™" in item["name"]:
+        profile["product_identity"]="branded"
+        profile["product_identity_origin"]="trademark"
+        return
+
+    # Some source buckets consist of named product/model entries rather than generic classes.
+    if any((c["source_category"],c.get("source_subcategory")) in branded_buckets for c,_ in mapped):
+        profile["product_identity"]="branded"
+        profile["product_identity_origin"]="source-bucket"
+        return
+
+    # If nothing identifies a specific marketed or singular object, treat the listing name as
+    # the generic thing the catalogue/rules are describing.
+    profile["product_identity"]=identity_rules["default_identity"]
+    profile["product_identity_origin"]="default-generic"
+
 profiles=[]
 for item in items:
     iid=item["id"]
@@ -115,7 +166,8 @@ for item in items:
     primary_c,primary_d=primary
     profile={
         "item_id":iid,
-        "product_identity":infer_identity(item),
+        "product_identity":None,
+        "product_identity_origin":None,
         "department":primary_d["department"],
         "classification_path":primary_d["classification_path"],
         "secondary_departments":union(d["department"] for _,d in mapped if d["department"]!=primary_d["department"]),
@@ -134,9 +186,12 @@ for item in items:
         "requires_item_curation":any(d["requires_item_curation"] for _,d in mapped),
         "curation_notes":[],
         "profile_version":version,
-        "taxonomy_version":taxonomy["version"]
+        "taxonomy_version":taxonomy["version"],
+        "product_identity_version":identity_rules["version"]
     }
-    apply_override(profile,overrides_by_item.get(iid))
+    override=overrides_by_item.get(iid)
+    apply_override(profile,override)
+    finalize_identity(item,profile,mapped,override)
     for row in tags_by_item.get(iid,[]):
         group=row["tag_type"]; tag=row["tag_id"]
         if tag not in profile["affinity_tags"][group]:
@@ -147,6 +202,9 @@ for item in items:
 
 OUT.parent.mkdir(parents=True,exist_ok=True)
 OUT.write_text(json.dumps(profiles,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+identity_counts=Counter(p["product_identity"] for p in profiles)
+origin_counts=Counter(p["product_identity_origin"] for p in profiles)
 print(f"Wrote {len(profiles)} commercial profiles -> {OUT.relative_to(ROOT)}")
 print(f"{sum(p['requires_item_curation'] for p in profiles)} profiles still need item-level review")
-print(f"{sum(p['product_identity'] is not None for p in profiles)} profiles have known product identity")
+print("Product identity: " + ", ".join(f"{k}={identity_counts[k]}" for k in sorted(identity_counts)))
+print("Identity origin: " + ", ".join(f"{k}={origin_counts[k]}" for k in sorted(origin_counts)))
