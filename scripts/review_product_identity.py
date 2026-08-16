@@ -99,10 +99,13 @@ def naming_signal(name):
 counts = Counter()
 signal_rows = []
 unresolved = defaultdict(list)
+known_editorial = []
 for item in items:
     ident, origin = current_identity(item)
     if ident:
         counts[(ident, origin)] += 1
+        if origin != "manufacturer":
+            known_editorial.append((ident, origin, item["id"], item["name"], primary_bucket(item["id"])))
         continue
     suggestion, reason = naming_signal(item["name"])
     if suggestion:
@@ -113,6 +116,10 @@ print("CURRENT PRODUCT IDENTITY")
 for (ident, origin), count in sorted(counts.items()):
     print(f"  {ident:9} {origin:18} {count:4}")
 print(f"  {'unknown':9} {'':18} {sum(len(v) for v in unresolved.values()):4}")
+
+print("\nKNOWN NON-MANUFACTURER IDENTITIES (REVIEW THESE TOO)")
+for ident, origin, iid, name, bucket in known_editorial:
+    print(f"{ident:9} | {origin:16} | {iid} | {name} | {bucket}")
 
 print("\nHIGH-CONFIDENCE / REVIEW-WORTHY NAMING SIGNALS")
 for suggestion, reason, iid, name, bucket in signal_rows:
