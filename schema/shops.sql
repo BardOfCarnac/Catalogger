@@ -1,5 +1,5 @@
 -- Vend-R persistent shop/state schema
--- Shop identity is stable. Stock and shop state are mutable.
+-- Shop identity is stable. Assortment is persistent. Stock and shop state are mutable.
 
 create table if not exists shop_archetypes (
   id text primary key,
@@ -33,6 +33,9 @@ create table if not exists shops (
   proprietor jsonb,
   reputation text,
   distinctive_trait text,
+  -- Realized stocking preferences are stored with the shop so later archetype
+  -- template changes do not silently mutate an existing business.
+  stocking_profile jsonb not null default '{}'::jsonb,
   generated_from_version text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -53,16 +56,37 @@ create table if not exists shop_services (
   primary key (shop_id, service_key)
 );
 
+-- A shop's persistent relationship with products. Selling out does not remove a
+-- core/regular/occasional line from the business; restocking works from this table.
+create table if not exists shop_assortment (
+  shop_id uuid not null references shops(id) on delete cascade,
+  item_id text not null references items(id),
+  role text not null check (role in ('core','regular','occasional')),
+  affinity_score numeric,
+  introduced_cycle integer not null default 0,
+  last_stocked_cycle integer,
+  active boolean not null default true,
+  metadata jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  primary key (shop_id, item_id)
+);
+
+create index if not exists shop_assortment_shop_role_idx on shop_assortment(shop_id, role);
+
 create table if not exists stock (
   id uuid primary key,
   shop_id uuid not null references shops(id) on delete cascade,
   item_id text not null references items(id),
-  quantity integer not null default 1 check (quantity >= 0),
+  -- NULL quantity means finite count does not apply (for example a continuously
+  -- available service/software offering). Physical stock remains >= 0.
+  quantity integer check (quantity is null or quantity >= 0),
   condition text,
   asking_price numeric,
   price_modifier numeric not null default 1,
   visibility text not null default 'public' check (visibility in ('public','ask','hidden')),
   status text not null default 'in_stock' check (status in ('in_stock','reserved','sold','incoming')),
+  assortment_role text check (assortment_role in ('core','regular','occasional','special')),
   added_cycle integer,
   stock_reason text,
   created_at timestamptz not null default now(),
@@ -71,6 +95,7 @@ create table if not exists stock (
 
 create index if not exists stock_shop_idx on stock(shop_id);
 create index if not exists stock_item_idx on stock(item_id);
+create index if not exists stock_shop_role_idx on stock(shop_id, assortment_role);
 
 create table if not exists shop_state (
   shop_id uuid primary key references shops(id) on delete cascade,
