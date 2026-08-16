@@ -58,7 +58,12 @@ create table if not exists item_classifications (
 
 create table if not exists item_commercial_profiles (
   item_id text primary key references items(id) on delete cascade,
-  product_identity text check (product_identity in ('generic','branded','bespoke','unique')),
+  product_identity text not null check (product_identity in ('generic','branded','bespoke','unique')),
+  product_identity_origin text not null check (product_identity_origin in (
+    'exact-curation','item-override','manufacturer','explicit-generic','trademark',
+    'source-bucket','default-generic'
+  )),
+  product_identity_version text not null,
   department text not null,
   classification_path jsonb not null default '[]'::jsonb,
   commodity_kind text not null check (commodity_kind in (
