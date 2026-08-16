@@ -56,6 +56,25 @@
         "overrides": {
           "primary_departments": ["electronics-comms"],
           "secondary_departments": [],
+          "allowed_item_ids": [
+            "VENDR-0448",
+            "VENDR-0449",
+            "VENDR-0450",
+            "VENDR-0451",
+            "VENDR-0452",
+            "VENDR-0455",
+            "VENDR-0456",
+            "VENDR-0457",
+            "VENDR-0459",
+            "VENDR-0462",
+            "VENDR-0463",
+            "VENDR-0464",
+            "VENDR-0465",
+            "VENDR-0466",
+            "VENDR-0469",
+            "VENDR-0470",
+            "VENDR-0471"
+          ],
           "allowed_classification_prefixes": [["Electronics & Communications", "Software & Apps"]],
           "max_base_price": 100,
           "breadth_profile": "small",
@@ -90,6 +109,9 @@
             ["Ammunition & Ordnance", "Ammunition"]
           ],
           "included_item_ids": ["VENDR-0329", "VENDR-0331", "VENDR-0332", "VENDR-0333"],
+          "pinned_assortment": [
+            {"item_id": "VENDR-0332", "role": "regular"}
+          ],
           "breadth_profile": "small",
           "depth_profile": "normal",
           "supply_capability": "specialist",
