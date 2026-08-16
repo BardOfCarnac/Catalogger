@@ -37,11 +37,13 @@ data/
   shops/
     archetypes.json             shop-generator template seeds
   stocking/
-    model.json                  scoring, breadth/depth, supply and restock controls
+    model.json                  scoring, breadth/depth, lifecycle and restock controls
     archetype-profiles.json     stocking defaults keyed to shop archetypes
   audit/
     *.json.gz                   retained source-index/audit data
     id-redirects.json           retired ID -> canonical ID
+docs/
+  stocking-lifecycle.md         saved-bundle contract, events and conditions
 schema/
   catalog.sql                   relational catalogue + commercial profile schema
   shops.sql                     persistent shop/assortment/stock/state schema
@@ -49,10 +51,12 @@ scripts/
   materialize_catalog.py        build ordinary JSON from canonical shards
   build_commercial_profiles.py  derive Vend-R item profiles
   review_product_identity.py    audit product-identity decisions
-  stock_engine.py               persistent assortment + stocking/restock engine
+  stock_engine.py               eligibility/scoring/assortment mechanics
+  stock_lifecycle.py            durable bundles, backorders, events and inspection
   validate_catalog.py           checksum + relational + taxonomy checks
   validate_stocking.py          stocking configuration checks
   test_stock_engine.py          deterministic stocking smoke tests
+  test_stock_lifecycle.py       persistence/source/event/report smoke tests
 ```
 
 Large, mostly static factual tables are stored as deterministic, versioned gzip JSON shards. `data/catalog/manifest.json` records every part, row count and SHA-256 checksum. Human-authored Vend-R classifications and stocking logic remain ordinary readable JSON rather than being hidden inside generated files.
@@ -91,7 +95,7 @@ Generated files under `build/data/` are ignored by Git.
 
 ## Persistent stocking model
 
-The stocking engine deliberately separates five concerns:
+The stocking system deliberately separates five concerns:
 
 1. **Eligibility** — whether the shop can plausibly deal in the item at all.
 2. **Affinity scoring** — a ranking signal from department/classification fit, market channels, semantic affinities, manufacturer relationships, price band, product identity and supply capability. Scores are not universal rarity percentages.
@@ -101,29 +105,68 @@ The stocking engine deliberately separates five concerns:
 
 A shop can therefore sell out of a core line without forgetting that it normally carries that product. Restocking works from the saved assortment instead of rerolling the catalogue from scratch.
 
-`data/stocking/model.json` holds the shared controls, including five breadth profiles, four independent stock-depth profiles, supply-capability matrices, role-presence rates, assortment-saturation pressure, quantity ranges and condition/price behaviour. `data/stocking/archetype-profiles.json` provides stocking defaults for all fourteen current shop archetypes without turning those templates into saved shops.
+`data/stocking/model.json` holds the shared controls, including five breadth profiles, four independent stock-depth profiles, supply-capability matrices, role-presence rates, assortment-saturation pressure, quantity ranges, target/reorder behaviour, delivery delays and temporary-condition effects. `data/stocking/archetype-profiles.json` provides stocking defaults for all fourteen current shop archetypes without turning those templates into saved shops.
 
-The helper in `stock_engine.py` can create a realized stocking context for testing, but it is deliberately **not** a shop identity/location generator. A real shop service should generate a shop elsewhere, persist its realized stocking context, then hand that context to this engine.
+The helper in `stock_engine.py` can create a realized stocking context for testing, but it is deliberately **not** a shop identity/location generator. A real shop service should generate a shop elsewhere, persist its realized stocking context, then hand that context to the stocking layer.
 
-Generate a deterministic assortment plus cycle-0 stock:
+## Stock lifecycle and persistence
+
+`stock_lifecycle.py` wraps the scoring/assortment mechanics in a versioned saved-shop bundle. In addition to current stock it persists:
+
+- each assortment line's score breakdown, target quantity and reorder point
+- enabled source/book codes used when the shop was created
+- pending `incoming` orders with deterministic arrival cycles
+- temporary supply conditions
+- append-only stock events
+- pointers to the events produced by the most recent cycle
+
+The current controlled temporary conditions are `shortage`, `surplus`, `disrupted_supply`, `fresh_delivery`, `liquidation`, and `hot_merchandise`. They may apply globally or target particular departments, supply profiles, market channels, manufacturers or item IDs. They bend current supply behaviour without rewriting the permanent assortment.
+
+The lifecycle event stream records meaningful transitions such as `supplier_failed`, `backorder_placed`, `delivery_received`, `replenished`, `restocked`, `special_arrival` and `special_departed`. This gives later services an explainable world-state history instead of silent rerolls.
+
+Generate a deterministic persistent bundle, optionally restricted to books/sources the user has enabled:
 
 ```bash
 python scripts/build_commercial_profiles.py
-python scripts/stock_engine.py generate \
+python scripts/stock_lifecycle.py generate \
   --archetype weapons-dealer \
   --seed rico-001 \
+  --sources CP:R,BC \
   --output build/rico-stock.json
 ```
 
-Advance the saved shop by one stock cycle without rebuilding its assortment:
+Advance that saved shop one stock cycle without rebuilding its assortment:
 
 ```bash
-python scripts/stock_engine.py restock \
+python scripts/stock_lifecycle.py restock \
   --input build/rico-stock.json \
   --output build/rico-stock-cycle-1.json
 ```
 
-Inspect why items score highly for a shop:
+A restock can also activate a simple global temporary condition for that cycle/state:
+
+```bash
+python scripts/stock_lifecycle.py restock \
+  --input build/rico-stock.json \
+  --add-condition shortage \
+  --output build/rico-shortage.json
+```
+
+More precise targeted conditions can be stored directly in the bundle state as documented in `docs/stocking-lifecycle.md`.
+
+## Developer inspection (not the Vend-R UI)
+
+Until the dedicated shop/location work has a real inventory surface, the lifecycle engine can render a deliberately plain Markdown report. This is only a debugging/taste-testing tool; it does not make any decisions about what the eventual Vend-R shop page should look like.
+
+```bash
+python scripts/stock_lifecycle.py inspect \
+  --input build/rico-stock.json \
+  --output build/rico-stock.md
+```
+
+The report shows core/regular/occasional lines, target and reorder quantities, current/incoming/sold state, score-component explanations, current specials and the latest cycle events.
+
+You can still inspect raw candidate affinity scores independently of persistence:
 
 ```bash
 python scripts/stock_engine.py score \
@@ -140,8 +183,8 @@ The persistent shop model now has five primary objects:
 
 1. `items` — static canonical products/reference entries
 2. `shops` — persistent business identity plus its realized stocking profile
-3. `shop_assortment` — persistent core/regular/occasional product relationships
-4. `stock` — cycle-specific quantity, condition, asking price and visibility; `special` stock can exist outside the assortment
+3. `shop_assortment` — persistent core/regular/occasional product relationships, including target/reorder behaviour and scoring provenance
+4. `stock` — cycle-specific quantity, condition, asking price, visibility and pending-order metadata; `special` stock can exist outside the assortment
 5. `shop_state` / `stock_history` — mutable restock cycle, temporary conditions and stock events
 
 `shop_archetypes` are generator templates only. The core rule is: **generated attributes become stored attributes**. Updating an archetype later must not silently mutate a shop already present in a campaign.
@@ -160,9 +203,10 @@ python scripts/build_commercial_profiles.py
 python scripts/review_product_identity.py
 python scripts/validate_stocking.py
 python scripts/test_stock_engine.py
+python scripts/test_stock_lifecycle.py
 ```
 
-The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, every controlled vocabulary value, stocking-profile coverage and stocking configuration references. The stocking smoke tests generate all fourteen archetypes, verify deterministic generation, enforce unique-items-as-specials, exercise speciality weighting, and confirm restocking preserves assortment identity. GitHub Actions runs the full sequence on pushes and pull requests.
+The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, every controlled vocabulary value, stocking-profile coverage and lifecycle configuration references. The stocking tests generate all fourteen archetypes, verify deterministic generation, enforce unique-items-as-specials, exercise speciality weighting, confirm restocking preserves assortment identity, test source filtering, pending deliveries, lifecycle events and the no-UI inspection report. GitHub Actions runs the full sequence on pushes and pull requests.
 
 ## Unofficial content notice
 
