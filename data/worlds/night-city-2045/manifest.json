@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 6,
-    "remaining_core_profiles": 97,
+    "source_reviewed_core_profiles": 13,
+    "remaining_core_profiles": 90,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -14,10 +14,19 @@
       "fixture_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET:legacy-normalized",
       "source_file": "data/worlds/night-city-2045/kaito-market.v1.json",
       "district": "Little Europe",
-      "audit_core_profiles_covered": 1,
+      "audit_core_profiles_covered": 5,
       "entities": 11,
       "catalog_stock_entities": 4,
-      "note": "Gold-standard pilot and regression fixture."
+      "note": "Gold-standard pilot and regression fixture. Covers Kaito Market plus the core-profile vendors Cheek Turn, Imported Goods 4 Cheap, Stone Mill, and Taco Taco; it also preserves five additional named vendors absent from the first core extraction."
+    },
+    {
+      "fixture_id": "nc2045-little-europe-remainder-v1",
+      "source_file": "data/worlds/night-city-2045/little-europe-remainder.v1.json",
+      "district": "Little Europe",
+      "audit_core_profiles_covered": 3,
+      "entities": 5,
+      "catalog_stock_entities": 2,
+      "note": "Completes the v0.2 CORE_RETAIL audit queue for Little Europe."
     },
     {
       "fixture_id": "nc2045-downtown-core-v1",
@@ -31,7 +40,6 @@
   ],
   "remaining_core_queue_by_district": {
     "Upper Marina": 12,
-    "Little Europe": 7,
     "Kabuki": 7,
     "North Heywood": 7,
     "Pacifica Playground": 7,
@@ -53,11 +61,12 @@
     "Playland by the Sea Lands": 1,
     "Port of Night City": 1,
     "The Hot Zone": 1,
+    "Little Europe": 0,
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Little Europe",
-    "remaining_core_profiles": 7,
-    "reason": "Kaito Market already provides a source-reviewed district anchor and regression reference."
+    "district": "Upper Marina",
+    "remaining_core_profiles": 12,
+    "reason": "Largest remaining CORE_RETAIL district batch; the generic fixture/import pipeline is now exercised by two completed districts."
   }
 }
