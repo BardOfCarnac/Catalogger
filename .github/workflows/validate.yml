@@ -18,3 +18,5 @@ jobs:
       - run: python scripts/validate_stocking.py
       - run: python scripts/test_stock_engine.py
       - run: python scripts/test_stock_lifecycle.py
+      - run: python scripts/test_kaito_market.py
+      - run: python scripts/build_kaito_market.py
