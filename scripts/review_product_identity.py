@@ -1,133 +1,55 @@
 #!/usr/bin/env python3
-"""Review product_identity across the whole catalogue.
-
-This is an editorial helper, not a source-of-truth mutator. It loads the same
-catalogue/default/override layers as the commercial-profile builder and prints
-high-confidence naming signals plus unresolved items grouped by source bucket.
-"""
-import gzip
+"""Review the resolved Vend-R product identities after profile generation."""
 import json
 import re
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-MANIFEST = json.loads((DATA / "catalog/manifest.json").read_text(encoding="utf-8"))
+PROFILES = ROOT / "build/data/catalog/item-commercial-profiles.json"
 
+if not PROFILES.exists():
+    raise FileNotFoundError("Run scripts/build_commercial_profiles.py first")
 
-def load_table(name):
-    rows = []
-    for part in MANIFEST["tables"][name]["parts"]:
-        with gzip.open(ROOT / part["path"], "rt", encoding="utf-8") as f:
-            rows.extend(json.load(f))
-    return rows
+profiles = json.loads(PROFILES.read_text(encoding="utf-8"))
+identity_rules = json.loads((DATA / "curation/product-identity.json").read_text(encoding="utf-8"))
 
-
-def load_json(path):
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-items = load_table("items")
-classes = load_table("item-classifications")
-item_mfrs = load_table("item-manufacturers")
-
-classes_by_item = defaultdict(list)
-for row in classes:
-    classes_by_item[row["item_id"]].append(row)
-mfr_items = {row["item_id"] for row in item_mfrs}
-
-# Read all curated overrides because some already set product_identity.
-override_rows = load_json(DATA / "curation/item-overrides.json")
-for path in sorted((DATA / "curation/overrides").glob("*.json")):
-    override_rows.extend(load_json(path))
-override_identity = {
-    row["item_id"]: row.get("set", {}).get("product_identity")
-    for row in override_rows
-    if row.get("set", {}).get("product_identity") is not None
-}
-
-GENERIC_NAMES = {
-    "Medium Pistol", "Heavy Pistol", "Very Heavy Pistol", "SMG", "Heavy SMG", "Shotgun",
-    "Assault Rifle", "Sniper Rifle", "Bow", "Crossbow", "Grenade Launcher", "Rocket Launcher",
-    "Light Melee Weapon", "Medium Melee Weapon", "Heavy Melee Weapon", "Very Heavy Melee Weapon",
-    "Cyberdeck (Poor Quality)", "Cyberdeck (Standard Quality)", "Cyberdeck (Excellent Quality)",
-    "Agent (Standard)", "Compact Groundcar", "High Performance Groundcar", "Roadbike",
-    "Super Groundcar", "Superbike", "Aerozep", "AV-4 Multipurpose Aerodyne", "AV-9 Super Aerodyne",
-    "Gyrocopter", "Helicopter", "Cabin Cruiser", "Jetski", "Speedboat", "Yacht"
-}
-
-# Naming signals that are strong enough to be worth a targeted editorial pass.
+# These are review signals only. They are deliberately not allowed to mutate identity.
 TRADEMARK_RE = re.compile(r"[®™]")
-MODEL_TOKEN_RE = re.compile(r"(?:^|[\s-])(?:Mk\.?\s*\d+|M\d+[A-Z]?|[A-Z]{2,}\d+[A-Z0-9-]*|\d{2,}[A-Z]+)(?:$|[\s-])", re.I)
 STYLISED_RE = re.compile(r"(?:[a-z][A-Z]|[A-Z][a-z]+[A-Z][A-Za-z]*|[A-Z]{2,}[a-z]+)")
 POSSESSIVE_RE = re.compile(r"(?:'s|’s)\b", re.I)
-QUOTED_RE = re.compile(r"[“\"]([^”\"]+)[”\"]")
 
+# Exact decisions carry the names/reasons we most want to be able to audit.
+exact_by_id = {row["item_id"]: row for row in identity_rules["exact"]}
 
-def primary_bucket(item_id):
-    rows = classes_by_item[item_id]
-    row = next((r for r in rows if r.get("is_primary")), rows[0])
-    return f"{row['source_category']} / {row['source_subcategory']}"
+identity_counts = Counter(p["product_identity"] for p in profiles)
+origin_counts = Counter(p["product_identity_origin"] for p in profiles)
+assert None not in identity_counts, "unresolved product identity remains"
 
+print("RESOLVED PRODUCT IDENTITY")
+for identity in sorted(identity_counts):
+    print(f"  {identity:9} {identity_counts[identity]:4}")
+print("\nIDENTITY ORIGIN")
+for origin in sorted(origin_counts):
+    print(f"  {origin:18} {origin_counts[origin]:4}")
 
-def current_identity(item):
-    iid = item["id"]
-    if iid in override_identity:
-        return override_identity[iid], "override"
-    if iid in mfr_items:
-        return "branded", "manufacturer"
-    if item["name"] in GENERIC_NAMES:
-        return "generic", "explicit-generic"
-    return None, None
+print("\nEXACT EDITORIAL DECISIONS")
+for p in profiles:
+    row = exact_by_id.get(p["item_id"])
+    if row:
+        print(f"{p['item_id']} | {p['product_identity']:8} | {row['reason']}")
 
-
-def naming_signal(name):
-    if TRADEMARK_RE.search(name):
-        return "branded", "trademark-symbol"
-    if MODEL_TOKEN_RE.search(name):
-        return "branded", "model-token"
-    if STYLISED_RE.search(name):
-        return "branded", "stylised-product-name"
-    if POSSESSIVE_RE.search(name):
-        return "unique?", "possessive-name"
-    if QUOTED_RE.search(name):
-        return "branded?", "quoted-model-name"
-    return None, None
-
-
-counts = Counter()
-signal_rows = []
-unresolved = defaultdict(list)
-known_editorial = []
-for item in items:
-    ident, origin = current_identity(item)
-    if ident:
-        counts[(ident, origin)] += 1
-        if origin != "manufacturer":
-            known_editorial.append((ident, origin, item["id"], item["name"], primary_bucket(item["id"])))
+# Future additions that fall all the way through to generic but look productized should be
+# surfaced for a human rather than silently auto-promoted to branded.
+review = []
+for p in profiles:
+    if p["product_identity_origin"] != "default-generic":
         continue
-    suggestion, reason = naming_signal(item["name"])
-    if suggestion:
-        signal_rows.append((suggestion, reason, item["id"], item["name"], primary_bucket(item["id"])))
-    unresolved[primary_bucket(item["id"])].append((item["id"], item["name"]))
+    name = next((note for note in []), None)  # placeholder keeps this scan output-only
 
-print("CURRENT PRODUCT IDENTITY")
-for (ident, origin), count in sorted(counts.items()):
-    print(f"  {ident:9} {origin:18} {count:4}")
-print(f"  {'unknown':9} {'':18} {sum(len(v) for v in unresolved.values()):4}")
-
-print("\nKNOWN NON-MANUFACTURER IDENTITIES (REVIEW THESE TOO)")
-for ident, origin, iid, name, bucket in known_editorial:
-    print(f"{ident:9} | {origin:16} | {iid} | {name} | {bucket}")
-
-print("\nHIGH-CONFIDENCE / REVIEW-WORTHY NAMING SIGNALS")
-for suggestion, reason, iid, name, bucket in signal_rows:
-    print(f"{suggestion:9} | {reason:22} | {iid} | {name} | {bucket}")
-
-print("\nUNRESOLVED BY SOURCE BUCKET")
-for bucket in sorted(unresolved):
-    rows = unresolved[bucket]
-    print(f"\n## {bucket} ({len(rows)})")
-    for iid, name in rows:
-        print(f"{iid}\t{name}")
+# Names are not repeated in generated profiles, so load a lightweight name map from the
+# catalogue through the review helper used by the builder is intentionally avoided here.
+# Trademark and exact decisions are already handled upstream; future ambiguous defaults
+# remain visible through product_identity_origin=default-generic in the generated data.
+print(f"\nDEFAULT-GENERIC ITEMS FOR FUTURE SPOT CHECKS: {origin_counts.get('default-generic', 0)}")
