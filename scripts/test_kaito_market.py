@@ -34,16 +34,26 @@ apocalypse = vendors["Apocalypse Zone Tattoo"]
 assert {row["item_id"] for row in apocalypse["assortment"]} == {"VENDR-0708"}
 assert {row["service_key"] for row in apocalypse["services"]} == {"traditional-tattoo"}
 
-# App Shack: cheap general software only, never NET/Netrunning stock or expensive databases.
+# App Shack: an editorially curated subset of the broad RTG Apps and Software bucket.
+# Physical scanners, specialist databases, MedScan and Netrunner gear must not leak in simply
+# because their source classification is broad.
 app_shack = vendors["App Shack"]
 assert app_shack["assortment"], "App Shack should have a persistent software assortment"
+app_allowed = {
+    "VENDR-0448", "VENDR-0449", "VENDR-0450", "VENDR-0451", "VENDR-0452",
+    "VENDR-0455", "VENDR-0456", "VENDR-0457", "VENDR-0459", "VENDR-0462",
+    "VENDR-0463", "VENDR-0464", "VENDR-0465", "VENDR-0466", "VENDR-0469",
+    "VENDR-0470", "VENDR-0471",
+}
 for row in app_shack["assortment"]:
     iid = row["item_id"]
+    assert iid in app_allowed, iid
     path = engine.commercial_by_id[iid]["classification_path"]
     assert path[:2] == ["Electronics & Communications", "Software & Apps"], (iid, path)
     price = engine._base_price(engine.items_by_id[iid])
     assert price is None or price <= 100, (iid, price)
     assert engine.commercial_by_id[iid]["department"] != "netrunning"
+assert not ({"VENDR-0458", "VENDR-0461", "VENDR-0468"} & {row["item_id"] for row in app_shack["assortment"]})
 
 # Cheek Turn: sidearms + ammunition, with an explicit light-armour exception list because
 # the current catalogue taxonomy groups all armor into a single classification path.
@@ -56,6 +66,8 @@ allowed_prefixes = [
     ["Weapons", "Firearms", "Very Heavy Pistols"],
     ["Ammunition & Ordnance", "Ammunition"],
 ]
+cheek_ids = {row["item_id"] for row in cheek_turn["assortment"]}
+assert "VENDR-0332" in cheek_ids, "source-defined light armor must survive assortment selection"
 for row in cheek_turn["assortment"]:
     iid = row["item_id"]
     if iid in light_armor_ids:
