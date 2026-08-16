@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "taxonomy_version": "0.2.0",
+  "source_category": "Armor",
+  "defaults": [
+    {"source_category":"Armor","source_subcategory":"Armor","department":"armor-protection","classification_path":["Armor & Protection","Armor"],"commodity_kind":"durable_good","quantity_profile":"normal_stock","allowed_conditions":["new","used","refurbished","damaged","salvaged"],"default_condition":"new","supply_profile":"regular","market_channels":["retail","specialist","street","pawn","nomad","corporate"],"audience_tags":["civilian","gang","security","military"],"use_tags":["personal_defense","combat","security"],"character_tags":["rugged"],"requires_item_curation":false}
+  ]
+}
