@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "taxonomy_version": "0.2.0",
+  "source_category": "Entertainment & Services",
+  "defaults": [
+    {"source_category":"Entertainment & Services","source_subcategory":"General","department":"services-entertainment","classification_path":["Services & Entertainment","General"],"commodity_kind":"service","quantity_profile":"continuous","allowed_conditions":["not_applicable"],"default_condition":"not_applicable","supply_profile":"regular","market_channels":["retail","corporate","street","direct_order"],"audience_tags":["civilian"],"use_tags":["entertainment","hospitality"],"character_tags":[],"requires_item_curation":true,"note":"Mixed bucket containing media products, transport, lodging, meals and professional services; item-level overrides are required for precise commodity kind and department."},
+    {"source_category":"Entertainment & Services","source_subcategory":"Drinks (and similar substances served in bars and pubs)","department":"food-consumables","classification_path":["Food, Drink & Consumables","Drinks"],"commodity_kind":"consumable","quantity_profile":"high_stock","allowed_conditions":["new"],"default_condition":"new","supply_profile":"ubiquitous","market_channels":["retail","street"],"audience_tags":["civilian","performer"],"use_tags":["hospitality","entertainment"],"character_tags":[],"requires_item_curation":false},
+    {"source_category":"Entertainment & Services","source_subcategory":"Medical Services","department":"medical-chemical","classification_path":["Medical & Chemical","Medical Services"],"commodity_kind":"service","quantity_profile":"continuous","allowed_conditions":["not_applicable"],"default_condition":"not_applicable","supply_profile":"specialist","market_channels":["specialist","institutional","corporate","direct_order"],"audience_tags":["medical","civilian","executive"],"use_tags":["medical"],"character_tags":["professional"],"requires_item_curation":false}
+  ]
+}
