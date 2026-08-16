@@ -1,0 +1,27 @@
+[
+  {
+    "item_id": "VENDR-0669",
+    "set": {"product_identity": "branded"},
+    "reason": "DeathTrance is a coined product-style cyberware name rather than a descriptive generic component name."
+  },
+  {
+    "item_id": "VENDR-1124",
+    "set": {"product_identity": "generic"},
+    "reason": "Corp Beaverville McMansion (Buy) describes a housing type/transaction rather than a particular marketed model."
+  },
+  {
+    "item_id": "VENDR-1125",
+    "set": {"product_identity": "generic"},
+    "reason": "Corp Beaverville McMansion (Rent) describes a housing type/transaction rather than a particular marketed model."
+  },
+  {
+    "item_id": "VENDR-1185",
+    "set": {"product_identity": "branded"},
+    "reason": "Bear’s Berry Beer is a specific named drink offering rather than the generic commodity Beer."
+  },
+  {
+    "item_id": "VENDR-1228",
+    "set": {"product_identity": "branded"},
+    "reason": "Winner’s Cup is a specific named drink offering rather than a generic drink category."
+  }
+]
