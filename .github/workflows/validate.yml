@@ -20,3 +20,7 @@ jobs:
       - run: python scripts/test_stock_lifecycle.py
       - run: python scripts/test_kaito_market.py
       - run: python scripts/build_kaito_market.py
+      - run: python scripts/test_world_fixture.py
+      - run: python scripts/import_nc2045_audit_batch.py --input data/worlds/night-city-2045/import/downtown-core.audit-v0.2.json --output build/data/worlds/night-city-2045/import/downtown-core.audit-draft.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kaito-market.v1.json --output build/data/worlds/night-city-2045/kaito-market.generic.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-core.v1.json --output build/data/worlds/night-city-2045/downtown-core.v1.json
