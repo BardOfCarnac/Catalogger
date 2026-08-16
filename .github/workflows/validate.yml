@@ -13,3 +13,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/validate_catalog.py
+      - run: python scripts/build_commercial_profiles.py
