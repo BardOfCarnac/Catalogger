@@ -1,0 +1,192 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "page": 60,
+    "ref": "Night City 2045 p. 60"
+  },
+  "location": {
+    "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+    "name": "Kaito Market",
+    "district": "Little Europe",
+    "map_no": 14,
+    "entity_type": "market_container",
+    "stock_policy": "CHILDREN_ONLY",
+    "schedule": {
+      "setup_day": "Thursday",
+      "teardown_day": "Sunday"
+    },
+    "source_summary": "Open-air market with permanent stalls and short-term pitches; vendor turnover is part of the location's character."
+  },
+  "vendors": [
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APOCALYPSE-ZONE-TATTOO",
+      "name": "Apocalypse Zone Tattoo",
+      "commercial_mode": "catalog_and_service",
+      "source_summary": "Rotating tattoo artists offering traditional tattoos and light tattoos, but not a broader fashionware catalogue.",
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:kaito-market:apocalypse-zone-tattoo:v1",
+        "overrides": {
+          "primary_departments": ["cyberware"],
+          "secondary_departments": [],
+          "allowed_item_ids": ["VENDR-0708"],
+          "breadth_profile": "compact",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "specials": [0, 0]
+        }
+      },
+      "services": [
+        {"service_key": "traditional-tattoo", "label": "Traditional tattoo work"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APP-SHACK",
+      "name": "App Shack",
+      "commercial_mode": "catalog_stock",
+      "source_summary": "Cheap knock-off general software and low-grade games; explicitly not a specialist Netrunner shop.",
+      "stocking": {
+        "archetype_id": "electronics-shop",
+        "seed": "nc2045:kaito-market:app-shack:v1",
+        "overrides": {
+          "primary_departments": ["electronics-comms"],
+          "secondary_departments": [],
+          "allowed_classification_prefixes": [["Electronics & Communications", "Software & Apps"]],
+          "max_base_price": 100,
+          "breadth_profile": "small",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Costly",
+          "pricing_style": "bargain",
+          "specials": [0, 1]
+        }
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
+      "name": "Cheek Turn",
+      "commercial_mode": "catalog_stock",
+      "source_summary": "Weapons stall specialising in sidearms, light armour and ammunition, with product quality spanning budget to premium brands.",
+      "proprietor": {
+        "name": "Artie Murdock",
+        "role": "Fixer",
+        "rank": 3
+      },
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:kaito-market:cheek-turn:v1",
+        "overrides": {
+          "primary_departments": ["weapons", "ammunition-ordnance"],
+          "secondary_departments": ["armor-protection"],
+          "allowed_classification_prefixes": [
+            ["Weapons", "Firearms", "Medium Pistols"],
+            ["Weapons", "Firearms", "Heavy Pistols"],
+            ["Weapons", "Firearms", "Very Heavy Pistols"],
+            ["Ammunition & Ordnance", "Ammunition"]
+          ],
+          "included_item_ids": ["VENDR-0329", "VENDR-0331", "VENDR-0332", "VENDR-0333"],
+          "breadth_profile": "small",
+          "depth_profile": "normal",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "fair",
+          "specials": [0, 2]
+        }
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-FIFTY-FARMS",
+      "name": "Fifty Farms",
+      "commercial_mode": "local_wares",
+      "source_summary": "Local grower co-op selling fresh fruit and vegetables.",
+      "local_offerings": [
+        {"offering_key": "fresh-produce", "label": "Fresh locally grown fruit and vegetables"}
+      ],
+      "catalogue_note": "The Night Market Index food catalogue does not contain a suitable fresh-produce product, so this remains a local world offering instead of being replaced by kibble or packaged food."
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-GREG-S",
+      "name": "Greg’s",
+      "commercial_mode": "local_wares",
+      "source_summary": "Food truck serving coffee and SCOP-based hot dogs, with notably unfriendly service.",
+      "local_offerings": [
+        {"offering_key": "coffee", "label": "Coffee blend"},
+        {"offering_key": "scop-dog", "label": "SCOP hot dog"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
+      "name": "Imported Goods 4 Cheap",
+      "commercial_mode": "catalog_and_local_wares",
+      "source_summary": "Fast-turnover third-hand clothing, toys and electronics with occasional new knock-offs; priced to move.",
+      "stocking": {
+        "archetype_id": "electronics-shop",
+        "seed": "nc2045:kaito-market:imported-goods-4-cheap:v1",
+        "overrides": {
+          "primary_departments": ["electronics-comms", "fashion-personal", "general-equipment"],
+          "secondary_departments": ["virtual-goods-games"],
+          "breadth_profile": "medium",
+          "depth_profile": "normal",
+          "supply_capability": "irregular",
+          "price_tier_center": "Premium",
+          "pricing_style": "bargain",
+          "condition_weights": {
+            "new": 1,
+            "used": 8,
+            "refurbished": 4,
+            "damaged": 1,
+            "salvaged": 3
+          },
+          "specials": [0, 2]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "assorted-toys", "label": "Assorted third-hand and knock-off toys"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-MADAME-ZORINA",
+      "name": "Madame Zorina",
+      "commercial_mode": "service_only",
+      "source_summary": "Fortune-telling stall that also functions as a discreet personal message post for people who know to ask.",
+      "services": [
+        {"service_key": "fortune-telling", "label": "Fortune telling"},
+        {"service_key": "message-post", "label": "Leave or retrieve personal messages", "visibility": "ask"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-SAGAR-HAIR-SALOON",
+      "name": "Sagar Hair Saloon",
+      "commercial_mode": "service_only",
+      "source_summary": "Traditional barber shop and local social meeting point.",
+      "services": [
+        {"service_key": "barber", "label": "Traditional barbering"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
+      "name": "Stone Mill",
+      "commercial_mode": "local_wares",
+      "source_summary": "Bakery stall making inexpensive sweet and savoury food from repurposed ingredients.",
+      "local_offerings": [
+        {"offering_key": "sweet-baked-goods", "label": "Cut-price sweet baked goods"},
+        {"offering_key": "savoury-baked-goods", "label": "Cut-price savoury baked goods"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
+      "name": "Taco Taco",
+      "commercial_mode": "local_wares",
+      "source_summary": "Taco truck selling inexpensive SCOP tacos and a mystery-meat option.",
+      "local_offerings": [
+        {"offering_key": "two-scop-tacos", "label": "Two SCOP tacos", "price_eb": 5},
+        {"offering_key": "mystery-meat-taco", "label": "One mystery-meat taco", "price_eb": 5}
+      ]
+    }
+  ]
+}
