@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "taxonomy_version": "0.2.0",
+  "source_category": "Fashion",
+  "defaults": [
+    {"source_category":"Fashion","source_subcategory":"Fashion Styles","department":"fashion-personal","classification_path":["Fashion & Personal","Fashion Styles"],"commodity_kind":"durable_good","quantity_profile":"high_stock","allowed_conditions":["new","used","refurbished","damaged","salvaged"],"default_condition":"new","supply_profile":"ubiquitous","market_channels":["retail","corporate","street","pawn"],"audience_tags":["civilian","executive","performer"],"use_tags":["fashion"],"character_tags":["showy"],"requires_item_curation":false},
+    {"source_category":"Fashion","source_subcategory":"Specific Fashions","department":"fashion-personal","classification_path":["Fashion & Personal","Specific Fashions"],"commodity_kind":"durable_good","quantity_profile":"normal_stock","allowed_conditions":["new","used","refurbished","damaged","salvaged"],"default_condition":"new","supply_profile":"regular","market_channels":["retail","corporate","street","pawn","specialist"],"audience_tags":["civilian","executive","performer","collector"],"use_tags":["fashion","collecting"],"character_tags":["showy"],"requires_item_curation":false},
+    {"source_category":"Fashion","source_subcategory":"Fashion Linings","department":"fashion-personal","classification_path":["Fashion & Personal","Clothing Components","Fashion Linings"],"commodity_kind":"component","quantity_profile":"normal_stock","allowed_conditions":["new","used","refurbished","damaged","salvaged"],"default_condition":"new","supply_profile":"specialist","market_channels":["retail","specialist","direct_order"],"audience_tags":["civilian","nomad"],"use_tags":["fashion","survival"],"character_tags":[],"requires_item_curation":false}
+  ]
+}
