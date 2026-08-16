@@ -34,6 +34,11 @@ class WorldStockEngine(StockEngine):
 
       min_base_price / max_base_price
         Optional hard catalogue-price bounds. These are seller constraints, not price rarity.
+
+      pinned_assortment
+        Explicit catalogue lines that must survive the random assortment pass. Each entry is
+        ``{"item_id": ..., "role": "core|regular|occasional"}``. This expresses a source
+        requirement such as "the stall carries light armor" while keeping the rest stochastic.
     """
 
     @staticmethod
@@ -71,3 +76,50 @@ class WorldStockEngine(StockEngine):
             return False
 
         return True
+
+    def build_assortment(self, context: dict[str, Any]) -> list[dict[str, Any]]:
+        assortment = super().build_assortment(context)
+        pins = list(context.get("pinned_assortment", []))
+        if not pins:
+            return assortment
+
+        pinned_ids = {row["item_id"] for row in pins}
+        present = {row["item_id"] for row in assortment}
+        valid_roles = {"core", "regular", "occasional"}
+
+        for pin in pins:
+            item_id = pin["item_id"]
+            role = pin.get("role", "regular")
+            if role not in valid_roles:
+                raise ValueError(f"invalid pinned assortment role: {role}")
+            if item_id in present:
+                continue
+            if not self.eligible(item_id, context, special=False):
+                raise ValueError(f"pinned item is not eligible for source-defined shop: {item_id}")
+
+            replacement_index = next(
+                (
+                    index
+                    for index in range(len(assortment) - 1, -1, -1)
+                    if assortment[index]["role"] == role
+                    and assortment[index]["item_id"] not in pinned_ids
+                ),
+                None,
+            )
+            row = {
+                "shop_id": context["id"],
+                "item_id": item_id,
+                "role": role,
+                "affinity_score": self.score(item_id, context)["score"],
+                "introduced_cycle": 0,
+                "last_stocked_cycle": None,
+                "active": True,
+            }
+            if replacement_index is None:
+                assortment.append(row)
+            else:
+                present.discard(assortment[replacement_index]["item_id"])
+                assortment[replacement_index] = row
+            present.add(item_id)
+
+        return assortment
