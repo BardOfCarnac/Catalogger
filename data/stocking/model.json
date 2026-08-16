@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "note": "Vend-R stocking controls. Scores rank plausible products; they are not item rarity percentages. Eligibility, persistent assortment selection, cycle availability, quantity, condition and price are separate steps.",
+  "version": "0.2.0",
+  "note": "Vend-R stocking controls. Scores rank plausible products; they are not item rarity percentages. Eligibility, persistent assortment selection, cycle availability, quantity, condition, price and lifecycle events are separate steps.",
   "base_score": 50,
   "department_scores": {
     "primary": 30,
@@ -130,5 +130,86 @@
     "default_max": 2,
     "score_floor": 1,
     "allow_unique": true
+  },
+  "lifecycle": {
+    "bundle_format_version": "0.2.0",
+    "target_multiplier_by_role": {
+      "core": 1.15,
+      "regular": 1.0,
+      "occasional": 0.75
+    },
+    "reorder_fraction_by_role": {
+      "core": 0.5,
+      "regular": 0.35,
+      "occasional": 0.2
+    },
+    "initial_fill_by_role": {
+      "core": [0.8, 1.0],
+      "regular": [0.6, 1.0],
+      "occasional": [0.4, 1.0]
+    },
+    "top_up_chance_by_role": {
+      "core": 0.85,
+      "regular": 0.55,
+      "occasional": 0.2
+    },
+    "backorder_chance_by_role": {
+      "core": 0.9,
+      "regular": 0.5,
+      "occasional": 0.15
+    },
+    "delivery_delay_by_supply": {
+      "ubiquitous": [1, 1],
+      "regular": [1, 1],
+      "specialist": [1, 2],
+      "scarce": [2, 3],
+      "bespoke": [2, 4],
+      "unique": [99, 99]
+    },
+    "temporary_conditions": {
+      "shortage": {
+        "presence_multiplier": 0.7,
+        "quantity_multiplier": 0.7,
+        "price_multiplier": 1.1,
+        "top_up_multiplier": 0.65,
+        "special_delta": 0
+      },
+      "surplus": {
+        "presence_multiplier": 1.1,
+        "quantity_multiplier": 1.4,
+        "price_multiplier": 0.9,
+        "top_up_multiplier": 1.2,
+        "special_delta": 1
+      },
+      "disrupted_supply": {
+        "presence_multiplier": 0.55,
+        "quantity_multiplier": 0.8,
+        "price_multiplier": 1.08,
+        "top_up_multiplier": 0.5,
+        "special_delta": -1
+      },
+      "fresh_delivery": {
+        "presence_multiplier": 1.2,
+        "quantity_multiplier": 1.25,
+        "price_multiplier": 1.0,
+        "top_up_multiplier": 1.3,
+        "special_delta": 1
+      },
+      "liquidation": {
+        "presence_multiplier": 0.45,
+        "quantity_multiplier": 1.0,
+        "price_multiplier": 0.72,
+        "top_up_multiplier": 0.15,
+        "special_delta": 1
+      },
+      "hot_merchandise": {
+        "presence_multiplier": 1.0,
+        "quantity_multiplier": 1.0,
+        "price_multiplier": 0.88,
+        "top_up_multiplier": 1.0,
+        "special_delta": 2,
+        "visibility_bias": "ask"
+      }
+    }
   }
 }
