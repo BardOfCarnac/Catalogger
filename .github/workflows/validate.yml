@@ -17,3 +17,4 @@ jobs:
       - run: python scripts/review_product_identity.py
       - run: python scripts/validate_stocking.py
       - run: python scripts/test_stock_engine.py
+      - run: python scripts/test_stock_lifecycle.py
