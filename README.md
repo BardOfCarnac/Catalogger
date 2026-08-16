@@ -27,36 +27,60 @@ data/
     *.json.gz                   canonical source-data shards
     manufacturers.json          normalized manufacturers
     sources.json                source-book/DLC legend
-    taxonomy.json               Vend-R application taxonomy
+    taxonomy.json               Vend-R departments + controlled vocabularies
   curation/
-    item-tags.json              hand-maintained commercial/shop tags
-    item-overrides.json         deliberate curated overrides
+    defaults/                   RTG subcategory -> commercial defaults
+    item-tags.json              hand-maintained semantic affinities
+    item-overrides.json         deliberate per-item exceptions
   shops/
     archetypes.json             shop-generator template seeds
   audit/
     *.json.gz                   retained source-index/audit data
     id-redirects.json           retired ID -> canonical ID
 schema/
-  catalog.sql                   relational catalogue schema
+  catalog.sql                   relational catalogue + commercial profile schema
   shops.sql                     persistent shop/stock/state schema
 scripts/
   materialize_catalog.py        build ordinary JSON from canonical shards
-  validate_catalog.py           checksum + relational consistency checks
+  build_commercial_profiles.py  derive first-pass Vend-R item profiles
+  validate_catalog.py           checksum + relational + taxonomy checks
 ```
 
-Large, mostly static factual tables are stored as deterministic, versioned gzip JSON shards. `data/catalog/manifest.json` records every part, row count and SHA-256 checksum. Human-authored Vend-R classifications and future stocking logic remain ordinary readable JSON rather than being hidden inside generated files.
+Large, mostly static factual tables are stored as deterministic, versioned gzip JSON shards. `data/catalog/manifest.json` records every part, row count and SHA-256 checksum. Human-authored Vend-R classifications and stocking logic remain ordinary readable JSON rather than being hidden inside generated files.
 
-To materialize convenient uncompressed JSON for an app/import:
+## Commercial profile layer
+
+The catalogue keeps **source classification** and **Vend-R classification** separate. RTG categories/subcategories are retained for provenance; Vend-R layers a commercial model over them for generating plausible sellers and inventory.
+
+`data/catalog/taxonomy.json` defines controlled values for:
+
+- product identity: generic, branded, bespoke, unique
+- commodity kind: durable good, consumable, installed good, component, vehicle, software, service, subscription, property, virtual good
+- quantity profile: singular, low stock, normal stock, high stock, bulk, continuous
+- allowed/default condition
+- supply profile
+- market channels
+- typed audience, use, and character affinities
+
+The ten files under `data/curation/defaults/` cover **all 83 source category/subcategory pairs** in the Night Market Index dataset. Six deliberately broad source buckets are marked `requires_item_curation` rather than pretending a source-level default is precise enough: General Gear, Apps and Software, Cyberware Alternatives, Unique Vehicles, Netrunning Accessories, and Entertainment & Services / General.
+
+Build the current first-pass profile for all catalogue items with:
+
+```bash
+python scripts/build_commercial_profiles.py
+```
+
+The builder takes scalar behaviour from an item's primary source classification, unions useful market/audience affinities from secondary classifications, applies conservative product-identity inference, then applies `item-overrides.json` and `item-tags.json`. Generated profiles appear at `build/data/catalog/item-commercial-profiles.json` and are deliberately not committed.
+
+To materialize convenient uncompressed source JSON for an app/import:
 
 ```bash
 python scripts/materialize_catalog.py
 ```
 
-The generated files appear under `build/data/` and are deliberately ignored by Git.
+Generated files under `build/data/` are ignored by Git.
 
-## Data model
-
-The catalogue keeps **source classification** and **Vend-R classification** separate. RTG categories/subcategories are retained for provenance; Vend-R layers a commercial taxonomy over them for generating plausible sellers and inventory.
+## Persistent shop model
 
 The persistent shop model has four primary objects:
 
@@ -69,7 +93,7 @@ The persistent shop model has four primary objects:
 
 ## Hosting direction
 
-Git is the editorial source of truth for catalogue and generator data. A future live deployment can import the catalogue into PostgreSQL/Supabase and add dynamic `shops`, `stock`, `shop_state`, and `stock_history` rows around it.
+Git is the editorial source of truth for catalogue and generator data. A future live deployment can import the catalogue and derived commercial profiles into PostgreSQL/Supabase and add dynamic `shops`, `stock`, `shop_state`, and `stock_history` rows around it.
 
 ## Validation
 
@@ -77,9 +101,10 @@ Run:
 
 ```bash
 python scripts/validate_catalog.py
+python scripts/build_commercial_profiles.py
 ```
 
-The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, classification coverage, and retired-ID redirects. GitHub Actions runs the same validation on pushes and pull requests.
+The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, and every controlled vocabulary value. GitHub Actions runs both validation and profile generation on pushes and pull requests.
 
 ## Unofficial content notice
 
