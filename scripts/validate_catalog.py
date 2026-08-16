@@ -32,6 +32,7 @@ item_mfrs = load_table("item-manufacturers")
 manufacturers = load("catalog/manufacturers.json")
 sources = load("catalog/sources.json")
 taxonomy = load("catalog/taxonomy.json")
+identity_rules = load("curation/product-identity.json")
 default_docs = [
     json.loads(path.read_text(encoding="utf-8"))
     for path in sorted((DATA / "curation/defaults").glob("*.json"))
@@ -39,6 +40,8 @@ default_docs = [
 assert default_docs, "no commercial default files found"
 item_tags = load("curation/item-tags.json")
 item_overrides = load("curation/item-overrides.json")
+for path in sorted((DATA / "curation/overrides").glob("*.json")):
+    item_overrides.extend(json.loads(path.read_text(encoding="utf-8")))
 redirects = load("audit/id-redirects.json")
 
 def unique(rows, key, label):
@@ -149,10 +152,27 @@ for r in item_overrides:
             assert group in affinity_ids, r
             assert all(v in affinity_ids[group] for v in values), r
 
+# Second-pass product identity rules.
+assert identity_rules["default_identity"] in identity_ids, identity_rules
+assert isinstance(identity_rules.get("version"), str) and identity_rules["version"], identity_rules
+seen_exact = set()
+for r in identity_rules["exact"]:
+    assert r["item_id"] in item_ids, r
+    assert r["item_id"] not in seen_exact, f"duplicate exact product identity: {r['item_id']}"
+    assert r["identity"] in identity_ids, r
+    seen_exact.add(r["item_id"])
+seen_buckets = set()
+for r in identity_rules["branded_source_buckets"]:
+    key = (r["source_category"], r["source_subcategory"])
+    assert key in source_keys, f"unknown branded source bucket: {key}"
+    assert key not in seen_buckets, f"duplicate branded source bucket: {key}"
+    seen_buckets.add(key)
+
 assert len(items) == 1275
 mixed = sum(1 for r in default_rows if r["requires_item_curation"])
 print(
     f"OK: {len(items)} items, {len(manufacturers)} manufacturers, "
-    f"{len(item_sources)} item-source links, {len(default_rows)} commercial defaults "
+    f"{len(item_sources)} item-source links, {len(default_rows)} commercial defaults, "
+    f"{len(identity_rules['exact'])} exact identity decisions, {len(seen_buckets)} branded identity buckets "
     f"({mixed} mixed source buckets flagged for item review)"
 )
