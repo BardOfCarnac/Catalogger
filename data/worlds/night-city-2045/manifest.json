@@ -1,0 +1,63 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "fixture_format_version": "0.2.0",
+  "commercial_audit_snapshot": {
+    "profile_version": "0.2",
+    "canon_named_core_profiles": 103,
+    "source_reviewed_core_profiles": 6,
+    "remaining_core_profiles": 97,
+    "districts_with_core_profiles": 24
+  },
+  "source_reviewed_fixtures": [
+    {
+      "fixture_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET:legacy-normalized",
+      "source_file": "data/worlds/night-city-2045/kaito-market.v1.json",
+      "district": "Little Europe",
+      "audit_core_profiles_covered": 1,
+      "entities": 11,
+      "catalog_stock_entities": 4,
+      "note": "Gold-standard pilot and regression fixture."
+    },
+    {
+      "fixture_id": "nc2045-downtown-core-v1",
+      "source_file": "data/worlds/night-city-2045/downtown-core.v1.json",
+      "district": "Downtown",
+      "audit_core_profiles_covered": 5,
+      "entities": 11,
+      "catalog_stock_entities": 2,
+      "note": "First audit-import batch promoted through direct source review."
+    }
+  ],
+  "remaining_core_queue_by_district": {
+    "Upper Marina": 12,
+    "Little Europe": 7,
+    "Kabuki": 7,
+    "North Heywood": 7,
+    "Pacifica Playground": 7,
+    "Rancho Coronado": 7,
+    "Little China": 6,
+    "Reclamation Zone": 6,
+    "Santo Domingo": 6,
+    "Watson Development": 6,
+    "Old Combat Zone": 5,
+    "University District": 4,
+    "South Night City": 3,
+    "The Glen": 3,
+    "New Westbrook": 2,
+    "Old Japantown": 2,
+    "Executive Zone": 1,
+    "Heywood Docks": 1,
+    "Heywood Industrial Zone": 1,
+    "NorCal Military Base": 1,
+    "Playland by the Sea Lands": 1,
+    "Port of Night City": 1,
+    "The Hot Zone": 1,
+    "Downtown": 0
+  },
+  "next_recommended_batch": {
+    "district": "Little Europe",
+    "remaining_core_profiles": 7,
+    "reason": "Kaito Market already provides a source-reviewed district anchor and regression reference."
+  }
+}
