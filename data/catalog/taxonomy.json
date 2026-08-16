@@ -1,35 +1,88 @@
 {
-  "version": "0.1.0",
-  "note": "Vend-R departments are an application taxonomy layered over the Night Market Index source taxonomy. Source classification is always retained.",
+  "version": "0.2.0",
+  "note": "Vend-R application taxonomy and controlled commercial vocabularies. Source categories/subcategories remain canonical provenance and are never overwritten.",
   "departments": [
     {"id":"weapons","name":"Weapons","description":"Firearms, melee weapons, bows, launchers and reusable weapon systems."},
     {"id":"ammunition-ordnance","name":"Ammunition & Ordnance","description":"Ammunition, grenades, explosives and expendable weapon payloads."},
     {"id":"weapon-parts","name":"Weapon Parts & Accessories","description":"Attachments, magazines, scopes, rebuilds and weapon modifications."},
     {"id":"armor-protection","name":"Armor & Protection","description":"Armor, shields and worn protective equipment."},
     {"id":"cyberware","name":"Cyberware","description":"Installed augmentation, cyberlimbs, optics, neuralware, FBCs and related alternatives."},
-    {"id":"medical-chemical","name":"Medical & Chemical","description":"Pharmaceuticals, poisons, street drugs and medical/chemical supplies."},
-    {"id":"electronics-comms","name":"Electronics & Communications","description":"Agents, electronics, computers, cameras, scanners and communications gear."},
+    {"id":"medical-chemical","name":"Medical & Chemical","description":"Pharmaceuticals, poisons, street drugs, medical goods and medical services."},
+    {"id":"electronics-comms","name":"Electronics & Communications","description":"Agents, electronics, computers, cameras, scanners, communications gear and general software."},
     {"id":"netrunning","name":"NET & Netrunning","description":"Cyberdecks, programs, Black ICE, architecture components and Netrunner equipment."},
     {"id":"drones-robotics","name":"Drones & Robotics","description":"Personal drones, active-defense drones, cyberpets and robotic systems."},
     {"id":"fashion-personal","name":"Fashion & Personal","description":"Fashion, clothing, cosmetic and personal-style products."},
-    {"id":"general-equipment","name":"General Equipment","description":"Tools, survival equipment, containers and miscellaneous physical gear."},
+    {"id":"general-equipment","name":"General Equipment","description":"Tools, survival equipment, security installations, containers and miscellaneous physical gear."},
     {"id":"food-consumables","name":"Food, Drink & Consumables","description":"Foodstuffs, drinks and ordinary consumables."},
     {"id":"vehicles-mobility","name":"Vehicles & Mobility","description":"Vehicles, personal mobility devices, vehicle parts and upgrades."},
     {"id":"housing-property","name":"Housing & Property","description":"Housing, furniture, home accessories and headquarters improvements."},
-    {"id":"services-entertainment","name":"Services & Entertainment","description":"Services, lodging, professional work, entertainment and subscriptions."},
+    {"id":"services-entertainment","name":"Services & Entertainment","description":"Lodging, professional work, entertainment, lifestyle services and other non-medical services."},
     {"id":"virtual-goods-games","name":"Virtual Goods & Games","description":"Games, virtual goods, TCG products and in-world digital entertainment."}
   ],
-  "commodity_traits": [
-    {"id":"durable","description":"A reusable physical product."},
-    {"id":"consumable","description":"Stock is consumed or depleted through use."},
-    {"id":"software","description":"Digital software or program."},
-    {"id":"service","description":"A service rather than a stocked physical object."},
-    {"id":"subscription","description":"A recurring service or entitlement."},
-    {"id":"property","description":"Housing, property or a large fixed asset."},
-    {"id":"vehicle","description":"A vehicle or personal mobility platform."},
-    {"id":"installed","description":"Normally fitted or installed into another system/person."},
-    {"id":"virtual","description":"An in-world virtual item or currency."}
+  "product_identity": [
+    {"id":"generic","description":"Generic rules/reference object rather than a specific commercial model."},
+    {"id":"branded","description":"Named commercial product or model."},
+    {"id":"bespoke","description":"Made or configured to order rather than normal shelf stock."},
+    {"id":"unique","description":"Singular or exceptional object not treated as a repeatable product line."}
   ],
-  "shop_tags": [],
+  "commodity_kinds": [
+    {"id":"durable_good","description":"Reusable physical product."},
+    {"id":"consumable","description":"Physical stock consumed or depleted through use."},
+    {"id":"installed_good","description":"Product normally fitted or installed into a person, property or system."},
+    {"id":"component","description":"Part, attachment or upgrade used with another product or system."},
+    {"id":"vehicle","description":"Vehicle or personal mobility platform."},
+    {"id":"software","description":"Digital software, application, program, Black ICE or comparable code."},
+    {"id":"service","description":"One-off or continuously available service rather than physical stock."},
+    {"id":"subscription","description":"Recurring service or entitlement."},
+    {"id":"property","description":"Housing, property or comparable fixed asset."},
+    {"id":"virtual_good","description":"Item or currency existing inside an in-world virtual environment."}
+  ],
+  "quantity_profiles": [
+    {"id":"singular","description":"Usually zero or one unit at a particular seller."},
+    {"id":"low_stock","description":"Normally carried in small numbers."},
+    {"id":"normal_stock","description":"Ordinary shelf or dealer inventory."},
+    {"id":"high_stock","description":"Commonly carried in meaningful quantity."},
+    {"id":"bulk","description":"Normally traded or replenished in volume."},
+    {"id":"continuous","description":"Finite stock count is not meaningful, as with services or replicable software."}
+  ],
+  "conditions": [
+    {"id":"new","description":"New retail condition."},
+    {"id":"used","description":"Functional second-hand condition."},
+    {"id":"refurbished","description":"Used product restored or reconditioned for sale."},
+    {"id":"damaged","description":"Product with meaningful wear, damage or impairment."},
+    {"id":"salvaged","description":"Recovered or scavenged product with uncertain history."},
+    {"id":"not_applicable","description":"Condition does not meaningfully apply."}
+  ],
+  "supply_profiles": [
+    {"id":"ubiquitous","description":"Appropriate sellers can source it almost automatically."},
+    {"id":"regular","description":"Ordinary commercial supply."},
+    {"id":"specialist","description":"Requires an appropriate specialist supplier or channel."},
+    {"id":"scarce","description":"Irregular even for an appropriate seller."},
+    {"id":"bespoke","description":"Normally sourced, configured or made to order."},
+    {"id":"unique","description":"Not normally replenishable."}
+  ],
+  "market_channels": [
+    {"id":"retail","description":"Ordinary public retail."},
+    {"id":"specialist","description":"Dedicated expert retailer or supplier."},
+    {"id":"corporate","description":"Corporate dealership, direct corporate supply or controlled brand channel."},
+    {"id":"institutional","description":"Professional procurement such as medical, security or industrial supply."},
+    {"id":"street","description":"Informal street-level commerce."},
+    {"id":"pawn","description":"Second-hand, pawn or fence-style commerce."},
+    {"id":"nomad","description":"Nomad trading and supply networks."},
+    {"id":"grey_market","description":"Questionable or unofficial trade that is not necessarily fully clandestine."},
+    {"id":"black_market","description":"Deliberately clandestine trade."},
+    {"id":"direct_order","description":"Primarily ordered directly from producer, fabricator or specialist supplier."}
+  ],
+  "affinity_tags": {
+    "audience": [
+      {"id":"civilian"},{"id":"gang"},{"id":"nomad"},{"id":"corporate"},{"id":"executive"},{"id":"security"},{"id":"law_enforcement"},{"id":"military"},{"id":"netrunner"},{"id":"tech"},{"id":"medical"},{"id":"performer"},{"id":"collector"}
+    ],
+    "use": [
+      {"id":"personal_defense"},{"id":"combat"},{"id":"hunting"},{"id":"survival"},{"id":"medical"},{"id":"technical"},{"id":"industrial"},{"id":"communications"},{"id":"surveillance"},{"id":"security"},{"id":"mobility"},{"id":"domestic"},{"id":"entertainment"},{"id":"hospitality"},{"id":"fashion"},{"id":"collecting"}
+    ],
+    "character": [
+      {"id":"rugged"},{"id":"discreet"},{"id":"concealable"},{"id":"showy"},{"id":"novelty"},{"id":"collector_grade"},{"id":"professional"},{"id":"improvised"},{"id":"salvage_friendly"}
+    ]
+  },
   "source_subcategories": ["Active Defenses (Costs can change if DVs change)","Agents","Air Vehicle Types","Air Vehicles","Ammunition","Apps and Software","Armor","Assault Rifles","Assisted Combat Power Armor (ACPA)","Attacker Programs","Bicycle Upgrades","BioExotic Packages","Black ICE","Booster Programs","Borgware","Bows and Crossbows","Chipware","Cyberaudio","Cyberdeck Hardware","Cyberdecks","Cyberfingers","Cyberlimbs","Cyberoptics","Cyberpets®","Cyberware Alternatives","Cyberware Enhancements","Defender Programs","Demons","Drinks (and similar substances served in bars and pubs)","Elflines Online the TCG Cards","Emplaced Defenses","Environmental Defenses","Explosives","External Body Cyberware","External Linear Frames","FBC Bodies","Fashion Linings","Fashion Styles","Fashionware","Foodstuffs","Furniture Sets","General","General Gear","Grenade Launchers","Grenades","Ground Vehicle Types","Ground Vehicles","Headquarters Improvements","Heavy Melee Weapons","Heavy Pistols","Heavy SMG","Home Accessories","Housing","In-Game Armory (cost is in in-game currency)","In-Game Purchases","Internal Body Cyberware","Lifestyle","Light Melee Weapons","Machine Guns","Medical Services","Medium Melee Weapons","Medium Pistols","NET Architecture","Netrunning Accessories","Neuralware","Personal Drones","Pharmaceuticals","Poisons","Punknaught Parts","Rocket Launchers","SMG","Sea Vehicle Types","Sea Vehicles","Shotguns","Sniper Rifles","Specific Fashions","Street Drugs","Thrown Weapons","Unique Vehicles","Vehicle Upgrades","Very Heavy Melee Weapons","Very Heavy Pistols","Weapon Attachments"]
 }
