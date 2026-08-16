@@ -14,3 +14,4 @@ jobs:
           python-version: "3.12"
       - run: python scripts/validate_catalog.py
       - run: python scripts/build_commercial_profiles.py
+      - run: python scripts/review_product_identity.py
