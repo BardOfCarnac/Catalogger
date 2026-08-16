@@ -63,6 +63,15 @@ create table if not exists shop_assortment (
   item_id text not null references items(id),
   role text not null check (role in ('core','regular','occasional')),
   affinity_score numeric,
+  score_components jsonb not null default '{}'::jsonb,
+  -- NULL target/reorder means finite quantity is not meaningful (for example a
+  -- continuously available service/software offering).
+  target_quantity integer check (target_quantity is null or target_quantity >= 1),
+  reorder_point integer check (
+    reorder_point is null or (
+      reorder_point >= 1 and target_quantity is not null and reorder_point <= target_quantity
+    )
+  ),
   introduced_cycle integer not null default 0,
   last_stocked_cycle integer,
   active boolean not null default true,
@@ -89,6 +98,9 @@ create table if not exists stock (
   assortment_role text check (assortment_role in ('core','regular','occasional','special')),
   added_cycle integer,
   stock_reason text,
+  -- Lifecycle metadata carries deterministic pending-order information such as
+  -- ordered_cycle / arrival_cycle without overloading the canonical item record.
+  metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -96,6 +108,7 @@ create table if not exists stock (
 create index if not exists stock_shop_idx on stock(shop_id);
 create index if not exists stock_item_idx on stock(item_id);
 create index if not exists stock_shop_role_idx on stock(shop_id, assortment_role);
+create index if not exists stock_shop_status_idx on stock(shop_id, status);
 
 create table if not exists shop_state (
   shop_id uuid primary key references shops(id) on delete cascade,
@@ -103,6 +116,9 @@ create table if not exists shop_state (
   last_restocked timestamptz,
   next_restock timestamptz,
   cash_on_hand numeric,
+  -- Entries use the controlled stocking condition vocabulary (shortage, surplus,
+  -- disrupted_supply, fresh_delivery, liquidation, hot_merchandise) and may carry
+  -- optional item/department/channel/manufacturer targets.
   temporary_conditions jsonb not null default '[]'::jsonb,
   generation_state jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now()
@@ -113,6 +129,7 @@ create table if not exists stock_history (
   shop_id uuid not null references shops(id) on delete cascade,
   stock_id uuid,
   item_id text references items(id),
+  stock_cycle integer,
   event_type text not null,
   quantity_delta integer,
   price numeric,
@@ -121,3 +138,4 @@ create table if not exists stock_history (
 );
 
 create index if not exists stock_history_shop_time_idx on stock_history(shop_id, occurred_at desc);
+create index if not exists stock_history_shop_cycle_idx on stock_history(shop_id, stock_cycle);
