@@ -50,10 +50,55 @@ for name, breadth in model["breadth_profiles"].items():
 for name, depth in model["depth_profiles"].items():
     assert float(depth) > 0, name
 
-assert set(model["presence_by_role"]) == {"core", "regular", "occasional"}
-assert set(model["role_selection"]) == {"core", "regular", "occasional"}
+roles = {"core", "regular", "occasional"}
+assert set(model["presence_by_role"]) == roles
+assert set(model["role_selection"]) == roles
 assert set(model["presence_supply_adjustment"]) == supply_ids
 assert set(model["condition_price_factors"]) == condition_ids
+
+lifecycle = model["lifecycle"]
+assert lifecycle["bundle_format_version"] == "0.2.0"
+for key in (
+    "target_multiplier_by_role",
+    "reorder_fraction_by_role",
+    "initial_fill_by_role",
+    "top_up_chance_by_role",
+    "backorder_chance_by_role",
+):
+    assert set(lifecycle[key]) == roles, key
+assert set(lifecycle["delivery_delay_by_supply"]) == supply_ids
+for supply, bounds in lifecycle["delivery_delay_by_supply"].items():
+    assert len(bounds) == 2 and 1 <= int(bounds[0]) <= int(bounds[1]), supply
+for role, fraction in lifecycle["reorder_fraction_by_role"].items():
+    assert 0 < float(fraction) <= 1, role
+for role, bounds in lifecycle["initial_fill_by_role"].items():
+    assert len(bounds) == 2 and 0 < float(bounds[0]) <= float(bounds[1]) <= 1, role
+for key in ("top_up_chance_by_role", "backorder_chance_by_role"):
+    assert all(0 <= float(value) <= 1 for value in lifecycle[key].values()), key
+
+allowed_condition_keys = {
+    "presence_multiplier",
+    "quantity_multiplier",
+    "price_multiplier",
+    "top_up_multiplier",
+    "special_delta",
+    "visibility_bias",
+}
+assert lifecycle["temporary_conditions"], "no lifecycle temporary conditions"
+for condition_name, values in lifecycle["temporary_conditions"].items():
+    assert set(values) <= allowed_condition_keys, condition_name
+    for key in (
+        "presence_multiplier",
+        "quantity_multiplier",
+        "price_multiplier",
+        "top_up_multiplier",
+    ):
+        if key in values:
+            assert float(values[key]) >= 0, (condition_name, key)
+    if "special_delta" in values:
+        assert isinstance(values["special_delta"], int), condition_name
+    if "visibility_bias" in values:
+        assert values["visibility_bias"] in {"ask", "hidden"}, condition_name
 
 for profile in profiles.values():
     assert profile["breadth_profile"] in model["breadth_profiles"], profile
@@ -74,5 +119,6 @@ for profile in profiles.values():
 
 print(
     f"OK: stocking model {model['version']}, {len(profiles)} archetype stocking profiles, "
-    f"{len(model['breadth_profiles'])} breadth profiles, {len(model['depth_profiles'])} depth profiles"
+    f"{len(model['breadth_profiles'])} breadth profiles, {len(model['depth_profiles'])} depth profiles, "
+    f"{len(lifecycle['temporary_conditions'])} temporary conditions"
 )
