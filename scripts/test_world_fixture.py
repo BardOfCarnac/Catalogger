@@ -141,8 +141,8 @@ for row in corporate["assortment"]:
     assert profile["department"] != "armor-protection"
 
 # Crystal Park children keep their individual commercial roles rather than flattening into one
-# market inventory. Cybershack is only programs/hardware; Skinlight only Fashionware; Tech Time
-# only general gear plus local scrap. Maxwell's and Torch remain services.
+# market inventory. Cybershack is only programs/hardware; Skinlight only Fashionware. Tech Time
+# uses a tiny exact catalogue allowlist for actual tool items and keeps scrap world-local.
 cybershack = upper["Cybershack"]
 assert cybershack["assortment"]
 for row in cybershack["assortment"]:
@@ -155,10 +155,8 @@ for row in skinlight["assortment"]:
     assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["Cyberware", "Fashionware"]
 
 tech_time = upper["Tech Time"]
-assert tech_time["assortment"]
+assert {row["item_id"] for row in tech_time["assortment"]} == {"VENDR-0431", "VENDR-0432", "VENDR-0433"}
 assert tech_time["local_offerings"][0]["offering_key"] == "technical-scrap"
-for row in tech_time["assortment"]:
-    assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["General Equipment", "Miscellaneous Gear"]
 
 assert "assortment" not in upper["Maxwell’s"]
 assert upper["Maxwell’s"]["services"][0]["service_key"] == "shoe-repair"
