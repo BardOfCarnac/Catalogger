@@ -108,7 +108,12 @@ upper_b = realize_document(upper_source, engine)
 assert upper_a == upper_b, "Upper Marina fixture realization must be deterministic"
 upper = {row["name"]: row for row in upper_a["entities"]}
 assert len(upper) == 17
-assert sum(bool(row.get("assortment")) for row in upper.values()) == 6
+expected_stock_names = {
+    "Combat Concierge", "Corporate Cool", "Cybershack", "Skinlight", "Tech Time",
+    "Midnight Arms Regional Office",
+}
+actual_stock_names = {name for name, row in upper.items() if row.get("assortment")}
+assert actual_stock_names == expected_stock_names, (actual_stock_names, expected_stock_names)
 
 # Containers never duplicate child inventory.
 for name in ["Bay Bridge Residences", "Brownstone Waterfront", "Crystal Park Market", "Ziggurat Headquarters"]:
