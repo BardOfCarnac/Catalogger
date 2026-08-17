@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 13,
-    "remaining_core_profiles": 90,
+    "source_reviewed_core_profiles": 25,
+    "remaining_core_profiles": 78,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -36,10 +36,18 @@
       "entities": 11,
       "catalog_stock_entities": 2,
       "note": "First audit-import batch promoted through direct source review."
+    },
+    {
+      "fixture_id": "nc2045-upper-marina-core-v1",
+      "source_file": "data/worlds/night-city-2045/upper-marina-core.v1.json",
+      "district": "Upper Marina",
+      "audit_core_profiles_covered": 12,
+      "entities": 17,
+      "catalog_stock_entities": 6,
+      "note": "Completes the v0.2 CORE_RETAIL queue for Upper Marina. Source review narrows several broad audit guesses and preserves additional named child businesses at Bay Bridge Residences and Crystal Park Market."
     }
   ],
   "remaining_core_queue_by_district": {
-    "Upper Marina": 12,
     "Kabuki": 7,
     "North Heywood": 7,
     "Pacifica Playground": 7,
@@ -61,12 +69,13 @@
     "Playland by the Sea Lands": 1,
     "Port of Night City": 1,
     "The Hot Zone": 1,
+    "Upper Marina": 0,
     "Little Europe": 0,
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Upper Marina",
-    "remaining_core_profiles": 12,
-    "reason": "Largest remaining CORE_RETAIL district batch; the generic fixture/import pipeline is now exercised by two completed districts."
+    "district": "Kabuki",
+    "remaining_core_profiles": 7,
+    "reason": "Tied for the largest remaining CORE_RETAIL district batch; its market/container and brand-showroom mix is a useful next stress test for the fixture pipeline."
   }
 }
