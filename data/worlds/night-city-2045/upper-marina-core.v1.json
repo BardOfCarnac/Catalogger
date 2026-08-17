@@ -316,15 +316,15 @@
         "archetype_id": "pawn-shop",
         "seed": "nc2045:upper-marina:tech-time:v1",
         "overrides": {
-          "primary_departments": ["general-equipment"],
+          "primary_departments": ["general-equipment", "electronics-comms"],
           "secondary_departments": [],
           "breadth_profile": "small",
           "depth_profile": "shallow",
           "supply_capability": "irregular",
           "price_tier_center": "Costly",
           "pricing_style": "bargain",
-          "channel_weights": {"street": 5, "pawn": 6, "specialist": 5},
-          "allowed_classification_prefixes": [["General Equipment", "Miscellaneous Gear"]],
+          "channel_weights": {"street": 5, "pawn": 6, "specialist": 5, "retail": 2},
+          "allowed_item_ids": ["VENDR-0431", "VENDR-0432", "VENDR-0433"],
           "condition_weights": {"new": 1, "used": 6, "refurbished": 3, "damaged": 2, "salvaged": 7},
           "specials": [0, 1]
         }
@@ -335,8 +335,8 @@
       "audit": {
         "source_profile_version": "0.2",
         "previous_stock_mode": "DIRECT_SELLER",
-        "decision": "CONFIRMED_BUT_NARROWED",
-        "note": "Removed inferred weapons, fashion and broad electronics stock; catalogue-backed stock is limited to general gear, with scrap represented locally."
+        "decision": "CONFIRMED_WITH_EXACT_CATALOG_ALLOWLIST",
+        "note": "The generic General Gear classification is too broad for a source-defined tool stall. Catalogue stock is therefore restricted to Tech Bag, Techscanner and Techtool; scrap remains a local offering."
       }
     },
     {
