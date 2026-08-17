@@ -23,6 +23,8 @@ jobs:
       - run: python scripts/test_world_fixture.py
       - run: python scripts/import_nc2045_audit_batch.py --input data/worlds/night-city-2045/import/downtown-core.audit-v0.2.json --output build/data/worlds/night-city-2045/import/downtown-core.audit-draft.json
       - run: python scripts/import_nc2045_audit_batch.py --input data/worlds/night-city-2045/import/little-europe-remainder.audit-v0.2.json --output build/data/worlds/night-city-2045/import/little-europe-remainder.audit-draft.json
+      - run: python scripts/import_nc2045_audit_batch.py --input data/worlds/night-city-2045/import/upper-marina-core.audit-v0.2.json --output build/data/worlds/night-city-2045/import/upper-marina-core.audit-draft.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kaito-market.v1.json --output build/data/worlds/night-city-2045/kaito-market.generic.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-core.v1.json --output build/data/worlds/night-city-2045/downtown-core.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-europe-remainder.v1.json --output build/data/worlds/night-city-2045/little-europe-remainder.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-core.v1.json --output build/data/worlds/night-city-2045/upper-marina-core.v1.json
