@@ -44,7 +44,7 @@
       "audit_core_profiles_covered": 12,
       "entities": 17,
       "catalog_stock_entities": 6,
-      "note": "Completes the v0.2 CORE_RETAIL queue for Upper Marina. Source review narrows several broad audit guesses and preserves additional named child businesses at Bay Bridge Residences and Crystal Park Market."
+      "note": "Completes the v0.2 CORE_RETAIL queue for Upper Marina. Source review narrows several broad audit guesses, preserves additional named child businesses at Bay Bridge Residences and Crystal Park Market, and uses an exact three-item catalogue allowlist for Tech Time rather than treating the entire General Gear bucket as tools."
     }
   ],
   "remaining_core_queue_by_district": {
