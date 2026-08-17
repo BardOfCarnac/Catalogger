@@ -25,6 +25,7 @@ assert sum(bool(row.get("assortment")) for row in kaito_a["entities"]) == 4
 for audit_rel, expected in [
     ("data/worlds/night-city-2045/import/downtown-core.audit-v0.2.json", 5),
     ("data/worlds/night-city-2045/import/little-europe-remainder.audit-v0.2.json", 3),
+    ("data/worlds/night-city-2045/import/upper-marina-core.audit-v0.2.json", 12),
 ]:
     audit_source = load_json(ROOT / audit_rel)
     draft = import_batch(audit_source)
@@ -98,8 +99,95 @@ assert {row["service_key"] for row in little["Torrell and Chiang’s"]["services
 }
 assert little["Torrell and Chiang’s Market Stalls"]["entity_type"] == "event_market"
 
+# Third source-reviewed batch: all twelve Upper Marina CORE_RETAIL audit profiles. Source
+# review also retains several named child businesses omitted from the original core extraction.
+upper_source = load_json(ROOT / "data/worlds/night-city-2045/upper-marina-core.v1.json")
+validate_document(upper_source)
+upper_a = realize_document(upper_source, engine)
+upper_b = realize_document(upper_source, engine)
+assert upper_a == upper_b, "Upper Marina fixture realization must be deterministic"
+upper = {row["name"]: row for row in upper_a["entities"]}
+assert len(upper) == 17
+assert sum(bool(row.get("assortment")) for row in upper.values()) == 6
+
+# Containers never duplicate child inventory.
+for name in ["Bay Bridge Residences", "Brownstone Waterfront", "Crystal Park Market", "Ziggurat Headquarters"]:
+    assert upper[name]["entity_type"] == "container"
+    assert "assortment" not in upper[name]
+
+# Combat Concierge is the source-defined bodega/arms hybrid: goods stay inside the three named
+# shelf departments, while armor repair and armed escort are services rather than fake stock.
+combat = upper["Combat Concierge"]
+assert combat["assortment"]
+assert {row["service_key"] for row in combat["services"]} == {"armor-repair", "armed-escort"}
+for row in combat["assortment"]:
+    profile = engine.commercial_by_id[row["item_id"]]
+    departments = {profile["department"], *profile.get("secondary_departments", [])}
+    assert departments & {"food-consumables", "weapons", "ammunition-ordnance"}
+
+# Corporate Cool was over-broad in the audit: source review supports workwear/uniforms, not
+# armor stock. Every persistent line must therefore resolve through fashion-personal.
+corporate = upper["Corporate Cool"]
+assert corporate["assortment"]
+for row in corporate["assortment"]:
+    profile = engine.commercial_by_id[row["item_id"]]
+    departments = {profile["department"], *profile.get("secondary_departments", [])}
+    assert "fashion-personal" in departments
+    assert profile["department"] != "armor-protection"
+
+# Crystal Park children keep their individual commercial roles rather than flattening into one
+# market inventory. Cybershack is only programs/hardware; Skinlight only Fashionware; Tech Time
+# only general gear plus local scrap. Maxwell's and Torch remain services.
+cybershack = upper["Cybershack"]
+assert cybershack["assortment"]
+for row in cybershack["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[:2] == ["NET & Netrunning", "Cyberdeck Hardware"] or path[:2] == ["NET & Netrunning", "Programs"]
+
+skinlight = upper["Skinlight"]
+assert skinlight["assortment"]
+for row in skinlight["assortment"]:
+    assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["Cyberware", "Fashionware"]
+
+tech_time = upper["Tech Time"]
+assert tech_time["assortment"]
+assert tech_time["local_offerings"][0]["offering_key"] == "technical-scrap"
+for row in tech_time["assortment"]:
+    assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["General Equipment", "Miscellaneous Gear"]
+
+assert "assortment" not in upper["Maxwell’s"]
+assert upper["Maxwell’s"]["services"][0]["service_key"] == "shoe-repair"
+assert "assortment" not in upper["Torch’s Total Repairs"]
+assert upper["Torch’s Total Repairs"]["services"][0]["service_key"] == "tech-repair-dropoff"
+assert "assortment" not in upper["Other Lives"]
+assert "assortment" not in upper["Pizza to Go"]
+
+# Metal Heaven is deliberately world-local until the catalogue can represent recordings and
+# instruments without substituting unrelated entertainment/electronics. Midnight Arms remains
+# catalogue-backed, but only for firearms and with a strong manufacturer preference.
+metal = upper["Metal Heaven"]
+assert "assortment" not in metal
+assert {row["offering_key"] for row in metal["local_offerings"]} == {
+    "music-tracks-bootlegs", "instrument-parts"
+}
+
+midnight = upper["Midnight Arms Regional Office"]
+assert midnight["assortment"]
+assert midnight["shop"]["stocking_profile"]["brand_affinities"]["Midnight Arms"] == 20
+for row in midnight["assortment"]:
+    profile = engine.commercial_by_id[row["item_id"]]
+    departments = {profile["department"], *profile.get("secondary_departments", [])}
+    assert "weapons" in departments
+
+# Ziggurat's public museum/tours are representable, but the HQ is not promoted to a shop.
+ziggurat = upper["Ziggurat Headquarters"]
+assert ziggurat["stock_policy"] == "NO_STOCK"
+assert {row["service_key"] for row in ziggurat["services"]} == {
+    "ihara-grubb-net-museum", "headquarters-tour"
+}
+
 print(
     "OK: generic world fixtures; "
     f"Kaito entities={len(kaito_a['entities'])}, Downtown entities={len(entities)}, "
-    f"Little Europe remainder={len(little)}"
+    f"Little Europe remainder={len(little)}, Upper Marina entities={len(upper)}"
 )
