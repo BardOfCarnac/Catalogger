@@ -16,8 +16,23 @@ jobs:
       - run: python scripts/audit_world_ontology.py
       - run: python scripts/test_world_fixture_retail_capable_port_south.py
       - run: python scripts/test_world_fixture_retail_capable_watson_downtown.py
+      - run: python scripts/test_world_fixture_retail_capable_remaining.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/south-night-city-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-retail-capable.v1.json --output build/data/worlds/night-city-2045/watson-development-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-retail-capable.v1.json --output build/data/worlds/night-city-2045/downtown-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kabuki-retail-capable.v1.json --output build/data/worlds/night-city-2045/kabuki-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-combat-zone-retail-capable.v1.json --output build/data/worlds/night-city-2045/old-combat-zone-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-retail-capable.v1.json --output build/data/worlds/night-city-2045/old-japantown-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/pacifica-playground-retail-capable.v1.json --output build/data/worlds/night-city-2045/pacifica-playground-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-glen-retail-capable.v1.json --output build/data/worlds/night-city-2045/the-glen-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/charter-hill-retail-capable.v1.json --output build/data/worlds/night-city-2045/charter-hill-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-europe-retail-capable.v1.json --output build/data/worlds/night-city-2045/little-europe-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-retail-capable.v1.json --output build/data/worlds/night-city-2045/upper-marina-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-docks-retail-capable.v1.json --output build/data/worlds/night-city-2045/heywood-docks-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-retail-capable.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-china-retail-capable.v1.json --output build/data/worlds/night-city-2045/little-china-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/new-westbrook-retail-capable.v1.json --output build/data/worlds/night-city-2045/new-westbrook-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-retail-capable.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json
       - run: python scripts/audit_retail_capable_candidates.py
