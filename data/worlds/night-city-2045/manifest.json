@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 86,
-    "remaining_core_profiles": 17,
+    "source_reviewed_core_profiles": 92,
+    "remaining_core_profiles": 11,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -135,6 +135,24 @@
       "entities": 5,
       "catalog_stock_entities": 2,
       "note": "Completes the v0.2 University District core queue. Carriage Street remains source-local bookstore/cafe commerce; NCU delegates to Lombardy Groceries and the recovered NCU Clinic child; Lombardy's page is corrected to p. 109; Retail Resale is hard-gated to used Fashion & Personal stock."
+    },
+    {
+      "fixture_id": "nc2045-south-night-city-core-v1",
+      "source_file": "data/worlds/night-city-2045/south-night-city-core.v1.json",
+      "district": "South Night City",
+      "audit_core_profiles_covered": 3,
+      "entities": 8,
+      "catalog_stock_entities": 1,
+      "note": "Completes the v0.2 South Night City core queue. Container Mart delegates to seven named tenant businesses; only Container Bodega receives constrained generic catalogue stock, while craft supplies, salon work, dental cybernetics, braindance hospitality and shaved-ice trade remain source-local/service state."
+    },
+    {
+      "fixture_id": "nc2045-the-glen-core-v1",
+      "source_file": "data/worlds/night-city-2045/the-glen-core.v1.json",
+      "district": "The Glen",
+      "audit_core_profiles_covered": 3,
+      "entities": 4,
+      "catalog_stock_entities": 0,
+      "note": "Completes the v0.2 The Glen core queue. Direct review removes unsupported market stock from Club Atlantis, localizes Kasim's prepared food/coffee/tobacco, confirms Worthy Housing as non-retail housing, and recovers the nearby DRGS 247 branch as a location-specific canon-implied seller."
     }
   ],
   "remaining_core_queue_by_district": {
@@ -144,8 +162,8 @@
     "Watson Development": 0,
     "Old Combat Zone": 0,
     "University District": 0,
-    "South Night City": 3,
-    "The Glen": 3,
+    "South Night City": 0,
+    "The Glen": 0,
     "New Westbrook": 2,
     "Old Japantown": 2,
     "Executive Zone": 1,
@@ -164,8 +182,8 @@
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "South Night City",
-    "remaining_core_profiles": 3,
-    "reason": "Tied with The Glen for the largest remaining CORE_RETAIL district batch after Old Combat Zone and University District were source-reviewed."
+    "district": "New Westbrook",
+    "remaining_core_profiles": 2,
+    "reason": "Tied with Old Japantown for the largest remaining CORE_RETAIL district batch after South Night City and The Glen were source-reviewed."
   }
 }
