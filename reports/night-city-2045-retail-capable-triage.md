@@ -1,108 +1,68 @@
-# Night City 2045 RETAIL_CAPABLE triage
+# Night City 2045 RETAIL_CAPABLE source-review result
 
-This is the mechanical first pass over the v0.2 commercial audit's `RETAIL_CAPABLE` classification. It is **not** a source-review verdict and must not be used to generate persistent stock by itself.
+The v0.2 commercial audit contained **49 `RETAIL_CAPABLE` candidates**. This category was a discovery queue, not a canon shop taxonomy: it meant that an audit heuristic saw some plausible saleable activity and that the location deserved direct review.
 
-## Coverage against the reviewed world layer
+The pass is now complete.
 
-The v0.2 audit contains **49 RETAIL_CAPABLE candidates**:
+## Coverage
 
-- 6 are already represented by exact entity ID in source-reviewed fixtures.
-- 43 are not yet represented.
-- 0 currently match only by same-name/different-ID fallback.
+- **49/49 candidates represented by exact entity ID in source-reviewed fixtures**
+- **0 remaining**
+- **0 same-name/different-ID fallbacks**
+- 6 candidates had already been encountered while source-reviewing the original CORE_RETAIL census
+- the remaining 43 were reviewed directly against the purchased Night City 2045 source and modeled in 18 dedicated fixture files
+- those 43 candidate reviews expanded into **57 world entities** after named children, event markets and distribution channels were separated from their parent records
 
-Already represented:
+The six candidates already encountered during the CORE_RETAIL pass were Continental Brands Office, SK Securities, The Little Red Book, Canalside Plaza, Honest Hiro’s Used Cars and Dream Forest Development. Five of those six had already demonstrated why `RETAIL_CAPABLE` could not be treated as “shop”: they resolved to containers, context or service structures, with Honest Hiro’s the sole straightforward vendor.
 
-| Candidate | District | p. | Reviewed as |
-|---|---|---:|---|
-| Continental Brands Office | Downtown | 82 | container |
-| SK Securities | Heywood Docks | 243 | context |
-| The Little Red Book | Little China | 99 | service |
-| Canalside Plaza | New Westbrook | 214 | container |
-| Honest Hiro's Used Cars | Old Japantown | 131 | local_vendor |
-| Dream Forest Development | Pacifica Playground | 278 | container |
+## What the remaining 43 became
 
-This is a useful warning about the old classification. Five of the six previously encountered `RETAIL_CAPABLE` rows did **not** resolve into ordinary shelf-stock shops. Source review may turn a candidate into a container, service, context record, local-only seller, event, child business, or no Vend-R commerce at all.
+The reviewed candidate records themselves resolved to:
 
-## Remaining queue by district
-
-| District | remaining |
+| reviewed entity type | count |
 |---|---:|
-| Port of Night City | 5 |
-| South Night City | 4 |
-| Watson Development | 4 |
-| Downtown | 3 |
-| Kabuki | 3 |
-| Old Combat Zone | 3 |
-| Old Japantown | 3 |
-| Pacifica Playground | 3 |
-| The Glen | 3 |
-| Charter Hill | 2 |
-| Little Europe | 2 |
-| Upper Marina | 2 |
-| Heywood Docks | 1 |
-| Heywood Industrial Zone | 1 |
-| Little China | 1 |
-| New Westbrook | 1 |
-| Playland by the Sea Lands | 1 |
-| Rancho Coronado | 1 |
+| hybrid | 20 |
+| service | 8 |
+| context | 5 |
+| local_vendor | 4 |
+| container | 3 |
+| seller | 2 |
+| channel | 1 |
 
-## The 43 not-yet-represented candidates
+Only **five of the 43 candidate IDs** received persistent generated Catalogger assortments: Maritime Supply, GunMart, Guns & Dolls, Matsura Food Products and The Cutting Edge. A sixth stock-bearing entity, **2A**, was recovered as a named child while reviewing Merrill, Asukaga & Finch Offices. Thus the 43-candidate review pass produced only **six catalogue-stock entities in total**.
 
-| District | p. | Candidate | Audit evidence |
-|---|---:|---|---|
-| Charter Hill | 227 | DRGS 247 | Flashmap listing |
-| Charter Hill | 229 | Your Next Big Crèche | Explicit retail language in entry |
-| Downtown | 84 | Gilded Phoenix Arcade | Explicit retail language in entry |
-| Downtown | 85 | Guns & Dolls | Flashmap listing |
-| Downtown | 85 | Jade Blossom Spa | Explicit retail language in entry |
-| Heywood Docks | 243 | Warehouse 13 | Explicit retail language in entry |
-| Heywood Industrial Zone | 262 | Ziggurat Warehouses | Explicit retail language in entry |
-| Kabuki | 202 | Delphi X | Flashmap listing |
-| Kabuki | 203 | Houou | Flashmap listing |
-| Kabuki | 203 | Matsura Food Products | Explicit retail language in entry |
-| Little China | 98 | Ling Po Imports | Named business embedded inside parent location |
-| Little Europe | 57 | Chopper's | Flashmap listing |
-| Little Europe | 62 | Short Circuit | Flashmap listing |
-| New Westbrook | 218 | Rocklin Augmentics Campus | Flashmap listing |
-| Old Combat Zone | 169 | Flasher's Corner | Explicit retail language in entry |
-| Old Combat Zone | 169 | Jesse James' Kosher Deli | Flashmap listing |
-| Old Combat Zone | 171 | The Underground | Explicit retail language in entry |
-| Old Japantown | 130 | The Cutting Edge | Flashmap listing |
-| Old Japantown | 132 | Lovely Drone Heroes Café | Flashmap listing |
-| Old Japantown | 133 | Neo Galaxy Cards and Comics | Explicit retail language in entry |
-| Pacifica Playground | 276 | The Ascension | Flashmap listing |
-| Pacifica Playground | 282 | The XX (The Twenty) | Explicit retail language in entry |
-| Pacifica Playground | 282 | Volkodav Racetrack | Flashmap listing |
-| Playland by the Sea Lands | 306 | Classique Corsets | Explicit retail language in entry |
-| Port of Night City | 150 | The Amber Room | Flashmap listing |
-| Port of Night City | 154 | Maritime Supply | Explicit retail language in entry |
-| Port of Night City | 154 | Medical Technologies | Flashmap listing |
-| Port of Night City | 155 | Rusty's Dive Shack | Flashmap listing |
-| Port of Night City | 155 | The Yard | Explicit retail language in entry |
-| Rancho Coronado | 289 | The Henhouse | Explicit retail language in entry |
-| South Night City | 140 | The Boneyard | Explicit retail language in entry |
-| South Night City | 142 | GunMart | Explicit retail language in entry |
-| South Night City | 144 | MindNutz Lover | Flashmap listing |
-| South Night City | 144 | Savage Docs | Flashmap listing |
-| The Glen | 116 | Air | Flashmap listing |
-| The Glen | 121 | Hall of Justice | Explicit retail language in entry |
-| The Glen | 122 | Merrill, Asukaga & Finch Offices | Explicit retail language in entry |
-| Upper Marina | 71 | The Forge | Explicit retail language in entry |
-| Upper Marina | 76 | Ziggurat Corporate Terrace | Explicit retail language in entry |
-| Watson Development | 188 | Faisal's Customs | Explicit retail language in entry |
-| Watson Development | 192 | Old Black Rum Pub | Flashmap listing |
-| Watson Development | 193 | Red Oktober | Flashmap listing |
-| Watson Development | 195 | Whammer Arena | Explicit retail language in entry |
+That ratio is the central result of the exercise. Most apparent “retail” cues were better represented as source-local wares, hospitality or professional services, event commerce, logistics/distribution, containing places, or non-retail context.
 
-## Review rule
+## Representative corrections and recoveries
 
-Each candidate should pass through the same gate as the completed CORE_RETAIL census:
+- **Port of Night City:** Rusty’s Dive Shack was corrected from a weapons-retail inference to a bar with a source-local specialty; The Yard became logistics context; Medical Technologies became irregular/local cyberware plus medical services; Maritime Supply retained a narrow generated general-equipment/fashion assortment plus source-local maritime technology.
+- **South Night City:** The Boneyard became a community container; MindNutz Lover and Savage Docs became services; GunMart became an explicit weapons/ammunition/accessories megastore. The Crypt was recovered as a named child business.
+- **Watson Development:** Faisal’s Customs became a source-local weapons workshop/seller with a separate factory-output distribution channel; two apparent retail rows were ordinary hospitality; Whammer Arena became a venue.
+- **Downtown:** Gilded Phoenix Arcade became entertainment; Jade Blossom Spa was split from its concealed counterfeit distribution operation; Guns & Dolls retained a weapons shelf plus entertainment services.
+- **Kabuki:** Delphi X became service-only; Houou retained its identity-shop activity as local wares/services; Matsura Food Products became a narrowly bounded food retailer.
+- **Old Combat Zone:** Flasher’s Corner became opportunistic local trade plus information brokerage; Jesse James’ Kosher Deli became hospitality; The Underground became production/community context supplying an external retailer.
+- **Old Japantown:** The Cutting Edge became a fashion boutique plus salon; Lovely Drone Heroes Café became hospitality/digital gifting; Neo Galaxy Cards and Comics remained focused source-local card/comic trade with its backroom activity separated conceptually from ordinary stock.
+- **Pacifica Playground:** the Ascension, Volkodav Racetrack and the XX all resolved primarily to hospitality/entertainment; Pacifica Parties was recovered as a named child service.
+- **The Glen:** Air became an oxygen bar; Hall of Justice became civic/ticketed-event context with a separate concession-vendor channel; Merrill, Asukaga & Finch became a container/service whose actual commercial children include the recovered 2A gun shop/range, Ebony Chair and Body Lotto Office.
+- **Little Europe:** Chopper’s was separated from 80/20’s second-hand cyberware trade; Short Circuit was separated from the recurring 3-Piece’s Joint tech Night Market.
+- **Upper Marina:** The Forge became access-controlled local salvage/refurbishment commerce; Ziggurat Corporate Terrace became housing context with Great River as its separate retail/delivery channel.
+- **Heywood Docks / Industrial:** Warehouse 13 became a rental venue with a separate occasional Night Market; Ziggurat Warehouses became corporate operational storage.
+- **Little China:** Ling Po Imports became an import/export channel rather than a public storefront.
+- **New Westbrook:** Rocklin Augmentics Campus became a container; the Hidalgo Gallery was recovered as the public cyberware gallery/shop/install service.
+- **Playland by the Sea Lands:** Classique Corsets became a focused source-local vintage-fashion vendor.
+- **Rancho Coronado:** The Henhouse was corrected from former sporting-goods retail to its current roller-derby venue use.
+
+## Review rule validated
+
+The completed pass confirms the source-review gate used for the CORE_RETAIL census:
 
 1. Read the source entry directly.
-2. Decide whether the named thing is actually a seller, a containing place, a service/hospitality business, a market/event, an organization/channel, or context only.
-3. Recover named child outlets/services when the source supports them.
-4. Use catalogue stock only when Catalogger represents the actual merchandise cleanly.
-5. Keep source-specific wares local when a generic assortment would invent the wrong stock.
-6. Do not infer categories merely because the old audit scanner did.
+2. Decide what kind of world entity the named thing actually is before asking what it sells.
+3. Recover named children, events and channels instead of forcing their commerce onto the parent.
+4. Generate catalogue stock only where Catalogger cleanly represents the merchandise.
+5. Keep source-specific, irregular, unique or condition-sensitive wares local when a generic assortment would invent the wrong business.
+6. Treat flashmap and extraction classifications as discovery evidence, never as final commerce truth.
 
-Only after this 43-record pass should district/category gap analysis be treated as evidence for canon-implied or Vend-R-original businesses.
+The mechanical audit `scripts/audit_retail_capable_candidates.py` now reports `candidates=49 exact_reviewed=49 same_name_reviewed=0 not_yet_represented=0` in CI.
+
+The next useful coverage question is no longer “which RETAIL_CAPABLE rows remain?” It is **what commercial entities were never promoted into either CORE_RETAIL or RETAIL_CAPABLE at all**, followed by district/category gap analysis before any canon-implied or Vend-R-original businesses are generated.
