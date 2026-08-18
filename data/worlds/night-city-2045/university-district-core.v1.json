@@ -1,0 +1,167 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-university-district-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [107, 108, 109, 110],
+    "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "name": "Carriage Street Books/Afterwords Café",
+      "entity_type": "hybrid",
+      "district": "University District",
+      "map_no": 6,
+      "book_page": 107,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 107",
+      "source_summary": "Bookstore carrying physical reading material and course-text memory chips, with an upstairs café serving food and real-bean coffee.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "books-magazines-graphic-novels", "label": "Books, fax-print magazines and graphic novels"},
+        {"offering_key": "course-text-memory-chips", "label": "Memory chips containing course texts"},
+        {"offering_key": "cafe-food-coffee", "label": "Café food and real-bean coffee"}
+      ],
+      "services": [
+        {"service_key": "cafe-hospitality", "label": "Upstairs café and study space"}
+      ],
+      "catalogue_note": "The catalogue does not faithfully represent the bookstore's ordinary physical books, printed media and course-text chips, so broad entertainment/electronics items are not substituted for them.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_LOCALIZED",
+        "note": "The audit's broad catalogue departments are replaced with the source-defined bookstore/café wares."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "name": "Night City University",
+      "entity_type": "container",
+      "district": "University District",
+      "map_no": 11,
+      "book_page": 108,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 108-109",
+      "source_summary": "University campus containing named facilities and businesses; commercial state belongs to those child locations rather than the campus as a whole.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "name": "I. Lombardy Groceries",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "district": "University District",
+      "map_no": 11,
+      "book_page": 109,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 109",
+      "source_summary": "Campus bodega belonging to a chain owned and operated by Mrs. Suzuki of Old Japantown.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "chain_affiliation": {
+        "name": "Mrs. Suzuki's bodega chain",
+        "operator": "Mrs. Suzuki"
+      },
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:university-district:lombardy-groceries:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 9, "street": 2},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_book_page": 108,
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_PAGE_AND_NARROW",
+        "note": "Direct review places the detailed listing on p. 109 and removes inherited electronics/fashion spillover."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-109-NCU-CLINIC",
+      "name": "J. NCU Clinic",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "district": "University District",
+      "map_no": 11,
+      "book_page": 109,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 109",
+      "source_summary": "Campus clinic handling ordinary health issues and all but the most severe injuries, with an on-site ripperdoc for paid cyberware implantation.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "campus-medical-treatment", "label": "Campus medical treatment"},
+        {"service_key": "cyberware-implantation", "label": "Cyberware implantation"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_SERVICE_CHILD",
+        "note": "Named child facility recovered during direct review of the NCU container; no unsupported cyberware retail shelf is generated."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "name": "Retail Resale",
+      "entity_type": "seller",
+      "district": "University District",
+      "map_no": 14,
+      "book_page": 110,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 110",
+      "source_summary": "Consignment shop selling gently used clothing and returning a share of the sale to the consignor.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:university-district:retail-resale:v1",
+        "overrides": {
+          "primary_departments": ["fashion-personal"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "normal",
+          "supply_capability": "irregular",
+          "price_tier_center": "Premium",
+          "pricing_style": "bargain",
+          "channel_weights": {"retail": 8, "pawn": 6},
+          "allowed_classification_prefixes": [["Fashion & Personal"]],
+          "condition_weights": {"new": 0, "used": 10, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "clothing-consignment", "label": "Clothing consignment and assessment"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_HARD_NARROWED",
+        "note": "The audit's secondary armor signal is removed. Generated stock is used Fashion & Personal merchandise only."
+      }
+    }
+  ]
+}
