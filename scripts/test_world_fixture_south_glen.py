@@ -68,7 +68,7 @@ assert "assortment" not in south["SlushSlurp"]
 assert south["SlushSlurp"]["local_offerings"][0]["price_eb"] == 5
 
 # The Glen: direct review removes unsupported market/catalogue stock from Club Atlantis and
-# Kasim's. Worthy Housing remains housing context, while the nearby DRGS 247 branch is
+# Kasim's. Worthy Housing remains housing context, while the nearby named DRGS 247 branch is
 # recovered as a source-established local seller instead of leaking commerce onto the housing.
 glen_source = load_json(ROOT / "data/worlds/night-city-2045/the-glen-core.v1.json")
 validate_document(glen_source)
@@ -99,7 +99,7 @@ assert "assortment" not in worthy
 assert worthy["services"][0]["service_key"] == "fbc-housing"
 
 drgs = glen["DRGS 247 (The Glen)"]
-assert drgs["provenance"] == "CANON_IMPLIED"
+assert drgs["provenance"] == "CANON_NAMED"
 assert "assortment" not in drgs
 assert drgs["local_offerings"][0]["offering_key"] == "bulk-brain-solution"
 
