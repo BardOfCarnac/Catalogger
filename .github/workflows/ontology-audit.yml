@@ -13,3 +13,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/audit_world_ontology.py
+      - run: python scripts/audit_retail_capable_candidates.py
