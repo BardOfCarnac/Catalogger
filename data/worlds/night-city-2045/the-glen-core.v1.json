@@ -107,9 +107,9 @@
       "entity_type": "local_vendor",
       "district": "The Glen",
       "book_page": 124,
-      "provenance": "CANON_IMPLIED",
+      "provenance": "CANON_NAMED",
       "source_ref": "Night City 2045 p. 124",
-      "source_summary": "A DRGS 247 branch located beside Worthy Housing and specifically noted for carrying glucose-rich brain solution in bulk.",
+      "source_summary": "A named DRGS 247 branch located beside Worthy Housing and specifically noted for carrying glucose-rich brain solution in bulk.",
       "review_status": "source_reviewed",
       "commercial_mode": "local_wares",
       "local_offerings": [
