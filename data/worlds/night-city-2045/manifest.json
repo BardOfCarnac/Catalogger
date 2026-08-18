@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 92,
-    "remaining_core_profiles": 11,
+    "source_reviewed_core_profiles": 96,
+    "remaining_core_profiles": 7,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -25,19 +25,21 @@
     {"fixture_id":"nc2045-old-combat-zone-core-v1","source_file":"data/worlds/night-city-2045/old-combat-zone-core.v1.json","district":"Old Combat Zone","audit_core_profiles_covered":5,"entities":5,"catalog_stock_entities":1,"note":"Completes the v0.2 Old Combat Zone core queue. The Warren delegates to its outlets; Baskin Books, the Smithery and Uncle Anne's remain source-local; the Smithery and Uncle Anne's page references are corrected to p. 172; only Kibble Kirkle receives constrained generic bodega stock."},
     {"fixture_id":"nc2045-university-district-core-v1","source_file":"data/worlds/night-city-2045/university-district-core.v1.json","district":"University District","audit_core_profiles_covered":4,"entities":5,"catalog_stock_entities":2,"note":"Completes the v0.2 University District core queue. Carriage Street remains source-local bookstore/cafe commerce; NCU delegates to Lombardy Groceries and the recovered NCU Clinic child; Lombardy's page is corrected to p. 109; Retail Resale is hard-gated to used Fashion & Personal stock."},
     {"fixture_id":"nc2045-south-night-city-core-v1","source_file":"data/worlds/night-city-2045/south-night-city-core.v1.json","district":"South Night City","audit_core_profiles_covered":3,"entities":8,"catalog_stock_entities":1,"note":"Completes the v0.2 South Night City core queue. Container Mart delegates to seven named tenant businesses; only Container Bodega receives constrained generic catalogue stock, while craft supplies, salon work, dental cybernetics, braindance hospitality and shaved-ice trade remain source-local/service state."},
-    {"fixture_id":"nc2045-the-glen-core-v1","source_file":"data/worlds/night-city-2045/the-glen-core.v1.json","district":"The Glen","audit_core_profiles_covered":3,"entities":4,"catalog_stock_entities":0,"note":"Completes the v0.2 The Glen core queue. Direct review removes unsupported market stock from Club Atlantis, localizes Kasim's prepared food/coffee/tobacco, confirms Worthy Housing as non-retail housing, and recovers the nearby named DRGS 247 branch with its source-specific bulk brain-solution stock."}
+    {"fixture_id":"nc2045-the-glen-core-v1","source_file":"data/worlds/night-city-2045/the-glen-core.v1.json","district":"The Glen","audit_core_profiles_covered":3,"entities":4,"catalog_stock_entities":0,"note":"Completes the v0.2 The Glen core queue. Direct review removes unsupported market stock from Club Atlantis, localizes Kasim's prepared food/coffee/tobacco, confirms Worthy Housing as non-retail housing, and recovers the nearby named DRGS 247 branch with its source-specific bulk brain-solution stock."},
+    {"fixture_id":"nc2045-new-westbrook-core-v1","source_file":"data/worlds/night-city-2045/new-westbrook-core.v1.json","district":"New Westbrook","audit_core_profiles_covered":2,"entities":11,"catalog_stock_entities":3,"note":"Completes the v0.2 New Westbrook core queue. Canalside Plaza delegates to eight named tenants; Oasis and Armory Pawn Shop carry constrained persistent stock. Holliday Market remains the persistent event place while a canon-implied rotating-vendor channel owns the generated event assortment."},
+    {"fixture_id":"nc2045-old-japantown-core-v1","source_file":"data/worlds/night-city-2045/old-japantown-core.v1.json","district":"Old Japantown","audit_core_profiles_covered":2,"entities":4,"catalog_stock_entities":1,"note":"Completes the v0.2 Old Japantown core queue. Mrs. Suzuki's catalogue shelf is narrowed to food while Shroomer fungi remain source-local and her monthly invitation-only Night Market is represented without invented stock; White Side becomes source-local scavver trade. Honest Hiro's Used Cars is promoted from RETAIL_CAPABLE as an explicit used-vehicle dealer without inventing exact models."}
   ],
   "remaining_core_queue_by_district": {
     "Little China": 0, "Reclamation Zone": 0, "Santo Domingo": 0, "Watson Development": 0,
     "Old Combat Zone": 0, "University District": 0, "South Night City": 0, "The Glen": 0,
-    "New Westbrook": 2, "Old Japantown": 2, "Executive Zone": 1, "Heywood Docks": 1,
+    "New Westbrook": 0, "Old Japantown": 0, "Executive Zone": 1, "Heywood Docks": 1,
     "Heywood Industrial Zone": 1, "NorCal Military Base": 1, "Playland by the Sea Lands": 1,
     "Port of Night City": 1, "The Hot Zone": 1, "Pacifica Playground": 0, "Rancho Coronado": 0,
     "Kabuki": 0, "North Heywood": 0, "Upper Marina": 0, "Little Europe": 0, "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "New Westbrook",
-    "remaining_core_profiles": 2,
-    "reason": "Tied with Old Japantown for the largest remaining CORE_RETAIL district batch after South Night City and The Glen were source-reviewed."
+    "district": "Executive Zone",
+    "remaining_core_profiles": 1,
+    "reason": "All seven remaining CORE_RETAIL district queues are single-profile batches; Executive Zone is the first remaining district in the final single-profile sweep."
   }
 }
