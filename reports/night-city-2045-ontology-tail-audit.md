@@ -1,12 +1,13 @@
 # Night City 2045 ontology-tail audit
 
-This report describes the vocabulary that emerged from direct source review of the Night City 2045 Vend-R world fixtures. It is descriptive first: rare values are not automatically errors. The purpose is to distinguish genuine special cases from accidental schema fragmentation before the RETAIL_CAPABLE promotion and gap-analysis phase.
+This report describes the vocabulary that emerged from direct source review of the Night City 2045 Vend-R world fixtures. Rare values are not automatically errors. The purpose is to distinguish genuine special cases from accidental schema fragmentation before schema normalization and district/category gap analysis.
 
-## Corpus
+## Corpus after the two source-review passes
 
-- 25 source-reviewed fixture files
-- 169 reviewed world entities
-- 103/103 original canon-named CORE_RETAIL audit profiles source-reviewed
+- **43 source-reviewed fixture files**
+- **226 reviewed world entities**
+- **103/103 original canon-named CORE_RETAIL audit profiles reviewed**
+- **49/49 RETAIL_CAPABLE audit candidates represented by exact entity ID**
 
 The machine-readable audit is produced by `scripts/audit_world_ontology.py` and written to `build/reports/night-city-2045-ontology-audit.json` during CI.
 
@@ -14,158 +15,170 @@ The machine-readable audit is produced by `scripts/audit_world_ontology.py` and 
 
 | entity_type | count |
 |---|---:|
-| service | 42 |
-| seller | 31 |
-| hybrid | 27 |
-| local_vendor | 27 |
-| container | 25 |
-| event_market | 11 |
-| channel | 3 |
-| context | 3 |
+| service | 54 |
+| hybrid | 50 |
+| seller | 33 |
+| local_vendor | 32 |
+| container | 28 |
+| event_market | 13 |
+| channel | 8 |
+| context | 8 |
 
-**Reading:** the high-level type vocabulary is not suffering from singleton proliferation. The smallest types (`channel`, `context`) still occur three times each. The suspicious part is instead semantic overlap: `hybrid` is a common catch-all, while `seller` versus `local_vendor` partly reflects whether Catalogger can model the stock rather than a different kind of in-world entity.
+The second review pass strengthens the earlier conclusion: the high-level type vocabulary is small and reusable. The former low-frequency `channel` and `context` types have both grown from 3 to 8, showing that they were real recurring concepts rather than accidental singletons.
+
+`hybrid` is now the second most common type. That is useful evidence that entity type alone should not encode every aspect of commercial behavior; commerce capabilities need to be composable.
 
 ## Commercial modes
 
 | commercial_mode | count |
 |---|---:|
-| service_only | 42 |
-| *(none)* | 32 |
-| catalog_stock | 27 |
-| local_wares | 25 |
-| local_wares_and_service | 12 |
-| catalog_and_service | 9 |
-| catalog_and_local_wares | 6 |
+| service_only | 55 |
+| *(none)* | 38 |
+| local_wares_and_service | 31 |
+| catalog_stock | 29 |
+| local_wares | 29 |
+| catalog_and_service | 12 |
+| catalog_and_local_wares | 7 |
+| distribution_channel | 5 |
+| event_market | 5 |
 | catalog_and_local_wares_and_service | 3 |
-| event_market | 3 |
+| context_and_service | 3 |
 | local_wares_and_event | 2 |
+| rotating_vendor_channel | 2 |
 | catalog_and_event | 1 |
 | catalog_and_local_context | 1 |
-| context_and_service | 1 |
-| distribution_channel | 1 |
 | event_container | 1 |
 | event_context | 1 |
 | event_stock_channel | 1 |
-| rotating_vendor_channel | 1 |
 
-This is the clearest ontology fault line. Eight mode names are singletons and a ninth occurs only twice. Most are combinations of independent capabilities rather than genuinely different entity classes.
+This remains the clearest ontology fault line. The source review created several more examples of distribution, local wares and services without needing new high-level entity types, while the residual one-off mode strings are overwhelmingly combinations of independent capabilities.
 
-**Recommendation:** stop growing `commercial_mode` as a combinatorial enum. Treat the useful primitives as orthogonal capabilities: catalogue stock, local wares, services, event behaviour, distribution, and context-only state. Existing mode strings can remain as compatibility/editorial labels while a capability representation becomes authoritative.
+**Recommendation:** stop growing `commercial_mode` as a combinatorial enum. Treat catalogue stock, local wares, services, event commerce, distribution and context as orthogonal capabilities. Keep existing mode strings only for compatibility/editorial readability while the capability representation becomes authoritative.
 
 ## Stock policies
 
 | stock_policy | count |
 |---|---:|
-| *(none)* | 127 |
-| CHILDREN_ONLY | 24 |
-| EVENT_ONLY | 9 |
-| NO_STOCK | 8 |
-| NO_STATIC_INVENTORY | 1 |
+| *(none)* | 170 |
+| CHILDREN_ONLY | 27 |
+| NO_STOCK | 12 |
+| EVENT_ONLY | 11 |
+| NO_STATIC_INVENTORY | 6 |
 
-`CHILDREN_ONLY`, `EVENT_ONLY`, and `NO_STOCK` have clear recurring meanings. `NO_STATIC_INVENTORY` occurs only for Old Ironworks Street Carts and substantially overlaps the idea already expressed by rotating/event/channel behaviour.
+The earlier suspicion around `NO_STATIC_INVENTORY` has changed materially. It was a singleton before the RETAIL_CAPABLE review and now occurs six times because distribution and rotating-vendor structures repeatedly need to exist without pretending to own a permanent shelf.
 
-**Recommendation:** review `NO_STATIC_INVENTORY` for folding into channel/event behaviour rather than keeping a one-off stock-policy value.
+This means the concept is real, although it may still be better represented as a property of event/channel behavior rather than as a sibling to `NO_STOCK`.
 
 ## Provenance
 
 | provenance | count |
 |---|---:|
-| CANON_NAMED | 166 |
-| CANON_IMPLIED | 3 |
+| CANON_NAMED | 218 |
+| CANON_IMPLIED | 8 |
 
-The reviewed corpus is deliberately overwhelmingly canon-named. The three implied records are structural helpers rather than evidence that the source-review pass has started inventing ordinary businesses.
+The implied records are primarily structural helpers for source-explicit but unnamed things: rotating/concession channels, occasional events and other relationships where the source establishes the thing but does not give it a formal canonical name.
 
-## Audit-decision vocabulary
+## Field usage and the specialist tail
 
-There are many one-off audit-decision strings. The recurrent values are useful (`CONFIRMED_BUT_NARROWED` 19, `CONFIRMED_CONTAINER` 16, `CORRECT_TO_LOCAL_WARES` 8, `PRESERVE_NAMED_SERVICE_CHILD` 8, `CONFIRMED_SERVICE_ONLY` 7), but the tail contains dozens of exact one-use phrases such as hard-brand-gate variants, page-correction variants, split-event variants, recovered-source variants, and source-localization variants.
+Frequently used commerce fields now include:
 
-This is not a world-ontology problem: the strings are an editorial history of how each audit row was corrected.
+- `parent_entity_id` — 113
+- `services` — 106
+- `local_offerings` — 76
+- `stock_policy` — 56
+- `stocking` — 54
+- `catalogue_note` — 44
+- `proprietor` — 17
+- `schedule` — 17
+- `event_profile` — 8
+- `distribution` — 5
+- `access_model` — 3
+- `supply_relationships` — 3
 
-**Recommendation:** preserve the current strings for provenance, but do not make them a controlled application enum. If machine analysis is needed, add structured fields such as:
+Remaining one-use fields include `access`, `customer_pricing`, `local_context`, `proprietors`, `purchase_policy`, and `vendor_rotation`.
 
-- `review_action`: CONFIRM / NARROW / LOCALIZE / SPLIT / CORRECT / PROMOTE / RECOVER / REMOVE / DOWNGRADE / REHOME
-- optional modifiers: page correction, hard category gate, brand/manufacturer gate, price ceiling, service split, event split, local-stock substitution, etc.
-
-## Rare top-level fields
-
-Fields occurring once or twice:
-
-- `access` - 1 (Dream Forest Development)
-- `customer_pricing` - 1 (Smithery)
-- `distribution` - 1 (Northern Light Supplies)
-- `local_context` - 1 (Snack & Shack)
-- `purchase_policy` - 1 (Baskin Books)
-- `supply_relationships` - 1 (Honest Hiro's Used Cars)
-- `vendor_rotation` - 1 (Old Ironworks Street Carts)
-- `access_model` - 2 (Post Exchange; Mrs. Suzuki's monthly Night Market)
-
-The obvious schema inconsistency is `access` versus `access_model`; those should converge. The others look like legitimate specialist data, but they should probably live in typed capability/relationship objects rather than each becoming a new universal top-level field.
+The earlier `access` versus `access_model` mismatch remains an obvious normalization target. The new plural `proprietors` used by Faisal’s Customs is another schema-shape question: multiple operators are a legitimate fact, but singular/plural storage should be standardized rather than allowed to drift. `customer_pricing`, `purchase_policy`, supply and rotation data still look like legitimate specialist data that should live in reusable policy/relationship objects.
 
 ## Capability signatures
 
-The common signatures are ordinary and reassuring:
+The common signatures have become even more reassuring:
 
-- parented + services - 38
-- container - 21
-- local wares + parented - 18
-- catalogue stock + parented - 17
-- catalogue stock - 11
-- local wares - 9
-- event + parented + schedule - 8
-- catalogue stock + parented + services - 6
+- parented + services — 42
+- container — 23
+- local wares + services — 22
+- local wares + parented — 19
+- catalogue stock + parented — 17
+- catalogue stock — 13
+- local wares — 12
+- event + parented + schedule — 10
+- services only — 9
 
-Singleton signatures expose the interesting cases rather than a large population of unrelated object types. Examples include:
+The second pass also gives distribution enough examples to stop treating it as exceptional: `distribution + parented` occurs four times, in addition to other distribution combinations.
 
-- Holliday Market rotating vendors - catalogue stock + distribution + parented
-- Northern Light Supplies - distribution + explicit no stock
-- Old Ironworks Street Carts - distribution + parented
-- Mrs. Suzuki's monthly Night Market - event + explicit no stock + parented + schedule
-- Torrell and Chiang's Market Stalls - event + parented
-- Holliday Market - event + services
-- Nakagawa Garage Tower - services only, unparented
-
-This supports replacing combinatorial `commercial_mode` values with capability composition.
+The remaining singleton signatures are interesting edge compositions rather than evidence for new classes: examples include a container with services, a standalone distribution channel, distribution plus local wares plus parentage, and a scheduled service.
 
 ## Relationship-pattern tail
 
 Common parent-child patterns:
 
-- container -> service: 35
+- container -> service: 37
 - container -> local_vendor: 18
 - container -> seller: 18
-- container -> hybrid: 8
+- container -> hybrid: 11
+- hybrid -> event_market: 6
 - container -> event_market: 4
-- hybrid -> event_market: 4
+- hybrid -> service: 3
+- context -> channel: 2
+- seller -> service: 2
 
-Rare patterns:
+Rare patterns now include:
 
-- container -> channel: 1 - Old Ironworks Street Carts
-- container -> container: 1 - Roots of the Forest
-- context -> local_vendor: 1 - Piccolo
-- event_market -> channel: 1 - Holliday Market rotating vendors
-- event_market -> service: 1 - Doc Spindler
-- hybrid -> hybrid: 1 - Truvy's Salon
-- hybrid -> service: 1 - Ojo
-- seller -> event_market: 1 - Mrs. Suzuki's monthly Night Market
-- seller -> local_vendor: 1 - Hot Dingo
-- service -> event_market: 1 - Woodchipper's Night Market
-- seller -> service: 2 - Estero Bay Barber Shop; COG Credit Union
+- container -> channel — Old Ironworks Street Carts
+- container -> container — Roots of the Forest
+- context -> local_vendor — Piccolo
+- event_market -> channel — Holliday Market rotating vendors
+- event_market -> service — Doc Spindler
+- hybrid -> channel — Faisal’s Customs Factory Output
+- hybrid -> hybrid — Truvy’s Salon
+- hybrid -> local_vendor — 80/20
+- seller -> event_market — Mrs. Suzuki’s monthly Night Market
+- seller -> local_vendor — Hot Dingo
+- service -> channel — Jade Blossom Counterfeit Distribution
+- service -> event_market — Woodchipper’s Night Market
 
-The rare relationships reveal a more important modelling issue than their low counts: `parent_entity_id` currently carries several different meanings. Some are true spatial containment, but others mean association, operation, nearby recurring event, or a permanent business embedded in a rotating market.
+The pattern is now clearer than before: `parent_entity_id` is carrying several meanings at once. Some links are spatial containment, but others express operation, association, service-within, distribution-from, or an event occurring at/near a persistent business.
 
-**Recommendation:** retain `parent_entity_id` for hierarchy/legacy compatibility, but introduce typed entity relationships (`contained_in`, `appears_at`, `operated_by`, `service_point_for`, `market_event_at`, `associated_with`, etc.) before the world graph gets much larger. Woodchipper's Garage -> Night Market and Mrs. Suzuki's Bodega -> monthly Night Market are particularly strong examples: they are associations, not literal containment.
+**Recommendation:** retain `parent_entity_id` for hierarchy and compatibility, but add typed relationships such as `contained_in`, `appears_at`, `operated_by`, `service_point_for`, `distribution_from`, `market_event_at`, `associated_with` and `supplies`. This should happen before the graph is expanded with inferred/original businesses.
+
+## Audit-decision vocabulary
+
+The audit-decision tail has grown substantially because every source-review correction records what happened. That is useful editorial provenance but it is not runtime ontology.
+
+Do not turn the exact strings into an application enum. If machine analysis is required, normalize them into a small `review_action` vocabulary such as CONFIRM / NARROW / LOCALIZE / SPLIT / CORRECT / PROMOTE / RECOVER / REMOVE / DOWNGRADE / REHOME, with structured modifiers for category gates, page corrections, event splits, local-stock substitution, price ceilings and similar details.
+
+## What the RETAIL_CAPABLE pass taught us
+
+The old audit contained 49 RETAIL_CAPABLE candidates. Six were already present in reviewed fixtures and the remaining 43 were directly reviewed. Those 43 candidate IDs expanded into 57 entities after children, events and channels were separated, but the whole pass produced only six new catalogue-stock entities — five candidate businesses plus the recovered child shop 2A.
+
+This is strong evidence for the modelling direction:
+
+- a commercial cue is not the same thing as a shop;
+- a named place may contain commerce without owning stock itself;
+- source-local wares are often more accurate than generic generated stock;
+- event commerce and distribution channels deserve first-class representation;
+- persistent businesses, temporary markets and supply relationships should be distinct graph objects/edges.
 
 ## Structural conclusions
 
-The long tail does **not** suggest that Vend-R has dozens of fundamentally different commercial entity types. It suggests the opposite: a fairly small set of world objects is currently being described through several combinatorial labels.
+The long tail does **not** suggest dozens of fundamentally different commercial entity types. It suggests a small set of world objects currently described through several overlapping labels and ad-hoc fields.
 
-The most promising normalization is therefore:
+The next normalization should therefore separate:
 
-1. **World/spatial identity** - place, outlet/vendor, event, organization/channel, context/reference.
-2. **Commerce capabilities** - catalogue stock, local wares, service, event commerce, distribution.
-3. **Stock policy** - direct/default, children-only, event-only, no-stock (with rotating/no-static behaviour represented by the relevant capability).
-4. **Typed relationships** - containment separated from association, operation, appearance and event location.
-5. **Access/schedule/pricing/supply** - reusable policy objects rather than one-off top-level schema growth.
-6. **Audit history** - editorial provenance, structurally separate from the runtime ontology.
+1. **World/spatial identity** — place/container, seller/vendor, service, event, organization/channel, context/reference.
+2. **Commerce capabilities** — catalogue stock, local wares, service, event commerce, distribution.
+3. **Stock policy** — ordinary/direct, children-only, event-only, no-stock/no-static behavior.
+4. **Typed relationships** — containment separated from association, operation, appearance, supply and event location.
+5. **Access/schedule/pricing/supply** — reusable policy objects instead of one-off top-level schema growth.
+6. **Audit history** — editorial provenance structurally separate from runtime ontology.
 
-No migration should be performed merely because a value is rare. This report is the inspection list for deciding which rare cases are genuinely exceptional and which are artefacts of the current representation.
+No migration should be performed merely because a value is rare. The completed source-review corpus is now large enough to design the normalized schema from observed cases rather than speculation.
