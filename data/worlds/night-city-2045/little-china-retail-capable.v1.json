@@ -1,0 +1,37 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-china-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [98],
+    "note": "RETAIL_CAPABLE candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-098-LING-PO-IMPORTS",
+      "name": "Ling Po Imports",
+      "entity_type": "channel",
+      "district": "Little China",
+      "map_no": 2,
+      "book_page": 98,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 98",
+      "source_summary": "Long-running family import/export operation occupying lower floors of Guăngbō Tower and moving regional imports around the Pacifica Confederation; the source describes trade and logistics rather than a public storefront.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {
+        "activity": "regional import and export",
+        "service_area": "Pacifica Confederation"
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_IMPORT_EXPORT_CHANNEL"
+      }
+    }
+  ]
+}
