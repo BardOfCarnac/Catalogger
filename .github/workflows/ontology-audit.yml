@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: python scripts/build_commercial_profiles.py
       - run: python scripts/audit_world_ontology.py
       - run: python scripts/test_world_fixture_retail_capable_port_south.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json
