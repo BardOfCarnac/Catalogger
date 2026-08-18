@@ -1,0 +1,126 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-glen-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [118, 121, 124],
+    "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "name": "Club Atlantis",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 8,
+      "book_page": 118,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 118",
+      "source_summary": "High-end multilevel club owned by a major Fixer, with an expensive bar and a clientele mixing corporate climbers and deal-making Fixers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {
+        "name": "Mister Kernaghan",
+        "role": "Fixer",
+        "rank": 9
+      },
+      "local_offerings": [
+        {"offering_key": "international-bar", "label": "Premium bar serving drinks from around the world"},
+        {"offering_key": "halo-drop", "label": "HALO Drop signature drink", "price_eb": 100}
+      ],
+      "services": [
+        {"service_key": "nightclub-hospitality", "label": "Nightclub hospitality"},
+        {"service_key": "fixer-meeting-space", "label": "Social setting for Fixer contacts and deals"}
+      ],
+      "catalogue_note": "Direct source review supports club hospitality and drinks but does not establish a recurring market or general merchandise shelf. The audit's night-market assortment is therefore not realized.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "HYBRID_DIRECT_EVENT",
+        "decision": "REMOVE_UNSUPPORTED_EVENT_STOCK",
+        "note": "The high-confidence audit inference is narrowed because the reviewed source text describes a club/bar and Fixer meeting environment, not an item market."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "name": "Kasim’s",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 16,
+      "book_page": 121,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 121",
+      "source_summary": "Coffee shop serving Turkish food, tobacco and cardamom-flavored street coffee; no alcohol is served and the business closes on Fridays.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {
+        "name": "Kasymbek",
+        "role": "Fixer",
+        "rank": 4
+      },
+      "schedule": {
+        "closed_day": "Friday"
+      },
+      "local_offerings": [
+        {"offering_key": "turkish-dishes", "label": "Turkish dishes and sweets"},
+        {"offering_key": "turkish-street-coffee", "label": "Turkish-style street coffee", "price_eb": 10},
+        {"offering_key": "nargile-tobacco", "label": "Scented tobacco foil packet", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "coffeehouse-hospitality", "label": "Coffeehouse and water-pipe hospitality"}
+      ],
+      "catalogue_note": "The source identifies prepared food, coffee and tobacco rather than generic shelf merchandise. These offerings stay local instead of inheriting the audit's broad entertainment/electronics/fashion departments.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES_AND_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "name": "Worthy Housing",
+      "entity_type": "context",
+      "district": "The Glen",
+      "map_no": 28,
+      "book_page": 124,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 124",
+      "source_summary": "Low-cost cargo-container housing adapted for full-body-conversion residents.",
+      "stock_policy": "NO_STOCK",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "fbc-housing", "label": "FBC-adapted housing"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_CONTEXT",
+        "note": "Housing is retained as useful world context but not promoted to retail."
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-THE-GLEN-124-DRGS-247",
+      "name": "DRGS 247 (The Glen)",
+      "entity_type": "local_vendor",
+      "district": "The Glen",
+      "book_page": 124,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 124",
+      "source_summary": "A DRGS 247 branch located beside Worthy Housing and specifically noted for carrying glucose-rich brain solution in bulk.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "bulk-brain-solution", "label": "Glucose-rich brain solution in bulk"}
+      ],
+      "catalogue_note": "This location-specific branch is explicitly established by the source, but its highlighted bulk brain solution does not map cleanly to the current catalogue and remains a local offering.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_MENTION",
+        "note": "Recovered from direct source review as a nearby commercial branch rather than incorrectly attaching its stock to Worthy Housing."
+      }
+    }
+  ]
+}
