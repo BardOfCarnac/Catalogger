@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 96,
-    "remaining_core_profiles": 7,
+    "source_reviewed_core_profiles": 103,
+    "remaining_core_profiles": 0,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -27,19 +27,48 @@
     {"fixture_id":"nc2045-south-night-city-core-v1","source_file":"data/worlds/night-city-2045/south-night-city-core.v1.json","district":"South Night City","audit_core_profiles_covered":3,"entities":8,"catalog_stock_entities":1,"note":"Completes the v0.2 South Night City core queue. Container Mart delegates to seven named tenant businesses; only Container Bodega receives constrained generic catalogue stock, while craft supplies, salon work, dental cybernetics, braindance hospitality and shaved-ice trade remain source-local/service state."},
     {"fixture_id":"nc2045-the-glen-core-v1","source_file":"data/worlds/night-city-2045/the-glen-core.v1.json","district":"The Glen","audit_core_profiles_covered":3,"entities":4,"catalog_stock_entities":0,"note":"Completes the v0.2 The Glen core queue. Direct review removes unsupported market stock from Club Atlantis, localizes Kasim's prepared food/coffee/tobacco, confirms Worthy Housing as non-retail housing, and recovers the nearby named DRGS 247 branch with its source-specific bulk brain-solution stock."},
     {"fixture_id":"nc2045-new-westbrook-core-v1","source_file":"data/worlds/night-city-2045/new-westbrook-core.v1.json","district":"New Westbrook","audit_core_profiles_covered":2,"entities":11,"catalog_stock_entities":3,"note":"Completes the v0.2 New Westbrook core queue. Canalside Plaza delegates to eight named tenants; Oasis and Armory Pawn Shop carry constrained persistent stock. Holliday Market remains the persistent event place while a canon-implied rotating-vendor channel owns the generated event assortment."},
-    {"fixture_id":"nc2045-old-japantown-core-v1","source_file":"data/worlds/night-city-2045/old-japantown-core.v1.json","district":"Old Japantown","audit_core_profiles_covered":2,"entities":4,"catalog_stock_entities":1,"note":"Completes the v0.2 Old Japantown core queue. Mrs. Suzuki's catalogue shelf is narrowed to food while Shroomer fungi remain source-local and her monthly invitation-only Night Market is represented without invented stock; White Side becomes source-local scavver trade. Honest Hiro's Used Cars is promoted from RETAIL_CAPABLE as an explicit used-vehicle dealer without inventing exact models."}
+    {"fixture_id":"nc2045-old-japantown-core-v1","source_file":"data/worlds/night-city-2045/old-japantown-core.v1.json","district":"Old Japantown","audit_core_profiles_covered":2,"entities":4,"catalog_stock_entities":1,"note":"Completes the v0.2 Old Japantown core queue. Mrs. Suzuki's catalogue shelf is narrowed to food while Shroomer fungi remain source-local and her monthly invitation-only Night Market is represented without invented stock; White Side becomes source-local scavver trade. Honest Hiro's Used Cars is promoted from RETAIL_CAPABLE as an explicit used-vehicle dealer without inventing exact models."},
+    {"fixture_id":"nc2045-executive-zone-core-v1","source_file":"data/worlds/night-city-2045/executive-zone-core.v1.json","district":"Executive Zone","audit_core_profiles_covered":1,"entities":1,"catalog_stock_entities":1,"note":"Completes Executive Zone. Oasis retains premium catalogue stock while source-explicit Kibble/SCOP staples, fresh flowers, Agent ordering and rapid drone delivery remain separately represented."},
+    {"fixture_id":"nc2045-heywood-docks-core-v1","source_file":"data/worlds/night-city-2045/heywood-docks-core.v1.json","district":"Heywood Docks","audit_core_profiles_covered":1,"entities":2,"catalog_stock_entities":0,"note":"Completes Heywood Docks. Piccolo is recovered as a child of SK Securities and narrowed from a generic bodega assortment to its source-explicit Kibble and Smash trade."},
+    {"fixture_id":"nc2045-heywood-industrial-zone-core-v1","source_file":"data/worlds/night-city-2045/heywood-industrial-zone-core.v1.json","district":"Heywood Industrial Zone","audit_core_profiles_covered":1,"entities":3,"catalog_stock_entities":1,"note":"Completes Heywood Industrial Zone. The Old Ironworks Building delegates to The Furnace and a separate rotating street-cart channel; Furnace catalogue stock is limited to its bodega function."},
+    {"fixture_id":"nc2045-norcal-military-base-core-v1","source_file":"data/worlds/night-city-2045/norcal-military-base-core.v1.json","district":"NorCal Military Base","audit_core_profiles_covered":1,"entities":4,"catalog_stock_entities":1,"note":"Completes NorCal Military Base. PX generated stock follows the goods categories explicitly named by the source, while Hot Dingo, Estero Bay Barber Shop and COG Credit Union are recovered as named child operations."},
+    {"fixture_id":"nc2045-playland-by-the-sea-lands-core-v1","source_file":"data/worlds/night-city-2045/playland-by-the-sea-lands-core.v1.json","district":"Playland by the Sea Lands","audit_core_profiles_covered":1,"entities":1,"catalog_stock_entities":0,"note":"Completes Playland by the Sea Lands. Grand Junction Gift Shop keeps its source-defined 20–100eb souvenir range and 50eb/day scooter rental instead of receiving unrelated generated merchandise."},
+    {"fixture_id":"nc2045-port-of-night-city-core-v1","source_file":"data/worlds/night-city-2045/port-of-night-city-core.v1.json","district":"Port of Night City","audit_core_profiles_covered":1,"entities":2,"catalog_stock_entities":0,"note":"Completes Port of Night City. Dock 13's repackaged salvage stays source-local and its occasional Night Market is split into a separate event rather than a permanent department-driven assortment."},
+    {"fixture_id":"nc2045-the-hot-zone-core-v1","source_file":"data/worlds/night-city-2045/the-hot-zone-core.v1.json","district":"The Hot Zone","audit_core_profiles_covered":1,"entities":1,"catalog_stock_entities":0,"note":"Completes The Hot Zone. Totentanz retains source-supported ad-hoc tech/drug bargaining and club hospitality but loses the audit's unsupported formal Night Market inventory."}
   ],
   "remaining_core_queue_by_district": {
-    "Little China": 0, "Reclamation Zone": 0, "Santo Domingo": 0, "Watson Development": 0,
-    "Old Combat Zone": 0, "University District": 0, "South Night City": 0, "The Glen": 0,
-    "New Westbrook": 0, "Old Japantown": 0, "Executive Zone": 1, "Heywood Docks": 1,
-    "Heywood Industrial Zone": 1, "NorCal Military Base": 1, "Playland by the Sea Lands": 1,
-    "Port of Night City": 1, "The Hot Zone": 1, "Pacifica Playground": 0, "Rancho Coronado": 0,
-    "Kabuki": 0, "North Heywood": 0, "Upper Marina": 0, "Little Europe": 0, "Downtown": 0
+    "Downtown": 0,
+    "Executive Zone": 0,
+    "Heywood Docks": 0,
+    "Heywood Industrial Zone": 0,
+    "Kabuki": 0,
+    "Little China": 0,
+    "Little Europe": 0,
+    "New Westbrook": 0,
+    "NorCal Military Base": 0,
+    "North Heywood": 0,
+    "Old Combat Zone": 0,
+    "Old Japantown": 0,
+    "Pacifica Playground": 0,
+    "Playland by the Sea Lands": 0,
+    "Port of Night City": 0,
+    "Rancho Coronado": 0,
+    "Reclamation Zone": 0,
+    "Santo Domingo": 0,
+    "South Night City": 0,
+    "The Glen": 0,
+    "The Hot Zone": 0,
+    "University District": 0,
+    "Upper Marina": 0,
+    "Watson Development": 0
   },
-  "next_recommended_batch": {
-    "district": "Executive Zone",
-    "remaining_core_profiles": 1,
-    "reason": "All seven remaining CORE_RETAIL district queues are single-profile batches; Executive Zone is the first remaining district in the final single-profile sweep."
+  "core_census_status": {
+    "status": "complete",
+    "reviewed_core_profiles": 103,
+    "remaining_core_profiles": 0
+  },
+  "next_recommended_phase": {
+    "phase": "retail-capable-promotion-and-gap-analysis",
+    "reason": "The canon-named CORE_RETAIL source-review census is complete. Review explicit RETAIL_CAPABLE sellers omitted by the original core classification, then measure district/category coverage before creating canon-implied or Vend-R-original businesses."
   }
 }
