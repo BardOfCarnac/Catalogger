@@ -1,0 +1,37 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-playland-by-the-sea-lands-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [306],
+    "note": "RETAIL_CAPABLE candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CLASSIQUE-CORSETS",
+      "name": "Classique Corsets",
+      "entity_type": "local_vendor",
+      "district": "Playland by the Sea Lands",
+      "map_no": 5,
+      "book_page": 306,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 306",
+      "source_summary": "Vintage-clothing shop specializing in historically accurate corsets sold at a source-defined price.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "historically-accurate-corset", "label": "Historically accurate corset", "price_eb": 100},
+        {"offering_key": "vintage-clothing", "label": "Vintage clothing"}
+      ],
+      "catalogue_note": "The source gives a focused vintage/corset identity. It remains local rather than expanding into a generic fashion-boutique assortment.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_SOURCE_LOCAL_VINTAGE_FASHION_VENDOR"
+      }
+    }
+  ]
+}
