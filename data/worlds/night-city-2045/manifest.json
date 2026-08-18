@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 53,
-    "remaining_core_profiles": 50,
+    "source_reviewed_core_profiles": 65,
+    "remaining_core_profiles": 38,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -81,11 +81,29 @@
       "entities": 7,
       "catalog_stock_entities": 1,
       "note": "Completes the v0.2 Rancho Coronado review queue. Minimallism is a child-stock/event container, XOOX is the only persistent catalogue-backed seller in this slice, and direct source review re-homes the misparsed Ingalls Farm and Fuel Station profiles to the Outskirts instead of creating false Rancho shops."
+    },
+    {
+      "fixture_id": "nc2045-little-china-core-v1",
+      "source_file": "data/worlds/night-city-2045/little-china-core.v1.json",
+      "district": "Little China",
+      "audit_core_profiles_covered": 6,
+      "entities": 8,
+      "catalog_stock_entities": 1,
+      "note": "Completes the v0.2 Little China core queue. Hong Kong Market and Prosperity Garden Tenements delegate rather than duplicate commerce; Jayaraman's is corrected from the old weapons inference to a fishmonger; prepared tea/food stays local; The Seep is removed from commerce; Ling Husan's pharmacy is the only generated-stock seller in this conservative pass."
+    },
+    {
+      "fixture_id": "nc2045-reclamation-zone-core-v1",
+      "source_file": "data/worlds/night-city-2045/reclamation-zone-core.v1.json",
+      "district": "Reclamation Zone",
+      "audit_core_profiles_covered": 6,
+      "entities": 6,
+      "catalog_stock_entities": 2,
+      "note": "Completes the v0.2 Reclamation Zone core queue. Reclamation Zone Station delegates to its children; source-specific cosmetics, artificial flowers and reclaimed jewellery stay local; only Earl's Second Hand Shop and Underground Bodega receive constrained persistent catalogue stock."
     }
   ],
   "remaining_core_queue_by_district": {
-    "Little China": 6,
-    "Reclamation Zone": 6,
+    "Little China": 0,
+    "Reclamation Zone": 0,
     "Santo Domingo": 6,
     "Watson Development": 6,
     "Old Combat Zone": 5,
@@ -110,8 +128,8 @@
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Little China",
+    "district": "Santo Domingo",
     "remaining_core_profiles": 6,
-    "reason": "Tied for the largest remaining CORE_RETAIL district batch; its Hong Kong Market hierarchy and mix of weapons, pharmacy and neighborhood commerce make it a useful next container/child-retail review."
+    "reason": "Tied for the largest remaining CORE_RETAIL district batch; its Aldecaldo Camp and embedded market structure provide another useful container/child-retail source-review pass."
   }
 }
