@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 25,
-    "remaining_core_profiles": 78,
+    "source_reviewed_core_profiles": 39,
+    "remaining_core_profiles": 64,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -45,11 +45,27 @@
       "entities": 17,
       "catalog_stock_entities": 6,
       "note": "Completes the v0.2 CORE_RETAIL queue for Upper Marina. Source review narrows several broad audit guesses, preserves additional named child businesses at Bay Bridge Residences and Crystal Park Market, and uses an exact three-item catalogue allowlist for Tech Time rather than treating the entire General Gear bucket as tools."
+    },
+    {
+      "fixture_id": "nc2045-kabuki-core-v1",
+      "source_file": "data/worlds/night-city-2045/kabuki-core.v1.json",
+      "district": "Kabuki",
+      "audit_core_profiles_covered": 7,
+      "entities": 8,
+      "catalog_stock_entities": 3,
+      "note": "Completes the v0.2 CORE_RETAIL queue for Kabuki. The market remains a child-stock container; Nakagawa Garage Tower and Yum Seng remain non-stock services; Sanroo Neuro-land uses a hard Sanroo catalogue gate; Murakami Suiun Imports separates persistent imported stock from its vehicle-focused event market."
+    },
+    {
+      "fixture_id": "nc2045-north-heywood-core-v1",
+      "source_file": "data/worlds/night-city-2045/north-heywood-core.v1.json",
+      "district": "North Heywood",
+      "audit_core_profiles_covered": 7,
+      "entities": 7,
+      "catalog_stock_entities": 5,
+      "note": "Completes the v0.2 CORE_RETAIL queue for North Heywood. Woodland Park delegates stock to child businesses; Nana Meow's remains source-defined gardening wares; Byte & Switch splits generated physical tech from world-local used cyberware; Truvy's and Breeze use narrow classification gates."
     }
   ],
   "remaining_core_queue_by_district": {
-    "Kabuki": 7,
-    "North Heywood": 7,
     "Pacifica Playground": 7,
     "Rancho Coronado": 7,
     "Little China": 6,
@@ -69,13 +85,15 @@
     "Playland by the Sea Lands": 1,
     "Port of Night City": 1,
     "The Hot Zone": 1,
+    "Kabuki": 0,
+    "North Heywood": 0,
     "Upper Marina": 0,
     "Little Europe": 0,
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Kabuki",
+    "district": "Pacifica Playground",
     "remaining_core_profiles": 7,
-    "reason": "Tied for the largest remaining CORE_RETAIL district batch; its market/container and brand-showroom mix is a useful next stress test for the fixture pipeline."
+    "reason": "Tied for the largest remaining CORE_RETAIL district batch and useful for stress-testing specialist tech shops, market/event commerce and tourism-facing sellers without returning to another mostly ordinary retail district."
   }
 }
