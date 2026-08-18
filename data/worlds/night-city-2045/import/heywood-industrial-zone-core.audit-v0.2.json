@@ -1,0 +1,33 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "batch_id": "heywood-industrial-zone-core-audit-v0.2",
+  "source_profile_version": "0.2",
+  "profiles": [
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "name": "The Furnace",
+      "district": "Heywood Industrial Zone",
+      "book_page": 259,
+      "entity_level": "mentioned_outlet",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "stock_mode": "DIRECT_SELLER",
+      "primary_archetype": "general-store",
+      "secondary_archetypes": "entertainment-vendor",
+      "primary_departments": "food-consumables|general-equipment",
+      "secondary_departments": "electronics-comms|fashion-personal",
+      "breadth_profile": "small",
+      "depth_profile": "normal",
+      "supply_capability": "ordinary",
+      "price_tier_center": "Everyday",
+      "pricing_style": "fair",
+      "parent_stock_policy": "OWN_STOCK",
+      "audit_action": "KEEP",
+      "assignment_confidence": "HIGH",
+      "catalog_rule": "SCORE_EXISTING_CATALOG",
+      "candidate_rule_summary": "department match",
+      "modelling_note": "Small bar-and-bodega; stock the bodega separately from rotating street carts."
+    }
+  ]
+}
