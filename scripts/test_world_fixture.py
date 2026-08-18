@@ -28,6 +28,8 @@ for audit_rel, expected in [
     ("data/worlds/night-city-2045/import/upper-marina-core.audit-v0.2.json", 12),
     ("data/worlds/night-city-2045/import/kabuki-core.audit-v0.2.json", 7),
     ("data/worlds/night-city-2045/import/north-heywood-core.audit-v0.2.json", 7),
+    ("data/worlds/night-city-2045/import/little-china-core.audit-v0.2.json", 6),
+    ("data/worlds/night-city-2045/import/reclamation-zone-core.audit-v0.2.json", 6),
 ]:
     audit_source = load_json(ROOT / audit_rel)
     draft = import_batch(audit_source)
