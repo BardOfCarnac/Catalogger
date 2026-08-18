@@ -9,7 +9,6 @@ from world_stock_engine import WorldStockEngine
 ROOT = Path(__file__).resolve().parents[1]
 engine = WorldStockEngine()
 
-# Audit inputs remain non-realizable drafts until direct source review.
 for audit_rel, expected in [
     ("data/worlds/night-city-2045/import/south-night-city-core.audit-v0.2.json", 3),
     ("data/worlds/night-city-2045/import/the-glen-core.audit-v0.2.json", 3),
@@ -26,9 +25,6 @@ for audit_rel, expected in [
     else:
         raise AssertionError("audit draft was allowed to generate persistent stock")
 
-# South Night City: Container Mart delegates to seven named children. Only the ordinary
-# neighborhood bodega receives generic catalogue stock; source-specific craft, salon,
-# dental, braindance and shaved-ice commerce remain local/service state.
 south_source = load_json(ROOT / "data/worlds/night-city-2045/south-night-city-core.v1.json")
 validate_document(south_source)
 south_a = realize_document(south_source, engine)
@@ -67,9 +63,6 @@ assert "assortment" not in south["Panik"]
 assert "assortment" not in south["SlushSlurp"]
 assert south["SlushSlurp"]["local_offerings"][0]["price_eb"] == 5
 
-# The Glen: direct review removes unsupported market/catalogue stock from Club Atlantis and
-# Kasim's. Worthy Housing remains housing context, while the nearby named DRGS 247 branch is
-# recovered as a source-established local seller instead of leaking commerce onto the housing.
 glen_source = load_json(ROOT / "data/worlds/night-city-2045/the-glen-core.v1.json")
 validate_document(glen_source)
 glen_a = realize_document(glen_source, engine)
