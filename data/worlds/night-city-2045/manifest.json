@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 77,
-    "remaining_core_profiles": 26,
+    "source_reviewed_core_profiles": 86,
+    "remaining_core_profiles": 17,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -117,6 +117,24 @@
       "entities": 11,
       "catalog_stock_entities": 5,
       "note": "Completes the v0.2 Watson Development core queue. H10 delegates to named child businesses; Gibson and Turbo Neon use exact brand-linked catalogue gates plus source-local offerings/services; Hundred Under Haven enforces its 100eb ceiling; Snack & Shack generates only its explicit bodega function."
+    },
+    {
+      "fixture_id": "nc2045-old-combat-zone-core-v1",
+      "source_file": "data/worlds/night-city-2045/old-combat-zone-core.v1.json",
+      "district": "Old Combat Zone",
+      "audit_core_profiles_covered": 5,
+      "entities": 5,
+      "catalog_stock_entities": 1,
+      "note": "Completes the v0.2 Old Combat Zone core queue. The Warren delegates to its outlets; Baskin Books, the Smithery and Uncle Anne's remain source-local; the Smithery and Uncle Anne's page references are corrected to p. 172; only Kibble Kirkle receives constrained generic bodega stock."
+    },
+    {
+      "fixture_id": "nc2045-university-district-core-v1",
+      "source_file": "data/worlds/night-city-2045/university-district-core.v1.json",
+      "district": "University District",
+      "audit_core_profiles_covered": 4,
+      "entities": 5,
+      "catalog_stock_entities": 2,
+      "note": "Completes the v0.2 University District core queue. Carriage Street remains source-local bookstore/cafe commerce; NCU delegates to Lombardy Groceries and the recovered NCU Clinic child; Lombardy's page is corrected to p. 109; Retail Resale is hard-gated to used Fashion & Personal stock."
     }
   ],
   "remaining_core_queue_by_district": {
@@ -124,8 +142,8 @@
     "Reclamation Zone": 0,
     "Santo Domingo": 0,
     "Watson Development": 0,
-    "Old Combat Zone": 5,
-    "University District": 4,
+    "Old Combat Zone": 0,
+    "University District": 0,
     "South Night City": 3,
     "The Glen": 3,
     "New Westbrook": 2,
@@ -146,8 +164,8 @@
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Old Combat Zone",
-    "remaining_core_profiles": 5,
-    "reason": "Largest remaining CORE_RETAIL district batch after Santo Domingo and Watson Development were source-reviewed."
+    "district": "South Night City",
+    "remaining_core_profiles": 3,
+    "reason": "Tied with The Glen for the largest remaining CORE_RETAIL district batch after Old Combat Zone and University District were source-reviewed."
   }
 }
