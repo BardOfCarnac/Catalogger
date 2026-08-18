@@ -13,4 +13,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/audit_world_ontology.py
+      - run: python scripts/test_world_fixture_retail_capable_port_south.py
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/south-night-city-retail-capable.v1.json
       - run: python scripts/audit_retail_capable_candidates.py
