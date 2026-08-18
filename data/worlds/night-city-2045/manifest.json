@@ -5,8 +5,8 @@
   "commercial_audit_snapshot": {
     "profile_version": "0.2",
     "canon_named_core_profiles": 103,
-    "source_reviewed_core_profiles": 39,
-    "remaining_core_profiles": 64,
+    "source_reviewed_core_profiles": 53,
+    "remaining_core_profiles": 50,
     "districts_with_core_profiles": 24
   },
   "source_reviewed_fixtures": [
@@ -63,11 +63,27 @@
       "entities": 7,
       "catalog_stock_entities": 5,
       "note": "Completes the v0.2 CORE_RETAIL queue for North Heywood. Woodland Park delegates stock to child businesses; Nana Meow's remains source-defined gardening wares; Byte & Switch splits generated physical tech from world-local used cyberware; Truvy's and Breeze use narrow classification gates."
+    },
+    {
+      "fixture_id": "nc2045-pacifica-playground-core-v1",
+      "source_file": "data/worlds/night-city-2045/pacifica-playground-core.v1.json",
+      "district": "Pacifica Playground",
+      "audit_core_profiles_covered": 7,
+      "entities": 14,
+      "catalog_stock_entities": 4,
+      "note": "Completes the v0.2 CORE_RETAIL queue for Pacifica Playground. Source review preserves Dream Forest and Jodes Camp as containers, separates Ojo's vehicle sourcing from Nomad's Market shelf stock, turns Smile Another Day into park-specific local wares plus an annual event, and promotes the audit-missed Bits’n’Bolts tech shop."
+    },
+    {
+      "fixture_id": "nc2045-rancho-coronado-core-v1",
+      "source_file": "data/worlds/night-city-2045/rancho-coronado-core.v1.json",
+      "district": "Rancho Coronado",
+      "audit_core_profiles_covered": 7,
+      "entities": 7,
+      "catalog_stock_entities": 1,
+      "note": "Completes the v0.2 Rancho Coronado review queue. Minimallism is a child-stock/event container, XOOX is the only persistent catalogue-backed seller in this slice, and direct source review re-homes the misparsed Ingalls Farm and Fuel Station profiles to the Outskirts instead of creating false Rancho shops."
     }
   ],
   "remaining_core_queue_by_district": {
-    "Pacifica Playground": 7,
-    "Rancho Coronado": 7,
     "Little China": 6,
     "Reclamation Zone": 6,
     "Santo Domingo": 6,
@@ -85,6 +101,8 @@
     "Playland by the Sea Lands": 1,
     "Port of Night City": 1,
     "The Hot Zone": 1,
+    "Pacifica Playground": 0,
+    "Rancho Coronado": 0,
     "Kabuki": 0,
     "North Heywood": 0,
     "Upper Marina": 0,
@@ -92,8 +110,8 @@
     "Downtown": 0
   },
   "next_recommended_batch": {
-    "district": "Pacifica Playground",
-    "remaining_core_profiles": 7,
-    "reason": "Tied for the largest remaining CORE_RETAIL district batch and useful for stress-testing specialist tech shops, market/event commerce and tourism-facing sellers without returning to another mostly ordinary retail district."
+    "district": "Little China",
+    "remaining_core_profiles": 6,
+    "reason": "Tied for the largest remaining CORE_RETAIL district batch; its Hong Kong Market hierarchy and mix of weapons, pharmacy and neighborhood commerce make it a useful next container/child-retail review."
   }
 }
