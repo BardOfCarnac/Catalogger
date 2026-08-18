@@ -26,6 +26,8 @@ for audit_rel, expected in [
     ("data/worlds/night-city-2045/import/downtown-core.audit-v0.2.json", 5),
     ("data/worlds/night-city-2045/import/little-europe-remainder.audit-v0.2.json", 3),
     ("data/worlds/night-city-2045/import/upper-marina-core.audit-v0.2.json", 12),
+    ("data/worlds/night-city-2045/import/kabuki-core.audit-v0.2.json", 7),
+    ("data/worlds/night-city-2045/import/north-heywood-core.audit-v0.2.json", 7),
 ]:
     audit_source = load_json(ROOT / audit_rel)
     draft = import_batch(audit_source)
@@ -189,8 +191,110 @@ assert {row["service_key"] for row in ziggurat["services"]} == {
     "ihara-grubb-net-museum", "headquarters-tour"
 }
 
+# Fourth source-constrained district batch: Kabuki. The market is a container, storage and
+# hospitality remain non-stock services, and only three entities receive persistent catalogue
+# assortments. Narrow hard gates prevent audit category spillover from becoming world state.
+kabuki_source = load_json(ROOT / "data/worlds/night-city-2045/kabuki-core.v1.json")
+validate_document(kabuki_source)
+kabuki_a = realize_document(kabuki_source, engine)
+kabuki_b = realize_document(kabuki_source, engine)
+assert kabuki_a == kabuki_b, "Kabuki fixture realization must be deterministic"
+kabuki = {row["name"]: row for row in kabuki_a["entities"]}
+assert len(kabuki) == 8
+assert {name for name, row in kabuki.items() if row.get("assortment")} == {
+    "Murakami Suiun Imports", "Oasis (Kabuki)", "Sanroo Neuro-land"
+}
+assert kabuki["Kabuki Market"]["entity_type"] == "container"
+assert kabuki["Kabuki Market"]["stock_policy"] == "CHILDREN_ONLY"
+assert "assortment" not in kabuki["Kabuki Market"]
+assert "assortment" not in kabuki["Animelocaris"]
+assert kabuki["Animelocaris"]["local_offerings"]
+assert "assortment" not in kabuki["Nakagawa Garage Tower"]
+assert {row["service_key"] for row in kabuki["Nakagawa Garage Tower"]["services"]} == {
+    "secure-vehicle-storage", "secure-av-storage"
+}
+assert "assortment" not in kabuki["Yum Seng"]
+assert kabuki["Yum Seng"]["local_offerings"][0]["offering_key"] == "seafood"
+assert "karaoke-box" in {row["service_key"] for row in kabuki["Yum Seng"]["services"]}
+assert kabuki["Murakami Suiun Vehicle Night Market"]["entity_type"] == "event_market"
+assert kabuki["Murakami Suiun Vehicle Night Market"]["parent_entity_id"] == "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS"
+
+murakami = kabuki["Murakami Suiun Imports"]
+assert murakami["assortment"]
+for row in murakami["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[0] in {"Electronics & Communications", "Vehicles & Mobility", "General Equipment"}
+
+kabuki_oasis = kabuki["Oasis (Kabuki)"]
+assert kabuki_oasis["assortment"]
+for row in kabuki_oasis["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[0] in {"Food, Drink & Consumables", "General Equipment"}
+
+sanroo = kabuki["Sanroo Neuro-land"]
+sanroo_allowlist = set(sanroo["shop"]["stocking_profile"]["allowed_item_ids"])
+assert sanroo["assortment"]
+assert {row["item_id"] for row in sanroo["assortment"]} <= sanroo_allowlist
+for row in sanroo["assortment"]:
+    profile = engine.commercial_by_id[row["item_id"]]
+    departments = {profile["department"], *profile.get("secondary_departments", [])}
+    assert departments & {"weapons", "ammunition-ordnance", "weapon-parts"}
+
+# Fifth source-constrained district batch: North Heywood. Woodland Park delegates to its child
+# businesses, Nana Meow stays world-local, and the generated shops are deliberately narrower
+# than the first audit's broad department guesses.
+north_source = load_json(ROOT / "data/worlds/night-city-2045/north-heywood-core.v1.json")
+validate_document(north_source)
+north_a = realize_document(north_source, engine)
+north_b = realize_document(north_source, engine)
+assert north_a == north_b, "North Heywood fixture realization must be deterministic"
+north = {row["name"]: row for row in north_a["entities"]}
+assert len(north) == 7
+assert {name for name, row in north.items() if row.get("assortment")} == {
+    "Byte & Switch", "Sleepeasy Home Solutions", "Truvy’s Salon", "Breeze", "Burning Bright Bodega"
+}
+assert north["Woodland Park"]["entity_type"] == "container"
+assert north["Woodland Park"]["stock_policy"] == "CHILDREN_ONLY"
+assert "assortment" not in north["Woodland Park"]
+assert "assortment" not in north["Nana Meow’s Nursery"]
+assert {row["offering_key"] for row in north["Nana Meow’s Nursery"]["local_offerings"]} == {
+    "gardening-gear-supplies", "seeds"
+}
+
+byte_switch = north["Byte & Switch"]
+assert byte_switch["assortment"]
+assert byte_switch["local_offerings"][0]["offering_key"] == "questionable-cyberware-parts"
+for row in byte_switch["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[0] in {"Electronics & Communications", "General Equipment"}
+    assert path[:2] != ["Electronics & Communications", "Software & Apps"]
+
+sleepeasy = north["Sleepeasy Home Solutions"]
+assert sleepeasy["assortment"]
+for row in sleepeasy["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[:2] in (["Housing & Property", "Furniture"], ["Housing & Property", "Home Accessories"])
+
+truvy = north["Truvy’s Salon"]
+assert truvy["assortment"]
+for row in truvy["assortment"]:
+    assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["Cyberware", "Fashionware"]
+assert "fashionware-installation" in {row["service_key"] for row in truvy["services"]}
+
+breeze = north["Breeze"]
+assert breeze["assortment"]
+for row in breeze["assortment"]:
+    assert engine.commercial_by_id[row["item_id"]]["classification_path"][:2] == ["Medical & Chemical", "Street Drugs"]
+
+burning = north["Burning Bright Bodega"]
+assert burning["assortment"]
+for row in burning["assortment"]:
+    path = engine.commercial_by_id[row["item_id"]]["classification_path"]
+    assert path[:2] == ["Food, Drink & Consumables", "Foodstuffs"] or path[0] == "General Equipment"
+
 print(
     "OK: generic world fixtures; "
     f"Kaito entities={len(kaito_a['entities'])}, Downtown entities={len(entities)}, "
-    f"Little Europe remainder={len(little)}, Upper Marina entities={len(upper)}"
+    f"Little Europe remainder={len(little)}, Upper Marina entities={len(upper)}, "
+    f"Kabuki entities={len(kabuki)}, North Heywood entities={len(north)}"
 )
