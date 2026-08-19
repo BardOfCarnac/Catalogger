@@ -10,8 +10,9 @@ module projects them into a runtime graph with two deliberately orthogonal conce
 Typed relationships live beside the entities. Existing ``parent_entity_id`` links remain
 valid v0.2 input and are projected as ``contained_in`` only when a more specific explicit
 relationship has not been supplied for the same source/target pair. Runtime-only migration
-overrides may also live in ``data/worlds/<world>/runtime-relationships.v0.3.json`` so the
-reviewed editorial fixtures do not need to be rewritten merely to correct runtime semantics.
+overrides may live in one or more ``runtime-relationships*.v0.3.json`` registries under the
+world directory so reviewed editorial fixtures do not need to be rewritten merely to correct
+runtime semantics.
 """
 from __future__ import annotations
 
@@ -141,46 +142,56 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
 def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
     """Load runtime-only typed relationship migrations for one reviewed fixture.
 
-    The registry is optional. It deliberately keys by ``fixture_id`` so runtime semantics can
-    evolve without editing the source-reviewed v0.2 fixture. Relationship validation still
-    happens in ``normalize_relationships`` against the fixture's actual entity IDs.
+    Registries are optional and split-friendly. Each file deliberately keys by ``fixture_id``
+    so runtime semantics can evolve without editing the source-reviewed v0.2 fixture. All files
+    matching ``runtime-relationships*.v0.3.json`` are loaded in lexical path order, making the
+    combined projection deterministic. Duplicate semantic edges are rejected later by
+    ``normalize_relationships`` rather than silently overriding one another.
     """
     world_id = doc.get("world_id")
     fixture_id = doc.get("fixture_id")
     if not world_id or not fixture_id:
         return []
 
-    path = ROOT / "data" / "worlds" / world_id / "runtime-relationships.v0.3.json"
-    if not path.exists():
+    world_dir = ROOT / "data" / "worlds" / world_id
+    paths = sorted(world_dir.glob("runtime-relationships*.v0.3.json"))
+    if not paths:
         return []
 
-    registry = json.loads(path.read_text(encoding="utf-8"))
-    if registry.get("world_id") != world_id:
-        raise WorldFixtureError(
-            f"runtime relationship registry world mismatch: {registry.get('world_id')} != {world_id}"
-        )
-    if registry.get("format_version") != RUNTIME_VERSION:
-        raise WorldFixtureError(
-            "runtime relationship registry version mismatch: "
-            f"{registry.get('format_version')} != {RUNTIME_VERSION}"
-        )
+    combined: list[dict[str, Any]] = []
+    for path in paths:
+        registry = json.loads(path.read_text(encoding="utf-8"))
+        if registry.get("world_id") != world_id:
+            raise WorldFixtureError(
+                f"runtime relationship registry world mismatch in {path.name}: "
+                f"{registry.get('world_id')} != {world_id}"
+            )
+        if registry.get("format_version") != RUNTIME_VERSION:
+            raise WorldFixtureError(
+                f"runtime relationship registry version mismatch in {path.name}: "
+                f"{registry.get('format_version')} != {RUNTIME_VERSION}"
+            )
 
-    fixtures = registry.get("fixtures", {})
-    if not isinstance(fixtures, dict):
-        raise WorldFixtureError("runtime relationship registry 'fixtures' must be an object")
-    rows = fixtures.get(fixture_id, [])
-    if not isinstance(rows, list):
-        raise WorldFixtureError(
-            f"runtime relationship registry fixture {fixture_id!r} must contain a list"
-        )
-    return copy.deepcopy(rows)
+        fixtures = registry.get("fixtures", {})
+        if not isinstance(fixtures, dict):
+            raise WorldFixtureError(
+                f"runtime relationship registry {path.name!r} 'fixtures' must be an object"
+            )
+        rows = fixtures.get(fixture_id, [])
+        if not isinstance(rows, list):
+            raise WorldFixtureError(
+                f"runtime relationship registry {path.name!r} fixture {fixture_id!r} "
+                "must contain a list"
+            )
+        combined.extend(copy.deepcopy(rows))
+    return combined
 
 
 def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
     """Return typed relationships plus safe legacy-parent fallbacks.
 
-    Relationships can be explicitly embedded in a reviewed fixture or supplied by the v0.3
-    runtime migration registry. Either form suppresses the automatic
+    Relationships can be explicitly embedded in a reviewed fixture or supplied by v0.3
+    runtime migration registries. Either form suppresses the automatic
     ``parent_entity_id -> contained_in`` fallback for the same source/target pair. This is the
     key migration rule: old fixtures continue to work while overloaded parent links are
     corrected incrementally and without changing v0.2 consumer data.
