@@ -34,6 +34,15 @@ def has_relation(runtime: dict, source_id: str, target_id: str, relationship_typ
     )
 
 
+def relation(runtime: dict, source_id: str, target_id: str, relationship_type: str) -> dict:
+    return next(
+        row for row in runtime["relationships"]
+        if row["source_entity_id"] == source_id
+        and row["target_entity_id"] == target_id
+        and row["relationship_type"] == relationship_type
+    )
+
+
 # A normal containment link remains losslessly available through the parent fallback.
 little_source = load("data/worlds/night-city-2045/little-europe-remainder.v1.json")
 little = realize_runtime_document(little_source, engine)
@@ -111,6 +120,36 @@ assert has_relation(
     "operated_by",
 )
 
+# A reviewed migration can explicitly confirm containment rather than changing the verb. This
+# is what makes the fallback count a useful unresolved-work metric rather than a type count.
+pacifica_parties = realize_runtime_document(
+    load("data/worlds/night-city-2045/pacifica-playground-retail-capable.v1.json"), engine
+)
+parties_rel = relation(
+    pacifica_parties,
+    "NC2045-MEN-PACIFICA-PLAYGROUND-278-PACIFICA-PARTIES",
+    "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+    "contained_in",
+)
+assert parties_rel["runtime_origin"] == "runtime_registry"
+assert "inferred_from" not in parties_rel
+
+# A permanent service stall inside a rotating market is location-at-event semantics rather than
+# structural containment by a place.
+santo = realize_runtime_document(load("data/worlds/night-city-2045/santo-domingo-core.v1.json"), engine)
+assert has_relation(
+    santo,
+    "NC2045-MEN-SANTO-DOMINGO-266-DOC-SPINDLER",
+    "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+    "appears_at",
+)
+assert not has_relation(
+    santo,
+    "NC2045-MEN-SANTO-DOMINGO-266-DOC-SPINDLER",
+    "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+    "contained_in",
+)
+
 # Relationship validation fails closed rather than silently accepting an ad-hoc vocabulary.
 bad = copy.deepcopy(suzuki_source)
 bad["relationships"].append({
@@ -129,7 +168,7 @@ registry = load("data/worlds/night-city-2045/runtime-relationships.v0.3.json")
 registry_rows = sum(len(rows) for rows in registry["fixtures"].values())
 assert registry["format_version"] == "0.3.0"
 assert registry["world_id"] == "night-city-2045"
-assert registry_rows == 21, registry_rows
+assert registry_rows == 34, registry_rows
 
 # Project the complete reviewed corpus. This is the key compatibility promise: v0.3 changes
 # representation, not source content, stock realization or entity identity.
@@ -192,8 +231,8 @@ assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
 assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 23, runtime_explicit_relationships
-assert runtime_inferred_relationships == 195, runtime_inferred_relationships
+assert runtime_explicit_relationships == 36, runtime_explicit_relationships
+assert runtime_inferred_relationships == 182, runtime_inferred_relationships
 
 print(
     "OK: v0.3 runtime projection; "
