@@ -1,0 +1,103 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-university-district-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [106, 107, 110],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOGRAPH-THEATER",
+      "name": "Biograph Theater",
+      "entity_type": "service",
+      "district": "University District",
+      "map_no": 2,
+      "book_page": 106,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 106",
+      "source_summary": "Small two-screen vintage cinema using film projectors, with one screen for art films and another for classic adult cinema; no retail merchandise is stated.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "cinema-screenings", "label": "Cinema screenings"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_CINEMA_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FASHION-CUTS",
+      "name": "Fashion Cuts",
+      "entity_type": "hybrid",
+      "district": "University District",
+      "map_no": 7,
+      "book_page": 107,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 107",
+      "source_summary": "Long-running student-focused styling shop offering hair services and fashionware installation under Medtech owner Sam Yurrid.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "proprietor": {"name": "Sam Yurrid", "role": "Medtech", "rank": 4},
+      "stocking": {
+        "archetype_id": "cyberware-clinic",
+        "seed": "nc2045:university-district:fashion-cuts:v1",
+        "overrides": {
+          "primary_departments": ["cyberware"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "channel_weights": {"specialist": 7, "retail": 5, "direct_order": 3},
+          "allowed_classification_prefixes": [["Cyberware", "Fashionware"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "hair-styling", "label": "Hair styling"},
+        {"service_key": "fashionware-installation", "label": "Fashionware installation"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_FASHIONWARE_ONLY_SALON_AND_CLINIC"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-STEMS-SEEDS",
+      "name": "Stems & Seeds",
+      "entity_type": "hybrid",
+      "district": "University District",
+      "map_no": 15,
+      "book_page": 110,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 110",
+      "source_summary": "Fortified urban farm growing produce indoors and selling it directly through an outside day market or by special order; customers can also collect ganga shipments through its Dirty Hippies connection.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Lily Larson", "role": "Medtech/Tech", "rank": 4},
+      "local_offerings": [
+        {"offering_key": "fresh-produce", "label": "Fresh locally grown produce"},
+        {"offering_key": "special-order-produce", "label": "Crated produce by special order"}
+      ],
+      "services": [{"service_key": "ganga-shipment-pickup", "label": "Pickup point for Dirty Hippies ganga shipments"}],
+      "schedule": {"kind": "day_market", "note": "Produce is sold directly at an outdoor day market"},
+      "catalogue_note": "The source establishes site-grown produce rather than a general grocery assortment, so stock remains local.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_LOCAL_PRODUCE_MARKET_AND_PICKUP_POINT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-TUMBLE-AND-DRY",
+      "name": "Tumble and Dry",
+      "entity_type": "service",
+      "district": "University District",
+      "map_no": 16,
+      "book_page": 110,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 110",
+      "source_summary": "NCU-owned all-night laundromat; students receive a tuition-included allowance before paying per machine use.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "schedule": {"kind": "always_open", "note": "Open 24/7"},
+      "services": [{"service_key": "laundry-machine-use", "label": "Laundry machine use"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_LAUNDRY_SERVICE"}
+    }
+  ]
+}
