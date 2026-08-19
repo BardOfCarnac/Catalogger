@@ -27,12 +27,26 @@ def reviewed_entities() -> list[dict[str, Any]]:
     return entities
 
 
+def candidate_rows(doc: dict[str, Any]) -> list[dict[str, Any]]:
+    schema = doc.get("schema", [])
+    rows = doc.get("rows", [])
+    if not schema or not rows:
+        raise AssertionError("Review Queue candidate file must contain schema + rows")
+    return [dict(zip(schema, row, strict=True)) for row in rows]
+
+
 def main() -> None:
     candidate_doc = json.loads(CANDIDATE_PATH.read_text(encoding="utf-8"))
-    candidates = candidate_doc["candidates"]
+    candidates = candidate_rows(candidate_doc)
     expected = candidate_doc.get("candidate_count")
     if expected != len(candidates):
         raise AssertionError(f"candidate_count says {expected}, but file contains {len(candidates)} candidates")
+    relevance_counts = Counter(row["vendr_relevance"] for row in candidates)
+    declared_counts = Counter(candidate_doc.get("relevance_counts", {}))
+    if dict(relevance_counts) != candidate_doc.get("relevance_counts"):
+        raise AssertionError(
+            f"relevance_counts mismatch: declared={candidate_doc.get('relevance_counts')} actual={dict(relevance_counts)}"
+        )
 
     reviewed = reviewed_entities()
     by_id = {row["entity_id"]: row for row in reviewed}
@@ -58,7 +72,7 @@ def main() -> None:
         f"REVIEW_QUEUE coverage: candidates={len(candidates)} exact_reviewed={len(exact)} "
         f"same_name_reviewed={len(renamed)} not_yet_represented={len(missing)}"
     )
-    print("Candidate relevance:", dict(Counter(row["vendr_relevance"] for row in candidates)))
+    print("Candidate relevance:", dict(relevance_counts))
     print("Missing relevance:", dict(Counter(row["vendr_relevance"] for row in missing)))
 
     print("\n## Already represented by exact entity_id")
@@ -80,7 +94,7 @@ def main() -> None:
     for candidate in sorted(missing, key=lambda row: (row["district"], row["book_page"], row["name"])):
         print(
             f"{candidate['district']} p.{candidate['book_page']} | {candidate['name']} | "
-            f"{candidate['vendr_relevance']} | {candidate['evidence_basis']}"
+            f"{candidate['vendr_relevance']}"
         )
 
 
