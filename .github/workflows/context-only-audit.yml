@@ -1,0 +1,17 @@
+name: Audit CONTEXT_ONLY commercial false negatives
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  context-only-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/build_commercial_profiles.py
+      - run: python scripts/test_world_fixture_context_only_hiz.py
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json
