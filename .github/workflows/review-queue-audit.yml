@@ -18,6 +18,7 @@ jobs:
       - run: python scripts/test_world_fixture_review_queue_kabuki_glen.py
       - run: python scripts/test_world_fixture_review_queue_westbrook_japantown.py
       - run: python scripts/test_world_fixture_review_queue_little_pacifica_rancho_university.py
+      - run: python scripts/test_world_fixture_review_queue_final.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-review-queue.v1.json --output build/data/worlds/night-city-2045/watson-development-review-queue.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-review-queue.v1.json --output build/data/worlds/night-city-2045/upper-marina-review-queue.v1.json
@@ -30,4 +31,15 @@ jobs:
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/pacifica-playground-review-queue.v1.json --output build/data/worlds/night-city-2045/pacifica-playground-review-queue.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-review-queue.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-review-queue.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/university-district-review-queue.v1.json --output build/data/worlds/night-city-2045/university-district-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/charter-hill-review-queue.v1.json --output build/data/worlds/night-city-2045/charter-hill-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-europe-review-queue.v1.json --output build/data/worlds/night-city-2045/little-europe-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/norcal-military-base-review-queue.v1.json --output build/data/worlds/night-city-2045/norcal-military-base-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/north-heywood-review-queue.v1.json --output build/data/worlds/night-city-2045/north-heywood-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/executive-zone-review-queue.v1.json --output build/data/worlds/night-city-2045/executive-zone-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-review-queue.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/reclamation-zone-review-queue.v1.json --output build/data/worlds/night-city-2045/reclamation-zone-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-review-queue.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/santo-domingo-review-queue.v1.json --output build/data/worlds/night-city-2045/santo-domingo-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-review-queue.v1.json --output build/data/worlds/night-city-2045/south-night-city-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-hot-zone-review-queue.v1.json --output build/data/worlds/night-city-2045/the-hot-zone-review-queue.v1.json
       - run: python scripts/audit_review_queue_candidates.py
