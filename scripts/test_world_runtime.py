@@ -134,6 +134,18 @@ parties_rel = relation(
 assert parties_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in parties_rel
 
+# Split registries behave exactly like the original migration registry. The Bonesetter relation
+# comes from the dedicated spatial-confirmation registry and must suppress the legacy fallback.
+hong_kong = realize_runtime_document(load("data/worlds/night-city-2045/little-china-core.v1.json"), engine)
+bonesetter_rel = relation(
+    hong_kong,
+    "NC2045-OUT-LITTLE-CHINA-099-THE-BONESETTER",
+    "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+    "contained_in",
+)
+assert bonesetter_rel["runtime_origin"] == "runtime_registry"
+assert "inferred_from" not in bonesetter_rel
+
 # A permanent service stall inside a rotating market is location-at-event semantics rather than
 # structural containment by a place.
 santo = realize_runtime_document(load("data/worlds/night-city-2045/santo-domingo-core.v1.json"), engine)
@@ -164,11 +176,15 @@ except WorldFixtureError:
 else:
     raise AssertionError("unknown relationship type was accepted")
 
-registry = load("data/worlds/night-city-2045/runtime-relationships.v0.3.json")
-registry_rows = sum(len(rows) for rows in registry["fixtures"].values())
-assert registry["format_version"] == "0.3.0"
-assert registry["world_id"] == "night-city-2045"
-assert registry_rows == 34, registry_rows
+registry_paths = sorted(WORLD_DIR.glob("runtime-relationships*.v0.3.json"))
+assert len(registry_paths) == 2, [path.name for path in registry_paths]
+registry_rows = 0
+for registry_path in registry_paths:
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    assert registry["format_version"] == "0.3.0"
+    assert registry["world_id"] == "night-city-2045"
+    registry_rows += sum(len(rows) for rows in registry["fixtures"].values())
+assert registry_rows == 63, registry_rows
 
 # Project the complete reviewed corpus. This is the key compatibility promise: v0.3 changes
 # representation, not source content, stock realization or entity identity.
@@ -231,8 +247,8 @@ assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
 assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 36, runtime_explicit_relationships
-assert runtime_inferred_relationships == 182, runtime_inferred_relationships
+assert runtime_explicit_relationships == 65, runtime_explicit_relationships
+assert runtime_inferred_relationships == 153, runtime_inferred_relationships
 
 print(
     "OK: v0.3 runtime projection; "
