@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Close-out regression for the complete Night City 2045 CONTEXT_ONLY census."""
+import re
 from pathlib import Path
 
 from world_fixture import load_json, realize_document, validate_document
@@ -20,12 +21,12 @@ recovered_children = 0
 stock_bearing = 0
 
 for candidate_path in candidate_files:
-    slug = candidate_path.name[len("context-only-candidates-"):-len(".v0.2.json")]
-    fixture_path = DATA / f"{slug}-context-only.v1.json"
-    assert fixture_path.exists(), fixture_path
-
     candidate_doc = load_json(candidate_path)
     assert candidate_doc["classification"] == "CONTEXT_ONLY"
+    district_slug = re.sub(r"[^a-z0-9]+", "-", candidate_doc["district"].lower()).strip("-")
+    fixture_path = DATA / f"{district_slug}-context-only.v1.json"
+    assert fixture_path.exists(), fixture_path
+
     schema = candidate_doc["schema"]
     candidates = [dict(zip(schema, row, strict=True)) for row in candidate_doc["rows"]]
     assert candidate_doc["candidate_count"] == len(candidates)
