@@ -1,0 +1,28 @@
+name: Audit held-out commercial review queue
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  review-queue-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/build_commercial_profiles.py
+      - run: python scripts/test_world_fixture_review_queue_watson_playland.py
+      - run: python scripts/test_world_fixture_review_queue_upper_downtown.py
+      - run: python scripts/test_world_fixture_review_queue_kabuki_glen.py
+      - run: python scripts/test_world_fixture_review_queue_westbrook_japantown.py
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-review-queue.v1.json --output build/data/worlds/night-city-2045/watson-development-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-review-queue.v1.json --output build/data/worlds/night-city-2045/upper-marina-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-review-queue.v1.json --output build/data/worlds/night-city-2045/downtown-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kabuki-review-queue.v1.json --output build/data/worlds/night-city-2045/kabuki-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-glen-review-queue.v1.json --output build/data/worlds/night-city-2045/the-glen-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/new-westbrook-review-queue.v1.json --output build/data/worlds/night-city-2045/new-westbrook-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-review-queue.v1.json --output build/data/worlds/night-city-2045/old-japantown-review-queue.v1.json
+      - run: python scripts/audit_review_queue_candidates.py
