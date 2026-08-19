@@ -1,16 +1,13 @@
 {
-  "pack_version": "0.2.0",
+  "pack_version": "0.1.0",
   "pack_id": "circleofnoms-consumer",
   "counts": {
     "concepts": 127,
     "official_links": 15,
     "descriptors": 23,
-    "raw_source_outcomes_reviewed": 300,
-    "consumer_company_profiles": 20,
-    "consumer_product_line_profiles": 7,
-    "restrained_brand_profiles": 13,
+    "brand_profiles": 27,
     "brand_affinity_edges": 200,
-    "concepts_with_at_least_one_brand_affinity": 90
+    "raw_source_outcomes_reviewed": 300
   },
   "files": [
     "README.md",
