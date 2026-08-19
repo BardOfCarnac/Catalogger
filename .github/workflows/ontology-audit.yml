@@ -18,6 +18,7 @@ jobs:
       - run: python scripts/test_world_fixture_retail_capable_watson_downtown.py
       - run: python scripts/test_world_fixture_retail_capable_remaining.py
       - run: python scripts/test_world_fixture_review_queue_watson_playland.py
+      - run: python scripts/test_world_fixture_review_queue_upper_downtown.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-retail-capable.v1.json --output build/data/worlds/night-city-2045/south-night-city-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-retail-capable.v1.json --output build/data/worlds/night-city-2045/watson-development-retail-capable.v1.json
@@ -38,5 +39,7 @@ jobs:
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-review-queue.v1.json --output build/data/worlds/night-city-2045/watson-development-review-queue.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-review-queue.v1.json --output build/data/worlds/night-city-2045/upper-marina-review-queue.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-review-queue.v1.json --output build/data/worlds/night-city-2045/downtown-review-queue.v1.json
       - run: python scripts/audit_retail_capable_candidates.py
       - run: python scripts/audit_review_queue_candidates.py
