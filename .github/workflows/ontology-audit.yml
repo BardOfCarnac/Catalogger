@@ -36,3 +36,4 @@ jobs:
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-retail-capable.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-retail-capable.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-retail-capable.v1.json
       - run: python scripts/audit_retail_capable_candidates.py
+      - run: python scripts/audit_review_queue_candidates.py
