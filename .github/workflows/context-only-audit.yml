@@ -24,6 +24,8 @@ jobs:
       - run: python scripts/test_world_fixture_context_only_watson_ocz_university.py
       - run: python scripts/test_world_fixture_context_only_docks_north_pacifica.py
       - run: python scripts/test_world_fixture_context_only_exec_hot_port.py
+      - run: python scripts/test_world_fixture_context_only_little_china_rancho.py
+      - run: python scripts/test_world_fixture_context_only_census.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-context-only.v1.json --output build/data/worlds/night-city-2045/old-japantown-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-context-only.v1.json --output build/data/worlds/night-city-2045/upper-marina-context-only.v1.json
@@ -47,3 +49,5 @@ jobs:
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/executive-zone-context-only.v1.json --output build/data/worlds/night-city-2045/executive-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-hot-zone-context-only.v1.json --output build/data/worlds/night-city-2045/the-hot-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-context-only.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-china-context-only.v1.json --output build/data/worlds/night-city-2045/little-china-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-context-only.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-context-only.v1.json
