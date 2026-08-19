@@ -18,8 +18,12 @@ jobs:
       - run: python scripts/test_world_fixture_context_only_upper_marina.py
       - run: python scripts/test_world_fixture_context_only_new_westbrook.py
       - run: python scripts/test_world_fixture_context_only_downtown.py
+      - run: python scripts/test_world_fixture_context_only_south_glen_kabuki.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-context-only.v1.json --output build/data/worlds/night-city-2045/old-japantown-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-context-only.v1.json --output build/data/worlds/night-city-2045/upper-marina-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/new-westbrook-context-only.v1.json --output build/data/worlds/night-city-2045/new-westbrook-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-context-only.v1.json --output build/data/worlds/night-city-2045/downtown-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-context-only.v1.json --output build/data/worlds/night-city-2045/south-night-city-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-glen-context-only.v1.json --output build/data/worlds/night-city-2045/the-glen-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kabuki-context-only.v1.json --output build/data/worlds/night-city-2045/kabuki-context-only.v1.json
