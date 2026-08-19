@@ -21,6 +21,7 @@ jobs:
       - run: python scripts/test_world_fixture_context_only_south_glen_kabuki.py
       - run: python scripts/test_world_fixture_context_only_playland_littleeurope_charter.py
       - run: python scripts/test_world_fixture_context_only_norcal_reclamation_santo.py
+      - run: python scripts/test_world_fixture_context_only_watson_ocz_university.py
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-context-only.v1.json --output build/data/worlds/night-city-2045/old-japantown-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-context-only.v1.json --output build/data/worlds/night-city-2045/upper-marina-context-only.v1.json
@@ -35,3 +36,6 @@ jobs:
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/norcal-military-base-context-only.v1.json --output build/data/worlds/night-city-2045/norcal-military-base-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/reclamation-zone-context-only.v1.json --output build/data/worlds/night-city-2045/reclamation-zone-context-only.v1.json
       - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/santo-domingo-context-only.v1.json --output build/data/worlds/night-city-2045/santo-domingo-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-context-only.v1.json --output build/data/worlds/night-city-2045/watson-development-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-combat-zone-context-only.v1.json --output build/data/worlds/night-city-2045/old-combat-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/university-district-context-only.v1.json --output build/data/worlds/night-city-2045/university-district-context-only.v1.json
