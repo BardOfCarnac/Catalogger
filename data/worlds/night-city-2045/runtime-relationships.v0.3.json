@@ -1,0 +1,188 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only typed relationship overrides for source-reviewed v0.2 fixtures. These replace overloaded parent_entity_id semantics without rewriting the editorial/source corpus.",
+  "fixtures": {
+    "nc2045-downtown-core-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-EVENT-DOWNTOWN-082-BELLA-VISTA-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+        "source_ref": "Night City 2045 p. 82",
+        "note": "The after-dark Night Market is an event occurring at the persistent Bella Vista Market place."
+      }
+    ],
+    "nc2045-heywood-docks-retail-capable-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-EVT-HEYWOOD-DOCKS-243-WAREHOUSE-13-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-WAREHOUSE-13",
+        "source_ref": "Night City 2045 p. 243",
+        "note": "Warehouse 13 is the venue used by the occasional Night Market."
+      }
+    ],
+    "nc2045-heywood-industrial-zone-core-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-STREET-CARTS",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+        "source_ref": "Night City 2045 p. 259",
+        "note": "The rotating street-cart channel appears on the Old Ironworks factory floor; the building does not own a fixed vendor entity."
+      }
+    ],
+    "nc2045-heywood-industrial-zone-review-queue-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-HEYWOOD-INDUSTRIAL-ZONE-261-MICROVILLAGE-STREETCARTS",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+        "source_ref": "Night City 2045 p. 261",
+        "note": "Rotating streetcart vendors appear in the MicroVillage courtyard."
+      }
+    ],
+    "nc2045-kabuki-context-only-v1": [
+      {
+        "relationship_type": "operated_by",
+        "source_entity_id": "NC2045-CHN-KABUKI-202-G3-MUSIC-CHIPS-THE-GARDEN",
+        "target_entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+        "source_ref": "Night City 2045 p. 202",
+        "note": "The Garden sales channel is used by G3 to sell copies of the station's recovered music chips; it is not a physical tenant inside the station."
+      }
+    ],
+    "nc2045-little-europe-retail-capable-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-EVT-LITTLE-EUROPE-062-3-PIECE-S-JOINT",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
+        "source_ref": "Night City 2045 p. 62",
+        "note": "3-Piece's recurring tech Night Market takes place on Short Circuit's top floor."
+      }
+    ],
+    "nc2045-new-westbrook-context-only-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-NEW-WESTBROOK-218-INNOVATION-HUB-SIDE-HUSTLES",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-INNOVATION-HUB",
+        "source_ref": "Night City 2045 pp. 218-219",
+        "note": "The informal Tech/Medtech service channel consists of resident side work carried out from the Hub rather than a separately contained shop."
+      }
+    ],
+    "nc2045-new-westbrook-core-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-NEW-WESTBROOK-216-HOLLIDAY-ROTATING-VENDORS",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+        "source_ref": "Night City 2045 p. 216",
+        "note": "The channel represents rotating sellers who set up temporary pitches at Holliday Market."
+      }
+    ],
+    "nc2045-north-heywood-context-only-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-NORTH-HEYWOOD-249-EVERGREEN-INFORMAL-DEALERS",
+        "target_entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-EVERGREEN-VISTA-PARK",
+        "source_ref": "Night City 2045 p. 249",
+        "note": "Unnamed clandestine sellers appear in the park at night."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-NORTH-HEYWOOD-250-NEON-HOLLOW-ROTATING-VICE",
+        "target_entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NEON-HOLLOW-STRIP",
+        "source_ref": "Night City 2045 p. 250",
+        "note": "The channel represents frequently changing businesses appearing along the Neon Hollow Strip."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-NORTH-HEYWOOD-251-TURBINE-CHOP-SHOPS",
+        "target_entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-TURBINE-ALLEY",
+        "source_ref": "Night City 2045 p. 251",
+        "note": "Unnamed chop shops and workshops operate as a changing collection at Turbine Alley."
+      }
+    ],
+    "nc2045-pacifica-playground-core-v1": [
+      {
+        "relationship_type": "operated_by",
+        "source_entity_id": "NC2045-EVENT-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY-ANNUAL-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+        "source_ref": "Night City 2045 p. 281",
+        "note": "The event is run by Smile Another Day's owner but occurs in the Volkodav Racetrack Party Room, so the legacy parent link was operational rather than spatial."
+      }
+    ],
+    "nc2045-port-of-night-city-core-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-EVT-PORT-OF-NIGHT-CITY-152-DOCK-13-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+        "source_ref": "Night City 2045 p. 152",
+        "note": "The occasional Night Market is hosted at Dock 13."
+      }
+    ],
+    "nc2045-rancho-coronado-core-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "RC Night Markets are temporary events staged at the persistent Minimallism venue."
+      },
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-EVENT-RANCHO-CORONADO-290-MS-MYNAH-APPAREL-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "Ms. Mynah's regular apparel market is held at Minimallism."
+      }
+    ],
+    "nc2045-santo-domingo-core-v1": [
+      {
+        "relationship_type": "market_event_at",
+        "source_entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+        "source_ref": "Night City 2045 p. 266",
+        "note": "Bazaar El Saber is the rotating Nomad day market held at the Aldecaldo Camp."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-EVT-SANTO-DOMINGO-270-WOODCHIPPER-NIGHT-MARKET",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+        "source_ref": "Night City 2045 p. 270",
+        "note": "The Night Market is explicitly nearby rather than inside the garage; the garage remains its useful named map anchor."
+      }
+    ],
+    "nc2045-the-glen-retail-capable-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-THE-GLEN-121-HALL-OF-JUSTICE-CONCESSIONS",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE",
+        "source_ref": "Night City 2045 p. 121",
+        "note": "Temporary concession vendors appear at public punishment events rather than forming a permanent Hall of Justice tenant."
+      }
+    ],
+    "nc2045-upper-marina-retail-capable-v1": [
+      {
+        "relationship_type": "fulfills_for",
+        "source_entity_id": "NC2045-CHN-UPPER-MARINA-076-GREAT-RIVER",
+        "target_entity_id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+        "source_ref": "Night City 2045 p. 76",
+        "note": "Great River provides retail ordering and delivery for Corporate Terrace residents; it is not physically contained in the housing complex."
+      }
+    ],
+    "nc2045-watson-development-retail-capable-v1": [
+      {
+        "relationship_type": "operated_by",
+        "source_entity_id": "NC2045-CHN-WATSON-DEVELOPMENT-188-FAISAL-FACTORY-OUTPUT",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+        "source_ref": "Night City 2045 p. 188",
+        "note": "The channel is Faisal's factory output supplying external vendits and bodegas, not a contained customer outlet."
+      }
+    ],
+    "nc2045-watson-development-review-queue-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-CHN-WATSON-DEVELOPMENT-192-OUMEI-JI-STREET-FOOD-STALLS",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-192-OUMEI-JI-TEMPLE",
+        "source_ref": "Night City 2045 p. 192",
+        "note": "The food stalls are set up in front of the temple; they are associated with the place but are not interior tenants."
+      }
+    ]
+  }
+}
