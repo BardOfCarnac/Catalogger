@@ -9,6 +9,16 @@
     "pages": [58, 59, 63],
     "note": "Factual metadata and concise paraphrases only; source prose is not reproduced."
   },
+  "relationships": [
+    {
+      "relationship_type": "operated_by",
+      "source_entity_id": "NC2045-EVENT-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-MARKET-STALLS",
+      "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 63",
+      "note": "The event-market record represents T&C's own travelling market-stall operation, not a place physically contained inside the permanent shop."
+    }
+  ],
   "entities": [
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
@@ -121,6 +131,7 @@
       "entity_id": "NC2045-EVENT-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-MARKET-STALLS",
       "name": "Torrell and Chiang’s Market Stalls",
       "entity_type": "event_market",
+      "runtime_kind": "outlet",
       "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
       "district": "Little Europe",
       "book_page": 63,
