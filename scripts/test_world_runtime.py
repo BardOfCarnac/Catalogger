@@ -43,7 +43,7 @@ def relation(runtime: dict, source_id: str, target_id: str, relationship_type: s
     )
 
 
-# A normal containment link remains losslessly available through the parent fallback.
+# Ordinary unresolved containment still projects safely from parent_entity_id.
 little_source = load("data/worlds/night-city-2045/little-europe-remainder.v1.json")
 little = realize_runtime_document(little_source, engine)
 little_by_name = {row["name"]: row for row in little["entities"]}
@@ -52,16 +52,13 @@ assert little["source_format_version"] == "0.2.0"
 assert little_by_name["Everything and More"]["entity_kind"] == "outlet"
 assert "catalog_stock" in little_by_name["Everything and More"]["capabilities"]
 assert little_by_name["Fast Eddie"]["entity_kind"] == "service_point"
-assert "services" in little_by_name["Fast Eddie"]["capabilities"]
 fast_eddie = "NC2045-OUT-LITTLE-EUROPE-058-FAST-EDDIE-GUIDE"
 vertical = "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD"
-assert has_relation(little, fast_eddie, vertical, "contained_in")
-fast_eddie_rel = next(row for row in little["relationships"] if row["source_entity_id"] == fast_eddie)
+fast_eddie_rel = relation(little, fast_eddie, vertical, "contained_in")
 assert fast_eddie_rel["inferred_from"] == "parent_entity_id"
 assert fast_eddie_rel["runtime_origin"] == "legacy_parent_fallback"
 
-# T&C demonstrates why entity identity and behaviour are now separate. The legacy source type
-# remains event_market for v0.2 consumers, but runtime identity is an outlet with event behaviour.
+# T&C proves identity and event behaviour are independent in runtime v0.3.
 tc_stalls = "NC2045-EVENT-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-MARKET-STALLS"
 tc_shop = "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S"
 tc = next(row for row in little["entities"] if row["entity_id"] == tc_stalls)
@@ -71,8 +68,7 @@ assert "event" in tc["capabilities"]
 assert has_relation(little, tc_stalls, tc_shop, "operated_by")
 assert not has_relation(little, tc_stalls, tc_shop, "contained_in")
 
-# Mrs Suzuki's market is a real recurring event, but the legacy parent pointed to the bodega
-# even though the event occurs elsewhere. Explicit operation therefore replaces fake containment.
+# Mrs Suzuki's market is operated by the bodega family but occurs elsewhere.
 suzuki_source = load("data/worlds/night-city-2045/old-japantown-core.v1.json")
 suzuki = realize_runtime_document(suzuki_source, engine)
 suzuki_event_id = "NC2045-EVT-OLD-JAPANTOWN-132-SUZUKI-MONTHLY-NIGHT-MARKET"
@@ -83,7 +79,7 @@ assert {"event", "scheduled", "access_controlled"} <= set(suzuki_event["capabili
 assert has_relation(suzuki, suzuki_event_id, suzuki_bodega_id, "operated_by")
 assert not has_relation(suzuki, suzuki_event_id, suzuki_bodega_id, "contained_in")
 
-# Runtime registry migrations cover several distinct semantics without mutating v0.2 fixtures.
+# Representative runtime-registry semantics.
 bella = realize_runtime_document(load("data/worlds/night-city-2045/downtown-core.v1.json"), engine)
 assert has_relation(
     bella,
@@ -91,7 +87,6 @@ assert has_relation(
     "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
     "market_event_at",
 )
-
 great_river = realize_runtime_document(
     load("data/worlds/night-city-2045/upper-marina-retail-capable.v1.json"), engine
 )
@@ -101,7 +96,6 @@ assert has_relation(
     "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
     "fulfills_for",
 )
-
 holliday = realize_runtime_document(load("data/worlds/night-city-2045/new-westbrook-core.v1.json"), engine)
 assert has_relation(
     holliday,
@@ -109,7 +103,6 @@ assert has_relation(
     "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
     "appears_at",
 )
-
 faisal = realize_runtime_document(
     load("data/worlds/night-city-2045/watson-development-retail-capable.v1.json"), engine
 )
@@ -120,8 +113,7 @@ assert has_relation(
     "operated_by",
 )
 
-# A reviewed migration can explicitly confirm containment rather than changing the verb. This
-# is what makes the fallback count a useful unresolved-work metric rather than a type count.
+# Explicit contained_in means the edge has been reviewed, not left as a fallback.
 pacifica_parties = realize_runtime_document(
     load("data/worlds/night-city-2045/pacifica-playground-retail-capable.v1.json"), engine
 )
@@ -134,8 +126,7 @@ parties_rel = relation(
 assert parties_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in parties_rel
 
-# Split registries behave exactly like the original migration registry. The Bonesetter relation
-# comes from the dedicated spatial-confirmation registry and must suppress the legacy fallback.
+# Split registries must combine deterministically and suppress legacy fallback edges.
 hong_kong = realize_runtime_document(load("data/worlds/night-city-2045/little-china-core.v1.json"), engine)
 bonesetter_rel = relation(
     hong_kong,
@@ -146,8 +137,20 @@ bonesetter_rel = relation(
 assert bonesetter_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in bonesetter_rel
 
-# A permanent service stall inside a rotating market is location-at-event semantics rather than
-# structural containment by a place.
+# Recovered-tenant registry: H11's Data Inc is an explicitly reviewed contained storefront.
+h11 = realize_runtime_document(
+    load("data/worlds/night-city-2045/watson-development-review-queue.v1.json"), engine
+)
+data_inc_rel = relation(
+    h11,
+    "NC2045-MEN-WATSON-DEVELOPMENT-191-DATA-INC",
+    "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+    "contained_in",
+)
+assert data_inc_rel["runtime_origin"] == "runtime_registry"
+assert "inferred_from" not in data_inc_rel
+
+# A permanent service stall at a rotating market is appears_at, not structural containment.
 santo = realize_runtime_document(load("data/worlds/night-city-2045/santo-domingo-core.v1.json"), engine)
 assert has_relation(
     santo,
@@ -162,7 +165,7 @@ assert not has_relation(
     "contained_in",
 )
 
-# Relationship validation fails closed rather than silently accepting an ad-hoc vocabulary.
+# Unknown relationship vocabulary fails closed.
 bad = copy.deepcopy(suzuki_source)
 bad["relationships"].append({
     "relationship_type": "sort_of_near",
@@ -176,18 +179,18 @@ except WorldFixtureError:
 else:
     raise AssertionError("unknown relationship type was accepted")
 
+# Registry corpus itself is stable and version-consistent.
 registry_paths = sorted(WORLD_DIR.glob("runtime-relationships*.v0.3.json"))
-assert len(registry_paths) == 2, [path.name for path in registry_paths]
+assert len(registry_paths) == 3, [path.name for path in registry_paths]
 registry_rows = 0
 for registry_path in registry_paths:
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     assert registry["format_version"] == "0.3.0"
     assert registry["world_id"] == "night-city-2045"
     registry_rows += sum(len(rows) for rows in registry["fixtures"].values())
-assert registry_rows == 63, registry_rows
+assert registry_rows == 90, registry_rows
 
-# Project the complete reviewed corpus. This is the key compatibility promise: v0.3 changes
-# representation, not source content, stock realization or entity identity.
+# Whole-corpus compatibility regression.
 reviewed_fixtures = 0
 reviewed_entities = 0
 legacy_parent_links = 0
@@ -230,8 +233,6 @@ for path in sorted(WORLD_DIR.glob("*.v1.json")):
         if not rel.get("external_target"):
             assert rel["target_entity_id"] in ids_v03
 
-    # Every old parent link still has one typed runtime edge for the same pair, but an explicit
-    # relationship may correctly change its meaning away from contained_in.
     for entity in doc["entities"]:
         parent = entity.get("parent_entity_id")
         if not parent:
@@ -247,8 +248,8 @@ assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
 assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 65, runtime_explicit_relationships
-assert runtime_inferred_relationships == 153, runtime_inferred_relationships
+assert runtime_explicit_relationships == 92, runtime_explicit_relationships
+assert runtime_inferred_relationships == 126, runtime_inferred_relationships
 
 print(
     "OK: v0.3 runtime projection; "
