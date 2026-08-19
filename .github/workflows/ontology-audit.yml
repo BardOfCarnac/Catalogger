@@ -14,6 +14,8 @@ jobs:
           python-version: "3.12"
       - run: python scripts/build_commercial_profiles.py
       - run: python scripts/audit_world_ontology.py
+      - run: python scripts/test_world_runtime.py
+      - run: python scripts/audit_world_runtime.py
       - run: python scripts/test_world_fixture_retail_capable_port_south.py
       - run: python scripts/test_world_fixture_retail_capable_watson_downtown.py
       - run: python scripts/test_world_fixture_retail_capable_remaining.py
