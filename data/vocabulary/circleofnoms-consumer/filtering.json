@@ -1,0 +1,23 @@
+{
+  "raw_source_outcomes_reviewed": 300,
+  "source_outcome_counts": {
+    "whats-in-this-vendit": 102,
+    "whats-in-the-box": 99,
+    "whats-in-their-pockets": 99
+  },
+  "final_normalized_consumer_concepts": 127,
+  "official_product_match_candidates": 15,
+  "merchandising_descriptors": 23,
+  "editorial_policy": [
+    "Exclude weapons, ammunition, cyberware, drugs, explicit combat gear, plot evidence, corpses/body parts, poisons, and hazardous/industrial cargo from the consumer vocabulary.",
+    "Prefer links to existing official catalogue products over duplicate vocabulary concepts.",
+    "Treat form factor, style, material, condition, size, packaging, and branding cues as descriptors when they do not define a distinct rules item.",
+    "Semantically deduplicate near-identical source outcomes into one consumer concept.",
+    "Do not infer meaning for unclear source text; unclear outcomes remain excluded pending review."
+  ],
+  "notable_unresolved_source_outcome": {
+    "text": "Clarified",
+    "source": "whats-in-this-vendit",
+    "action": "excluded-as-unclear"
+  }
+}
