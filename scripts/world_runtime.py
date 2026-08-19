@@ -9,18 +9,22 @@ module projects them into a runtime graph with two deliberately orthogonal conce
 
 Typed relationships live beside the entities. Existing ``parent_entity_id`` links remain
 valid v0.2 input and are projected as ``contained_in`` only when a more specific explicit
-relationship has not been supplied for the same source/target pair. This lets the city move
-away from overloaded parent links incrementally without rewriting the reviewed corpus.
+relationship has not been supplied for the same source/target pair. Runtime-only migration
+overrides may also live in ``data/worlds/<world>/runtime-relationships.v0.3.json`` so the
+reviewed editorial fixtures do not need to be rewritten merely to correct runtime semantics.
 """
 from __future__ import annotations
 
 import copy
+import json
+from pathlib import Path
 from typing import Any
 
 from world_fixture import WorldFixtureError, normalize_document, realize_document
 from world_stock_engine import WorldStockEngine
 
 RUNTIME_VERSION = "0.3.0"
+ROOT = Path(__file__).resolve().parents[1]
 
 ENTITY_KINDS = {
     "place",
@@ -134,13 +138,52 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
     return [cap for cap in CAPABILITY_ORDER if cap in found]
 
 
-def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
-    """Return explicit typed relationships plus safe legacy-parent fallbacks.
+def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
+    """Load runtime-only typed relationship migrations for one reviewed fixture.
 
-    An explicit relationship for a source/target pair suppresses the automatic
-    ``parent_entity_id -> contained_in`` fallback for that pair. This is the key migration
-    rule: old fixtures continue to work, while overloaded parent links can be corrected one
-    relationship at a time without breaking v0.2 consumers.
+    The registry is optional. It deliberately keys by ``fixture_id`` so runtime semantics can
+    evolve without editing the source-reviewed v0.2 fixture. Relationship validation still
+    happens in ``normalize_relationships`` against the fixture's actual entity IDs.
+    """
+    world_id = doc.get("world_id")
+    fixture_id = doc.get("fixture_id")
+    if not world_id or not fixture_id:
+        return []
+
+    path = ROOT / "data" / "worlds" / world_id / "runtime-relationships.v0.3.json"
+    if not path.exists():
+        return []
+
+    registry = json.loads(path.read_text(encoding="utf-8"))
+    if registry.get("world_id") != world_id:
+        raise WorldFixtureError(
+            f"runtime relationship registry world mismatch: {registry.get('world_id')} != {world_id}"
+        )
+    if registry.get("format_version") != RUNTIME_VERSION:
+        raise WorldFixtureError(
+            "runtime relationship registry version mismatch: "
+            f"{registry.get('format_version')} != {RUNTIME_VERSION}"
+        )
+
+    fixtures = registry.get("fixtures", {})
+    if not isinstance(fixtures, dict):
+        raise WorldFixtureError("runtime relationship registry 'fixtures' must be an object")
+    rows = fixtures.get(fixture_id, [])
+    if not isinstance(rows, list):
+        raise WorldFixtureError(
+            f"runtime relationship registry fixture {fixture_id!r} must contain a list"
+        )
+    return copy.deepcopy(rows)
+
+
+def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return typed relationships plus safe legacy-parent fallbacks.
+
+    Relationships can be explicitly embedded in a reviewed fixture or supplied by the v0.3
+    runtime migration registry. Either form suppresses the automatic
+    ``parent_entity_id -> contained_in`` fallback for the same source/target pair. This is the
+    key migration rule: old fixtures continue to work while overloaded parent links are
+    corrected incrementally and without changing v0.2 consumer data.
     """
     doc = normalize_document(source)
     entities = doc["entities"]
@@ -150,8 +193,10 @@ def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
     seen: set[tuple[str, str, str]] = set()
     explicit_pairs: set[tuple[str, str]] = set()
 
-    for raw in doc.get("relationships", []):
-        rel = copy.deepcopy(raw)
+    embedded = [(copy.deepcopy(rel), "fixture") for rel in doc.get("relationships", [])]
+    migrated = [(copy.deepcopy(rel), "runtime_registry") for rel in runtime_relationship_overrides(doc)]
+
+    for rel, origin in embedded + migrated:
         rel_type = rel.get("relationship_type")
         source_id = rel.get("source_entity_id")
         target_id = rel.get("target_entity_id")
@@ -170,6 +215,7 @@ def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
             raise WorldFixtureError(f"duplicate relationship: {key}")
         seen.add(key)
         explicit_pairs.add((source_id, target_id))
+        rel.setdefault("runtime_origin", origin)
         relationships.append(rel)
 
     for entity in entities:
@@ -190,6 +236,7 @@ def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
             "source_entity_id": source_id,
             "target_entity_id": target_id,
             "inferred_from": "parent_entity_id",
+            "runtime_origin": "legacy_parent_fallback",
         }
         if target_id not in ids:
             rel["external_target"] = True
