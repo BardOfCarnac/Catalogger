@@ -15,6 +15,6 @@ This is **not** a rules-item supplement and does not extend the canonical `VENDR
 - `descriptors.json` — 23 style/form/material/condition cues suitable for merchandising variants.
 - `filtering.json` — audit counts and the editorial boundary used for the cleanup.
 - `source.json` — creator/host/source attribution.
-- `manifest.json` — file counts and SHA-256 checksums.
+- `manifest.json` — pack counts and file inventory.
 
 The source tables themselves are **not reproduced** here. The pack stores normalized Vend-R vocabulary and attribution only.
