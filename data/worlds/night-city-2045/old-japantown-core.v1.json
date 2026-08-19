@@ -9,6 +9,16 @@
     "pages": [131, 132, 134],
     "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
   },
+  "relationships": [
+    {
+      "relationship_type": "operated_by",
+      "source_entity_id": "NC2045-EVT-OLD-JAPANTOWN-132-SUZUKI-MONTHLY-NIGHT-MARKET",
+      "target_entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 133",
+      "note": "The monthly market is run by the Suzuki family associated with the bodega, but takes place in a separate abandoned big-box store; the legacy parent link therefore means operation rather than physical containment."
+    }
+  ],
   "entities": [
     {
       "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
