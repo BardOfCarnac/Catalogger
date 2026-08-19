@@ -1,0 +1,19 @@
+{
+  "key": "red-chrome-catalog",
+  "title": "The RED Chrome Catalog",
+  "author": "Dusk#1352 (/u/mitsayantan)",
+  "source_type": "homebrew",
+  "official": false,
+  "status": "staged-unofficial",
+  "pack_version": "0.1.0",
+  "id_namespace": "RCC",
+  "basis": "User-supplied RTF extraction",
+  "catalogue_policy": "This source pack is kept outside the canonical RTG v1.24 shards. It stores indexing/reference data and does not reproduce item rules text.",
+  "counts": {
+    "staged_items": 84,
+    "main_entries": 73,
+    "embedded_entries": 11,
+    "relationships": 15
+  },
+  "provenance_note": "The source identifies itself as unofficial content under R. Talsorian Games’ Homebrew Content Policy and as not approved or endorsed by RTG."
+}
