@@ -1,0 +1,123 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-europe-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [61, 62],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "name": "Old Saint Christopher Center",
+      "entity_type": "container",
+      "district": "Little Europe",
+      "map_no": 16,
+      "book_page": 61,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 61",
+      "source_summary": "Five-star hotel and convention center whose public lobby includes an upscale bar and boutiques; a private casino is hidden in the basement for select guests.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "services": [
+        {"service_key": "five-star-hotel-lodging", "label": "Five-star hotel lodging"},
+        {"service_key": "convention-center", "label": "Convention-center use"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_HOTEL_CONVENTION_RETAIL_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-061-OLD-SAINT-LOBBY-BAR",
+      "name": "Old Saint Christopher Lobby Bar",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "district": "Little Europe",
+      "map_no": 16,
+      "book_page": 61,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 61",
+      "source_summary": "Source-explicit but unnamed upscale bar in the hotel's lobby.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "hotel-bar-drinks", "label": "Upscale hotel-bar drinks"}],
+      "services": [{"service_key": "bar-hospitality", "label": "Hotel-bar hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_HOSPITALITY_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-CHN-LITTLE-EUROPE-061-OLD-SAINT-BOUTIQUES",
+      "name": "Old Saint Christopher Lobby Boutiques",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "district": "Little Europe",
+      "map_no": 16,
+      "book_page": 61,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 61",
+      "source_summary": "Source-explicit but unnamed group of expensive boutiques in the hotel lobby.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "rotating_vendor_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_RETAIL_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-061-OLD-SAINT-PRIVATE-CASINO",
+      "name": "Old Saint Christopher Private Casino",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "district": "Little Europe",
+      "map_no": 16,
+      "book_page": 61,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 61",
+      "source_summary": "Source-explicit but unnamed basement casino reserved for the hotel's most exclusive guests.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "exclusive-hotel-guests",
+      "services": [{"service_key": "private-casino", "label": "Private casino gambling"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_RESTRICTED_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-PARADISO-TERRESTRE",
+      "name": "Paradiso Terrestre",
+      "entity_type": "service",
+      "district": "Little Europe",
+      "map_no": 17,
+      "book_page": 61,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 61",
+      "source_summary": "Extremely exclusive private dining experience: an armored luxury AV collects the party, an onboard bartender prepares a custom drink, Leonardo Calvano personally serves a multi-course meal, and the AV returns guests afterward.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Leonardo Calvano", "role": "Rockerboy", "rank": 7},
+      "services": [
+        {"service_key": "exclusive-private-dining", "label": "Exclusive multi-course private dining"},
+        {"service_key": "armored-av-transfer", "label": "Armored luxury AV pickup and drop-off"},
+        {"service_key": "onboard-mixology", "label": "Custom onboard drink service"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_EXCLUSIVE_DINING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-REVERE-COURIER-SERVICES",
+      "name": "Revere Courier Services",
+      "entity_type": "service",
+      "district": "Little Europe",
+      "map_no": 19,
+      "book_page": 62,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 62",
+      "source_summary": "Night City courier and shipping company handling ordinary cargo, emergency deliveries and secure physical data transfers, with a monthly household package subscription and paid freelance security work for priority shipments.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "ordinary-shipping", "label": "Routine cargo and package shipping"},
+        {"service_key": "emergency-delivery", "label": "Emergency delivery"},
+        {"service_key": "secure-data-transfer", "label": "Secure physical data transfer"},
+        {"service_key": "monthly-package-subscription", "label": "Monthly package sending and receiving subscription"},
+        {"service_key": "priority-shipment-security-contract", "label": "Paid freelance security work for priority shipments"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_COURIER_LOGISTICS_SERVICE"}
+    }
+  ]
+}
