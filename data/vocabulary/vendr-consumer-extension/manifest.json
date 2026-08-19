@@ -1,0 +1,25 @@
+{
+  "pack_version": "0.1.0",
+  "pack_id": "vendr-consumer-extension",
+  "counts": {
+    "concepts": 52,
+    "brand_profiles_referenced": 17,
+    "brand_affinity_edges": 131,
+    "concepts_with_brand_affinity": 49,
+    "concepts_without_established_brand_affinity": 3
+  },
+  "breakdown": {
+    "cosmetics_grooming": 12,
+    "apparel_forms": 13,
+    "consumer_electronics_audio": 7,
+    "household_domestic": 11,
+    "pet_care": 5,
+    "family_childcare": 4
+  },
+  "files": [
+    "README.md",
+    "concepts.json",
+    "brand-affinities.json",
+    "provenance.json"
+  ]
+}
