@@ -1,8 +1,17 @@
 {
   "format_version": "0.3.0",
   "world_id": "night-city-2045",
-  "note": "Runtime-only typed relationship overrides for source-reviewed v0.2 fixtures. These replace overloaded parent_entity_id semantics without rewriting the editorial/source corpus.",
+  "note": "Runtime-only typed relationship overrides for source-reviewed v0.2 fixtures. These replace overloaded parent_entity_id semantics without rewriting the editorial/source corpus. An explicit contained_in relation means the legacy parent edge has been source-reviewed and confirmed as spatial, not that it remains unresolved.",
   "fixtures": {
+    "nc2045-charter-hill-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-CHARTER-HILL-229-SANGER-CONNELL-TAXI",
+        "target_entity_id": "NC2045-LOC-CHARTER-HILL-228-L-ERMITAGE",
+        "source_ref": "Night City 2045 p. 229",
+        "note": "Sanger Connell's private AV taxi service is explicitly based on the roof of L'Ermitage."
+      }
+    ],
     "nc2045-downtown-core-v1": [
       {
         "relationship_type": "market_event_at",
@@ -10,6 +19,15 @@
         "target_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
         "source_ref": "Night City 2045 p. 82",
         "note": "The after-dark Night Market is an event occurring at the persistent Bella Vista Market place."
+      }
+    ],
+    "nc2045-downtown-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-CHN-DOWNTOWN-085-JADE-BLOSSOM-COUNTERFEIT-DISTRIBUTION",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA",
+        "source_ref": "Night City 2045 p. 85",
+        "note": "The concealed counterfeit distribution operation physically runs from the spa's back rooms."
       }
     ],
     "nc2045-heywood-docks-retail-capable-v1": [
@@ -48,13 +66,38 @@
         "note": "The Garden sales channel is used by G3 to sell copies of the station's recovered music chips; it is not a physical tenant inside the station."
       }
     ],
+    "nc2045-kabuki-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-KABUKI-206-TYGER-EATS",
+        "target_entity_id": "NC2045-LOC-KABUKI-206-TYGER-WORKS-TOWER",
+        "source_ref": "Night City 2045 p. 206",
+        "note": "Tyger Eats is explicitly based on the seventh floor of Tyger Works Tower."
+      }
+    ],
     "nc2045-little-europe-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-LITTLE-EUROPE-057-80-20",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "80/20's second-hand cyberware trade is explicitly operated from Chopper's premises."
+      },
       {
         "relationship_type": "market_event_at",
         "source_entity_id": "NC2045-EVT-LITTLE-EUROPE-062-3-PIECE-S-JOINT",
         "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
         "source_ref": "Night City 2045 p. 62",
         "note": "3-Piece's recurring tech Night Market takes place on Short Circuit's top floor."
+      }
+    ],
+    "nc2045-little-europe-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-CHN-LITTLE-EUROPE-061-OLD-SAINT-BOUTIQUES",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+        "source_ref": "Night City 2045 p. 61",
+        "note": "The unnamed upscale boutiques are explicitly located in the Old Saint Christopher hotel lobby."
       }
     ],
     "nc2045-new-westbrook-context-only-v1": [
@@ -73,6 +116,29 @@
         "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
         "source_ref": "Night City 2045 p. 216",
         "note": "The channel represents rotating sellers who set up temporary pitches at Holliday Market."
+      }
+    ],
+    "nc2045-norcal-military-base-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-HOT-DINGO",
+        "target_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+        "source_ref": "Night City 2045 p. 183",
+        "note": "Hot Dingo is explicitly a food concession at the front of the PX."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-ESTERO-BAY-BARBER-SHOP",
+        "target_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+        "source_ref": "Night City 2045 p. 183",
+        "note": "Estero Bay Barber Shop is explicitly located at the front of the PX."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-COG-CREDIT-UNION",
+        "target_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+        "source_ref": "Night City 2045 p. 183",
+        "note": "COG Credit Union is explicitly located at the front of the PX."
       }
     ],
     "nc2045-north-heywood-context-only-v1": [
@@ -100,11 +166,36 @@
     ],
     "nc2045-pacifica-playground-core-v1": [
       {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-OJO",
+        "target_entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
+        "source_ref": "Night City 2045 p. 279",
+        "note": "Ojo is explicitly described as operating from the Nomad's Market."
+      },
+      {
         "relationship_type": "operated_by",
         "source_entity_id": "NC2045-EVENT-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY-ANNUAL-NIGHT-MARKET",
         "target_entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
         "source_ref": "Night City 2045 p. 281",
         "note": "The event is run by Smile Another Day's owner but occurs in the Volkodav Racetrack Party Room, so the legacy parent link was operational rather than spatial."
+      }
+    ],
+    "nc2045-pacifica-playground-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-PACIFICA-PARTIES",
+        "target_entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+        "source_ref": "Night City 2045 p. 278",
+        "note": "Pacifica Parties is explicitly located on Deck Five of the Ascension."
+      }
+    ],
+    "nc2045-port-of-night-city-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-PORT-OF-NIGHT-CITY-154-DEPARTMENT-OF-WATER",
+        "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-THE-RECLAMATION-PLANT",
+        "source_ref": "Night City 2045 p. 154",
+        "note": "The Night City Department of Water operation is explicitly based at the Reclamation Plant."
       }
     ],
     "nc2045-port-of-night-city-core-v1": [
@@ -114,6 +205,15 @@
         "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
         "source_ref": "Night City 2045 p. 152",
         "note": "The occasional Night Market is hosted at Dock 13."
+      }
+    ],
+    "nc2045-port-of-night-city-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-PORT-OF-NIGHT-CITY-155-SWEETHEART-TATTOO-PARLOR",
+        "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-RUSTY-S-DIVE-SHACK",
+        "source_ref": "Night City 2045 p. 155",
+        "note": "Sweetheart's tattoo service operates from a side container physically attached to Rusty's."
       }
     ],
     "nc2045-rancho-coronado-core-v1": [
@@ -139,6 +239,13 @@
         "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
         "source_ref": "Night City 2045 p. 266",
         "note": "Bazaar El Saber is the rotating Nomad day market held at the Aldecaldo Camp."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-266-DOC-SPINDLER",
+        "target_entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+        "source_ref": "Night City 2045 p. 266",
+        "note": "Doc Spindler maintains a permanent stall at Bazaar El Saber. The relationship is location/appearance at a market event rather than containment by a persistent place."
       },
       {
         "relationship_type": "appears_at",
