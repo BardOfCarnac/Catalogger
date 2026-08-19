@@ -1,0 +1,16 @@
+{
+  "pack_id": "vendr-consumer-extension",
+  "source_type": "vendr-editorial-synthesis",
+  "official": false,
+  "rules_content": false,
+  "creator": "Vend-R editorial layer",
+  "basis": [
+    "Gap analysis of the CircleofNoms consumer vocabulary",
+    "Existing consumer-relevant brand profiles already staged in Catalogger"
+  ],
+  "depends_on": [
+    "data/vocabulary/circleofnoms-consumer/concepts.json",
+    "data/vocabulary/circleofnoms-consumer/brand-profiles.json"
+  ],
+  "policy": "These concepts fill mundane-commerce gaps for generation. They are not claims that named products canonically exist in Cyberpunk RED. Brand affinities are conservative merchandising inferences and default to avoid when unlisted."
+}
