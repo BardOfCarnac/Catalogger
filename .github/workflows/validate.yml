@@ -18,3 +18,8 @@ jobs:
       - run: python scripts/validate_stocking.py
       - run: python scripts/test_stock_engine.py
       - run: python scripts/test_stock_lifecycle.py
+      - run: python scripts/test_night_city_stock.py
+      - run: python scripts/test_vendr_stock_engine_contract.py
+      - run: python scripts/test_vendr_demo_backend.py
+      - run: python -m py_compile scripts/night_city_stock.py scripts/vendr_demo_backend.py scripts/vendr_demo_server.py
+      - run: node --check web/vendr-live/app.js

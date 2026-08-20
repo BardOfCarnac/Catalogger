@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vend-R — Connected Night City Slice</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" class="app">
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="Vend-R home">
+      <span class="brand-mark">V</span><span>VEND-R</span>
+    </button>
+    <div class="worldline"><span class="live-dot"></span><span id="worldLabel">NIGHT CITY 2045 · LIVE SLICE</span></div>
+    <div class="top-actions">
+      <button id="sourceButton" class="chip" title="Choose which Catalogger sources may appear when a shop is first materialized">SOURCES · ALL</button>
+      <button id="gmButton" class="chip">GM</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="view active" id="homeView">
+      <div class="hero-grid">
+        <div>
+          <div class="micro hot">Known place first / generated only when needed</div>
+          <h1>FIND IT<br>BEFORE YOU<br>INVENT IT.</h1>
+          <p class="lede">This frontend is reading the real Catalogger stocking engine. Opening an unopened shop creates its persistent assortment; reopening it reads the saved state.</p>
+        </div>
+        <form id="heroSearch" class="search-box">
+          <label for="searchInput">Locate something in the current world</label>
+          <div class="search-line"><input id="searchInput" autocomplete="off" placeholder="Agent, armor, ammunition…"><button class="primary">LOCATE</button></div>
+          <p>Search does not create inventories. It can show live offers from materialized shops and plausible sellers from unopened ones.</p>
+        </form>
+      </div>
+
+      <div class="section-head"><div><span class="micro">Connected canonical sample</span><h2>KNOWN SELLERS</h2></div><span id="healthText" class="system-state">connecting…</span></div>
+      <div id="districtFilters" class="filter-row"></div>
+      <div id="shopGrid" class="shop-grid"></div>
+    </section>
+
+    <section class="view" id="shopView">
+      <div class="breadcrumb"><button data-go="home">Vend-R</button><span>/</span><span id="crumbDistrict"></span><span>/</span><b id="crumbShop"></b></div>
+      <div id="shopLoading" class="loading">Opening shop state…</div>
+      <article id="shopFrame" class="shop-frame" hidden>
+        <div class="shop-sign">
+          <div class="shop-kicker"><span id="shopType"></span><span id="shopMode" class="mode-pill"></span></div>
+          <h1 id="shopName"></h1>
+          <div class="shop-meta"><span id="shopDistrict"></span><span id="shopParent"></span><span id="shopTags"></span></div>
+          <div class="rule"></div>
+          <p id="shopCopy"></p>
+        </div>
+        <div class="shop-body">
+          <section class="stock-panel">
+            <div class="stock-head"><div><span class="micro hot">World state</span><h3>WHAT IS HERE NOW</h3></div><span id="stockStateLabel">LIVE STOCK</span></div>
+            <div id="stockRows"></div>
+            <div id="noStock" class="empty-state" hidden></div>
+          </section>
+          <aside class="shop-side">
+            <div class="side-section"><span class="micro">What Vend-R knows</span><b id="knowTitle">Known location</b><p id="knowCopy"></p></div>
+            <div class="side-section"><span class="micro">Place source</span><b id="sourceRef"></b><p id="sourceContract"></p></div>
+            <div class="side-section"><span class="micro">Persistence</span><b id="persistState"></b><p id="persistText"></p></div>
+          </aside>
+        </div>
+      </article>
+      <section id="gmDrawer" class="gm-drawer">
+        <div class="gm-head"><span>GM / underlying stock object</span><span id="gmCycle"></span></div>
+        <div class="gm-grid">
+          <div><small>ENTITY</small><b id="gmEntity"></b></div>
+          <div><small>ASSORTMENT</small><b id="gmAssortment"></b></div>
+          <div><small>HISTORY</small><b id="gmHistory"></b></div>
+          <div><small>CONDITIONS</small><b id="gmConditions"></b></div>
+        </div>
+        <div class="gm-actions">
+          <button id="restockButton">ADVANCE RESTOCK CYCLE</button>
+          <select id="conditionType"><option value="shortage">shortage</option><option value="surplus">surplus</option><option value="disrupted_supply">disrupted supply</option><option value="fresh_delivery">fresh delivery</option><option value="liquidation">liquidation</option><option value="hot_merchandise">hot merchandise</option></select>
+          <button id="conditionButton">ADD CONDITION</button>
+          <button id="clearConditionsButton">CLEAR CONDITIONS</button>
+        </div>
+        <div id="eventList" class="event-list"></div>
+      </section>
+    </section>
+
+    <section class="view" id="searchView">
+      <div class="breadcrumb"><button data-go="home">Vend-R</button><span>/</span><b>Locate</b></div>
+      <div class="utility-head"><div><span class="micro hot">Table-facing utility</span><h2>LOCATE<br>SOMETHING</h2></div><p>The first answer should be an existing seller. “Plausible” means the item fits that unopened shop’s real Catalogger context; it does not mean the item has been generated onto its shelf yet.</p></div>
+      <form id="searchForm" class="search-box inline-search"><div class="search-line"><input id="searchInput2" autocomplete="off"><button class="primary">SEARCH</button></div></form>
+      <div id="searchSummary" class="search-summary"></div>
+      <div id="searchResults" class="results"></div>
+    </section>
+
+    <section class="view" id="itemView">
+      <div class="breadcrumb"><button data-go="home">Vend-R</button><span>/</span><button id="itemBack">Shop</button><span>/</span><b>Item</b></div>
+      <article class="item-card">
+        <span class="micro hot">Catalogue object / current availability</span>
+        <h2 id="itemName"></h2>
+        <div class="item-facts"><div><small>SELLER</small><b id="itemSeller"></b></div><div><small>QUANTITY</small><b id="itemQuantity"></b></div><div><small>ASKING</small><b id="itemPrice"></b></div><div><small>CONDITION</small><b id="itemCondition"></b></div></div>
+        <p id="itemSources"></p>
+        <button id="itemBuy" class="primary">TAKE ONE</button>
+      </article>
+    </section>
+  </main>
+
+  <div id="sourcePopover" class="popover" hidden>
+    <b>CATALOGGER SOURCES</b>
+    <button data-source="all">All enabled catalogue sources</button>
+    <button data-source="CP:R">Core rulebook only (CP:R)</button>
+    <p>This filter is applied when a shop is first materialized. An existing shop keeps the source contract it was created with.</p>
+  </div>
+  <div id="toast" class="toast"></div>
+  <footer><span>UNOFFICIAL · VEND-R CONNECTED VERTICAL SLICE</span><button id="resetButton">RESET DEMO WORLD</button></footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
