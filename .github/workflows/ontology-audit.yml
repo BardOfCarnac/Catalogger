@@ -15,6 +15,7 @@ jobs:
       - run: python scripts/build_commercial_profiles.py
       - run: python scripts/audit_world_ontology.py
       - run: python scripts/test_world_runtime.py
+      - run: python scripts/test_world_map_geometry.py
       - run: python scripts/test_world_runtime_chain_profiles.py
       - run: python scripts/audit_world_runtime.py
       - run: python scripts/build_world_runtime.py --input data/worlds/night-city-2045/old-japantown-core.v1.json --output build/data/worlds/night-city-2045/old-japantown-core.runtime-v0.3.json
