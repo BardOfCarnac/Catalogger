@@ -43,6 +43,10 @@ def relation(runtime: dict, source_id: str, target_id: str, relationship_type: s
     )
 
 
+def entity(runtime: dict, entity_id: str) -> dict:
+    return next(row for row in runtime["entities"] if row["entity_id"] == entity_id)
+
+
 # Ordinary unresolved containment still projects safely from parent_entity_id.
 little_source = load("data/worlds/night-city-2045/little-europe-remainder.v1.json")
 little = realize_runtime_document(little_source, engine)
@@ -61,7 +65,7 @@ assert fast_eddie_rel["runtime_origin"] == "legacy_parent_fallback"
 # T&C proves identity and event behaviour are independent in runtime v0.3.
 tc_stalls = "NC2045-EVENT-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-MARKET-STALLS"
 tc_shop = "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S"
-tc = next(row for row in little["entities"] if row["entity_id"] == tc_stalls)
+tc = entity(little, tc_stalls)
 assert tc["entity_type"] == "event_market"
 assert tc["entity_kind"] == "outlet"
 assert "event" in tc["capabilities"]
@@ -73,7 +77,7 @@ suzuki_source = load("data/worlds/night-city-2045/old-japantown-core.v1.json")
 suzuki = realize_runtime_document(suzuki_source, engine)
 suzuki_event_id = "NC2045-EVT-OLD-JAPANTOWN-132-SUZUKI-MONTHLY-NIGHT-MARKET"
 suzuki_bodega_id = "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA"
-suzuki_event = next(row for row in suzuki["entities"] if row["entity_id"] == suzuki_event_id)
+suzuki_event = entity(suzuki, suzuki_event_id)
 assert suzuki_event["entity_kind"] == "market_event"
 assert {"event", "scheduled", "access_controlled"} <= set(suzuki_event["capabilities"])
 assert has_relation(suzuki, suzuki_event_id, suzuki_bodega_id, "operated_by")
@@ -126,7 +130,7 @@ parties_rel = relation(
 assert parties_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in parties_rel
 
-# Split registries must combine deterministically and suppress legacy fallback edges.
+# Split registries combine deterministically and suppress legacy fallback edges.
 hong_kong = realize_runtime_document(load("data/worlds/night-city-2045/little-china-core.v1.json"), engine)
 bonesetter_rel = relation(
     hong_kong,
@@ -137,7 +141,7 @@ bonesetter_rel = relation(
 assert bonesetter_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in bonesetter_rel
 
-# Recovered-tenant registry: H11's Data Inc is an explicitly reviewed contained storefront.
+# Recovered H11 Data Inc is an explicitly reviewed contained storefront.
 h11 = realize_runtime_document(
     load("data/worlds/night-city-2045/watson-development-review-queue.v1.json"), engine
 )
@@ -150,8 +154,7 @@ data_inc_rel = relation(
 assert data_inc_rel["runtime_origin"] == "runtime_registry"
 assert "inferred_from" not in data_inc_rel
 
-# Market-vendor registry: mobile food businesses appear at their host places rather than being
-# structurally contained by them.
+# Mobile market vendors appear at host places rather than being structurally contained.
 university = realize_runtime_document(
     load("data/worlds/night-city-2045/university-district-context-only.v1.json"), engine
 )
@@ -183,7 +186,7 @@ assert not has_relation(
     "contained_in",
 )
 
-# A permanent service stall at a rotating market is appears_at, not structural containment.
+# A permanent service stall at a rotating market is appears_at, not containment.
 santo = realize_runtime_document(load("data/worlds/night-city-2045/santo-domingo-core.v1.json"), engine)
 assert has_relation(
     santo,
@@ -197,6 +200,57 @@ assert not has_relation(
     "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
     "contained_in",
 )
+
+# Loose source-level supply labels remain queryable without inventing graph nodes.
+hiz_context = realize_runtime_document(
+    load("data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json"), engine
+)
+sovoil_id = "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-SOVOIL-PLASTICS-PLANT"
+sovoil = entity(hiz_context, sovoil_id)
+assert "distribution" in sovoil["capabilities"]
+assert sovoil["supply_profile"] == {
+    "outbound": [{
+        "counterparty_label": "Oasis stores",
+        "relationship": "supplies",
+        "product_family": "cheap plastic housewares",
+    }],
+    "inbound": [],
+}
+
+old_japantown_context = realize_runtime_document(
+    load("data/worlds/night-city-2045/old-japantown-context-only.v1.json"), engine
+)
+sanroo_id = "NC2045-LOC-OLD-JAPANTOWN-133-SANROO-COMPLEX"
+sanroo = entity(old_japantown_context, sanroo_id)
+assert "distribution" in sanroo["capabilities"]
+assert sanroo["supply_profile"]["outbound"][0]["counterparty_label"] == "Night City Sanroo sales channels"
+assert sanroo["supply_profile"]["outbound"][0]["product_family"] == "locally manufactured Sanroo goods"
+
+honest_hiro_id = "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS"
+honest_hiro = entity(suzuki, honest_hiro_id)
+assert honest_hiro["supply_profile"] == {
+    "outbound": [],
+    "inbound": [{
+        "counterparty_label": "Steel Vaqueros",
+        "relationship": "primary-used-vehicle-supplier",
+    }],
+}
+assert "distribution" not in honest_hiro["capabilities"]
+
+# A concrete cross-fixture supplier/customer pair becomes a real supplies edge as well as
+# retaining the source-level supply profile on the producer.
+old_combat = realize_runtime_document(
+    load("data/worlds/night-city-2045/old-combat-zone-retail-capable.v1.json"), engine
+)
+underground_id = "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-UNDERGROUND"
+underground = entity(old_combat, underground_id)
+assert underground["supply_profile"]["outbound"][0]["counterparty_label"] == "Mrs. Suzuki’s Bodega"
+assert underground["supply_profile"]["outbound"][0]["goods"] == "fungus and lichen products"
+assert "distribution" in underground["capabilities"]
+underground_supply = relation(old_combat, underground_id, suzuki_bodega_id, "supplies")
+assert underground_supply["external_target"] is True
+assert underground_supply["runtime_origin"] == "runtime_registry"
+assert "inferred_from" not in underground_supply
 
 # Unknown relationship vocabulary fails closed.
 bad = copy.deepcopy(suzuki_source)
@@ -214,14 +268,14 @@ else:
 
 # Registry corpus itself is stable and version-consistent.
 registry_paths = sorted(WORLD_DIR.glob("runtime-relationships*.v0.3.json"))
-assert len(registry_paths) == 5, [path.name for path in registry_paths]
+assert len(registry_paths) == 6, [path.name for path in registry_paths]
 registry_rows = 0
 for registry_path in registry_paths:
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     assert registry["format_version"] == "0.3.0"
     assert registry["world_id"] == "night-city-2045"
     registry_rows += sum(len(rows) for rows in registry["fixtures"].values())
-assert registry_rows == 125, registry_rows
+assert registry_rows == 126, registry_rows
 
 # Whole-corpus compatibility regression.
 reviewed_fixtures = 0
@@ -230,6 +284,8 @@ legacy_parent_links = 0
 runtime_relationships = 0
 runtime_explicit_relationships = 0
 runtime_inferred_relationships = 0
+runtime_supply_profiles = 0
+runtime_supply_profile_rows = 0
 
 for path in sorted(WORLD_DIR.glob("*.v1.json")):
     source = json.loads(path.read_text(encoding="utf-8"))
@@ -251,9 +307,14 @@ for path in sorted(WORLD_DIR.glob("*.v1.json")):
     assert ids_v03 == ids_v02, f"runtime projection changed entity identity: {path.name}"
     assert len(v03_a["entities"]) == len(v02["entities"])
 
-    for entity in v03_a["entities"]:
-        assert entity["entity_kind"] in ENTITY_KINDS
-        assert set(entity["capabilities"]) <= CAPABILITIES
+    for runtime_entity in v03_a["entities"]:
+        assert runtime_entity["entity_kind"] in ENTITY_KINDS
+        assert set(runtime_entity["capabilities"]) <= CAPABILITIES
+        if runtime_entity.get("supply_profile"):
+            runtime_supply_profiles += 1
+            profile = runtime_entity["supply_profile"]
+            assert set(profile) == {"outbound", "inbound"}
+            runtime_supply_profile_rows += len(profile["outbound"]) + len(profile["inbound"])
 
     relations = v03_a["relationships"]
     runtime_relationships += len(relations)
@@ -266,27 +327,30 @@ for path in sorted(WORLD_DIR.glob("*.v1.json")):
         if not rel.get("external_target"):
             assert rel["target_entity_id"] in ids_v03
 
-    for entity in doc["entities"]:
-        parent = entity.get("parent_entity_id")
+    for source_entity in doc["entities"]:
+        parent = source_entity.get("parent_entity_id")
         if not parent:
             continue
         matching = [
             rel for rel in relations
-            if rel["source_entity_id"] == entity["entity_id"]
+            if rel["source_entity_id"] == source_entity["entity_id"]
             and rel["target_entity_id"] == parent
         ]
-        assert matching, f"legacy parent relationship was lost: {path.name} / {entity['entity_id']}"
+        assert matching, f"legacy parent relationship was lost: {path.name} / {source_entity['entity_id']}"
 
 assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
-assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 127, runtime_explicit_relationships
+assert runtime_relationships == 219, runtime_relationships
+assert runtime_explicit_relationships == 128, runtime_explicit_relationships
 assert runtime_inferred_relationships == 91, runtime_inferred_relationships
+assert runtime_supply_profiles == 5, runtime_supply_profiles
+assert runtime_supply_profile_rows == 5, runtime_supply_profile_rows
 
 print(
     "OK: v0.3 runtime projection; "
     f"fixtures={reviewed_fixtures}, entities={reviewed_entities}, "
     f"relationships={runtime_relationships}, explicit={runtime_explicit_relationships}, "
-    f"legacy_fallbacks={runtime_inferred_relationships}"
+    f"legacy_fallbacks={runtime_inferred_relationships}, "
+    f"supply_profiles={runtime_supply_profiles}"
 )
