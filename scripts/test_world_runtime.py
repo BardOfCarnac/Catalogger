@@ -214,14 +214,14 @@ else:
 
 # Registry corpus itself is stable and version-consistent.
 registry_paths = sorted(WORLD_DIR.glob("runtime-relationships*.v0.3.json"))
-assert len(registry_paths) == 4, [path.name for path in registry_paths]
+assert len(registry_paths) == 5, [path.name for path in registry_paths]
 registry_rows = 0
 for registry_path in registry_paths:
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     assert registry["format_version"] == "0.3.0"
     assert registry["world_id"] == "night-city-2045"
     registry_rows += sum(len(rows) for rows in registry["fixtures"].values())
-assert registry_rows == 103, registry_rows
+assert registry_rows == 110, registry_rows
 
 # Whole-corpus compatibility regression.
 reviewed_fixtures = 0
@@ -281,8 +281,8 @@ assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
 assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 105, runtime_explicit_relationships
-assert runtime_inferred_relationships == 113, runtime_inferred_relationships
+assert runtime_explicit_relationships == 112, runtime_explicit_relationships
+assert runtime_inferred_relationships == 106, runtime_inferred_relationships
 
 print(
     "OK: v0.3 runtime projection; "
