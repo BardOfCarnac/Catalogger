@@ -1,20 +1,10 @@
 #!/usr/bin/env python3
 """Vend-R v0.3 runtime projection for source-reviewed world fixtures.
 
-The reviewed v0.2 fixtures are editorial/source data and remain the source of truth. This
-module projects them into a runtime graph with deliberately orthogonal concepts:
-
-* ``entity_kind`` describes what an entity *is* in the world.
-* ``capabilities`` describe what that entity can *do* commercially.
-* typed relationships describe concrete world-to-world links.
-* ``supply_profile`` preserves supply semantics whose counterparty is only a class, channel
-  description or external actor rather than a concrete reviewed world entity.
-
-Existing ``parent_entity_id`` links remain valid v0.2 input and are projected as
-``contained_in`` only when a more specific explicit relationship has not been supplied for
-the same source/target pair. Runtime-only migration overrides may live in one or more
-``runtime-relationships*.v0.3.json`` registries under the world directory so reviewed
-editorial fixtures do not need to be rewritten merely to correct runtime semantics.
+The reviewed v0.2 fixtures remain the editorial/source truth. Runtime v0.3 projects them
+into orthogonal entity kinds, commercial capabilities, typed relationships, and normalized
+supply profiles. Loose supplier/customer labels stay as profile data rather than becoming
+invented graph nodes; concrete reviewed entity-to-entity links use typed relationships.
 """
 from __future__ import annotations
 
@@ -30,16 +20,8 @@ RUNTIME_VERSION = "0.3.0"
 ROOT = Path(__file__).resolve().parents[1]
 
 ENTITY_KINDS = {
-    "place",
-    "outlet",
-    "vendor",
-    "service_point",
-    "market_event",
-    "channel",
-    "chain",
-    "template",
-    "reference",
-    "unclassified",
+    "place", "outlet", "vendor", "service_point", "market_event", "channel",
+    "chain", "template", "reference", "unclassified",
 }
 
 KIND_BY_LEGACY_TYPE = {
@@ -57,31 +39,18 @@ KIND_BY_LEGACY_TYPE = {
 }
 
 CAPABILITY_ORDER = (
-    "catalog_stock",
-    "local_wares",
-    "services",
-    "event",
-    "distribution",
-    "scheduled",
-    "access_controlled",
-    "purchase_policy",
+    "catalog_stock", "local_wares", "services", "event", "distribution",
+    "scheduled", "access_controlled", "purchase_policy",
 )
 CAPABILITIES = set(CAPABILITY_ORDER)
 
 RELATIONSHIP_TYPES = {
-    "contained_in",
-    "appears_at",
-    "operated_by",
-    "service_point_for",
-    "chain_branch_of",
-    "market_event_at",
-    "supplies",
-    "fulfills_for",
+    "contained_in", "appears_at", "operated_by", "service_point_for",
+    "chain_branch_of", "market_event_at", "supplies", "fulfills_for",
 }
 
 
 def derive_entity_kind(entity: dict[str, Any]) -> str:
-    """Project a stable runtime kind from a reviewed v0.2 entity."""
     override = entity.get("runtime_kind")
     if override is not None:
         if override not in ENTITY_KINDS:
@@ -89,24 +58,11 @@ def derive_entity_kind(entity: dict[str, Any]) -> str:
                 f"unknown runtime_kind for {entity.get('entity_id', '<unknown>')}: {override}"
             )
         return override
-
-    legacy = entity.get("entity_type", "unclassified")
-    return KIND_BY_LEGACY_TYPE.get(legacy, "unclassified")
+    return KIND_BY_LEGACY_TYPE.get(entity.get("entity_type", "unclassified"), "unclassified")
 
 
 def normalize_supply_profile(entity: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
-    """Normalize source-level supply notes without inventing counterpart entities.
-
-    Reviewed v0.2 fixtures contain a handful of deliberately loose ``supply_relationships``
-    rows. Some describe outbound supply to a class/channel (for example ``Oasis stores``),
-    while others name an inbound supplier (for example the Steel Vaqueros supplying Honest
-    Hiro). Those are useful runtime facts, but they are not automatically graph edges: a label
-    is not an entity ID.
-
-    Concrete world-to-world supply links are represented separately with the typed ``supplies``
-    relationship. This profile therefore preserves the remaining directional semantics in a
-    queryable shape while retaining the original source wording under ``relationship``.
-    """
+    """Normalize source-level supply notes without inventing counterpart entities."""
     outbound: list[dict[str, Any]] = []
     inbound: list[dict[str, Any]] = []
 
@@ -121,33 +77,31 @@ def normalize_supply_profile(entity: dict[str, Any]) -> dict[str, list[dict[str,
                 "counterparty_label": str(source_row["target"]),
                 "relationship": str(source_row.get("relationship", "supplies")),
             }
-            if source_row.get("goods") is not None:
-                row["goods"] = copy.deepcopy(source_row["goods"])
-            outbound.append(row)
-            continue
-
-        if source_row.get("supplier"):
+            destination = outbound
+        elif source_row.get("supplier"):
             row = {
                 "counterparty_label": str(source_row["supplier"]),
                 "relationship": str(source_row.get("relationship", "supplier")),
             }
-            if source_row.get("goods") is not None:
-                row["goods"] = copy.deepcopy(source_row["goods"])
-            inbound.append(row)
-            continue
+            destination = inbound
+        else:
+            raise WorldFixtureError(
+                f"supply_relationships row for {entity.get('entity_id', '<unknown>')} "
+                "must contain target or supplier"
+            )
 
-        raise WorldFixtureError(
-            f"supply_relationships row for {entity.get('entity_id', '<unknown>')} "
-            "must contain target or supplier"
-        )
+        # Preserve the source's own level of specificity. These fields are deliberately not
+        # collapsed into a generated catalogue category or an invented counterparty entity.
+        for key in ("goods", "product_family"):
+            if source_row.get(key) is not None:
+                row[key] = copy.deepcopy(source_row[key])
+        destination.append(row)
 
     return {"outbound": outbound, "inbound": inbound}
 
 
 def derive_capabilities(entity: dict[str, Any]) -> list[str]:
-    """Derive orthogonal runtime capabilities from source or realized entity fields."""
     found: set[str] = set()
-
     if entity.get("stocking") or entity.get("assortment") or entity.get("shop"):
         found.add("catalog_stock")
     if entity.get("local_offerings"):
@@ -162,11 +116,7 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
     ):
         found.add("event")
     supply_profile = entity.get("supply_profile") or {}
-    if (
-        entity.get("entity_type") == "channel"
-        or entity.get("distribution")
-        or supply_profile.get("outbound")
-    ):
+    if entity.get("entity_type") == "channel" or entity.get("distribution") or supply_profile.get("outbound"):
         found.add("distribution")
     if entity.get("schedule"):
         found.add("scheduled")
@@ -192,7 +142,7 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
 
 
 def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
-    """Load runtime-only typed relationship migrations for one reviewed fixture."""
+    """Load split-friendly runtime-only relationship migrations for one fixture."""
     world_id = doc.get("world_id")
     fixture_id = doc.get("fixture_id")
     if not world_id or not fixture_id:
@@ -200,9 +150,6 @@ def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
 
     world_dir = ROOT / "data" / "worlds" / world_id
     paths = sorted(world_dir.glob("runtime-relationships*.v0.3.json"))
-    if not paths:
-        return []
-
     combined: list[dict[str, Any]] = []
     for path in paths:
         registry = json.loads(path.read_text(encoding="utf-8"))
@@ -216,7 +163,6 @@ def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
                 f"runtime relationship registry version mismatch in {path.name}: "
                 f"{registry.get('format_version')} != {RUNTIME_VERSION}"
             )
-
         fixtures = registry.get("fixtures", {})
         if not isinstance(fixtures, dict):
             raise WorldFixtureError(
@@ -225,8 +171,7 @@ def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
         rows = fixtures.get(fixture_id, [])
         if not isinstance(rows, list):
             raise WorldFixtureError(
-                f"runtime relationship registry {path.name!r} fixture {fixture_id!r} "
-                "must contain a list"
+                f"runtime relationship registry {path.name!r} fixture {fixture_id!r} must contain a list"
             )
         combined.extend(copy.deepcopy(rows))
     return combined
@@ -273,9 +218,7 @@ def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
         if not target_id or (source_id, target_id) in explicit_pairs:
             continue
         if target_id not in ids and not entity.get("external_parent"):
-            raise WorldFixtureError(
-                f"legacy parent {target_id!r} for {source_id} is not in fixture"
-            )
+            raise WorldFixtureError(f"legacy parent {target_id!r} for {source_id} is not in fixture")
         key = ("contained_in", source_id, target_id)
         if key in seen:
             continue
@@ -294,20 +237,16 @@ def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
     return relationships
 
 
-def realize_runtime_document(
-    source: dict[str, Any],
-    engine: WorldStockEngine | None = None,
-) -> dict[str, Any]:
+def realize_runtime_document(source: dict[str, Any], engine: WorldStockEngine | None = None) -> dict[str, Any]:
     """Realize a reviewed v0.2 fixture as a deterministic v0.3 runtime graph."""
     source_doc = normalize_document(source)
     realized = realize_document(source, engine)
+    source_by_id = {row["entity_id"]: row for row in source_doc["entities"]}
 
     runtime_entities: list[dict[str, Any]] = []
     for entity in realized["entities"]:
         row = copy.deepcopy(entity)
-        source_entity = next(
-            item for item in source_doc["entities"] if item["entity_id"] == entity["entity_id"]
-        )
+        source_entity = source_by_id[entity["entity_id"]]
         row["entity_kind"] = derive_entity_kind(source_entity)
         supply_profile = normalize_supply_profile(source_entity)
         if supply_profile["outbound"] or supply_profile["inbound"]:
