@@ -1,0 +1,62 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only explicit containment confirmations for source-reviewed child entities whose parent entry directly establishes a physical compound, building or campus relationship.",
+  "fixtures": {
+    "nc2045-the-glen-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-118-JAPANESE-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Japanese Consulate is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-MEXICAN-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Mexican Consulate is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-OAS-MISSION",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Organization of American States Mission is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-THE-GLEN-123-DOCTOR-WILLIAM-GALEN",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "Doctor William Galen maintains medical offices in the Raven-affiliated skyscraper."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-123-KILLSTROM-MUSIC",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "KillStrom Music is one of the named affiliated tenants in the Raven Microcybernetics complex."
+      }
+    ],
+    "nc2045-kabuki-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-KABUKI-202-THE-CABBIT",
+        "target_entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+        "source_ref": "Night City 2045 p. 202",
+        "note": "The Cabbit occupies the ground floor of the G3 Gun-Gal Station building."
+      }
+    ],
+    "nc2045-university-district-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-106-ATTRACTION-SPHERE-SIGMA",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS",
+        "source_ref": "Night City 2045 p. 106",
+        "note": "Attraction Sphere Sigma is the named public-facing attraction on the Biotechnica Campus."
+      }
+    ]
+  }
+}
