@@ -37,6 +37,15 @@
       },
       "additionalProperties": false
     },
+    "chainProfile": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "operator": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "entity": {
       "type": "object",
       "required": ["entity_id", "name", "entity_kind", "capabilities"],
@@ -64,6 +73,7 @@
         "services": {"type": "array", "items": {"type": "object"}},
         "schedule": {"type": "object"},
         "supply_profile": {"$ref": "#/$defs/supplyProfile"},
+        "chain_profile": {"$ref": "#/$defs/chainProfile"},
         "shop": {"type": "object"},
         "assortment": {"type": "array"},
         "stock": {"type": "array"},
