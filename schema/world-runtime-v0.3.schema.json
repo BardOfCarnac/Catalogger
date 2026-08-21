@@ -63,6 +63,21 @@
       "minItems": 1,
       "items": {"$ref": "#/$defs/purchaseProfileRow"}
     },
+    "marketProfile": {
+      "type": "object",
+      "required": ["archetype_id", "channels", "vendor_rotation"],
+      "properties": {
+        "archetype_id": {"type": "string", "minLength": 1},
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "vendor_rotation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "entity": {
       "type": "object",
       "required": ["entity_id", "name", "entity_kind", "capabilities"],
@@ -92,6 +107,7 @@
         "supply_profile": {"$ref": "#/$defs/supplyProfile"},
         "chain_profile": {"$ref": "#/$defs/chainProfile"},
         "purchase_profile": {"$ref": "#/$defs/purchaseProfile"},
+        "market_profile": {"$ref": "#/$defs/marketProfile"},
         "shop": {"type": "object"},
         "assortment": {"type": "array"},
         "stock": {"type": "array"},
