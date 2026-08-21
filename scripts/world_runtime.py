@@ -2,17 +2,19 @@
 """Vend-R v0.3 runtime projection for source-reviewed world fixtures.
 
 The reviewed v0.2 fixtures are editorial/source data and remain the source of truth. This
-module projects them into a runtime graph with two deliberately orthogonal concepts:
+module projects them into a runtime graph with deliberately orthogonal concepts:
 
 * ``entity_kind`` describes what an entity *is* in the world.
 * ``capabilities`` describe what that entity can *do* commercially.
+* typed relationships describe concrete world-to-world links.
+* ``supply_profile`` preserves supply semantics whose counterparty is only a class, channel
+  description or external actor rather than a concrete reviewed world entity.
 
-Typed relationships live beside the entities. Existing ``parent_entity_id`` links remain
-valid v0.2 input and are projected as ``contained_in`` only when a more specific explicit
-relationship has not been supplied for the same source/target pair. Runtime-only migration
-overrides may live in one or more ``runtime-relationships*.v0.3.json`` registries under the
-world directory so reviewed editorial fixtures do not need to be rewritten merely to correct
-runtime semantics.
+Existing ``parent_entity_id`` links remain valid v0.2 input and are projected as
+``contained_in`` only when a more specific explicit relationship has not been supplied for
+the same source/target pair. Runtime-only migration overrides may live in one or more
+``runtime-relationships*.v0.3.json`` registries under the world directory so reviewed
+editorial fixtures do not need to be rewritten merely to correct runtime semantics.
 """
 from __future__ import annotations
 
@@ -79,12 +81,7 @@ RELATIONSHIP_TYPES = {
 
 
 def derive_entity_kind(entity: dict[str, Any]) -> str:
-    """Project a stable runtime kind from a reviewed v0.2 entity.
-
-    ``runtime_kind`` is an intentionally narrow migration escape hatch for a source-reviewed
-    entity whose legacy ``entity_type`` encoded behaviour rather than identity. Most fixtures
-    require no override.
-    """
+    """Project a stable runtime kind from a reviewed v0.2 entity."""
     override = entity.get("runtime_kind")
     if override is not None:
         if override not in ENTITY_KINDS:
@@ -95,6 +92,56 @@ def derive_entity_kind(entity: dict[str, Any]) -> str:
 
     legacy = entity.get("entity_type", "unclassified")
     return KIND_BY_LEGACY_TYPE.get(legacy, "unclassified")
+
+
+def normalize_supply_profile(entity: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    """Normalize source-level supply notes without inventing counterpart entities.
+
+    Reviewed v0.2 fixtures contain a handful of deliberately loose ``supply_relationships``
+    rows. Some describe outbound supply to a class/channel (for example ``Oasis stores``),
+    while others name an inbound supplier (for example the Steel Vaqueros supplying Honest
+    Hiro). Those are useful runtime facts, but they are not automatically graph edges: a label
+    is not an entity ID.
+
+    Concrete world-to-world supply links are represented separately with the typed ``supplies``
+    relationship. This profile therefore preserves the remaining directional semantics in a
+    queryable shape while retaining the original source wording under ``relationship``.
+    """
+    outbound: list[dict[str, Any]] = []
+    inbound: list[dict[str, Any]] = []
+
+    for source_row in entity.get("supply_relationships", []):
+        if not isinstance(source_row, dict):
+            raise WorldFixtureError(
+                f"supply_relationships row for {entity.get('entity_id', '<unknown>')} must be an object"
+            )
+
+        if source_row.get("target"):
+            row: dict[str, Any] = {
+                "counterparty_label": str(source_row["target"]),
+                "relationship": str(source_row.get("relationship", "supplies")),
+            }
+            if source_row.get("goods") is not None:
+                row["goods"] = copy.deepcopy(source_row["goods"])
+            outbound.append(row)
+            continue
+
+        if source_row.get("supplier"):
+            row = {
+                "counterparty_label": str(source_row["supplier"]),
+                "relationship": str(source_row.get("relationship", "supplier")),
+            }
+            if source_row.get("goods") is not None:
+                row["goods"] = copy.deepcopy(source_row["goods"])
+            inbound.append(row)
+            continue
+
+        raise WorldFixtureError(
+            f"supply_relationships row for {entity.get('entity_id', '<unknown>')} "
+            "must contain target or supplier"
+        )
+
+    return {"outbound": outbound, "inbound": inbound}
 
 
 def derive_capabilities(entity: dict[str, Any]) -> list[str]:
@@ -114,7 +161,12 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
         or entity.get("stock_policy") == "EVENT_ONLY"
     ):
         found.add("event")
-    if entity.get("entity_type") == "channel" or entity.get("distribution"):
+    supply_profile = entity.get("supply_profile") or {}
+    if (
+        entity.get("entity_type") == "channel"
+        or entity.get("distribution")
+        or supply_profile.get("outbound")
+    ):
         found.add("distribution")
     if entity.get("schedule"):
         found.add("scheduled")
@@ -140,14 +192,7 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
 
 
 def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
-    """Load runtime-only typed relationship migrations for one reviewed fixture.
-
-    Registries are optional and split-friendly. Each file deliberately keys by ``fixture_id``
-    so runtime semantics can evolve without editing the source-reviewed v0.2 fixture. All files
-    matching ``runtime-relationships*.v0.3.json`` are loaded in lexical path order, making the
-    combined projection deterministic. Duplicate semantic edges are rejected later by
-    ``normalize_relationships`` rather than silently overriding one another.
-    """
+    """Load runtime-only typed relationship migrations for one reviewed fixture."""
     world_id = doc.get("world_id")
     fixture_id = doc.get("fixture_id")
     if not world_id or not fixture_id:
@@ -188,14 +233,7 @@ def runtime_relationship_overrides(doc: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def normalize_relationships(source: dict[str, Any]) -> list[dict[str, Any]]:
-    """Return typed relationships plus safe legacy-parent fallbacks.
-
-    Relationships can be explicitly embedded in a reviewed fixture or supplied by v0.3
-    runtime migration registries. Either form suppresses the automatic
-    ``parent_entity_id -> contained_in`` fallback for the same source/target pair. This is the
-    key migration rule: old fixtures continue to work while overloaded parent links are
-    corrected incrementally and without changing v0.2 consumer data.
-    """
+    """Return typed relationships plus safe legacy-parent fallbacks."""
     doc = normalize_document(source)
     entities = doc["entities"]
     ids = {entity["entity_id"] for entity in entities}
@@ -267,16 +305,17 @@ def realize_runtime_document(
     runtime_entities: list[dict[str, Any]] = []
     for entity in realized["entities"]:
         row = copy.deepcopy(entity)
-        # Read migration overrides from the source entity because realization deliberately
-        # preserves most source fields but the source remains authoritative here.
         source_entity = next(
             item for item in source_doc["entities"] if item["entity_id"] == entity["entity_id"]
         )
         row["entity_kind"] = derive_entity_kind(source_entity)
+        supply_profile = normalize_supply_profile(source_entity)
+        if supply_profile["outbound"] or supply_profile["inbound"]:
+            row["supply_profile"] = supply_profile
         row["capabilities"] = derive_capabilities(row)
         runtime_entities.append(row)
 
-    result = {
+    return {
         "format_version": RUNTIME_VERSION,
         "source_format_version": source_doc.get("format_version", "0.2.0"),
         "world_id": realized["world_id"],
@@ -287,4 +326,3 @@ def realize_runtime_document(
         "entities": runtime_entities,
         "relationships": normalize_relationships(source),
     }
-    return result
