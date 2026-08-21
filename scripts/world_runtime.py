@@ -120,6 +120,45 @@ def normalize_chain_profile(entity: dict[str, Any]) -> dict[str, Any] | None:
     return profile
 
 
+def normalize_purchase_profile(entity: dict[str, Any]) -> list[dict[str, Any]]:
+    """Normalize source-defined buyback, bounty and procurement terms into one row shape."""
+    source_policy = entity.get("purchase_policy")
+    if source_policy is None:
+        return []
+    if isinstance(source_policy, dict):
+        source_rows = [source_policy]
+    elif isinstance(source_policy, list):
+        source_rows = source_policy
+    else:
+        raise WorldFixtureError(
+            f"purchase_policy for {entity.get('entity_id', '<unknown>')} must be an object or list"
+        )
+
+    normalized: list[dict[str, Any]] = []
+    for source_row in source_rows:
+        if not isinstance(source_row, dict):
+            raise WorldFixtureError(
+                f"purchase_policy row for {entity.get('entity_id', '<unknown>')} must be an object"
+            )
+        purchase_key = source_row.get("purchase_key") or source_row.get("offering_key")
+        label = source_row.get("label")
+        if not purchase_key or not label:
+            raise WorldFixtureError(
+                f"purchase_policy row for {entity.get('entity_id', '<unknown>')} must contain key and label"
+            )
+
+        row: dict[str, Any] = {
+            "purchase_key": str(purchase_key),
+            "label": str(label),
+        }
+        for key, value in source_row.items():
+            if key in {"purchase_key", "offering_key", "label"}:
+                continue
+            row[key] = copy.deepcopy(value)
+        normalized.append(row)
+    return normalized
+
+
 def derive_capabilities(entity: dict[str, Any]) -> list[str]:
     found: set[str] = set()
     if entity.get("stocking") or entity.get("assortment") or entity.get("shop"):
@@ -142,7 +181,7 @@ def derive_capabilities(entity: dict[str, Any]) -> list[str]:
         found.add("scheduled")
     if entity.get("access_model") or entity.get("access"):
         found.add("access_controlled")
-    if entity.get("purchase_policy"):
+    if entity.get("purchase_profile"):
         found.add("purchase_policy")
 
     for cap in entity.get("runtime_capabilities_add", []):
@@ -276,6 +315,10 @@ def realize_runtime_document(source: dict[str, Any], engine: WorldStockEngine | 
         chain_profile = normalize_chain_profile(source_entity)
         if chain_profile is not None:
             row["chain_profile"] = chain_profile
+
+        purchase_profile = normalize_purchase_profile(source_entity)
+        if purchase_profile:
+            row["purchase_profile"] = purchase_profile
 
         row["capabilities"] = derive_capabilities(row)
         runtime_entities.append(row)
