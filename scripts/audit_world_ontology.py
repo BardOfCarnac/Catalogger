@@ -72,12 +72,22 @@ def build_report() -> dict[str, Any]:
     docs = load_documents()
     entities: list[dict[str, Any]] = []
     fixtures_by_entity: dict[str, str] = {}
+    supply_relationships: list[dict[str, Any]] = []
     for path, doc in docs:
         for entity in doc["entities"]:
             row = dict(entity)
             row["_fixture_file"] = path.name
             entities.append(row)
             fixtures_by_entity[row["entity_id"]] = path.name
+            for supply in row.get("supply_relationships", []):
+                supply_relationships.append({
+                    "fixture_file": path.name,
+                    "fixture_id": doc.get("fixture_id"),
+                    "entity_id": row["entity_id"],
+                    "entity_name": row.get("name"),
+                    "source_ref": row.get("source_ref"),
+                    "relationship": supply,
+                })
 
     entity_type = Counter(str(e.get("entity_type", "<missing>")) for e in entities)
     commercial_mode = Counter(str(e.get("commercial_mode", "<none>")) for e in entities)
@@ -159,6 +169,10 @@ def build_report() -> dict[str, Any]:
             "capability_signature": sorted_counter(signatures),
             "relationship_pattern": sorted_counter(relationship_patterns),
         },
+        "source_relationships": {
+            "supply_relationships": len(supply_relationships),
+        },
+        "supply_relationships": supply_relationships,
         "rare_threshold": 2,
         "rare_register": rare_register,
     }
@@ -184,6 +198,16 @@ def main() -> None:
         ("top_level_field", "Entity field usage"),
     ):
         print_section(title, report["counts"][key])
+
+    print("\n## Source-level relationship fields")
+    print(f"supply_relationships: {report['source_relationships']['supply_relationships']}")
+
+    print("\n## Supply relationships")
+    for row in report["supply_relationships"]:
+        print(
+            f"{row['fixture_file']} | {row['entity_name']} | {row['entity_id']} | "
+            f"{json.dumps(row['relationship'], ensure_ascii=False, sort_keys=True)}"
+        )
 
     print("\n## Rare register (count <= 2)")
     for row in report["rare_register"]:
