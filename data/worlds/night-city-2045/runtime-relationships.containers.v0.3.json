@@ -49,6 +49,36 @@
         "note": "The Cabbit occupies the ground floor of the G3 Gun-Gal Station building."
       }
     ],
+    "nc2045-reclamation-zone-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Carmen's Cosmetics is an outlet within Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Forever Beautiful is an outlet within Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Forgotten Treasures is one of the named businesses contained by Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Underground Bodega is one of the named businesses contained by Reclamation Zone Station."
+      }
+    ],
     "nc2045-university-district-context-only-v1": [
       {
         "relationship_type": "contained_in",
