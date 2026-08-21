@@ -12,6 +12,15 @@
         "note": "Seacliff is the poolside bar within the Executive Zone Casino/Country Club complex."
       }
     ],
+    "nc2045-heywood-docks-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES",
+        "source_ref": "Night City 2045 p. 243",
+        "note": "SK Securities' reviewed parent entry explicitly says its headquarters complex physically contains the Piccolo bodega."
+      }
+    ],
     "nc2045-heywood-industrial-zone-review-queue-v1": [
       {
         "relationship_type": "contained_in",
@@ -67,6 +76,22 @@
         "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
         "source_ref": "Night City 2045 p. 152",
         "note": "Randy Dandy is the source-named ferry/bar forming part of the permanent Flotsam settlement."
+      }
+    ],
+    "nc2045-rancho-coronado-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "6th Street Station is a persistent venue-security occupant inside the former Minimallism shopping mall."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "The Samaritan clinic is a persistent occupant operating from a former shop unit inside Minimallism."
       }
     ],
     "nc2045-the-glen-context-only-v1": [
