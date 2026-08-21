@@ -171,21 +171,21 @@
       "name": "Night City Firestation #2",
       "entity_type": "context",
       "district": "Downtown",
-      "map_no": 18,
+      "map_no": 19,
       "book_page": 86,
       "provenance": "CANON_NAMED",
       "source_ref": "Night City 2045 p. 86",
       "source_summary": "Heavily fortified public fire station whose armed and cybered crews provide emergency response and arson investigation; the source does not present those public functions as a customer-facing commercial service.",
       "review_status": "source_reviewed",
       "stock_policy": "NO_STOCK",
-      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_PUBLIC_EMERGENCY_INFRASTRUCTURE_NO_COMMERCE"}
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_PUBLIC_EMERGENCY_INFRASTRUCTURE_NO_COMMERCE", "note": "Map number corrected to source marker #19 during Downtown geometry review."}
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-086-THE-NIGHTINGALE-THEATER",
       "name": "The Nightingale Theater",
       "entity_type": "service",
       "district": "Downtown",
-      "map_no": 19,
+      "map_no": 20,
       "book_page": 86,
       "provenance": "CANON_NAMED",
       "source_ref": "Night City 2045 p. 86",
@@ -196,21 +196,21 @@
         {"service_key": "live-performance-venue", "label": "Live performance venue"},
         {"service_key": "underground-rave-venue", "label": "Underground rave venue"}
       ],
-      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_LIVE_ENTERTAINMENT_VENUE"}
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_LIVE_ENTERTAINMENT_VENUE", "note": "Map number corrected to source marker #20 during Downtown geometry review."}
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-086-WEST-HILL-CHURCH-OF-GOD",
       "name": "West Hill Church of God",
       "entity_type": "context",
       "district": "Downtown",
-      "map_no": 21,
+      "map_no": 22,
       "book_page": 86,
       "provenance": "CANON_NAMED",
       "source_ref": "Night City 2045 pp. 86-87",
       "source_summary": "Former church now used as the Undertow gang's clubhouse and planning base; no source-supported public commerce operates from the site.",
       "review_status": "source_reviewed",
       "stock_policy": "NO_STOCK",
-      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_GANG_CLUBHOUSE_CONTEXT_NO_PUBLIC_COMMERCE"}
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_GANG_CLUBHOUSE_CONTEXT_NO_PUBLIC_COMMERCE", "note": "Map number corrected to source marker #22 during Downtown geometry review."}
     }
   ]
 }
