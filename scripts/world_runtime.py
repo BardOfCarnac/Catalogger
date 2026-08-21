@@ -3,8 +3,9 @@
 
 The reviewed v0.2 fixtures remain the editorial/source truth. Runtime v0.3 projects them
 into orthogonal entity kinds, commercial capabilities, typed relationships, and normalized
-supply profiles. Loose supplier/customer labels stay as profile data rather than becoming
-invented graph nodes; concrete reviewed entity-to-entity links use typed relationships.
+commercial profiles. Loose supplier/customer and chain labels stay as profile data rather
+than becoming invented graph nodes; concrete reviewed entity-to-entity links use typed
+relationships.
 """
 from __future__ import annotations
 
@@ -90,14 +91,33 @@ def normalize_supply_profile(entity: dict[str, Any]) -> dict[str, list[dict[str,
                 "must contain target or supplier"
             )
 
-        # Preserve the source's own level of specificity. These fields are deliberately not
-        # collapsed into a generated catalogue category or an invented counterparty entity.
         for key in ("goods", "product_family"):
             if source_row.get(key) is not None:
                 row[key] = copy.deepcopy(source_row[key])
         destination.append(row)
 
     return {"outbound": outbound, "inbound": inbound}
+
+
+def normalize_chain_profile(entity: dict[str, Any]) -> dict[str, Any] | None:
+    """Preserve a source-declared chain affiliation without inventing a chain graph entity."""
+    affiliation = entity.get("chain_affiliation")
+    if affiliation is None:
+        return None
+    if not isinstance(affiliation, dict):
+        raise WorldFixtureError(
+            f"chain_affiliation for {entity.get('entity_id', '<unknown>')} must be an object"
+        )
+    name = affiliation.get("name")
+    if not name:
+        raise WorldFixtureError(
+            f"chain_affiliation for {entity.get('entity_id', '<unknown>')} must contain name"
+        )
+
+    profile: dict[str, Any] = {"name": str(name)}
+    if affiliation.get("operator") is not None:
+        profile["operator"] = str(affiliation["operator"])
+    return profile
 
 
 def derive_capabilities(entity: dict[str, Any]) -> list[str]:
@@ -248,9 +268,15 @@ def realize_runtime_document(source: dict[str, Any], engine: WorldStockEngine | 
         row = copy.deepcopy(entity)
         source_entity = source_by_id[entity["entity_id"]]
         row["entity_kind"] = derive_entity_kind(source_entity)
+
         supply_profile = normalize_supply_profile(source_entity)
         if supply_profile["outbound"] or supply_profile["inbound"]:
             row["supply_profile"] = supply_profile
+
+        chain_profile = normalize_chain_profile(source_entity)
+        if chain_profile is not None:
+            row["chain_profile"] = chain_profile
+
         row["capabilities"] = derive_capabilities(row)
         runtime_entities.append(row)
 
