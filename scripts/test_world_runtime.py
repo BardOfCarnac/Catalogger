@@ -221,7 +221,7 @@ for registry_path in registry_paths:
     assert registry["format_version"] == "0.3.0"
     assert registry["world_id"] == "night-city-2045"
     registry_rows += sum(len(rows) for rows in registry["fixtures"].values())
-assert registry_rows == 122, registry_rows
+assert registry_rows == 125, registry_rows
 
 # Whole-corpus compatibility regression.
 reviewed_fixtures = 0
@@ -281,8 +281,8 @@ assert reviewed_fixtures == 91, reviewed_fixtures
 assert reviewed_entities == 700, reviewed_entities
 assert legacy_parent_links == 218, legacy_parent_links
 assert runtime_relationships == 218, runtime_relationships
-assert runtime_explicit_relationships == 124, runtime_explicit_relationships
-assert runtime_inferred_relationships == 94, runtime_inferred_relationships
+assert runtime_explicit_relationships == 127, runtime_explicit_relationships
+assert runtime_inferred_relationships == 91, runtime_inferred_relationships
 
 print(
     "OK: v0.3 runtime projection; "
