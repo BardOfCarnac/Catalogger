@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Structural regression test for Vend-R source-map geometry files."""
+"""Structural and identity regression tests for Vend-R source-map geometry files."""
 from __future__ import annotations
 
 import json
@@ -7,6 +7,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORLD_DIR = ROOT / "data/worlds/night-city-2045"
+
+fixture_paths = sorted(WORLD_DIR.glob("*.v1.json")) + sorted(
+    (WORLD_DIR / "recovered").glob("*.v1.json")
+)
+fixture_entities: dict[str, dict] = {}
+for fixture_path in fixture_paths:
+    fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+    for entity in fixture.get("entities", []):
+        entity_id = entity["entity_id"]
+        assert entity_id not in fixture_entities, f"duplicate fixture entity id: {entity_id}"
+        fixture_entities[entity_id] = entity
 
 paths = sorted(WORLD_DIR.glob("map-geometry.*.v0.1.json"))
 assert paths, "no source-map geometry files found"
@@ -33,10 +44,22 @@ for path in paths:
         assert 0.0 <= row["x"] <= 1.0, (path, row)
         assert 0.0 <= row["y"] <= 1.0, (path, row)
 
+        entity = fixture_entities.get(row["entity_id"])
+        assert entity is not None, f"geometry points at unknown entity: {row['entity_id']}"
+        assert entity.get("district") == doc["district"], (path, row, entity)
+        if entity.get("map_no") is not None:
+            assert entity["map_no"] == row["map_no"], (
+                f"source marker mismatch for {row['entity_id']}: "
+                f"fixture={entity['map_no']} geometry={row['map_no']}"
+            )
+
 downtown = json.loads(
     (WORLD_DIR / "map-geometry.downtown.v0.1.json").read_text(encoding="utf-8")
 )
 assert [row["map_no"] for row in downtown["points"]] == list(range(1, 24))
 assert len(downtown["points"]) == 23
 
-print(f"OK: source-map geometry; maps={len(paths)}, downtown_points=23")
+print(
+    f"OK: source-map geometry; maps={len(paths)}, "
+    f"fixture_entities={len(fixture_entities)}, downtown_points=23"
+)
