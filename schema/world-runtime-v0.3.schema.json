@@ -12,18 +12,31 @@
     "fixture_status": {"const": "source_reviewed"},
     "provenance": {"type": ["string", "null"]},
     "source": {"type": "object"},
-    "entities": {
-      "type": "array",
-      "minItems": 1,
-      "items": {"$ref": "#/$defs/entity"}
-    },
-    "relationships": {
-      "type": "array",
-      "items": {"$ref": "#/$defs/relationship"}
-    }
+    "entities": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/entity"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}}
   },
   "additionalProperties": true,
   "$defs": {
+    "supplyProfileRow": {
+      "type": "object",
+      "required": ["counterparty_label", "relationship"],
+      "properties": {
+        "counterparty_label": {"type": "string", "minLength": 1},
+        "relationship": {"type": "string", "minLength": 1},
+        "goods": {"type": "string"},
+        "product_family": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "supplyProfile": {
+      "type": "object",
+      "required": ["outbound", "inbound"],
+      "properties": {
+        "outbound": {"type": "array", "items": {"$ref": "#/$defs/supplyProfileRow"}},
+        "inbound": {"type": "array", "items": {"$ref": "#/$defs/supplyProfileRow"}}
+      },
+      "additionalProperties": false
+    },
     "entity": {
       "type": "object",
       "required": ["entity_id", "name", "entity_kind", "capabilities"],
@@ -36,9 +49,7 @@
         "capabilities": {
           "type": "array",
           "uniqueItems": true,
-          "items": {
-            "enum": ["catalog_stock", "local_wares", "services", "event", "distribution", "scheduled", "access_controlled", "purchase_policy"]
-          }
+          "items": {"enum": ["catalog_stock", "local_wares", "services", "event", "distribution", "scheduled", "access_controlled", "purchase_policy"]}
         },
         "entity_type": {"type": "string"},
         "parent_entity_id": {"type": "string"},
@@ -52,6 +63,7 @@
         "local_offerings": {"type": "array", "items": {"type": "object"}},
         "services": {"type": "array", "items": {"type": "object"}},
         "schedule": {"type": "object"},
+        "supply_profile": {"$ref": "#/$defs/supplyProfile"},
         "shop": {"type": "object"},
         "assortment": {"type": "array"},
         "stock": {"type": "array"},
