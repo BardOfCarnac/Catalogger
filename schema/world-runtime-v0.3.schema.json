@@ -46,6 +46,23 @@
       },
       "additionalProperties": false
     },
+    "purchaseProfileRow": {
+      "type": "object",
+      "required": ["purchase_key", "label"],
+      "properties": {
+        "purchase_key": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "price_eb": {"type": "number"},
+        "price_eb_each": {"type": "number"},
+        "price_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "purchaseProfile": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/purchaseProfileRow"}
+    },
     "entity": {
       "type": "object",
       "required": ["entity_id", "name", "entity_kind", "capabilities"],
@@ -74,6 +91,7 @@
         "schedule": {"type": "object"},
         "supply_profile": {"$ref": "#/$defs/supplyProfile"},
         "chain_profile": {"$ref": "#/$defs/chainProfile"},
+        "purchase_profile": {"$ref": "#/$defs/purchaseProfile"},
         "shop": {"type": "object"},
         "assortment": {"type": "array"},
         "stock": {"type": "array"},
