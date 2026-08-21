@@ -38,7 +38,7 @@
       "name": "Guns & Dolls",
       "entity_type": "hybrid",
       "district": "Downtown",
-      "map_no": 13,
+      "map_no": 14,
       "book_page": 85,
       "provenance": "CANON_NAMED",
       "source_ref": "Night City 2045 p. 85",
@@ -71,7 +71,7 @@
         "source_profile_version": "0.2",
         "previous_relevance": "RETAIL_CAPABLE",
         "decision": "PROMOTE_TO_WEAPONS_SELLER_AND_ENTERTAINMENT_HYBRID",
-        "note": "Generated stock is limited to weapons; the audit's food, parts and vehicle spillover is not promoted."
+        "note": "Generated stock is limited to weapons; the audit's food, parts and vehicle spillover is not promoted. Map number corrected to source marker #14 during Downtown geometry review."
       }
     },
     {
