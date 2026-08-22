@@ -32,13 +32,21 @@ for path in paths:
 
     points = doc["points"]
     assert points, path
-    map_numbers = [row["map_no"] for row in points]
-    entity_ids = [row["entity_id"] for row in points]
-    assert len(map_numbers) == len(set(map_numbers)), f"duplicate map number: {path}"
-    assert len(entity_ids) == len(set(entity_ids)), f"duplicate entity id: {path}"
+
+    point_ids = [row["point_id"] for row in points if row.get("point_id")]
+    assert len(point_ids) == len(set(point_ids)), f"duplicate point id: {path}"
+
+    coordinate_keys = [
+        (row["map_no"], row.get("map_suffix"), row["x"], row["y"])
+        for row in points
+    ]
+    assert len(coordinate_keys) == len(set(coordinate_keys)), f"duplicate source point: {path}"
 
     for row in points:
         assert isinstance(row["map_no"], int) and row["map_no"] > 0, (path, row)
+        suffix = row.get("map_suffix")
+        if suffix is not None:
+            assert len(suffix) == 1 and suffix.isascii() and suffix.islower(), (path, row)
         assert row["name"], (path, row)
         assert row["entity_id"], (path, row)
         assert 0.0 <= row["x"] <= 1.0, (path, row)
@@ -65,9 +73,31 @@ little_china = json.loads(
 assert [row["map_no"] for row in little_china["points"]] == list(range(1, 16))
 assert len(little_china["points"]) == 15
 
+university = json.loads(
+    (WORLD_DIR / "map-geometry.university-district.v0.1.json").read_text(encoding="utf-8")
+)
+university_points = university["points"]
+assert len(university_points) == 33
+assert [
+    row["map_no"] for row in university_points if row.get("map_suffix") is None
+] == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19]
+assert not any(
+    row["map_no"] == 11 and row.get("map_suffix") is None
+    for row in university_points
+), "the source map has no fabricated unsuffixed #11 centroid"
+assert {row["map_suffix"] for row in university_points if row.get("map_suffix")} == set("abcdefghijklm")
+assert sum(
+    row["map_no"] == 11 and row.get("map_suffix") == "d"
+    for row in university_points
+) == 3, "the source draws The Cells / 11d at three distinct positions"
+assert len({
+    row["point_id"] for row in university_points
+}) == len(university_points)
+
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, "
     f"downtown_points={len(downtown['points'])}, "
-    f"little_china_points={len(little_china['points'])}"
+    f"little_china_points={len(little_china['points'])}, "
+    f"university_points={len(university_points)}"
 )
