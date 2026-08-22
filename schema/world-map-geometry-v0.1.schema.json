@@ -38,7 +38,9 @@
         "type": "object",
         "required": ["map_no", "name", "entity_id", "x", "y"],
         "properties": {
+          "point_id": {"type": "string", "minLength": 1},
           "map_no": {"type": "integer", "minimum": 1},
+          "map_suffix": {"type": "string", "pattern": "^[a-z]$"},
           "name": {"type": "string", "minLength": 1},
           "entity_id": {"type": "string", "minLength": 1},
           "x": {"type": "number", "minimum": 0, "maximum": 1},
