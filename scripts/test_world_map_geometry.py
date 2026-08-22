@@ -59,7 +59,15 @@ downtown = json.loads(
 assert [row["map_no"] for row in downtown["points"]] == list(range(1, 24))
 assert len(downtown["points"]) == 23
 
+little_china = json.loads(
+    (WORLD_DIR / "map-geometry.little-china.v0.1.json").read_text(encoding="utf-8")
+)
+assert [row["map_no"] for row in little_china["points"]] == list(range(1, 16))
+assert len(little_china["points"]) == 15
+
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
-    f"fixture_entities={len(fixture_entities)}, downtown_points=23"
+    f"fixture_entities={len(fixture_entities)}, "
+    f"downtown_points={len(downtown['points'])}, "
+    f"little_china_points={len(little_china['points'])}"
 )
