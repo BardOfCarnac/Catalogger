@@ -90,14 +90,19 @@ assert sum(
     row["map_no"] == 11 and row.get("map_suffix") == "d"
     for row in university_points
 ) == 3, "the source draws The Cells / 11d at three distinct positions"
-assert len({
-    row["point_id"] for row in university_points
-}) == len(university_points)
+assert len({row["point_id"] for row in university_points}) == len(university_points)
+
+upper_marina = json.loads(
+    (WORLD_DIR / "map-geometry.upper-marina.v0.1.json").read_text(encoding="utf-8")
+)
+assert [row["map_no"] for row in upper_marina["points"]] == list(range(1, 41))
+assert len(upper_marina["points"]) == 40
 
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, "
     f"downtown_points={len(downtown['points'])}, "
     f"little_china_points={len(little_china['points'])}, "
-    f"university_points={len(university_points)}"
+    f"university_points={len(university_points)}, "
+    f"upper_marina_points={len(upper_marina['points'])}"
 )
