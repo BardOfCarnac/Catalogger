@@ -1,0 +1,62 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-heywood-industrial-zone-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [261, 262],
+    "note": "Held-out v0.2 Review Queue candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+      "name": "Zhirafa MicroVillage",
+      "entity_type": "container",
+      "district": "Heywood Industrial Zone",
+      "map_no": 18,
+      "book_page": 261,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 261-262",
+      "source_summary": "Zhirafa employee conapt complex styled as cargo containers; its courtyard has artisanal streetcart vendors and the first floor contains the named Vodka Container bar.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_RESIDENTIAL_COMMERCE_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-CHN-HEYWOOD-INDUSTRIAL-ZONE-261-MICROVILLAGE-STREETCARTS",
+      "name": "Zhirafa MicroVillage Streetcarts",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+      "district": "Heywood Industrial Zone",
+      "map_no": 18,
+      "book_page": 261,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 261",
+      "source_summary": "Source-explicit but unnamed streetcart vendors in the MicroVillage courtyard, characterized by upscale offerings such as artisanal lattes.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "rotating_vendor_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "local_offerings": [{"offering_key": "artisanal-lattes", "label": "Artisanal lattes and similar courtyard food-cart offerings"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_VENDOR_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-261-VODKA-CONTAINER",
+      "name": "Vodka Container",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+      "district": "Heywood Industrial Zone",
+      "map_no": 18,
+      "book_page": 261,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 261-262",
+      "source_summary": "Small first-floor bar serving cheap vodka to residents and visitors.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "cheap-vodka-shot", "label": "Vodka shot", "price_eb": 5}],
+      "services": [{"service_key": "bar-hospitality", "label": "Bar hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_BAR_CHILD"}
+    }
+  ]
+}

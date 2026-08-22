@@ -1,0 +1,80 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-pacifica-playground-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [279, 280, 281, 282],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-OBSIDIAN-EQUINOX-MARINA-DOCKS",
+      "name": "Obsidian Equinox Marina & Docks",
+      "entity_type": "service",
+      "district": "Pacifica Playground",
+      "map_no": 8,
+      "book_page": 279,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 279",
+      "source_summary": "Exclusive marina used by wealthy yacht owners from the Exec Zone and Charter Hill, charging a substantial monthly berth fee.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "luxury-yacht-berth", "label": "Luxury yacht berth", "price_eb": 1000, "billing_period": "month"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_LUXURY_MARINA_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLEASANT-VALLEY-APARTMENTS",
+      "name": "Pleasant Valley Apartments",
+      "entity_type": "local_vendor",
+      "district": "Pacifica Playground",
+      "map_no": 11,
+      "book_page": 280,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 280-281",
+      "source_summary": "Retro low-tech apartment building marketed to residents seeking pre-Collapse-style living; the source states that units continue to sell.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [{"offering_key": "retro-apartment-unit", "label": "Retro low-tech apartment unit"}],
+      "catalogue_note": "The source establishes a specific property development rather than fungible housing stock, so no generic property assortment is generated.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_SOURCE_LOCAL_PROPERTY_VENDOR"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-TANSON-GROUP-HEADQUARTERS",
+      "name": "Tanson Group Headquarters",
+      "entity_type": "channel",
+      "district": "Pacifica Playground",
+      "map_no": 18,
+      "book_page": 281,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 281",
+      "source_summary": "Restricted Tanson administration, manufacturing, research and warehousing complex. Tanson goods have begun flowing from the site to other West Coast cities, but little is sent to Night City stores and no public showroom is described.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "access_model": "authorized-only",
+      "distribution": {"product_family": "Tanson goods ranging from food to vehicles", "service_area": "other West Coast cities; minimal Night City retail"},
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_RESTRICTED_PRODUCTION_DISTRIBUTION_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-WNS-OFFICES",
+      "name": "WNS Offices",
+      "entity_type": "service",
+      "district": "Pacifica Playground",
+      "map_no": 20,
+      "book_page": 282,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 282",
+      "source_summary": "World News Service newsroom and local broadcast studio, paired with an adjacent music station where DMS talent scouts search for new performers to sign.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "news-media-production", "label": "Local news and media production"},
+        {"service_key": "talent-scouting", "label": "DMS talent scouting and contracting"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_MEDIA_AND_TALENT_SERVICE"}
+    }
+  ]
+}

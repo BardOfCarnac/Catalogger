@@ -1,0 +1,90 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-heywood-industrial-zone-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [259],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+      "name": "The Old Ironworks Building",
+      "entity_type": "container",
+      "district": "Heywood Industrial Zone",
+      "map_no": 9,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "Reclaimed mixed-use industrial building whose former factory floor contains the Furnace and rotating street carts.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed"
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "name": "The Furnace",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+      "district": "Heywood Industrial Zone",
+      "map_no": 9,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "Small bar-and-bodega serving residents and nearby industrial workers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:heywood-industrial-zone:the-furnace:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 7, "street": 5},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 7, "used": 2, "refurbished": 1, "damaged": 0.2, "salvaged": 0.5},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's electronics/fashion spillover is removed. The bodega shelf is simulated separately from the neighboring rotating street carts."
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-STREET-CARTS",
+      "name": "Old Ironworks Street Carts",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+      "district": "Heywood Industrial Zone",
+      "map_no": 9,
+      "book_page": 259,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "Source-established but unnamed rotating street-cart commerce on the Old Ironworks factory floor.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "rotating_vendor_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "vendor_rotation": "high",
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_EXPLICIT_ROTATING_CHANNEL"
+      }
+    }
+  ]
+}

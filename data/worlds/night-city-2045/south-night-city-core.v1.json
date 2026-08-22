@@ -1,0 +1,214 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-south-night-city-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [141],
+    "note": "Commercial facts are source-reviewed against the book page. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "name": "Container Mart",
+      "entity_type": "container",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Shopping plaza built from stacked cargo containers; individual tenant businesses own the commerce rather than the plaza itself.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-ANCESTRAL-THREADS",
+      "name": "Ancestral Threads",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Salon focused on braiding and care for natural hair.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "natural-hair-care", "label": "Natural hair care and braiding"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_SERVICE_CHILD",
+        "note": "No unsupported retail shelf is generated from the audit's broad fashion/medical signals."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CHOPPER-S",
+      "name": "Chopper’s",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Dental clinic whose ripperdocs provide ordinary dental work and medical-grade cybernetic dental replacements.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "dental-care", "label": "Dental care"},
+        {"service_key": "cybernetic-dental-replacement", "label": "Cybernetic dental replacement and installation"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_SERVICE_CHILD",
+        "note": "Medical-service identity is retained without inventing a general cyberware shelf."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
+      "name": "Container Bodega",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Neighborhood bodega inside Container Mart.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "proprietor": {
+        "name": "Melinda Joy",
+        "roles": ["Rockerboy", "Fixer"]
+      },
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:south-night-city:container-bodega:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 8, "street": 3},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Generated stock is constrained to an ordinary bodega slice instead of inheriting electronics/fashion spillover."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-GETAWAY-TOURS",
+      "name": "Getaway Tours",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Braindance parlor specializing in recordings built around luxury-vacation experiences.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "braindance-parlor", "label": "Luxury-vacation braindance experiences"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_SERVICE_CHILD"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
+      "name": "Old Lady Stuff",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Fiber-craft shop selling craft supplies, with armor repair as a side service.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "fiber-craft-supplies", "label": "Knitting, crochet and other fiber-craft supplies"}
+      ],
+      "services": [
+        {"service_key": "armor-repair", "label": "Armor repair"}
+      ],
+      "catalogue_note": "The audit's broad Fashion/General Equipment/Armor pools would invent unrelated merchandise. Source-defined craft supplies stay local and armor remains a repair service rather than shelf stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES_AND_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-PANIK",
+      "name": "Panik",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Hand-and-foot beauty salon providing conventional services and fingertip fashionware work.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "manicure-pedicure", "label": "Manicure and pedicure"},
+        {"service_key": "fingertip-fashionware", "label": "Fingertip fashionware fitting and care"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_SERVICE_CHILD",
+        "note": "Fashionware is represented as salon work rather than a broad generated cyberware inventory."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-SLUSHSLURP",
+      "name": "SlushSlurp",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "district": "South Night City",
+      "map_no": 3,
+      "book_page": 141,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 141",
+      "source_summary": "Teen-focused shaved-ice stand with optional drug add-ons.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "shaved-ice", "label": "Flavored shaved ice", "price_eb": 5},
+        {"offering_key": "drug-dusting", "label": "Optional synthcoke, blue glass or boost topping", "visibility": "source-defined"}
+      ],
+      "catalogue_note": "The specific prepared food/drug combination is kept source-local rather than replaced by generic consumables or Street Drugs catalogue stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PRESERVE_NAMED_LOCAL_VENDOR"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+  "district": "University District",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 105,
+    "source_ref": "Night City 2045 p. 105",
+    "note": "Numbered and lettered map pins were visually verified against the user-provided purchased source. The campus map repeats marker 11d at three distinct housing positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude. Night City University is represented by its source-drawn campus submarkers rather than a fabricated parent centroid.",
+  "points": [
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-01", "map_no": 1, "name": "94.4 NCU Radio", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-94-4-NCU-RADIO", "x": 0.41281, "y": 0.41182, "source_ref": "Night City 2045 p. 106"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-02", "map_no": 2, "name": "Biograph Theater", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOGRAPH-THEATER", "x": 0.242876, "y": 0.463588, "source_ref": "Night City 2045 p. 106"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-03", "map_no": 3, "name": "Biotechnica Campus", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS", "x": 0.677516, "y": 0.437072, "source_ref": "Night City 2045 p. 106"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-04", "map_no": 4, "name": "Biotechnica Habitation Sphere Alpha", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-HABITATION-SPHERE-ALPHA", "x": 0.636667, "y": 0.408032, "source_ref": "Night City 2045 p. 106"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-05", "map_no": 5, "name": "Campus Chapel", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CAMPUS-CHAPEL", "x": 0.280458, "y": 0.493891, "source_ref": "Night City 2045 p. 107"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-06", "map_no": 6, "name": "Carriage Street Books/Afterwords Café", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE", "x": 0.242876, "y": 0.493891, "source_ref": "Night City 2045 p. 107"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-07", "map_no": 7, "name": "Fashion Cuts", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FASHION-CUTS", "x": 0.224902, "y": 0.447173, "source_ref": "Night City 2045 p. 107"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-08", "map_no": 8, "name": "Food Truck Plaza", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA", "x": 0.233072, "y": 0.478739, "source_ref": "Night City 2045 p. 107"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-09", "map_no": 9, "name": "Kosmos Hospital", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-KOSMOS-HOSPITAL", "x": 0.224902, "y": 0.430759, "source_ref": "Night City 2045 pp. 107-108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-10", "map_no": 10, "name": "Night City Symphony Hall", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-SYMPHONY-HALL", "x": 0.409542, "y": 0.476214, "source_ref": "Night City 2045 p. 108"},
+
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11A", "map_no": 11, "map_suffix": "a", "name": "Administrative Building", "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-ADMINISTRATION-BUILDING", "x": 0.327843, "y": 0.493891, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11B", "map_no": 11, "map_suffix": "b", "name": "Blaine Building", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BLAINE-BUILDING", "x": 0.318039, "y": 0.44086, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11C", "map_no": 11, "map_suffix": "c", "name": "Brooks Library", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BROOKS-LIBRARY", "x": 0.318039, "y": 0.463588, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11D-1", "map_no": 11, "map_suffix": "d", "name": "The Cells", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS", "x": 0.282092, "y": 0.447173, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11D-2", "map_no": 11, "map_suffix": "d", "name": "The Cells", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS", "x": 0.282092, "y": 0.463588, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11D-3", "map_no": 11, "map_suffix": "d", "name": "The Cells", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS", "x": 0.282092, "y": 0.478739, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11E", "map_no": 11, "map_suffix": "e", "name": "Howard Wong Building", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-HOWARD-WONG-BUILDING", "x": 0.318039, "y": 0.452224, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11F", "map_no": 11, "map_suffix": "f", "name": "Michaels Hall", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-MICHAELS-HALL", "x": 0.318039, "y": 0.429497, "source_ref": "Night City 2045 p. 108"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11G", "map_no": 11, "map_suffix": "g", "name": "Knute Hall", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-KNUTE-HALL", "x": 0.338702, "y": 0.463588, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11H", "map_no": 11, "map_suffix": "h", "name": "Loggagia Science Labs", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-LOGGAGIA-SCIENCE-LABS", "x": 0.340915, "y": 0.447173, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11I", "map_no": 11, "map_suffix": "i", "name": "Lombardy Groceries", "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES", "x": 0.272288, "y": 0.430759, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11J", "map_no": 11, "map_suffix": "j", "name": "NCU Clinic", "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-109-NCU-CLINIC", "x": 0.294459, "y": 0.430773, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11K", "map_no": 11, "map_suffix": "k", "name": "Schumacher Hall", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCHUMACHER-HALL", "x": 0.340915, "y": 0.430759, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11L", "map_no": 11, "map_suffix": "l", "name": "Science Tower", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCIENCE-TOWER", "x": 0.318039, "y": 0.478739, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-11M", "map_no": 11, "map_suffix": "m", "name": "Thompson Hall", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-THOMPSON-HALL", "x": 0.340915, "y": 0.478739, "source_ref": "Night City 2045 p. 109"},
+
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-12", "map_no": 12, "name": "Parkside Living", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PARKSIDE-LIVING", "x": 0.726536, "y": 0.466113, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-13", "map_no": 13, "name": "Princessland", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PRINCESSLAND", "x": 0.50268, "y": 0.447173, "source_ref": "Night City 2045 p. 109"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-14", "map_no": 14, "name": "Retail Resale", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE", "x": 0.545164, "y": 0.48884, "source_ref": "Night City 2045 p. 110"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-15", "map_no": 15, "name": "Stems & Seeds", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-STEMS-SEEDS", "x": 0.197124, "y": 0.486315, "source_ref": "Night City 2045 p. 110"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-16", "map_no": 16, "name": "Tumble and Dry", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-TUMBLE-AND-DRY", "x": 0.373595, "y": 0.434547, "source_ref": "Night City 2045 p. 110"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-17", "map_no": 17, "name": "University Crèche", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CRECHE", "x": 0.373595, "y": 0.491365, "source_ref": "Night City 2045 p. 110"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-18", "map_no": 18, "name": "University Cubes", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CUBES", "x": 0.198758, "y": 0.425709, "source_ref": "Night City 2045 p. 110"},
+    {"point_id": "NC2045-MAP-UNIVERSITY-P105-19", "map_no": 19, "name": "Yewtree", "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-111-YEWTREE", "x": 0.492876, "y": 0.490103, "source_ref": "Night City 2045 p. 111"}
+  ]
+}

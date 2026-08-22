@@ -1,0 +1,357 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-heywood-industrial-zone-context-only-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [258, 259, 260, 261],
+    "note": "Direct source review of all sixteen Heywood Industrial Zone rows the v0.2 audit classified CONTEXT_ONLY. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ALDECALDO-DEPOT",
+      "name": "Aldecaldo Depot",
+      "entity_type": "service",
+      "district": "Heywood Industrial Zone",
+      "map_no": 1,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 258",
+      "source_summary": "Aldecaldo mini-camp and city business point where a representative is kept available to negotiate with corporate and other potential transport partners.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "transport-business-liaison", "label": "Transport and cargo business liaison"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "PROMOTE_TO_B2B_TRANSPORT_SERVICE_POINT"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-AGRON-S-BOXED-LUNCHES",
+      "name": "Agron’s Boxed Lunches",
+      "entity_type": "hybrid",
+      "district": "Heywood Industrial Zone",
+      "map_no": 2,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 258",
+      "source_summary": "Walk-up factory-worker lunch counter selling a fixed boxed meal for 10eb; proprietor Boris Agron also makes no-questions-asked loans.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Boris Agron", "role": "Fixer", "rank": 3},
+      "local_offerings": [
+        {"offering_key": "boxed-worker-lunch", "label": "Fixed boxed worker lunch", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "informal-loans", "label": "No-questions-asked loans"}
+      ],
+      "catalogue_note": "The source defines a prepared fixed meal rather than grocery stock, so the food remains a local offering.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "PROMOTE_TO_FOOD_VENDOR_AND_LOAN_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ARROYO-CONCERN-OFFICES",
+      "name": "Arroyo Concern Offices",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 3,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 258",
+      "source_summary": "Administrative offices for the Arroyo Concern, the district manager and representatives of member corporations; no customer-facing commerce is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_ADMINISTRATIVE_CONTEXT_NO_PUBLIC_COMMERCE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-CONTINENTAL-BRANDS-MANUFACTURING",
+      "name": "Continental Brands Manufacturing",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 4,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 258",
+      "source_summary": "Industrial complex manufacturing Continental Brands food products; the source describes production, not direct customer sales.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-D-V-RAMBLING-ROSE",
+      "name": "D.V. Rambling Rose",
+      "entity_type": "container",
+      "district": "Heywood Industrial Zone",
+      "map_no": 5,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 258-259",
+      "source_summary": "Beached ship converted into mixed residential and logistics space; Fixie’s Couriers operates its command center and warehouse from inside.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "PROMOTE_TO_MIXED_USE_CONTAINER_AND_RECOVER_COURIER_BUSINESS"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-258-FIXIES-COURIERS",
+      "name": "Fixie’s Couriers",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-D-V-RAMBLING-ROSE",
+      "district": "Heywood Industrial Zone",
+      "map_no": 5,
+      "book_page": 258,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 258-259",
+      "source_summary": "Courier organization using the Rambling Rose as a logistics command center and warehouse.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Fixie", "role": "Fixer", "rank": 6},
+      "services": [
+        {"service_key": "courier-logistics", "label": "Courier and logistics service"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_NAMED_COURIER_SERVICE_CHILD"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-GUNMART-MANUFACTURING",
+      "name": "GunMart Manufacturing",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 6,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "GunMart weapons manufacturing plant; the source describes assembly production and workforce conditions rather than direct retail.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-THE-INTERCHANGE",
+      "name": "The Interchange",
+      "entity_type": "service",
+      "district": "Heywood Industrial Zone",
+      "map_no": 7,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "Industrial-zone rail depot that accepts passenger boarding and disembarkation but is primarily a freight interchange moving cargo between the Port, Heywood Docks and district factories.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Calvert", "role": "Tech", "rank": 5},
+      "services": [
+        {"service_key": "rail-passenger-stop", "label": "Passenger rail boarding and disembarkation"},
+        {"service_key": "rail-freight-interchange", "label": "Industrial rail freight interchange"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "PROMOTE_TO_PASSENGER_AND_FREIGHT_SERVICE_POINT"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-MILITECH-MANUFACTURING-PLANT",
+      "name": "Militech Manufacturing Plant",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 8,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 259",
+      "source_summary": "Restricted Militech weapons-and-armor manufacturing, research and live-fire test facility; access is invite-only and no customer sales are stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "access_model": "invite-only",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_RESTRICTED_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-PETROCHEM-PLASTICS-PLANT",
+      "name": "Petrochem Plastics Plant",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 10,
+      "book_page": 259,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 259-260",
+      "source_summary": "Petrochem industrial plastics plant producing resin and changing product lines; no public outlet or direct purchasing channel is described.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-RAVEN-MICROCYBERNETICS-FACTORY",
+      "name": "Raven Microcybernetics Factory",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 11,
+      "book_page": 260,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 260",
+      "source_summary": "Highly automated Raven Microcybernetics factory with skilled technical staff and restricted employee housing; no public retail operation is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-ROCKLIN-AUGMENTICS-MANUFACTURING",
+      "name": "Rocklin Augmentics Manufacturing",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 12,
+      "book_page": 260,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 260",
+      "source_summary": "Rocklin Augmentics production facility with employee amenities and pervasive corporate surveillance; no public showroom or customer sales are described here.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_MANUFACTURING_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-THE-RODEO",
+      "name": "The Rodeo",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 13,
+      "book_page": 260,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 260",
+      "source_summary": "Officially disused warehouse occupied by the Industrial Zone Skidz as a roller-derby practice and bout venue; the source establishes recurring activity but does not state paid admission or other commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "schedule": {"kind": "recurring", "note": "Practice almost daily; bouts against other squads every few weeks"},
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_EVENT_CONTEXT_WITHOUT_SOURCE_SUPPORTED_COMMERCE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-SOVOIL-PLASTICS-PLANT",
+      "name": "SovOil Plastics Plant",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 14,
+      "book_page": 260,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 260-261",
+      "source_summary": "SovOil plastics factory; one line produces inexpensive housewares explicitly destined for Oasis stores, so this is an upstream production node rather than a public shop.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "supply_relationships": [
+        {"relationship": "supplies", "target": "Oasis stores", "product_family": "cheap plastic housewares"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_UPSTREAM_MANUFACTURING_CONTEXT_WITH_RETAIL_SUPPLY_RELATIONSHIP"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-TRAUMA-TEAM-PHARMACEUTICAL-PLANT",
+      "name": "Trauma Team Pharmaceutical Plant",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 15,
+      "book_page": 261,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 261",
+      "source_summary": "Underground pharmaceutical production facility making the drugs used by Trauma Team operational squads; no public dispensing or purchasing is described.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_INTERNAL_PRODUCTION_CONTEXT_NO_PUBLIC_RETAIL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-YANG-S-WHEELS",
+      "name": "Yang’s Wheels",
+      "entity_type": "hybrid",
+      "district": "Heywood Industrial Zone",
+      "map_no": 16,
+      "book_page": 261,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 261",
+      "source_summary": "Gabriel Yang's large personal-mobility manufacturer and supplier, selling bicycles plus skateboards, inline skates, electric scooters and metrocars; customers can use the rear skate park to test suitable products.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Gabriel Yang", "role": "Fixer/Nomad", "rank": 4},
+      "local_offerings": [
+        {"offering_key": "bicycles", "label": "Bicycles"},
+        {"offering_key": "skateboards", "label": "Skateboards"},
+        {"offering_key": "inline-skates", "label": "Inline skates"},
+        {"offering_key": "electric-scooters", "label": "Electric scooters"},
+        {"offering_key": "metrocars", "label": "Metrocars"}
+      ],
+      "services": [
+        {"service_key": "mobility-test-park", "label": "Rear skate park for testing blades, boards and bikes"}
+      ],
+      "catalogue_note": "The source defines Yang's own mobility categories rather than a mixed dealer inventory. They remain local offerings until Catalogger can hard-gate the company's product family without introducing unrelated brands.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "PROMOTE_TO_SOURCE_EXPLICIT_MOBILITY_MANUFACTURER_SELLER"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-OFFICE-PARK",
+      "name": "Zhirafa Office Park",
+      "entity_type": "context",
+      "district": "Heywood Industrial Zone",
+      "map_no": 17,
+      "book_page": 261,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 261",
+      "source_summary": "Zhirafa corporate office, factory, engineering, garage and drone-development campus with employee amenities and extensive security; no public commerce is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "CONTEXT_ONLY",
+        "decision": "CONFIRM_RESTRICTED_CORPORATE_OPERATIONS_CONTEXT"
+      }
+    }
+  ]
+}
