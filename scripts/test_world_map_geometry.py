@@ -14,7 +14,13 @@ fixture_paths = sorted(WORLD_DIR.glob("*.v1.json")) + sorted(
 fixture_entities: dict[str, dict] = {}
 for fixture_path in fixture_paths:
     fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
-    for entity in fixture.get("entities", []):
+
+    candidates = list(fixture.get("entities", []))
+    legacy_location = fixture.get("location")
+    if isinstance(legacy_location, dict) and legacy_location.get("entity_id"):
+        candidates.append(legacy_location)
+
+    for entity in candidates:
         entity_id = entity["entity_id"]
         assert entity_id not in fixture_entities, f"duplicate fixture entity id: {entity_id}"
         fixture_entities[entity_id] = entity
@@ -98,11 +104,22 @@ upper_marina = json.loads(
 assert [row["map_no"] for row in upper_marina["points"]] == list(range(1, 41))
 assert len(upper_marina["points"]) == 40
 
+little_europe = json.loads(
+    (WORLD_DIR / "map-geometry.little-europe.v0.1.json").read_text(encoding="utf-8")
+)
+assert [row["map_no"] for row in little_europe["points"]] == list(range(1, 24))
+assert len(little_europe["points"]) == 23
+assert any(
+    row["entity_id"] == "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET"
+    for row in little_europe["points"]
+), "Little Europe must resolve the legacy dedicated Kaito Market fixture"
+
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, "
     f"downtown_points={len(downtown['points'])}, "
     f"little_china_points={len(little_china['points'])}, "
     f"university_points={len(university_points)}, "
-    f"upper_marina_points={len(upper_marina['points'])}"
+    f"upper_marina_points={len(upper_marina['points'])}, "
+    f"little_europe_points={len(little_europe['points'])}"
 )
