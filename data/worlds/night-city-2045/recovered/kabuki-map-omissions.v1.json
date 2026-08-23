@@ -1,0 +1,32 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-kabuki-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [202],
+    "note": "Map-visible Kabuki place omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-HIROTO-MIYAMOTO-MEMORIAL-CLINIC",
+      "name": "Hiroto Miyamoto Memorial Clinic",
+      "entity_type": "service",
+      "district": "Kabuki",
+      "map_no": 6,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Donation-funded memorial hospital serving Kabuki residents, training promising local medical students and maintaining its own small ambulance fleet.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "community-medical-care", "label": "Medical care for Kabuki residents"},
+        {"service_key": "medical-training", "label": "Medical training for promising local students"},
+        {"service_key": "ambulance-response", "label": "Clinic ambulance service"}
+      ]
+    }
+  ]
+}
