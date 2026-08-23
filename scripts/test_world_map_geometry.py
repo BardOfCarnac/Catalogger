@@ -67,105 +67,68 @@ for path in paths:
                 f"fixture={entity['map_no']} geometry={row['map_no']}"
             )
 
-downtown = json.loads(
-    (WORLD_DIR / "map-geometry.downtown.v0.1.json").read_text(encoding="utf-8")
-)
+downtown = json.loads((WORLD_DIR / "map-geometry.downtown.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in downtown["points"]] == list(range(1, 24))
 assert len(downtown["points"]) == 23
 
-little_china = json.loads(
-    (WORLD_DIR / "map-geometry.little-china.v0.1.json").read_text(encoding="utf-8")
-)
+little_china = json.loads((WORLD_DIR / "map-geometry.little-china.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in little_china["points"]] == list(range(1, 16))
 assert len(little_china["points"]) == 15
 
-university = json.loads(
-    (WORLD_DIR / "map-geometry.university-district.v0.1.json").read_text(encoding="utf-8")
-)
+university = json.loads((WORLD_DIR / "map-geometry.university-district.v0.1.json").read_text(encoding="utf-8"))
 university_points = university["points"]
 assert len(university_points) == 33
-assert [
-    row["map_no"] for row in university_points if row.get("map_suffix") is None
-] == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19]
-assert not any(
-    row["map_no"] == 11 and row.get("map_suffix") is None
-    for row in university_points
-), "the source map has no fabricated unsuffixed #11 centroid"
+assert [row["map_no"] for row in university_points if row.get("map_suffix") is None] == [1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19]
+assert not any(row["map_no"] == 11 and row.get("map_suffix") is None for row in university_points)
 assert {row["map_suffix"] for row in university_points if row.get("map_suffix")} == set("abcdefghijklm")
-assert sum(
-    row["map_no"] == 11 and row.get("map_suffix") == "d"
-    for row in university_points
-) == 3, "the source draws The Cells / 11d at three distinct positions"
+assert sum(row["map_no"] == 11 and row.get("map_suffix") == "d" for row in university_points) == 3
 assert len({row["point_id"] for row in university_points}) == len(university_points)
 
-upper_marina = json.loads(
-    (WORLD_DIR / "map-geometry.upper-marina.v0.1.json").read_text(encoding="utf-8")
-)
+upper_marina = json.loads((WORLD_DIR / "map-geometry.upper-marina.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in upper_marina["points"]] == list(range(1, 41))
 assert len(upper_marina["points"]) == 40
 
-little_europe = json.loads(
-    (WORLD_DIR / "map-geometry.little-europe.v0.1.json").read_text(encoding="utf-8")
-)
+little_europe = json.loads((WORLD_DIR / "map-geometry.little-europe.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in little_europe["points"]] == list(range(1, 24))
 assert len(little_europe["points"]) == 23
-assert any(
-    row["entity_id"] == "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET"
-    for row in little_europe["points"]
-), "Little Europe must resolve the legacy dedicated Kaito Market fixture"
+assert any(row["entity_id"] == "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET" for row in little_europe["points"])
 
-charter_hill = json.loads(
-    (WORLD_DIR / "map-geometry.charter-hill.v0.1.json").read_text(encoding="utf-8")
-)
+charter_hill = json.loads((WORLD_DIR / "map-geometry.charter-hill.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in charter_hill["points"]] == list(range(1, 19))
 assert len(charter_hill["points"]) == 18
 
-executive_zone = json.loads(
-    (WORLD_DIR / "map-geometry.executive-zone.v0.1.json").read_text(encoding="utf-8")
-)
+executive_zone = json.loads((WORLD_DIR / "map-geometry.executive-zone.v0.1.json").read_text(encoding="utf-8"))
 executive_points = executive_zone["points"]
 assert len(executive_points) == 21
-assert not any(
-    row["map_no"] == 1 and row.get("map_suffix") is None
-    for row in executive_points
-), "The Estates is represented only by the source's 1a-1l submarkers"
+assert not any(row["map_no"] == 1 and row.get("map_suffix") is None for row in executive_points)
 assert {row["map_suffix"] for row in executive_points if row["map_no"] == 1} == set("abcdefghijkl")
-assert [
-    row["map_no"] for row in executive_points if row.get("map_suffix") is None
-] == list(range(2, 11))
-assert {
-    row["entity_id"] for row in executive_points if row["map_no"] == 1
-} == {"NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES"}
+assert [row["map_no"] for row in executive_points if row.get("map_suffix") is None] == list(range(2, 11))
+assert {row["entity_id"] for row in executive_points if row["map_no"] == 1} == {"NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES"}
 
-the_glen = json.loads(
-    (WORLD_DIR / "map-geometry.the-glen.v0.1.json").read_text(encoding="utf-8")
-)
+the_glen = json.loads((WORLD_DIR / "map-geometry.the-glen.v0.1.json").read_text(encoding="utf-8"))
 glen_points = the_glen["points"]
 assert len(glen_points) == 33
-assert not any(
-    row["map_no"] == 9 and row.get("map_suffix") is None
-    for row in glen_points
-), "Consulate Causeway is represented only by the source's 9a-9f mission markers"
+assert not any(row["map_no"] == 9 and row.get("map_suffix") is None for row in glen_points)
 assert {row["map_suffix"] for row in glen_points if row["map_no"] == 9} == set("abcdef")
-assert [
-    row["map_no"] for row in glen_points if row.get("map_suffix") is None
-] == list(range(1, 9)) + list(range(10, 29))
+assert [row["map_no"] for row in glen_points if row.get("map_suffix") is None] == list(range(1, 9)) + list(range(10, 29))
 
-kabuki = json.loads(
-    (WORLD_DIR / "map-geometry.kabuki.v0.1.json").read_text(encoding="utf-8")
-)
+kabuki = json.loads((WORLD_DIR / "map-geometry.kabuki.v0.1.json").read_text(encoding="utf-8"))
 assert [row["map_no"] for row in kabuki["points"]] == list(range(1, 25))
 assert len(kabuki["points"]) == 24
 
-assert len(paths) == 9, f"expected nine mapped districts, found {len(paths)}"
-assert sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths) == 230
+old_japantown = json.loads((WORLD_DIR / "map-geometry.old-japantown.v0.1.json").read_text(encoding="utf-8"))
+assert [row["map_no"] for row in old_japantown["points"]] == list(range(1, 27))
+assert len(old_japantown["points"]) == 26
+
+assert len(paths) == 10, f"expected ten mapped districts, found {len(paths)}"
+total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
+assert total_points == 256, f"expected 256 source-point manifestations, found {total_points}"
 
 print(
-    f"OK: source-map geometry; maps={len(paths)}, "
-    f"fixture_entities={len(fixture_entities)}, total_points=230, "
-    f"downtown={len(downtown['points'])}, little_china={len(little_china['points'])}, "
-    f"university={len(university_points)}, upper_marina={len(upper_marina['points'])}, "
-    f"little_europe={len(little_europe['points'])}, charter_hill={len(charter_hill['points'])}, "
-    f"executive_zone={len(executive_points)}, the_glen={len(glen_points)}, "
-    f"kabuki={len(kabuki['points'])}"
+    f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, "
+    f"total_points={total_points}, downtown={len(downtown['points'])}, "
+    f"little_china={len(little_china['points'])}, university={len(university_points)}, "
+    f"upper_marina={len(upper_marina['points'])}, little_europe={len(little_europe['points'])}, "
+    f"charter_hill={len(charter_hill['points'])}, executive_zone={len(executive_points)}, "
+    f"the_glen={len(glen_points)}, kabuki={len(kabuki['points'])}, old_japantown={len(old_japantown['points'])}"
 )
