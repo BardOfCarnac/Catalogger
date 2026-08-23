@@ -91,7 +91,14 @@ assert not any(row["map_no"] == 9 and row.get("map_suffix") is None for row in g
 assert {row["map_suffix"] for row in glen_points if row["map_no"] == 9} == set("abcdef")
 assert [row["map_no"] for row in glen_points if row.get("map_suffix") is None] == list(range(1, 9)) + list(range(10, 29))
 
-assert len(paths) == 13, f"expected thirteen mapped districts, found {len(paths)}"
+old_combat = json.loads((WORLD_DIR / "map-geometry.old-combat-zone.v0.1.json").read_text(encoding="utf-8"))
+old_combat_points = old_combat["points"]
+assert len(old_combat_points) == 22
+assert [row["map_no"] for row in old_combat_points if row.get("map_suffix") is None] == list(range(1, 17))
+assert {row["map_suffix"] for row in old_combat_points if row["map_no"] == 16 and row.get("map_suffix")} == set("abcdef")
+assert any(row["map_no"] == 16 and row.get("map_suffix") is None for row in old_combat_points), "source map includes the Warren parent marker as well as 16a-16f"
+
+assert len(paths) == 14, f"expected fourteen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 303, f"expected 303 source-point manifestations, found {total_points}"
+assert total_points == 325, f"expected 325 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
