@@ -23,7 +23,6 @@ for fixture_path in fixture_paths:
 
 paths = sorted(WORLD_DIR.glob("map-geometry.*.v0.1.json"))
 assert paths, "no source-map geometry files found"
-
 for path in paths:
     doc = json.loads(path.read_text(encoding="utf-8"))
     assert doc["format_version"] == "0.1.0", path
@@ -49,22 +48,23 @@ for path in paths:
             assert entity["map_no"] == row["map_no"], f"source marker mismatch for {row['entity_id']}: fixture={entity['map_no']} geometry={row['map_no']}"
 
 ordinary_specs = {
-    "downtown": (23, list(range(1, 24))),
-    "little-china": (15, list(range(1, 16))),
-    "upper-marina": (40, list(range(1, 41))),
-    "little-europe": (23, list(range(1, 24))),
-    "charter-hill": (18, list(range(1, 19))),
-    "kabuki": (24, list(range(1, 25))),
-    "old-japantown": (26, list(range(1, 27))),
-    "south-night-city": (17, list(range(1, 18))),
+    "downtown": 23,
+    "little-china": 15,
+    "upper-marina": 40,
+    "little-europe": 23,
+    "charter-hill": 18,
+    "kabuki": 24,
+    "old-japantown": 26,
+    "south-night-city": 17,
+    "port-of-night-city": 15,
+    "reclamation-zone": 15,
 }
 loaded: dict[str, dict] = {}
-for slug, (expected_len, expected_numbers) in ordinary_specs.items():
+for slug, expected_len in ordinary_specs.items():
     doc = json.loads((WORLD_DIR / f"map-geometry.{slug}.v0.1.json").read_text(encoding="utf-8"))
     loaded[slug] = doc
     assert len(doc["points"]) == expected_len
-    assert [row["map_no"] for row in doc["points"]] == expected_numbers
-
+    assert [row["map_no"] for row in doc["points"]] == list(range(1, expected_len + 1))
 assert any(row["entity_id"] == "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET" for row in loaded["little-europe"]["points"])
 
 university = json.loads((WORLD_DIR / "map-geometry.university-district.v0.1.json").read_text(encoding="utf-8"))
@@ -91,8 +91,7 @@ assert not any(row["map_no"] == 9 and row.get("map_suffix") is None for row in g
 assert {row["map_suffix"] for row in glen_points if row["map_no"] == 9} == set("abcdef")
 assert [row["map_no"] for row in glen_points if row.get("map_suffix") is None] == list(range(1, 9)) + list(range(10, 29))
 
-assert len(paths) == 11, f"expected eleven mapped districts, found {len(paths)}"
+assert len(paths) == 13, f"expected thirteen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 273, f"expected 273 source-point manifestations, found {total_points}"
-
+assert total_points == 303, f"expected 303 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
