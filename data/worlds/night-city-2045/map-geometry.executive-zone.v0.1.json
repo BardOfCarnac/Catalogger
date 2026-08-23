@@ -1,0 +1,38 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-EXECUTIVE-ZONE-P233",
+  "district": "Executive Zone",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 233,
+    "source_ref": "Night City 2045 p. 233",
+    "note": "Numbered and lettered map pins were visually verified against the user-provided purchased source. The Estates is drawn only through resident submarkers 1a-1l; no fabricated unsuffixed #1 centroid is added."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. The 1a-1l labels identify named residents/properties within The Estates; until those residences have separate world-place identities, the source points resolve to the canonical Estates container while preserving each printed label and suffix.",
+  "points": [
+    {"map_no": 1, "map_suffix": "a", "name": "Artyom Sokolov", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.538170, "y": 0.388816, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "b", "name": "Denny", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.495262, "y": 0.433892, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "c", "name": "Eran Malour", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.427745, "y": 0.434069, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "d", "name": "Kerry Eurodyne", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.429216, "y": 0.372016, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "e", "name": "Franklin M’bolu", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.418039, "y": 0.543683, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "f", "name": "Heather Stein", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.464804, "y": 0.411443, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "g", "name": "Jami \"Sharkeater\" Tealov", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.469020, "y": 0.535355, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "h", "name": "Karen Davies", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.464379, "y": 0.433115, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "i", "name": "Michiko Sanderson", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.522353, "y": 0.585350, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "j", "name": "Mister Kernaghan", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.393033, "y": 0.410407, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "k", "name": "William Joseph \"Billy Joe\" Brentwood", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.511177, "y": 0.534662, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 1, "map_suffix": "l", "name": "UR", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES", "x": 0.372312, "y": 0.520830, "source_ref": "Night City 2045 p. 234"},
+    {"map_no": 2, "name": "Executive Zone Casino/Country Club", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB", "x": 0.484085, "y": 0.465104, "source_ref": "Night City 2045 pp. 234-235"},
+    {"map_no": 3, "name": "Firebird Tearoom & Steam Baths", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-235-FIREBIRD-TEAROOM-STEAM-BATHS", "x": 0.320327, "y": 0.336608, "source_ref": "Night City 2045 p. 235"},
+    {"map_no": 4, "name": "Groundskeeper Shed", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-235-GROUNDSKEEPER-SHED", "x": 0.287647, "y": 0.487200, "source_ref": "Night City 2045 p. 235"},
+    {"map_no": 5, "name": "Growing Shoots Daycare", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-235-GROWING-SHOOTS-DAYCARE", "x": 0.364444, "y": 0.363802, "source_ref": "Night City 2045 p. 235"},
+    {"map_no": 6, "name": "HOA Offices", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-235-HOA-OFFICES", "x": 0.339412, "y": 0.471126, "source_ref": "Night City 2045 p. 235"},
+    {"map_no": 7, "name": "Lazarus Base of Operations", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-LAZARUS-BASE-OF-OPERATIONS", "x": 0.323325, "y": 0.384990, "source_ref": "Night City 2045 p. 236"},
+    {"map_no": 8, "name": "Monorail Station", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-MONORAIL-STATION", "x": 0.310172, "y": 0.452139, "source_ref": "Night City 2045 p. 236"},
+    {"map_no": 9, "name": "Oasis (Exec Zone)", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE", "x": 0.286013, "y": 0.308178, "source_ref": "Night City 2045 p. 236"},
+    {"map_no": 10, "name": "Puddleforge Games", "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-PUDDLEFORGE-GAMES", "x": 0.558170, "y": 0.506039, "source_ref": "Night City 2045 p. 236"}
+  ]
+}
