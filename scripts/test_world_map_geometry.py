@@ -114,12 +114,58 @@ assert any(
     for row in little_europe["points"]
 ), "Little Europe must resolve the legacy dedicated Kaito Market fixture"
 
+charter_hill = json.loads(
+    (WORLD_DIR / "map-geometry.charter-hill.v0.1.json").read_text(encoding="utf-8")
+)
+assert [row["map_no"] for row in charter_hill["points"]] == list(range(1, 19))
+assert len(charter_hill["points"]) == 18
+
+executive_zone = json.loads(
+    (WORLD_DIR / "map-geometry.executive-zone.v0.1.json").read_text(encoding="utf-8")
+)
+executive_points = executive_zone["points"]
+assert len(executive_points) == 21
+assert not any(
+    row["map_no"] == 1 and row.get("map_suffix") is None
+    for row in executive_points
+), "The Estates is represented only by the source's 1a-1l submarkers"
+assert {row["map_suffix"] for row in executive_points if row["map_no"] == 1} == set("abcdefghijkl")
+assert [
+    row["map_no"] for row in executive_points if row.get("map_suffix") is None
+] == list(range(2, 11))
+assert {
+    row["entity_id"] for row in executive_points if row["map_no"] == 1
+} == {"NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES"}
+
+the_glen = json.loads(
+    (WORLD_DIR / "map-geometry.the-glen.v0.1.json").read_text(encoding="utf-8")
+)
+glen_points = the_glen["points"]
+assert len(glen_points) == 33
+assert not any(
+    row["map_no"] == 9 and row.get("map_suffix") is None
+    for row in glen_points
+), "Consulate Causeway is represented only by the source's 9a-9f mission markers"
+assert {row["map_suffix"] for row in glen_points if row["map_no"] == 9} == set("abcdef")
+assert [
+    row["map_no"] for row in glen_points if row.get("map_suffix") is None
+] == list(range(1, 9)) + list(range(10, 29))
+
+kabuki = json.loads(
+    (WORLD_DIR / "map-geometry.kabuki.v0.1.json").read_text(encoding="utf-8")
+)
+assert [row["map_no"] for row in kabuki["points"]] == list(range(1, 25))
+assert len(kabuki["points"]) == 24
+
+assert len(paths) == 9, f"expected nine mapped districts, found {len(paths)}"
+assert sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths) == 230
+
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
-    f"fixture_entities={len(fixture_entities)}, "
-    f"downtown_points={len(downtown['points'])}, "
-    f"little_china_points={len(little_china['points'])}, "
-    f"university_points={len(university_points)}, "
-    f"upper_marina_points={len(upper_marina['points'])}, "
-    f"little_europe_points={len(little_europe['points'])}"
+    f"fixture_entities={len(fixture_entities)}, total_points=230, "
+    f"downtown={len(downtown['points'])}, little_china={len(little_china['points'])}, "
+    f"university={len(university_points)}, upper_marina={len(upper_marina['points'])}, "
+    f"little_europe={len(little_europe['points'])}, charter_hill={len(charter_hill['points'])}, "
+    f"executive_zone={len(executive_points)}, the_glen={len(glen_points)}, "
+    f"kabuki={len(kabuki['points'])}"
 )
