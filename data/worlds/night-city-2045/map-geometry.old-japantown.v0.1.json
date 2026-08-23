@@ -1,0 +1,43 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-OLD-JAPANTOWN-P129",
+  "district": "Old Japantown",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 129,
+    "source_ref": "Night City 2045 p. 129",
+    "note": "All twenty-six numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "The Basement", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT", "x": 0.315294, "y": 0.370754, "source_ref": "Night City 2045 p. 128"},
+    {"map_no": 2, "name": "The Bodukkan", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-BODUKKAN", "x": 0.276536, "y": 0.372060, "source_ref": "Night City 2045 p. 130"},
+    {"map_no": 3, "name": "Crisis Medical Center", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-CRISIS-MEDICAL-CENTER", "x": 0.435948, "y": 0.433330, "source_ref": "Night City 2045 p. 130"},
+    {"map_no": 4, "name": "The Cutting Edge", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-CUTTING-EDGE", "x": 0.352165, "y": 0.394051, "source_ref": "Night City 2045 p. 130"},
+    {"map_no": 5, "name": "Dine ‘n Dash", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-DINE-N-DASH", "x": 0.405425, "y": 0.435887, "source_ref": "Night City 2045 p. 130"},
+    {"map_no": 6, "name": "Gazebo Park", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-GAZEBO-PARK", "x": 0.307386, "y": 0.324661, "source_ref": "Night City 2045 p. 130"},
+    {"map_no": 7, "name": "The Grateful Crane", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-GRATEFUL-CRANE", "x": 0.478497, "y": 0.300602, "source_ref": "Night City 2045 pp. 130-131"},
+    {"map_no": 8, "name": "Highcourt Plaza Hotel", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HIGHCOURT-PLAZA-HOTEL", "x": 0.418235, "y": 0.314830, "source_ref": "Night City 2045 p. 131"},
+    {"map_no": 9, "name": "Honest Hiro’s Used Cars", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS", "x": 0.471748, "y": 0.438125, "source_ref": "Night City 2045 p. 131"},
+    {"map_no": 10, "name": "Imperial Bank", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-IMPERIAL-BANK", "x": 0.387328, "y": 0.407016, "source_ref": "Night City 2045 p. 131"},
+    {"map_no": 11, "name": "Kaifū Corner", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-KAIFU-CORNER", "x": 0.364837, "y": 0.351800, "source_ref": "Night City 2045 p. 131"},
+    {"map_no": 12, "name": "Kid Kamp", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-KID-KAMP", "x": 0.478497, "y": 0.351800, "source_ref": "Night City 2045 p. 132"},
+    {"map_no": 13, "name": "Kakoi-chō", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-KAKOI-CHO", "x": 0.286079, "y": 0.452306, "source_ref": "Night City 2045 p. 132"},
+    {"map_no": 14, "name": "Lovely Drone Heroes Café", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-LOVELY-DRONE-HEROES-CAFE", "x": 0.597974, "y": 0.427388, "source_ref": "Night City 2045 p. 132"},
+    {"map_no": 15, "name": "Miyasaka Clinic", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MIYASAKA-CLINIC", "x": 0.460572, "y": 0.404491, "source_ref": "Night City 2045 p. 132"},
+    {"map_no": 16, "name": "Mrs. Suzuki’s Bodega", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA", "x": 0.478497, "y": 0.385721, "source_ref": "Night City 2045 pp. 132-133"},
+    {"map_no": 17, "name": "Neo Galaxy Cards and Comics", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS", "x": 0.236601, "y": 0.461543, "source_ref": "Night City 2045 p. 133"},
+    {"map_no": 18, "name": "Oni-Yama Jail", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-ONI-YAMA-JAIL", "x": 0.377369, "y": 0.422149, "source_ref": "Night City 2045 p. 133"},
+    {"map_no": 19, "name": "The Precipice", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-THE-PRECIPICE", "x": 0.370163, "y": 0.299945, "source_ref": "Night City 2045 p. 133"},
+    {"map_no": 20, "name": "Sanroo Complex", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-SANROO-COMPLEX", "x": 0.624118, "y": 0.450115, "source_ref": "Night City 2045 p. 133"},
+    {"map_no": 21, "name": "Segotari Factory", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-SEGOTARI-FACTORY", "x": 0.551961, "y": 0.557376, "source_ref": "Night City 2045 p. 134"},
+    {"map_no": 22, "name": "Segotari Station Japantown", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-SEGOTARI-STATION-JAPANTOWN", "x": 0.553856, "y": 0.408449, "source_ref": "Night City 2045 p. 134"},
+    {"map_no": 23, "name": "Tartarus", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-TARTARUS", "x": 0.374518, "y": 0.468026, "source_ref": "Night City 2045 p. 134"},
+    {"map_no": 24, "name": "Tsukuyomi", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-TSUKUYOMI", "x": 0.481765, "y": 0.505216, "source_ref": "Night City 2045 p. 134"},
+    {"map_no": 25, "name": "Unnamed Cube Hotel", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-UNNAMED-CUBE-HOTEL", "x": 0.512811, "y": 0.457861, "source_ref": "Night City 2045 p. 134"},
+    {"map_no": 26, "name": "White Side", "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE", "x": 0.318701, "y": 0.291248, "source_ref": "Night City 2045 p. 134"}
+  ]
+}
