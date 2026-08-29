@@ -46,6 +46,16 @@ for path in paths:
         assert entity.get("district") == doc["district"], (path, row, entity)
         if entity.get("map_no") is not None:
             assert entity["map_no"] == row["map_no"], f"source marker mismatch for {row['entity_id']}: fixture={entity['map_no']} geometry={row['map_no']}"
+        co_located = row.get("co_located_entity_ids", [])
+        assert isinstance(co_located, list), (path, row)
+        assert len(co_located) == len(set(co_located)), (path, row)
+        assert row["entity_id"] not in co_located, (path, row)
+        for co_id in co_located:
+            co_entity = fixture_entities.get(co_id)
+            assert co_entity is not None, f"geometry co-location points at unknown entity: {co_id}"
+            assert co_entity.get("district") == doc["district"], (path, row, co_entity)
+            if co_entity.get("map_no") is not None:
+                assert co_entity["map_no"] == row["map_no"], f"co-located source marker mismatch for {co_id}: fixture={co_entity['map_no']} geometry={row['map_no']}"
 
 ordinary_specs = {
     "downtown": 23,
@@ -118,7 +128,23 @@ for recovered_id in {
 }:
     assert sum(row["entity_id"] == recovered_id for row in watson_points) == 1, recovered_id
 
-assert len(paths) == 16, f"expected sixteen mapped districts, found {len(paths)}"
+north_heywood = json.loads((WORLD_DIR / "map-geometry.north-heywood.v0.1.json").read_text(encoding="utf-8"))
+north_heywood_points = north_heywood["points"]
+assert len(north_heywood_points) == 23
+assert [row["map_no"] for row in north_heywood_points if row.get("map_suffix") is None] == list(range(1, 18))
+assert not any(row["map_no"] == 18 and row.get("map_suffix") is None for row in north_heywood_points), "source legend names Woodland Park #18 but the map draws only 18a-18f"
+assert {row["map_suffix"] for row in north_heywood_points if row["map_no"] == 18} == set("abcdef")
+woodland_parent = "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK"
+for row in north_heywood_points:
+    if row["map_no"] == 18 and row.get("map_suffix") != "b":
+        assert fixture_entities[row["entity_id"]].get("parent_entity_id") == woodland_parent
+point_18b = next(row for row in north_heywood_points if row["map_no"] == 18 and row.get("map_suffix") == "b")
+assert point_18b["entity_id"] == "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE"
+assert point_18b.get("co_located_entity_ids") == ["NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA"]
+assert fixture_entities[point_18b["entity_id"]].get("parent_entity_id") == woodland_parent
+assert all(fixture_entities[entity_id].get("parent_entity_id") == woodland_parent for entity_id in point_18b["co_located_entity_ids"])
+
+assert len(paths) == 17, f"expected seventeen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 396, f"expected 396 source-point manifestations, found {total_points}"
+assert total_points == 419, f"expected 419 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
