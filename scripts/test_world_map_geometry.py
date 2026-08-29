@@ -58,6 +58,7 @@ ordinary_specs = {
     "south-night-city": 17,
     "port-of-night-city": 15,
     "reclamation-zone": 15,
+    "new-westbrook": 25,
 }
 loaded: dict[str, dict] = {}
 for slug, expected_len in ordinary_specs.items():
@@ -66,6 +67,7 @@ for slug, expected_len in ordinary_specs.items():
     assert len(doc["points"]) == expected_len
     assert [row["map_no"] for row in doc["points"]] == list(range(1, expected_len + 1))
 assert any(row["entity_id"] == "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET" for row in loaded["little-europe"]["points"])
+assert not any(row["name"] == "The Soup Truck" for row in loaded["new-westbrook"]["points"]), "source explicitly says The Soup Truck is not shown on the map"
 
 university = json.loads((WORLD_DIR / "map-geometry.university-district.v0.1.json").read_text(encoding="utf-8"))
 university_points = university["points"]
@@ -116,7 +118,7 @@ for recovered_id in {
 }:
     assert sum(row["entity_id"] == recovered_id for row in watson_points) == 1, recovered_id
 
-assert len(paths) == 15, f"expected fifteen mapped districts, found {len(paths)}"
+assert len(paths) == 16, f"expected sixteen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 371, f"expected 371 source-point manifestations, found {total_points}"
+assert total_points == 396, f"expected 396 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
