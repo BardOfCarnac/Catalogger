@@ -1,0 +1,39 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+  "district": "Pacifica Playground",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 277,
+    "source_ref": "Night City 2045 p. 277",
+    "note": "Source map geometry verified against the user-provided purchased source. The map draws ordinary pins #1-#22 with no suffix hierarchy. Playland by the Sea is shown as a large neighboring area label and referenced to its own section rather than assigned a Pacifica Playground pin."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "The Ascension", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION", "x": 0.530719, "y": 0.204293, "source_ref": "Night City 2045 p. 276"},
+    {"map_no": 2, "name": "Bits’n’Bolts", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS", "x": 0.711111, "y": 0.278788, "source_ref": "Night City 2045 p. 278"},
+    {"map_no": 3, "name": "Cubeland by the Sea", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-CUBELAND-BY-THE-SEA", "x": 0.538889, "y": 0.242424, "source_ref": "Night City 2045 p. 278"},
+    {"map_no": 4, "name": "Dream Forest Development", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-DREAM-FOREST-DEVELOPMENT", "x": 0.474183, "y": 0.505808, "source_ref": "Night City 2045 p. 278"},
+    {"map_no": 5, "name": "Flaire", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-FLAIRE", "x": 0.595098, "y": 0.417929, "source_ref": "Night City 2045 pp. 278-279"},
+    {"map_no": 6, "name": "Jodes Camp", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP", "x": 0.293137, "y": 0.529293, "source_ref": "Night City 2045 p. 279"},
+    {"map_no": 7, "name": "Mister Rice Guy", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-MISTER-RICE-GUY", "x": 0.403595, "y": 0.464899, "source_ref": "Night City 2045 p. 279"},
+    {"map_no": 8, "name": "Obsidian Equinox Marina & Docks", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-OBSIDIAN-EQUINOX-MARINA-DOCKS", "x": 0.427778, "y": 0.254293, "source_ref": "Night City 2045 p. 279"},
+    {"map_no": 9, "name": "Pacifica Arcology Ruins", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PACIFICA-ARCOLOGY-RUINS", "x": 0.072222, "y": 0.612879, "source_ref": "Night City 2045 p. 280"},
+    {"map_no": 10, "name": "Playhouse", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLAYHOUSE", "x": 0.587255, "y": 0.321212, "source_ref": "Night City 2045 p. 280"},
+    {"map_no": 11, "name": "Pleasant Valley Apartments", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLEASANT-VALLEY-APARTMENTS", "x": 0.431699, "y": 0.455808, "source_ref": "Night City 2045 pp. 280-281"},
+    {"map_no": 12, "name": "Pursuit Security Inc Showroom", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM", "x": 0.706209, "y": 0.235859, "source_ref": "Night City 2045 p. 280"},
+    {"map_no": 13, "name": "Quaid Winston Memorial De-Salinization Plant", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-QUAID-WINSTON-MEMORIAL-DE-SALINIZATION-PLANT", "x": 0.390523, "y": 0.381313, "source_ref": "Night City 2045 p. 280"},
+    {"map_no": 14, "name": "ShellShock Central", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-SHELLSHOCK-CENTRAL", "x": 0.282026, "y": 0.466162, "source_ref": "Night City 2045 p. 280"},
+    {"map_no": 15, "name": "Scenic Cubes", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SCENIC-CUBES", "x": 0.338889, "y": 0.321465, "source_ref": "Night City 2045 p. 281"},
+    {"map_no": 16, "name": "Smile Another Day", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY", "x": 0.678105, "y": 0.348990, "source_ref": "Night City 2045 p. 281"},
+    {"map_no": 17, "name": "Stop. Shop. Stitch.", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH", "x": 0.446078, "y": 0.334596, "source_ref": "Night City 2045 p. 281"},
+    {"map_no": 18, "name": "Tanson Group Headquarters", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-TANSON-GROUP-HEADQUARTERS", "x": 0.548039, "y": 0.516414, "source_ref": "Night City 2045 p. 281"},
+    {"map_no": 19, "name": "Torta-sienda", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-TORTA-SIENDA", "x": 0.525817, "y": 0.311869, "source_ref": "Night City 2045 p. 282"},
+    {"map_no": 20, "name": "Volkodav Racetrack", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-VOLKODAV-RACETRACK", "x": 0.576144, "y": 0.286111, "source_ref": "Night City 2045 p. 282"},
+    {"map_no": 21, "name": "WNS Offices", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-WNS-OFFICES", "x": 0.629085, "y": 0.244192, "source_ref": "Night City 2045 p. 282"},
+    {"map_no": 22, "name": "The XX (The Twenty)", "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-THE-XX-THE-TWENTY", "x": 0.729739, "y": 0.306313, "source_ref": "Night City 2045 pp. 282-283"}
+  ]
+}
