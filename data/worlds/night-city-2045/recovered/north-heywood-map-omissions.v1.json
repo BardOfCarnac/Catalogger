@@ -1,0 +1,220 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-north-heywood-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [249, 250, 252],
+    "note": "Map-visible North Heywood locations omitted from the active world fixtures, recovered directly from the user-provided purchased source. Woodland Park child identities are kept distinct from the parent; source-explicit named contained businesses are recovered without inventing broader stock."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-THE-FORLORN-HOPE",
+      "name": "The Forlorn Hope",
+      "entity_type": "hybrid",
+      "district": "North Heywood",
+      "map_no": 8,
+      "book_page": 249,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 249",
+      "source_summary": "Longstanding veterans' and edgerunners' bar offering food, drink and music alongside in-house technical help, a ripperdoc clinic and limited lodging for favored regulars.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "hope-reborn", "label": "Hope Reborn", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-food-music", "label": "Bar, food and music hospitality"},
+        {"service_key": "in-house-tech", "label": "In-house Tech services"},
+        {"service_key": "ripperdoc-clinic", "label": "Ripperdoc clinic"},
+        {"service_key": "favored-regular-lodging", "label": "Limited lodging for favored regulars", "access": "regulars"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_EDGERUNNER_BAR"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-HAVEN-SPA-RECOVERY",
+      "name": "Haven Spa & Recovery",
+      "entity_type": "service",
+      "district": "North Heywood",
+      "map_no": 9,
+      "book_page": 249,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 249-250",
+      "source_summary": "Wellness and recovery spa whose discreet back rooms also provide identity-changing technical and medical work and can arrange transport out of Night City.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "wellness-recovery", "label": "Wellness and recovery treatments"},
+        {"service_key": "bodysculpting", "label": "Bodysculpting"},
+        {"service_key": "new-identity-papers", "label": "High-quality new identity papers", "access": "discreet"},
+        {"service_key": "technical-netrunner-identity-work", "label": "Discreet Tech and Netrunner identity-change support", "access": "discreet"},
+        {"service_key": "out-of-city-transport", "label": "Arranged transport out of Night City", "access": "discreet"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_SPA_AND_DISCREET_IDENTITY_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-THE-NIGHT-CITY-ANIMAL-SHELTER",
+      "name": "The Night City Animal Shelter",
+      "entity_type": "service",
+      "district": "North Heywood",
+      "map_no": 13,
+      "book_page": 250,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 250",
+      "source_summary": "Ripperdoc clinic specializing in bodysculpting and medical treatment for Exotics and Bioexotics while also accepting other paying patients.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "exotic-bioexotic-bodysculpting", "label": "Exotic and Bioexotic bodysculpting"},
+        {"service_key": "medical-treatment", "label": "Medical treatment"},
+        {"service_key": "ripperdoc-clinic", "label": "Ripperdoc clinic"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_EXOTIC_RIPPERDOC_CLINIC"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BIOTECHNICA-PALM-GROVE",
+      "name": "Biotechnica Palm Grove",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "map_suffix": "a",
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Biotechnica research grove of genetically engineered, externally monitored palm trees that also functions as a neighborhood landmark rather than a public business.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_MAP_VISIBLE_WOODLAND_RESEARCH_SITE"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-PALMS",
+      "name": "The Palms",
+      "entity_type": "container",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "map_suffix": "c",
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Colorful cargo-container housing community within Woodland Park whose source-explicit customer-facing food and drink comes from the stationary Terminus food truck.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_MAP_VISIBLE_WOODLAND_HOUSING_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-TERMINUS",
+      "name": "Terminus",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-PALMS",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Stationary food truck run by Carri Zote serving Woodland Park residents and nearby Dynalar workers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "terminus-meals-drinks", "label": "Meals and drinks"}
+      ],
+      "services": [
+        {"service_key": "food-truck-hospitality", "label": "Food-truck hospitality"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_NAMED_FOOD_TRUCK_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-SHARK",
+      "name": "The Shark",
+      "entity_type": "container",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "map_suffix": "d",
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Five-story affordable apartment building and guerrilla-garden site; a named fix-it and vehicle-storage business operates in the adjacent lot.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_MAP_VISIBLE_WOODLAND_HOUSING_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-CHOOM-GOES-VROOM",
+      "name": "Choom Goes Vroom",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-SHARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Billy Flight's adjacent-lot repair and vehicle-storage business serving the neighborhood.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "fix-it-service", "label": "General fix-it work"},
+        {"service_key": "vehicle-storage", "label": "Vehicle storage"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_NAMED_REPAIR_STORAGE_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-XANADU",
+      "name": "Xanadu",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "map_suffix": "e",
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Woodland Park Muses roller rink and nightclub combining skating and dancing and regularly hosting Wonderland Roller Derby League bouts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "roller-skating", "label": "Roller skating"},
+        {"service_key": "nightclub-dancing", "label": "Nightclub and dancing"},
+        {"service_key": "roller-derby-bouts", "label": "Roller derby bouts"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_MAP_VISIBLE_WOODLAND_ROLLER_RINK_NIGHTCLUB"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-ZOLLETTA",
+      "name": "Zolletta",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "map_suffix": "f",
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "White stucco Woodland Park building centered on cube-hotel accommodation, with assorted small businesses and a named prayer and meditation space also inside.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "cube-hotel-lodging", "label": "Cube-hotel lodging"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_MAP_VISIBLE_WOODLAND_CUBE_HOTEL"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-PLACE-OF-REST",
+      "name": "Place of Rest",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-ZOLLETTA",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Small prayer and meditation space used by the Navad nomad family when they are in Night City.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_NAMED_NONCOMMERCIAL_CHILD"}
+    }
+  ]
+}
