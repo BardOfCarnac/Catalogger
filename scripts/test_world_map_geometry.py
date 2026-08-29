@@ -94,6 +94,7 @@ ordinary_specs = {
     "heywood-docks": 10,
     "norcal-military-base": 17,
     "rancho-coronado": 11,
+    "pacifica-playground": 22,
 }
 loaded: dict[str, dict] = {}
 for slug, expected_len in ordinary_specs.items():
@@ -112,6 +113,13 @@ assert not any(
 assert not any(
     "MAQUILADORAS" in row["entity_id"] for row in loaded["rancho-coronado"]["points"]
 ), "source explicitly lists The Maquiladoras as not shown on the map"
+assert not any(
+    "PLAYLAND-BY-THE-SEA" in row["entity_id"] for row in loaded["pacifica-playground"]["points"]
+), "Playland by the Sea is a neighboring labelled destination, not a numbered Pacifica Playground pin"
+assert any(
+    row["entity_id"] == "NC2045-LOC-PACIFICA-PLAYGROUND-278-FLAIRE"
+    for row in loaded["pacifica-playground"]["points"]
+)
 
 university_points = geometry("university-district")["points"]
 assert len(university_points) == 33
@@ -215,9 +223,9 @@ for row in santo_points:
     if row["map_no"] == 2 and row.get("map_suffix"):
         assert fixture_entities[row["entity_id"]].get("parent_entity_id") == aldecaldo_parent
 
-assert len(paths) == 22, f"expected twenty-two mapped districts, found {len(paths)}"
+assert len(paths) == 23, f"expected twenty-three mapped districts, found {len(paths)}"
 total_points = sum(len(load_json(path)["points"]) for path in paths)
-assert total_points == 503, f"expected 503 source-point manifestations, found {total_points}"
+assert total_points == 525, f"expected 525 source-point manifestations, found {total_points}"
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, total_points={total_points}"
