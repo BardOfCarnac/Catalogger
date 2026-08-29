@@ -1,0 +1,93 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-new-westbrook-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [214, 216, 217, 220],
+    "note": "Map-visible New Westbrook locations omitted from the active world fixtures, recovered directly from the user-provided purchased source. Only source-explicit services and local wares are retained; no generic catalogue stock is inferred."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CHATELAINE-S",
+      "name": "Chatelaine’s",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 4,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Popular early-20th-century-styled cabaret and burlesque nightclub and queer bar, also used as a performance venue.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "cabaret-burlesque-nightlife", "label": "Cabaret and burlesque nightlife"},
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"},
+        {"service_key": "live-performance-venue", "label": "Live performance venue"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_CABARET_CLUB"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HARDGRIND",
+      "name": "HardGrind",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 9,
+      "book_page": 216,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 216",
+      "source_summary": "Braindance club selling jack-in fantasy entertainment experiences to locals and visiting corpzoners.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "braindance-entertainment", "label": "Braindance fantasy entertainment"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_BRAINDANCE_CLUB"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-MEDICAL-ERRORS",
+      "name": "Medical Errors",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 12,
+      "book_page": 217,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 217",
+      "source_summary": "Local clinic providing medical care to SINless patients; clients unable to pay may instead participate in the proprietor's ongoing environmental-health study and examinations.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "sinless-welcome",
+      "services": [
+        {"service_key": "medical-clinic-care", "label": "Medical clinic care"},
+        {"service_key": "research-participation-payment-alternative", "label": "Research participation as an alternative to payment"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_MEDICAL_CLINIC"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-WOODY-S",
+      "name": "Woody’s",
+      "entity_type": "hybrid",
+      "district": "New Westbrook",
+      "map_no": 24,
+      "book_page": 220,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 220",
+      "source_summary": "Small Street Queens hangout and club hosting drag and burlesque shows; trusted customers can obtain drinks, drugs and companionship through the venue.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "bar-drinks", "label": "Drinks for trusted customers"},
+        {"offering_key": "venue-drugs", "label": "Drugs for trusted customers"}
+      ],
+      "services": [
+        {"service_key": "drag-burlesque-shows", "label": "Drag and burlesque shows"},
+        {"service_key": "club-hospitality", "label": "Club hospitality"},
+        {"service_key": "companionship", "label": "Companionship for trusted customers"}
+      ],
+      "catalogue_note": "The source describes restricted venue commerce but does not establish stable catalogue stock, so no generated shelf inventory is attached.",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_STREET_QUEENS_CLUB"}
+    }
+  ]
+}
