@@ -1,0 +1,126 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-upper-marina-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [68, 69, 71, 75],
+    "note": "Map-visible Upper Marina places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-THE-AFTERLIFE",
+      "name": "The Afterlife",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 1,
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 68",
+      "source_summary": "Legendary edgerunner bar and mercenary meeting place occupying a mortuary-styled location, with custom drinks and listings for available combat work.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "afterlife-custom-drinks", "label": "Custom bar drinks"},
+        {"offering_key": "silverhand-shot", "label": "Silverhand's favored vodka-and-brandy shot", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"},
+        {"service_key": "combat-job-listings", "label": "Listings and meeting space for combat work"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BRIGHT-FOREST-CASINO",
+      "name": "Bright Forest Casino",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 4,
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 68-69",
+      "source_summary": "Upscale casino in a converted customs house, combining old-world styling, restored gambling tables and attentive drinks service for affluent patrons.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "casino-gambling", "label": "Casino gambling"},
+        {"service_key": "casino-bar-hospitality", "label": "Casino drinks and hospitality"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-BUFFALO-S",
+      "name": "Buffalo’s",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 6,
+      "book_page": 69,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 69",
+      "source_summary": "Long-troubled neighborhood venue currently relaunched as a clean modern global-fusion restaurant and bar under a new proprietor.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "global-fusion-food", "label": "Global-fusion restaurant food"},
+        {"offering_key": "buffalo-nose", "label": "Buffalo Nose cocktail", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "restaurant-bar-hospitality", "label": "Restaurant and bar hospitality"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-CITY-MEDICAL-CENTER",
+      "name": "City Medical Center",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 7,
+      "book_page": 69,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 69",
+      "source_summary": "Large high-end hospital complex regarded as the district's best option for medical and psychiatric care, with access strongly shaped by ability to pay.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "hospital-medical-care", "label": "Hospital medical care"},
+        {"service_key": "psychiatric-care", "label": "Psychiatric care"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-GRAND-ILLUSION",
+      "name": "The Grand Illusion",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 16,
+      "book_page": 71,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 71-72",
+      "source_summary": "Reopened music club associated with Kerry Eurodyne, serving a varied audience and providing a stage where emerging Rockerboys can be noticed.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "music-club", "label": "Music-club hospitality"},
+        {"service_key": "live-performance-venue", "label": "Live performance venue"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-THE-NEON-JOHNSON",
+      "name": "The Neon Johnson",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 30,
+      "book_page": 75,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 75",
+      "source_summary": "Basement jazz-and-blues bar themed around Robert Johnson, drawing a heavily chromed clientele and featuring live improvised performances.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "crossroads-shot", "label": "Crossroads signature shot", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"},
+        {"service_key": "live-jazz-blues", "label": "Live jazz and blues performance"}
+      ]
+    }
+  ]
+}

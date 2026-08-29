@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-PORT-OF-NIGHT-CITY-P151",
+  "district": "Port of Night City",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 151,
+    "source_ref": "Night City 2045 p. 151",
+    "note": "All fifteen numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "The Amber Room", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-150-THE-AMBER-ROOM", "x": 0.564837, "y": 0.456076, "source_ref": "Night City 2045 pp. 150-152"},
+    {"map_no": 2, "name": "Dock 13", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13", "x": 0.403072, "y": 0.554729, "source_ref": "Night City 2045 p. 152"},
+    {"map_no": 3, "name": "Dock 14 Studio Apartments", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-14-STUDIO-APARTMENTS", "x": 0.417778, "y": 0.584491, "source_ref": "Night City 2045 p. 152"},
+    {"map_no": 4, "name": "Dock Cargo Community", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-CARGO-COMMUNITY", "x": 0.423203, "y": 0.603210, "source_ref": "Night City 2045 p. 152"},
+    {"map_no": 5, "name": "Flotsam", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM", "x": 0.118693, "y": 0.500911, "source_ref": "Night City 2045 pp. 152-153"},
+    {"map_no": 6, "name": "Harbor Patrol HQ", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-HARBOR-PATROL-HQ", "x": 0.406863, "y": 0.503436, "source_ref": "Night City 2045 p. 153"},
+    {"map_no": 7, "name": "Main Port", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-MAIN-PORT", "x": 0.324575, "y": 0.319271, "source_ref": "Night City 2045 p. 153"},
+    {"map_no": 8, "name": "Maritime Supply", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY", "x": 0.478824, "y": 0.559610, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 9, "name": "Medical Technologies", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MEDICAL-TECHNOLOGIES", "x": 0.383227, "y": 0.375160, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 10, "name": "Mestnyy Bank", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MESTNYY-BANK", "x": 0.454837, "y": 0.515772, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 11, "name": "Naiad’s Embrace", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-NAIAD-S-EMBRACE", "x": 0.496275, "y": 0.431466, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 12, "name": "Reclaimed Studios", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-RECLAIMED-STUDIOS", "x": 0.367647, "y": 0.399235, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 13, "name": "The Reclamation Plant", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-THE-RECLAMATION-PLANT", "x": 0.446928, "y": 0.624845, "source_ref": "Night City 2045 p. 154"},
+    {"map_no": 14, "name": "Rusty’s Dive Shack", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-RUSTY-S-DIVE-SHACK", "x": 0.424314, "y": 0.452177, "source_ref": "Night City 2045 p. 155"},
+    {"map_no": 15, "name": "The Yard", "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-THE-YARD", "x": 0.511177, "y": 0.494428, "source_ref": "Night City 2045 p. 155"}
+  ]
+}

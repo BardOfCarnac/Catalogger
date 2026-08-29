@@ -1,0 +1,181 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-glen-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [116, 117, 121, 122],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-116-AIR",
+      "name": "Air",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 3,
+      "book_page": 116,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 116-117",
+      "source_summary": "Sterile oxygen-bar business selling one-minute hits of scented breathable air to affluent customers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "alpine-mountain-blend", "label": "Alpine Mountain Blend oxygen hit, one minute", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "oxygen-bar", "label": "Scented breathable-air service"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "NARROW_TO_SOURCE_EXPLICIT_OXYGEN_BAR"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE",
+      "name": "Hall of Justice",
+      "entity_type": "context",
+      "district": "The Glen",
+      "map_no": 15,
+      "book_page": 121,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 121",
+      "source_summary": "Courthouse and jail whose commercial activity is incidental: ticketed public punishments and temporary concession vendors rather than an internal retail shop.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "context_and_service",
+      "local_offerings": [
+        {"offering_key": "public-punishment-day-ticket", "label": "All-day public punishment viewing ticket", "price_eb": 20},
+        {"offering_key": "luxury-execution-seat", "label": "Luxury seat for a famous criminal's execution", "price_eb": 100}
+      ],
+      "services": [
+        {"service_key": "public-punishment-viewing", "label": "Ticketed execution and public electro-whipping viewing"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_CIVIC_CONTEXT_WITH_TICKETED_EVENT_COMMERCE"
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-THE-GLEN-121-HALL-OF-JUSTICE-CONCESSIONS",
+      "name": "Hall of Justice Concession Vendors",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE",
+      "district": "The Glen",
+      "map_no": 15,
+      "book_page": 121,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 121",
+      "source_summary": "Unnamed vendors present at public punishments selling popcorn-flavored Kibble, Triti-Fizz and SCOPdogs.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "rotating_vendor_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "local_offerings": [
+        {"offering_key": "punishment-concessions", "label": "Popcorn-flavored Kibble, Triti-Fizz and SCOPdogs"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_CONCESSION_CHANNEL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "name": "Merrill, Asukaga & Finch Offices",
+      "entity_type": "container",
+      "district": "The Glen",
+      "map_no": 19,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "Referral-only financial institution occupying the upper floors of Thurgood Towers; retail cues belong to named ground-floor tenants rather than the firm itself.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "context_and_service",
+      "stock_policy": "CHILDREN_ONLY",
+      "services": [
+        {"service_key": "wealth-management", "label": "Financial and investment management", "availability": "referral and appointment only"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "SPLIT_FINANCIAL_OFFICES_FROM_GROUND_FLOOR_TENANTS"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-THE-GLEN-122-2A",
+      "name": "2A",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "district": "The Glen",
+      "map_no": 19,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "Named ground-floor east-tower tenant combining a firearm shop and gun range.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:glen:2a:v1",
+        "overrides": {
+          "primary_departments": ["weapons"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "normal",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 8, "specialist": 8, "corporate": 3},
+          "allowed_classification_prefixes": [["Weapons"]],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "gun-range", "label": "Gun range"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_NAMED_RETAIL_TENANT"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-THE-GLEN-122-EBONY-CHAIR",
+      "name": "Ebony Chair",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "district": "The Glen",
+      "map_no": 19,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "Named west-tower barber shop specializing in Black hair care and styling.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "black-hair-care", "label": "Black hair care and styling"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_SERVICE_TENANT"}
+    },
+    {
+      "entity_id": "NC2045-MEN-THE-GLEN-122-BODY-LOTTO-OFFICE",
+      "name": "Body Lotto Office",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "district": "The Glen",
+      "map_no": 19,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "Named west-tower office where Body Lotto winners claim prizes.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "lottery-prize-claim", "label": "Body Lotto prize claim"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_SERVICE_TENANT"}
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-north-heywood-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [248, 250, 251, 252],
+    "note": "Commercial facts in this pass are constrained to the v0.2 audit and corroborating official Atlas/preview material available to the project. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "name": "Byte & Switch",
+      "entity_type": "hybrid",
+      "district": "North Heywood",
+      "map_no": 5,
+      "book_page": 248,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 248",
+      "source_summary": "Repair/refurbishment-oriented tech business dealing in used electronics and questionable cyberware/parts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares_and_service",
+      "stocking": {
+        "archetype_id": "electronics-shop",
+        "seed": "nc2045:north-heywood:byte-switch:v1",
+        "overrides": {
+          "primary_departments": ["electronics-comms", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "shallow",
+          "supply_capability": "irregular",
+          "price_tier_center": "Expensive",
+          "pricing_style": "bargain",
+          "channel_weights": {"specialist": 7, "grey_market": 6, "street": 5, "pawn": 3},
+          "allowed_classification_prefixes": [
+            ["Electronics & Communications"],
+            ["General Equipment"]
+          ],
+          "excluded_classification_prefixes": [
+            ["Electronics & Communications", "Software & Apps"]
+          ],
+          "condition_weights": {"new": 1, "used": 7, "refurbished": 8, "damaged": 2, "salvaged": 4},
+          "specials": [0, 1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "questionable-cyberware-parts", "label": "Used, refurbished or questionable cyberware parts", "visibility": "ask"}
+      ],
+      "services": [
+        {"service_key": "electronics-repair-refurbishment", "label": "Electronics repair and refurbishment"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_SPLIT",
+        "note": "The generated catalogue assortment is restricted to physical electronics/general tech. Used/refurbished cyberware remains world-local because the current cyberware taxonomy assumes new installed goods."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "name": "Nana Meow’s Nursery",
+      "entity_type": "local_vendor",
+      "district": "North Heywood",
+      "map_no": 11,
+      "book_page": 250,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 250",
+      "source_summary": "Gardening shop supplying gear and seeds to guerilla gardeners.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "gardening-gear-supplies", "label": "Gardening gear and supplies"},
+        {"offering_key": "seeds", "label": "Seeds"}
+      ],
+      "catalogue_note": "The current General Equipment pool is too broad to stand in for gardening supplies without inventing unrelated merchandise.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "name": "Sleepeasy Home Solutions",
+      "entity_type": "hybrid",
+      "district": "North Heywood",
+      "map_no": 16,
+      "book_page": 251,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 251",
+      "source_summary": "Home-solutions showroom focused on furniture and domestic products, with smart-home offerings represented separately from the catalogue stock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "stocking": {
+        "archetype_id": "housing-furnishings",
+        "seed": "nc2045:north-heywood:sleepeasy:v1",
+        "overrides": {
+          "primary_departments": ["housing-property"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "shallow",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Luxury",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 7, "corporate": 5, "direct_order": 6, "specialist": 3},
+          "allowed_classification_prefixes": [
+            ["Housing & Property", "Furniture"],
+            ["Housing & Property", "Home Accessories"]
+          ],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 2, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "smart-home-solutions", "label": "Smart-home systems and solutions"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Residential-property records and unrelated general/electronics items are excluded from generated stock; only furniture and home accessories use the catalogue."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
+      "name": "Truvy’s Salon",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "district": "North Heywood",
+      "map_no": 16,
+      "book_page": 251,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 251",
+      "source_summary": "Salon offering cosmetic services and fashionware installation rather than broad cyberware or armor retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "cyberware-clinic",
+        "seed": "nc2045:north-heywood:truvys-salon:v1",
+        "overrides": {
+          "primary_departments": ["cyberware"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Premium",
+          "pricing_style": "premium",
+          "channel_weights": {"specialist": 7, "retail": 4, "direct_order": 4},
+          "allowed_classification_prefixes": [["Cyberware", "Fashionware"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "salon-beauty", "label": "Salon and beauty services"},
+        {"service_key": "fashionware-installation", "label": "Fashionware fitting and installation"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_HARD_NARROWED",
+        "note": "The audit's armor and broad fashion/cyberware leakage is replaced by an explicit Fashionware-only catalogue gate."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "name": "Woodland Park",
+      "entity_type": "container",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Neighborhood near the Dynalar campus containing several named businesses and residential locations; commerce belongs to those child entities.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "name": "Breeze",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Small neighborhood drug shop; this audit pass models its recreational-drug stock using the dedicated Street Drugs classification rather than broad medical/general goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "pharmacy",
+        "seed": "nc2045:north-heywood:breeze:v1",
+        "overrides": {
+          "primary_departments": ["medical-chemical"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "deep",
+          "supply_capability": "clandestine",
+          "price_tier_center": "Premium",
+          "pricing_style": "premium",
+          "channel_weights": {"street": 8, "grey_market": 7, "black_market": 6},
+          "allowed_classification_prefixes": [["Medical & Chemical", "Street Drugs"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_HARD_NARROWED"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
+      "name": "Burning Bright Bodega",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "district": "North Heywood",
+      "map_no": 18,
+      "book_page": 252,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 252",
+      "source_summary": "Neighborhood bodega carrying ordinary food/consumables and general goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:north-heywood:burning-bright-bodega:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's broad secondary electronics/fashion and inherited all-category signals are not promoted to stock."
+      }
+    }
+  ]
+}

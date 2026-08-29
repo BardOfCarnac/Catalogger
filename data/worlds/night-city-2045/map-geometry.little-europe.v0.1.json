@@ -1,0 +1,40 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+  "district": "Little Europe",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 55,
+    "source_ref": "Night City 2045 p. 55",
+    "note": "All twenty-three numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "101.1 Killzone", "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-101-1-KILLZONE", "x": 0.396340, "y": 0.366796, "source_ref": "Night City 2045 p. 56"},
+    {"map_no": 2, "name": "Biotechnica Reference Forest RF-14", "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BIOTECHNICA-REFERENCE-FOREST-RF-14", "x": 0.324444, "y": 0.297333, "source_ref": "Night City 2045 p. 56"},
+    {"map_no": 3, "name": "Bristol Business Park", "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK", "x": 0.298235, "y": 0.333986, "source_ref": "Night City 2045 p. 56"},
+    {"map_no": 4, "name": "Camden Court", "entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CAMDEN-COURT", "x": 0.477770, "y": 0.261878, "source_ref": "Night City 2045 p. 57"},
+    {"map_no": 5, "name": "Chopper’s", "entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S", "x": 0.561283, "y": 0.470728, "source_ref": "Night City 2045 p. 57"},
+    {"map_no": 6, "name": "Continental Brands Vertical Neighborhood", "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD", "x": 0.435229, "y": 0.419056, "source_ref": "Night City 2045 p. 58"},
+    {"map_no": 7, "name": "Cube-A-Rama", "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CUBE-A-RAMA", "x": 0.602549, "y": 0.383550, "source_ref": "Night City 2045 p. 58"},
+    {"map_no": 8, "name": "Danger Gal Housing Facility", "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-HOUSING-FACILITY", "x": 0.228824, "y": 0.327944, "source_ref": "Night City 2045 p. 58"},
+    {"map_no": 9, "name": "Danger Gal Offices", "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-OFFICES", "x": 0.259216, "y": 0.342067, "source_ref": "Night City 2045 p. 58"},
+    {"map_no": 10, "name": "Everything and More", "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE", "x": 0.499608, "y": 0.281100, "source_ref": "Night City 2045 p. 59"},
+    {"map_no": 11, "name": "Fiddler’s Green", "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-FIDDLER-S-GREEN", "x": 0.459137, "y": 0.314978, "source_ref": "Night City 2045 p. 59"},
+    {"map_no": 12, "name": "Greta’s", "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-GRETA-S", "x": 0.738824, "y": 0.294636, "source_ref": "Night City 2045 p. 59"},
+    {"map_no": 13, "name": "Holy Angels Church", "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-HOLY-ANGELS-CHURCH", "x": 0.360229, "y": 0.320198, "source_ref": "Night City 2045 p. 59"},
+    {"map_no": 14, "name": "Kaito Market", "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET", "x": 0.692615, "y": 0.248734, "source_ref": "Night City 2045 p. 60"},
+    {"map_no": 15, "name": "Night Corp HQ", "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-NIGHT-CORP-HQ", "x": 0.665237, "y": 0.352759, "source_ref": "Night City 2045 p. 60"},
+    {"map_no": 16, "name": "Old Saint Christopher Center", "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER", "x": 0.227190, "y": 0.386075, "source_ref": "Night City 2045 p. 61"},
+    {"map_no": 17, "name": "Paradiso Terrestre", "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-PARADISO-TERRESTRE", "x": 0.466013, "y": 0.457338, "source_ref": "Night City 2045 p. 61"},
+    {"map_no": 18, "name": "Red Cab Company", "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-RED-CAB-COMPANY", "x": 0.636601, "y": 0.579307, "source_ref": "Night City 2045 p. 61"},
+    {"map_no": 19, "name": "Revere Courier Services", "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-REVERE-COURIER-SERVICES", "x": 0.538930, "y": 0.539509, "source_ref": "Night City 2045 p. 62"},
+    {"map_no": 20, "name": "Shady Oaks Elementary", "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHADY-OAKS-ELEMENTARY", "x": 0.558758, "y": 0.352759, "source_ref": "Night City 2045 p. 62"},
+    {"map_no": 21, "name": "Short Circuit", "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT", "x": 0.648301, "y": 0.473253, "source_ref": "Night City 2045 p. 62"},
+    {"map_no": 22, "name": "Soprano’s", "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SOPRANO-S", "x": 0.432329, "y": 0.539509, "source_ref": "Night City 2045 p. 62"},
+    {"map_no": 23, "name": "Torrell and Chiang’s", "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S", "x": 0.499927, "y": 0.583095, "source_ref": "Night City 2045 p. 63"}
+  ]
+}

@@ -39,6 +39,8 @@ data/
   stocking/
     model.json                  scoring, breadth/depth, lifecycle and restock controls
     archetype-profiles.json     stocking defaults keyed to shop archetypes
+  worlds/
+    night-city-2045/            source-defined world/location fixtures
   audit/
     *.json.gz                   retained source-index/audit data
     id-redirects.json           retired ID -> canonical ID
@@ -52,11 +54,14 @@ scripts/
   build_commercial_profiles.py  derive Vend-R item profiles
   review_product_identity.py    audit product-identity decisions
   stock_engine.py               eligibility/scoring/assortment mechanics
+  world_stock_engine.py         hard source constraints for canonical sellers
   stock_lifecycle.py            durable bundles, backorders, events and inspection
+  build_kaito_market.py         first end-to-end Night City 2045 world pilot
   validate_catalog.py           checksum + relational + taxonomy checks
   validate_stocking.py          stocking configuration checks
   test_stock_engine.py          deterministic stocking smoke tests
   test_stock_lifecycle.py       persistence/source/event/report smoke tests
+  test_kaito_market.py          source-defined market integration test
 ```
 
 Large, mostly static factual tables are stored as deterministic, versioned gzip JSON shards. `data/catalog/manifest.json` records every part, row count and SHA-256 checksum. Human-authored Vend-R classifications and stocking logic remain ordinary readable JSON rather than being hidden inside generated files.
@@ -189,9 +194,32 @@ The persistent shop model now has five primary objects:
 
 `shop_archetypes` are generator templates only. The core rule is: **generated attributes become stored attributes**. Updating an archetype later must not silently mutate a shop already present in a campaign.
 
+## Source-defined world fixtures
+
+A canonical location is not the same thing as a generated shop template. `data/worlds/` stores factual location/business structure separately from the catalogue and from runtime stock. The first pilot, `data/worlds/night-city-2045/kaito-market.v1.json`, models Night City 2045 p. 60 as one market container with ten named child vendors.
+
+The world layer makes several distinctions that the generic shop generator should not erase:
+
+- **containers** such as markets own no duplicate inventory; stock belongs to their child sellers
+- **catalogue stock** uses persistent VENDR item IDs and the ordinary stocking engine
+- **local wares** represent source-defined everyday goods which have no suitable canonical Night Market Index item; they must not be replaced with an unrelated rules item simply to obtain an ID
+- **services** can exist without stock at all
+- hybrid vendors can combine catalogue stock, local wares and services
+
+`world_stock_engine.py` adds persisted hard constraints for cases where source material is narrower than a generic archetype. These include exact item allowlists, classification-prefix restrictions, explicit inclusion exceptions, base-price bounds and pinned assortment lines. The constraints are properties of the realized seller, not changes to the global item catalogue or universal rarity rules.
+
+Build the current Kaito Market pilot after generating commercial profiles:
+
+```bash
+python scripts/build_commercial_profiles.py
+python scripts/build_kaito_market.py
+```
+
+The generated pilot state is written under `build/data/worlds/` and is deterministic from the saved source fixture and seeds. A deployed world would import that initial state and then persist subsequent stock changes rather than regenerating the market on every visit.
+
 ## Hosting direction
 
-Git is the editorial source of truth for catalogue and generator data. A future live deployment can import the catalogue and derived commercial profiles into PostgreSQL/Supabase and add dynamic `shops`, `shop_assortment`, `stock`, `shop_state`, and `stock_history` rows around it.
+Git is the editorial source of truth for catalogue, generator and source-defined world seed data. A future live deployment can import the catalogue and derived commercial profiles into PostgreSQL/Supabase and add dynamic `shops`, `shop_assortment`, `stock`, `shop_state`, and `stock_history` rows around it.
 
 ## Validation
 
@@ -204,9 +232,11 @@ python scripts/review_product_identity.py
 python scripts/validate_stocking.py
 python scripts/test_stock_engine.py
 python scripts/test_stock_lifecycle.py
+python scripts/test_kaito_market.py
+python scripts/build_kaito_market.py
 ```
 
-The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, every controlled vocabulary value, stocking-profile coverage and lifecycle configuration references. The stocking tests generate all fourteen archetypes, verify deterministic generation, enforce unique-items-as-specials, exercise speciality weighting, confirm restocking preserves assortment identity, test source filtering, pending deliveries, lifecycle events and the no-UI inspection report. GitHub Actions runs the full sequence on pushes and pull requests.
+The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, every controlled vocabulary value, stocking-profile coverage and lifecycle configuration references. The stocking tests generate all fourteen archetypes, verify deterministic generation, enforce unique-items-as-specials, exercise speciality weighting, confirm restocking preserves assortment identity, test source filtering, pending deliveries, lifecycle events and the no-UI inspection report. The Kaito integration test additionally checks location-to-vendor containment, source-defined seller restrictions, local-offering/service separation and deterministic world realization. GitHub Actions runs the full sequence on pushes and pull requests.
 
 ## Unofficial content notice
 

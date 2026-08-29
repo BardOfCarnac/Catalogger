@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vend-r.invalid/schema/world-map-geometry-v0.1.schema.json",
+  "title": "Vend-R source-map geometry v0.1",
+  "type": "object",
+  "required": [
+    "format_version",
+    "world_id",
+    "map_id",
+    "district",
+    "source",
+    "coordinate_space",
+    "points"
+  ],
+  "properties": {
+    "format_version": {"const": "0.1.0"},
+    "world_id": {"type": "string", "minLength": 1},
+    "map_id": {"type": "string", "minLength": 1},
+    "district": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "required": ["title", "book_page", "source_ref"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "book_page": {"type": "integer", "minimum": 1},
+        "source_ref": {"type": "string", "minLength": 1},
+        "note": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "coordinate_space": {"const": "source_page_uv"},
+    "precision": {"type": "string"},
+    "note": {"type": "string"},
+    "points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["map_no", "name", "entity_id", "x", "y"],
+        "properties": {
+          "point_id": {"type": "string", "minLength": 1},
+          "map_no": {"type": "integer", "minimum": 1},
+          "map_suffix": {"type": "string", "pattern": "^[a-z]$"},
+          "name": {"type": "string", "minLength": 1},
+          "entity_id": {"type": "string", "minLength": 1},
+          "x": {"type": "number", "minimum": 0, "maximum": 1},
+          "y": {"type": "number", "minimum": 0, "maximum": 1},
+          "source_ref": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

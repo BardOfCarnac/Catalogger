@@ -1,0 +1,227 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-new-westbrook-context-only-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [214, 215, 216, 217, 218, 219, 220],
+    "note": "Direct source review of all twelve New Westbrook rows the v0.2 audit classified CONTEXT_ONLY. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-AEROCAB",
+      "name": "Aerocab",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 1,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Aerocab's fortified headquarters, hangars, dispatch center and maintenance base for its fifteen-AV luxury hired-transport fleet.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "services": [
+        {"service_key": "aerial-hired-transport", "label": "Luxury aerial hired transport"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_AERIAL_TRANSPORT_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-AUGMENTED-OPTIC",
+      "name": "Augmented Optic",
+      "entity_type": "channel",
+      "district": "New Westbrook",
+      "map_no": 2,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "The office of Night City's second-most-popular screamsheet, which commissions articles from freelance Medias and provides an outlet through which independent reporters can reach a wider audience.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "media_publishing_channel",
+      "stock_policy": "NO_STOCK",
+      "services": [
+        {"service_key": "screamsheet-publishing", "label": "Screamsheet publishing and story distribution"},
+        {"service_key": "freelance-media-commissions", "label": "Freelance Media article commissions"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_MEDIA_PUBLISHING_AND_COMMISSION_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-THE-COMBAT-ZONE",
+      "name": "The Combat Zone",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 5,
+      "book_page": 215,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 215",
+      "source_summary": "Network 54's walled permanent urban-wasteland production set for multiple programs, especially its high-rating Combat Zone show; the location is heavily secured and not presented as customer-facing commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_RESTRICTED_MEDIA_PRODUCTION_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-EVERGREEN-APARTMENTS",
+      "name": "Evergreen Apartments",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 8,
+      "book_page": 216,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 216",
+      "source_summary": "Extremely low-quality subdivided warehouse housing operated by landlord Sam Banks, who rents crude units and will displace existing tenants for bribes.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "services": [
+        {"service_key": "low-cost-housing-rental", "label": "Low-cost subdivided housing rental"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_LOW_COST_HOUSING_RENTAL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-LINCOLN-LOT",
+      "name": "Lincoln Lot",
+      "entity_type": "channel",
+      "district": "New Westbrook",
+      "map_no": 11,
+      "book_page": 216,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 216",
+      "source_summary": "Parking-lot meeting and pickup point where day and night laborers wait for employers offering work, often with outbound transport to jobs elsewhere in the city.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "labor_market_channel",
+      "stock_policy": "NO_STOCK",
+      "services": [
+        {"service_key": "day-labor-market", "label": "Informal day and night labor market"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_INFORMAL_LABOR_MARKET_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-MEGABUILDING-H6-CONSTRUCTION-SITE",
+      "name": "Megabuilding H6 Construction Site",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 13,
+      "book_page": 217,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 217",
+      "source_summary": "Cleared and fenced site reserved for a proposed megabuilding, with construction not yet begun and the project potentially moving elsewhere.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_UNBUILT_DEVELOPMENT_CONTEXT_NO_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NET54-88-2",
+      "name": "Net54 88.2",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 14,
+      "book_page": 217,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 217",
+      "source_summary": "Automated Network 54 synth-pop radio transmission tower carrying scheduled music and news programming assembled elsewhere at Network 54 Plaza.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_BROADCAST_INFRASTRUCTURE_CONTEXT_NO_CUSTOMER_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-WESTBROOK-PRIVATE-ACRES",
+      "name": "Network 54 Westbrook Private Acres",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 16,
+      "book_page": 217,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 217",
+      "source_summary": "Gated conapt complex reserved for Network 54 employees and guests, linked to the corporate plaza by an armored employee shuttle rather than public rental commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_RESTRICTED_CORPORATE_HOUSING_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-NIGHT-CITY-FIRESTATION-1",
+      "name": "Night City Firestation #1",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 17,
+      "book_page": 218,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 218",
+      "source_summary": "Well-supplied public fire station with specialized AVs, ground vehicles and an FBC response squad; its equipment supports emergency operations rather than customer sales.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_PUBLIC_EMERGENCY_INFRASTRUCTURE_NO_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-NORTH-CARGO-VILLAGE",
+      "name": "North Cargo Village",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 18,
+      "book_page": 218,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 218",
+      "source_summary": "Multi-level cargo-container residential community in an abandoned parking lot; the source describes housing and neighborhood security but no named public commercial operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "CONFIRM_RESIDENTIAL_COMMUNITY_CONTEXT_NO_NAMED_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-INNOVATION-HUB",
+      "name": "Rocklin Augmentics Innovation Hub",
+      "entity_type": "container",
+      "district": "New Westbrook",
+      "map_no": 20,
+      "book_page": 218,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 218-219",
+      "source_summary": "Rocklin corporate housing with shared collaboration areas and workshops; the source also notes informal Tech and Medtech side work operating from inside the complex.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_HOUSING_CONTAINER_AND_RECOVER_INFORMAL_SERVICE_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-CHN-NEW-WESTBROOK-218-INNOVATION-HUB-SIDE-HUSTLES",
+      "name": "Innovation Hub Tech/Medtech Side Hustles",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-INNOVATION-HUB",
+      "district": "New Westbrook",
+      "map_no": 20,
+      "book_page": 218,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 pp. 218-219",
+      "source_summary": "Unnamed informal Tech and Medtech side work carried out by residents from within the Innovation Hub; the source does not specify individual operators or a fixed menu of work.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "informal_service_channel",
+      "stock_policy": "NO_STOCK",
+      "access_model": "informal",
+      "services": [
+        {"service_key": "resident-tech-medtech-side-work", "label": "Informal resident Tech/Medtech work"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_TECH_MEDTECH_SIDE_HUSTLES"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-VIRTUAL-VARIETY",
+      "name": "Virtual Variety",
+      "entity_type": "hybrid",
+      "district": "New Westbrook",
+      "map_no": 23,
+      "book_page": 220,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 220",
+      "source_summary": "Neocorp code farm creating custom SAAI companion software for paying customers to download to their Agents.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "stock_policy": "NO_STOCK",
+      "local_offerings": [
+        {"offering_key": "custom-saai-companion", "label": "Custom SAAI companion software"}
+      ],
+      "services": [
+        {"service_key": "saai-companion-customization", "label": "Custom SAAI companion creation and Agent delivery"}
+      ],
+      "catalogue_note": "The source describes bespoke software rather than a fixed catalogue assortment, so no generic NET-program stock is generated.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "CONTEXT_ONLY", "decision": "PROMOTE_TO_BESPOKE_DIGITAL_PRODUCT_AND_SOFTWARE_SERVICE"}
+    }
+  ]
+}

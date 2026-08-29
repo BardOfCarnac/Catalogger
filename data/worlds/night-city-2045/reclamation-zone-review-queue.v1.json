@@ -1,0 +1,50 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-reclamation-zone-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [158, 160],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-158-BOOSTER-BISTRO",
+      "name": "Booster Bistro",
+      "entity_type": "hybrid",
+      "district": "Reclamation Zone",
+      "map_no": 1,
+      "book_page": 158,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 158, 160",
+      "source_summary": "Neighborhood bistro run as a second-chance workplace for former gang members and others rebuilding their lives; its well-regarded menu leans on eggs from an on-site chicken coop.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "egg-based-bistro-meals", "label": "Bistro meals, especially egg-based dishes"}],
+      "services": [{"service_key": "bistro-hospitality", "label": "Bistro hospitality"}],
+      "catalogue_note": "Prepared food is source-local and not expanded into generic grocery stock.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_SOURCE_LOCAL_RESTAURANT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-FOUNDRY-TECH-SCHOOL",
+      "name": "Foundry Tech School",
+      "entity_type": "service",
+      "district": "Reclamation Zone",
+      "map_no": 5,
+      "book_page": 160,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 160",
+      "source_summary": "Technical school created to train the district's workforce in subjects ranging from plumbing and cyberware repair to train operation and maintenance.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Torin Seanoa", "role": "Exec/Tech", "rank": 4},
+      "services": [
+        {"service_key": "technical-vocational-training", "label": "Technical and vocational training"},
+        {"service_key": "train-operation-maintenance-training", "label": "Train operation and maintenance training"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_EDUCATION_SERVICE"}
+    }
+  ]
+}

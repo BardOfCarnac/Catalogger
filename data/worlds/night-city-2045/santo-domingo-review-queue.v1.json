@@ -1,0 +1,33 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-santo-domingo-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [264],
+    "note": "Held-out v0.2 Review Queue candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-264-88-9-NOMAD-PRESENTS-RADIO-NOPR",
+      "name": "88.9 Nomad Presents Radio (NoPR)",
+      "entity_type": "service",
+      "district": "Santo Domingo",
+      "map_no": 1,
+      "book_page": 264,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 264",
+      "source_summary": "Breaker 1-9s radio station broadcasting local, national and international news and information. It refuses advertising revenue and instead relies on listener fundraisers and pledge drives.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Bly Harjo", "role": "Media/Nomad", "rank": 4},
+      "services": [
+        {"service_key": "community-radio-broadcast", "label": "Community radio news and information"},
+        {"service_key": "listener-fundraising", "label": "Listener pledge drives and fundraising"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_NONCOMMERCIAL_MEDIA_SERVICE"}
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+  "district": "Heywood Industrial Zone",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 257,
+    "source_ref": "Night City 2045 p. 257",
+    "note": "Source map geometry verified against the user-provided purchased source. The map contains nineteen ordinary numbered pins #1-#19 with no suffix hierarchy."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "Aldecaldo Depot", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ALDECALDO-DEPOT", "x": 0.466471, "y": 0.541931, "source_ref": "Night City 2045 p. 258"},
+    {"map_no": 2, "name": "Agron’s Boxed Lunches", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-AGRON-S-BOXED-LUNCHES", "x": 0.350654, "y": 0.366196, "source_ref": "Night City 2045 p. 258"},
+    {"map_no": 3, "name": "Arroyo Concern Offices", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ARROYO-CONCERN-OFFICES", "x": 0.560588, "y": 0.431852, "source_ref": "Night City 2045 p. 258"},
+    {"map_no": 4, "name": "Continental Brands Manufacturing", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-CONTINENTAL-BRANDS-MANUFACTURING", "x": 0.442451, "y": 0.449593, "source_ref": "Night City 2045 p. 258"},
+    {"map_no": 5, "name": "D.V. Rambling Rose", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-D-V-RAMBLING-ROSE", "x": 0.398301, "y": 0.554897, "source_ref": "Night City 2045 pp. 258-259"},
+    {"map_no": 6, "name": "GunMart Manufacturing", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-GUNMART-MANUFACTURING", "x": 0.419020, "y": 0.416010, "source_ref": "Night City 2045 p. 259"},
+    {"map_no": 7, "name": "The Interchange", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-THE-INTERCHANGE", "x": 0.630000, "y": 0.327287, "source_ref": "Night City 2045 p. 259"},
+    {"map_no": 8, "name": "Militech Manufacturing Plant", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-MILITECH-MANUFACTURING-PLANT", "x": 0.488824, "y": 0.407002, "source_ref": "Night City 2045 p. 259"},
+    {"map_no": 9, "name": "The Old Ironworks Building", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING", "x": 0.442451, "y": 0.567862, "source_ref": "Night City 2045 p. 259"},
+    {"map_no": 10, "name": "Petrochem Plastics Plant", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-PETROCHEM-PLASTICS-PLANT", "x": 0.359869, "y": 0.424107, "source_ref": "Night City 2045 pp. 259-260"},
+    {"map_no": 11, "name": "Raven Microcybernetics Factory", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-RAVEN-MICROCYBERNETICS-FACTORY", "x": 0.390131, "y": 0.400519, "source_ref": "Night City 2045 p. 260"},
+    {"map_no": 12, "name": "Rocklin Augmentics Manufacturing", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-ROCKLIN-AUGMENTICS-MANUFACTURING", "x": 0.447623, "y": 0.366196, "source_ref": "Night City 2045 p. 260"},
+    {"map_no": 13, "name": "The Rodeo", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-THE-RODEO", "x": 0.322941, "y": 0.438335, "source_ref": "Night City 2045 p. 260"},
+    {"map_no": 14, "name": "SovOil Plastics Plant", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-SOVOIL-PLASTICS-PLANT", "x": 0.396667, "y": 0.442293, "source_ref": "Night City 2045 pp. 260-261"},
+    {"map_no": 15, "name": "Trauma Team Pharmaceutical Plant", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-TRAUMA-TEAM-PHARMACEUTICAL-PLANT", "x": 0.462745, "y": 0.496208, "source_ref": "Night City 2045 p. 261"},
+    {"map_no": 16, "name": "Yang’s Wheels", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-YANG-S-WHEELS", "x": 0.562255, "y": 0.378676, "source_ref": "Night City 2045 p. 261"},
+    {"map_no": 17, "name": "Zhirafa Office Park", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-OFFICE-PARK", "x": 0.499869, "y": 0.320804, "source_ref": "Night City 2045 p. 261"},
+    {"map_no": 18, "name": "Zhirafa MicroVillage", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE", "x": 0.612680, "y": 0.359713, "source_ref": "Night City 2045 pp. 261-262"},
+    {"map_no": 19, "name": "Ziggurat Warehouses", "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-262-ZIGGURAT-WAREHOUSES", "x": 0.322941, "y": 0.520267, "source_ref": "Night City 2045 p. 262"}
+  ]
+}

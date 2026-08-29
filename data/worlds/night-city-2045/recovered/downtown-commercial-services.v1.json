@@ -1,0 +1,62 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-downtown-commercial-services-recovered-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [83, 84],
+    "note": "Source-reviewed recovery of two mapped Downtown commercial-service locations that were present in the canonical place graph but fell outside the earlier CORE_RETAIL, RETAIL_CAPABLE, REVIEW_QUEUE and CONTEXT_ONLY fixture passes. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-DELIRIUM",
+      "name": "Delirium",
+      "entity_type": "service",
+      "district": "Downtown",
+      "map_no": 8,
+      "book_page": 83,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 83",
+      "source_summary": "Three-floor Downtown nightclub built around proprietary virtuality goggles that let patrons alter the club's perceived environment; changing the shared setting carries a source-listed charge.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "virtuality-nightclub", "label": "Virtuality nightclub entertainment"},
+        {"service_key": "virtuality-environment-change", "label": "Change shared virtual club environment", "price_eb": 20}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_MAPPED_SERVICE_LOCATION"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-THE-ELDRITCH-MIRAGE",
+      "name": "The Eldritch Mirage",
+      "entity_type": "hybrid",
+      "district": "Downtown",
+      "map_no": 9,
+      "book_page": 83,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 83-84",
+      "source_summary": "Members-only gothic club hidden off a Downtown alley, known for live pipe-organ atmosphere, customized absinthe cocktails and owner Cassandra Vey's Fixer business in the VIP lounge.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Cassandra Vey", "role": "Fixer", "rank": 6},
+      "access_model": {"mode": "members_only"},
+      "local_offerings": [
+        {"offering_key": "customized-absinthe-cocktail", "label": "Customized absinthe cocktail", "price_eb": 50}
+      ],
+      "services": [
+        {"service_key": "members-club-entertainment", "label": "Members-only club entertainment"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_MAPPED_SERVICE_LOCATION"
+      }
+    }
+  ]
+}

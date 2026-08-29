@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "batch_id": "executive-zone-core-audit-v0.2",
+  "source_profile_version": "0.2",
+  "profiles": [
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "district": "Executive Zone",
+      "book_page": 236,
+      "entity_level": "mapped_location",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 236",
+      "stock_mode": "DIRECT_SELLER",
+      "primary_archetype": "general-store",
+      "primary_departments": "general-equipment|food-consumables|fashion-personal|housing-property|electronics-comms",
+      "secondary_departments": "electronics-comms|fashion-personal",
+      "breadth_profile": "broad",
+      "depth_profile": "deep",
+      "supply_capability": "ordinary",
+      "price_tier_center": "Luxury",
+      "pricing_style": "premium",
+      "parent_stock_policy": "OWN_STOCK",
+      "audit_action": "KEEP",
+      "assignment_confidence": "HIGH",
+      "catalog_rule": "SCORE_EXISTING_CATALOG",
+      "candidate_rule_summary": "department match",
+      "modelling_note": "Luxury-heavy Oasis branch while retaining basic food/consumables."
+    }
+  ]
+}

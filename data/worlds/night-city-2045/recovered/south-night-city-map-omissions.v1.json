@@ -1,0 +1,35 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-south-night-city-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [145],
+    "note": "Map-visible South Night City place omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-THE-SLAMMER",
+      "name": "The Slammer",
+      "entity_type": "hybrid",
+      "district": "South Night City",
+      "map_no": 13,
+      "book_page": 145,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 145",
+      "source_summary": "Large edgerunner and ganger bar occupying two buildings, combining a combat arena, dance floor and crowded drinking space while employing current and former gang members.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Cassius Brown", "role": "Solo", "rank": 6},
+      "local_offerings": [
+        {"offering_key": "tongue-killer", "label": "Tongue Killer house drink", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar and dance-floor hospitality"},
+        {"service_key": "combat-arena", "label": "Arena used to settle ganger disputes"}
+      ]
+    }
+  ]
+}

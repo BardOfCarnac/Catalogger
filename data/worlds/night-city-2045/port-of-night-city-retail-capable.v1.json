@@ -1,0 +1,171 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-port-of-night-city-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [150, 154, 155],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-150-THE-AMBER-ROOM",
+      "name": "The Amber Room",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 1,
+      "book_page": 150,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 150-152",
+      "source_summary": "Consortium-associated port bar with a distinctive premium house vodka and a Fixer proprietor; it is hospitality, not a general retail shelf.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Valya", "role": "Fixer", "rank": 6},
+      "local_offerings": [
+        {"offering_key": "mother-yaga-shot", "label": "Mother Yaga vodka shot", "price_eb": 50}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_LOCAL_HOSPITALITY",
+        "note": "The source supports a bar and one named drink, not a persistent merchandise assortment."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY",
+      "name": "Maritime Supply",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 8,
+      "book_page": 154,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 154",
+      "source_summary": "General supply, maritime-technology and clothing shop serving people working on the ocean.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "proprietor": {"name": "Della Glass", "role": "Fixer", "rank": 5},
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:port:maritime-supply:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "fashion-personal"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "specialist",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "channel_weights": {"specialist": 8, "retail": 6, "nomad": 6},
+          "allowed_classification_prefixes": [["General Equipment"], ["Fashion & Personal"]],
+          "condition_weights": {"new": 7, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "maritime-technology", "label": "Specialist maritime technology and ocean-work supplies"}
+      ],
+      "catalogue_note": "Generic equipment and clothing can be represented by the catalogue; source-specific maritime technology remains local rather than being replaced with unrelated electronics or vehicles.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_WITH_NARROW_CATALOG_AND_LOCAL_MARITIME_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MEDICAL-TECHNOLOGIES",
+      "name": "Medical Technologies",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 9,
+      "book_page": 154,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 154",
+      "source_summary": "Body bank specializing in replacement limbs, with on-site ripperdocs and a reputation for buying and selling questionable cyberware.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "questionable-cyberware", "label": "Questionable second-hand or irregularly sourced cyberware"}
+      ],
+      "services": [
+        {"service_key": "replacement-limb-growth", "label": "Replacement biological limb growth"},
+        {"service_key": "cyberware-installation", "label": "Cyberware installation"}
+      ],
+      "catalogue_note": "The source emphasizes irregular provenance and installation. A generated new-cyberware shelf would misrepresent the trade, so the cyberware remains source-local.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "CORRECT_TO_LOCAL_CYBERWARE_AND_MEDICAL_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-RUSTY-S-DIVE-SHACK",
+      "name": "Rusty’s Dive Shack",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 14,
+      "book_page": 155,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 155",
+      "source_summary": "Rough dockside dive bar with one source-priced specialty drink; a tattoo parlor operates from a side container.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "shark-liver-oil", "label": "Genuine shark liver oil", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "dive-bar-hospitality", "label": "Dive-bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "CORRECT_FALSE_WEAPONS_RETAIL_TO_BAR_AND_LOCAL_WARE",
+        "note": "The flashmap-driven weapons inference is unsupported by the entry."
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-PORT-OF-NIGHT-CITY-155-SWEETHEART-TATTOO-PARLOR",
+      "name": "Sweetheart’s Tattoo Parlor",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-RUSTY-S-DIVE-SHACK",
+      "district": "Port of Night City",
+      "map_no": 14,
+      "book_page": 155,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 155",
+      "source_summary": "Tattoo service operated by the Medtech Sweetheart from a side container attached to Rusty’s; the convenience name is Vend-R supplied because the source does not give the parlor a formal name.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "tattooing", "label": "Tattooing"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_CHILD"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-THE-YARD",
+      "name": "The Yard",
+      "entity_type": "context",
+      "district": "Port of Night City",
+      "map_no": 15,
+      "book_page": 155,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 155",
+      "source_summary": "Port railyard and cargo-handling infrastructure with warehouse storage and maintenance facilities; the entry does not establish a public retail operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_LOGISTICS_CONTEXT",
+        "note": "Operational cargo, storage and maintenance functions are not converted into a customer-facing shop."
+      }
+    }
+  ]
+}

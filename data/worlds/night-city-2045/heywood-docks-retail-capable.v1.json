@@ -1,0 +1,54 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-heywood-docks-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [243],
+    "note": "RETAIL_CAPABLE candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-WAREHOUSE-13",
+      "name": "Warehouse 13",
+      "entity_type": "hybrid",
+      "district": "Heywood Docks",
+      "map_no": 10,
+      "book_page": 243,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 243",
+      "source_summary": "Short-term rentable warehouse used for raves, private parties, projects, operational staging and occasional Night Markets; it is a venue rather than a permanent shop.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "short-term-warehouse-rental", "label": "Short-term warehouse rental"},
+        {"service_key": "event-project-space", "label": "Event, project and operational staging space"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_RENTAL_VENUE_AND_SPLIT_OCCASIONAL_MARKET"
+      }
+    },
+    {
+      "entity_id": "NC2045-EVT-HEYWOOD-DOCKS-243-WAREHOUSE-13-NIGHT-MARKET",
+      "name": "Warehouse 13 Night Market",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-WAREHOUSE-13",
+      "district": "Heywood Docks",
+      "map_no": 10,
+      "book_page": 243,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 243",
+      "source_summary": "Source-explicit occasional Night Market use of Warehouse 13; no specific recurring market name or stable vendor inventory is given.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_market",
+      "stock_policy": "EVENT_ONLY",
+      "schedule": {"frequency": "occasional"},
+      "event_profile": {"market_channels": ["street", "grey_market", "specialist"]},
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_EVENT"}
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-port-of-night-city-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [154],
+    "note": "Map-visible Port of Night City place omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-NAIAD-S-EMBRACE",
+      "name": "Naiad’s Embrace",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 11,
+      "book_page": 154,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 154",
+      "source_summary": "Dockworker-oriented nightclub and casino with upstairs rooms and Consortium-employed adult companions, offering inexpensive but low-quality drinks alongside gambling and nightlife.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "gin-and-kvass", "label": "Gin and kvass", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "nightclub-hospitality", "label": "Nightclub hospitality"},
+        {"service_key": "casino-gambling", "label": "Casino gambling"},
+        {"service_key": "overnight-room", "label": "Upstairs room for the night", "price_eb": 20},
+        {"service_key": "adult-companionship", "label": "Adult companionship"}
+      ]
+    }
+  ]
+}
