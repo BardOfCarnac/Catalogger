@@ -69,6 +69,7 @@ ordinary_specs = {
     "port-of-night-city": 15,
     "reclamation-zone": 15,
     "new-westbrook": 25,
+    "heywood-industrial-zone": 19,
 }
 loaded: dict[str, dict] = {}
 for slug, expected_len in ordinary_specs.items():
@@ -144,7 +145,7 @@ assert point_18b.get("co_located_entity_ids") == ["NC2045-MEN-NORTH-HEYWOOD-252-
 assert fixture_entities[point_18b["entity_id"]].get("parent_entity_id") == woodland_parent
 assert all(fixture_entities[entity_id].get("parent_entity_id") == woodland_parent for entity_id in point_18b["co_located_entity_ids"])
 
-assert len(paths) == 17, f"expected seventeen mapped districts, found {len(paths)}"
+assert len(paths) == 18, f"expected eighteen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 419, f"expected 419 source-point manifestations, found {total_points}"
+assert total_points == 438, f"expected 438 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
