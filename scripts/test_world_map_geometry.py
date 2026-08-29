@@ -147,7 +147,18 @@ assert point_18b.get("co_located_entity_ids") == ["NC2045-MEN-NORTH-HEYWOOD-252-
 assert fixture_entities[point_18b["entity_id"]].get("parent_entity_id") == woodland_parent
 assert all(fixture_entities[entity_id].get("parent_entity_id") == woodland_parent for entity_id in point_18b["co_located_entity_ids"])
 
-assert len(paths) == 20, f"expected twenty mapped districts, found {len(paths)}"
+santo_domingo = json.loads((WORLD_DIR / "map-geometry.santo-domingo.v0.1.json").read_text(encoding="utf-8"))
+santo_points = santo_domingo["points"]
+assert len(santo_points) == 27
+assert [row["map_no"] for row in santo_points if row.get("map_suffix") is None] == list(range(1, 20))
+assert any(row["map_no"] == 2 and row.get("map_suffix") is None for row in santo_points), "source map includes the Aldecaldo Camp parent #2 as well as 2a-2h"
+assert {row["map_suffix"] for row in santo_points if row["map_no"] == 2 and row.get("map_suffix")} == set("abcdefgh")
+aldecaldo_parent = "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP"
+for row in santo_points:
+    if row["map_no"] == 2 and row.get("map_suffix"):
+        assert fixture_entities[row["entity_id"]].get("parent_entity_id") == aldecaldo_parent
+
+assert len(paths) == 21, f"expected twenty-one mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 465, f"expected 465 source-point manifestations, found {total_points}"
+assert total_points == 492, f"expected 492 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
