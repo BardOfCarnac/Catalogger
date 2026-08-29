@@ -98,7 +98,25 @@ assert [row["map_no"] for row in old_combat_points if row.get("map_suffix") is N
 assert {row["map_suffix"] for row in old_combat_points if row["map_no"] == 16 and row.get("map_suffix")} == set("abcdef")
 assert any(row["map_no"] == 16 and row.get("map_suffix") is None for row in old_combat_points), "source map includes the Warren parent marker as well as 16a-16f"
 
-assert len(paths) == 14, f"expected fourteen mapped districts, found {len(paths)}"
+watson = json.loads((WORLD_DIR / "map-geometry.watson-development.v0.1.json").read_text(encoding="utf-8"))
+watson_points = watson["points"]
+assert len(watson_points) == 46
+assert not any(row["map_no"] == 6 and row.get("map_suffix") is None for row in watson_points), "source map has no standalone Fork #6 marker"
+assert {row["map_suffix"] for row in watson_points if row["map_no"] == 6} == set("abcdefghi")
+assert [row["map_no"] for row in watson_points if row.get("map_suffix") is None] == [1,2,3,4,5] + list(range(7,39))
+watson_fork_ids = {row["entity_id"] for row in watson_points if row["map_no"] == 6}
+assert len(watson_fork_ids) == 9
+assert all(fixture_entities[entity_id].get("parent_entity_id") == "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK" for entity_id in watson_fork_ids)
+for recovered_id in {
+    "NC2045-LOC-WATSON-DEVELOPMENT-193-REDLINE",
+    "NC2045-LOC-WATSON-DEVELOPMENT-193-SAKURA-S",
+    "NC2045-LOC-WATSON-DEVELOPMENT-194-SMASH-CUT",
+    "NC2045-LOC-WATSON-DEVELOPMENT-194-TRAUMA-TEAM-TOWER",
+    "NC2045-LOC-WATSON-DEVELOPMENT-195-VARGTIMMEN",
+}:
+    assert sum(row["entity_id"] == recovered_id for row in watson_points) == 1, recovered_id
+
+assert len(paths) == 15, f"expected fifteen mapped districts, found {len(paths)}"
 total_points = sum(len(json.loads(path.read_text(encoding="utf-8"))["points"]) for path in paths)
-assert total_points == 325, f"expected 325 source-point manifestations, found {total_points}"
+assert total_points == 371, f"expected 371 source-point manifestations, found {total_points}"
 print(f"OK: source-map geometry; maps={len(paths)}, fixture_entities={len(fixture_entities)}, total_points={total_points}")
