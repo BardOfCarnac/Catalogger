@@ -27,7 +27,8 @@
     "canonical_map_geometry": "26 mapped areas / 608 source-map manifestations",
     "policy": "Transit stations remain distinct transport nodes. canonical_refs are added only where a named station can be tied to a current canonical place without inventing a place identity.",
     "coordinate_fix": "The recovered refined GeoJSON contains the v2 station positions, while the recovered graph JSON still carried original marker-centre node coordinates. This reconciled network uses the refined GeoJSON positions for all station nodes and preserves the graph only for logical topology.",
-    "charter_hill": "Stations 14 and 39 remain separate source station IDs despite sharing the name Charter Hill Station; no transfer is assumed."
+    "charter_hill": "Stations 14 and 39 remain separate source station IDs despite sharing the name Charter Hill Station; no transfer is assumed.",
+    "coordinate_space_note": "District source-pin geometry remains local source_page_uv. Transit geometry is already registered to the global 5175x7966 clean master raster; no direct numeric conversion between those coordinate spaces is asserted here."
   },
   "lines": {
     "red": {
