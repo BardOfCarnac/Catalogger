@@ -1,0 +1,433 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+  "district": "Playland by the Sea Lands",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 301,
+    "source_ref": "Night City 2045 p. 301",
+    "note": "Source souvenir-map geometry verified against the user-provided purchased source. The map draws a contiguous numbered set #1-#52 across Thrill Hill, Lovers Lane, Haunted Woods, Grand Junction, Fantasy Island and the Segotari Discovery Zone."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {
+      "map_no": 1,
+      "name": "Eco-Coaster (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-ECO-COASTER-E",
+      "x": 0.172876,
+      "y": 0.114394,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 2,
+      "name": "Kibble Cakes",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-KIBBLE-CAKES",
+      "x": 0.294118,
+      "y": 0.144192,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 3,
+      "name": "Bumper Pandamonium (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-BUMPER-PANDAMONIUM-C",
+      "x": 0.277778,
+      "y": 0.22399,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 4,
+      "name": "Moo Moo Burger Pier",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-MOO-MOO-BURGER-PIER",
+      "x": 0.139216,
+      "y": 0.235354,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 5,
+      "name": "The Big Wheel (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-THE-BIG-WHEEL-E",
+      "x": 0.155556,
+      "y": 0.298485,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 6,
+      "name": "Hammered Industries Beer Garden",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-HAMMERED-INDUSTRIES-BEER-GARDEN",
+      "x": 0.280719,
+      "y": 0.313384,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 7,
+      "name": "Depth Charge (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-DEPTH-CHARGE-E",
+      "x": 0.18268,
+      "y": 0.382323,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 8,
+      "name": "Laser Light Arena (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-LASER-LIGHT-ARENA-D",
+      "x": 0.280719,
+      "y": 0.436869,
+      "source_ref": "Night City 2045 p. 311"
+    },
+    {
+      "map_no": 9,
+      "name": "Grand Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GRAND-HOTEL",
+      "x": 0.359477,
+      "y": 0.049747,
+      "source_ref": "Night City 2045 pp. 308-309"
+    },
+    {
+      "map_no": 10,
+      "name": "Playland Amphitheatre & Reflection Deck (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-PLAYLAND-AMPHITHEATRE-REFLECTION-DECK-A",
+      "x": 0.388889,
+      "y": 0.151515,
+      "source_ref": "Night City 2045 p. 309"
+    },
+    {
+      "map_no": 11,
+      "name": "Memorial Zen Garden (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MEMORIAL-ZEN-GARDEN-A",
+      "x": 0.368627,
+      "y": 0.29697,
+      "source_ref": "Night City 2045 p. 309"
+    },
+    {
+      "map_no": 12,
+      "name": "Lovers Café",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-LOVERS-CAFE",
+      "x": 0.491176,
+      "y": 0.316919,
+      "source_ref": "Night City 2045 p. 309"
+    },
+    {
+      "map_no": 13,
+      "name": "Mermaid Fountain (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MERMAID-FOUNTAIN-A",
+      "x": 0.421242,
+      "y": 0.411364,
+      "source_ref": "Night City 2045 p. 309"
+    },
+    {
+      "map_no": 14,
+      "name": "Circle of the Supernatural",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CIRCLE-OF-THE-SUPERNATURAL",
+      "x": 0.596732,
+      "y": 0.125,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 15,
+      "name": "Carnival of Screams",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CARNIVAL-OF-SCREAMS",
+      "x": 0.646732,
+      "y": 0.189394,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 16,
+      "name": "Manor of Terror (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-MANOR-OF-TERROR-D",
+      "x": 0.53366,
+      "y": 0.220707,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 17,
+      "name": "GunMart Museum of Movie Weapons (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GUNMART-MUSEUM-OF-MOVIE-WEAPONS-B",
+      "x": 0.65,
+      "y": 0.298485,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 18,
+      "name": "Haunted Woods Warfare (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HAUNTED-WOODS-WARFARE-D",
+      "x": 0.56732,
+      "y": 0.32298,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 19,
+      "name": "Horror Classics Buffet Theatre",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HORROR-CLASSICS-BUFFET-THEATRE",
+      "x": 0.647059,
+      "y": 0.387879,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 20,
+      "name": "Frighthunter Society Lodge",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-FRIGHTHUNTER-SOCIETY-LODGE",
+      "x": 0.586928,
+      "y": 0.429293,
+      "source_ref": "Night City 2045 p. 308"
+    },
+    {
+      "map_no": 21,
+      "name": "Wharf Club",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-CLUB",
+      "x": 0.197386,
+      "y": 0.499495,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 22,
+      "name": "Wharf Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-HOTEL",
+      "x": 0.187582,
+      "y": 0.586364,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 23,
+      "name": "Paradiso Acqua",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-PARADISO-ACQUA",
+      "x": 0.323529,
+      "y": 0.513384,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 24,
+      "name": "Artificial Beach",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ARTIFICIAL-BEACH",
+      "x": 0.357843,
+      "y": 0.637121,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 25,
+      "name": "Grand Trolley Yard (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-TROLLEY-YARD-B",
+      "x": 0.396405,
+      "y": 0.559848,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 26,
+      "name": "Meet & Greet Plaza (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-MEET-GREET-PLAZA-C",
+      "x": 0.444118,
+      "y": 0.520707,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 27,
+      "name": "Lemon-Aid Rx",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LEMON-AID-RX",
+      "x": 0.491176,
+      "y": 0.601515,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 28,
+      "name": "San Francisco Sweets",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SAN-FRANCISCO-SWEETS",
+      "x": 0.520588,
+      "y": 0.618182,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 29,
+      "name": "Sourdough Central",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SOURDOUGH-CENTRAL",
+      "x": 0.596732,
+      "y": 0.644444,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 30,
+      "name": "Grand Junction Gift Shop",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "x": 0.611765,
+      "y": 0.559596,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 31,
+      "name": "Ticket Gate",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-TICKET-GATE",
+      "x": 0.700654,
+      "y": 0.565404,
+      "source_ref": "Night City 2045 p. 301"
+    },
+    {
+      "map_no": 32,
+      "name": "Lost & Found",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LOST-FOUND",
+      "x": 0.689542,
+      "y": 0.629545,
+      "source_ref": "Night City 2045 p. 307"
+    },
+    {
+      "map_no": 33,
+      "name": "Classique Corsets",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CLASSIQUE-CORSETS",
+      "x": 0.565686,
+      "y": 0.680051,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 34,
+      "name": "Garden of Desire (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-GARDEN-OF-DESIRE-A",
+      "x": 0.200654,
+      "y": 0.720202,
+      "source_ref": "Night City 2045 p. 305"
+    },
+    {
+      "map_no": 35,
+      "name": "Smash Bar & Grill",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SMASH-BAR-GRILL",
+      "x": 0.133333,
+      "y": 0.726768,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 36,
+      "name": "Aquarium Fantastique (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-AQUARIUM-FANTASTIQUE-E",
+      "x": 0.313399,
+      "y": 0.786111,
+      "source_ref": "Night City 2045 p. 305"
+    },
+    {
+      "map_no": 37,
+      "name": "Hydrosubsidium Artificial Ocean (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HYDROSUBSIDIUM-ARTIFICIAL-OCEAN-B",
+      "x": 0.195425,
+      "y": 0.809596,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 38,
+      "name": "The Playtower (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-THE-PLAYTOWER-D",
+      "x": 0.139216,
+      "y": 0.831313,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 39,
+      "name": "Changing Rooms",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CHANGING-ROOMS",
+      "x": 0.108497,
+      "y": 0.857576,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 40,
+      "name": "Island Dreams Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ISLAND-DREAMS-HOTEL",
+      "x": 0.123529,
+      "y": 0.906566,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 41,
+      "name": "Hall of Nightmares (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HALL-OF-NIGHTMARES-A",
+      "x": 0.214052,
+      "y": 0.932828,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 42,
+      "name": "Submarine Tours",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SUBMARINE-TOURS",
+      "x": 0.280719,
+      "y": 0.891414,
+      "source_ref": "Night City 2045 p. 306"
+    },
+    {
+      "map_no": 43,
+      "name": "Continental Brands Kibble Court",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-CONTINENTAL-BRANDS-KIBBLE-COURT",
+      "x": 0.398693,
+      "y": 0.694949,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 44,
+      "name": "Old Hero’s Point LARP-A-Rinth (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-OLD-HERO-S-POINT-LARP-A-RINTH-B",
+      "x": 0.464379,
+      "y": 0.688131,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 45,
+      "name": "The Hula Room",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-HULA-ROOM",
+      "x": 0.367647,
+      "y": 0.774495,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 46,
+      "name": "Klaws",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-KLAWS",
+      "x": 0.474837,
+      "y": 0.730808,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 47,
+      "name": "Bioexotic Cat Café",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BIOEXOTIC-CAT-CAFE",
+      "x": 0.66634,
+      "y": 0.710101,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 48,
+      "name": "Boba World",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BOBA-WORLD",
+      "x": 0.456863,
+      "y": 0.759343,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 49,
+      "name": "Port Treasure Shipyard (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-PORT-TREASURE-SHIPYARD-C",
+      "x": 0.586601,
+      "y": 0.759596,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 50,
+      "name": "Autumn Palace Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-AUTUMN-PALACE-HOTEL",
+      "x": 0.484641,
+      "y": 0.834848,
+      "source_ref": "Night City 2045 p. 309"
+    },
+    {
+      "map_no": 51,
+      "name": "The Elflines Online Experience",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-ELFLINES-ONLINE-EXPERIENCE",
+      "x": 0.597386,
+      "y": 0.817172,
+      "source_ref": "Night City 2045 p. 310"
+    },
+    {
+      "map_no": 52,
+      "name": "VIP Parking Lot",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-VIP-PARKING-LOT",
+      "x": 0.618301,
+      "y": 0.891414,
+      "source_ref": "Night City 2045 p. 301"
+    }
+  ]
+}
