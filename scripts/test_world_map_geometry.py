@@ -223,9 +223,28 @@ for row in santo_points:
     if row["map_no"] == 2 and row.get("map_suffix"):
         assert fixture_entities[row["entity_id"]].get("parent_entity_id") == aldecaldo_parent
 
-assert len(paths) == 23, f"expected twenty-three mapped districts, found {len(paths)}"
+outskirts_points = geometry("outskirts")["points"]
+assert len(outskirts_points) == 20
+assert [row["map_no"] for row in outskirts_points if row.get("map_suffix") is None] == [1] + list(range(3, 19))
+assert not any(
+    row["map_no"] == 2 and row.get("map_suffix") is None for row in outskirts_points
+), "source map has Independent Farms children 2a-2c but no standalone #2 point"
+assert {
+    row["map_suffix"] for row in outskirts_points
+    if row["map_no"] == 2 and row.get("map_suffix")
+} == set("abc")
+independent_farms_parent = "NC2045-LOC-OUTSKIRTS-294-INDEPENDENT-FARMS"
+for row in outskirts_points:
+    if row["map_no"] == 2:
+        assert fixture_entities[row["entity_id"]].get("parent_entity_id") == independent_farms_parent
+assert not any(
+    "NOMAD-CAMPSITE" in row["entity_id"] or "RAFFEN-SHIV-CAMPSITE" in row["entity_id"]
+    for row in outskirts_points
+), "source explicitly lists Nomad Campsites and Raffen Shiv Campsites as not shown on the map"
+
+assert len(paths) == 24, f"expected twenty-four mapped districts, found {len(paths)}"
 total_points = sum(len(load_json(path)["points"]) for path in paths)
-assert total_points == 525, f"expected 525 source-point manifestations, found {total_points}"
+assert total_points == 545, f"expected 545 source-point manifestations, found {total_points}"
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, total_points={total_points}"
