@@ -96,6 +96,7 @@ ordinary_specs = {
     "rancho-coronado": 11,
     "pacifica-playground": 22,
     "playland-by-the-sea-lands": 52,
+    "the-hot-zone": 11,
 }
 loaded: dict[str, dict] = {}
 for slug, expected_len in ordinary_specs.items():
@@ -254,9 +255,23 @@ for map_no, entity_id in {
     row = next(row for row in playland_points if row["map_no"] == map_no)
     assert row["entity_id"] == entity_id, (map_no, row)
 
-assert len(paths) == 25, f"expected twenty-five mapped districts, found {len(paths)}"
+hot_zone_points = geometry("the-hot-zone")["points"]
+assert len(hot_zone_points) == 11
+assert [row["map_no"] for row in hot_zone_points] == list(range(1, 12))
+crisis_id = "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER"
+graceland_id = "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL"
+assert sum(row["entity_id"] == crisis_id for row in hot_zone_points) == 1
+assert sum(row["entity_id"] == graceland_id for row in hot_zone_points) == 1
+assert fixture_entities[crisis_id]["entity_type"] == "context"
+assert fixture_entities[crisis_id]["stock_policy"] == "NO_STOCK"
+assert fixture_entities[graceland_id]["entity_type"] == "service"
+assert fixture_entities[graceland_id]["commercial_mode"] == "service_only"
+assert fixture_entities[graceland_id]["stock_policy"] == "NO_STOCK"
+assert all(service.get("price_eb") == 0 for service in fixture_entities[graceland_id]["services"])
+
+assert len(paths) == 26, f"expected twenty-six mapped districts, found {len(paths)}"
 total_points = sum(len(load_json(path)["points"]) for path in paths)
-assert total_points == 597, f"expected 597 source-point manifestations, found {total_points}"
+assert total_points == 608, f"expected 608 source-point manifestations, found {total_points}"
 print(
     f"OK: source-map geometry; maps={len(paths)}, "
     f"fixture_entities={len(fixture_entities)}, total_points={total_points}"
