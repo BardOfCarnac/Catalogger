@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORLD_DIR = ROOT / "data/worlds/night-city-2045"
 NETWORK_PATH = WORLD_DIR / "transit/network.v0.1.json"
+ROUTES_PATH = WORLD_DIR / "transit/routes.v0.1.geojson"
 
 
 def load_json(path: Path) -> dict:
@@ -15,11 +16,30 @@ def load_json(path: Path) -> dict:
 
 
 network = load_json(NETWORK_PATH)
+routes = load_json(ROUTES_PATH)
 assert network["format_version"] == "0.1.0"
 assert network["world_id"] == "night-city-2045"
 assert network["network_id"] == "nc2045-transit-v0.1"
 assert network["source"]["printed_page"] == 27
 assert network["source"]["flashmap"] == "Railways"
+
+# Preserve the source-derived global line geometry separately from logical station topology.
+assert routes["type"] == "FeatureCollection"
+assert routes["metadata"]["world_id"] == "night-city-2045"
+assert routes["metadata"]["coordinate_space"] == "night_city_clean_master_5175x7966_px"
+route_features = routes["features"]
+assert len(route_features) == 6
+route_by_id = {row["properties"]["line_id"]: row for row in route_features}
+assert set(route_by_id) == {"red", "green", "blue", "orange", "cargo", "purple"}
+for line_id in {"red", "green", "blue", "orange"}:
+    assert route_by_id[line_id]["geometry"]["type"] == "LineString"
+for line_id in {"cargo", "purple"}:
+    assert route_by_id[line_id]["geometry"]["type"] == "MultiLineString"
+assert route_by_id["red"]["geometry"]["coordinates"][0] == [1989.76, 2245.539]
+assert route_by_id["cargo"]["properties"]["geometry_status"] == "derived_from_source_vector"
+# The source freight geometry deliberately extends outside the clean master raster.
+cargo_coords = [point for part in route_by_id["cargo"]["geometry"]["coordinates"] for point in part]
+assert any(x > 5175 or y > 7966 or x < 0 or y < 0 for x, y in cargo_coords)
 
 assert set(network["lines"]) == {"red", "green", "blue", "orange", "cargo", "purple"}
 assert {row["system"] for row in network["lines"].values()} == {
