@@ -1,0 +1,4526 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "coordinate_space": {
+    "id": "night_city_clean_master_5175x7966_px",
+    "width": 5175,
+    "height": 7966,
+    "origin": "top-left",
+    "x_axis": "+right",
+    "y_axis": "+down"
+  },
+  "calibration_file": "data/worlds/night-city-2045/map-calibration.global.v0.1.json",
+  "note": "Global registration derived from the PDF placement transform of the full-city master raster embedded on each district map page. Playland by the Sea uses a separate illustrated souvenir map and is stored as a nested local map until separately anchored.",
+  "points": [
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 1,
+      "name": "101.1 Killzone",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-101-1-KILLZONE",
+      "source_ref": "Night City 2045 p. 56",
+      "source_page_uv": [
+        0.39634,
+        0.366796
+      ],
+      "global_master_px": [
+        1750.5,
+        3359.379
+      ],
+      "global_uv": [
+        0.338260874,
+        0.421714649
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 2,
+      "name": "Biotechnica Reference Forest RF-14",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BIOTECHNICA-REFERENCE-FOREST-RF-14",
+      "source_ref": "Night City 2045 p. 56",
+      "source_page_uv": [
+        0.324444,
+        0.297333
+      ],
+      "global_master_px": [
+        1658.833,
+        3244.765
+      ],
+      "global_uv": [
+        0.320547367,
+        0.407326758
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 3,
+      "name": "Bristol Business Park",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+      "source_ref": "Night City 2045 p. 56",
+      "source_page_uv": [
+        0.298235,
+        0.333986
+      ],
+      "global_master_px": [
+        1625.416,
+        3305.242
+      ],
+      "global_uv": [
+        0.314090077,
+        0.414918704
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 4,
+      "name": "Camden Court",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CAMDEN-COURT",
+      "source_ref": "Night City 2045 p. 57",
+      "source_page_uv": [
+        0.47777,
+        0.261878
+      ],
+      "global_master_px": [
+        1854.323,
+        3186.264
+      ],
+      "global_uv": [
+        0.358323338,
+        0.399982953
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 5,
+      "name": "Chopper’s",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S",
+      "source_ref": "Night City 2045 p. 57",
+      "source_page_uv": [
+        0.561283,
+        0.470728
+      ],
+      "global_master_px": [
+        1960.802,
+        3530.867
+      ],
+      "global_uv": [
+        0.378899005,
+        0.443242115
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 6,
+      "name": "Continental Brands Vertical Neighborhood",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "source_ref": "Night City 2045 p. 58",
+      "source_page_uv": [
+        0.435229,
+        0.419056
+      ],
+      "global_master_px": [
+        1800.083,
+        3445.608
+      ],
+      "global_uv": [
+        0.347842222,
+        0.432539278
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 7,
+      "name": "Cube-A-Rama",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CUBE-A-RAMA",
+      "source_ref": "Night City 2045 p. 58",
+      "source_page_uv": [
+        0.602549,
+        0.38355
+      ],
+      "global_master_px": [
+        2013.416,
+        3387.023
+      ],
+      "global_uv": [
+        0.38906599,
+        0.42518491
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 8,
+      "name": "Danger Gal Housing Facility",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-HOUSING-FACILITY",
+      "source_ref": "Night City 2045 p. 58",
+      "source_page_uv": [
+        0.228824,
+        0.327944
+      ],
+      "global_master_px": [
+        1536.917,
+        3295.273
+      ],
+      "global_uv": [
+        0.296988816,
+        0.413667223
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 9,
+      "name": "Danger Gal Offices",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-OFFICES",
+      "source_ref": "Night City 2045 p. 58",
+      "source_page_uv": [
+        0.259216,
+        0.342067
+      ],
+      "global_master_px": [
+        1575.667,
+        3318.576
+      ],
+      "global_uv": [
+        0.3044767,
+        0.416592524
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 10,
+      "name": "Everything and More",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "source_ref": "Night City 2045 p. 59",
+      "source_page_uv": [
+        0.499608,
+        0.2811
+      ],
+      "global_master_px": [
+        1882.167,
+        3217.981
+      ],
+      "global_uv": [
+        0.363703715,
+        0.403964411
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 11,
+      "name": "Fiddler’s Green",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-FIDDLER-S-GREEN",
+      "source_ref": "Night City 2045 p. 59",
+      "source_page_uv": [
+        0.459137,
+        0.314978
+      ],
+      "global_master_px": [
+        1830.566,
+        3273.879
+      ],
+      "global_uv": [
+        0.353732599,
+        0.410981572
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 12,
+      "name": "Greta’s",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-GRETA-S",
+      "source_ref": "Night City 2045 p. 59",
+      "source_page_uv": [
+        0.738824,
+        0.294636
+      ],
+      "global_master_px": [
+        2187.167,
+        3240.315
+      ],
+      "global_uv": [
+        0.42264099,
+        0.406768127
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 13,
+      "name": "Holy Angels Church",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-HOLY-ANGELS-CHURCH",
+      "source_ref": "Night City 2045 p. 59",
+      "source_page_uv": [
+        0.360229,
+        0.320198
+      ],
+      "global_master_px": [
+        1704.458,
+        3282.492
+      ],
+      "global_uv": [
+        0.329363961,
+        0.412062792
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 14,
+      "name": "Kaito Market",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+      "source_ref": "Night City 2045 p. 60",
+      "source_page_uv": [
+        0.692615,
+        0.248734
+      ],
+      "global_master_px": [
+        2128.251,
+        3164.577
+      ],
+      "global_uv": [
+        0.411256164,
+        0.397260432
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 15,
+      "name": "Night Corp HQ",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-NIGHT-CORP-HQ",
+      "source_ref": "Night City 2045 p. 60",
+      "source_page_uv": [
+        0.665237,
+        0.352759
+      ],
+      "global_master_px": [
+        2093.344,
+        3336.218
+      ],
+      "global_uv": [
+        0.40451086,
+        0.418807161
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 16,
+      "name": "Old Saint Christopher Center",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "source_ref": "Night City 2045 p. 61",
+      "source_page_uv": [
+        0.22719,
+        0.386075
+      ],
+      "global_master_px": [
+        1534.834,
+        3391.189
+      ],
+      "global_uv": [
+        0.296586237,
+        0.425707914
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 17,
+      "name": "Paradiso Terrestre",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-PARADISO-TERRESTRE",
+      "source_ref": "Night City 2045 p. 61",
+      "source_page_uv": [
+        0.466013,
+        0.457338
+      ],
+      "global_master_px": [
+        1839.333,
+        3508.773
+      ],
+      "global_uv": [
+        0.355426686,
+        0.44046864
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 18,
+      "name": "Red Cab Company",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-061-RED-CAB-COMPANY",
+      "source_ref": "Night City 2045 p. 61",
+      "source_page_uv": [
+        0.636601,
+        0.579307
+      ],
+      "global_master_px": [
+        2056.833,
+        3710.022
+      ],
+      "global_uv": [
+        0.397455613,
+        0.465732115
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 19,
+      "name": "Revere Courier Services",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-REVERE-COURIER-SERVICES",
+      "source_ref": "Night City 2045 p. 62",
+      "source_page_uv": [
+        0.53893,
+        0.539509
+      ],
+      "global_master_px": [
+        1932.302,
+        3644.355
+      ],
+      "global_uv": [
+        0.373391744,
+        0.457488744
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 20,
+      "name": "Shady Oaks Elementary",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHADY-OAKS-ELEMENTARY",
+      "source_ref": "Night City 2045 p. 62",
+      "source_page_uv": [
+        0.558758,
+        0.352759
+      ],
+      "global_master_px": [
+        1957.583,
+        3336.218
+      ],
+      "global_uv": [
+        0.378276903,
+        0.418807161
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 21,
+      "name": "Short Circuit",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
+      "source_ref": "Night City 2045 p. 62",
+      "source_page_uv": [
+        0.648301,
+        0.473253
+      ],
+      "global_master_px": [
+        2071.75,
+        3535.033
+      ],
+      "global_uv": [
+        0.400338222,
+        0.443765119
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 22,
+      "name": "Soprano’s",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SOPRANO-S",
+      "source_ref": "Night City 2045 p. 62",
+      "source_page_uv": [
+        0.432329,
+        0.539509
+      ],
+      "global_master_px": [
+        1796.386,
+        3644.355
+      ],
+      "global_uv": [
+        0.347127729,
+        0.457488744
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little Europe",
+      "map_id": "NC2045-MAP-LITTLE-EUROPE-P055",
+      "map_no": 23,
+      "name": "Torrell and Chiang’s",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "source_ref": "Night City 2045 p. 63",
+      "source_page_uv": [
+        0.499927,
+        0.583095
+      ],
+      "global_master_px": [
+        1882.573,
+        3716.272
+      ],
+      "global_uv": [
+        0.363782309,
+        0.466516725
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 55,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 1,
+      "name": "The Afterlife",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-THE-AFTERLIFE",
+      "source_ref": "Night City 2045 p. 68",
+      "source_page_uv": [
+        0.36719,
+        0.545937
+      ],
+      "global_master_px": [
+        2673.388,
+        3382.307
+      ],
+      "global_uv": [
+        0.516596771,
+        0.424592833
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 2,
+      "name": "Bay Bridge Residences",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "source_ref": "Night City 2045 p. 68",
+      "source_page_uv": [
+        0.120686,
+        0.424669
+      ],
+      "global_master_px": [
+        2267.849,
+        3124.123
+      ],
+      "global_uv": [
+        0.438231777,
+        0.392182152
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 3,
+      "name": "Bless Your Heart",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BLESS-YOUR-HEART",
+      "source_ref": "Night City 2045 p. 68",
+      "source_page_uv": [
+        0.39232,
+        0.460698
+      ],
+      "global_master_px": [
+        2714.731,
+        3200.83
+      ],
+      "global_uv": [
+        0.524585738,
+        0.40181144
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 4,
+      "name": "Bright Forest Casino",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BRIGHT-FOREST-CASINO",
+      "source_ref": "Night City 2045 p. 68",
+      "source_page_uv": [
+        0.429575,
+        0.438815
+      ],
+      "global_master_px": [
+        2776.022,
+        3154.24
+      ],
+      "global_uv": [
+        0.53642931,
+        0.395962882
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 5,
+      "name": "Brownstone Waterfront",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-BROWNSTONE-WATERFRONT",
+      "source_ref": "Night City 2045 p. 69",
+      "source_page_uv": [
+        0.528987,
+        0.396055
+      ],
+      "global_master_px": [
+        2939.57,
+        3063.203
+      ],
+      "global_uv": [
+        0.568032938,
+        0.384534634
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 6,
+      "name": "Buffalo’s",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-BUFFALO-S",
+      "source_ref": "Night City 2045 p. 69",
+      "source_page_uv": [
+        0.147843,
+        0.482245
+      ],
+      "global_master_px": [
+        2312.527,
+        3246.704
+      ],
+      "global_uv": [
+        0.446865139,
+        0.407570196
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 7,
+      "name": "City Medical Center",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-CITY-MEDICAL-CENTER",
+      "source_ref": "Night City 2045 p. 69",
+      "source_page_uv": [
+        0.541569,
+        0.625881
+      ],
+      "global_master_px": [
+        2960.27,
+        3552.51
+      ],
+      "global_uv": [
+        0.572032826,
+        0.445959058
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 8,
+      "name": "CMax",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CMAX",
+      "source_ref": "Night City 2045 p. 70",
+      "source_page_uv": [
+        0.482712,
+        0.499104
+      ],
+      "global_master_px": [
+        2863.441,
+        3282.598
+      ],
+      "global_uv": [
+        0.553321858,
+        0.412076015
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 9,
+      "name": "Court Towers",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-COURT-TOWERS",
+      "source_ref": "Night City 2045 p. 70",
+      "source_page_uv": [
+        0.196569,
+        0.476189
+      ],
+      "global_master_px": [
+        2392.689,
+        3233.811
+      ],
+      "global_uv": [
+        0.462355405,
+        0.40595164
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 10,
+      "name": "Crystal Park Market",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "source_ref": "Night City 2045 p. 70",
+      "source_page_uv": [
+        0.547745,
+        0.339807
+      ],
+      "global_master_px": [
+        2970.43,
+        2943.449
+      ],
+      "global_uv": [
+        0.573996211,
+        0.369501518
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 11,
+      "name": "Digital Divinity Incorporated, NC",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-DIGITAL-DIVINITY-INCORPORATED-NC",
+      "source_ref": "Night City 2045 p. 70",
+      "source_page_uv": [
+        0.547745,
+        0.308003
+      ],
+      "global_master_px": [
+        2970.43,
+        2875.737
+      ],
+      "global_uv": [
+        0.573996211,
+        0.361001425
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 12,
+      "name": "Flowertown",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-FLOWERTOWN",
+      "source_ref": "Night City 2045 p. 71",
+      "source_page_uv": [
+        0.444249,
+        0.588168
+      ],
+      "global_master_px": [
+        2800.163,
+        3472.218
+      ],
+      "global_uv": [
+        0.541094256,
+        0.435879697
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 13,
+      "name": "The Forge",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "source_ref": "Night City 2045 p. 71",
+      "source_page_uv": [
+        0.161373,
+        0.442772
+      ],
+      "global_master_px": [
+        2334.786,
+        3162.665
+      ],
+      "global_uv": [
+        0.451166401,
+        0.397020449
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 14,
+      "name": "The Garden of Earthly Delights",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-GARDEN-OF-EARTHLY-DELIGHTS",
+      "source_ref": "Night City 2045 p. 71",
+      "source_page_uv": [
+        0.451928,
+        0.20519
+      ],
+      "global_master_px": [
+        2812.796,
+        2656.845
+      ],
+      "global_uv": [
+        0.543535453,
+        0.333523119
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 15,
+      "name": "GraffitiX",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "source_ref": "Night City 2045 p. 71",
+      "source_page_uv": [
+        0.549379,
+        0.565409
+      ],
+      "global_master_px": [
+        2973.119,
+        3423.763
+      ],
+      "global_uv": [
+        0.574515668,
+        0.429797015
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 16,
+      "name": "The Grand Illusion",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-GRAND-ILLUSION",
+      "source_ref": "Night City 2045 p. 71",
+      "source_page_uv": [
+        0.398856,
+        0.570629
+      ],
+      "global_master_px": [
+        2725.484,
+        3434.877
+      ],
+      "global_uv": [
+        0.526663569,
+        0.431192138
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 17,
+      "name": "Great River Storehouse",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-GREAT-RIVER-STOREHOUSE",
+      "source_ref": "Night City 2045 p. 72",
+      "source_page_uv": [
+        0.618628,
+        0.438902
+      ],
+      "global_master_px": [
+        3087.044,
+        3154.426
+      ],
+      "global_uv": [
+        0.596530311,
+        0.395986134
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 18,
+      "name": "Hydrosubsidium R&D",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-HYDROSUBSIDIUM-R-D",
+      "source_ref": "Night City 2045 p. 72",
+      "source_page_uv": [
+        0.509641,
+        0.458343
+      ],
+      "global_master_px": [
+        2907.743,
+        3195.816
+      ],
+      "global_uv": [
+        0.561882737,
+        0.401182031
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 19,
+      "name": "JC Homes",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-JC-HOMES",
+      "source_ref": "Night City 2045 p. 72",
+      "source_page_uv": [
+        0.68451,
+        0.643389
+      ],
+      "global_master_px": [
+        3195.431,
+        3589.785
+      ],
+      "global_uv": [
+        0.617474566,
+        0.450638332
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 20,
+      "name": "Kraken Line Water Taxis",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-KRAKEN-LINE-WATER-TAXIS",
+      "source_ref": "Night City 2045 p. 72",
+      "source_page_uv": [
+        0.356013,
+        0.431152
+      ],
+      "global_master_px": [
+        2655,
+        3137.926
+      ],
+      "global_uv": [
+        0.513043541,
+        0.393914831
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 21,
+      "name": "La Lune Bleue",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-LA-LUNE-BLEUE",
+      "source_ref": "Night City 2045 p. 72",
+      "source_page_uv": [
+        0.586176,
+        0.557833
+      ],
+      "global_master_px": [
+        3033.656,
+        3407.633
+      ],
+      "global_uv": [
+        0.58621364,
+        0.427772216
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 22,
+      "name": "Marina Breeze Apartments",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MARINA-BREEZE-APARTMENTS",
+      "source_ref": "Night City 2045 p. 73",
+      "source_page_uv": [
+        0.455425,
+        0.324316
+      ],
+      "global_master_px": [
+        2818.549,
+        2910.468
+      ],
+      "global_uv": [
+        0.544647169,
+        0.365361318
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 23,
+      "name": "Marina FloatHomes",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MARINA-FLOATHOMES",
+      "source_ref": "Night City 2045 p. 73",
+      "source_page_uv": [
+        0.179085,
+        0.425634
+      ],
+      "global_master_px": [
+        2363.925,
+        3126.178
+      ],
+      "global_uv": [
+        0.456797144,
+        0.392440063
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 24,
+      "name": "McCartney Cubes",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-CUBES",
+      "source_ref": "Night City 2045 p. 73",
+      "source_page_uv": [
+        0.338954,
+        0.460698
+      ],
+      "global_master_px": [
+        2626.936,
+        3200.83
+      ],
+      "global_uv": [
+        0.507620389,
+        0.40181144
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 25,
+      "name": "McCartney Field Stadium",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-FIELD-STADIUM",
+      "source_ref": "Night City 2045 p. 73",
+      "source_page_uv": [
+        0.264118,
+        0.4745
+      ],
+      "global_master_px": [
+        2503.818,
+        3230.215
+      ],
+      "global_uv": [
+        0.483829608,
+        0.40550023
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 26,
+      "name": "Megabuilding H8 Construction Site",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MEGABUILDING-H8-CONSTRUCTION-SITE",
+      "source_ref": "Night City 2045 p. 74",
+      "source_page_uv": [
+        0.5967,
+        0.390038
+      ],
+      "global_master_px": [
+        3050.969,
+        3050.393
+      ],
+      "global_uv": [
+        0.589559278,
+        0.382926501
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 27,
+      "name": "Metal Heaven",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "source_ref": "Night City 2045 p. 74",
+      "source_page_uv": [
+        0.322876,
+        0.508281
+      ],
+      "global_master_px": [
+        2600.485,
+        3302.136
+      ],
+      "global_uv": [
+        0.502509104,
+        0.414528705
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 28,
+      "name": "Midnight Arms Regional Office",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "source_ref": "Night City 2045 p. 74",
+      "source_page_uv": [
+        0.39232,
+        0.486138
+      ],
+      "global_master_px": [
+        2714.731,
+        3254.993
+      ],
+      "global_uv": [
+        0.524585738,
+        0.408610659
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 29,
+      "name": "Morro Strand Yacht Club",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MORRO-STRAND-YACHT-CLUB",
+      "source_ref": "Night City 2045 p. 74",
+      "source_page_uv": [
+        0.421896,
+        0.256866
+      ],
+      "global_master_px": [
+        2763.388,
+        2766.865
+      ],
+      "global_uv": [
+        0.533988113,
+        0.3473343
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 30,
+      "name": "The Neon Johnson",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-THE-NEON-JOHNSON",
+      "source_ref": "Night City 2045 p. 75",
+      "source_page_uv": [
+        0.440981,
+        0.534234
+      ],
+      "global_master_px": [
+        2794.786,
+        3357.39
+      ],
+      "global_uv": [
+        0.540055341,
+        0.421465032
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 31,
+      "name": "Night City Bubbles",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-BUBBLES",
+      "source_ref": "Night City 2045 p. 75",
+      "source_page_uv": [
+        0.528154,
+        0.581686
+      ],
+      "global_master_px": [
+        2938.2,
+        3458.417
+      ],
+      "global_uv": [
+        0.567768123,
+        0.434147286
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 32,
+      "name": "Night City Convention Center",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-CONVENTION-CENTER",
+      "source_ref": "Night City 2045 p. 75",
+      "source_page_uv": [
+        0.667386,
+        0.46196
+      ],
+      "global_master_px": [
+        3167.259,
+        3203.517
+      ],
+      "global_uv": [
+        0.612030751,
+        0.402148728
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 33,
+      "name": "Oceanside Docks",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-OCEANSIDE-DOCKS",
+      "source_ref": "Night City 2045 p. 75",
+      "source_page_uv": [
+        0.455425,
+        0.290225
+      ],
+      "global_master_px": [
+        2818.549,
+        2837.887
+      ],
+      "global_uv": [
+        0.544647169,
+        0.35624999
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 34,
+      "name": "Otter Docks Transfer Station",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-OTTER-DOCKS-TRANSFER-STATION",
+      "source_ref": "Night City 2045 p. 75",
+      "source_page_uv": [
+        0.264118,
+        0.439403
+      ],
+      "global_master_px": [
+        2503.818,
+        3155.492
+      ],
+      "global_uv": [
+        0.483829608,
+        0.396120033
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 35,
+      "name": "Quarantine",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-QUARANTINE",
+      "source_ref": "Night City 2045 p. 76",
+      "source_page_uv": [
+        0.433072,
+        0.466549
+      ],
+      "global_master_px": [
+        2781.775,
+        3213.287
+      ],
+      "global_uv": [
+        0.537541026,
+        0.403375207
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 36,
+      "name": "REO Meatwagon",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-REO-MEATWAGON",
+      "source_ref": "Night City 2045 p. 76",
+      "source_page_uv": [
+        0.669869,
+        0.584211
+      ],
+      "global_master_px": [
+        3171.344,
+        3463.793
+      ],
+      "global_uv": [
+        0.61282011,
+        0.43482213
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 37,
+      "name": "TravlStay CityCenter",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-TRAVLSTAY-CITYCENTER",
+      "source_ref": "Night City 2045 p. 76",
+      "source_page_uv": [
+        0.103235,
+        0.499104
+      ],
+      "global_master_px": [
+        2239.14,
+        3282.598
+      ],
+      "global_uv": [
+        0.432684007,
+        0.412076015
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 38,
+      "name": "Upper Marina Substation 2",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-UPPER-MARINA-SUBSTATION-2",
+      "source_ref": "Night City 2045 p. 76",
+      "source_page_uv": [
+        0.614249,
+        0.619399
+      ],
+      "global_master_px": [
+        3079.84,
+        3538.709
+      ],
+      "global_uv": [
+        0.595138203,
+        0.444226647
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 39,
+      "name": "Ziggurat Corporate Terrace",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+      "source_ref": "Night City 2045 p. 76",
+      "source_page_uv": [
+        0.604183,
+        0.518194
+      ],
+      "global_master_px": [
+        3063.28,
+        3323.241
+      ],
+      "global_uv": [
+        0.591938165,
+        0.417178102
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Upper Marina",
+      "map_id": "NC2045-MAP-UPPER-MARINA-P067",
+      "map_no": 40,
+      "name": "Ziggurat Headquarters",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "source_ref": "Night City 2045 p. 77",
+      "source_page_uv": [
+        0.604183,
+        0.504306
+      ],
+      "global_master_px": [
+        3063.28,
+        3293.673
+      ],
+      "global_uv": [
+        0.591938165,
+        0.413466327
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 67,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 1,
+      "name": "Acacia Way",
+      "entity_id": "NC2045-LOC-DOWNTOWN-080-ACACIA-WAY",
+      "source_ref": "Night City 2045 p. 80",
+      "source_page_uv": [
+        0.527451,
+        0.431818
+      ],
+      "global_master_px": [
+        1682.796,
+        3607.221
+      ],
+      "global_uv": [
+        0.325177979,
+        0.45282711
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 2,
+      "name": "Bella Vista Market",
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "source_ref": "Night City 2045 p. 82",
+      "source_page_uv": [
+        0.348366,
+        0.359596
+      ],
+      "global_master_px": [
+        1479.833,
+        3501.295
+      ],
+      "global_uv": [
+        0.285958076,
+        0.439529897
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 3,
+      "name": "Café Bouchon",
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-CAFE-BOUCHON",
+      "source_ref": "Night City 2045 p. 82",
+      "source_page_uv": [
+        0.569281,
+        0.389899
+      ],
+      "global_master_px": [
+        1730.203,
+        3545.74
+      ],
+      "global_uv": [
+        0.334338817,
+        0.445109159
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 4,
+      "name": "Clocktower Residences",
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-CLOCKTOWER-RESIDENCES",
+      "source_ref": "Night City 2045 p. 82",
+      "source_page_uv": [
+        0.470588,
+        0.476263
+      ],
+      "global_master_px": [
+        1618.351,
+        3672.407
+      ],
+      "global_uv": [
+        0.312724891,
+        0.461010137
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 5,
+      "name": "Continental Brands Office",
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE",
+      "source_ref": "Night City 2045 p. 82",
+      "source_page_uv": [
+        0.541176,
+        0.333333
+      ],
+      "global_master_px": [
+        1698.351,
+        3462.776
+      ],
+      "global_uv": [
+        0.328183776,
+        0.434694463
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 6,
+      "name": "Continental Plaza",
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-CONTINENTAL-PLAZA",
+      "source_ref": "Night City 2045 p. 83",
+      "source_page_uv": [
+        0.573856,
+        0.333333
+      ],
+      "global_master_px": [
+        1735.388,
+        3462.776
+      ],
+      "global_uv": [
+        0.335340749,
+        0.434694463
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 7,
+      "name": "Cortex Complex",
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+      "source_ref": "Night City 2045 p. 83",
+      "source_page_uv": [
+        0.446405,
+        0.429293
+      ],
+      "global_master_px": [
+        1590.944,
+        3603.517
+      ],
+      "global_uv": [
+        0.307428775,
+        0.452362217
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 8,
+      "name": "Delirium",
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-DELIRIUM",
+      "source_ref": "Night City 2045 p. 83",
+      "source_page_uv": [
+        0.472549,
+        0.525253
+      ],
+      "global_master_px": [
+        1620.574,
+        3744.259
+      ],
+      "global_uv": [
+        0.313154353,
+        0.470029971
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 9,
+      "name": "The Eldritch Mirage",
+      "entity_id": "NC2045-LOC-DOWNTOWN-083-THE-ELDRITCH-MIRAGE",
+      "source_ref": "Night City 2045 p. 83",
+      "source_page_uv": [
+        0.40915,
+        0.479798
+      ],
+      "global_master_px": [
+        1548.722,
+        3677.591
+      ],
+      "global_uv": [
+        0.29926987,
+        0.461660987
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 10,
+      "name": "Europa Meatworks",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "source_ref": "Night City 2045 p. 84",
+      "source_page_uv": [
+        0.389542,
+        0.406566
+      ],
+      "global_master_px": [
+        1526.499,
+        3570.184
+      ],
+      "global_uv": [
+        0.294975686,
+        0.448177817
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 11,
+      "name": "Folio",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-FOLIO",
+      "source_ref": "Night City 2045 p. 84",
+      "source_page_uv": [
+        0.289542,
+        0.476263
+      ],
+      "global_master_px": [
+        1413.166,
+        3672.407
+      ],
+      "global_uv": [
+        0.273075525,
+        0.461010137
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 12,
+      "name": "Gilded Phoenix Arcade",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GILDED-PHOENIX-ARCADE",
+      "source_ref": "Night City 2045 p. 84",
+      "source_page_uv": [
+        0.555556,
+        0.510606
+      ],
+      "global_master_px": [
+        1714.648,
+        3722.776
+      ],
+      "global_uv": [
+        0.33133302,
+        0.467333227
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 13,
+      "name": "Goosetopia",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA",
+      "source_ref": "Night City 2045 p. 84",
+      "source_page_uv": [
+        0.336601,
+        0.463131
+      ],
+      "global_master_px": [
+        1466.499,
+        3653.146
+      ],
+      "global_uv": [
+        0.283381522,
+        0.458592328
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 14,
+      "name": "Guns & Dolls",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "source_ref": "Night City 2045 p. 85",
+      "source_page_uv": [
+        0.448366,
+        0.376768
+      ],
+      "global_master_px": [
+        1593.166,
+        3526.481
+      ],
+      "global_uv": [
+        0.307858237,
+        0.442691534
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 15,
+      "name": "Jade Blossom Spa",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA",
+      "source_ref": "Night City 2045 p. 85",
+      "source_page_uv": [
+        0.3,
+        0.343939
+      ],
+      "global_master_px": [
+        1425.018,
+        3478.332
+      ],
+      "global_uv": [
+        0.275365844,
+        0.436647196
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 16,
+      "name": "Moleharty’s Books & Antiques",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "source_ref": "Night City 2045 p. 85",
+      "source_page_uv": [
+        0.375163,
+        0.463131
+      ],
+      "global_master_px": [
+        1510.203,
+        3653.146
+      ],
+      "global_uv": [
+        0.291826662,
+        0.458592328
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 17,
+      "name": "Munch Munch Munch",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "source_ref": "Night City 2045 p. 85",
+      "source_page_uv": [
+        0.433333,
+        0.406566
+      ],
+      "global_master_px": [
+        1576.129,
+        3570.184
+      ],
+      "global_uv": [
+        0.304565986,
+        0.448177817
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 18,
+      "name": "New Libertine Tower",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER",
+      "source_ref": "Night City 2045 p. 85",
+      "source_page_uv": [
+        0.437255,
+        0.333333
+      ],
+      "global_master_px": [
+        1580.574,
+        3462.776
+      ],
+      "global_uv": [
+        0.30542491,
+        0.434694463
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 19,
+      "name": "Night City Firestation #2",
+      "entity_id": "NC2045-LOC-DOWNTOWN-086-NIGHT-CITY-FIRESTATION-2",
+      "source_ref": "Night City 2045 p. 86",
+      "source_page_uv": [
+        0.405229,
+        0.429293
+      ],
+      "global_master_px": [
+        1544.278,
+        3603.517
+      ],
+      "global_uv": [
+        0.298411164,
+        0.452362217
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 20,
+      "name": "The Nightingale Theater",
+      "entity_id": "NC2045-LOC-DOWNTOWN-086-THE-NIGHTINGALE-THEATER",
+      "source_ref": "Night City 2045 p. 86",
+      "source_page_uv": [
+        0.504575,
+        0.366667
+      ],
+      "global_master_px": [
+        1656.87,
+        3511.666
+      ],
+      "global_uv": [
+        0.320168098,
+        0.44083178
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 21,
+      "name": "Studio Blocks A thru D",
+      "entity_id": "NC2045-LOC-DOWNTOWN-086-STUDIO-BLOCKS-A-THRU-D",
+      "source_ref": "Night City 2045 p. 86",
+      "source_page_uv": [
+        0.554902,
+        0.535859
+      ],
+      "global_master_px": [
+        1713.907,
+        3759.814
+      ],
+      "global_uv": [
+        0.331189792,
+        0.471982704
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 22,
+      "name": "West Hill Church of God",
+      "entity_id": "NC2045-LOC-DOWNTOWN-086-WEST-HILL-CHURCH-OF-GOD",
+      "source_ref": "Night City 2045 p. 86",
+      "source_page_uv": [
+        0.348366,
+        0.406061
+      ],
+      "global_master_px": [
+        1479.833,
+        3569.444
+      ],
+      "global_uv": [
+        0.285958076,
+        0.448084839
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Downtown",
+      "map_id": "NC2045-MAP-DOWNTOWN-P081",
+      "map_no": 23,
+      "name": "West Hill Park",
+      "entity_id": "NC2045-LOC-DOWNTOWN-087-WEST-HILL-PARK",
+      "source_ref": "Night City 2045 p. 87",
+      "source_page_uv": [
+        0.348366,
+        0.381818
+      ],
+      "global_master_px": [
+        1479.833,
+        3533.887
+      ],
+      "global_uv": [
+        0.285958076,
+        0.443621319
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 81,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 1,
+      "name": "Ashcroft Hotel",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.622353,
+        0.462293
+      ],
+      "global_master_px": [
+        2671.833,
+        3653.769
+      ],
+      "global_uv": [
+        0.516296234,
+        0.458670509
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 2,
+      "name": "The Crater",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.359105,
+        0.505283
+      ],
+      "global_master_px": [
+        2373.485,
+        3716.821
+      ],
+      "global_uv": [
+        0.458644498,
+        0.466585648
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 3,
+      "name": "Crisis Center",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.633719,
+        0.395293
+      ],
+      "global_master_px": [
+        2684.714,
+        3555.503
+      ],
+      "global_uv": [
+        0.518785406,
+        0.446334749
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 4,
+      "name": "Dark Zone One",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.292281,
+        0.46853
+      ],
+      "global_master_px": [
+        2297.751,
+        3662.917
+      ],
+      "global_uv": [
+        0.444009935,
+        0.459818839
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 5,
+      "name": "The Dump",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.516118,
+        0.602338
+      ],
+      "global_master_px": [
+        2551.433,
+        3859.169
+      ],
+      "global_uv": [
+        0.493030598,
+        0.484455009
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 6,
+      "name": "Eurasiabank Plaza",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA",
+      "source_ref": "Night City 2045 p. 92",
+      "source_page_uv": [
+        0.544,
+        0.342086
+      ],
+      "global_master_px": [
+        2583.033,
+        3477.466
+      ],
+      "global_uv": [
+        0.499136801,
+        0.436538498
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 7,
+      "name": "Graceland Medical",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL",
+      "source_ref": "Night City 2045 p. 93",
+      "source_page_uv": [
+        0.673516,
+        0.39596
+      ],
+      "global_master_px": [
+        2729.818,
+        3556.481
+      ],
+      "global_uv": [
+        0.527501013,
+        0.446457554
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 8,
+      "name": "The N54",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54",
+      "source_ref": "Night City 2045 p. 93",
+      "source_page_uv": [
+        0.334817,
+        0.569566
+      ],
+      "global_master_px": [
+        2345.959,
+        3811.103
+      ],
+      "global_uv": [
+        0.453325387,
+        0.478421165
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 9,
+      "name": "Safe Child",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD",
+      "source_ref": "Night City 2045 p. 93",
+      "source_page_uv": [
+        0.671386,
+        0.49798
+      ],
+      "global_master_px": [
+        2727.404,
+        3706.11
+      ],
+      "global_uv": [
+        0.52703454,
+        0.46524105
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 10,
+      "name": "Toggle’s Temple",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE",
+      "source_ref": "Night City 2045 p. 93",
+      "source_page_uv": [
+        0.158248,
+        0.347965
+      ],
+      "global_master_px": [
+        2145.847,
+        3486.088
+      ],
+      "global_uv": [
+        0.414656492,
+        0.437620915
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Hot Zone",
+      "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+      "map_no": 11,
+      "name": "Totentanz",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "source_ref": "Night City 2045 p. 93",
+      "source_page_uv": [
+        0.350817,
+        0.259207
+      ],
+      "global_master_px": [
+        2364.092,
+        3355.91
+      ],
+      "global_uv": [
+        0.456829413,
+        0.421279163
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 91,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 1,
+      "name": "Bridgetown",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-098-BRIDGETOWN",
+      "source_ref": "Night City 2045 p. 98",
+      "source_page_uv": [
+        0.639759,
+        0.353832
+      ],
+      "global_master_px": [
+        3324.523,
+        3706.582
+      ],
+      "global_uv": [
+        0.642419877,
+        0.465300261
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 2,
+      "name": "Chrome Cross",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-098-CHROME-CROSS",
+      "source_ref": "Night City 2045 p. 98",
+      "source_page_uv": [
+        0.33355,
+        0.472239
+      ],
+      "global_master_px": [
+        2977.486,
+        3880.245
+      ],
+      "global_uv": [
+        0.575359613,
+        0.487100863
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 3,
+      "name": "The Forlorn Hope Wreckage",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-098-THE-FORLORN-HOPE-WRECKAGE",
+      "source_ref": "Night City 2045 p. 98",
+      "source_page_uv": [
+        0.408374,
+        0.555592
+      ],
+      "global_master_px": [
+        3062.287,
+        4002.497
+      ],
+      "global_uv": [
+        0.59174619,
+        0.502447469
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 4,
+      "name": "Guăngbō Tower",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+      "source_ref": "Night City 2045 p. 98",
+      "source_page_uv": [
+        0.479025,
+        0.331459
+      ],
+      "global_master_px": [
+        3142.358,
+        3673.768
+      ],
+      "global_uv": [
+        0.607218872,
+        0.461181038
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 5,
+      "name": "Guānyīn Temple",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-099-GUANYIN-TEMPLE",
+      "source_ref": "Night City 2045 p. 99",
+      "source_page_uv": [
+        0.569406,
+        0.373756
+      ],
+      "global_master_px": [
+        3244.789,
+        3735.804
+      ],
+      "global_uv": [
+        0.627012457,
+        0.468968585
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 6,
+      "name": "The Hong Kong Market",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+      "source_ref": "Night City 2045 p. 99",
+      "source_page_uv": [
+        0.351721,
+        0.382661
+      ],
+      "global_master_px": [
+        2998.08,
+        3748.864
+      ],
+      "global_uv": [
+        0.579339091,
+        0.470608136
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 7,
+      "name": "Hydrosubsidium",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-HYDROSUBSIDIUM",
+      "source_ref": "Night City 2045 p. 100",
+      "source_page_uv": [
+        0.501982,
+        0.456999
+      ],
+      "global_master_px": [
+        3168.376,
+        3857.893
+      ],
+      "global_uv": [
+        0.612246492,
+        0.484294938
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 8,
+      "name": "Ling Husan’s New China Pharmacy",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "source_ref": "Night City 2045 p. 100",
+      "source_page_uv": [
+        0.334038,
+        0.405227
+      ],
+      "global_master_px": [
+        2978.039,
+        3781.961
+      ],
+      "global_uv": [
+        0.575466486,
+        0.474762894
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 9,
+      "name": "Ling Po Imports Wreckage",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-PO-IMPORTS-WRECKAGE",
+      "source_ref": "Night City 2045 p. 100",
+      "source_page_uv": [
+        0.390251,
+        0.419814
+      ],
+      "global_master_px": [
+        3041.747,
+        3803.355
+      ],
+      "global_uv": [
+        0.587777223,
+        0.477448591
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 10,
+      "name": "Madam Yap’s",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-MADAM-YAP-S",
+      "source_ref": "Night City 2045 p. 100",
+      "source_page_uv": [
+        0.37548,
+        0.358951
+      ],
+      "global_master_px": [
+        3025.007,
+        3714.09
+      ],
+      "global_uv": [
+        0.584542351,
+        0.46624275
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 11,
+      "name": "Madame Lin’s Massage Parlor",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-MADAME-LIN-S-MASSAGE-PARLOR",
+      "source_ref": "Night City 2045 p. 100",
+      "source_page_uv": [
+        0.430743,
+        0.386859
+      ],
+      "global_master_px": [
+        3087.638,
+        3755.021
+      ],
+      "global_uv": [
+        0.596645037,
+        0.471381055
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 12,
+      "name": "The Parisian",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-PARISIAN",
+      "source_ref": "Night City 2045 p. 101",
+      "source_page_uv": [
+        0.32877,
+        0.519744
+      ],
+      "global_master_px": [
+        2972.069,
+        3949.919
+      ],
+      "global_uv": [
+        0.574312785,
+        0.495847285
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 13,
+      "name": "Prosperity Garden Tenements",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
+      "source_ref": "Night City 2045 p. 101",
+      "source_page_uv": [
+        0.307838,
+        0.377048
+      ],
+      "global_master_px": [
+        2948.346,
+        3740.632
+      ],
+      "global_uv": [
+        0.569728644,
+        0.469574694
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 14,
+      "name": "Richard Night Aquarium",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-RICHARD-NIGHT-AQUARIUM",
+      "source_ref": "Night City 2045 p. 101",
+      "source_page_uv": [
+        0.564368,
+        0.447597
+      ],
+      "global_master_px": [
+        3239.08,
+        3844.104
+      ],
+      "global_uv": [
+        0.625909127,
+        0.482563881
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Little China",
+      "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+      "map_no": 15,
+      "name": "The Seep",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
+      "source_ref": "Night City 2045 p. 101",
+      "source_page_uv": [
+        0.258043,
+        0.426093
+      ],
+      "global_master_px": [
+        2891.911,
+        3812.565
+      ],
+      "global_uv": [
+        0.558823459,
+        0.478604655
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 97,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 1,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-01",
+      "name": "94.4 NCU Radio",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-94-4-NCU-RADIO",
+      "source_ref": "Night City 2045 p. 106",
+      "source_page_uv": [
+        0.41281,
+        0.41182
+      ],
+      "global_master_px": [
+        1700.986,
+        3822.168
+      ],
+      "global_uv": [
+        0.328692937,
+        0.479810154
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 2,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-02",
+      "name": "Biograph Theater",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOGRAPH-THEATER",
+      "source_ref": "Night City 2045 p. 106",
+      "source_page_uv": [
+        0.242876,
+        0.463588
+      ],
+      "global_master_px": [
+        1472.917,
+        3912.081
+      ],
+      "global_uv": [
+        0.284621572,
+        0.491097229
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 3,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-03",
+      "name": "Biotechnica Campus",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS",
+      "source_ref": "Night City 2045 p. 106",
+      "source_page_uv": [
+        0.677516,
+        0.437072
+      ],
+      "global_master_px": [
+        2056.249,
+        3866.026
+      ],
+      "global_uv": [
+        0.397342851,
+        0.485315895
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 4,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-04",
+      "name": "Biotechnica Habitation Sphere Alpha",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-HABITATION-SPHERE-ALPHA",
+      "source_ref": "Night City 2045 p. 106",
+      "source_page_uv": [
+        0.636667,
+        0.408032
+      ],
+      "global_master_px": [
+        2001.426,
+        3815.589
+      ],
+      "global_uv": [
+        0.386748908,
+        0.478984249
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 5,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-05",
+      "name": "Campus Chapel",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CAMPUS-CHAPEL",
+      "source_ref": "Night City 2045 p. 107",
+      "source_page_uv": [
+        0.280458,
+        0.493891
+      ],
+      "global_master_px": [
+        1523.356,
+        3964.712
+      ],
+      "global_uv": [
+        0.294368239,
+        0.49770425
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 6,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-06",
+      "name": "Carriage Street Books/Afterwords Café",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "source_ref": "Night City 2045 p. 107",
+      "source_page_uv": [
+        0.242876,
+        0.493891
+      ],
+      "global_master_px": [
+        1472.917,
+        3964.712
+      ],
+      "global_uv": [
+        0.284621572,
+        0.49770425
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 7,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-07",
+      "name": "Fashion Cuts",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FASHION-CUTS",
+      "source_ref": "Night City 2045 p. 107",
+      "source_page_uv": [
+        0.224902,
+        0.447173
+      ],
+      "global_master_px": [
+        1448.794,
+        3883.57
+      ],
+      "global_uv": [
+        0.279960123,
+        0.487518236
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 8,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-08",
+      "name": "Food Truck Plaza",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+      "source_ref": "Night City 2045 p. 107",
+      "source_page_uv": [
+        0.233072,
+        0.478739
+      ],
+      "global_master_px": [
+        1459.759,
+        3938.395
+      ],
+      "global_uv": [
+        0.282078963,
+        0.49440063
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 9,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-09",
+      "name": "Kosmos Hospital",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-KOSMOS-HOSPITAL",
+      "source_ref": "Night City 2045 pp. 107-108",
+      "source_page_uv": [
+        0.224902,
+        0.430759
+      ],
+      "global_master_px": [
+        1448.794,
+        3855.062
+      ],
+      "global_uv": [
+        0.279960123,
+        0.48393946
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 10,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-10",
+      "name": "Night City Symphony Hall",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-SYMPHONY-HALL",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.409542,
+        0.476214
+      ],
+      "global_master_px": [
+        1696.6,
+        3934.01
+      ],
+      "global_uv": [
+        0.3278454,
+        0.4938501
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "a",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11A",
+      "name": "Administrative Building",
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-ADMINISTRATION-BUILDING",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.327843,
+        0.493891
+      ],
+      "global_master_px": [
+        1586.951,
+        3964.712
+      ],
+      "global_uv": [
+        0.306657254,
+        0.49770425
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "b",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11B",
+      "name": "Blaine Building",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BLAINE-BUILDING",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.318039,
+        0.44086
+      ],
+      "global_master_px": [
+        1573.793,
+        3872.606
+      ],
+      "global_uv": [
+        0.304114646,
+        0.4861418
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "c",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11C",
+      "name": "Brooks Library",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BROOKS-LIBRARY",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.318039,
+        0.463588
+      ],
+      "global_master_px": [
+        1573.793,
+        3912.081
+      ],
+      "global_uv": [
+        0.304114646,
+        0.491097229
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "d",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11D-1",
+      "name": "The Cells",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.282092,
+        0.447173
+      ],
+      "global_master_px": [
+        1525.549,
+        3883.57
+      ],
+      "global_uv": [
+        0.294792007,
+        0.487518236
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "d",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11D-2",
+      "name": "The Cells",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.282092,
+        0.463588
+      ],
+      "global_master_px": [
+        1525.549,
+        3912.081
+      ],
+      "global_uv": [
+        0.294792007,
+        0.491097229
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "d",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11D-3",
+      "name": "The Cells",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.282092,
+        0.478739
+      ],
+      "global_master_px": [
+        1525.549,
+        3938.395
+      ],
+      "global_uv": [
+        0.294792007,
+        0.49440063
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "e",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11E",
+      "name": "Howard Wong Building",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-HOWARD-WONG-BUILDING",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.318039,
+        0.452224
+      ],
+      "global_master_px": [
+        1573.793,
+        3892.343
+      ],
+      "global_uv": [
+        0.304114646,
+        0.488619515
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "f",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11F",
+      "name": "Michaels Hall",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-MICHAELS-HALL",
+      "source_ref": "Night City 2045 p. 108",
+      "source_page_uv": [
+        0.318039,
+        0.429497
+      ],
+      "global_master_px": [
+        1573.793,
+        3852.87
+      ],
+      "global_uv": [
+        0.304114646,
+        0.483664304
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "g",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11G",
+      "name": "Knute Hall",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-KNUTE-HALL",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.338702,
+        0.463588
+      ],
+      "global_master_px": [
+        1601.525,
+        3912.081
+      ],
+      "global_uv": [
+        0.309473471,
+        0.491097229
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "h",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11H",
+      "name": "Loggagia Science Labs",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-LOGGAGIA-SCIENCE-LABS",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.340915,
+        0.447173
+      ],
+      "global_master_px": [
+        1604.495,
+        3883.57
+      ],
+      "global_uv": [
+        0.310047399,
+        0.487518236
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "i",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11I",
+      "name": "Lombardy Groceries",
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.272288,
+        0.430759
+      ],
+      "global_master_px": [
+        1512.391,
+        3855.062
+      ],
+      "global_uv": [
+        0.292249398,
+        0.48393946
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "j",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11J",
+      "name": "NCU Clinic",
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-109-NCU-CLINIC",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.294459,
+        0.430773
+      ],
+      "global_master_px": [
+        1542.146,
+        3855.086
+      ],
+      "global_uv": [
+        0.297999314,
+        0.483942513
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "k",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11K",
+      "name": "Schumacher Hall",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCHUMACHER-HALL",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.340915,
+        0.430759
+      ],
+      "global_master_px": [
+        1604.495,
+        3855.062
+      ],
+      "global_uv": [
+        0.310047399,
+        0.48393946
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "l",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11L",
+      "name": "Science Tower",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCIENCE-TOWER",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.318039,
+        0.478739
+      ],
+      "global_master_px": [
+        1573.793,
+        3938.395
+      ],
+      "global_uv": [
+        0.304114646,
+        0.49440063
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 11,
+      "map_suffix": "m",
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-11M",
+      "name": "Thompson Hall",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-THOMPSON-HALL",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.340915,
+        0.478739
+      ],
+      "global_master_px": [
+        1604.495,
+        3938.395
+      ],
+      "global_uv": [
+        0.310047399,
+        0.49440063
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 12,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-12",
+      "name": "Parkside Living",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PARKSIDE-LIVING",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.726536,
+        0.466113
+      ],
+      "global_master_px": [
+        2122.039,
+        3916.466
+      ],
+      "global_uv": [
+        0.410055894,
+        0.49164776
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 13,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-13",
+      "name": "Princessland",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PRINCESSLAND",
+      "source_ref": "Night City 2045 p. 109",
+      "source_page_uv": [
+        0.50268,
+        0.447173
+      ],
+      "global_master_px": [
+        1821.601,
+        3883.57
+      ],
+      "global_uv": [
+        0.352000182,
+        0.487518236
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 14,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-14",
+      "name": "Retail Resale",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "source_ref": "Night City 2045 p. 110",
+      "source_page_uv": [
+        0.545164,
+        0.48884
+      ],
+      "global_master_px": [
+        1878.619,
+        3955.939
+      ],
+      "global_uv": [
+        0.363018153,
+        0.49660297
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 15,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-15",
+      "name": "Stems & Seeds",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-STEMS-SEEDS",
+      "source_ref": "Night City 2045 p. 110",
+      "source_page_uv": [
+        0.197124,
+        0.486315
+      ],
+      "global_master_px": [
+        1411.513,
+        3951.554
+      ],
+      "global_uv": [
+        0.272756065,
+        0.49605244
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 16,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-16",
+      "name": "Tumble and Dry",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-TUMBLE-AND-DRY",
+      "source_ref": "Night City 2045 p. 110",
+      "source_page_uv": [
+        0.373595,
+        0.434547
+      ],
+      "global_master_px": [
+        1648.355,
+        3861.641
+      ],
+      "global_uv": [
+        0.318522761,
+        0.484765365
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 17,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-17",
+      "name": "University Crèche",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CRECHE",
+      "source_ref": "Night City 2045 p. 110",
+      "source_page_uv": [
+        0.373595,
+        0.491365
+      ],
+      "global_master_px": [
+        1648.355,
+        3960.325
+      ],
+      "global_uv": [
+        0.318522761,
+        0.497153501
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 18,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-18",
+      "name": "University Cubes",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CUBES",
+      "source_ref": "Night City 2045 p. 110",
+      "source_page_uv": [
+        0.198758,
+        0.425709
+      ],
+      "global_master_px": [
+        1413.706,
+        3846.291
+      ],
+      "global_uv": [
+        0.273179833,
+        0.482838399
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "University District",
+      "map_id": "NC2045-MAP-UNIVERSITY-DISTRICT-P105",
+      "map_no": 19,
+      "point_id": "NC2045-MAP-UNIVERSITY-P105-19",
+      "name": "Yewtree",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-111-YEWTREE",
+      "source_ref": "Night City 2045 p. 111",
+      "source_page_uv": [
+        0.492876,
+        0.490103
+      ],
+      "global_master_px": [
+        1808.443,
+        3958.133
+      ],
+      "global_uv": [
+        0.349457574,
+        0.496878345
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 105,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 1,
+      "name": "1st Night City Bank",
+      "entity_id": "NC2045-LOC-THE-GLEN-116-1ST-NIGHT-CITY-BANK",
+      "source_ref": "Night City 2045 p. 116",
+      "source_page_uv": [
+        0.387124,
+        0.502691
+      ],
+      "global_master_px": [
+        2148.969,
+        4352.804
+      ],
+      "global_uv": [
+        0.415259664,
+        0.546422739
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 2,
+      "name": "96.1 Fever Dream",
+      "entity_id": "NC2045-LOC-THE-GLEN-116-96-1-FEVER-DREAM",
+      "source_ref": "Night City 2045 p. 116",
+      "source_page_uv": [
+        0.650646,
+        0.371998
+      ],
+      "global_master_px": [
+        2502.643,
+        4125.81
+      ],
+      "global_uv": [
+        0.483602516,
+        0.517927497
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 3,
+      "name": "Air",
+      "entity_id": "NC2045-LOC-THE-GLEN-116-AIR",
+      "source_ref": "Night City 2045 pp. 116-117",
+      "source_page_uv": [
+        0.554641,
+        0.34855
+      ],
+      "global_master_px": [
+        2373.794,
+        4085.085
+      ],
+      "global_uv": [
+        0.458704194,
+        0.512815085
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 4,
+      "name": "Archer & Li",
+      "entity_id": "NC2045-LOC-THE-GLEN-117-ARCHER-LI",
+      "source_ref": "Night City 2045 p. 117",
+      "source_page_uv": [
+        0.406209,
+        0.29261
+      ],
+      "global_master_px": [
+        2174.583,
+        3987.926
+      ],
+      "global_uv": [
+        0.420209245,
+        0.500618381
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 5,
+      "name": "Bear’s",
+      "entity_id": "NC2045-LOC-THE-GLEN-117-BEAR-S",
+      "source_ref": "Night City 2045 p. 117",
+      "source_page_uv": [
+        0.332941,
+        0.31667
+      ],
+      "global_master_px": [
+        2076.249,
+        4029.714
+      ],
+      "global_uv": [
+        0.401207628,
+        0.505864228
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 6,
+      "name": "Beth El Congregation",
+      "entity_id": "NC2045-LOC-THE-GLEN-117-BETH-EL-CONGREGATION",
+      "source_ref": "Night City 2045 pp. 117-118",
+      "source_page_uv": [
+        0.455621,
+        0.371998
+      ],
+      "global_master_px": [
+        2240.899,
+        4125.81
+      ],
+      "global_uv": [
+        0.433023951,
+        0.517927497
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 7,
+      "name": "City Hall",
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CITY-HALL",
+      "source_ref": "Night City 2045 p. 118",
+      "source_page_uv": [
+        0.439469,
+        0.56225
+      ],
+      "global_master_px": [
+        2219.221,
+        4456.248
+      ],
+      "global_uv": [
+        0.428835026,
+        0.5594085
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 8,
+      "name": "Club Atlantis",
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "source_ref": "Night City 2045 p. 118",
+      "source_page_uv": [
+        0.614951,
+        0.320617
+      ],
+      "global_master_px": [
+        2454.737,
+        4036.57
+      ],
+      "global_uv": [
+        0.474345231,
+        0.5067248
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "a",
+      "name": "EEC Consulate",
+      "entity_id": "NC2045-OUT-THE-GLEN-118-EEC-CONSULATE",
+      "source_ref": "Night City 2045 pp. 118-119",
+      "source_page_uv": [
+        0.523072,
+        0.416329
+      ],
+      "global_master_px": [
+        2331.425,
+        4202.806
+      ],
+      "global_uv": [
+        0.450516963,
+        0.527593068
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "b",
+      "name": "Japanese Consulate",
+      "entity_id": "NC2045-OUT-THE-GLEN-118-JAPANESE-CONSULATE",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.557386,
+        0.404965
+      ],
+      "global_master_px": [
+        2377.478,
+        4183.069
+      ],
+      "global_uv": [
+        0.459416093,
+        0.525115354
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "c",
+      "name": "Mexican Consulate",
+      "entity_id": "NC2045-OUT-THE-GLEN-119-MEXICAN-CONSULATE",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.523072,
+        0.398652
+      ],
+      "global_master_px": [
+        2331.425,
+        4172.104
+      ],
+      "global_uv": [
+        0.450516963,
+        0.523738919
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "d",
+      "name": "Pacifica Confederation Offices",
+      "entity_id": "NC2045-OUT-THE-GLEN-119-PACIFICA-CONFEDERATION-OFFICES",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.557386,
+        0.387289
+      ],
+      "global_master_px": [
+        2377.478,
+        4152.368
+      ],
+      "global_uv": [
+        0.459416093,
+        0.521261422
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "e",
+      "name": "Organization of American States Mission",
+      "entity_id": "NC2045-OUT-THE-GLEN-119-OAS-MISSION",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.523072,
+        0.374662
+      ],
+      "global_master_px": [
+        2331.425,
+        4130.437
+      ],
+      "global_uv": [
+        0.450516963,
+        0.518508334
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 9,
+      "map_suffix": "f",
+      "name": "United States Consulate",
+      "entity_id": "NC2045-OUT-THE-GLEN-119-UNITED-STATES-CONSULATE",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.557386,
+        0.3734
+      ],
+      "global_master_px": [
+        2377.478,
+        4128.245
+      ],
+      "global_uv": [
+        0.459416093,
+        0.518233177
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 10,
+      "name": "Diplomatic Immunity",
+      "entity_id": "NC2045-LOC-THE-GLEN-119-DIPLOMATIC-IMMUNITY",
+      "source_ref": "Night City 2045 p. 119",
+      "source_page_uv": [
+        0.490065,
+        0.418854
+      ],
+      "global_master_px": [
+        2287.126,
+        4207.192
+      ],
+      "global_uv": [
+        0.441956796,
+        0.528143599
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 11,
+      "name": "DMV",
+      "entity_id": "NC2045-LOC-THE-GLEN-120-DMV",
+      "source_ref": "Night City 2045 p. 120",
+      "source_page_uv": [
+        0.383856,
+        0.553418
+      ],
+      "global_master_px": [
+        2144.583,
+        4440.908
+      ],
+      "global_uv": [
+        0.414412128,
+        0.557482843
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 12,
+      "name": "EuroBank",
+      "entity_id": "NC2045-LOC-THE-GLEN-120-EUROBANK",
+      "source_ref": "Night City 2045 p. 120",
+      "source_page_uv": [
+        0.554641,
+        0.462558
+      ],
+      "global_master_px": [
+        2373.794,
+        4283.099
+      ],
+      "global_uv": [
+        0.458704194,
+        0.537672465
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 13,
+      "name": "First Baptist Church of Night City",
+      "entity_id": "NC2045-LOC-THE-GLEN-120-FIRST-BAPTIST-CHURCH-OF-NIGHT-CITY",
+      "source_ref": "Night City 2045 p. 120",
+      "source_page_uv": [
+        0.287639,
+        0.334446
+      ],
+      "global_master_px": [
+        2015.449,
+        4060.589
+      ],
+      "global_uv": [
+        0.389458826,
+        0.509739963
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 14,
+      "name": "Glenlife Perfected",
+      "entity_id": "NC2045-LOC-THE-GLEN-120-GLENLIFE-PERFECTED",
+      "source_ref": "Night City 2045 p. 120",
+      "source_page_uv": [
+        0.280253,
+        0.457826
+      ],
+      "global_master_px": [
+        2005.537,
+        4274.88
+      ],
+      "global_uv": [
+        0.387543311,
+        0.536640738
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 15,
+      "name": "Hall of Justice",
+      "entity_id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE",
+      "source_ref": "Night City 2045 p. 121",
+      "source_page_uv": [
+        0.534175,
+        0.54922
+      ],
+      "global_master_px": [
+        2346.327,
+        4433.617
+      ],
+      "global_uv": [
+        0.45339646,
+        0.556567545
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 16,
+      "name": "Kasim’s",
+      "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "source_ref": "Night City 2045 p. 121",
+      "source_page_uv": [
+        0.354706,
+        0.45581
+      ],
+      "global_master_px": [
+        2105.46,
+        4271.379
+      ],
+      "global_uv": [
+        0.40685225,
+        0.536201186
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 17,
+      "name": "Lazarus Regional HQ",
+      "entity_id": "NC2045-LOC-THE-GLEN-121-LAZARUS-REGIONAL-HQ",
+      "source_ref": "Night City 2045 p. 121",
+      "source_page_uv": [
+        0.302606,
+        0.420287
+      ],
+      "global_master_px": [
+        2035.537,
+        4209.681
+      ],
+      "global_uv": [
+        0.393340427,
+        0.528456039
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 18,
+      "name": "Le Jardin",
+      "entity_id": "NC2045-LOC-THE-GLEN-122-LE-JARDIN",
+      "source_ref": "Night City 2045 p. 122",
+      "source_page_uv": [
+        0.557059,
+        0.418854
+      ],
+      "global_master_px": [
+        2377.039,
+        4207.192
+      ],
+      "global_uv": [
+        0.459331288,
+        0.528143599
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 19,
+      "name": "Merrill, Asukaga & Finch Offices",
+      "entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "source_ref": "Night City 2045 p. 122",
+      "source_page_uv": [
+        0.494967,
+        0.489726
+      ],
+      "global_master_px": [
+        2293.705,
+        4330.285
+      ],
+      "global_uv": [
+        0.4432281,
+        0.543595955
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 20,
+      "name": "The Molly May",
+      "entity_id": "NC2045-LOC-THE-GLEN-122-THE-MOLLY-MAY",
+      "source_ref": "Night City 2045 p. 122",
+      "source_page_uv": [
+        0.269755,
+        0.388879
+      ],
+      "global_master_px": [
+        1991.447,
+        4155.13
+      ],
+      "global_uv": [
+        0.384820717,
+        0.521608093
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 21,
+      "name": "NCPD Precinct #1",
+      "entity_id": "NC2045-LOC-THE-GLEN-122-NCPD-PRECINCT-1",
+      "source_ref": "Night City 2045 pp. 122-123",
+      "source_page_uv": [
+        0.650646,
+        0.441073
+      ],
+      "global_master_px": [
+        2502.643,
+        4245.783
+      ],
+      "global_uv": [
+        0.483602516,
+        0.53298805
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 22,
+      "name": "Night City News Today",
+      "entity_id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-NEWS-TODAY",
+      "source_ref": "Night City 2045 p. 123",
+      "source_page_uv": [
+        0.29451,
+        0.275357
+      ],
+      "global_master_px": [
+        2024.671,
+        3957.96
+      ],
+      "global_uv": [
+        0.391240778,
+        0.496856676
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 23,
+      "name": "Night City Plaza",
+      "entity_id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-PLAZA",
+      "source_ref": "Night City 2045 p. 123",
+      "source_page_uv": [
+        0.332941,
+        0.380976
+      ],
+      "global_master_px": [
+        2076.249,
+        4141.404
+      ],
+      "global_uv": [
+        0.401207628,
+        0.519884987
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 24,
+      "name": "Raven Microcybernetics",
+      "entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+      "source_ref": "Night City 2045 pp. 123-124",
+      "source_page_uv": [
+        0.406209,
+        0.322743
+      ],
+      "global_master_px": [
+        2174.583,
+        4040.262
+      ],
+      "global_uv": [
+        0.420209245,
+        0.507188336
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 25,
+      "name": "Seafoam",
+      "entity_id": "NC2045-LOC-THE-GLEN-124-SEAFOAM",
+      "source_ref": "Night City 2045 p. 124",
+      "source_page_uv": [
+        0.553791,
+        0.293872
+      ],
+      "global_master_px": [
+        2372.653,
+        3990.118
+      ],
+      "global_uv": [
+        0.458483752,
+        0.500893537
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 26,
+      "name": "Souls Respite",
+      "entity_id": "NC2045-LOC-THE-GLEN-124-SOULS-RESPITE",
+      "source_ref": "Night City 2045 p. 124",
+      "source_page_uv": [
+        0.629927,
+        0.34855
+      ],
+      "global_master_px": [
+        2474.836,
+        4085.085
+      ],
+      "global_uv": [
+        0.478229167,
+        0.512815085
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 27,
+      "name": "World Stock Exchange",
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORLD-STOCK-EXCHANGE",
+      "source_ref": "Night City 2045 p. 124",
+      "source_page_uv": [
+        0.45241,
+        0.4416
+      ],
+      "global_master_px": [
+        2236.589,
+        4246.698
+      ],
+      "global_uv": [
+        0.432191197,
+        0.533102952
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "The Glen",
+      "map_id": "NC2045-MAP-THE-GLEN-P115",
+      "map_no": 28,
+      "name": "Worthy Housing",
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "source_ref": "Night City 2045 p. 124",
+      "source_page_uv": [
+        0.555425,
+        0.441582
+      ],
+      "global_master_px": [
+        2374.846,
+        4246.667
+      ],
+      "global_uv": [
+        0.45890752,
+        0.533099028
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 115,
+        "status": "source_exact"
+      }
+    }
+  ],
+  "nested_local_maps": [],
+  "summary": {
+    "exact_global_points": 178,
+    "nested_local_points": 0,
+    "total_manifestations": 178
+  }
+}
