@@ -16,6 +16,7 @@ jobs:
       - run: python scripts/audit_world_ontology.py
       - run: python scripts/test_world_runtime.py
       - run: python scripts/test_world_map_geometry.py
+      - run: python scripts/test_world_global_geometry.py
       - run: python scripts/test_world_transit.py
       - run: python scripts/test_world_runtime_chain_profiles.py
       - run: python scripts/test_world_runtime_purchase_profiles.py
