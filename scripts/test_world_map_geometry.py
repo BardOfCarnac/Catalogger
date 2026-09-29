@@ -26,7 +26,7 @@ for fixture_path in fixture_paths:
         assert entity_id not in fixture_entities, f"duplicate fixture entity id: {entity_id}"
         fixture_entities[entity_id] = entity
 
-paths = sorted(WORLD_DIR.glob("map-geometry.*.v0.1.json"))
+paths = [path for path in sorted(WORLD_DIR.glob("map-geometry.*.v0.1.json")) if path.name != "map-geometry.global.v0.1.json"]
 assert paths, "no source-map geometry files found"
 
 for path in paths:
