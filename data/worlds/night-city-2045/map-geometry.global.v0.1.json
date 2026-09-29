@@ -11523,12 +11523,2498 @@
         "book_page": 247,
         "status": "source_exact"
       }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 1,
+      "name": "Aldecaldo Depot",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ALDECALDO-DEPOT",
+      "source_ref": "Night City 2045 p. 258",
+      "source_page_uv": [
+        0.466471,
+        0.541931
+      ],
+      "global_master_px": [
+        3180.479,
+        4852.353
+      ],
+      "global_uv": [
+        0.614585408,
+        0.6091329
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 2,
+      "name": "Agron’s Boxed Lunches",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-AGRON-S-BOXED-LUNCHES",
+      "source_ref": "Night City 2045 p. 258",
+      "source_page_uv": [
+        0.350654,
+        0.366196
+      ],
+      "global_master_px": [
+        3032.813,
+        4562.39
+      ],
+      "global_uv": [
+        0.586050785,
+        0.572732858
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 3,
+      "name": "Arroyo Concern Offices",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ARROYO-CONCERN-OFFICES",
+      "source_ref": "Night City 2045 p. 258",
+      "source_page_uv": [
+        0.560588,
+        0.431852
+      ],
+      "global_master_px": [
+        3300.479,
+        4670.722
+      ],
+      "global_uv": [
+        0.637773655,
+        0.586332205
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 4,
+      "name": "Continental Brands Manufacturing",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-CONTINENTAL-BRANDS-MANUFACTURING",
+      "source_ref": "Night City 2045 p. 258",
+      "source_page_uv": [
+        0.442451,
+        0.449593
+      ],
+      "global_master_px": [
+        3149.854,
+        4699.995
+      ],
+      "global_uv": [
+        0.608667437,
+        0.590006903
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 5,
+      "name": "D.V. Rambling Rose",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-D-V-RAMBLING-ROSE",
+      "source_ref": "Night City 2045 pp. 258-259",
+      "source_page_uv": [
+        0.398301,
+        0.554897
+      ],
+      "global_master_px": [
+        3093.563,
+        4873.747
+      ],
+      "global_uv": [
+        0.597789901,
+        0.611818552
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 6,
+      "name": "GunMart Manufacturing",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-GUNMART-MANUFACTURING",
+      "source_ref": "Night City 2045 p. 259",
+      "source_page_uv": [
+        0.41902,
+        0.41601
+      ],
+      "global_master_px": [
+        3119.979,
+        4644.583
+      ],
+      "global_uv": [
+        0.602894582,
+        0.583050847
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 7,
+      "name": "The Interchange",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-THE-INTERCHANGE",
+      "source_ref": "Night City 2045 p. 259",
+      "source_page_uv": [
+        0.63,
+        0.327287
+      ],
+      "global_master_px": [
+        3388.979,
+        4498.19
+      ],
+      "global_uv": [
+        0.654875162,
+        0.564673626
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 8,
+      "name": "Militech Manufacturing Plant",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-MILITECH-MANUFACTURING-PLANT",
+      "source_ref": "Night City 2045 p. 259",
+      "source_page_uv": [
+        0.488824,
+        0.407002
+      ],
+      "global_master_px": [
+        3208.98,
+        4629.72
+      ],
+      "global_uv": [
+        0.620092669,
+        0.581185017
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 9,
+      "name": "The Old Ironworks Building",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+      "source_ref": "Night City 2045 p. 259",
+      "source_page_uv": [
+        0.442451,
+        0.567862
+      ],
+      "global_master_px": [
+        3149.854,
+        4895.139
+      ],
+      "global_uv": [
+        0.608667437,
+        0.614503996
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 10,
+      "name": "Petrochem Plastics Plant",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-PETROCHEM-PLASTICS-PLANT",
+      "source_ref": "Night City 2045 pp. 259-260",
+      "source_page_uv": [
+        0.359869,
+        0.424107
+      ],
+      "global_master_px": [
+        3044.562,
+        4657.943
+      ],
+      "global_uv": [
+        0.588321147,
+        0.584727981
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 11,
+      "name": "Raven Microcybernetics Factory",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-RAVEN-MICROCYBERNETICS-FACTORY",
+      "source_ref": "Night City 2045 p. 260",
+      "source_page_uv": [
+        0.390131,
+        0.400519
+      ],
+      "global_master_px": [
+        3083.146,
+        4619.023
+      ],
+      "global_uv": [
+        0.595777003,
+        0.579842191
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 12,
+      "name": "Rocklin Augmentics Manufacturing",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-ROCKLIN-AUGMENTICS-MANUFACTURING",
+      "source_ref": "Night City 2045 p. 260",
+      "source_page_uv": [
+        0.447623,
+        0.366196
+      ],
+      "global_master_px": [
+        3156.448,
+        4562.39
+      ],
+      "global_uv": [
+        0.609941698,
+        0.572732858
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 13,
+      "name": "The Rodeo",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-THE-RODEO",
+      "source_ref": "Night City 2045 p. 260",
+      "source_page_uv": [
+        0.322941,
+        0.438335
+      ],
+      "global_master_px": [
+        2997.479,
+        4681.419
+      ],
+      "global_uv": [
+        0.579222945,
+        0.587675031
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 14,
+      "name": "SovOil Plastics Plant",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-SOVOIL-PLASTICS-PLANT",
+      "source_ref": "Night City 2045 pp. 260-261",
+      "source_page_uv": [
+        0.396667,
+        0.442293
+      ],
+      "global_master_px": [
+        3091.479,
+        4687.95
+      ],
+      "global_uv": [
+        0.597387321,
+        0.588494852
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 15,
+      "name": "Trauma Team Pharmaceutical Plant",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-TRAUMA-TEAM-PHARMACEUTICAL-PLANT",
+      "source_ref": "Night City 2045 p. 261",
+      "source_page_uv": [
+        0.462745,
+        0.496208
+      ],
+      "global_master_px": [
+        3175.729,
+        4776.91
+      ],
+      "global_uv": [
+        0.613667408,
+        0.599662282
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 16,
+      "name": "Yang’s Wheels",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-YANG-S-WHEELS",
+      "source_ref": "Night City 2045 p. 261",
+      "source_page_uv": [
+        0.562255,
+        0.378676
+      ],
+      "global_master_px": [
+        3302.604,
+        4582.982
+      ],
+      "global_uv": [
+        0.638184365,
+        0.575317844
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 17,
+      "name": "Zhirafa Office Park",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-OFFICE-PARK",
+      "source_ref": "Night City 2045 p. 261",
+      "source_page_uv": [
+        0.499869,
+        0.320804
+      ],
+      "global_master_px": [
+        3223.062,
+        4487.493
+      ],
+      "global_uv": [
+        0.622813901,
+        0.5633308
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 18,
+      "name": "Zhirafa MicroVillage",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+      "source_ref": "Night City 2045 pp. 261-262",
+      "source_page_uv": [
+        0.61268,
+        0.359713
+      ],
+      "global_master_px": [
+        3366.896,
+        4551.693
+      ],
+      "global_uv": [
+        0.650607916,
+        0.571390033
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Heywood Industrial Zone",
+      "map_id": "NC2045-MAP-HEYWOOD-INDUSTRIAL-ZONE-P257",
+      "map_no": 19,
+      "name": "Ziggurat Warehouses",
+      "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-262-ZIGGURAT-WAREHOUSES",
+      "source_ref": "Night City 2045 p. 262",
+      "source_page_uv": [
+        0.322941,
+        0.520267
+      ],
+      "global_master_px": [
+        2997.479,
+        4816.607
+      ],
+      "global_uv": [
+        0.579222945,
+        0.60464563
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 257,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 1,
+      "name": "88.9 Nomad Presents Radio (NoPR)",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-264-88-9-NOMAD-PRESENTS-RADIO-NOPR",
+      "source_ref": "Night City 2045 p. 264",
+      "source_page_uv": [
+        0.81261,
+        0.409368
+      ],
+      "global_master_px": [
+        4101.406,
+        5054.747
+      ],
+      "global_uv": [
+        0.792542141,
+        0.634540225
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "name": "Aldecaldo Camp",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.754083,
+        0.487027
+      ],
+      "global_master_px": [
+        3952.162,
+        5311.022
+      ],
+      "global_uv": [
+        0.76370275,
+        0.666711288
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "a",
+      "name": "AllNations Construction",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-ALLNATIONS-CONSTRUCTION",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.721197,
+        0.498718
+      ],
+      "global_master_px": [
+        3868.302,
+        5349.602
+      ],
+      "global_uv": [
+        0.747498054,
+        0.671554408
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "b",
+      "name": "Bazaar El Saber",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.754103,
+        0.450916
+      ],
+      "global_master_px": [
+        3952.213,
+        5191.856
+      ],
+      "global_uv": [
+        0.763712605,
+        0.651751924
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "c",
+      "name": "Caitlin Market",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.718166,
+        0.460207
+      ],
+      "global_master_px": [
+        3860.573,
+        5222.516
+      ],
+      "global_uv": [
+        0.746004518,
+        0.655600819
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "d",
+      "name": "Dr. Pedro María Gutierrez School",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-DR-PEDRO-MARIA-GUTIERREZ-SCHOOL",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.700115,
+        0.447612
+      ],
+      "global_master_px": [
+        3814.543,
+        5180.953
+      ],
+      "global_uv": [
+        0.737109822,
+        0.650383207
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "e",
+      "name": "Radio Tent",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-RADIO-TENT",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.683178,
+        0.486981
+      ],
+      "global_master_px": [
+        3771.354,
+        5310.87
+      ],
+      "global_uv": [
+        0.728764054,
+        0.666692232
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "f",
+      "name": "Skinny James’ Lot",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SKINNY-JAMES-LOT",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.682681,
+        0.468077
+      ],
+      "global_master_px": [
+        3770.087,
+        5248.487
+      ],
+      "global_uv": [
+        0.728519156,
+        0.65886105
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "g",
+      "name": "Sol Canela Park",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SOL-CANELA-PARK",
+      "source_ref": "Night City 2045 p. 266",
+      "source_page_uv": [
+        0.731423,
+        0.470925
+      ],
+      "global_master_px": [
+        3894.379,
+        5257.886
+      ],
+      "global_uv": [
+        0.752536953,
+        0.660040864
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 2,
+      "map_suffix": "h",
+      "name": "Tepui",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-267-TEPUI",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.784288,
+        0.466801
+      ],
+      "global_master_px": [
+        4029.184,
+        5244.276
+      ],
+      "global_uv": [
+        0.778586373,
+        0.658332453
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 3,
+      "name": "Aldecaldo Peacekeepers HQ",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-267-ALDECALDO-PEACEKEEPERS-HQ",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.650735,
+        0.379917
+      ],
+      "global_master_px": [
+        3688.624,
+        4957.559
+      ],
+      "global_uv": [
+        0.712777649,
+        0.622339836
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 4,
+      "name": "Aldecaldo Warriors Track",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-267-ALDECALDO-WARRIORS-TRACK",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.581823,
+        0.460716
+      ],
+      "global_master_px": [
+        3512.899,
+        5224.196
+      ],
+      "global_uv": [
+        0.678821011,
+        0.655811677
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 5,
+      "name": "Altar a Nuestra Señora de la Santa Muerte",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-267-ALTAR-A-NUESTRA-SENORA-DE-LA-SANTA-MUERTE",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.570307,
+        0.493385
+      ],
+      "global_master_px": [
+        3483.533,
+        5332.004
+      ],
+      "global_uv": [
+        0.67314646,
+        0.669345157
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 6,
+      "name": "Ciudad Techito",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-267-CIUDAD-TECHITO",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.676092,
+        0.318194
+      ],
+      "global_master_px": [
+        3753.285,
+        4753.873
+      ],
+      "global_uv": [
+        0.725272402,
+        0.59677043
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 7,
+      "name": "Coronado Dam",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-267-CORONADO-DAM",
+      "source_ref": "Night City 2045 p. 267",
+      "source_page_uv": [
+        0.791136,
+        0.496864
+      ],
+      "global_master_px": [
+        4046.647,
+        5343.484
+      ],
+      "global_uv": [
+        0.78196075,
+        0.670786369
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 8,
+      "name": "East Cargo Village",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-EAST-CARGO-VILLAGE",
+      "source_ref": "Night City 2045 p. 268",
+      "source_page_uv": [
+        0.634719,
+        0.467291
+      ],
+      "global_master_px": [
+        3647.784,
+        5245.893
+      ],
+      "global_uv": [
+        0.704885707,
+        0.658535441
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 9,
+      "name": "Heywood Suites",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HEYWOOD-SUITES",
+      "source_ref": "Night City 2045 p. 268",
+      "source_page_uv": [
+        0.541528,
+        0.400959
+      ],
+      "global_master_px": [
+        3410.146,
+        5026.998
+      ],
+      "global_uv": [
+        0.658965504,
+        0.631056707
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 10,
+      "name": "Hunger Street",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+      "source_ref": "Night City 2045 p. 268",
+      "source_page_uv": [
+        0.401759,
+        0.371862
+      ],
+      "global_master_px": [
+        3053.736,
+        4930.978
+      ],
+      "global_uv": [
+        0.590093822,
+        0.619002967
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 11,
+      "name": "Live Wire Barb House",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-LIVE-WIRE-BARB-HOUSE",
+      "source_ref": "Night City 2045 p. 268",
+      "source_page_uv": [
+        0.686105,
+        0.295341
+      ],
+      "global_master_px": [
+        3778.818,
+        4678.458
+      ],
+      "global_uv": [
+        0.730206344,
+        0.587303333
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 12,
+      "name": "María’s",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-MARIA-S",
+      "source_ref": "Night City 2045 p. 268",
+      "source_page_uv": [
+        0.558641,
+        0.565985
+      ],
+      "global_master_px": [
+        3453.785,
+        5571.584
+      ],
+      "global_uv": [
+        0.667397996,
+        0.699420475
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 13,
+      "name": "Megabuilding H4",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-269-MEGABUILDING-H4",
+      "source_ref": "Night City 2045 p. 269",
+      "source_page_uv": [
+        0.379739,
+        0.396351
+      ],
+      "global_master_px": [
+        2997.585,
+        5011.791
+      ],
+      "global_uv": [
+        0.579243388,
+        0.629147795
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 14,
+      "name": "MetalStorm",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-269-METALSTORM",
+      "source_ref": "Night City 2045 p. 269",
+      "source_page_uv": [
+        0.114394,
+        0.418492
+      ],
+      "global_master_px": [
+        2320.955,
+        5084.857
+      ],
+      "global_uv": [
+        0.448493678,
+        0.638319938
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 15,
+      "name": "NCPD Precinct #2",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-269-NCPD-PRECINCT-2",
+      "source_ref": "Night City 2045 p. 269",
+      "source_page_uv": [
+        0.355226,
+        0.459735
+      ],
+      "global_master_px": [
+        2935.076,
+        5220.959
+      ],
+      "global_uv": [
+        0.567164518,
+        0.655405288
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 16,
+      "name": "Northern Light Supplies",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
+      "source_ref": "Night City 2045 p. 270",
+      "source_page_uv": [
+        0.489071,
+        0.348245
+      ],
+      "global_master_px": [
+        3276.381,
+        4853.042
+      ],
+      "global_uv": [
+        0.633117127,
+        0.609219375
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 17,
+      "name": "Salón de Valentino",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-SALON-DE-VALENTINO",
+      "source_ref": "Night City 2045 p. 270",
+      "source_page_uv": [
+        0.565432,
+        0.29745
+      ],
+      "global_master_px": [
+        3471.102,
+        4685.418
+      ],
+      "global_uv": [
+        0.670744286,
+        0.588177008
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 18,
+      "name": "SovOil Paint Factory",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-SOVOIL-PAINT-FACTORY",
+      "source_ref": "Night City 2045 p. 270",
+      "source_page_uv": [
+        0.436384,
+        0.413638
+      ],
+      "global_master_px": [
+        3142.029,
+        5068.838
+      ],
+      "global_uv": [
+        0.607155417,
+        0.636309117
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Santo Domingo",
+      "map_id": "NC2045-MAP-SANTO-DOMINGO-P265",
+      "map_no": 19,
+      "name": "Woodchipper’s Garage",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+      "source_ref": "Night City 2045 p. 270",
+      "source_page_uv": [
+        0.613149,
+        0.337519
+      ],
+      "global_master_px": [
+        3592.78,
+        4817.646
+      ],
+      "global_uv": [
+        0.694257011,
+        0.604776016
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 265,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 1,
+      "name": "The Ascension",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+      "source_ref": "Night City 2045 p. 276",
+      "source_page_uv": [
+        0.530719,
+        0.204293
+      ],
+      "global_master_px": [
+        1809.528,
+        5017.413
+      ],
+      "global_uv": [
+        0.349667221,
+        0.629853459
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 2,
+      "name": "Bits’n’Bolts",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS",
+      "source_ref": "Night City 2045 p. 278",
+      "source_page_uv": [
+        0.711111,
+        0.278788
+      ],
+      "global_master_px": [
+        2116.194,
+        5181.302
+      ],
+      "global_uv": [
+        0.408926429,
+        0.650427022
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 3,
+      "name": "Cubeland by the Sea",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-CUBELAND-BY-THE-SEA",
+      "source_ref": "Night City 2045 p. 278",
+      "source_page_uv": [
+        0.538889,
+        0.242424
+      ],
+      "global_master_px": [
+        1823.417,
+        5101.301
+      ],
+      "global_uv": [
+        0.352351086,
+        0.64038424
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 4,
+      "name": "Dream Forest Development",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-DREAM-FOREST-DEVELOPMENT",
+      "source_ref": "Night City 2045 p. 278",
+      "source_page_uv": [
+        0.474183,
+        0.505808
+      ],
+      "global_master_px": [
+        1713.417,
+        5680.746
+      ],
+      "global_uv": [
+        0.331095009,
+        0.713123983
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 5,
+      "name": "Flaire",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-FLAIRE",
+      "source_ref": "Night City 2045 pp. 278-279",
+      "source_page_uv": [
+        0.595098,
+        0.417929
+      ],
+      "global_master_px": [
+        1918.972,
+        5487.412
+      ],
+      "global_uv": [
+        0.370815878,
+        0.688854112
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 6,
+      "name": "Jodes Camp",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
+      "source_ref": "Night City 2045 p. 279",
+      "source_page_uv": [
+        0.293137,
+        0.529293
+      ],
+      "global_master_px": [
+        1405.638,
+        5732.413
+      ],
+      "global_uv": [
+        0.27162096,
+        0.719609924
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 7,
+      "name": "Mister Rice Guy",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-MISTER-RICE-GUY",
+      "source_ref": "Night City 2045 p. 279",
+      "source_page_uv": [
+        0.403595,
+        0.464899
+      ],
+      "global_master_px": [
+        1593.417,
+        5590.746
+      ],
+      "global_uv": [
+        0.30790668,
+        0.701825992
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 8,
+      "name": "Obsidian Equinox Marina & Docks",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-OBSIDIAN-EQUINOX-MARINA-DOCKS",
+      "source_ref": "Night City 2045 p. 279",
+      "source_page_uv": [
+        0.427778,
+        0.254293
+      ],
+      "global_master_px": [
+        1634.528,
+        5127.413
+      ],
+      "global_uv": [
+        0.315850854,
+        0.643662146
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 9,
+      "name": "Pacifica Arcology Ruins",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PACIFICA-ARCOLOGY-RUINS",
+      "source_ref": "Night City 2045 p. 280",
+      "source_page_uv": [
+        0.072222,
+        0.612879
+      ],
+      "global_master_px": [
+        1030.083,
+        5916.302
+      ],
+      "global_uv": [
+        0.199049849,
+        0.742694182
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 10,
+      "name": "Playhouse",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLAYHOUSE",
+      "source_ref": "Night City 2045 p. 280",
+      "source_page_uv": [
+        0.587255,
+        0.321212
+      ],
+      "global_master_px": [
+        1905.639,
+        5274.634
+      ],
+      "global_uv": [
+        0.368239434,
+        0.662143416
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 11,
+      "name": "Pleasant Valley Apartments",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLEASANT-VALLEY-APARTMENTS",
+      "source_ref": "Night City 2045 pp. 280-281",
+      "source_page_uv": [
+        0.431699,
+        0.455808
+      ],
+      "global_master_px": [
+        1641.194,
+        5570.746
+      ],
+      "global_uv": [
+        0.317138912,
+        0.699315297
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 12,
+      "name": "Pursuit Security Inc Showroom",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "source_ref": "Night City 2045 p. 280",
+      "source_page_uv": [
+        0.706209,
+        0.235859
+      ],
+      "global_master_px": [
+        2107.861,
+        5086.858
+      ],
+      "global_uv": [
+        0.40731611,
+        0.638571159
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 13,
+      "name": "Quaid Winston Memorial De-Salinization Plant",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-QUAID-WINSTON-MEMORIAL-DE-SALINIZATION-PLANT",
+      "source_ref": "Night City 2045 p. 280",
+      "source_page_uv": [
+        0.390523,
+        0.381313
+      ],
+      "global_master_px": [
+        1571.195,
+        5406.857
+      ],
+      "global_uv": [
+        0.303612496,
+        0.678741734
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 14,
+      "name": "ShellShock Central",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-SHELLSHOCK-CENTRAL",
+      "source_ref": "Night City 2045 p. 280",
+      "source_page_uv": [
+        0.282026,
+        0.466162
+      ],
+      "global_master_px": [
+        1386.75,
+        5593.524
+      ],
+      "global_uv": [
+        0.26797097,
+        0.702174799
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 15,
+      "name": "Scenic Cubes",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SCENIC-CUBES",
+      "source_ref": "Night City 2045 p. 281",
+      "source_page_uv": [
+        0.338889,
+        0.321465
+      ],
+      "global_master_px": [
+        1483.417,
+        5275.191
+      ],
+      "global_uv": [
+        0.286650603,
+        0.662213288
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 16,
+      "name": "Smile Another Day",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "source_ref": "Night City 2045 p. 281",
+      "source_page_uv": [
+        0.678105,
+        0.34899
+      ],
+      "global_master_px": [
+        2060.084,
+        5335.746
+      ],
+      "global_uv": [
+        0.398083878,
+        0.66981497
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 17,
+      "name": "Stop. Shop. Stitch.",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "source_ref": "Night City 2045 p. 281",
+      "source_page_uv": [
+        0.446078,
+        0.334596
+      ],
+      "global_master_px": [
+        1665.638,
+        5304.079
+      ],
+      "global_uv": [
+        0.321862448,
+        0.665839726
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 18,
+      "name": "Tanson Group Headquarters",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-TANSON-GROUP-HEADQUARTERS",
+      "source_ref": "Night City 2045 p. 281",
+      "source_page_uv": [
+        0.548039,
+        0.516414
+      ],
+      "global_master_px": [
+        1838.972,
+        5704.079
+      ],
+      "global_uv": [
+        0.355356883,
+        0.716053082
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 19,
+      "name": "Torta-sienda",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-TORTA-SIENDA",
+      "source_ref": "Night City 2045 p. 282",
+      "source_page_uv": [
+        0.525817,
+        0.311869
+      ],
+      "global_master_px": [
+        1801.194,
+        5254.08
+      ],
+      "global_uv": [
+        0.348056902,
+        0.659563125
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 20,
+      "name": "Volkodav Racetrack",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-VOLKODAV-RACETRACK",
+      "source_ref": "Night City 2045 p. 282",
+      "source_page_uv": [
+        0.576144,
+        0.286111
+      ],
+      "global_master_px": [
+        1886.75,
+        5197.412
+      ],
+      "global_uv": [
+        0.364589443,
+        0.652449442
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 21,
+      "name": "WNS Offices",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-WNS-OFFICES",
+      "source_ref": "Night City 2045 p. 282",
+      "source_page_uv": [
+        0.629085,
+        0.244192
+      ],
+      "global_master_px": [
+        1976.75,
+        5105.19
+      ],
+      "global_uv": [
+        0.38198069,
+        0.640872515
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Pacifica Playground",
+      "map_id": "NC2045-MAP-PACIFICA-PLAYGROUND-P277",
+      "map_no": 22,
+      "name": "The XX (The Twenty)",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-THE-XX-THE-TWENTY",
+      "source_ref": "Night City 2045 pp. 282-283",
+      "source_page_uv": [
+        0.729739,
+        0.306313
+      ],
+      "global_master_px": [
+        2147.862,
+        5241.857
+      ],
+      "global_uv": [
+        0.415045772,
+        0.658028704
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 277,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 1,
+      "name": "106.9 Sangre y arena",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-286-106-9-SANGRE-Y-ARENA",
+      "source_ref": "Night City 2045 p. 286",
+      "source_page_uv": [
+        0.5302,
+        0.450019
+      ],
+      "global_master_px": [
+        2735.946,
+        5776.951
+      ],
+      "global_uv": [
+        0.528685278,
+        0.725200963
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 2,
+      "name": "Albino Alligator Car Wash",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-ALBINO-ALLIGATOR-CAR-WASH",
+      "source_ref": "Night City 2045 p. 288",
+      "source_page_uv": [
+        0.162388,
+        0.472817
+      ],
+      "global_master_px": [
+        2053.822,
+        5831.666
+      ],
+      "global_uv": [
+        0.396873863,
+        0.732069554
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 3,
+      "name": "Bread and Roses",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-BREAD-AND-ROSES",
+      "source_ref": "Night City 2045 p. 288",
+      "source_page_uv": [
+        0.325081,
+        0.413269
+      ],
+      "global_master_px": [
+        2355.544,
+        5688.751
+      ],
+      "global_uv": [
+        0.455177546,
+        0.714128907
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 4,
+      "name": "Coronado Heights",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-CORONADO-HEIGHTS",
+      "source_ref": "Night City 2045 p. 288",
+      "source_page_uv": [
+        0.167428,
+        0.336337
+      ],
+      "global_master_px": [
+        2063.169,
+        5504.114
+      ],
+      "global_uv": [
+        0.398680029,
+        0.6909508
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 5,
+      "name": "The Culms",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-THE-CULMS",
+      "source_ref": "Night City 2045 p. 288",
+      "source_page_uv": [
+        0.714778,
+        0.417118
+      ],
+      "global_master_px": [
+        3078.255,
+        5697.988
+      ],
+      "global_uv": [
+        0.594831807,
+        0.715288535
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 6,
+      "name": "Digital Divinity Ruins",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-DIGITAL-DIVINITY-RUINS",
+      "source_ref": "Night City 2045 p. 289",
+      "source_page_uv": [
+        0.250765,
+        0.339923
+      ],
+      "global_master_px": [
+        2217.721,
+        5512.72
+      ],
+      "global_uv": [
+        0.428545199,
+        0.692031191
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 7,
+      "name": "Eagle Rock Stadium",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-EAGLE-ROCK-STADIUM",
+      "source_ref": "Night City 2045 p. 289",
+      "source_page_uv": [
+        0.430379,
+        0.219063
+      ],
+      "global_master_px": [
+        2550.824,
+        5222.656
+      ],
+      "global_uv": [
+        0.492912798,
+        0.655618438
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 8,
+      "name": "The Henhouse",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-THE-HENHOUSE",
+      "source_ref": "Night City 2045 p. 289",
+      "source_page_uv": [
+        0.236621,
+        0.418507
+      ],
+      "global_master_px": [
+        2191.491,
+        5701.322
+      ],
+      "global_uv": [
+        0.423476466,
+        0.715707013
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 9,
+      "name": "The Island",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-THE-ISLAND",
+      "source_ref": "Night City 2045 p. 289",
+      "source_page_uv": [
+        0.476823,
+        0.385303
+      ],
+      "global_master_px": [
+        2636.956,
+        5621.632
+      ],
+      "global_uv": [
+        0.509556761,
+        0.705703298
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 10,
+      "name": "Jack 'N' the Green",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-JACK-N-THE-GREEN",
+      "source_ref": "Night City 2045 p. 289",
+      "source_page_uv": [
+        0.600793,
+        0.278686
+      ],
+      "global_master_px": [
+        2866.864,
+        5365.752
+      ],
+      "global_uv": [
+        0.553983428,
+        0.673581681
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Rancho Coronado",
+      "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+      "map_no": 11,
+      "name": "Minimallism",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+      "source_ref": "Night City 2045 p. 290",
+      "source_page_uv": [
+        0.273008,
+        0.268371
+      ],
+      "global_master_px": [
+        2258.972,
+        5340.996
+      ],
+      "global_uv": [
+        0.43651634,
+        0.670473974
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 287,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 1,
+      "name": "107.3 Morro Rock Radio",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO",
+      "source_ref": "Night City 2045 p. 294",
+      "source_page_uv": [
+        0.187908,
+        0.430556
+      ],
+      "global_master_px": [
+        954.407,
+        2794.612
+      ],
+      "global_uv": [
+        0.184426484,
+        0.350817459
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 2,
+      "map_suffix": "a",
+      "name": "Edgewood Farm",
+      "entity_id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM",
+      "source_ref": "Night City 2045 p. 294",
+      "source_page_uv": [
+        0.65,
+        0.591667
+      ],
+      "global_master_px": [
+        4708.882,
+        4488.636
+      ],
+      "global_uv": [
+        0.909928907,
+        0.56347431
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 2,
+      "map_suffix": "b",
+      "name": "Ingalls Farm",
+      "entity_id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM",
+      "source_ref": "Night City 2045 p. 294",
+      "source_page_uv": [
+        0.708497,
+        0.630556
+      ],
+      "global_master_px": [
+        5184.167,
+        4897.54
+      ],
+      "global_uv": [
+        1.001771473,
+        0.614805455
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 2,
+      "map_suffix": "c",
+      "name": "Poppy Farm",
+      "entity_id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM",
+      "source_ref": "Night City 2045 p. 296",
+      "source_page_uv": [
+        0.596078,
+        0.737626
+      ],
+      "global_master_px": [
+        4270.768,
+        6023.343
+      ],
+      "global_uv": [
+        0.825269268,
+        0.756131429
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 3,
+      "name": "Jackson Plains Regional Airport",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT",
+      "source_ref": "Night City 2045 p. 296",
+      "source_page_uv": [
+        0.407843,
+        0.833081
+      ],
+      "global_master_px": [
+        2741.368,
+        7027.018
+      ],
+      "global_uv": [
+        0.529732993,
+        0.8821263
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 4,
+      "name": "Laguna Bend",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND",
+      "source_ref": "Night City 2045 p. 296",
+      "source_page_uv": [
+        0.654575,
+        0.690152
+      ],
+      "global_master_px": [
+        4746.054,
+        5524.171
+      ],
+      "global_uv": [
+        0.917111835,
+        0.693468599
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 5,
+      "name": "Municipal Landfill",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL",
+      "source_ref": "Night City 2045 p. 296",
+      "source_page_uv": [
+        0.603922,
+        0.595707
+      ],
+      "global_master_px": [
+        4334.501,
+        4531.116
+      ],
+      "global_uv": [
+        0.837584654,
+        0.568806867
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 6,
+      "name": "Night City Spaceport",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT",
+      "source_ref": "Night City 2045 p. 297",
+      "source_page_uv": [
+        0.204248,
+        0.458333
+      ],
+      "global_master_px": [
+        1087.169,
+        3086.677
+      ],
+      "global_uv": [
+        0.21008092,
+        0.387481432
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 7,
+      "name": "NorCal Marshal Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION",
+      "source_ref": "Night City 2045 p. 297",
+      "source_page_uv": [
+        0.721569,
+        0.551263
+      ],
+      "global_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "global_uv": [
+        1.022295022,
+        0.510143455
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 8,
+      "name": "Militech Ballistics & Explosives Range",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE",
+      "source_ref": "Night City 2045 p. 297",
+      "source_page_uv": [
+        0.49085,
+        0.291162
+      ],
+      "global_master_px": [
+        3415.796,
+        1328.934
+      ],
+      "global_uv": [
+        0.660057213,
+        0.166825746
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 9,
+      "name": "Night Corp Solar Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION",
+      "source_ref": "Night City 2045 p. 297",
+      "source_page_uv": [
+        0.465359,
+        0.77197
+      ],
+      "global_master_px": [
+        3208.683,
+        6384.458
+      ],
+      "global_uv": [
+        0.620035351,
+        0.801463448
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 10,
+      "name": "Northern Oil Fields",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS",
+      "source_ref": "Night City 2045 pp. 297-298",
+      "source_page_uv": [
+        0.312418,
+        0.246717
+      ],
+      "global_master_px": [
+        1966.045,
+        861.611
+      ],
+      "global_uv": [
+        0.37991203,
+        0.108161013
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 11,
+      "name": "Petrochem CHOOH2 Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION",
+      "source_ref": "Night City 2045 p. 298",
+      "source_page_uv": [
+        0.616993,
+        0.575
+      ],
+      "global_master_px": [
+        4440.702,
+        4313.389
+      ],
+      "global_uv": [
+        0.858106632,
+        0.54147487
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 12,
+      "name": "Pol-Bud Cement Factory",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY",
+      "source_ref": "Night City 2045 p. 298",
+      "source_page_uv": [
+        0.713399,
+        0.663384
+      ],
+      "global_master_px": [
+        5223.996,
+        5242.715
+      ],
+      "global_uv": [
+        1.009467804,
+        0.658136445
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 13,
+      "name": "Pol-Bud Miasto",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO",
+      "source_ref": "Night City 2045 p. 298",
+      "source_page_uv": [
+        0.661111,
+        0.52096
+      ],
+      "global_master_px": [
+        4799.158,
+        3745.178
+      ],
+      "global_uv": [
+        0.927373609,
+        0.470145313
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 14,
+      "name": "Pol-Bud Mine",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE",
+      "source_ref": "Night City 2045 p. 298",
+      "source_page_uv": [
+        0.631699,
+        0.494444
+      ],
+      "global_master_px": [
+        4560.187,
+        3466.371
+      ],
+      "global_uv": [
+        0.881195625,
+        0.435145785
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 15,
+      "name": "Sheriff’s Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION",
+      "source_ref": "Night City 2045 p. 299",
+      "source_page_uv": [
+        0.61732,
+        0.77601
+      ],
+      "global_master_px": [
+        4443.359,
+        6426.937
+      ],
+      "global_uv": [
+        0.858620035,
+        0.806796005
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 16,
+      "name": "SovOil CHOOH2 Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION",
+      "source_ref": "Night City 2045 p. 299",
+      "source_page_uv": [
+        0.368627,
+        0.764899
+      ],
+      "global_master_px": [
+        2422.74,
+        6310.109
+      ],
+      "global_uv": [
+        0.468162347,
+        0.792130152
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 17,
+      "name": "Sunshine Motel",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL",
+      "source_ref": "Night City 2045 p. 299",
+      "source_page_uv": [
+        0.757516,
+        0.572475
+      ],
+      "global_master_px": [
+        5582.444,
+        4286.839
+      ],
+      "global_uv": [
+        1.078733211,
+        0.538142021
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
+    },
+    {
+      "district": "Outskirts",
+      "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+      "map_no": 18,
+      "name": "Union Railroad Station",
+      "entity_id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION",
+      "source_ref": "Night City 2045 p. 299",
+      "source_page_uv": [
+        0.618627,
+        0.558838
+      ],
+      "global_master_px": [
+        4453.978,
+        4143.451
+      ],
+      "global_uv": [
+        0.860672076,
+        0.520142
+      ],
+      "registration": {
+        "method": "source_master_image_transform",
+        "book_page": 295,
+        "status": "source_exact"
+      }
     }
   ],
   "nested_local_maps": [],
   "summary": {
-    "exact_global_points": 457,
+    "exact_global_points": 556,
     "nested_local_points": 0,
-    "total_manifestations": 457
+    "total_manifestations": 556
   }
 }
