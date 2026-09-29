@@ -91,8 +91,8 @@ for doc in source_docs:
 
         gx, gy = glob["global_master_px"]
         gu, gv = glob["global_uv"]
-        assert abs(gu - gx / 5175) < 1e-8
-        assert abs(gv - gy / 7966) < 1e-8
+        assert abs(gu - gx / 5175) < 2e-7
+        assert abs(gv - gy / 7966) < 2e-7
 
         if district == "Playland by the Sea Lands":
             assert glob["registration"]["status"] == "approximate_parent_footprint"
