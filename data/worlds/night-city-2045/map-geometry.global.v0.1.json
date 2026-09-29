@@ -10,7 +10,7 @@
     "y_axis": "+down"
   },
   "calibration_file": "data/worlds/night-city-2045/map-calibration.global.v0.1.json",
-  "note": "Global registration derived from the PDF placement transform of the full-city master raster embedded on each district map page. Playland by the Sea uses a separate illustrated souvenir map and is stored as a nested local map until separately anchored.",
+  "note": "Global registration uses exact PDF master-raster placement transforms for 556 manifestations. Playland by the Sea's 52 attraction points use their source-exact souvenir-map geometry affinely anchored to the park footprint visible on the Pacifica city map; those 52 global positions are explicitly approximate.",
   "points": [
     {
       "district": "Little Europe",
@@ -14009,12 +14009,1386 @@
         "book_page": 295,
         "status": "source_exact"
       }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 1,
+      "name": "Eco-Coaster (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-ECO-COASTER-E",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.172876,
+        0.114394
+      ],
+      "global_master_px": [
+        1093.703,
+        5206.12
+      ],
+      "global_uv": [
+        0.211343582,
+        0.653542544
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 2,
+      "name": "Kibble Cakes",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-KIBBLE-CAKES",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.294118,
+        0.144192
+      ],
+      "global_master_px": [
+        1157.174,
+        5227.378
+      ],
+      "global_uv": [
+        0.223608583,
+        0.656211164
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 3,
+      "name": "Bumper Pandamonium (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-BUMPER-PANDAMONIUM-C",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.277778,
+        0.22399
+      ],
+      "global_master_px": [
+        1148.62,
+        5284.307
+      ],
+      "global_uv": [
+        0.221955607,
+        0.663357636
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 4,
+      "name": "Moo Moo Burger Pier",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-MOO-MOO-BURGER-PIER",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.139216,
+        0.235354
+      ],
+      "global_master_px": [
+        1076.082,
+        5292.414
+      ],
+      "global_uv": [
+        0.207938492,
+        0.664375363
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 5,
+      "name": "The Big Wheel (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-THE-BIG-WHEEL-E",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.155556,
+        0.298485
+      ],
+      "global_master_px": [
+        1084.636,
+        5337.453
+      ],
+      "global_uv": [
+        0.209591468,
+        0.670029188
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 6,
+      "name": "Hammered Industries Beer Garden",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-HAMMERED-INDUSTRIES-BEER-GARDEN",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.280719,
+        0.313384
+      ],
+      "global_master_px": [
+        1150.16,
+        5348.082
+      ],
+      "global_uv": [
+        0.222253122,
+        0.671363498
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 7,
+      "name": "Depth Charge (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-DEPTH-CHARGE-E",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.18268,
+        0.382323
+      ],
+      "global_master_px": [
+        1098.836,
+        5397.263
+      ],
+      "global_uv": [
+        0.212335368,
+        0.67753747
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 8,
+      "name": "Laser Light Arena (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-LASER-LIGHT-ARENA-D",
+      "source_ref": "Night City 2045 p. 311",
+      "source_page_uv": [
+        0.280719,
+        0.436869
+      ],
+      "global_master_px": [
+        1150.16,
+        5436.177
+      ],
+      "global_uv": [
+        0.222253122,
+        0.682422449
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 9,
+      "name": "Grand Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GRAND-HOTEL",
+      "source_ref": "Night City 2045 pp. 308-309",
+      "source_page_uv": [
+        0.359477,
+        0.049747
+      ],
+      "global_master_px": [
+        1191.39,
+        5160
+      ],
+      "global_uv": [
+        0.230220385,
+        0.64775295
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 10,
+      "name": "Playland Amphitheatre & Reflection Deck (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-PLAYLAND-AMPHITHEATRE-REFLECTION-DECK-A",
+      "source_ref": "Night City 2045 p. 309",
+      "source_page_uv": [
+        0.388889,
+        0.151515
+      ],
+      "global_master_px": [
+        1206.788,
+        5232.602
+      ],
+      "global_uv": [
+        0.233195742,
+        0.65686699
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 11,
+      "name": "Memorial Zen Garden (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MEMORIAL-ZEN-GARDEN-A",
+      "source_ref": "Night City 2045 p. 309",
+      "source_page_uv": [
+        0.368627,
+        0.29697
+      ],
+      "global_master_px": [
+        1196.181,
+        5336.372
+      ],
+      "global_uv": [
+        0.231146011,
+        0.669893509
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 12,
+      "name": "Lovers Café",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-LOVERS-CAFE",
+      "source_ref": "Night City 2045 p. 309",
+      "source_page_uv": [
+        0.491176,
+        0.316919
+      ],
+      "global_master_px": [
+        1260.336,
+        5350.604
+      ],
+      "global_uv": [
+        0.243543229,
+        0.671680082
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 13,
+      "name": "Mermaid Fountain (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MERMAID-FOUNTAIN-A",
+      "source_ref": "Night City 2045 p. 309",
+      "source_page_uv": [
+        0.421242,
+        0.411364
+      ],
+      "global_master_px": [
+        1223.725,
+        5417.982
+      ],
+      "global_uv": [
+        0.236468614,
+        0.680138296
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 14,
+      "name": "Circle of the Supernatural",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CIRCLE-OF-THE-SUPERNATURAL",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.596732,
+        0.125
+      ],
+      "global_master_px": [
+        1315.596,
+        5213.686
+      ],
+      "global_uv": [
+        0.254221413,
+        0.654492386
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 15,
+      "name": "Carnival of Screams",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CARNIVAL-OF-SCREAMS",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.646732,
+        0.189394
+      ],
+      "global_master_px": [
+        1341.771,
+        5259.626
+      ],
+      "global_uv": [
+        0.259279479,
+        0.660259321
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 16,
+      "name": "Manor of Terror (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-MANOR-OF-TERROR-D",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.53366,
+        0.220707
+      ],
+      "global_master_px": [
+        1282.577,
+        5281.965
+      ],
+      "global_uv": [
+        0.247840967,
+        0.663063621
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 17,
+      "name": "GunMart Museum of Movie Weapons (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GUNMART-MUSEUM-OF-MOVIE-WEAPONS-B",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.65,
+        0.298485
+      ],
+      "global_master_px": [
+        1343.482,
+        5337.453
+      ],
+      "global_uv": [
+        0.259610074,
+        0.670029188
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 18,
+      "name": "Haunted Woods Warfare (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HAUNTED-WOODS-WARFARE-D",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.56732,
+        0.32298
+      ],
+      "global_master_px": [
+        1300.198,
+        5354.928
+      ],
+      "global_uv": [
+        0.251246057,
+        0.672222887
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 19,
+      "name": "Horror Classics Buffet Theatre",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HORROR-CLASSICS-BUFFET-THEATRE",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.647059,
+        0.387879
+      ],
+      "global_master_px": [
+        1341.942,
+        5401.227
+      ],
+      "global_uv": [
+        0.259312559,
+        0.678035049
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 20,
+      "name": "Frighthunter Society Lodge",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-FRIGHTHUNTER-SOCIETY-LODGE",
+      "source_ref": "Night City 2045 p. 308",
+      "source_page_uv": [
+        0.586928,
+        0.429293
+      ],
+      "global_master_px": [
+        1310.463,
+        5430.772
+      ],
+      "global_uv": [
+        0.253229628,
+        0.681743964
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 21,
+      "name": "Wharf Club",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-CLUB",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.197386,
+        0.499495
+      ],
+      "global_master_px": [
+        1106.534,
+        5480.855
+      ],
+      "global_uv": [
+        0.213823046,
+        0.688031047
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 22,
+      "name": "Wharf Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-HOTEL",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.187582,
+        0.586364
+      ],
+      "global_master_px": [
+        1101.402,
+        5542.829
+      ],
+      "global_uv": [
+        0.212831261,
+        0.695810777
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 23,
+      "name": "Paradiso Acqua",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-PARADISO-ACQUA",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.323529,
+        0.513384
+      ],
+      "global_master_px": [
+        1172.571,
+        5490.764
+      ],
+      "global_uv": [
+        0.226583838,
+        0.689274905
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 24,
+      "name": "Artificial Beach",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ARTIFICIAL-BEACH",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.357843,
+        0.637121
+      ],
+      "global_master_px": [
+        1190.535,
+        5579.039
+      ],
+      "global_uv": [
+        0.230055087,
+        0.700356424
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 25,
+      "name": "Grand Trolley Yard (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-TROLLEY-YARD-B",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.396405,
+        0.559848
+      ],
+      "global_master_px": [
+        1210.723,
+        5523.912
+      ],
+      "global_uv": [
+        0.23395607,
+        0.693436083
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 26,
+      "name": "Meet & Greet Plaza (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-MEET-GREET-PLAZA-C",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.444118,
+        0.520707
+      ],
+      "global_master_px": [
+        1235.701,
+        5495.988
+      ],
+      "global_uv": [
+        0.23878278,
+        0.689930731
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 27,
+      "name": "Lemon-Aid Rx",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LEMON-AID-RX",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.491176,
+        0.601515
+      ],
+      "global_master_px": [
+        1260.336,
+        5553.638
+      ],
+      "global_uv": [
+        0.243543229,
+        0.697167656
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 28,
+      "name": "San Francisco Sweets",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SAN-FRANCISCO-SWEETS",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.520588,
+        0.618182
+      ],
+      "global_master_px": [
+        1275.734,
+        5565.528
+      ],
+      "global_uv": [
+        0.246518586,
+        0.698660303
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 29,
+      "name": "Sourdough Central",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SOURDOUGH-CENTRAL",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.596732,
+        0.644444
+      ],
+      "global_master_px": [
+        1315.596,
+        5584.264
+      ],
+      "global_uv": [
+        0.254221413,
+        0.70101225
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 30,
+      "name": "Grand Junction Gift Shop",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.611765,
+        0.559596
+      ],
+      "global_master_px": [
+        1323.466,
+        5523.732
+      ],
+      "global_uv": [
+        0.255742171,
+        0.693413515
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 31,
+      "name": "Ticket Gate",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-TICKET-GATE",
+      "source_ref": "Night City 2045 p. 301",
+      "source_page_uv": [
+        0.700654,
+        0.565404
+      ],
+      "global_master_px": [
+        1370,
+        5527.876
+      ],
+      "global_uv": [
+        0.2647343,
+        0.693933662
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 32,
+      "name": "Lost & Found",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LOST-FOUND",
+      "source_ref": "Night City 2045 p. 307",
+      "source_page_uv": [
+        0.689542,
+        0.629545
+      ],
+      "global_master_px": [
+        1364.183,
+        5573.634
+      ],
+      "global_uv": [
+        0.263610195,
+        0.69967794
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 33,
+      "name": "Classique Corsets",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CLASSIQUE-CORSETS",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.565686,
+        0.680051
+      ],
+      "global_master_px": [
+        1299.343,
+        5609.666
+      ],
+      "global_uv": [
+        0.251080759,
+        0.704201107
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 34,
+      "name": "Garden of Desire (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-GARDEN-OF-DESIRE-A",
+      "source_ref": "Night City 2045 p. 305",
+      "source_page_uv": [
+        0.200654,
+        0.720202
+      ],
+      "global_master_px": [
+        1108.245,
+        5638.31
+      ],
+      "global_uv": [
+        0.214153641,
+        0.707796912
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 35,
+      "name": "Smash Bar & Grill",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SMASH-BAR-GRILL",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.133333,
+        0.726768
+      ],
+      "global_master_px": [
+        1073.002,
+        5642.994
+      ],
+      "global_uv": [
+        0.20734336,
+        0.708384943
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 36,
+      "name": "Aquarium Fantastique (E)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-AQUARIUM-FANTASTIQUE-E",
+      "source_ref": "Night City 2045 p. 305",
+      "source_page_uv": [
+        0.313399,
+        0.786111
+      ],
+      "global_master_px": [
+        1167.268,
+        5685.33
+      ],
+      "global_uv": [
+        0.225559074,
+        0.713699527
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 37,
+      "name": "Hydrosubsidium Artificial Ocean (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HYDROSUBSIDIUM-ARTIFICIAL-OCEAN-B",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.195425,
+        0.809596
+      ],
+      "global_master_px": [
+        1105.508,
+        5702.085
+      ],
+      "global_uv": [
+        0.213624669,
+        0.715802773
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 38,
+      "name": "The Playtower (D)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-THE-PLAYTOWER-D",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.139216,
+        0.831313
+      ],
+      "global_master_px": [
+        1076.082,
+        5717.578
+      ],
+      "global_uv": [
+        0.207938492,
+        0.717747684
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 39,
+      "name": "Changing Rooms",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CHANGING-ROOMS",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.108497,
+        0.857576
+      ],
+      "global_master_px": [
+        1060,
+        5736.314
+      ],
+      "global_uv": [
+        0.204830918,
+        0.72009972
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 40,
+      "name": "Island Dreams Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ISLAND-DREAMS-HOTEL",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.123529,
+        0.906566
+      ],
+      "global_master_px": [
+        1067.869,
+        5771.264
+      ],
+      "global_uv": [
+        0.206351575,
+        0.724487119
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 41,
+      "name": "Hall of Nightmares (A)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HALL-OF-NIGHTMARES-A",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.214052,
+        0.932828
+      ],
+      "global_master_px": [
+        1115.259,
+        5790
+      ],
+      "global_uv": [
+        0.215509001,
+        0.726839066
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 42,
+      "name": "Submarine Tours",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SUBMARINE-TOURS",
+      "source_ref": "Night City 2045 p. 306",
+      "source_page_uv": [
+        0.280719,
+        0.891414
+      ],
+      "global_master_px": [
+        1150.16,
+        5760.455
+      ],
+      "global_uv": [
+        0.222253122,
+        0.723130151
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 43,
+      "name": "Continental Brands Kibble Court",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-CONTINENTAL-BRANDS-KIBBLE-COURT",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.398693,
+        0.694949
+      ],
+      "global_master_px": [
+        1211.92,
+        5620.294
+      ],
+      "global_uv": [
+        0.234187527,
+        0.705535328
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 44,
+      "name": "Old Hero’s Point LARP-A-Rinth (B)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-OLD-HERO-S-POINT-LARP-A-RINTH-B",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.464379,
+        0.688131
+      ],
+      "global_master_px": [
+        1246.308,
+        5615.43
+      ],
+      "global_uv": [
+        0.240832409,
+        0.704924728
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 45,
+      "name": "The Hula Room",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-HULA-ROOM",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.367647,
+        0.774495
+      ],
+      "global_master_px": [
+        1195.668,
+        5677.043
+      ],
+      "global_uv": [
+        0.231046873,
+        0.712659232
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 46,
+      "name": "Klaws",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-KLAWS",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.474837,
+        0.730808
+      ],
+      "global_master_px": [
+        1251.783,
+        5645.877
+      ],
+      "global_uv": [
+        0.241890355,
+        0.708746754
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 47,
+      "name": "Bioexotic Cat Café",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BIOEXOTIC-CAT-CAFE",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.66634,
+        0.710101
+      ],
+      "global_master_px": [
+        1352.036,
+        5631.104
+      ],
+      "global_uv": [
+        0.26126305,
+        0.706892296
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 48,
+      "name": "Boba World",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BOBA-WORLD",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.456863,
+        0.759343
+      ],
+      "global_master_px": [
+        1242.373,
+        5666.234
+      ],
+      "global_uv": [
+        0.240072081,
+        0.711302264
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 49,
+      "name": "Port Treasure Shipyard (C)",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-PORT-TREASURE-SHIPYARD-C",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.586601,
+        0.759596
+      ],
+      "global_master_px": [
+        1310.292,
+        5666.414
+      ],
+      "global_uv": [
+        0.253196548,
+        0.711324922
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 50,
+      "name": "Autumn Palace Hotel",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-AUTUMN-PALACE-HOTEL",
+      "source_ref": "Night City 2045 p. 309",
+      "source_page_uv": [
+        0.484641,
+        0.834848
+      ],
+      "global_master_px": [
+        1256.915,
+        5720.1
+      ],
+      "global_uv": [
+        0.24288214,
+        0.718064268
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 51,
+      "name": "The Elflines Online Experience",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-ELFLINES-ONLINE-EXPERIENCE",
+      "source_ref": "Night City 2045 p. 310",
+      "source_page_uv": [
+        0.597386,
+        0.817172
+      ],
+      "global_master_px": [
+        1315.938,
+        5707.49
+      ],
+      "global_uv": [
+        0.254287573,
+        0.716481258
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
+    },
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "map_no": 52,
+      "name": "VIP Parking Lot",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-VIP-PARKING-LOT",
+      "source_ref": "Night City 2045 p. 301",
+      "source_page_uv": [
+        0.618301,
+        0.891414
+      ],
+      "global_master_px": [
+        1326.887,
+        5760.455
+      ],
+      "global_uv": [
+        0.256403362,
+        0.723130151
+      ],
+      "registration": {
+        "method": "playland_parent_footprint_affine",
+        "book_page": 301,
+        "status": "approximate_parent_footprint",
+        "note": "Relative attraction geometry is source-exact on the Playland souvenir map. Global placement is an affine fit into the Playland footprint visible on the Pacifica full-city map, because the source does not provide an exact georeference between the souvenir illustration and the city master."
+      }
     }
   ],
-  "nested_local_maps": [],
+  "nested_local_maps": [
+    {
+      "district": "Playland by the Sea Lands",
+      "map_id": "NC2045-MAP-PLAYLAND-BY-THE-SEA-P301",
+      "book_page": 301,
+      "local_source_bounds": {
+        "x0": 0.108497,
+        "x1": 0.700654,
+        "y0": 0.049747,
+        "y1": 0.932828
+      },
+      "global_footprint_bbox_master_px": [
+        1060,
+        5160,
+        1370,
+        5790
+      ],
+      "registration_status": "approximate_parent_footprint",
+      "point_count": 52
+    }
+  ],
   "summary": {
     "exact_global_points": 556,
-    "nested_local_points": 0,
-    "total_manifestations": 556
+    "approximate_global_points": 52,
+    "nested_local_points": 52,
+    "total_manifestations": 608,
+    "unresolved_points": 0
   }
 }
