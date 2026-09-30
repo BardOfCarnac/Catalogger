@@ -57,6 +57,8 @@ scripts/
   world_stock_engine.py         hard source constraints for canonical sellers
   stock_lifecycle.py            durable bundles, backorders, events and inspection
   build_kaito_market.py         first end-to-end Night City 2045 world pilot
+  build_city_stock.py           realize all canonical Night City catalogue sellers
+  city_stock_state.py           once-daily city advance, purchase and order mutations
   validate_catalog.py           checksum + relational + taxonomy checks
   validate_stocking.py          stocking configuration checks
   test_stock_engine.py          deterministic stocking smoke tests
@@ -213,9 +215,20 @@ Build the current Kaito Market pilot after generating commercial profiles:
 ```bash
 python scripts/build_commercial_profiles.py
 python scripts/build_kaito_market.py
+python scripts/build_city_stock.py
+python scripts/test_city_stock.py
+python scripts/test_city_stock_state.py
 ```
 
 The generated pilot state is written under `build/data/worlds/` and is deterministic from the saved source fixture and seeds. A deployed world would import that initial state and then persist subsequent stock changes rather than regenerating the market on every visit.
+
+## Shared Night City stock state
+
+The current Night City implementation does not generate extra shops. `build_city_stock.py` realizes the source-reviewed canonical sellers that already declare catalogue stocking, then builds a reverse item-to-seller availability index. The current canonical network contains 56 catalogue-stock sellers and can expose 1,227 catalogue items through shelf stock, current specials or sourceable `ORDER` results without inventing additional businesses.
+
+`city_stock_state.py` is the mutable shared-world layer. One `stock_day` equals one city-wide restock opportunity: every canonical seller receives one lifecycle pass, but its persistent assortment is never rerolled. Shops are treated as available when queried; Vend-R does not enforce opening hours or simulate hourly logistics. An optional calendar date can trigger one daily pass, while manual day advancement remains available for development/tabletop control.
+
+Purchases reduce saved quantities immediately. A sourceable item that is not part of a seller's normal assortment can be ordered without permanently adding it to that assortment; it becomes an incoming `order` row and is delivered on a later daily pass according to the existing supply-delay model. Every mutation rebuilds the availability index.
 
 ## Hosting direction
 
