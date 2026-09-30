@@ -31,7 +31,7 @@ A named manufacturer affinity resolves from the human manufacturer name to Catal
 ```bash
 python scripts/build_commercial_profiles.py
 python scripts/night_city_stock.py \
-  --profiles data/shops/night-city-2045-live-demo-profiles.json \
+  --profiles data/shops/night-city-2045-vendr-database-v0.8.json \
   plan --entity NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE
 ```
 
@@ -39,7 +39,7 @@ Generate a persistent seller:
 
 ```bash
 python scripts/night_city_stock.py \
-  --profiles data/shops/night-city-2045-live-demo-profiles.json \
+  --profiles data/shops/night-city-2045-vendr-database-v0.8.json \
   generate \
   --entity NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE \
   --seed campaign-rico \
@@ -50,7 +50,7 @@ Generate an event inventory:
 
 ```bash
 python scripts/night_city_stock.py \
-  --profiles data/shops/night-city-2045-live-demo-profiles.json \
+  --profiles data/shops/night-city-2045-vendr-database-v0.8.json \
   generate \
   --entity NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET \
   --seed campaign-rico \
@@ -58,4 +58,4 @@ python scripts/night_city_stock.py \
   --output build/rc-night-market-session-12.json
 ```
 
-The included profile file is only the connected vertical-slice sample. The bridge is designed to consume the larger Night City stock-profile dataset as it is brought into the repository.
+The repository now includes the full Vend-R v0.8 Night City database. `load_profiles()` reads its `stock_profiles` array directly, so the bridge, place graph, commerce templates, and parent/child relationships share one canonical imported source.
