@@ -30,6 +30,7 @@ WORLD_ID = "night-city-2045"
 WORLD_DIR = ROOT / "data/worlds" / WORLD_ID
 DEFAULT_CITY_OUTPUT = ROOT / "build/data/worlds/night-city-2045/city-stock.v0.1.json"
 DEFAULT_INDEX_OUTPUT = ROOT / "build/data/worlds/night-city-2045/availability-index.v0.1.json"
+DEFAULT_COVERAGE_OUTPUT = ROOT / "build/data/worlds/night-city-2045/stock-coverage.v0.1.json"
 
 CATALOG_MODES = {
     "catalog_stock",
@@ -386,7 +387,94 @@ def build_availability_index(
     }
 
 
-def summary_lines(city_stock: dict[str, Any], index: dict[str, Any]) -> list[str]:
+def build_catalogue_coverage(
+    city_stock: dict[str, Any],
+    index: dict[str, Any],
+    engine: WorldStockEngine | None = None,
+) -> dict[str, Any]:
+    """Explain which catalogue items the existing canonical seller network can support."""
+    engine = engine or WorldStockEngine()
+    sellers = city_stock["sellers"]
+    persistent_item_ids = {
+        line["item_id"]
+        for seller in sellers
+        for line in seller["assortment"]
+    }
+    indexed_item_ids = {row["item_id"] for row in index["items"]}
+
+    rows: list[dict[str, Any]] = []
+    counts: dict[str, int] = defaultdict(int)
+    department_counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+
+    for item in sorted(engine.items, key=lambda row: row["id"]):
+        item_id = item["id"]
+        profile = engine.commercial_by_id[item_id]
+        normal_sellers = [
+            seller["entity_id"]
+            for seller in sellers
+            if engine.eligible(item_id, seller["shop"], special=False)
+        ]
+        special_sellers = normal_sellers or [
+            seller["entity_id"]
+            for seller in sellers
+            if engine.eligible(item_id, seller["shop"], special=True)
+        ]
+
+        if item_id in persistent_item_ids:
+            status = "persistent_assortment"
+        elif item_id in indexed_item_ids:
+            status = "current_special"
+        elif normal_sellers:
+            status = "normal_eligible_not_assorted"
+        elif special_sellers:
+            status = "special_only_eligible"
+        else:
+            status = "no_eligible_canonical_seller"
+
+        counts[status] += 1
+        department = str(profile.get("department") or "unclassified")
+        department_counts[department][status] += 1
+        rows.append(
+            {
+                "item_id": item_id,
+                "item_name": item["name"],
+                "department": department,
+                "product_identity": profile.get("product_identity"),
+                "commodity_kind": profile.get("commodity_kind"),
+                "supply_profile": profile.get("supply_profile"),
+                "market_channels": list(profile.get("market_channels", [])),
+                "coverage_status": status,
+                "normal_eligible_seller_count": len(normal_sellers),
+                "normal_eligible_seller_ids": normal_sellers,
+                "special_eligible_seller_count": len(special_sellers),
+                "special_eligible_seller_ids": special_sellers,
+            }
+        )
+
+    return {
+        "format_version": "0.1.0",
+        "world_id": city_stock["world_id"],
+        "stock_cycle": city_stock["stock_cycle"],
+        "policy": {
+            "seller_generation": False,
+            "meaning": (
+                "Coverage is measured only against source-reviewed canonical sellers with "
+                "explicit stocking profiles. A gap is not permission to generate a shop."
+            ),
+        },
+        "summary": {
+            "catalogue_items_total": len(rows),
+            **dict(sorted(counts.items())),
+        },
+        "by_department": {
+            department: dict(sorted(values.items()))
+            for department, values in sorted(department_counts.items())
+        },
+        "items": rows,
+    }
+
+
+def summary_lines(city_stock: dict[str, Any], index: dict[str, Any], coverage_report: dict[str, Any]) -> list[str]:
     coverage = city_stock["coverage"]
     lines = [
         (
@@ -403,6 +491,14 @@ def summary_lines(city_stock: dict[str, Any], index: dict[str, Any]) -> list[str
             f"distribution={coverage['distribution_entities']}"
         ),
         f"Unresolved catalogue candidates: {coverage['unresolved_catalogue_candidates']}",
+        (
+            "Catalogue coverage: "
+            + ", ".join(
+                f"{key}={value}"
+                for key, value in coverage_report["summary"].items()
+                if key != "catalogue_items_total"
+            )
+        ),
     ]
     for row in city_stock["unresolved_catalogue_candidates"]:
         lines.append(
@@ -414,11 +510,14 @@ def summary_lines(city_stock: dict[str, Any], index: dict[str, Any]) -> list[str
 def write_outputs(
     city_stock: dict[str, Any],
     index: dict[str, Any],
+    coverage_report: dict[str, Any],
     city_output: Path,
     index_output: Path,
+    coverage_output: Path,
 ) -> None:
     city_output.parent.mkdir(parents=True, exist_ok=True)
     index_output.parent.mkdir(parents=True, exist_ok=True)
+    coverage_output.parent.mkdir(parents=True, exist_ok=True)
     city_output.write_text(
         json.dumps(city_stock, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
@@ -427,22 +526,36 @@ def write_outputs(
         json.dumps(index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+    coverage_output.write_text(
+        json.dumps(coverage_report, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Realize canonical Night City 2045 stock")
     parser.add_argument("--city-output", default=str(DEFAULT_CITY_OUTPUT))
     parser.add_argument("--index-output", default=str(DEFAULT_INDEX_OUTPUT))
+    parser.add_argument("--coverage-output", default=str(DEFAULT_COVERAGE_OUTPUT))
     args = parser.parse_args()
 
     engine = WorldStockEngine()
     city_stock = build_city_stock(engine)
     index = build_availability_index(city_stock, engine)
-    write_outputs(city_stock, index, Path(args.city_output), Path(args.index_output))
+    coverage_report = build_catalogue_coverage(city_stock, index, engine)
+    write_outputs(
+        city_stock,
+        index,
+        coverage_report,
+        Path(args.city_output),
+        Path(args.index_output),
+        Path(args.coverage_output),
+    )
 
-    print("\n".join(summary_lines(city_stock, index)))
+    print("\n".join(summary_lines(city_stock, index, coverage_report)))
     print(f"Wrote {Path(args.city_output)}")
     print(f"Wrote {Path(args.index_output)}")
+    print(f"Wrote {Path(args.coverage_output)}")
 
 
 if __name__ == "__main__":
