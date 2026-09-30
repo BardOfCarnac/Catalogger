@@ -20,7 +20,7 @@ from night_city_stock import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PROFILES = ROOT / "data/shops/night-city-2045-live-demo-profiles.json"
+DEFAULT_PROFILES = ROOT / "data/shops/night-city-2045-vendr-database-v0.8.json"
 DEFAULT_WEB = ROOT / "web/vendr-live"
 DEFAULT_STATE = ROOT / "build/vendr-demo-state"
 
