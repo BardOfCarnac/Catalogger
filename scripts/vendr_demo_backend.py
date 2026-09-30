@@ -244,7 +244,7 @@ class VendRDemoBackend:
         self.save_bundle(profile, bundle, event_id)
         return self.shop_payload(entity_id, requested_event_id=event_id, materialize=False)
 
-    def _matching_items(self, q: str, limit: int = 12) -> list[dict[str, Any]]:
+    def _matching_items(self, q: str, limit: int | None = None) -> list[dict[str, Any]]:
         folded = q.casefold().strip()
         if not folded:
             return []
@@ -257,13 +257,22 @@ class VendRDemoBackend:
             rank = 0 if f == folded else (1 if f.startswith(folded) else 2)
             rows.append((rank, len(name), name, item))
         rows.sort(key=lambda x: (x[0], x[1], x[2].casefold()))
-        return [row[3] for row in rows[:limit]]
+        matched = [row[3] for row in rows]
+        return matched if limit is None else matched[:limit]
 
-    def search(self, q: str, requested_sources: list[str] | None = None, requested_event_id: str | None = None) -> dict[str, Any]:
+    def search(
+        self,
+        q: str,
+        requested_sources: list[str] | None = None,
+        requested_event_id: str | None = None,
+        exact_item_id: str | None = None,
+    ) -> dict[str, Any]:
         items = self._matching_items(q)
-        shop_name_matches = [row for row in self.list_shops() if q.casefold().strip() and q.casefold().strip() in str(row.get("name") or "").casefold()]
+        selected_item = next((row for row in items if str(row.get("id")) == str(exact_item_id)), None) if exact_item_id else None
+        offer_items = [selected_item] if selected_item else items[:12]
+        shop_name_matches = [] if exact_item_id else [row for row in self.list_shops() if q.casefold().strip() and q.casefold().strip() in str(row.get("name") or "").casefold()]
         offers: list[dict[str, Any]] = []
-        for item in items:
+        for item in offer_items:
             item_id = str(item["id"])
             for profile in self.profiles:
                 plan = plan_profile(profile)
@@ -289,7 +298,19 @@ class VendRDemoBackend:
                     scored = self.engine.score(item_id, context)
                     offers.append({"kind": "plausible", "item_id": item_id, "item_name": item.get("name"), "shop_entity_id": profile["entity_id"], "shop_name": profile.get("name"), "district": profile.get("district"), "quantity": None, "asking_price": None, "visibility": None, "event_id": event_id, "score": scored.get("score")})
         offers.sort(key=lambda r: (r["kind"] != "available", -(r["score"] or 0), str(r["shop_name"]).casefold()))
-        return {"query": q, "items": [{"item_id": row["id"], "name": row.get("name")} for row in items], "shop_name_matches": shop_name_matches[:10], "offers": offers[:40], "note": "Plausible results are scored without materializing unopened shop inventories; opening a shop creates/persists its actual assortment."}
+        return {
+            "query": q,
+            "active_item_id": str(selected_item["id"]) if selected_item else None,
+            "items": [{"item_id": row["id"], "name": row.get("name")} for row in items],
+            "shop_name_matches": shop_name_matches[:10],
+            "offers": offers[:60],
+            "note": (
+                "Exact item selected; seller results are restricted to that catalogue object."
+                if selected_item
+                else "Broad search; exact catalogue-name matches are returned for the item strip. "
+                     "Seller offers are drawn from the leading matches without materializing unopened inventories."
+            ),
+        }
 
     def reset(self) -> int:
         count = 0
