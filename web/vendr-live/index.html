@@ -18,10 +18,10 @@
     <button class="brand" data-go="home" aria-label="Vend-R home">
       <span class="brand-mark">V</span><span>VEND-R</span>
     </button>
-    <div class="worldline"><span class="live-dot"></span><span id="worldLabel">NIGHT CITY 2045 · LIVE SLICE</span></div>
+    <div class="worldline"><span class="live-dot"></span><span id="worldLabel">NIGHT CITY 2045 · SUPABASE LIVE</span></div>
     <div class="top-actions">
-      <button id="sourceButton" class="chip" title="Choose which Catalogger sources may appear when a shop is first materialized">SOURCES · ALL</button>
-      <button id="gmButton" class="chip">GM</button>
+      <button id="sourceButton" class="chip" disabled title="Public preview uses the full catalogue">CATALOG · ALL</button>
+      <button id="gmButton" class="chip" disabled>READ ONLY</button>
     </div>
   </header>
 
@@ -149,7 +149,7 @@
     <p>This filter is applied when a shop is first materialized. An existing shop keeps the source contract it was created with.</p>
   </div>
   <div id="toast" class="toast"></div>
-  <footer><span>UNOFFICIAL · VEND-R CONNECTED VERTICAL SLICE</span><button id="resetButton">RESET DEMO WORLD</button></footer>
+  <footer><span>UNOFFICIAL · VEND-R CONNECTED VERTICAL SLICE</span><button id="resetButton" style="display:none" aria-hidden="true">RESET DEMO WORLD</button></footer>
 </div>
 <script src="app.js"></script>
 </body>
