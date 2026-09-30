@@ -22,6 +22,8 @@ with tempfile.TemporaryDirectory(prefix="vendr-demo-test-") as tmp:
         default_event_id="ci-event",
     )
 
+    assert len(backend.profiles) == 109, f"expected full v0.8 profile set, got {len(backend.profiles)}"
+
     before = backend.shop_payload(DATA_INC)
     assert before["materialized"] is True
     assert before["stock"], "Data Inc materialized with no live stock"
