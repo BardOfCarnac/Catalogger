@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Unit tests for Night City stock-profile translation, independent of the full catalogue build."""
 from copy import deepcopy
+from pathlib import Path
 
-from night_city_stock import NightCityStockBridge, context_patch, plan_profile
+from night_city_stock import NightCityStockBridge, context_patch, load_profiles, plan_profile
 
 
 MANUFACTURERS = [
@@ -183,3 +184,12 @@ else:
     raise AssertionError("event bundle was restocked instead of regenerated")
 
 print("OK: Night City stock-profile bridge translation and lifecycle policy")
+
+
+def test_load_profiles_accepts_v08_master_database():
+    repo_root = Path(__file__).resolve().parents[1]
+    profiles = load_profiles(repo_root / "data" / "shops" / "night-city-2045-vendr-database-v0.8.json")
+    assert len(profiles) == 109
+    assert sum(row.get("stock_mode") == "DIRECT_SELLER" for row in profiles) == 62
+    assert sum(row.get("stock_mode") == "AGGREGATE_CONTAINER" for row in profiles) == 17
+    assert sum(row.get("stock_mode") == "EVENT_MARKET" for row in profiles) == 6
