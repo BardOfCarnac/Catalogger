@@ -90,7 +90,12 @@ class Handler(BaseHTTPRequestHandler):
                 return
             if parsed.path == "/api/search":
                 q = query_one(query, "q", "") or ""
-                self._json(HTTPStatus.OK, self.app.backend.search(q, requested_sources=source_codes(query_one(query, "sources")), requested_event_id=query_one(query, "event_id")))
+                self._json(HTTPStatus.OK, self.app.backend.search(
+                    q,
+                    requested_sources=source_codes(query_one(query, "sources")),
+                    requested_event_id=query_one(query, "event_id"),
+                    exact_item_id=query_one(query, "item_id"),
+                ))
                 return
             parts = self._route_parts(parsed.path)
             if len(parts) == 3 and parts[:2] == ["api", "shops"]:
