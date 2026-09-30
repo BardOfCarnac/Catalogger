@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="rear-field" aria-hidden="true"></div>
+<div id="pageWipe" class="page-wipe" aria-hidden="true">
+  <div class="wipe-rear"></div>
+  <div class="wipe-sheet wipe-sheet-a"></div>
+  <div class="wipe-sheet wipe-sheet-b"></div>
+</div>
 <div id="app" class="app">
   <header class="topbar">
     <button class="brand" data-go="home" aria-label="Vend-R home">
@@ -81,12 +87,47 @@
       </section>
     </section>
 
-    <section class="view" id="searchView">
-      <div class="breadcrumb"><button data-go="home">Vend-R</button><span>/</span><b>Locate</b></div>
-      <div class="utility-head"><div><span class="micro hot">Table-facing utility</span><h2>LOCATE<br>SOMETHING</h2></div><p>The first answer should be an existing seller. “Plausible” means the item fits that unopened shop’s real Catalogger context; it does not mean the item has been generated onto its shelf yet.</p></div>
-      <form id="searchForm" class="search-box inline-search"><div class="search-line"><input id="searchInput2" autocomplete="off"><button class="primary">SEARCH</button></div></form>
-      <div id="searchSummary" class="search-summary"></div>
-      <div id="searchResults" class="results"></div>
+    <section class="view search-page" id="searchView">
+      <div class="breadcrumb"><button data-go="home">Vend-R</button><span>/</span><b>Search</b></div>
+
+      <div class="search-page-head">
+        <div>
+          <span class="micro">Night City stock index</span>
+          <h2 id="searchPageTitle">SEARCH</h2>
+        </div>
+        <form id="searchForm" class="master-search">
+          <input id="searchInput2" autocomplete="off" aria-label="Search Night City stock">
+          <button class="primary">SEARCH</button>
+        </form>
+      </div>
+
+      <div id="exactItemTabs" class="exact-item-tabs" aria-label="Exact catalogue matches"></div>
+      <div id="exactItemNote" class="exact-item-note"></div>
+
+      <div class="search-layout">
+        <section class="search-main">
+          <div class="search-section-head">
+            <div>
+              <span class="micro hot" id="searchModeLabel">Broad search</span>
+              <h3 id="searchResultsTitle">AVAILABLE AROUND NIGHT CITY</h3>
+            </div>
+            <div id="searchSummary" class="search-summary"></div>
+          </div>
+          <div id="searchResults" class="results search-results"></div>
+        </section>
+
+        <aside class="search-side">
+          <div class="search-context dark-panel">
+            <span class="micro">How this result works</span>
+            <h3 id="searchContextTitle">Broad search</h3>
+            <p id="searchContextCopy">Vend-R is showing the current commercial picture for your words. Choose an exact catalogue item above only when you want to narrow the city to that one object.</p>
+          </div>
+          <div class="search-context">
+            <span class="micro">Search contract</span>
+            <p>Existing sellers come first. “Plausible” means the item fits an unopened seller’s real Catalogger context; the search does not generate or materialize stock.</p>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <section class="view" id="itemView">
