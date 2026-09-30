@@ -8,7 +8,9 @@ from pathlib import Path
 from build_city_stock import (
     DEFAULT_CITY_OUTPUT,
     DEFAULT_INDEX_OUTPUT,
+    DEFAULT_COVERAGE_OUTPUT,
     build_availability_index,
+    build_catalogue_coverage,
     build_city_stock,
     write_outputs,
 )
@@ -19,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 engine = WorldStockEngine()
 city = build_city_stock(engine)
 index = build_availability_index(city, engine)
+coverage_report = build_catalogue_coverage(city, index, engine)
 
 assert city["format_version"] == "0.1.0"
 assert city["world_id"] == "night-city-2045"
@@ -127,10 +130,32 @@ unresolved = city["unresolved_catalogue_candidates"]
 assert city["coverage"]["unresolved_catalogue_candidates"] == len(unresolved)
 assert len({row["entity_id"] for row in unresolved}) == len(unresolved)
 
+# Catalogue coverage measures the existing seller network rather than generating shops.
+summary = coverage_report["summary"]
+assert summary["catalogue_items_total"] == len(engine.items)
+assert sum(value for key, value in summary.items() if key != "catalogue_items_total") == len(engine.items)
+assert len(coverage_report["items"]) == len(engine.items)
+assert {row["coverage_status"] for row in coverage_report["items"]} <= {
+    "persistent_assortment",
+    "current_special",
+    "normal_eligible_not_assorted",
+    "special_only_eligible",
+    "no_eligible_canonical_seller",
+}
+assert coverage_report["policy"]["seller_generation"] is False
+
 # The generated files are ordinary deterministic build artifacts.
-write_outputs(city, index, DEFAULT_CITY_OUTPUT, DEFAULT_INDEX_OUTPUT)
+write_outputs(
+    city,
+    index,
+    coverage_report,
+    DEFAULT_CITY_OUTPUT,
+    DEFAULT_INDEX_OUTPUT,
+    DEFAULT_COVERAGE_OUTPUT,
+)
 assert json.loads(DEFAULT_CITY_OUTPUT.read_text(encoding="utf-8")) == city
 assert json.loads(DEFAULT_INDEX_OUTPUT.read_text(encoding="utf-8")) == index
+assert json.loads(DEFAULT_COVERAGE_OUTPUT.read_text(encoding="utf-8")) == coverage_report
 
 print(
     "OK: city stock; "
@@ -138,5 +163,6 @@ print(
     f"assortment_lines={city['coverage']['persistent_assortment_lines']}, "
     f"stock_rows={city['coverage']['cycle_stock_rows']}, "
     f"indexed_items={index['indexed_item_count']}, "
-    f"unresolved_candidates={len(unresolved)}"
+    f"unresolved_candidates={len(unresolved)}, "
+    f"no_eligible_seller={summary.get('no_eligible_canonical_seller', 0)}"
 )
