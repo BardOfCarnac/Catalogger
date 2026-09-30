@@ -138,7 +138,8 @@ assert len(coverage_report["items"]) == len(engine.items)
 assert {row["coverage_status"] for row in coverage_report["items"]} <= {
     "persistent_assortment",
     "current_special",
-    "normal_eligible_not_assorted",
+    "orderable_unassorted",
+    "weakly_eligible_unassorted",
     "special_only_eligible",
     "no_eligible_canonical_seller",
 }
