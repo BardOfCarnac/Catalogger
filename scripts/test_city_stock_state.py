@@ -176,6 +176,16 @@ assert repeat_receipt["accepted"] is False
 assert repeat_receipt["event_id"] == failed_receipt["event_id"]
 assert len(repeat_shop["history"]) == failed_history_count
 
+failed_index = build_availability_index(failed_state, engine)
+failed_item = next(row for row in failed_index["items"] if row["item_id"] == failed_item_id)
+failed_index_seller = next(
+    row for row in failed_item["sellers"]
+    if row["source_entity_id"] == failed_seller_id
+)
+assert failed_index_seller["availability"] == "order"
+assert failed_index_seller["order_reason"] == "source_failed_today"
+assert failed_index_seller["estimated_delivery_cycles"] is None
+
 # Find one deterministic accepted sourcing attempt from the same unchanged city state.
 ordered = None
 order_receipt = None
