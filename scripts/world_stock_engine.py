@@ -10,11 +10,11 @@ from __future__ import annotations
 
 from typing import Any
 
-from stock_engine import StockEngine
+from stock_lifecycle import StockLifecycleEngine
 
 
-class WorldStockEngine(StockEngine):
-    """StockEngine with optional hard constraints for source-defined sellers.
+class WorldStockEngine(StockLifecycleEngine):
+    """Lifecycle-aware StockEngine with optional hard constraints for source-defined sellers.
 
     Supported realized-context keys:
       allowed_item_ids
