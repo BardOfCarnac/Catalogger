@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the shared once-per-day Night City stock state."""
+"""Regression tests for the shared once-per-day Night City stock pulse."""
 from __future__ import annotations
 
 from build_city_stock import build_availability_index, build_catalogue_coverage
@@ -18,9 +18,11 @@ city = initialize_city_stock(engine, "2045-01-01")
 assert city["stock_day"] == 0
 assert city["stock_cycle"] == 0
 assert city["stock_date"] == "2045-01-01"
-assert city["daily_stock_policy"]["restock_passes_per_day"] == 1
+assert city["daily_stock_policy"]["city_pulses_per_day"] == 1
+assert city["daily_stock_policy"]["full_seller_restock_passes"] == 0
 assert city["daily_stock_policy"]["opening_hours_enforced"] is False
 assert city["daily_stock_policy"]["clock_simulation"] is False
+assert city["last_city_pulse"] is None
 
 initial_assortments = {
     seller["entity_id"]: {
@@ -40,27 +42,55 @@ assert day1["stock_day"] == 1
 assert day1["stock_cycle"] == 1
 assert day1["stock_date"] == "2045-01-02"
 assert all(seller["state"]["stock_cycle"] == 1 for seller in day1["sellers"])
+
+pulse = day1["last_city_pulse"]
+low, high = engine.model["city_pulse"]["daily_mutation_range"]
+assert low <= pulse["budget"] <= high
+assert sum(pulse["requested"].values()) == pulse["budget"]
+assert 0 < pulse["applied_mutations"] <= pulse["budget"]
+assert pulse["skipped_mutations"] == pulse["budget"] - pulse["applied_mutations"]
+assert pulse["touched_sellers"] > 0
+
 assert {
     seller["entity_id"]: {
         (row["item_id"], row["role"])
         for row in seller["assortment"]
     }
     for seller in day1["sellers"]
-} == initial_assortments, "daily restock must never rebuild persistent assortment"
+} == initial_assortments, "city pulse must never rebuild persistent assortment"
 
-# A large date jump still causes only one stock pass; unseen days are not replayed.
+ambient_event_types = {
+    "ambient_sale",
+    "ambient_busy_sale",
+    "ambient_sellout",
+    "ambient_top_up",
+    "ambient_restore",
+    "special_arrival",
+    "special_departed",
+}
+day1_events = [
+    event
+    for seller in day1["sellers"]
+    for event in seller["history"]
+    if event.get("cycle") == 1 and event.get("event_type") in ambient_event_types
+]
+assert len(day1_events) == pulse["applied_mutations"]
+
+# A large date jump still causes only one pulse; unseen days are not replayed.
 jumped, action = sync_calendar_date(day1, "2045-01-10", engine)
 assert action == "advanced"
 assert jumped["stock_day"] == 2
 assert jumped["stock_date"] == "2045-01-10"
 assert all(seller["state"]["stock_cycle"] == 2 for seller in jumped["sellers"])
+assert jumped["last_city_pulse"]["stock_day"] == 2
 
 # Find ordinary visible finite shelf stock and make a purchase.
 purchase_target = None
 for seller in jumped["sellers"]:
     for row in seller["stock"]:
         if (
-            row.get("status") == "in_stock"
+            row.get("assortment_role") in {"core", "regular", "occasional", "special"}
+            and row.get("status") == "in_stock"
             and row.get("visibility", "public") != "hidden"
             and isinstance(row.get("quantity"), int)
             and row["quantity"] > 0
@@ -102,29 +132,69 @@ assert any(
     for row in seller_after["history"]
 )
 
-# Choose an item that is not a persistent line anywhere but can be sourced by a canonical seller.
+# Build a pool of sourceable-but-unassorted item/seller pairs.
 index_before = build_availability_index(purchased, engine)
 coverage = build_catalogue_coverage(purchased, index_before, engine)
-orderable = next(
-    row for row in coverage["items"]
-    if row["coverage_status"] == "orderable_unassorted"
-    and row["orderable_sellers"]
-)
-order_item_id = orderable["item_id"]
-order_seller_id = orderable["orderable_sellers"][0]["source_entity_id"]
+sourceable_pairs: list[tuple[str, str]] = []
+for item in coverage["items"]:
+    if item["coverage_status"] != "orderable_unassorted":
+        continue
+    for seller in item["orderable_sellers"]:
+        sourceable_pairs.append((item["item_id"], seller["source_entity_id"]))
+assert sourceable_pairs
 
-pre_item = next(row for row in index_before["items"] if row["item_id"] == order_item_id)
-pre_seller = next(
-    row for row in pre_item["sellers"]
-    if row["source_entity_id"] == order_seller_id
-)
-assert pre_seller["availability"] == "order"
-assert pre_seller["order_reason"] == "sourceable"
-assert pre_seller["normally_carried"] is False
+# Ordering is uncertain once, at placement. Find one deterministic failure and verify
+# retrying on the same stock day does not let callers spam the sourcing roll.
+failed_state = None
+failed_receipt = None
+failed_pair = None
+for item_id, source_seller_id in sourceable_pairs[:500]:
+    candidate_state, candidate_receipt = place_order(
+        purchased, source_seller_id, item_id, quantity=1, engine=engine
+    )
+    if not candidate_receipt["accepted"]:
+        failed_state = candidate_state
+        failed_receipt = candidate_receipt
+        failed_pair = (item_id, source_seller_id)
+        break
+assert failed_state is not None and failed_receipt is not None and failed_pair is not None
+assert failed_receipt["reason"] == "source_failed_today"
+assert failed_receipt["retry_day"] == purchased["stock_day"] + 1
 
-ordered, order_receipt = place_order(
-    purchased, order_seller_id, order_item_id, quantity=1, engine=engine
+failed_item_id, failed_seller_id = failed_pair
+failed_shop = next(
+    row for row in failed_state["sellers"] if row["entity_id"] == failed_seller_id
 )
+failed_history_count = len(failed_shop["history"])
+repeat_state, repeat_receipt = place_order(
+    failed_state, failed_seller_id, failed_item_id, quantity=1, engine=engine
+)
+repeat_shop = next(
+    row for row in repeat_state["sellers"] if row["entity_id"] == failed_seller_id
+)
+assert repeat_receipt["accepted"] is False
+assert repeat_receipt["event_id"] == failed_receipt["event_id"]
+assert len(repeat_shop["history"]) == failed_history_count
+
+# Find one deterministic accepted sourcing attempt from the same unchanged city state.
+ordered = None
+order_receipt = None
+order_item_id = None
+order_seller_id = None
+for item_id, source_seller_id in sourceable_pairs:
+    candidate_state, candidate_receipt = place_order(
+        purchased, source_seller_id, item_id, quantity=1, engine=engine
+    )
+    if candidate_receipt["accepted"]:
+        ordered = candidate_state
+        order_receipt = candidate_receipt
+        order_item_id = item_id
+        order_seller_id = source_seller_id
+        break
+assert ordered is not None
+assert order_receipt is not None
+assert order_item_id is not None
+assert order_seller_id is not None
 assert order_receipt["order_kind"] == "sourceable"
 assert order_receipt["estimated_delivery_days"] >= 1
 
@@ -143,6 +213,7 @@ assert any(
     row["item_id"] == order_item_id
     and row.get("status") == "incoming"
     and row.get("assortment_role") == "order"
+    and row.get("metadata", {}).get("source_confirmed") is True
     for row in order_shop["stock"]
 )
 assert any(
@@ -151,7 +222,8 @@ assert any(
     for row in order_shop["history"]
 )
 
-# Advance one city day at a time until the order's declared arrival day.
+# Accepted orders do not roll supply again. Advancing to the promised day must deliver it,
+# while the ambient city pulse ignores customer-reserved order stock.
 delivered = ordered
 while delivered["stock_day"] < order_receipt["arrival_day"]:
     delivered = advance_city_stock(delivered, engine)
@@ -184,9 +256,12 @@ assert delivered_seller["assortment_role"] == "order"
 assert delivered_seller["normally_carried"] is False
 
 print(
-    "OK: daily city stock; "
+    "OK: daily city pulse; "
     f"day={delivered['stock_day']}, "
+    f"pulse={delivered['last_city_pulse']['applied_mutations']}/"
+    f"{delivered['last_city_pulse']['budget']}, "
     f"purchase={purchase_item_id}, "
-    f"order={order_item_id}, "
+    f"failed_order={failed_item_id}, "
+    f"accepted_order={order_item_id}, "
     f"arrival_day={order_receipt['arrival_day']}"
 )
