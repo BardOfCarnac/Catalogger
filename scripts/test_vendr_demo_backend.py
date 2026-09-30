@@ -57,5 +57,7 @@ with tempfile.TemporaryDirectory(prefix="vendr-demo-test-") as tmp:
     container = backend.shop_payload(KAITO, materialize=False)
     assert container["plan"]["owns_stock"] is False
     assert container["plan"]["action"] == "delegate_to_children"
+    assert "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN" in container["children"]
+    assert len(container["children"]) == 5
 
 print("OK: connected Vend-R demo persists, purchases, restocks, searches, events and containers")
