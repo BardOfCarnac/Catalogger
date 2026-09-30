@@ -21,6 +21,7 @@ jobs:
       - run: python scripts/build_city_stock.py
       - run: python scripts/test_city_stock.py
       - run: python scripts/test_city_stock_state.py
+      - run: python scripts/audit_city_stock_pulse.py
       - run: python scripts/test_world_runtime_chain_profiles.py
       - run: python scripts/test_world_runtime_purchase_profiles.py
       - run: python scripts/test_world_runtime_market_profiles.py
