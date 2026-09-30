@@ -212,6 +212,8 @@ def build_city_stock(engine: WorldStockEngine | None = None) -> dict[str, Any]:
         "format_version": "0.1.0",
         "world_id": WORLD_ID,
         "stock_cycle": 0,
+        "stock_day": 0,
+        "stock_date": None,
         "policy": {
             "shop_generation": False,
             "realization_rule": (
@@ -297,7 +299,11 @@ def _availability_for_item(
     )
 
     assortment_line = assortment_by_item.get(item_id)
-    role = assortment_line.get("role") if assortment_line else "special"
+    stock_role = next(
+        (row.get("assortment_role") for row in selected + incoming if row.get("assortment_role")),
+        None,
+    )
+    role = assortment_line.get("role") if assortment_line else (stock_role or "special")
 
     return {
         "source_entity_id": seller["entity_id"],
@@ -431,6 +437,8 @@ def build_availability_index(
         "format_version": "0.1.0",
         "world_id": city_stock["world_id"],
         "stock_cycle": city_stock["stock_cycle"],
+        "stock_day": city_stock.get("stock_day", city_stock["stock_cycle"]),
+        "stock_date": city_stock.get("stock_date"),
         "status_vocabulary": ["in_stock", "ask", "order", "sold_out", "hidden"],
         "visibility_note": (
             "hidden rows are retained for internal state but should not be exposed in ordinary "
