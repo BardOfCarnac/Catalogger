@@ -407,6 +407,15 @@ def _apply_city_pulse(
                 target = line.get("target_quantity")
                 if isinstance(target, int):
                     row["quantity"] = target
+                seller["stock"] = [
+                    existing
+                    for existing in seller.get("stock", [])
+                    if not (
+                        existing["item_id"] == item_id
+                        and existing.get("status") == "sold"
+                        and existing.get("assortment_role") in {"core", "regular", "occasional"}
+                    )
+                ]
                 seller["stock"].append(row)
                 line["last_stocked_cycle"] = next_day
                 used.add((seller["entity_id"], item_id))
@@ -436,9 +445,12 @@ def _apply_city_pulse(
             if candidates:
                 seller, row = rng.choice(candidates)
                 quantity = row.get("quantity")
-                row["quantity"] = 0 if isinstance(quantity, int) else quantity
-                row["status"] = "sold"
                 used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                seller["stock"] = [
+                    existing
+                    for existing in seller.get("stock", [])
+                    if existing.get("id") != row.get("id")
+                ]
                 _record_seller_event(
                     seller,
                     engine,
