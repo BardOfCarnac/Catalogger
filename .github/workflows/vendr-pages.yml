@@ -1,0 +1,42 @@
+name: Deploy Vend-R Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/vendr-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: vendr-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout Vend-R preview branch
+        uses: actions/checkout@v6
+        with:
+          ref: vendr-live-catalogger-demo
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Vend-R site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: web/vendr-live
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
