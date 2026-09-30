@@ -378,7 +378,7 @@ def _apply_city_pulse(
                 seller, row, line = rng.choice(candidates)
                 target = int(line["target_quantity"])
                 old_quantity = int(row["quantity"])
-                row["quantity"] = target
+                row["quantity"] = min(target, old_quantity + 1)
                 used.add((seller["entity_id"], row["item_id"]))
                 _record_seller_event(
                     seller,
@@ -386,7 +386,7 @@ def _apply_city_pulse(
                     next_day,
                     "ambient_top_up",
                     item_id=row["item_id"],
-                    quantity_delta=target - old_quantity,
+                    quantity_delta=row["quantity"] - old_quantity,
                     price=row.get("asking_price"),
                     metadata={"city_pulse": True, "target_quantity": target},
                 )
