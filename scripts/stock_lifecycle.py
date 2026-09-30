@@ -608,10 +608,16 @@ class StockLifecycleEngine(StockEngine):
 
         excluded = set(assortment_by_item) | {row["item_id"] for row in surviving_specials}
         special_context = copy.deepcopy(context)
-        low, high = special_context.get("specials") or [
+        special_range = special_context.get("specials") or [
             self.model["specials"]["default_min"],
             self.model["specials"]["default_max"],
         ]
+        if not isinstance(special_range, (list, tuple)) or len(special_range) < 2:
+            special_range = [
+                self.model["specials"]["default_min"],
+                self.model["specials"]["default_max"],
+            ]
+        low, high = special_range[0], special_range[1]
         delta = self._special_delta(state)
         special_context["specials"] = [max(0, int(low) + delta), max(0, int(high) + delta)]
         new_specials = self._pick_specials(rng, special_context, excluded, cycle)
