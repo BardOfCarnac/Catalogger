@@ -106,11 +106,21 @@ class WorldStockEngine(StockLifecycleEngine):
                 ),
                 None,
             )
+            scored = self.score(item_id, context)
+            target = self._target_quantity(context, item_id, role)
+            reorder_fraction = float(self.lifecycle["reorder_fraction_by_role"][role])
             row = {
                 "shop_id": context["id"],
                 "item_id": item_id,
                 "role": role,
-                "affinity_score": self.score(item_id, context)["score"],
+                "affinity_score": scored["score"],
+                "score_components": scored["components"],
+                "target_quantity": target,
+                "reorder_point": (
+                    None
+                    if target is None
+                    else max(1, int(round(target * reorder_fraction)))
+                ),
                 "introduced_cycle": 0,
                 "last_stocked_cycle": None,
                 "active": True,
