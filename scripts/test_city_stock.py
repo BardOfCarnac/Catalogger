@@ -123,7 +123,16 @@ for item in index["items"]:
             assert row["normally_carried"] is True
             assert row["quantity"] == 0
         if row["availability"] == "order":
-            assert row["incoming_arrival_cycle"] is not None
+            assert row["order_reason"] in {"incoming", "sourceable"}
+            if row["order_reason"] == "incoming":
+                assert row["incoming_arrival_cycle"] is not None
+            else:
+                assert row["incoming_arrival_cycle"] is None
+                assert row["normally_carried"] is False
+                assert row["estimated_delivery_cycles"] is not None
+                assert row["affinity_score"] >= float(
+                    engine.model["role_selection"]["regular"]["minimum_score"]
+                )
 
 # Coverage audit is part of the output rather than hidden in build logs.
 unresolved = city["unresolved_catalogue_candidates"]
@@ -144,6 +153,17 @@ assert {row["coverage_status"] for row in coverage_report["items"]} <= {
     "no_eligible_canonical_seller",
 }
 assert coverage_report["policy"]["seller_generation"] is False
+
+index_items = {row["item_id"]: row for row in index["items"]}
+for row in coverage_report["items"]:
+    if row["coverage_status"] == "orderable_unassorted":
+        assert row["item_id"] in index_items
+        assert any(
+            seller["availability"] == "order"
+            and seller["order_reason"] == "sourceable"
+            and seller["normally_carried"] is False
+            for seller in index_items[row["item_id"]]["sellers"]
+        )
 
 # The generated files are ordinary deterministic build artifacts.
 write_outputs(
