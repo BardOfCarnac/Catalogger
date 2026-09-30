@@ -218,6 +218,7 @@ python scripts/build_kaito_market.py
 python scripts/build_city_stock.py
 python scripts/test_city_stock.py
 python scripts/test_city_stock_state.py
+python scripts/audit_city_stock_pulse.py
 ```
 
 The generated pilot state is written under `build/data/worlds/` and is deterministic from the saved source fixture and seeds. A deployed world would import that initial state and then persist subsequent stock changes rather than regenerating the market on every visit.
@@ -226,9 +227,13 @@ The generated pilot state is written under `build/data/worlds/` and is determini
 
 The current Night City implementation does not generate extra shops. `build_city_stock.py` realizes the source-reviewed canonical sellers that already declare catalogue stocking, then builds a reverse item-to-seller availability index. The current canonical network contains 56 catalogue-stock sellers and can expose 1,227 catalogue items through shelf stock, current specials or sourceable `ORDER` results without inventing additional businesses.
 
-`city_stock_state.py` is the mutable shared-world layer. One `stock_day` equals one city-wide restock opportunity: every canonical seller receives one lifecycle pass, but its persistent assortment is never rerolled. Shops are treated as available when queried; Vend-R does not enforce opening hours or simulate hourly logistics. An optional calendar date can trigger one daily pass, while manual day advancement remains available for development/tabletop control.
+`city_stock_state.py` is the mutable shared-world layer. One `stock_day` produces one **city pulse**, not 56 independent shop simulations. The pulse first formulates a small deterministic daily budget (currently 40–70 mutations), then distributes sale, busy-sale, sellout, one-unit top-up, sold-line restore, special-arrival and special-departure changes across suitable existing stock. This is intentionally a surface simulation: it makes Night City look busy from a distance without modelling NPC customers or a real economy. Persistent assortment is never rerolled.
 
-Purchases reduce saved quantities immediately. A sourceable item that is not part of a seller's normal assortment can be ordered without permanently adding it to that assortment; it becomes an incoming `order` row and is delivered on a later daily pass according to the existing supply-delay model. Every mutation rebuilds the availability index.
+Shops are treated as available when queried; Vend-R does not enforce opening hours or simulate hourly logistics. An optional calendar date can trigger one pulse, while manual day advancement remains available for development/tabletop control. Missed real dates are not replayed.
+
+Purchases reduce saved quantities immediately. `ORDER` before purchase means a seller is plausible enough to attempt sourcing the item. Placing the order makes **one sourcing roll**. A failed attempt is marked `source_failed_today` and cannot be spammed again until the next stock day. If the sourcing attempt succeeds, the order is confirmed and its later delivery is reliable; it does not roll supply again while in transit. Ordered stock never joins the seller's permanent assortment. Every mutation rebuilds the availability index.
+
+`audit_city_stock_pulse.py` runs a short multi-day diagnostic so pulse weights can be tuned by observed surface stability rather than economic assumptions.
 
 ## Hosting direction
 
@@ -247,6 +252,10 @@ python scripts/test_stock_engine.py
 python scripts/test_stock_lifecycle.py
 python scripts/test_kaito_market.py
 python scripts/build_kaito_market.py
+python scripts/build_city_stock.py
+python scripts/test_city_stock.py
+python scripts/test_city_stock_state.py
+python scripts/audit_city_stock_pulse.py
 ```
 
 The validator checks shard checksums and row counts, duplicate IDs, source/manufacturer foreign keys, retired-ID redirects, exact commercial-default coverage, every controlled vocabulary value, stocking-profile coverage and lifecycle configuration references. The stocking tests generate all fourteen archetypes, verify deterministic generation, enforce unique-items-as-specials, exercise speciality weighting, confirm restocking preserves assortment identity, test source filtering, pending deliveries, lifecycle events and the no-UI inspection report. The Kaito integration test additionally checks location-to-vendor containment, source-defined seller restrictions, local-offering/service separation and deterministic world realization. GitHub Actions runs the full sequence on pushes and pull requests.
