@@ -73,6 +73,16 @@ class VendRDemoBackend:
         self.profiles_path = profiles_path
         self.profiles = load_profiles(profiles_path)
         self.by_id = {str(row["entity_id"]): row for row in self.profiles}
+        master = json_load(profiles_path)
+        self.children_by_parent: dict[str, list[str]] = {}
+        if isinstance(master, dict):
+            for edge in master.get("parent_child_edges", []):
+                if str(edge.get("relation_type") or "").upper() != "CONTAINS_CHILD":
+                    continue
+                parent_id = str(edge.get("parent_entity_id") or "")
+                child_id = str(edge.get("child_entity_id") or "")
+                if parent_id and child_id:
+                    self.children_by_parent.setdefault(parent_id, []).append(child_id)
         self.state_dir = state_dir
         self.world_seed = world_seed
         self.default_event_id = default_event_id
@@ -158,7 +168,7 @@ class VendRDemoBackend:
         plan = plan_profile(profile)
         mode = plan["stock_mode"]
         event_id = self._event_id(profile, requested_event_id)
-        payload: dict[str, Any] = {"entity_id": entity_id, "name": profile.get("name"), "district": profile.get("district"), "parent_name": profile.get("parent_name"), "book_page": profile.get("book_page"), "source_ref": profile.get("source_ref"), "stock_mode": mode, "plan": plan, "type": profile.get("demo_type") or profile.get("primary_archetype") or mode, "tags": profile.get("demo_tags") or "", "copy": profile.get("demo_copy") or profile.get("modelling_note") or "", "modelling_note": profile.get("modelling_note") or "", "children": profile.get("demo_children") or [], "event_id": event_id, "materialized": self.is_materialized(profile, event_id), "stock": [], "state": None, "source_contract": None, "events": []}
+        payload: dict[str, Any] = {"entity_id": entity_id, "name": profile.get("name"), "district": profile.get("district"), "parent_name": profile.get("parent_name"), "book_page": profile.get("book_page"), "source_ref": profile.get("source_ref"), "stock_mode": mode, "plan": plan, "type": profile.get("demo_type") or profile.get("primary_archetype") or mode, "tags": profile.get("demo_tags") or "", "copy": profile.get("demo_copy") or profile.get("modelling_note") or "", "modelling_note": profile.get("modelling_note") or "", "children": self.children_by_parent.get(entity_id, profile.get("demo_children") or []), "event_id": event_id, "materialized": self.is_materialized(profile, event_id), "stock": [], "state": None, "source_contract": None, "events": []}
         if mode in DELEGATING_MODES | NO_STOCK_MODES | TEMPLATE_MODES:
             return payload
         bundle = self.load_bundle(profile, event_id)
