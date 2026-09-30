@@ -101,6 +101,12 @@ Append-only explainable stock events. Current event types include:
 - `condition_active`
 - `order_placed`
 - `purchase`
+- `order_source_failed`
+- `ambient_sale`
+- `ambient_busy_sale`
+- `ambient_sellout`
+- `ambient_top_up`
+- `ambient_restore`
 
 The engine does not need to expose every event to players. They exist so later services can explain state changes, build timelines, surface selected delivery information, or debug unexpected inventories without reconstructing hidden random rolls.
 
@@ -139,43 +145,57 @@ The report exposes core/regular/occasional lines, target/reorder amounts, curren
 
 ## Shared Night City daily stock
 
-`city_stock_state.py` applies the lifecycle to the single shared Night City 2045 world. Its time model is deliberately simple:
+`city_stock_state.py` applies a deliberately cheap surface simulation to the single shared Night City 2045 world. It does **not** call the full per-shop lifecycle restock for every seller each day.
+
+The time model is deliberately simple:
 
 - shops are treated as available when queried; opening hours are not mechanically enforced
 - there is no hourly or background logistics simulation
 - the city has one integer `stock_day`
-- advancing the city gives every canonical catalogue seller exactly one restock/lifecycle pass
+- advancing the city generates one small citywide mutation budget and distributes it across suitable stock
 - `stock_date` is optional synchronization metadata, not a clock used by the stocking engine
 - synchronizing to a later calendar date advances exactly once; missed intermediate calendar days are not replayed
 
-Persistent assortment remains unchanged by a daily pass. Current quantity, failed replenishment, incoming deliveries, specials and temporary supply conditions may change.
+The current pulse budget is 40–70 changes. Mutation types are weighted in `data/stocking/model.json` and currently cover ordinary sales, busier multi-unit sales, low-stock sellouts, one-unit top-ups, restoration of sold-out persistent lines, and special arrivals/departures. A line is affected only if it is a suitable target for that mutation. Persistent assortment is never rebuilt.
+
+This is intentionally not an economy model. The pulse exists to make yesterday's snapshot differ plausibly from today's while touching only tens of rows in a city with more than a thousand persistent assortment relationships.
+
+Confirmed incoming customer orders are processed separately from the pulse. Pulse mutations never consume customer `order` stock.
 
 The city state can be initialized and advanced with:
 
 ```bash
 python scripts/city_stock_state.py init --date 2045-01-01
-python scripts/city_stock_state.py advance \\
+python scripts/city_stock_state.py advance \
   --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json
 ```
 
 For a site that wants calendar-date synchronization without enforcing opening times:
 
 ```bash
-python scripts/city_stock_state.py sync-date \\
-  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \\
+python scripts/city_stock_state.py sync-date \
+  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \
   --date 2045-01-02
 ```
 
-Purchases reduce the persisted current quantity immediately. Orders do not alter persistent assortment; they create an incoming `order` stock row with a supply-dependent arrival day:
+Purchases reduce the persisted current quantity immediately.
+
+`ORDER` has three useful internal states:
+
+- `sourceable` — the seller is eligible and sufficiently well matched to attempt sourcing
+- `source_failed_today` — today's one sourcing roll failed; retry on a later stock day
+- `incoming` — sourcing succeeded and the delivery is confirmed
+
+The one sourcing roll uses a broad supply-profile probability with a small affinity bonus. Once accepted, the order gets its supply-dependent arrival day and is not rolled again in transit. Orders never alter persistent assortment.
 
 ```bash
-python scripts/city_stock_state.py purchase \\
-  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \\
+python scripts/city_stock_state.py purchase \
+  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \
   --seller <canonical-entity-id> --item <VENDR-item-id> --quantity 1
 
-python scripts/city_stock_state.py order \\
-  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \\
+python scripts/city_stock_state.py order \
+  --input build/data/worlds/night-city-2045/city-stock-state.v0.1.json \
   --seller <canonical-entity-id> --item <VENDR-item-id> --quantity 1
 ```
 
-Every mutation rebuilds the reverse availability index. Player-facing availability can therefore distinguish current shelf stock from `ASK`, actual incoming `ORDER`, sourceable-but-not-yet-ordered `ORDER`, and `SOLD OUT` without rerolling the shop.
+Every mutation rebuilds the reverse availability index. `audit_city_stock_pulse.py` advances a clean city through fourteen stock days and reports stocked rows, finite units, sold rows, specials, sellers touched and mutation counts so the deliberately impressionistic pulse can be tuned for stability.
