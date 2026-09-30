@@ -1,9 +1,18 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = {gm:false,source:'all',shops:[],district:'ALL',currentShop:null,currentShopData:null,currentItem:null,eventId:'rc-demo-night-01'};
+  const state = {gm:false,source:'all',shops:[],district:'ALL',currentShop:null,currentShopData:null,currentItem:null,eventId:'rc-demo-night-01',searchData:null,searchQuery:'',searchItem:null};
   const views={home:$('homeView'),shop:$('shopView'),search:$('searchView'),item:$('itemView')};
   function toast(message,error=false){const el=$('toast');el.textContent=message;el.classList.toggle('error',error);el.classList.add('show');clearTimeout(window.__vendrToast);window.__vendrToast=setTimeout(()=>el.classList.remove('show'),2800)}
   function go(name){Object.values(views).forEach(v=>v.classList.remove('active'));views[name].classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+  function playWipe(callback){
+    const wipe=$('pageWipe');
+    if(!wipe){callback();return}
+    wipe.classList.remove('play');
+    void wipe.offsetWidth;
+    wipe.classList.add('play');
+    window.setTimeout(callback,170);
+    window.setTimeout(()=>wipe.classList.remove('play'),620);
+  }
   function enc(v){return encodeURIComponent(v)}
   function sourceQuery(){return state.source==='all'?'':`sources=${enc(state.source)}`}
   function eventQuery(shop){return shop?.event_id?`event_id=${enc(shop.event_id)}`:''}
@@ -26,7 +35,90 @@
   async function restock(){const s=state.currentShopData;if(!s)return;try{const data=await api(`/api/shops/${enc(s.entity_id)}/restock`,{method:'POST',body:JSON.stringify({event_id:s.event_id})});state.currentShopData=data;renderShop(data);toast(`Advanced to stock cycle ${data.state.stock_cycle}.`)}catch(e){toast(e.message,true)}}
   async function addCondition(){const s=state.currentShopData;if(!s)return;const type=$('conditionType').value;try{const data=await api(`/api/shops/${enc(s.entity_id)}/conditions`,{method:'POST',body:JSON.stringify({type,event_id:s.event_id})});state.currentShopData=data;renderShop(data);toast(`${type.replaceAll('_',' ')} added; it will bend the next restock cycle.`)}catch(e){toast(e.message,true)}}
   async function clearConditions(){const s=state.currentShopData;if(!s)return;try{const data=await api(`/api/shops/${enc(s.entity_id)}/clear-conditions`,{method:'POST',body:JSON.stringify({event_id:s.event_id})});state.currentShopData=data;renderShop(data);toast('Temporary stock conditions cleared.')}catch(e){toast(e.message,true)}}
-  async function runSearch(q){q=q.trim();if(!q)return;go('search');$('searchInput2').value=q;$('searchSummary').textContent='Searching catalogue and current world…';$('searchResults').innerHTML='';try{const data=await api(`/api/search${queryString([`q=${enc(q)}`,sourceQuery(),`event_id=${enc(state.eventId)}`])}`);const offers=data.offers||[];$('searchSummary').textContent=`${data.items.length} catalogue match${data.items.length===1?'':'es'} · ${offers.length} seller result${offers.length===1?'':'s'}. ${data.note}`;const nameMatches=(data.shop_name_matches||[]).map(s=>({kind:'shop',shop_name:s.name,shop_entity_id:s.entity_id,district:s.district,item_name:'Shop name match',quantity:null,asking_price:null,score:null}));const rows=[...offers,...nameMatches];$('searchResults').innerHTML=rows.length?rows.map(r=>`<button class="result-row" data-result-shop="${esc(r.shop_entity_id)}"><div><b>${esc(r.item_name)}</b><span>${esc(r.shop_name)} · ${esc(r.district||'')}</span></div><div><span>${r.kind==='available'?`qty ${qty(r.quantity)} · ${money(r.asking_price)}`:r.kind==='plausible'?`fit score ${r.score}`:'canonical place'}</span></div><span class="kind">${r.kind==='available'?'AVAILABLE NOW':r.kind==='plausible'?'PLAUSIBLE':'SHOP'}</span></button>`).join(''):'<div class="empty-state">No existing demo seller matched. This is where the later “fill the gap” generator should begin — not before.</div>';$('searchResults').querySelectorAll('[data-result-shop]').forEach(b=>b.addEventListener('click',()=>openShop(b.dataset.resultShop)))}catch(e){$('searchSummary').textContent=e.message;$('searchSummary').classList.add('error')}}
+  function renderSearch(data){
+    state.searchData=data;
+    state.searchQuery=data.query||'';
+    state.searchItem=data.active_item_id||null;
+    const items=data.items||[];
+    const active=state.searchItem?items.find(x=>String(x.item_id)===String(state.searchItem)):null;
+    const offers=data.offers||[];
+    const shops=state.searchItem?[]:(data.shop_name_matches||[]);
+
+    $('searchPageTitle').textContent=(active?.name||state.searchQuery||'SEARCH').toUpperCase();
+    $('searchInput2').value=state.searchQuery;
+
+    $('exactItemTabs').innerHTML=items.map(item=>`<button class="exact-item-tab ${String(item.item_id)===String(state.searchItem)?'selected':''}" data-exact-item="${esc(item.item_id)}">${esc(item.name)}</button>`).join('');
+    $('exactItemTabs').querySelectorAll('[data-exact-item]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const id=button.dataset.exactItem;
+        const next=String(state.searchItem)===String(id)?null:id;
+        playWipe(()=>runSearch(state.searchQuery,next));
+      });
+    });
+
+    if(active){
+      $('exactItemNote').textContent=`${active.name} selected. Tap it again to return to the broader “${state.searchQuery}” search.`;
+      $('searchModeLabel').textContent='Exact catalogue item';
+      $('searchResultsTitle').textContent='WHO HAS IT';
+      $('searchContextTitle').textContent=active.name;
+      $('searchContextCopy').textContent=`Vend-R is showing seller results only for the exact catalogue object “${active.name}”. The other buttons remain available because their names also contain “${state.searchQuery}”.`;
+    }else{
+      $('exactItemNote').textContent=items.length
+        ? `${items.length} exact catalogue item name${items.length===1?'':'s'} contain “${state.searchQuery}”. Select one to narrow the city; leave all unselected for the broad search.`
+        : `No exact catalogue item names contain “${state.searchQuery}”.`;
+      $('searchModeLabel').textContent='Broad search';
+      $('searchResultsTitle').textContent='AVAILABLE AROUND NIGHT CITY';
+      $('searchContextTitle').textContent=`${state.searchQuery||'Vend-R'} search`;
+      $('searchContextCopy').textContent=`This is the broad search state for “${state.searchQuery}”: Vend-R can mix different matching catalogue items and existing sellers. Nothing in the item strip is selected.`;
+    }
+
+    $('searchSummary').textContent=`${offers.length} seller result${offers.length===1?'':'s'} · ${items.length} exact catalogue match${items.length===1?'':'es'}`;
+
+    const offerRows=offers.map(r=>`<button class="result-row ${r.kind}" data-result-shop="${esc(r.shop_entity_id)}">
+      <div class="result-object"><b>${esc(r.item_name)}</b><span>${esc(r.kind==='available'?'available now':'plausible stock')}</span></div>
+      <div class="result-place"><b>${esc(r.shop_name)}</b><span>${esc(r.district||'Night City')}</span></div>
+      <div class="result-state">${r.kind==='available'
+        ? `<b>${r.quantity===null?'stocked':`qty ${qty(r.quantity)}`}</b><span>${money(r.asking_price)}</span>`
+        : `<b>FIT ${r.score??'—'}</b><span>unopened</span>`
+      }</div>
+    </button>`);
+
+    const shopRows=shops.map(s=>`<button class="result-row shop-match" data-result-shop="${esc(s.entity_id)}">
+      <div class="result-object"><b>Place name match</b><span>canonical place</span></div>
+      <div class="result-place"><b>${esc(s.name)}</b><span>${esc(s.district||'Night City')}</span></div>
+      <div class="result-state"><b>PLACE</b><span>open profile</span></div>
+    </button>`);
+
+    const rows=[...offerRows,...shopRows];
+    $('searchResults').innerHTML=rows.length?rows.join(''):'<div class="empty-state search-empty">No existing seller matched this search state.</div>';
+    $('searchResults').querySelectorAll('[data-result-shop]').forEach(button=>button.addEventListener('click',()=>playWipe(()=>openShop(button.dataset.resultShop))));
+  }
+
+  async function runSearch(q,itemId=null){
+    q=q.trim();
+    if(!q)return;
+    state.searchQuery=q;
+    state.searchItem=itemId;
+    go('search');
+    $('searchInput2').value=q;
+    $('searchPageTitle').textContent=(itemId?'LOADING ITEM…':q.toUpperCase());
+    $('searchSummary').textContent='Searching catalogue and current world…';
+    $('searchResults').innerHTML='<div class="loading">Resolving sellers without materializing unopened stock…</div>';
+    try{
+      const data=await api(`/api/search${queryString([
+        `q=${enc(q)}`,
+        sourceQuery(),
+        `event_id=${enc(state.eventId)}`,
+        itemId?`item_id=${enc(itemId)}`:''
+      ])}`);
+      renderSearch(data);
+    }catch(e){
+      $('searchSummary').textContent=e.message;
+      $('searchSummary').classList.add('error');
+      $('searchResults').innerHTML='';
+    }
+  }
+
   function toggleGM(){state.gm=!state.gm;$('app').classList.toggle('gm-on',state.gm);$('gmButton').classList.toggle('on',state.gm);$('gmButton').textContent=state.gm?'GM ON':'GM';$('worldLabel').textContent=state.gm?'NIGHT CITY 2045 · GM OVERLAY':'NIGHT CITY 2045 · LIVE SLICE'}
   function setSource(value){state.source=value;$('sourceButton').textContent=value==='all'?'SOURCES · ALL':'SOURCES · CORE';$('sourcePopover').hidden=true;toast(value==='all'?'New shops may use all catalogue sources.':'Unopened shops will be materialized using CP:R only.')}
   async function reset(){if(!confirm('Clear all materialized shop state for this demo slice?'))return;try{const r=await api('/api/reset',{method:'POST',body:'{}'});state.currentShopData=null;await loadShops();go('home');toast(`Cleared ${r.deleted_state_files} saved shop bundle(s).`)}catch(e){toast(e.message,true)}}
