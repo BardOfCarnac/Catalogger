@@ -313,6 +313,13 @@ def _availability_for_item(
         "conditions": conditions,
         "visibilities": visibilities,
         "incoming_arrival_cycle": arrival_cycles[0] if arrival_cycles else None,
+        "order_reason": "incoming" if availability == "order" else None,
+        "estimated_delivery_cycles": None,
+        "affinity_score": (
+            float(assortment_line.get("affinity_score", 0))
+            if assortment_line is not None
+            else None
+        ),
     }
 
 
@@ -341,6 +348,52 @@ def build_availability_index(
                 )
             )
 
+    # Add sourceable, non-assortment items as ORDER rather than bloating shelves.
+    # A seller must clear the engine's regular-stock affinity threshold as well as all
+    # department/channel/source hard constraints. Existing assortment/current rows win.
+    regular_threshold = float(engine.model["role_selection"]["regular"]["minimum_score"])
+    represented_pairs = {
+        (item_id, row["source_entity_id"])
+        for item_id, rows in item_sellers.items()
+        for row in rows
+    }
+    for item in engine.items:
+        item_id = item["id"]
+        profile = engine.commercial_by_id[item_id]
+        supply = profile.get("supply_profile", "regular")
+        delay = engine.lifecycle["delivery_delay_by_supply"].get(supply)
+        for seller in city_stock["sellers"]:
+            pair = (item_id, seller["entity_id"])
+            if pair in represented_pairs:
+                continue
+            if not engine.eligible(item_id, seller["shop"], special=False):
+                continue
+            scored = engine.score(item_id, seller["shop"])
+            score = float(scored["score"])
+            if score < regular_threshold:
+                continue
+            item_sellers[item_id].append(
+                {
+                    "source_entity_id": seller["entity_id"],
+                    "shop_id": seller["shop_id"],
+                    "seller_name": seller["name"],
+                    "district": seller.get("district"),
+                    "map_no": seller.get("map_no"),
+                    "availability": "order",
+                    "normally_carried": False,
+                    "assortment_role": None,
+                    "quantity": 0,
+                    "asking_price": None,
+                    "conditions": [],
+                    "visibilities": ["public"],
+                    "incoming_arrival_cycle": None,
+                    "order_reason": "sourceable",
+                    "estimated_delivery_cycles": list(delay) if delay is not None else None,
+                    "affinity_score": score,
+                }
+            )
+            represented_pairs.add(pair)
+
     availability_priority = {
         "in_stock": 0,
         "ask": 1,
@@ -354,6 +407,8 @@ def build_availability_index(
             item_sellers[item_id],
             key=lambda row: (
                 availability_priority[row["availability"]],
+                0 if row.get("order_reason") == "incoming" else 1,
+                -float(row.get("affinity_score") or 0),
                 row["district"] or "",
                 row["seller_name"],
                 row["source_entity_id"],
@@ -381,6 +436,11 @@ def build_availability_index(
             "hidden rows are retained for internal state but should not be exposed in ordinary "
             "player-facing search results."
         ),
+        "order_note": (
+            "ORDER can mean an actual incoming/backordered line (order_reason=incoming) or a "
+            "non-assortment item an existing canonical seller can plausibly source at or above "
+            "the regular-stock affinity threshold (order_reason=sourceable)."
+        ),
         "indexed_item_count": len(items),
         "indexed_seller_count": len(city_stock["sellers"]),
         "items": items,
@@ -400,7 +460,14 @@ def build_catalogue_coverage(
         for seller in sellers
         for line in seller["assortment"]
     }
-    indexed_item_ids = {row["item_id"] for row in index["items"]}
+    current_special_item_ids = {
+        stock_row["item_id"]
+        for seller in sellers
+        for stock_row in seller["stock"]
+        if stock_row.get("assortment_role") == "special"
+        and stock_row.get("status") in {"in_stock", "reserved"}
+        and _positive_quantity(stock_row)
+    }
 
     rows: list[dict[str, Any]] = []
     counts: dict[str, int] = defaultdict(int)
@@ -431,7 +498,7 @@ def build_catalogue_coverage(
 
         if item_id in persistent_item_ids:
             status = "persistent_assortment"
-        elif item_id in indexed_item_ids:
+        elif item_id in current_special_item_ids:
             status = "current_special"
         elif orderable_scored:
             status = "orderable_unassorted"
