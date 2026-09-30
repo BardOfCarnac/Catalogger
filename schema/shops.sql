@@ -95,7 +95,7 @@ create table if not exists stock (
   price_modifier numeric not null default 1,
   visibility text not null default 'public' check (visibility in ('public','ask','hidden')),
   status text not null default 'in_stock' check (status in ('in_stock','reserved','sold','incoming')),
-  assortment_role text check (assortment_role in ('core','regular','occasional','special')),
+  assortment_role text check (assortment_role in ('core','regular','occasional','special','order')),
   added_cycle integer,
   stock_reason text,
   -- Lifecycle metadata carries deterministic pending-order information such as
