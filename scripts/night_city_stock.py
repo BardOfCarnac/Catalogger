@@ -51,9 +51,15 @@ def load_profiles(path: Path) -> list[dict[str, Any]]:
     doc = load_json(path)
     if isinstance(doc, list):
         return doc
-    if isinstance(doc, dict) and isinstance(doc.get("profiles"), list):
-        return doc["profiles"]
-    raise ValueError("Night City profile file must be a JSON list or {'profiles': [...]} object")
+    if isinstance(doc, dict):
+        if isinstance(doc.get("profiles"), list):
+            return doc["profiles"]
+        if isinstance(doc.get("stock_profiles"), list):
+            return doc["stock_profiles"]
+    raise ValueError(
+        "Night City profile file must be a JSON list, {'profiles': [...]}, "
+        "or a Vend-R master database containing {'stock_profiles': [...]}"
+    )
 
 
 def profile_lookup(profiles: list[dict[str, Any]], selector: str) -> dict[str, Any]:
