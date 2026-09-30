@@ -2,7 +2,7 @@
 
 This connected vertical slice turns the existing Vend-R browser concept into a real client of Catalogger's persistent stocking lifecycle.
 
-The sample covers Data Inc, Hundred Under Haven, Gibson Battlegear Outlet, Midnight Arms Regional Office, Tech Time, Oasis (Kabuki), Cheek Turn, RC Night Market and Kaito Market. Together they exercise persistent sellers, manufacturer affinity, a hard 100eb discount ceiling, irregular second-hand stock, event inventory and a multi-vendor parent that deliberately owns no duplicate stock.
+The connected demo now loads the full Vend-R v0.8 Night City stock-profile set: 109 authoritative commercial profiles spanning persistent sellers, aggregate containers, event markets, hybrid direct/event businesses, services, templates and references. The original nine-place slice remains useful as a compact fixture, but it is no longer the demo backend's default world.
 
 ## Run
 
