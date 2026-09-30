@@ -499,6 +499,22 @@ def summary_lines(city_stock: dict[str, Any], index: dict[str, Any], coverage_re
                 if key != "catalogue_items_total"
             )
         ),
+        (
+            "No eligible seller by department: "
+            + ", ".join(
+                f"{department}={values.get('no_eligible_canonical_seller', 0)}"
+                for department, values in coverage_report["by_department"].items()
+                if values.get("no_eligible_canonical_seller", 0)
+            )
+        ),
+        (
+            "Eligible but unassorted by department: "
+            + ", ".join(
+                f"{department}={values.get('normal_eligible_not_assorted', 0)}"
+                for department, values in coverage_report["by_department"].items()
+                if values.get("normal_eligible_not_assorted", 0)
+            )
+        ),
     ]
     for row in city_stock["unresolved_catalogue_candidates"]:
         lines.append(
