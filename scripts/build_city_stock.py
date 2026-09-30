@@ -405,14 +405,23 @@ def build_catalogue_coverage(
     rows: list[dict[str, Any]] = []
     counts: dict[str, int] = defaultdict(int)
     department_counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    commodity_counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    regular_threshold = float(engine.model["role_selection"]["regular"]["minimum_score"])
 
     for item in sorted(engine.items, key=lambda row: row["id"]):
         item_id = item["id"]
         profile = engine.commercial_by_id[item_id]
-        normal_sellers = [
-            seller["entity_id"]
+        normal_scored = [
+            (seller["entity_id"], float(engine.score(item_id, seller["shop"])["score"]))
             for seller in sellers
             if engine.eligible(item_id, seller["shop"], special=False)
+        ]
+        normal_scored.sort(key=lambda row: (-row[1], row[0]))
+        normal_sellers = [entity_id for entity_id, _score in normal_scored]
+        orderable_scored = [
+            (entity_id, score)
+            for entity_id, score in normal_scored
+            if score >= regular_threshold
         ]
         special_sellers = normal_sellers or [
             seller["entity_id"]
@@ -424,8 +433,10 @@ def build_catalogue_coverage(
             status = "persistent_assortment"
         elif item_id in indexed_item_ids:
             status = "current_special"
+        elif orderable_scored:
+            status = "orderable_unassorted"
         elif normal_sellers:
-            status = "normal_eligible_not_assorted"
+            status = "weakly_eligible_unassorted"
         elif special_sellers:
             status = "special_only_eligible"
         else:
@@ -433,7 +444,9 @@ def build_catalogue_coverage(
 
         counts[status] += 1
         department = str(profile.get("department") or "unclassified")
+        commodity = str(profile.get("commodity_kind") or "unclassified")
         department_counts[department][status] += 1
+        commodity_counts[commodity][status] += 1
         rows.append(
             {
                 "item_id": item_id,
@@ -446,6 +459,13 @@ def build_catalogue_coverage(
                 "coverage_status": status,
                 "normal_eligible_seller_count": len(normal_sellers),
                 "normal_eligible_seller_ids": normal_sellers,
+                "best_normal_affinity_score": normal_scored[0][1] if normal_scored else None,
+                "orderable_threshold": regular_threshold,
+                "orderable_seller_count": len(orderable_scored),
+                "orderable_sellers": [
+                    {"source_entity_id": entity_id, "affinity_score": score}
+                    for entity_id, score in orderable_scored
+                ],
                 "special_eligible_seller_count": len(special_sellers),
                 "special_eligible_seller_ids": special_sellers,
             }
@@ -469,6 +489,10 @@ def build_catalogue_coverage(
         "by_department": {
             department: dict(sorted(values.items()))
             for department, values in sorted(department_counts.items())
+        },
+        "by_commodity_kind": {
+            commodity: dict(sorted(values.items()))
+            for commodity, values in sorted(commodity_counts.items())
         },
         "items": rows,
     }
@@ -508,11 +532,19 @@ def summary_lines(city_stock: dict[str, Any], index: dict[str, Any], coverage_re
             )
         ),
         (
-            "Eligible but unassorted by department: "
+            "Orderable but unassorted by department: "
             + ", ".join(
-                f"{department}={values.get('normal_eligible_not_assorted', 0)}"
+                f"{department}={values.get('orderable_unassorted', 0)}"
                 for department, values in coverage_report["by_department"].items()
-                if values.get("normal_eligible_not_assorted", 0)
+                if values.get("orderable_unassorted", 0)
+            )
+        ),
+        (
+            "No eligible seller by commodity kind: "
+            + ", ".join(
+                f"{commodity}={values.get('no_eligible_canonical_seller', 0)}"
+                for commodity, values in coverage_report["by_commodity_kind"].items()
+                if values.get("no_eligible_canonical_seller", 0)
             )
         ),
     ]
