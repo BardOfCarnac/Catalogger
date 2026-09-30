@@ -91,6 +91,418 @@ def _refresh_city_counts(city: dict[str, Any]) -> None:
     coverage["cycle_stock_rows"] = sum(len(row.get("stock", [])) for row in sellers)
 
 
+def _record_seller_event(
+    seller: dict[str, Any],
+    engine: WorldStockEngine,
+    cycle: int,
+    event_type: str,
+    item_id: str | None = None,
+    quantity_delta: int | None = None,
+    price: float | None = None,
+    metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Append one lifecycle-style event without copying the whole seller bundle."""
+    bundle = {
+        "shop": seller["shop"],
+        "history": seller.setdefault("history", []),
+    }
+    event = engine._append_event(
+        bundle,
+        cycle,
+        event_type,
+        item_id=item_id,
+        quantity_delta=quantity_delta,
+        price=price,
+        metadata=metadata,
+    )
+    seller["history"] = bundle["history"]
+    seller.setdefault("state", {}).setdefault("last_cycle_events", []).append(event["id"])
+    return event
+
+
+def _weighted_label(
+    rng: random.Random,
+    weights: dict[str, int | float],
+) -> str:
+    rows = [(label, max(0.0, float(weight))) for label, weight in weights.items()]
+    total = sum(weight for _label, weight in rows)
+    if total <= 0:
+        raise CityStockError("city pulse mutation weights must contain a positive value")
+    target = rng.random() * total
+    running = 0.0
+    for label, weight in rows:
+        running += weight
+        if target <= running:
+            return label
+    return rows[-1][0]
+
+
+def _assortment_by_item(seller: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    return {
+        row["item_id"]: row
+        for row in seller.get("assortment", [])
+        if row.get("active", True)
+    }
+
+
+def _present_stock_row(
+    seller: dict[str, Any],
+    item_id: str,
+) -> dict[str, Any] | None:
+    rows = [
+        row
+        for row in seller.get("stock", [])
+        if row["item_id"] == item_id
+        and row.get("status") in {"in_stock", "reserved"}
+        and (row.get("quantity") is None or int(row.get("quantity", 0)) > 0)
+    ]
+    return rows[0] if rows else None
+
+
+def _deliver_due_orders(
+    city: dict[str, Any],
+    engine: WorldStockEngine,
+    next_day: int,
+) -> int:
+    delivered = 0
+    for seller in city.get("sellers", []):
+        for row in seller.get("stock", []):
+            if row.get("status") != "incoming":
+                continue
+            arrival = row.get("metadata", {}).get("arrival_cycle")
+            if not isinstance(arrival, int) or arrival > next_day:
+                continue
+            row["status"] = "in_stock"
+            row["added_cycle"] = next_day
+            row.setdefault("metadata", {})["delivered_cycle"] = next_day
+            _record_seller_event(
+                seller,
+                engine,
+                next_day,
+                "delivery_received",
+                item_id=row["item_id"],
+                quantity_delta=row.get("quantity"),
+                price=row.get("asking_price"),
+                metadata={
+                    "stock_id": row.get("id"),
+                    "order_kind": row.get("metadata", {}).get("order_kind"),
+                },
+            )
+            delivered += 1
+    return delivered
+
+
+def _pulse_sale_candidates(
+    city: dict[str, Any],
+    used: set[tuple[str, str]],
+    minimum_quantity: int = 1,
+    maximum_quantity: int | None = None,
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    candidates: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for seller in city.get("sellers", []):
+        for row in seller.get("stock", []):
+            key = (seller["entity_id"], row.get("id") or row["item_id"])
+            if key in used:
+                continue
+            if row.get("assortment_role") not in {"core", "regular", "occasional"}:
+                continue
+            if row.get("status") != "in_stock":
+                continue
+            if row.get("visibility", "public") == "hidden":
+                continue
+            quantity = row.get("quantity")
+            if not isinstance(quantity, int) or quantity < minimum_quantity:
+                continue
+            if maximum_quantity is not None and quantity > maximum_quantity:
+                continue
+            candidates.append((seller, row))
+    return candidates
+
+
+def _pulse_top_up_candidates(
+    city: dict[str, Any],
+    used: set[tuple[str, str]],
+) -> list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]]:
+    candidates: list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]] = []
+    for seller in city.get("sellers", []):
+        assortment = _assortment_by_item(seller)
+        for row in seller.get("stock", []):
+            key = (seller["entity_id"], row["item_id"])
+            if key in used or row.get("status") != "in_stock":
+                continue
+            line = assortment.get(row["item_id"])
+            if line is None or row.get("assortment_role") not in {"core", "regular", "occasional"}:
+                continue
+            target = line.get("target_quantity")
+            quantity = row.get("quantity")
+            if not isinstance(target, int) or not isinstance(quantity, int):
+                continue
+            if quantity < target:
+                candidates.append((seller, row, line))
+    return candidates
+
+
+def _pulse_restore_candidates(
+    city: dict[str, Any],
+    used: set[tuple[str, str]],
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    candidates: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for seller in city.get("sellers", []):
+        for item_id, line in _assortment_by_item(seller).items():
+            key = (seller["entity_id"], item_id)
+            if key in used:
+                continue
+            if _present_stock_row(seller, item_id) is not None:
+                continue
+            if any(
+                row["item_id"] == item_id and row.get("status") == "incoming"
+                for row in seller.get("stock", [])
+            ):
+                continue
+            candidates.append((seller, line))
+    return candidates
+
+
+def _apply_city_pulse(
+    city: dict[str, Any],
+    engine: WorldStockEngine,
+    next_day: int,
+) -> dict[str, Any]:
+    """Generate a small citywide mutation budget, then distribute it across stock."""
+    config = engine.model.get("city_pulse", {})
+    low, high = config.get("daily_mutation_range", [40, 70])
+    rng = random.Random(
+        f"{city.get('world_id', 'night-city-2045')}:city-pulse:{next_day}:"
+        f"{engine.model['version']}"
+    )
+    budget = rng.randint(int(low), int(high))
+    weights = config.get(
+        "mutation_weights",
+        {
+            "sale": 45,
+            "busy_sale": 12,
+            "sellout": 8,
+            "top_up": 18,
+            "restore": 9,
+            "special_arrival": 5,
+            "special_departure": 3,
+        },
+    )
+    plan = [_weighted_label(rng, weights) for _ in range(budget)]
+    requested: dict[str, int] = {}
+    applied: dict[str, int] = {}
+    used: set[tuple[str, str]] = set()
+    touched_sellers: set[str] = set()
+
+    for mutation in plan:
+        requested[mutation] = requested.get(mutation, 0) + 1
+        changed = False
+
+        if mutation == "sale":
+            candidates = _pulse_sale_candidates(city, used, minimum_quantity=1)
+            if candidates:
+                seller, row = rng.choice(candidates)
+                row["quantity"] -= 1
+                if row["quantity"] <= 0:
+                    row["quantity"] = 0
+                    row["status"] = "sold"
+                used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "ambient_sale",
+                    item_id=row["item_id"],
+                    quantity_delta=-1,
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "busy_sale":
+            minimum = 2
+            candidates = _pulse_sale_candidates(city, used, minimum_quantity=minimum)
+            if candidates:
+                seller, row = rng.choice(candidates)
+                qlow, qhigh = config.get("busy_sale_quantity_range", [2, 4])
+                amount = min(int(row["quantity"]), rng.randint(int(qlow), int(qhigh)))
+                row["quantity"] -= amount
+                if row["quantity"] <= 0:
+                    row["quantity"] = 0
+                    row["status"] = "sold"
+                used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "ambient_busy_sale",
+                    item_id=row["item_id"],
+                    quantity_delta=-amount,
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "sellout":
+            maximum = int(config.get("sellout_max_quantity", 3))
+            candidates = _pulse_sale_candidates(
+                city,
+                used,
+                minimum_quantity=1,
+                maximum_quantity=maximum,
+            )
+            if candidates:
+                seller, row = rng.choice(candidates)
+                amount = int(row["quantity"])
+                row["quantity"] = 0
+                row["status"] = "sold"
+                used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "ambient_sellout",
+                    item_id=row["item_id"],
+                    quantity_delta=-amount,
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "top_up":
+            candidates = _pulse_top_up_candidates(city, used)
+            if candidates:
+                seller, row, line = rng.choice(candidates)
+                target = int(line["target_quantity"])
+                old_quantity = int(row["quantity"])
+                row["quantity"] = target
+                used.add((seller["entity_id"], row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "ambient_top_up",
+                    item_id=row["item_id"],
+                    quantity_delta=target - old_quantity,
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True, "target_quantity": target},
+                )
+                line["last_stocked_cycle"] = next_day
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "restore":
+            candidates = _pulse_restore_candidates(city, used)
+            if candidates:
+                seller, line = rng.choice(candidates)
+                item_id = line["item_id"]
+                role = line["role"]
+                row_rng = random.Random(
+                    f"{seller['shop']['seed']}:city-pulse:restore:{next_day}:{item_id}"
+                )
+                row = engine._stock_row(row_rng, seller["shop"], item_id, role, next_day)
+                target = line.get("target_quantity")
+                if isinstance(target, int):
+                    row["quantity"] = target
+                seller["stock"].append(row)
+                line["last_stocked_cycle"] = next_day
+                used.add((seller["entity_id"], item_id))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "ambient_restore",
+                    item_id=item_id,
+                    quantity_delta=row.get("quantity"),
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True, "role": role},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "special_departure":
+            candidates: list[tuple[dict[str, Any], dict[str, Any]]] = []
+            for seller in city.get("sellers", []):
+                for row in seller.get("stock", []):
+                    key = (seller["entity_id"], row.get("id") or row["item_id"])
+                    if key in used:
+                        continue
+                    if row.get("assortment_role") != "special" or row.get("status") != "in_stock":
+                        continue
+                    candidates.append((seller, row))
+            if candidates:
+                seller, row = rng.choice(candidates)
+                quantity = row.get("quantity")
+                row["quantity"] = 0 if isinstance(quantity, int) else quantity
+                row["status"] = "sold"
+                used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "special_departed",
+                    item_id=row["item_id"],
+                    quantity_delta=(-int(quantity) if isinstance(quantity, int) else None),
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+
+        elif mutation == "special_arrival":
+            sellers = list(city.get("sellers", []))
+            rng.shuffle(sellers)
+            for seller in sellers:
+                excluded = {
+                    row["item_id"] for row in seller.get("assortment", [])
+                } | {
+                    row["item_id"]
+                    for row in seller.get("stock", [])
+                    if row.get("status") in {"in_stock", "incoming", "reserved"}
+                }
+                special_context = copy.deepcopy(seller["shop"])
+                special_context["specials"] = [1, 1]
+                row_rng = random.Random(
+                    f"{seller['shop']['seed']}:city-pulse:special:{next_day}:"
+                    f"{len(seller.get('history', []))}"
+                )
+                rows = engine._pick_specials(row_rng, special_context, excluded, next_day)
+                if not rows:
+                    continue
+                row = rows[0]
+                seller["stock"].append(row)
+                used.add((seller["entity_id"], row.get("id") or row["item_id"]))
+                _record_seller_event(
+                    seller,
+                    engine,
+                    next_day,
+                    "special_arrival",
+                    item_id=row["item_id"],
+                    quantity_delta=row.get("quantity"),
+                    price=row.get("asking_price"),
+                    metadata={"city_pulse": True},
+                )
+                touched_sellers.add(seller["entity_id"])
+                changed = True
+                break
+
+        if changed:
+            applied[mutation] = applied.get(mutation, 0) + 1
+
+    return {
+        "stock_day": next_day,
+        "budget": budget,
+        "requested": dict(sorted(requested.items())),
+        "applied": dict(sorted(applied.items())),
+        "applied_mutations": sum(applied.values()),
+        "skipped_mutations": budget - sum(applied.values()),
+        "touched_sellers": len(touched_sellers),
+    }
+
+
 def initialize_city_stock(
     engine: WorldStockEngine | None = None,
     stock_date: str | None = None,
@@ -101,15 +513,18 @@ def initialize_city_stock(
     city["stock_cycle"] = 0
     city["stock_date"] = _validate_iso_date(stock_date)
     city["daily_stock_policy"] = {
-        "restock_passes_per_day": 1,
+        "city_pulses_per_day": 1,
+        "full_seller_restock_passes": 0,
         "opening_hours_enforced": False,
         "clock_simulation": False,
         "missed_calendar_days_replayed": False,
         "meaning": (
-            "One explicit city-day advance gives every canonical catalogue seller one "
-            "lifecycle pass. Shops are otherwise treated as available when queried."
+            "One explicit city-day advance generates a small citywide stock-change budget "
+            "and distributes it across suitable canonical sellers. Shops are otherwise "
+            "treated as available when queried."
         ),
     }
+    city["last_city_pulse"] = None
     _refresh_city_counts(city)
     return city
 
@@ -119,29 +534,31 @@ def advance_city_stock(
     engine: WorldStockEngine | None = None,
     stock_date: str | None = None,
 ) -> dict[str, Any]:
-    """Advance the shared city by exactly one stock day."""
+    """Advance the shared city by exactly one cheap, city-scale stock pulse."""
     engine = engine or WorldStockEngine()
     result = copy.deepcopy(city)
     current_day = int(result.get("stock_day", result.get("stock_cycle", 0)))
     next_day = current_day + 1
 
+    # Every seller shares the city's day counter, but we do not run a full restock simulation
+    # for every seller. Daily movement comes from one small mutation budget for the whole city.
     for seller in result.get("sellers", []):
-        bundle = _bundle_from_seller(seller, engine)
-        seller_cycle = int(bundle["state"].get("stock_cycle", current_day))
+        seller_cycle = int(seller.get("state", {}).get("stock_cycle", current_day))
         if seller_cycle != current_day:
             raise CityStockError(
                 f"seller cycle drift for {seller['entity_id']}: "
                 f"seller={seller_cycle} city={current_day}"
             )
-        advanced = engine.restock(bundle)
-        if int(advanced["state"].get("stock_cycle", -1)) != next_day:
-            raise CityStockError(
-                f"seller failed to advance exactly one day: {seller['entity_id']}"
-            )
-        _apply_bundle_to_seller(seller, advanced)
+        seller.setdefault("state", {})["stock_cycle"] = next_day
+        seller["state"]["last_cycle_events"] = []
+
+    delivered = _deliver_due_orders(result, engine, next_day)
+    pulse = _apply_city_pulse(result, engine, next_day)
+    pulse["confirmed_deliveries"] = delivered
 
     result["stock_day"] = next_day
     result["stock_cycle"] = next_day
+    result["last_city_pulse"] = pulse
     if stock_date is not None:
         result["stock_date"] = _validate_iso_date(stock_date)
     _refresh_city_counts(result)
@@ -287,11 +704,7 @@ def place_order(
     quantity: int = 1,
     engine: WorldStockEngine | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Place a sourced order through an existing canonical seller.
-
-    Permanent assortment is not changed. The order exists as incoming stock with role=order
-    until a later daily stock pass delivers it.
-    """
+    """Attempt to source an item once; accepted orders then have reliable delivery."""
     if quantity < 1:
         raise CityStockError("order quantity must be at least 1")
     engine = engine or WorldStockEngine()
@@ -329,15 +742,89 @@ def place_order(
             )
 
     cycle = int(result.get("stock_day", result.get("stock_cycle", 0)))
-    existing_orders = sum(
+    previous_attempt = next(
+        (
+            row for row in reversed(seller.get("history", []))
+            if row.get("item_id") == item_id
+            and row.get("cycle") == cycle
+            and row.get("event_type") in {"order_placed", "order_source_failed"}
+        ),
+        None,
+    )
+    if previous_attempt is not None:
+        if previous_attempt["event_type"] == "order_source_failed":
+            return result, {
+                "accepted": False,
+                "seller_entity_id": seller_entity_id,
+                "seller_name": seller["name"],
+                "item_id": item_id,
+                "item_name": engine.items_by_id[item_id]["name"],
+                "quantity": quantity,
+                "attempt_day": cycle,
+                "retry_day": cycle + 1,
+                "reason": "source_failed_today",
+                "event_id": previous_attempt["id"],
+            }
+        raise CityStockError(
+            f"{engine.items_by_id[item_id]['name']} already has an accepted order "
+            f"at {seller['name']} today"
+        )
+
+    attempts = sum(
         1
         for row in seller.get("history", [])
-        if row.get("event_type") == "order_placed" and row.get("item_id") == item_id
+        if row.get("event_type") in {"order_placed", "order_source_failed"}
+        and row.get("item_id") == item_id
     )
     rng = random.Random(
         f"{seller['shop']['seed']}:source-order:{cycle}:{item_id}:"
-        f"{existing_orders}:{engine.model['version']}"
+        f"{attempts}:{engine.model['version']}"
     )
+
+    profile = engine.commercial_by_id[item_id]
+    supply = profile.get("supply_profile", "regular")
+    pulse_config = engine.model.get("city_pulse", {})
+    base_chance = float(
+        pulse_config.get("order_source_success_by_supply", {}).get(supply, 0.75)
+    )
+    bonus_cap = float(pulse_config.get("order_affinity_bonus_cap", 0.08))
+    affinity_bonus = min(
+        bonus_cap,
+        max(0.0, (score - threshold) / 100.0 * bonus_cap),
+    )
+    source_chance = min(0.995, max(0.01, base_chance + affinity_bonus))
+    source_roll = rng.random()
+
+    if source_roll > source_chance:
+        event = _record_seller_event(
+            seller,
+            engine,
+            cycle,
+            "order_source_failed",
+            item_id=item_id,
+            quantity_delta=quantity,
+            metadata={
+                "normally_carried": normally_carried,
+                "supply_profile": supply,
+                "affinity_score": score,
+                "source_chance": round(source_chance, 4),
+                "source_roll": round(source_roll, 4),
+            },
+        )
+        _refresh_city_counts(result)
+        return result, {
+            "accepted": False,
+            "event_id": event["id"],
+            "seller_entity_id": seller_entity_id,
+            "seller_name": seller["name"],
+            "item_id": item_id,
+            "item_name": engine.items_by_id[item_id]["name"],
+            "quantity": quantity,
+            "attempt_day": cycle,
+            "retry_day": cycle + 1,
+            "reason": "source_failed_today",
+        }
+
     row = engine._stock_row(rng, seller["shop"], item_id, "order", cycle)
     engine._apply_cycle_row_modifiers(
         rng,
@@ -355,15 +842,16 @@ def place_order(
         **row.get("metadata", {}),
         "ordered_cycle": cycle,
         "arrival_cycle": cycle + delay,
-        "order_kind": "assortment_backorder" if normally_carried else "sourceable",
+        "order_kind": "assortment_order" if normally_carried else "sourceable",
         "requested_quantity": quantity,
         "affinity_score": score,
+        "source_confirmed": True,
     }
     seller["stock"].append(row)
 
-    bundle = _bundle_from_seller(seller, engine)
-    event = engine._append_event(
-        bundle,
+    event = _record_seller_event(
+        seller,
+        engine,
         cycle,
         "order_placed",
         item_id=item_id,
@@ -374,12 +862,13 @@ def place_order(
             "order_kind": row["metadata"]["order_kind"],
             "affinity_score": score,
             "stock_id": row["id"],
+            "source_confirmed": True,
         },
     )
-    _apply_bundle_to_seller(seller, bundle)
     _refresh_city_counts(result)
 
     return result, {
+        "accepted": True,
         "event_id": event["id"],
         "seller_entity_id": seller_entity_id,
         "seller_name": seller["name"],
@@ -457,7 +946,7 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--index-output", default=str(DEFAULT_INDEX_OUTPUT))
     init.add_argument("--coverage-output", default=str(DEFAULT_COVERAGE_OUTPUT))
 
-    advance = sub.add_parser("advance", help="advance every canonical seller exactly one day")
+    advance = sub.add_parser("advance", help="apply one citywide daily stock pulse")
     _add_mutation_io(advance)
     advance.add_argument("--date", dest="stock_date", help="optional YYYY-MM-DD label")
 
