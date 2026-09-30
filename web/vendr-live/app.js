@@ -17,12 +17,36 @@
   function sourceQuery(){return state.source==='all'?'':`sources=${enc(state.source)}`}
   function eventQuery(shop){return shop?.event_id?`event_id=${enc(shop.event_id)}`:''}
   function queryString(parts){const p=parts.filter(Boolean);return p.length?'?'+p.join('&'):''}
-  async function api(path,options={}){const response=await fetch(path,{headers:{'Content-Type':'application/json'},...options});let body={};try{body=await response.json()}catch(e){}if(!response.ok)throw new Error(body.error||`${response.status} ${response.statusText}`);return body}
+  const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
+  function apiUrl(path){
+    const [pathname,rawQuery='']=path.split('?');
+    const url=new URL(API_BASE);
+    const incoming=new URLSearchParams(rawQuery);
+    if(pathname==='/api/health')url.searchParams.set('api','health');
+    else if(pathname==='/api/shops')url.searchParams.set('api','shops');
+    else if(pathname==='/api/search')url.searchParams.set('api','search');
+    else if(pathname.startsWith('/api/shops/')){
+      const rest=pathname.slice('/api/shops/'.length);
+      if(rest.includes('/'))throw new Error('This public Vend-R build is read-only.');
+      url.searchParams.set('api','shop');
+      url.searchParams.set('id',decodeURIComponent(rest));
+    }else throw new Error('Unsupported public API route.');
+    incoming.forEach((v,k)=>url.searchParams.set(k,v));
+    return url.toString();
+  }
+  async function api(path,options={}){
+    const method=String(options.method||'GET').toUpperCase();
+    if(method!=='GET')throw new Error('This public Vend-R build is read-only; purchases and GM changes are not enabled yet.');
+    const response=await fetch(apiUrl(path),{headers:{'Content-Type':'application/json'}});
+    let body={};try{body=await response.json()}catch(e){}
+    if(!response.ok)throw new Error(body.error||`${response.status} ${response.statusText}`);
+    return body;
+  }
   function money(v){if(v===null||v===undefined)return '—';return `€$${Number(v).toLocaleString(undefined,{maximumFractionDigits:2})}`}
   function qty(v){return v===null||v===undefined?'∞':String(v)}
   function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
   function shopById(id){return state.shops.find(s=>s.entity_id===id)}
-  async function health(){try{const h=await api('/api/health');$('healthText').textContent=`CONNECTED · ${h.catalog_items.toLocaleString()} CATALOGUE ITEMS`;}catch(e){$('healthText').textContent='BACKEND OFFLINE';$('healthText').classList.add('error');toast('Vend-R API is offline. Start scripts/vendr_demo_server.py.',true)}}
+  async function health(){try{const h=await api('/api/health');$('healthText').textContent=`CONNECTED · ${h.catalog_items.toLocaleString()} CATALOGUE ITEMS`;}catch(e){$('healthText').textContent='BACKEND OFFLINE';$('healthText').classList.add('error');toast('Vend-R Supabase API is offline.',true)}}
   async function loadShops(){const data=await api('/api/shops');state.shops=data.shops||[];renderDistricts();renderShops()}
   function renderDistricts(){const ds=['ALL',...new Set(state.shops.map(s=>s.district).filter(Boolean))];$('districtFilters').innerHTML=ds.map(d=>`<button class="${state.district===d?'on':''}" data-district="${esc(d)}">${esc(d)}</button>`).join('');$('districtFilters').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.district=b.dataset.district;renderDistricts();renderShops()}))}
   function renderShops(){const rows=state.shops.filter(s=>state.district==='ALL'||s.district===state.district);$('shopGrid').innerHTML=rows.map(s=>`<button class="shop-card" data-shop="${esc(s.entity_id)}"><span class="district">${esc(s.district||'CITYWIDE')}</span><h3>${esc(s.name)}</h3><p>${esc(s.copy||s.type||'')}</p><div class="status"><span>${esc(s.stock_mode.replaceAll('_',' '))}</span><span class="${s.materialized?'materialized':''}">${s.materialized?'WORLD STATE SAVED':'UNOPENED'}</span></div></button>`).join('');$('shopGrid').querySelectorAll('[data-shop]').forEach(b=>b.addEventListener('click',()=>openShop(b.dataset.shop)))}
