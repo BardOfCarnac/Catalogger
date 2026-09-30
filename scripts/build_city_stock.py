@@ -378,6 +378,12 @@ def build_availability_index(
             score = float(scored["score"])
             if score < regular_threshold:
                 continue
+            failed_today = any(
+                event.get("event_type") == "order_source_failed"
+                and event.get("item_id") == item_id
+                and int(event.get("cycle", -1)) == int(city_stock.get("stock_day", city_stock["stock_cycle"]))
+                for event in seller.get("history", [])
+            )
             item_sellers[item_id].append(
                 {
                     "source_entity_id": seller["entity_id"],
@@ -393,8 +399,10 @@ def build_availability_index(
                     "conditions": [],
                     "visibilities": ["public"],
                     "incoming_arrival_cycle": None,
-                    "order_reason": "sourceable",
-                    "estimated_delivery_cycles": list(delay) if delay is not None else None,
+                    "order_reason": "source_failed_today" if failed_today else "sourceable",
+                    "estimated_delivery_cycles": (
+                        None if failed_today else (list(delay) if delay is not None else None)
+                    ),
                     "affinity_score": score,
                 }
             )
@@ -445,9 +453,10 @@ def build_availability_index(
             "player-facing search results."
         ),
         "order_note": (
-            "ORDER can mean an actual incoming/backordered line (order_reason=incoming) or a "
-            "non-assortment item an existing canonical seller can plausibly source at or above "
-            "the regular-stock affinity threshold (order_reason=sourceable)."
+            "ORDER can mean an actual confirmed incoming line (order_reason=incoming), a "
+            "non-assortment item a canonical seller can plausibly attempt to source "
+            "(order_reason=sourceable), or a sourcing attempt that already failed on the "
+            "current stock day (order_reason=source_failed_today)."
         ),
         "indexed_item_count": len(items),
         "indexed_seller_count": len(city_stock["sellers"]),
