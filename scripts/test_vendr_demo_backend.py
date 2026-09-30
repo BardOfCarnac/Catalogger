@@ -44,6 +44,11 @@ with tempfile.TemporaryDirectory(prefix="vendr-demo-test-") as tmp:
 
     search = backend.search(purchasable["name"])
     assert search["items"], "catalogue search did not find a known item"
+    selected_id = search["items"][0]["item_id"]
+    exact = backend.search(purchasable["name"], exact_item_id=selected_id)
+    assert exact["active_item_id"] == selected_id
+    assert exact["offers"], "exact item search returned no seller results"
+    assert all(row["item_id"] == selected_id for row in exact["offers"]), "exact item search leaked another catalogue object"
 
     event = backend.shop_payload(RC_MARKET, requested_event_id="ci-event")
     assert event["materialized"] is True
