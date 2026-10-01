@@ -8,7 +8,8 @@
       "photographer": "WILLIAN REIS",
       "title": "Busy indoor market hall",
       "source_url": "https://unsplash.com/photos/bustling-indoor-market-with-stalls-and-shoppers-j8deK7ZkIOU",
-      "image_url": "https://images.unsplash.com/photo-1774127421469-1bc575001f9c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1774127421469-1bc575001f9c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "deny"
     },
     {
       "pool": "showroom-boutique",
@@ -16,7 +17,8 @@
       "photographer": "rawkkim",
       "title": "Modern luxury store interior",
       "source_url": "https://unsplash.com/photos/modern-luxury-store-interior-with-display-shelves-and-seating-8YDqTT5jNXI",
-      "image_url": "https://images.unsplash.com/photo-1758025554726-50b7ed346394?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1758025554726-50b7ed346394?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "showroom-boutique",
@@ -24,7 +26,8 @@
       "photographer": "Bernd Dittrich",
       "title": "Neon retail display",
       "source_url": "https://unsplash.com/photos/neon-sign-above-a-retail-display-with-various-items-YTnmnUvNy4E",
-      "image_url": "https://images.unsplash.com/photo-1774169440561-3b3d4eda3207?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1774169440561-3b3d4eda3207?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -32,7 +35,8 @@
       "photographer": "Ollie Singleton",
       "title": "Brutalist apartments at night",
       "source_url": "https://unsplash.com/photos/apartment-building-windows-lit-up-at-night-uAL3cxNk9kE",
-      "image_url": "https://images.unsplash.com/photo-1764536602602-1adce9e18341?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1764536602602-1adce9e18341?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -40,7 +44,8 @@
       "photographer": "Artis Kančs",
       "title": "Brutalist residential complex",
       "source_url": "https://unsplash.com/photos/brutalist-apartment-buildings-with-glass-block-windows-KDtyalmLWKY",
-      "image_url": "https://images.unsplash.com/photo-1762614449535-32fcb7bd177d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1762614449535-32fcb7bd177d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "medical-neon",
@@ -48,7 +53,8 @@
       "photographer": "Nicolás Flor",
       "title": "Night pharmacy streetscape",
       "source_url": "https://unsplash.com/photos/a-street-scene-at-night-with-glowing-storefronts-gFvmcAwXFBc",
-      "image_url": "https://images.unsplash.com/photo-1775608523896-912ebbf4fb56?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1775608523896-912ebbf4fb56?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "cyber-tech",
@@ -56,7 +62,8 @@
       "photographer": "Fotografia Lui Vlad",
       "title": "Circuit board repair",
       "source_url": "https://unsplash.com/photos/circuit-board-being-repaired-with-a-screwdriver-HpoYaT9-9aE",
-      "image_url": "https://images.unsplash.com/photo-1746017240064-188b45641552?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1746017240064-188b45641552?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "cyber-tech",
@@ -64,7 +71,8 @@
       "photographer": "Vishnu Mohanan",
       "title": "Dark blue PCB",
       "source_url": "https://unsplash.com/photos/close-up-of-dark-blue-circuit-board-pfR18JNEMv8",
-      "image_url": "https://images.unsplash.com/photo-1592659762303-90081d34b277?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1592659762303-90081d34b277?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "secondhand-clutter",
@@ -72,7 +80,8 @@
       "photographer": "Tomás Robertson",
       "title": "Cluttered antique shop",
       "source_url": "https://unsplash.com/photos/cluttered-antique-shop-filled-with-various-items-hNqGjnusz1I",
-      "image_url": "https://images.unsplash.com/photo-1769647097476-82347dce77fe?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1769647097476-82347dce77fe?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "deny"
     },
     {
       "pool": "secondhand-clutter",
@@ -80,7 +89,8 @@
       "photographer": "tommao wang",
       "title": "Dense antique-shop interior",
       "source_url": "https://unsplash.com/photos/interior-view-of-a-cluttered-antique-shop-with-items-displayed-budtJ0S7Bks",
-      "image_url": "https://images.unsplash.com/photo-1757932663807-e259a9d2d1d4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1757932663807-e259a9d2d1d4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "deny"
     },
     {
       "pool": "secondhand-clutter",
@@ -88,7 +98,9 @@
       "photographer": "Sergio Guardiola Herrador",
       "title": "Kowloon-style cluttered counter",
       "source_url": "https://unsplash.com/photos/cluttered-counter-in-an-old-shop-with-many-items--71PqIuuHtU",
-      "image_url": "https://images.unsplash.com/photo-1758812820306-807696371618?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1758812820306-807696371618?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     }
-  ]
+  ],
+  "review_recorded_at": "2026-10-01"
 }
