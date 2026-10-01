@@ -161,12 +161,12 @@ button,input{font:inherit}
 .home-hero{padding:0;overflow:hidden}
 .home-hero-grid{
   display:grid;
-  grid-template-columns:minmax(0,1fr) clamp(390px,38vw,470px);
-  min-height:410px;
+  grid-template-columns:minmax(0,1fr) clamp(414px,40vw,494px);
+  min-height:438px;
   align-items:stretch;
 }
 .home-hero-copy{
-  padding:30px 8px 26px 32px;
+  padding:30px 28px 26px 32px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -180,30 +180,17 @@ button,input{font:inherit}
 .home-hero .hero-copy{max-width:640px;font-size:16px}
 .hero-location-line{margin-top:0}
 
-/* The cream sheet forms the bevel; the Spaciel screen itself stays flat. */
+/* Spaciel sits inside an equal cream surround. The bevel is one simple sloped frame. */
 .spaciel-aperture{
   position:relative;
   align-self:center;
-  justify-self:stretch;
-  width:calc(100% - 44px);
+  justify-self:center;
+  width:calc(100% - 48px);
+  max-width:422px;
   aspect-ratio:1/1;
-  margin:22px;
-  padding:14px;
+  margin:24px;
+  padding:12px;
   background:var(--cream);
-  box-shadow:
-    inset 7px 7px 0 rgba(23,17,12,.20),
-    inset -7px -7px 0 rgba(255,255,255,.72);
-}
-.spaciel-aperture:before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  pointer-events:none;
-  z-index:0;
-  border-top:2px solid rgba(23,17,12,.34);
-  border-left:2px solid rgba(23,17,12,.34);
-  border-right:2px solid rgba(255,255,255,.58);
-  border-bottom:2px solid rgba(255,255,255,.58);
 }
 .spaciel-cutin{
   position:relative;
@@ -212,6 +199,12 @@ button,input{font:inherit}
   min-width:0;
   min-height:0;
   overflow:hidden;
+  border:10px solid;
+  border-color:
+    rgba(23,17,12,.24)
+    rgba(255,255,255,.72)
+    rgba(255,255,255,.72)
+    rgba(23,17,12,.24);
   background:
     radial-gradient(circle at 58% 44%,rgba(244,210,70,.09),transparent 28%),
     linear-gradient(145deg,#172126,#0d1215 64%,#090d0f);
@@ -647,9 +640,9 @@ button,input{font:inherit}
 /* -------- RESPONSIVE -------- */
 @media (max-width:920px) and (min-width:761px){
   .home-hero-grid{grid-template-columns:minmax(0,1fr) 390px}
-  .home-hero-copy{padding:24px 4px 24px 24px}
+  .home-hero-copy{padding:24px}
   .home-hero .hero-title{font-size:clamp(42px,5.6vw,64px)}
-  .spaciel-aperture{width:calc(100% - 32px);margin:16px;padding:12px}
+  .spaciel-aperture{width:calc(100% - 40px);margin:20px;padding:10px}
 }
 @media (max-width:760px){
   .shell{width:min(100% - 22px,680px);padding-top:11px}
@@ -660,7 +653,7 @@ button,input{font:inherit}
   .spaciel-aperture{
     width:calc(100% - 36px);
     margin:0 18px 18px;
-    padding:13px;
+    padding:10px;
     aspect-ratio:1/1;
   }
   .grid-wide{grid-column:auto}
