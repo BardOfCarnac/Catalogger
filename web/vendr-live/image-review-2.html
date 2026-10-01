@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vend-R Image Review · Batch 2</title>
+<style>
+:root{--cream:#f2eadb;--cream2:#fff6df;--ink:#17110c;--line:#b9ad99;--orange:#ed5a30;--yellow:#ffc84e}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,var(--orange),var(--yellow) 70%,#ffe58e)}
+.shell{width:min(1280px,calc(100% - 24px));margin:16px auto 40px;background:var(--cream);border:1px solid rgba(23,17,12,.2);box-shadow:14px 18px 40px rgba(80,40,20,.22)}
+.top{position:sticky;top:0;z-index:20;display:flex;gap:14px;align-items:center;padding:16px 20px;background:rgba(242,234,219,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{font-weight:950;letter-spacing:.05em}.summary{margin-left:auto;font:800 11px ui-monospace,monospace}
+.top button{border:1px solid var(--ink);background:var(--ink);color:var(--cream2);padding:9px 12px;font-weight:900}
+.intro{padding:28px 24px 6px;max-width:900px}.eyebrow{font:900 9px ui-monospace,monospace;letter-spacing:.12em;color:#b64025}
+h1{font-size:clamp(44px,7vw,86px);line-height:.88;letter-spacing:-.055em;margin:8px 0 16px}.intro p{max-width:760px;line-height:1.5;color:#5f5549}
+.pool{padding:22px 24px 30px;border-top:1px solid var(--line)}.pool-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px}.pool-head h2{margin:4px 0 0;font-size:28px}.pool-code{font:800 10px ui-monospace,monospace;color:#7e7365}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:var(--cream2);border:1px solid var(--line);overflow:hidden;box-shadow:5px 5px 0 rgba(23,17,12,.06)}
+.photo-wrap{position:relative;aspect-ratio:16/9;background:#ddd}.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}.photo-id{position:absolute;left:8px;bottom:8px;background:rgba(23,17,12,.82);color:#fff6df;padding:5px 7px;font:900 9px ui-monospace,monospace}
+.meta{padding:10px 12px;display:grid;gap:3px}.meta strong{font-size:13px}.meta span{font:700 9px ui-monospace,monospace;color:#7b7062}
+.actions{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}.actions button{min-height:40px;border:0;border-right:1px solid var(--line);background:#f8f0df;font:900 9px ui-monospace,monospace}.actions button:last-child{border-right:0}
+.card[data-state="approve"]{outline:4px solid #789772;outline-offset:-4px}.card[data-state="deny"]{outline:4px solid #c5523d;outline-offset:-4px}.card[data-state="undecided"]{outline:4px solid #d2b954;outline-offset:-4px}
+.card[data-state="approve"] [data-choice="approve"]{background:#789772;color:white}.card[data-state="deny"] [data-choice="deny"]{background:#c5523d;color:white}.card[data-state="undecided"] [data-choice="undecided"]{background:#d2b954}
+#copyBox{position:fixed;inset:auto 16px 16px 16px;z-index:50;display:none;background:var(--ink);color:white;padding:14px;font:700 11px ui-monospace,monospace;white-space:pre-wrap;max-height:45vh;overflow:auto}#copyBox.show{display:block}
+@media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.cards{grid-template-columns:1fr}.top{flex-wrap:wrap}.summary{order:3;width:100%;margin-left:0}.pool,.intro{padding-inline:14px}}
+</style></head>
+<body><div class="shell"><div class="top"><div class="brand">VEND-R / IMAGE REVIEW · BATCH 2</div><div class="summary" id="summary">0 APPROVED · 0 DENIED · 11 UNDECIDED</div><button id="copy">COPY DECISIONS</button><button id="reset">RESET</button></div>
+<div class="intro"><div class="eyebrow">FRESH SEARCH PASS</div><h1>More images. No repeats.</h1><p>These are all new candidates and are not active on the live Vend-R pages yet. Approve or deny them exactly as before; nothing enters the live image pool until you approve it.</p></div><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Market complex</h2></div><div class="pool-code">market-complex</div></div>
+    <div class="cards">
+      <article class="card" data-key="market-complex:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1774127421469-1bc575001f9c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Busy indoor market hall" loading="lazy"><div class="photo-id">MARKET COMPLEX 1</div></div>
+        <div class="meta"><strong>Busy indoor market hall</strong><span>WILLIAN REIS</span><span>j8deK7ZkIOU</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Showroom / boutique</h2></div><div class="pool-code">showroom-boutique</div></div>
+    <div class="cards">
+      <article class="card" data-key="showroom-boutique:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1758025554726-50b7ed346394?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Modern luxury store interior" loading="lazy"><div class="photo-id">SHOWROOM / BOUTIQUE 1</div></div>
+        <div class="meta"><strong>Modern luxury store interior</strong><span>rawkkim</span><span>8YDqTT5jNXI</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="showroom-boutique:2">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1774169440561-3b3d4eda3207?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Neon retail display" loading="lazy"><div class="photo-id">SHOWROOM / BOUTIQUE 2</div></div>
+        <div class="meta"><strong>Neon retail display</strong><span>Bernd Dittrich</span><span>YTnmnUvNy4E</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Large complex</h2></div><div class="pool-code">large-complex</div></div>
+    <div class="cards">
+      <article class="card" data-key="large-complex:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1764536602602-1adce9e18341?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Brutalist apartments at night" loading="lazy"><div class="photo-id">LARGE COMPLEX 1</div></div>
+        <div class="meta"><strong>Brutalist apartments at night</strong><span>Ollie Singleton</span><span>uAL3cxNk9kE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:2">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1762614449535-32fcb7bd177d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Brutalist residential complex" loading="lazy"><div class="photo-id">LARGE COMPLEX 2</div></div>
+        <div class="meta"><strong>Brutalist residential complex</strong><span>Artis Kančs</span><span>KDtyalmLWKY</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Medical / neon</h2></div><div class="pool-code">medical-neon</div></div>
+    <div class="cards">
+      <article class="card" data-key="medical-neon:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1775608523896-912ebbf4fb56?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Night pharmacy streetscape" loading="lazy"><div class="photo-id">MEDICAL / NEON 1</div></div>
+        <div class="meta"><strong>Night pharmacy streetscape</strong><span>Nicolás Flor</span><span>gFvmcAwXFBc</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Cyber-tech</h2></div><div class="pool-code">cyber-tech</div></div>
+    <div class="cards">
+      <article class="card" data-key="cyber-tech:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1746017240064-188b45641552?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Circuit board repair" loading="lazy"><div class="photo-id">CYBER-TECH 1</div></div>
+        <div class="meta"><strong>Circuit board repair</strong><span>Fotografia Lui Vlad</span><span>HpoYaT9-9aE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="cyber-tech:2">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1592659762303-90081d34b277?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dark blue PCB" loading="lazy"><div class="photo-id">CYBER-TECH 2</div></div>
+        <div class="meta"><strong>Dark blue PCB</strong><span>Vishnu Mohanan</span><span>pfR18JNEMv8</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool">
+    <div class="pool-head"><div><div class="eyebrow">NEW CANDIDATES</div><h2>Second-hand / clutter</h2></div><div class="pool-code">secondhand-clutter</div></div>
+    <div class="cards">
+      <article class="card" data-key="secondhand-clutter:1">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1769647097476-82347dce77fe?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Cluttered antique shop" loading="lazy"><div class="photo-id">SECOND-HAND / CLUTTER 1</div></div>
+        <div class="meta"><strong>Cluttered antique shop</strong><span>Tomás Robertson</span><span>hNqGjnusz1I</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="secondhand-clutter:2">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1757932663807-e259a9d2d1d4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dense antique-shop interior" loading="lazy"><div class="photo-id">SECOND-HAND / CLUTTER 2</div></div>
+        <div class="meta"><strong>Dense antique-shop interior</strong><span>tommao wang</span><span>budtJ0S7Bks</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="secondhand-clutter:3">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1758812820306-807696371618?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Kowloon-style cluttered counter" loading="lazy"><div class="photo-id">SECOND-HAND / CLUTTER 3</div></div>
+        <div class="meta"><strong>Kowloon-style cluttered counter</strong><span>Sergio Guardiola Herrador</span><span>-71PqIuuHtU</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section></div><div id="copyBox"></div>
+<script>
+const KEY='vendr-image-review-batch2';const state=JSON.parse(localStorage.getItem(KEY)||'{}');const cards=[...document.querySelectorAll('.card')];
+function render(){let a=0,d=0,u=0;cards.forEach(c=>{const s=state[c.dataset.key]||'undecided';c.dataset.state=s;if(s==='approve')a++;else if(s==='deny')d++;else u++});document.getElementById('summary').textContent=a+' APPROVED · '+d+' DENIED · '+u+' UNDECIDED'}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+cards.forEach(c=>c.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{state[c.dataset.key]=b.dataset.choice;save()}));
+document.getElementById('reset').onclick=()=>{if(confirm('Clear Batch 2 decisions?')){localStorage.removeItem(KEY);location.reload()}};
+document.getElementById('copy').onclick=async()=>{const grouped={};cards.forEach(c=>{const [p,n]=c.dataset.key.split(':');(grouped[p]??=[]).push(n+'='+(state[c.dataset.key]||'undecided'))});const t=Object.entries(grouped).map(([p,v])=>p+': '+v.join(', ')).join('\n');try{await navigator.clipboard.writeText(t)}catch(e){}const b=document.getElementById('copyBox');b.textContent=t+'\n\nCopied if clipboard access was allowed. Tap to close.';b.classList.add('show')};
+document.getElementById('copyBox').onclick=e=>e.currentTarget.classList.remove('show');render();
+</script></body></html>
