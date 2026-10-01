@@ -9,7 +9,8 @@
     "Electronics/netrunner sellers use a cyber-tech pool.",
     "Market pools now favour neon urban night-market imagery.",
     "Clinic/pharmacy pool now includes neon urban medical imagery.",
-    "All image choices remain deterministic per entity."
+    "All image choices remain deterministic per entity.",
+    "Review pass 1 recorded from user decisions on 2026-10-01. Denied images are disabled from live selection."
   ],
   "families": {
     "street-storefront": [
@@ -22,7 +23,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "YilyVqUmRm4",
@@ -33,7 +35,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "MrCahxWmJoE",
@@ -44,7 +47,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "approve"
       }
     ],
     "food-retail": [
@@ -57,7 +61,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "_b34iJKRVpY",
@@ -68,7 +73,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "market-stall": [
@@ -81,7 +87,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "BO3UsWmpBoQ",
@@ -92,7 +99,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "qwRfzgi7b8g",
@@ -103,7 +111,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "approve"
       }
     ],
     "market-complex": [
@@ -116,7 +125,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "BO3UsWmpBoQ",
@@ -127,7 +137,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "qwRfzgi7b8g",
@@ -138,7 +149,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "undecided"
       }
     ],
     "secondhand-clutter": [
@@ -151,7 +163,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "7o2QHkE8gKM",
@@ -162,7 +175,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "showroom-boutique": [
@@ -175,7 +189,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "qKK3TOdbijc",
@@ -186,7 +201,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "undecided"
       }
     ],
     "workshop-garage": [
@@ -199,7 +215,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "WhZ5pWTH4hM",
@@ -210,7 +227,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "clinic-pharmacy": [
@@ -223,7 +241,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "FOSgYGDktlE",
@@ -234,7 +253,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "T5si0dm2dGo",
@@ -245,7 +265,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "approve"
       }
     ],
     "hospitality-interior": [
@@ -258,7 +279,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "NiFtfpp-AXk",
@@ -269,7 +291,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "large-complex": [
@@ -282,7 +305,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "biAHYi7xcEU",
@@ -293,7 +317,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "outdoor-camp": [
@@ -306,7 +331,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "Md1fvql3Kk0",
@@ -317,7 +343,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "office-service": [
@@ -330,7 +357,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "2-7reWtSod4",
@@ -341,7 +369,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       }
     ],
     "weapons-security": [
@@ -354,7 +383,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "CzqvQrjgfhM",
@@ -365,7 +395,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "DQ2ORv8hvTE",
@@ -376,7 +407,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "approve"
       }
     ],
     "cyber-tech": [
@@ -389,7 +421,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "YilyVqUmRm4",
@@ -400,7 +433,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "approve"
       },
       {
         "unsplash_id": "Wsi7-z0IhAY",
@@ -410,8 +444,9 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
-        "order": 2
+        "enabled": false,
+        "order": 2,
+        "review_status": "deny"
       }
     ],
     "night-market-neon": [
@@ -424,7 +459,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "BO3UsWmpBoQ",
@@ -435,7 +471,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "qwRfzgi7b8g",
@@ -446,7 +483,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "undecided"
       }
     ],
     "medical-neon": [
@@ -459,7 +497,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 0,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "FOSgYGDktlE",
@@ -470,7 +509,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 1,
+        "review_status": "undecided"
       },
       {
         "unsplash_id": "T5si0dm2dGo",
@@ -481,7 +521,8 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 2
+        "order": 2,
+        "review_status": "undecided"
       }
     ]
   }
