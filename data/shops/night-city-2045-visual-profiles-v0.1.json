@@ -7,7 +7,8 @@
     "deterministic_assignment": "Pick from visual_family image pool using a stable hash of entity_id unless image_override is set.",
     "no_random_reload": "The same entity must keep the same image across reloads.",
     "crop_metadata": "Store focal_x/focal_y per image so wide title strips can crop safely.",
-    "terminology": "visual_condition and visual_setting guide image selection only; they are not canonical facts about the location."
+    "terminology": "visual_condition and visual_setting guide image selection only; they are not canonical facts about the location.",
+    "image_pool_key": "Optional narrower photographic pool. This may differ from visual_family where semantic specificity matters."
   },
   "summary": {
     "profiles": 109,
@@ -36,7 +37,23 @@
       "worn": 16,
       "polished": 13
     },
-    "recommended_total_pool_images": 114
+    "recommended_total_pool_images": 114,
+    "image_pool_counts": {
+      "(none)": 6,
+      "night-market-neon": 20,
+      "street-storefront": 11,
+      "food-retail": 11,
+      "secondhand-clutter": 11,
+      "hospitality-interior": 8,
+      "showroom-boutique": 9,
+      "workshop-garage": 5,
+      "weapons-security": 6,
+      "medical-neon": 5,
+      "large-complex": 6,
+      "cyber-tech": 4,
+      "outdoor-camp": 5,
+      "office-service": 2
+    }
   },
   "families": {
     "street-storefront": {
@@ -199,7 +216,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-IMP-HUNDRED-UNDER-HAVEN",
@@ -215,7 +233,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-IMP-NIGHT-MARKETS",
@@ -231,7 +250,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-IMP-MIDNIGHT-MARKETS",
@@ -247,7 +267,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-IMP-OASIS",
@@ -263,7 +284,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-IMP-VENDITS",
@@ -279,7 +301,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
@@ -295,7 +318,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
@@ -311,7 +335,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
@@ -327,7 +352,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
@@ -343,7 +369,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
@@ -359,7 +386,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
@@ -375,7 +403,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
@@ -391,7 +420,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
@@ -407,7 +437,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
@@ -423,7 +454,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
@@ -439,7 +471,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
@@ -455,7 +488,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "workshop-garage"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
@@ -471,7 +505,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "workshop-garage"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
@@ -487,7 +522,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
@@ -503,7 +539,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
@@ -519,7 +556,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
@@ -535,7 +573,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
@@ -551,7 +590,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
@@ -567,7 +607,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
@@ -583,7 +624,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "medical-neon"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
@@ -599,7 +641,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
@@ -615,7 +658,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
@@ -631,7 +675,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
@@ -647,7 +692,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
@@ -663,7 +709,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
@@ -679,7 +726,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "cyber-tech"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
@@ -695,7 +743,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
@@ -711,7 +760,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
@@ -727,7 +777,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
@@ -743,7 +794,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
@@ -759,7 +811,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
@@ -775,7 +828,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
@@ -791,7 +845,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
@@ -807,7 +862,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "cyber-tech"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
@@ -823,7 +879,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
@@ -839,7 +896,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
@@ -855,7 +913,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
@@ -871,7 +930,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "medical-neon"
     },
     {
       "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
@@ -887,7 +947,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
@@ -903,7 +964,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "outdoor-camp"
     },
     {
       "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
@@ -919,7 +981,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
@@ -935,7 +998,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
@@ -951,7 +1015,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
@@ -967,7 +1032,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
@@ -983,7 +1049,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
@@ -999,7 +1066,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
@@ -1015,7 +1083,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-ROOTS-OF-THE-FOREST",
@@ -1031,7 +1100,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "outdoor-camp"
     },
     {
       "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-DOC-MILES",
@@ -1047,7 +1117,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "medical-neon"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
@@ -1063,7 +1134,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "outdoor-camp"
     },
     {
       "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
@@ -1079,7 +1151,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
@@ -1095,7 +1168,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
@@ -1111,7 +1185,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
@@ -1127,7 +1202,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
@@ -1143,7 +1219,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
@@ -1159,7 +1236,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
@@ -1175,7 +1253,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "office-service"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-INGALLS-FARM",
@@ -1191,7 +1270,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "outdoor-camp"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION",
@@ -1207,7 +1287,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
@@ -1223,7 +1304,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
@@ -1239,7 +1321,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
@@ -1255,7 +1338,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "medical-neon"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
@@ -1271,7 +1355,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
@@ -1287,7 +1372,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
@@ -1303,7 +1389,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
@@ -1319,7 +1406,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
@@ -1335,7 +1423,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
@@ -1351,7 +1440,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
@@ -1367,7 +1457,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
@@ -1383,7 +1474,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "outdoor-camp"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
@@ -1399,7 +1491,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
@@ -1415,7 +1508,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
@@ -1431,7 +1525,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
@@ -1447,7 +1542,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": null
     },
     {
       "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
@@ -1463,7 +1559,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "workshop-garage"
     },
     {
       "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
@@ -1479,7 +1576,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
@@ -1495,7 +1593,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
@@ -1511,7 +1610,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
@@ -1527,7 +1627,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
@@ -1543,7 +1644,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
@@ -1559,7 +1661,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
@@ -1575,7 +1678,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
@@ -1591,7 +1695,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "hospitality-interior"
     },
     {
       "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
@@ -1607,7 +1712,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
@@ -1623,7 +1729,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
@@ -1639,7 +1746,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
@@ -1655,7 +1763,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
@@ -1671,7 +1780,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
@@ -1687,7 +1797,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
@@ -1703,7 +1814,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "night-market-neon"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
@@ -1719,7 +1831,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "cyber-tech"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
@@ -1735,7 +1848,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "workshop-garage"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
@@ -1751,7 +1865,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "medical-neon"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
@@ -1767,7 +1882,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "secondhand-clutter"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
@@ -1783,7 +1899,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "workshop-garage"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
@@ -1799,7 +1916,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
@@ -1815,7 +1933,8 @@
       "assignment_confidence": "high",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "weapons-security"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
@@ -1831,7 +1950,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "office-service"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
@@ -1847,7 +1967,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
@@ -1863,7 +1984,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "street-storefront"
     },
     {
       "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
@@ -1879,7 +2001,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "cyber-tech"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
@@ -1895,7 +2018,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "large-complex"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
@@ -1911,7 +2035,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "food-retail"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
@@ -1927,7 +2052,8 @@
       "assignment_confidence": "medium",
       "image_override": null,
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "image_pool_key": "showroom-boutique"
     }
   ]
 }
