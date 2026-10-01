@@ -1,21 +1,23 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "project": "Vend-R / Unsplash visual pools",
   "purpose": "Verified hotlinkable photographic pools for Vend-R shop/place hero strips.",
   "provider": "Unsplash",
   "notes": [
-    "Two verified renderable Unsplash CDN images per visual family for the first live design pass.",
-    "Each image retains its Unsplash photo page and photographer for attribution.",
-    "Use a stable hash of entity_id to choose within the assigned family.",
-    "Expand pools after the shop hero crop/treatment is approved."
+    "Second pass adds cyberpunk/future/dystopian/gritty/urban search terms and narrower semantic pools.",
+    "Weapons/security no longer inherit ordinary storefront imagery.",
+    "Electronics/netrunner sellers use a cyber-tech pool.",
+    "Market pools now favour neon urban night-market imagery.",
+    "Clinic/pharmacy pool now includes neon urban medical imagery.",
+    "All image choices remain deterministic per entity."
   ],
   "families": {
     "street-storefront": [
       {
-        "unsplash_id": "tX-9_2ucpoA",
-        "photographer": "Josh Hild",
-        "source_url": "https://unsplash.com/photos/tX-9_2ucpoA?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1667339025689-d0355cf90fae?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "unsplash_id": "Wsi7-z0IhAY",
+        "photographer": "Raymond Kotewicz",
+        "source_url": "https://unsplash.com/photos/Wsi7-z0IhAY?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1679788824280-22b75b61bc05?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
@@ -23,15 +25,26 @@
         "order": 0
       },
       {
-        "unsplash_id": "lO00FG4N8rg",
-        "photographer": "Tanya Barrow",
-        "source_url": "https://unsplash.com/photos/lO00FG4N8rg?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1763732480590-188c037ce310?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "unsplash_id": "YilyVqUmRm4",
+        "photographer": "Andrea De Santis",
+        "source_url": "https://unsplash.com/photos/YilyVqUmRm4?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1731362706112-04b9927a965c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
         "order": 1
+      },
+      {
+        "unsplash_id": "MrCahxWmJoE",
+        "photographer": "Tanya Barrow",
+        "source_url": "https://unsplash.com/photos/MrCahxWmJoE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1761208158948-e35d1047576c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
       }
     ],
     "food-retail": [
@@ -60,10 +73,10 @@
     ],
     "market-stall": [
       {
-        "unsplash_id": "K5rZBI7SNnU",
+        "unsplash_id": "zEVsPWr5pg4",
         "photographer": "MChe Lee",
-        "source_url": "https://unsplash.com/photos/K5rZBI7SNnU?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1773134491442-185e2221cd9d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "source_url": "https://unsplash.com/photos/zEVsPWr5pg4?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
@@ -71,23 +84,34 @@
         "order": 0
       },
       {
-        "unsplash_id": "GXyHNq_vHwU",
-        "photographer": "Michael Wu",
-        "source_url": "https://unsplash.com/photos/GXyHNq_vHwU?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1742988456362-89dcf17c420a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "unsplash_id": "BO3UsWmpBoQ",
+        "photographer": "Mateusz Prowans",
+        "source_url": "https://unsplash.com/photos/BO3UsWmpBoQ?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
         "order": 1
+      },
+      {
+        "unsplash_id": "qwRfzgi7b8g",
+        "photographer": "Airam Dato-on",
+        "source_url": "https://unsplash.com/photos/qwRfzgi7b8g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
       }
     ],
     "market-complex": [
       {
-        "unsplash_id": "tcsLBJp39v4",
-        "photographer": "Ahmed Nishaath",
-        "source_url": "https://unsplash.com/photos/tcsLBJp39v4?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1741922519164-9373ae4c7d7d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "unsplash_id": "zEVsPWr5pg4",
+        "photographer": "MChe Lee",
+        "source_url": "https://unsplash.com/photos/zEVsPWr5pg4?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
@@ -95,15 +119,26 @@
         "order": 0
       },
       {
-        "unsplash_id": "ksmHz5TNeO8",
-        "photographer": "Sung Jin Cho",
-        "source_url": "https://unsplash.com/photos/ksmHz5TNeO8?utm_source=vend-r&utm_medium=referral",
-        "image_url": "https://images.unsplash.com/photo-1738486322767-efe48fd613a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "unsplash_id": "BO3UsWmpBoQ",
+        "photographer": "Mateusz Prowans",
+        "source_url": "https://unsplash.com/photos/BO3UsWmpBoQ?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
         "order": 1
+      },
+      {
+        "unsplash_id": "qwRfzgi7b8g",
+        "photographer": "Airam Dato-on",
+        "source_url": "https://unsplash.com/photos/qwRfzgi7b8g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
       }
     ],
     "secondhand-clutter": [
@@ -180,6 +215,17 @@
     ],
     "clinic-pharmacy": [
       {
+        "unsplash_id": "cGVO7Eadi0g",
+        "photographer": "Spencer Plouzek",
+        "source_url": "https://unsplash.com/photos/cGVO7Eadi0g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1773270834657-09da4d52ad91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 0
+      },
+      {
         "unsplash_id": "FOSgYGDktlE",
         "photographer": "Bernd Dittrich",
         "source_url": "https://unsplash.com/photos/FOSgYGDktlE?utm_source=vend-r&utm_medium=referral",
@@ -188,7 +234,7 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 0
+        "order": 1
       },
       {
         "unsplash_id": "T5si0dm2dGo",
@@ -199,7 +245,7 @@
         "focal_x": 0.5,
         "focal_y": 0.5,
         "enabled": true,
-        "order": 1
+        "order": 2
       }
     ],
     "hospitality-interior": [
@@ -296,6 +342,146 @@
         "focal_y": 0.5,
         "enabled": true,
         "order": 1
+      }
+    ],
+    "weapons-security": [
+      {
+        "unsplash_id": "6WDyuq0-w8k",
+        "photographer": "Gary Walker-Jones",
+        "source_url": "https://unsplash.com/photos/6WDyuq0-w8k?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1709131121965-fee8e6af077e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 0
+      },
+      {
+        "unsplash_id": "CzqvQrjgfhM",
+        "photographer": "Teitur Hansen",
+        "source_url": "https://unsplash.com/photos/CzqvQrjgfhM?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1644144557346-5775e758b7f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "unsplash_id": "DQ2ORv8hvTE",
+        "photographer": "The New York Public Library",
+        "source_url": "https://unsplash.com/photos/DQ2ORv8hvTE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1562401894-c9397b88424b?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
+      }
+    ],
+    "cyber-tech": [
+      {
+        "unsplash_id": "3kQV0gq-l9o",
+        "photographer": "Christos Papadopoulos",
+        "source_url": "https://unsplash.com/photos/3kQV0gq-l9o?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1761933401897-851cc57a6dda?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 0
+      },
+      {
+        "unsplash_id": "YilyVqUmRm4",
+        "photographer": "Andrea De Santis",
+        "source_url": "https://unsplash.com/photos/YilyVqUmRm4?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1731362706112-04b9927a965c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "unsplash_id": "Wsi7-z0IhAY",
+        "photographer": "Raymond Kotewicz",
+        "source_url": "https://unsplash.com/photos/Wsi7-z0IhAY?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1679788824280-22b75b61bc05?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
+      }
+    ],
+    "night-market-neon": [
+      {
+        "unsplash_id": "zEVsPWr5pg4",
+        "photographer": "MChe Lee",
+        "source_url": "https://unsplash.com/photos/zEVsPWr5pg4?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 0
+      },
+      {
+        "unsplash_id": "BO3UsWmpBoQ",
+        "photographer": "Mateusz Prowans",
+        "source_url": "https://unsplash.com/photos/BO3UsWmpBoQ?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "unsplash_id": "qwRfzgi7b8g",
+        "photographer": "Airam Dato-on",
+        "source_url": "https://unsplash.com/photos/qwRfzgi7b8g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
+      }
+    ],
+    "medical-neon": [
+      {
+        "unsplash_id": "cGVO7Eadi0g",
+        "photographer": "Spencer Plouzek",
+        "source_url": "https://unsplash.com/photos/cGVO7Eadi0g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1773270834657-09da4d52ad91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 0
+      },
+      {
+        "unsplash_id": "FOSgYGDktlE",
+        "photographer": "Bernd Dittrich",
+        "source_url": "https://unsplash.com/photos/FOSgYGDktlE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1765031092161-a9ebe556117e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "unsplash_id": "T5si0dm2dGo",
+        "photographer": "Werapinthorn Jaijan",
+        "source_url": "https://unsplash.com/photos/T5si0dm2dGo?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1770321119162-05c18fbcfdb9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2
       }
     ]
   }
