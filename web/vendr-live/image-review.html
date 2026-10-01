@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vend-R Image Review</title>
+<style>
+:root{
+  --cream:#f2eadb;
+  --cream2:#fff6df;
+  --ink:#17110c;
+  --line:#b9ad99;
+  --red:#e0522b;
+  --yellow:#f2c84b;
+  --green:#6e8f68;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#ed5a30,#ffc84e 70%,#ffe58e);
+}
+.shell{
+  width:min(1280px,calc(100% - 24px));
+  margin:16px auto 40px;
+  background:var(--cream);
+  border:1px solid rgba(23,17,12,.2);
+  box-shadow:14px 18px 40px rgba(80,40,20,.22);
+}
+.top{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  padding:16px 20px;
+  background:rgba(242,234,219,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-weight:950;letter-spacing:.05em}
+.summary{margin-left:auto;font:800 11px ui-monospace,monospace}
+.top button{
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:var(--cream2);
+  padding:9px 12px;
+  font-weight:900;
+}
+.intro{
+  padding:28px 24px 6px;
+  max-width:900px;
+}
+.eyebrow{
+  font:900 9px ui-monospace,monospace;
+  letter-spacing:.12em;
+  color:#b64025;
+}
+h1{font-size:clamp(44px,7vw,86px);line-height:.88;letter-spacing:-.055em;margin:8px 0 16px}
+.intro p{max-width:760px;line-height:1.5;color:#5f5549}
+.pool{padding:22px 24px 30px;border-top:1px solid var(--line)}
+.pool-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px}
+.pool-head h2{margin:4px 0 0;font-size:28px}
+.pool-code{font:800 10px ui-monospace,monospace;color:#7e7365}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{
+  background:var(--cream2);
+  border:1px solid var(--line);
+  overflow:hidden;
+  box-shadow:5px 5px 0 rgba(23,17,12,.06);
+}
+.photo-wrap{position:relative;aspect-ratio:16/9;background:#ddd}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-id{
+  position:absolute;left:8px;bottom:8px;
+  background:rgba(23,17,12,.82);color:#fff6df;
+  padding:5px 7px;font:900 9px ui-monospace,monospace;
+}
+.meta{padding:10px 12px;display:grid;gap:3px}
+.meta strong{font-size:13px}
+.meta span{font:700 9px ui-monospace,monospace;color:#7b7062}
+.actions{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
+.actions button{
+  min-height:40px;border:0;border-right:1px solid var(--line);
+  background:#f8f0df;font:900 9px ui-monospace,monospace;
+}
+.actions button:last-child{border-right:0}
+.card[data-state="approve"]{outline:4px solid #789772;outline-offset:-4px}
+.card[data-state="deny"]{outline:4px solid #c5523d;outline-offset:-4px}
+.card[data-state="undecided"]{outline:4px solid #d2b954;outline-offset:-4px}
+.card[data-state="approve"] [data-choice="approve"]{background:#789772;color:white}
+.card[data-state="deny"] [data-choice="deny"]{background:#c5523d;color:white}
+.card[data-state="undecided"] [data-choice="undecided"]{background:#d2b954}
+#copyBox{
+  position:fixed;inset:auto 16px 16px 16px;z-index:50;
+  display:none;background:var(--ink);color:white;padding:14px;
+  font:700 11px ui-monospace,monospace;white-space:pre-wrap;
+  max-height:45vh;overflow:auto;
+}
+#copyBox.show{display:block}
+@media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .top{flex-wrap:wrap}
+  .summary{order:3;width:100%;margin-left:0}
+  .pool{padding-inline:14px}
+  .intro{padding-inline:14px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <div class="brand">VEND-R / IMAGE REVIEW</div>
+    <div class="summary" id="summary">0 APPROVED · 0 DENIED · 40 UNDECIDED</div>
+    <button id="copy">COPY DECISIONS</button>
+    <button id="reset">RESET</button>
+  </div>
+  <div class="intro">
+    <div class="eyebrow">CURATION PASS 0.3</div>
+    <h1>Approve the shop imagery.</h1>
+    <p>Judge each photograph for the pool it is shown under. Your choices are saved locally in this browser. When you are finished, press <strong>Copy decisions</strong> and paste the block back into ChatGPT; I can then remove the rejected images and keep the approved ones.</p>
+  </div>
+  <section class="pool" data-pool="street-storefront">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Street storefront</h2>
+      </div>
+      <div class="pool-code">street-storefront</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="street-storefront:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1679788824280-22b75b61bc05?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Street storefront candidate 1" loading="lazy">
+          <div class="photo-id">STREET-STOREFRONT 1</div>
+        </div>
+        <div class="meta">
+          <strong>Street storefront 1</strong>
+          <span>Raymond Kotewicz</span>
+          <span>Wsi7-z0IhAY</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="street-storefront:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1731362706112-04b9927a965c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Street storefront candidate 2" loading="lazy">
+          <div class="photo-id">STREET-STOREFRONT 2</div>
+        </div>
+        <div class="meta">
+          <strong>Street storefront 2</strong>
+          <span>Andrea De Santis</span>
+          <span>YilyVqUmRm4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="street-storefront:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1761208158948-e35d1047576c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Street storefront candidate 3" loading="lazy">
+          <div class="photo-id">STREET-STOREFRONT 3</div>
+        </div>
+        <div class="meta">
+          <strong>Street storefront 3</strong>
+          <span>Tanya Barrow</span>
+          <span>MrCahxWmJoE</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="food-retail">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Food retail</h2>
+      </div>
+      <div class="pool-code">food-retail</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="food-retail:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773049566090-94ec4fe77df7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Food retail candidate 1" loading="lazy">
+          <div class="photo-id">FOOD-RETAIL 1</div>
+        </div>
+        <div class="meta">
+          <strong>Food retail 1</strong>
+          <span>Bernhard</span>
+          <span>tyVKffuLMxw</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="food-retail:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1759692072084-dd732c1bc8f5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Food retail candidate 2" loading="lazy">
+          <div class="photo-id">FOOD-RETAIL 2</div>
+        </div>
+        <div class="meta">
+          <strong>Food retail 2</strong>
+          <span>- Kenny</span>
+          <span>_b34iJKRVpY</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="market-stall">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Market stall</h2>
+      </div>
+      <div class="pool-code">market-stall</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="market-stall:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market stall candidate 1" loading="lazy">
+          <div class="photo-id">MARKET-STALL 1</div>
+        </div>
+        <div class="meta">
+          <strong>Market stall 1</strong>
+          <span>MChe Lee</span>
+          <span>zEVsPWr5pg4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="market-stall:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market stall candidate 2" loading="lazy">
+          <div class="photo-id">MARKET-STALL 2</div>
+        </div>
+        <div class="meta">
+          <strong>Market stall 2</strong>
+          <span>Mateusz Prowans</span>
+          <span>BO3UsWmpBoQ</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="market-stall:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market stall candidate 3" loading="lazy">
+          <div class="photo-id">MARKET-STALL 3</div>
+        </div>
+        <div class="meta">
+          <strong>Market stall 3</strong>
+          <span>Airam Dato-on</span>
+          <span>qwRfzgi7b8g</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="market-complex">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Market complex</h2>
+      </div>
+      <div class="pool-code">market-complex</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="market-complex:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market complex candidate 1" loading="lazy">
+          <div class="photo-id">MARKET-COMPLEX 1</div>
+        </div>
+        <div class="meta">
+          <strong>Market complex 1</strong>
+          <span>MChe Lee</span>
+          <span>zEVsPWr5pg4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="market-complex:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market complex candidate 2" loading="lazy">
+          <div class="photo-id">MARKET-COMPLEX 2</div>
+        </div>
+        <div class="meta">
+          <strong>Market complex 2</strong>
+          <span>Mateusz Prowans</span>
+          <span>BO3UsWmpBoQ</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="market-complex:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Market complex candidate 3" loading="lazy">
+          <div class="photo-id">MARKET-COMPLEX 3</div>
+        </div>
+        <div class="meta">
+          <strong>Market complex 3</strong>
+          <span>Airam Dato-on</span>
+          <span>qwRfzgi7b8g</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="secondhand-clutter">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Second-hand / clutter</h2>
+      </div>
+      <div class="pool-code">secondhand-clutter</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="secondhand-clutter:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1762088774299-df48b699c588?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Second-hand / clutter candidate 1" loading="lazy">
+          <div class="photo-id">SECONDHAND-CLUTTER 1</div>
+        </div>
+        <div class="meta">
+          <strong>Second-hand / clutter 1</strong>
+          <span>Zhen Yao</span>
+          <span>ZWmAWS_XPgo</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="secondhand-clutter:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1581067126178-7df937c6d4b4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Second-hand / clutter candidate 2" loading="lazy">
+          <div class="photo-id">SECONDHAND-CLUTTER 2</div>
+        </div>
+        <div class="meta">
+          <strong>Second-hand / clutter 2</strong>
+          <span>The New York Public Library</span>
+          <span>7o2QHkE8gKM</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="showroom-boutique">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Showroom / boutique</h2>
+      </div>
+      <div class="pool-code">showroom-boutique</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="showroom-boutique:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1769107805412-90d9191d53e9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Showroom / boutique candidate 1" loading="lazy">
+          <div class="photo-id">SHOWROOM-BOUTIQUE 1</div>
+        </div>
+        <div class="meta">
+          <strong>Showroom / boutique 1</strong>
+          <span>Caroline Badran</span>
+          <span>Q8G9oX_SsEM</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="showroom-boutique:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773217503639-d2b56d7dd7df?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Showroom / boutique candidate 2" loading="lazy">
+          <div class="photo-id">SHOWROOM-BOUTIQUE 2</div>
+        </div>
+        <div class="meta">
+          <strong>Showroom / boutique 2</strong>
+          <span>Kamilla Isalieva</span>
+          <span>qKK3TOdbijc</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="workshop-garage">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Workshop / garage</h2>
+      </div>
+      <div class="pool-code">workshop-garage</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="workshop-garage:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1766650189458-bb0e7969ba5d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Workshop / garage candidate 1" loading="lazy">
+          <div class="photo-id">WORKSHOP-GARAGE 1</div>
+        </div>
+        <div class="meta">
+          <strong>Workshop / garage 1</strong>
+          <span>zai Dan</span>
+          <span>isjTPQCOIMU</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="workshop-garage:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1762604462421-fff920b0c418?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Workshop / garage candidate 2" loading="lazy">
+          <div class="photo-id">WORKSHOP-GARAGE 2</div>
+        </div>
+        <div class="meta">
+          <strong>Workshop / garage 2</strong>
+          <span>Kenny Letsoin</span>
+          <span>WhZ5pWTH4hM</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="clinic-pharmacy">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Clinic / pharmacy</h2>
+      </div>
+      <div class="pool-code">clinic-pharmacy</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="clinic-pharmacy:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773270834657-09da4d52ad91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Clinic / pharmacy candidate 1" loading="lazy">
+          <div class="photo-id">CLINIC-PHARMACY 1</div>
+        </div>
+        <div class="meta">
+          <strong>Clinic / pharmacy 1</strong>
+          <span>Spencer Plouzek</span>
+          <span>cGVO7Eadi0g</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="clinic-pharmacy:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1765031092161-a9ebe556117e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Clinic / pharmacy candidate 2" loading="lazy">
+          <div class="photo-id">CLINIC-PHARMACY 2</div>
+        </div>
+        <div class="meta">
+          <strong>Clinic / pharmacy 2</strong>
+          <span>Bernd Dittrich</span>
+          <span>FOSgYGDktlE</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="clinic-pharmacy:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1770321119162-05c18fbcfdb9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Clinic / pharmacy candidate 3" loading="lazy">
+          <div class="photo-id">CLINIC-PHARMACY 3</div>
+        </div>
+        <div class="meta">
+          <strong>Clinic / pharmacy 3</strong>
+          <span>Werapinthorn Jaijan</span>
+          <span>T5si0dm2dGo</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="hospitality-interior">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Hospitality interior</h2>
+      </div>
+      <div class="pool-code">hospitality-interior</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="hospitality-interior:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1529514027228-b808875f9d37?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Hospitality interior candidate 1" loading="lazy">
+          <div class="photo-id">HOSPITALITY-INTERIOR 1</div>
+        </div>
+        <div class="meta">
+          <strong>Hospitality interior 1</strong>
+          <span>Jason Leung</span>
+          <span>MZdJ0q1WwlY</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="hospitality-interior:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1512805147242-c3e79caf64bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Hospitality interior candidate 2" loading="lazy">
+          <div class="photo-id">HOSPITALITY-INTERIOR 2</div>
+        </div>
+        <div class="meta">
+          <strong>Hospitality interior 2</strong>
+          <span>Austin Gardner</span>
+          <span>NiFtfpp-AXk</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="large-complex">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Large complex</h2>
+      </div>
+      <div class="pool-code">large-complex</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="large-complex:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1534159468957-f35ef72761d0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Large complex candidate 1" loading="lazy">
+          <div class="photo-id">LARGE-COMPLEX 1</div>
+        </div>
+        <div class="meta">
+          <strong>Large complex 1</strong>
+          <span>Adrien Olichon</span>
+          <span>082xic2aif8</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="large-complex:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1542893403-1375e8123dfb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Large complex candidate 2" loading="lazy">
+          <div class="photo-id">LARGE-COMPLEX 2</div>
+        </div>
+        <div class="meta">
+          <strong>Large complex 2</strong>
+          <span>Mohit Tomar</span>
+          <span>biAHYi7xcEU</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="outdoor-camp">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Outdoor / camp</h2>
+      </div>
+      <div class="pool-code">outdoor-camp</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="outdoor-camp:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1772204847194-b656c66c07b8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Outdoor / camp candidate 1" loading="lazy">
+          <div class="photo-id">OUTDOOR-CAMP 1</div>
+        </div>
+        <div class="meta">
+          <strong>Outdoor / camp 1</strong>
+          <span>Kenji Katahira</span>
+          <span>I-COr5sj0os</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="outdoor-camp:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1724053080351-ebbfe7a936ac?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Outdoor / camp candidate 2" loading="lazy">
+          <div class="photo-id">OUTDOOR-CAMP 2</div>
+        </div>
+        <div class="meta">
+          <strong>Outdoor / camp 2</strong>
+          <span>Dmitrii Shirnin</span>
+          <span>Md1fvql3Kk0</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="office-service">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Office / service</h2>
+      </div>
+      <div class="pool-code">office-service</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="office-service:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1746173098013-6ae3c31e073f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Office / service candidate 1" loading="lazy">
+          <div class="photo-id">OFFICE-SERVICE 1</div>
+        </div>
+        <div class="meta">
+          <strong>Office / service 1</strong>
+          <span>ZEIN ZAIN</span>
+          <span>-lxj69ckDCA</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="office-service:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1746173099013-8d401dc5c907?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Office / service candidate 2" loading="lazy">
+          <div class="photo-id">OFFICE-SERVICE 2</div>
+        </div>
+        <div class="meta">
+          <strong>Office / service 2</strong>
+          <span>ZEIN ZAIN</span>
+          <span>2-7reWtSod4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="weapons-security">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Weapons / security</h2>
+      </div>
+      <div class="pool-code">weapons-security</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="weapons-security:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1709131121965-fee8e6af077e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Weapons / security candidate 1" loading="lazy">
+          <div class="photo-id">WEAPONS-SECURITY 1</div>
+        </div>
+        <div class="meta">
+          <strong>Weapons / security 1</strong>
+          <span>Gary Walker-Jones</span>
+          <span>6WDyuq0-w8k</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="weapons-security:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1644144557346-5775e758b7f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Weapons / security candidate 2" loading="lazy">
+          <div class="photo-id">WEAPONS-SECURITY 2</div>
+        </div>
+        <div class="meta">
+          <strong>Weapons / security 2</strong>
+          <span>Teitur Hansen</span>
+          <span>CzqvQrjgfhM</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="weapons-security:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1562401894-c9397b88424b?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Weapons / security candidate 3" loading="lazy">
+          <div class="photo-id">WEAPONS-SECURITY 3</div>
+        </div>
+        <div class="meta">
+          <strong>Weapons / security 3</strong>
+          <span>The New York Public Library</span>
+          <span>DQ2ORv8hvTE</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="cyber-tech">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Cyber-tech</h2>
+      </div>
+      <div class="pool-code">cyber-tech</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="cyber-tech:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1761933401897-851cc57a6dda?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Cyber-tech candidate 1" loading="lazy">
+          <div class="photo-id">CYBER-TECH 1</div>
+        </div>
+        <div class="meta">
+          <strong>Cyber-tech 1</strong>
+          <span>Christos Papadopoulos</span>
+          <span>3kQV0gq-l9o</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="cyber-tech:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1731362706112-04b9927a965c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Cyber-tech candidate 2" loading="lazy">
+          <div class="photo-id">CYBER-TECH 2</div>
+        </div>
+        <div class="meta">
+          <strong>Cyber-tech 2</strong>
+          <span>Andrea De Santis</span>
+          <span>YilyVqUmRm4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="cyber-tech:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1679788824280-22b75b61bc05?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Cyber-tech candidate 3" loading="lazy">
+          <div class="photo-id">CYBER-TECH 3</div>
+        </div>
+        <div class="meta">
+          <strong>Cyber-tech 3</strong>
+          <span>Raymond Kotewicz</span>
+          <span>Wsi7-z0IhAY</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="night-market-neon">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Night market / neon</h2>
+      </div>
+      <div class="pool-code">night-market-neon</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="night-market-neon:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773048479508-e7e3f07d19a8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Night market / neon candidate 1" loading="lazy">
+          <div class="photo-id">NIGHT-MARKET-NEON 1</div>
+        </div>
+        <div class="meta">
+          <strong>Night market / neon 1</strong>
+          <span>MChe Lee</span>
+          <span>zEVsPWr5pg4</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="night-market-neon:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1758960474355-c5b5cdd516bf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Night market / neon candidate 2" loading="lazy">
+          <div class="photo-id">NIGHT-MARKET-NEON 2</div>
+        </div>
+        <div class="meta">
+          <strong>Night market / neon 2</strong>
+          <span>Mateusz Prowans</span>
+          <span>BO3UsWmpBoQ</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="night-market-neon:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1573529034998-1d2e6eb2adf4?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Night market / neon candidate 3" loading="lazy">
+          <div class="photo-id">NIGHT-MARKET-NEON 3</div>
+        </div>
+        <div class="meta">
+          <strong>Night market / neon 3</strong>
+          <span>Airam Dato-on</span>
+          <span>qwRfzgi7b8g</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="medical-neon">
+    <div class="pool-head">
+      <div>
+        <div class="eyebrow">IMAGE POOL</div>
+        <h2>Medical / neon</h2>
+      </div>
+      <div class="pool-code">medical-neon</div>
+    </div>
+    <div class="cards">
+      
+      <article class="card" data-key="medical-neon:1">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1773270834657-09da4d52ad91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Medical / neon candidate 1" loading="lazy">
+          <div class="photo-id">MEDICAL-NEON 1</div>
+        </div>
+        <div class="meta">
+          <strong>Medical / neon 1</strong>
+          <span>Spencer Plouzek</span>
+          <span>cGVO7Eadi0g</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="medical-neon:2">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1765031092161-a9ebe556117e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Medical / neon candidate 2" loading="lazy">
+          <div class="photo-id">MEDICAL-NEON 2</div>
+        </div>
+        <div class="meta">
+          <strong>Medical / neon 2</strong>
+          <span>Bernd Dittrich</span>
+          <span>FOSgYGDktlE</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+      <article class="card" data-key="medical-neon:3">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1770321119162-05c18fbcfdb9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Medical / neon candidate 3" loading="lazy">
+          <div class="photo-id">MEDICAL-NEON 3</div>
+        </div>
+        <div class="meta">
+          <strong>Medical / neon 3</strong>
+          <span>Werapinthorn Jaijan</span>
+          <span>T5si0dm2dGo</span>
+        </div>
+        <div class="actions">
+          <button data-choice="approve">APPROVE</button>
+          <button data-choice="deny">DENY</button>
+          <button data-choice="undecided">UNDECIDED</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+<div id="copyBox"></div>
+<script>
+const KEY='vendr-image-review-v03';
+const state=JSON.parse(localStorage.getItem(KEY)||'{}');
+const cards=[...document.querySelectorAll('.card')];
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+function render(){
+  let a=0,d=0,u=0;
+  cards.forEach(card=>{
+    const key=card.dataset.key;
+    const s=state[key]||'undecided';
+    card.dataset.state=s;
+    if(s==='approve')a++;else if(s==='deny')d++;else u++;
+  });
+  document.getElementById('summary').textContent=a+' APPROVED · '+d+' DENIED · '+u+' UNDECIDED';
+}
+cards.forEach(card=>{
+  card.querySelectorAll('[data-choice]').forEach(btn=>{
+    btn.addEventListener('click',()=>{state[card.dataset.key]=btn.dataset.choice;save()});
+  });
+});
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('Clear all image-review decisions?')){localStorage.removeItem(KEY);location.reload()}
+});
+document.getElementById('copy').addEventListener('click',async()=>{
+  const lines=[];
+  for(const pool of document.querySelectorAll('.pool')){
+    const poolName=pool.dataset.pool;
+    const vals=[...pool.querySelectorAll('.card')].map(card=>{
+      const n=card.dataset.key.split(':')[1];
+      return n+'='+(state[card.dataset.key]||'undecided');
+    });
+    lines.push(poolName+': '+vals.join(', '));
+  }
+  const text=lines.join('\n');
+  try{await navigator.clipboard.writeText(text)}catch(e){}
+  const box=document.getElementById('copyBox');
+  box.textContent=text+'\n\nCopied if your browser allowed clipboard access. Tap this panel to close.';
+  box.classList.add('show');
+});
+document.getElementById('copyBox').addEventListener('click',e=>e.currentTarget.classList.remove('show'));
+render();
+</script>
+</body>
+</html>
