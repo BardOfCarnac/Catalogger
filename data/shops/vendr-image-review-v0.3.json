@@ -1,0 +1,198 @@
+{
+  "version": "0.3",
+  "recorded_at": "2026-10-01",
+  "decisions": {
+    "street-storefront": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      },
+      {
+        "candidate": 3,
+        "state": "approve"
+      }
+    ],
+    "food-retail": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "market-stall": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      },
+      {
+        "candidate": 3,
+        "state": "approve"
+      }
+    ],
+    "market-complex": [
+      {
+        "candidate": 1,
+        "state": "undecided"
+      },
+      {
+        "candidate": 2,
+        "state": "undecided"
+      },
+      {
+        "candidate": 3,
+        "state": "undecided"
+      }
+    ],
+    "secondhand-clutter": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "showroom-boutique": [
+      {
+        "candidate": 1,
+        "state": "undecided"
+      },
+      {
+        "candidate": 2,
+        "state": "undecided"
+      }
+    ],
+    "workshop-garage": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "clinic-pharmacy": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      },
+      {
+        "candidate": 3,
+        "state": "approve"
+      }
+    ],
+    "hospitality-interior": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "large-complex": [
+      {
+        "candidate": 1,
+        "state": "undecided"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "outdoor-camp": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "office-service": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      }
+    ],
+    "weapons-security": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      },
+      {
+        "candidate": 3,
+        "state": "approve"
+      }
+    ],
+    "cyber-tech": [
+      {
+        "candidate": 1,
+        "state": "approve"
+      },
+      {
+        "candidate": 2,
+        "state": "approve"
+      },
+      {
+        "candidate": 3,
+        "state": "deny"
+      }
+    ],
+    "night-market-neon": [
+      {
+        "candidate": 1,
+        "state": "undecided"
+      },
+      {
+        "candidate": 2,
+        "state": "undecided"
+      },
+      {
+        "candidate": 3,
+        "state": "undecided"
+      }
+    ],
+    "medical-neon": [
+      {
+        "candidate": 1,
+        "state": "undecided"
+      },
+      {
+        "candidate": 2,
+        "state": "undecided"
+      },
+      {
+        "candidate": 3,
+        "state": "undecided"
+      }
+    ]
+  }
+}
