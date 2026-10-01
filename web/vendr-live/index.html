@@ -458,6 +458,70 @@ button,input{font:inherit}
 }
 
 /* -------- VENDOR PAGE -------- */
+.vendor-hero{
+  padding:0;
+  overflow:hidden;
+}
+.vendor-photo-strip{
+  position:relative;
+  min-height:245px;
+  padding:25px 27px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(23,17,12,.92) 0%,rgba(23,17,12,.72) 48%,rgba(23,17,12,.32) 100%),
+    linear-gradient(135deg,#3c3329,#17110c);
+  background-size:cover;
+  background-position:50% 50%;
+  color:var(--cream);
+}
+.vendor-photo-strip:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22));
+}
+.vendor-photo-content{
+  position:relative;
+  z-index:1;
+  max-width:930px;
+}
+.vendor-photo-strip .kicker{
+  color:#ffd86a;
+  text-shadow:0 1px 2px rgba(0,0,0,.7);
+}
+.vendor-photo-strip .hero-title.vendor{
+  color:var(--cream);
+  margin-bottom:17px;
+  text-shadow:0 2px 4px rgba(0,0,0,.48);
+}
+.vendor-photo-strip .hero-meta{margin-bottom:0}
+.vendor-photo-strip .tag{
+  color:var(--ink);
+  text-shadow:none;
+}
+.vendor-photo-credit{
+  position:absolute;
+  right:13px;
+  bottom:10px;
+  z-index:2;
+  max-width:48%;
+  text-align:right;
+  color:rgba(255,246,223,.72);
+  font:700 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.vendor-photo-credit a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,246,223,.35);
+}
+.vendor-photo-credit a:hover{color:#fff}
+.vendor-info-body{padding:22px 27px 25px}
 .hero-columns{
   display:grid;
   grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);
@@ -662,6 +726,9 @@ button,input{font:inherit}
   .mini-card:last-child{border-bottom:0}
   .hero{padding:18px}
   .hero-columns{grid-template-columns:1fr}
+  .vendor-photo-strip{min-height:205px;padding:20px 18px 18px}
+  .vendor-info-body{padding:18px}
+  .vendor-photo-credit{right:9px;bottom:8px;max-width:65%;font-size:7px}
   .side-stack{grid-template-columns:1fr 1fr}
   .side-stack .panel:first-child{grid-column:1/-1}
   .stock-row{
@@ -867,22 +934,29 @@ button,input{font:inherit}
         <button class="action-btn" id="backToMarket">← Market</button>
       </header>
 
-      <section class="hero">
-        <div class="kicker" id="vendorKicker">Night City / seller profile</div>
-        <h1 class="hero-title vendor" id="vendorName">Seller</h1>
+      <section class="hero vendor-hero">
+        <div class="vendor-photo-strip" id="vendorPhotoStrip">
+          <div class="vendor-photo-content">
+            <div class="kicker" id="vendorKicker">Night City / seller profile</div>
+            <h1 class="hero-title vendor" id="vendorName">Seller</h1>
 
-        <div class="hero-meta">
-          <span class="tag yellow" id="vendorStatus">Profile</span>
-          <span class="tag" id="vendorDistrict">Night City</span>
-          <span class="tag" id="vendorType">Commercial place</span>
-          <span class="tag orange" id="vendorStockMode">Stock model</span>
+            <div class="hero-meta">
+              <span class="tag yellow" id="vendorStatus">Profile</span>
+              <span class="tag" id="vendorDistrict">Night City</span>
+              <span class="tag" id="vendorType">Commercial place</span>
+              <span class="tag orange" id="vendorStockMode">Stock model</span>
+            </div>
+          </div>
+          <div class="vendor-photo-credit" id="vendorPhotoCredit"></div>
         </div>
 
-        <div class="hero-columns">
-          <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
-          <div class="owner">
-            <strong id="vendorOwnerLabel">Vend-R record</strong>
-            <span id="vendorOwnerSub">Canonical Night City commercial profile</span>
+        <div class="vendor-info-body">
+          <div class="hero-columns">
+            <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
+            <div class="owner">
+              <strong id="vendorOwnerLabel">Vend-R record</strong>
+              <span id="vendorOwnerSub">Canonical Night City commercial profile</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1260,6 +1334,19 @@ function renderVendorStock(offers){
 }
 function renderVendor(s,offers){
   currentSellerId=s.entity_id;
+  const photoStrip=document.getElementById('vendorPhotoStrip');
+  const photoCredit=document.getElementById('vendorPhotoCredit');
+  if(s.image&&s.image.image_url){
+    const fx=Math.max(0,Math.min(1,Number(s.image.focal_x??0.5)))*100;
+    const fy=Math.max(0,Math.min(1,Number(s.image.focal_y??0.5)))*100;
+    photoStrip.style.backgroundImage='linear-gradient(90deg,rgba(23,17,12,.92) 0%,rgba(23,17,12,.72) 48%,rgba(23,17,12,.32) 100%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
+    photoStrip.style.backgroundPosition=fx+'% '+fy+'%';
+    photoCredit.innerHTML='PHOTO · <a href="'+esc(s.image.source_url)+'" target="_blank" rel="noopener">'+esc(s.image.photographer)+'</a> / <a href="'+esc(s.image.attribution_url)+'" target="_blank" rel="noopener">UNSPLASH</a>';
+  }else{
+    photoStrip.style.backgroundImage='linear-gradient(135deg,#3c3329,#17110c)';
+    photoStrip.style.backgroundPosition='50% 50%';
+    photoCredit.textContent='';
+  }
   document.getElementById('vendorName').textContent=s.name||'Seller';
   document.getElementById('vendorStatus').textContent='PROFILE · READ ONLY';
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
