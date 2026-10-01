@@ -471,8 +471,8 @@ button,input{font:inherit}
   justify-content:flex-end;
   overflow:hidden;
   background:
-    linear-gradient(90deg,rgba(23,17,12,.92) 0%,rgba(23,17,12,.72) 48%,rgba(23,17,12,.32) 100%),
-    linear-gradient(135deg,#3c3329,#17110c);
+    linear-gradient(90deg,rgba(23,17,12,.48) 0%,rgba(23,17,12,.22) 46%,rgba(23,17,12,.04) 100%),
+    linear-gradient(135deg,#7b6b58,#d5c8ae);
   background-size:cover;
   background-position:50% 50%;
   color:var(--cream);
@@ -482,7 +482,7 @@ button,input{font:inherit}
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22));
+  background:linear-gradient(180deg,rgba(0,0,0,.015),rgba(0,0,0,.07));
 }
 .vendor-photo-content{
   position:relative;
@@ -496,7 +496,7 @@ button,input{font:inherit}
 .vendor-photo-strip .hero-title.vendor{
   color:var(--cream);
   margin-bottom:17px;
-  text-shadow:0 2px 4px rgba(0,0,0,.48);
+  text-shadow:0 2px 3px rgba(0,0,0,.72),0 0 10px rgba(0,0,0,.24);
 }
 .vendor-photo-strip .hero-meta{margin-bottom:0}
 .vendor-photo-strip .tag{
@@ -1339,7 +1339,7 @@ function renderVendor(s,offers){
   if(s.image&&s.image.image_url){
     const fx=Math.max(0,Math.min(1,Number(s.image.focal_x??0.5)))*100;
     const fy=Math.max(0,Math.min(1,Number(s.image.focal_y??0.5)))*100;
-    photoStrip.style.backgroundImage='linear-gradient(90deg,rgba(23,17,12,.92) 0%,rgba(23,17,12,.72) 48%,rgba(23,17,12,.32) 100%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
+    photoStrip.style.backgroundImage='linear-gradient(90deg,rgba(23,17,12,.48) 0%,rgba(23,17,12,.22) 46%,rgba(23,17,12,.04) 100%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
     photoStrip.style.backgroundPosition=fx+'% '+fy+'%';
     photoCredit.innerHTML='PHOTO · <a href="'+esc(s.image.source_url)+'" target="_blank" rel="noopener">'+esc(s.image.photographer)+'</a> / <a href="'+esc(s.image.attribution_url)+'" target="_blank" rel="noopener">UNSPLASH</a>';
   }else{
