@@ -17,7 +17,9 @@
     "Batch 2 and Batch 3 approved images merged into live pools on 2026-10-02; undecided candidates remain out of live rotation and denied candidates stay disabled.",
     "Batch 3 review decisions recorded; approved Batch 2/3 candidates merged into live pools, undecideds remain disabled, denies remain disabled.",
     "Batch 2 and Batch 3 approved candidates merged into live pools on 2026-10-02.",
-    "Undecided review candidates remain outside the live pool; denied candidates remain excluded/disabled."
+    "Undecided review candidates remain outside the live pool; denied candidates remain excluded/disabled.",
+    "Batch 2 and Batch 3 review decisions consolidated on 2026-10-02.",
+    "Only approved images are enabled for live selection; denied and undecided candidates remain out of the live pool."
   ],
   "families": {
     "street-storefront": [
