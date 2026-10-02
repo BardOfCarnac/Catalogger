@@ -6,7 +6,7 @@ The image system is intentionally separate from the catalogue taxonomy. A shop i
 
 Canonical mapping:
 
-- `data/shops/night-city-2045-visual-profiles-v0.1.json`
+- `data/shops/night-city-2045-visual-profiles-v0.2.json`
 
 ## Image policy
 
@@ -14,11 +14,7 @@ Canonical mapping:
 - `inherit`: template records do not get a photograph until a concrete branch/location exists.
 - `none`: references, channels, or non-shop records do not get a shop hero photograph.
 
-The v0.1 pass contains 109 stock profiles:
-
-- 103 pooled
-- 2 inherit
-- 4 none
+The v0.2 curated pass contains 150 stock profiles:\n\n- 144 pooled with explicit approved-image overrides\n- 2 inherit\n- 4 none
 
 ## Visual families
 
@@ -52,10 +48,7 @@ These fields guide image selection only. They are **not canonical claims** about
 
 Images should not change on every page load.
 
-Use:
-
-1. explicit `image_override` if present;
-2. otherwise choose from the family pool with a stable hash of `entity_id`.
+Use:\n\n1. explicit `image_override` if present;\n2. otherwise choose from the family pool with a stable hash of `entity_id`.\n\nThe curated v0.2 pass also avoids repeating the same approved photograph within a district.
 
 Each image record should ultimately carry at least:
 
