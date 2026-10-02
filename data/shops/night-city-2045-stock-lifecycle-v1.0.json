@@ -1,0 +1,4371 @@
+{
+  "version": "1.0",
+  "profiles": [
+    {
+      "name": "Hundred Under Haven",
+      "district": "Citywide",
+      "entity_id": "NC2045-REF-011-HUNDRED-UNDER-HAVEN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "REFERENCE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Hundred Under Haven district branches",
+      "district": "Citywide",
+      "entity_id": "NC2045-IMP-HUNDRED-UNDER-HAVEN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "CHAIN_TEMPLATE",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Local Night Markets",
+      "district": "Citywide",
+      "entity_id": "NC2045-IMP-NIGHT-MARKETS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "Midnight Markets",
+      "district": "Citywide",
+      "entity_id": "NC2045-IMP-MIDNIGHT-MARKETS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "Oasis district branches",
+      "district": "Citywide",
+      "entity_id": "NC2045-IMP-OASIS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "CHAIN_TEMPLATE",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Vendits",
+      "district": "Citywide",
+      "entity_id": "NC2045-IMP-VENDITS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "CHANNEL_TEMPLATE",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Bella Vista Market",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Digg’s",
+      "district": "Downtown",
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-DIGG-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Europa Meatworks",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Fade Forever",
+      "district": "Downtown",
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-FADE-FOREVER",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Goosetopia",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Guns & Dolls",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Moleharty’s Books & Antiques",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Munch Munch Munch",
+      "district": "Downtown",
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Oasis Megamart",
+      "district": "Downtown",
+      "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "food",
+            "weight": 0.55,
+            "departments": [
+              "food-consumables"
+            ]
+          },
+          {
+            "label": "general goods",
+            "weight": 0.45,
+            "departments": [
+              "general-equipment"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 52,
+        "capacity_min": 32,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "huge",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 5,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Rainbow Art Supply",
+      "district": "Downtown",
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-RAINBOW-ART-SUPPLY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Refrosh Wash",
+      "district": "Downtown",
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-REFROSH-WASH",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Oasis (Exec Zone)",
+      "district": "Executive Zone",
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 5,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Piccolo",
+      "district": "Heywood Docks",
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "The Furnace",
+      "district": "Heywood Industrial Zone",
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Animelocaris",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Cyborg Station",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-202-CYBORG-STATION",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Kabuki Market",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Matsura Food Products",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Murakami Suiun Imports",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Nakagawa Garage Tower",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Oasis (Kabuki)",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 5,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Sanroo Neuro-land",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Shou-an",
+      "district": "Kabuki",
+      "entity_id": "NC2045-OUT-KABUKI-203-SHOU-AN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Yum Seng",
+      "district": "Kabuki",
+      "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Jayaraman’s",
+      "district": "Little China",
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Ling Husan’s New China Pharmacy",
+      "district": "Little China",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Prosperity Garden Tenements",
+      "district": "Little China",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "The Bonesetter",
+      "district": "Little China",
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-BONESETTER",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "The Hong Kong Market",
+      "district": "Little China",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "The Little Red Book",
+      "district": "Little China",
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-LITTLE-RED-BOOK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "The Seep",
+      "district": "Little China",
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Yuenyang Tea Shop",
+      "district": "Little China",
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Apocalypse Zone Tattoo",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APOCALYPSE-ZONE-TATTOO",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "App Shack",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APP-SHACK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 18,
+        "capacity_min": 9,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Cheek Turn",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "sidearms",
+            "weight": 0.4,
+            "subcategories": [
+              "Medium Pistols",
+              "Heavy Pistols",
+              "Very Heavy Pistols"
+            ]
+          },
+          {
+            "label": "ammunition",
+            "weight": 0.35,
+            "subcategories": [
+              "Ammunition"
+            ]
+          },
+          {
+            "label": "armour",
+            "weight": 0.25,
+            "subcategories": [
+              "Armor"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Continental Brands Vertical Neighborhood",
+      "district": "Little Europe",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Everything and More",
+      "district": "Little Europe",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Fifty Farms",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-FIFTY-FARMS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Greg’s",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-GREG-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Imported Goods 4 Cheap",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Kaito Market",
+      "district": "Little Europe",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Madame Zorina",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-MADAME-ZORINA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Sagar Hair Saloon",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-SAGAR-HAIR-SALOON",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Stone Mill",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Taco Taco",
+      "district": "Little Europe",
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Torrell and Chiang’s",
+      "district": "Little Europe",
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "slow",
+        "cadence_hours": 336,
+        "cadence_label": "About every two weeks"
+      }
+    },
+    {
+      "name": "Armory Pawn Shop",
+      "district": "New Westbrook",
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Denya Jinja",
+      "district": "New Westbrook",
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Holliday Market",
+      "district": "New Westbrook",
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "Post Exchange (PX)",
+      "district": "NorCal Military Base",
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "B. Breeze",
+      "district": "North Heywood",
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Burning Bright Bodega",
+      "district": "North Heywood",
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Byte & Switch",
+      "district": "North Heywood",
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "cyberware",
+            "weight": 0.6,
+            "departments": [
+              "cyberware"
+            ]
+          },
+          {
+            "label": "electronics",
+            "weight": 0.25,
+            "departments": [
+              "electronics-comms"
+            ]
+          },
+          {
+            "label": "parts & tools",
+            "weight": 0.15,
+            "departments": [
+              "general-equipment"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Nana Meow’s Nursery",
+      "district": "North Heywood",
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Sleepeasy Home Solutions",
+      "district": "North Heywood",
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Truvy’s Salon",
+      "district": "North Heywood",
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Woodland Park",
+      "district": "North Heywood",
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "B. Baskin Books",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "E. Smithery",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "F. Uncle Anne’s",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Flasher’s Corner",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Kibble Kirkle",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "The Warren",
+      "district": "Old Combat Zone",
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Honest Hiro’s Used Cars",
+      "district": "Old Japantown",
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 8,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "slow",
+        "cadence_hours": 336,
+        "cadence_label": "About every two weeks"
+      }
+    },
+    {
+      "name": "Mrs. Suzuki’s Bodega",
+      "district": "Old Japantown",
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Neo Galaxy Cards and Comics",
+      "district": "Old Japantown",
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "The Basement",
+      "district": "Old Japantown",
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "White Side",
+      "district": "Old Japantown",
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "B. Ingalls Farm",
+      "district": "Outskirts",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-INGALLS-FARM",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Fuel Station",
+      "district": "Outskirts",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Bits’n’Bolts",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Doc Miles",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-DOC-MILES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "EverSmilE",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-EVERSMILE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Jodes Camp",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Pursuit Security Inc Showroom",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "weapons",
+            "weight": 0.45,
+            "departments": [
+              "weapons"
+            ]
+          },
+          {
+            "label": "protection",
+            "weight": 0.25,
+            "departments": [
+              "armor-protection"
+            ]
+          },
+          {
+            "label": "ammunition & parts",
+            "weight": 0.2,
+            "departments": [
+              "ammunition-ordnance",
+              "weapon-parts"
+            ]
+          },
+          {
+            "label": "security gear",
+            "weight": 0.1,
+            "departments": [
+              "general-equipment"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Roots of the Forest",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-ROOTS-OF-THE-FOREST",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Smile Another Day",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Stop. Shop. Stitch.",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "SykoStyles",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-SYKOSTYLES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "The Nomad’s Market",
+      "district": "Pacifica Playground",
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "gear",
+            "weight": 0.3,
+            "departments": [
+              "general-equipment"
+            ]
+          },
+          {
+            "label": "food",
+            "weight": 0.25,
+            "departments": [
+              "food-consumables"
+            ]
+          },
+          {
+            "label": "weapons",
+            "weight": 0.2,
+            "departments": [
+              "weapons"
+            ]
+          },
+          {
+            "label": "clothing",
+            "weight": 0.15,
+            "departments": [
+              "fashion-personal"
+            ]
+          },
+          {
+            "label": "mobility",
+            "weight": 0.1,
+            "departments": [
+              "vehicles-mobility"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Grand Junction Gift Shop",
+      "district": "Playland by the Sea Lands",
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Dock 13",
+      "district": "Port of Night City",
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Maritime Supply",
+      "district": "Port of Night City",
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "6th Street Station",
+      "district": "Rancho Coronado",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Minimallism",
+      "district": "Rancho Coronado",
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "RC Night Market",
+      "district": "Rancho Coronado",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "The Samaritan",
+      "district": "Rancho Coronado",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "XOOX",
+      "district": "Rancho Coronado",
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Carmen’s Cosmetics",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Earl’s Second Hand Shop",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Eggheadz",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-EGGHEADZ",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Forever Beautiful",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Forgotten Treasures",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Reclamation Zone Station",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Underground Bodega",
+      "district": "Reclamation Zone",
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Aldecaldo Camp",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "huge",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "B. Bazaar El Saber",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "C. Caitlin Market",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "groceries",
+            "weight": 0.5,
+            "departments": [
+              "food-consumables"
+            ]
+          },
+          {
+            "label": "guns",
+            "weight": 0.3,
+            "departments": [
+              "weapons"
+            ]
+          },
+          {
+            "label": "ammunition",
+            "weight": 0.2,
+            "departments": [
+              "ammunition-ordnance"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Northern Light Supplies",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DISTRIBUTION_CHANNEL",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Skinny James’ Lot",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SKINNY-JAMES-LOT",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Woodchipper’s Garage",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "EVENT_MARKET",
+      "stock_lifecycle": {
+        "mode": "event",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": 1,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "volatile",
+        "cadence_hours": 24,
+        "cadence_label": "Event stock"
+      }
+    },
+    {
+      "name": "YoBro!",
+      "district": "Santo Domingo",
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Ancestral Threads",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-ANCESTRAL-THREADS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Chopper’s",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CHOPPER-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Container Bodega",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Container Mart",
+      "district": "South Night City",
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Getaway Tours",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-GETAWAY-TOURS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 18,
+        "capacity_min": 9,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Old Lady Stuff",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Panik",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-PANIK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "SlushSlurp",
+      "district": "South Night City",
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-SLUSHSLURP",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Club Atlantis",
+      "district": "The Glen",
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 9,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Kasim’s",
+      "district": "The Glen",
+      "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Worthy Housing",
+      "district": "The Glen",
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Totentanz",
+      "district": "The Hot Zone",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 9,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Carriage Street Books/Afterwords Café",
+      "district": "University District",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 44,
+        "capacity_min": 26,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "I. Lombardy Groceries",
+      "district": "University District",
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Night City University",
+      "district": "University District",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Retail Resale",
+      "district": "University District",
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Bay Bridge Residences",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Bill’s",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-BILL-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Combat Concierge",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "weapons",
+            "weight": 0.3,
+            "departments": [
+              "weapons"
+            ]
+          },
+          {
+            "label": "ammunition",
+            "weight": 0.25,
+            "departments": [
+              "ammunition-ordnance"
+            ]
+          },
+          {
+            "label": "armour",
+            "weight": 0.2,
+            "departments": [
+              "armor-protection"
+            ]
+          },
+          {
+            "label": "general gear",
+            "weight": 0.15,
+            "departments": [
+              "general-equipment"
+            ]
+          },
+          {
+            "label": "food",
+            "weight": 0.1,
+            "departments": [
+              "food-consumables"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Corporate Cool",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Crystal Park Market",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Cybershack",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "programs",
+            "weight": 0.45,
+            "subcategories": [
+              "Attacker Programs",
+              "Defender Programs",
+              "Booster Programs",
+              "Black ICE"
+            ]
+          },
+          {
+            "label": "decks",
+            "weight": 0.35,
+            "subcategories": [
+              "Cyberdecks",
+              "Cyberdeck Hardware"
+            ]
+          },
+          {
+            "label": "accessories",
+            "weight": 0.2,
+            "subcategories": [
+              "Netrunning Accessories"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "GraffitiX",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Great River Storehouse",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-GREAT-RIVER-STOREHOUSE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DISTRIBUTION_CHANNEL",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Maxwell’s",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Metal Heaven",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 44,
+        "capacity_min": 26,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Midnight Arms Regional Office",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "weapons",
+            "weight": 0.7,
+            "departments": [
+              "weapons"
+            ]
+          },
+          {
+            "label": "ammunition",
+            "weight": 0.15,
+            "departments": [
+              "ammunition-ordnance"
+            ]
+          },
+          {
+            "label": "parts",
+            "weight": 0.15,
+            "departments": [
+              "weapon-parts"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 22,
+        "capacity_min": 12,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Other Lives",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-OTHER-LIVES",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 18,
+        "capacity_min": 9,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Pizza to Go",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-PIZZA-TO-GO",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 8,
+        "capacity_min": 4,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "tiny",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Skinlight",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 11,
+        "capacity_min": 5,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Tech Time",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "tools & scrap",
+            "weight": 0.65,
+            "departments": [
+              "general-equipment"
+            ]
+          },
+          {
+            "label": "electronics",
+            "weight": 0.35,
+            "departments": [
+              "electronics-comms"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 1,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 72,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "The Forge",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "cyberware",
+            "weight": 0.6,
+            "departments": [
+              "cyberware"
+            ]
+          },
+          {
+            "label": "electronics",
+            "weight": 0.25,
+            "departments": [
+              "electronics-comms"
+            ]
+          },
+          {
+            "label": "parts & tools",
+            "weight": 0.15,
+            "departments": [
+              "general-equipment"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 17,
+        "capacity_min": 9,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 120,
+        "cadence_label": "Every few days"
+      }
+    },
+    {
+      "name": "Torch’s Total Repairs",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Ziggurat Headquarters",
+      "district": "Upper Marina",
+      "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "small",
+      "stock_mode": "SERVICE_ONLY",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Data Inc",
+      "district": "Watson Development",
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "electronics",
+            "weight": 0.45,
+            "departments": [
+              "electronics-comms"
+            ]
+          },
+          {
+            "label": "netrunning",
+            "weight": 0.35,
+            "departments": [
+              "netrunning"
+            ]
+          },
+          {
+            "label": "other tech",
+            "weight": 0.2,
+            "departments": [
+              "general-equipment",
+              "virtual-goods-games"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 29,
+        "capacity_min": 16,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "medium",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Faisal’s Customs",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "slow",
+        "cadence_hours": 336,
+        "cadence_label": "About every two weeks"
+      }
+    },
+    {
+      "name": "Gibson Battlegear Outlet",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "clothing",
+            "weight": 0.8,
+            "departments": [
+              "fashion-personal"
+            ]
+          },
+          {
+            "label": "armour",
+            "weight": 0.2,
+            "departments": [
+              "armor-protection"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 34,
+        "capacity_min": 20,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 3,
+          "occasional_cycles": 1
+        },
+        "turnover": "steady",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Hundred Under Haven",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "general goods",
+            "weight": 0.6,
+            "departments": [
+              "general-equipment"
+            ]
+          },
+          {
+            "label": "food",
+            "weight": 0.4,
+            "departments": [
+              "food-consumables"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 52,
+        "capacity_min": 32,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "huge",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Megabuilding H10",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 0,
+        "capacity_min": 0,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "none"
+      },
+      "shop_scale": "huge",
+      "stock_mode": "AGGREGATE_CONTAINER",
+      "stock_lifecycle": {
+        "mode": "none",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": null,
+          "occasional_cycles": null
+        },
+        "cadence_hours": null,
+        "cadence_label": "No shelf stock"
+      }
+    },
+    {
+      "name": "Morgan’s",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MORGAN-S",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "shape": [
+          {
+            "label": "sidearms",
+            "weight": 0.7,
+            "subcategories": [
+              "Medium Pistols",
+              "Heavy Pistols",
+              "Very Heavy Pistols"
+            ]
+          },
+          {
+            "label": "armour",
+            "weight": 0.3,
+            "subcategories": [
+              "Armor"
+            ]
+          }
+        ],
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "irregular",
+        "cadence_hours": 168,
+        "cadence_label": "Weekly"
+      }
+    },
+    {
+      "name": "Snack & Shack",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 14,
+        "capacity_min": 7,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "small",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 4,
+          "occasional_cycles": 2
+        },
+        "turnover": "fast",
+        "cadence_hours": 24,
+        "cadence_label": "Daily"
+      }
+    },
+    {
+      "name": "Turbo Neon Motors",
+      "district": "Watson Development",
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "assortment": {
+        "basis": "shop_scale + retail character",
+        "version": "1.0",
+        "capacity_max": 18,
+        "capacity_min": 10,
+        "shape_source": "archetype_or_shop_override",
+        "selection_mode": "weighted_shape"
+      },
+      "shop_scale": "large",
+      "stock_mode": "DIRECT_SELLER",
+      "stock_lifecycle": {
+        "mode": "scheduled",
+        "version": "1.0",
+        "rotation": {
+          "core_cycles": null,
+          "regular_cycles": 2,
+          "occasional_cycles": 1
+        },
+        "turnover": "slow",
+        "cadence_hours": 336,
+        "cadence_label": "About every two weeks"
+      }
+    }
+  ],
+  "description": "Vend-R Night City stock lifecycle model: cadence, turnover and rotation periods."
+}
