@@ -834,6 +834,48 @@ button,input{font:inherit}
 .mini-card[data-shop]{cursor:pointer}
 .mini-card[data-shop]:hover{background:rgba(255,255,255,.48)}
 .action-btn[disabled]{opacity:.65;cursor:default}
+
+/* Place hierarchy: containers render child businesses in the main list. */
+.parent-location-link{
+  display:block;width:100%;margin-top:14px;padding:11px 12px;border:2px solid var(--ink);
+  background:var(--paper);color:var(--ink);text-align:left;cursor:pointer;
+}
+.parent-location-link:hover{background:var(--rear-4)}
+.parent-location-link>span,.parent-location-link>small{
+  display:block;font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+}
+.parent-location-link>strong{display:block;margin:4px 0;font-size:14px;text-transform:uppercase}
+.place-row{
+  width:100%;border:0;border-bottom:1px solid var(--rule);background:rgba(255,250,240,.42);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.42fr) auto;
+  gap:14px;align-items:center;padding:15px 18px;text-align:left;color:var(--ink);cursor:pointer;
+}
+.place-row:hover{background:rgba(255,255,255,.55)}
+.place-row:last-child{border-bottom:0}
+.place-row .place-name{font-size:19px;font-weight:1000;line-height:1;text-transform:uppercase}
+.place-row .place-desc{margin-top:6px;color:var(--muted);font-size:11px;line-height:1.4}
+.place-row .place-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.place-row .place-tag{
+  border:1px solid var(--ink);padding:4px 6px;background:var(--paper);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.place-row .place-meta{
+  text-align:right;font:9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;color:var(--muted);
+}
+.place-row .place-meta strong{display:block;color:var(--ink)}
+.place-row .place-arrow{font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.stock-subsection-title{
+  padding:12px 18px;border-bottom:3px solid var(--ink);background:var(--rear-4);
+  font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.07em;
+}
+@media(max-width:760px){
+  .place-row{grid-template-columns:minmax(0,1fr) auto}
+  .place-row .place-meta{grid-column:1;text-align:left}
+  .place-row .place-arrow{grid-column:2;grid-row:1/3}
+}
+
 </style>
 </head>
 <body>
@@ -1004,7 +1046,7 @@ button,input{font:inherit}
       <header class="topbar">
         <div class="brand">VEND-R<small>Night City Market</small></div>
         <label class="inline-search"><input id="shopSearch" type="search" placeholder="SEARCH THIS SHOP"></label>
-        <button class="action-btn" id="backToMarket">← Market</button>
+        <button class="action-btn" id="backToMarket">← Back</button>
       </header>
 
       <section class="offer-focus" id="offerFocus" hidden>
@@ -1041,6 +1083,11 @@ button,input{font:inherit}
             <div class="owner">
               <strong id="vendorOwnerLabel">Vend-R record</strong>
               <span id="vendorOwnerSub">Canonical Night City commercial profile</span>
+              <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
+                <span>Inside</span>
+                <strong id="parentLocationName">Containing location</strong>
+                <small>View containing location →</small>
+              </button>
             </div>
           </div>
         </div>
@@ -1049,7 +1096,7 @@ button,input{font:inherit}
       <div class="vendor-layout">
         <section class="panel">
           <div class="section-head">
-            <h2>Stock</h2>
+            <h2 id="stockPanelTitle">Stock</h2>
             <span id="stockSummary">Read-only profile<br>No shelf state yet</span>
           </div>
 
@@ -1294,6 +1341,7 @@ let sellers=[];
 let lastSearch=null;
 let currentSellerId=null;
 let currentFocusOffer=null;
+let vendorHistory=[];
 
 function esc(v){
   return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -1307,6 +1355,33 @@ async function api(params){
   return j;
 }
 function sellerById(id){return sellers.find(s=>s.entity_id===id)}
+function sellerByName(name,district=null){
+  if(!name)return null;
+  return sellers.find(s=>s.name===name&&(!district||s.district===district))||sellers.find(s=>s.name===name)||null;
+}
+function childSellers(s){
+  const raw=(Array.isArray(s.child_places)&&s.child_places.length)?s.child_places:(Array.isArray(s.children)?s.children:[]);
+  return raw.map(ref=>{
+    const obj=(ref&&typeof ref==='object')?ref:{};
+    const id=typeof ref==='string'?ref:(obj.child_entity_id||obj.entity_id||obj.child_id||obj.id||null);
+    const listed=id?sellerById(id):null;
+    return {
+      ...(listed||{}),
+      ...obj,
+      entity_id:id||listed?.entity_id||null,
+      name:obj.child_name||obj.name||listed?.name||id,
+      type:obj.child_type||obj.type||listed?.type||'Shop',
+      copy:obj.child_copy||obj.copy||listed?.copy||'Independent business at this location.',
+      tags:obj.child_tags||obj.tags||listed?.tags||'',
+      stock_mode:obj.child_stock_mode||obj.stock_mode||listed?.stock_mode||''
+    };
+  }).filter(x=>x.entity_id&&x.name);
+}
+function parentSeller(s){
+  const explicit=s.parent_id||s.parent_entity_id||s.parent?.entity_id||null;
+  if(explicit&&sellerById(explicit))return sellerById(explicit);
+  return sellerByName(s.parent_name||s.parent?.name||'',s.district);
+}
 function modeLabel(v){return String(v||'').replaceAll('_',' ')}
 function sellerRow(s,sub,status){
   return '<button class="list-row" data-shop="'+esc(s.entity_id)+'"><div>'+
@@ -1412,43 +1487,81 @@ async function runMarketSearch(raw){
 function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
   const sourceRows=Array.isArray(s.stock)?s.stock.slice():[];
-  if(!sourceRows.length){
-    list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf stock</div><div class="stock-sub">This place does not currently own a physical stock bundle.</div></div><div class="stock-meta"><strong>—</strong><br>no count</div><div class="price amber">—</div></article>';
-    document.getElementById('stockSummary').innerHTML='No shelf stock<br>'+esc(modeLabel(s.stock_mode));
-    document.getElementById('restockBand').textContent='No physical shelf inventory';
+  const children=childSellers(s);
+  const stockTitle=document.getElementById('stockPanelTitle');
+  const search=document.getElementById('shopSearch');
+
+  function stockRowsHtml(rows){
+    const focusId=focus?String(focus.item_id):null;
+    const exact=focusId?rows.find(r=>String(r.item_id)===focusId):null;
+    const relation=(exact?.relation_key)||(focus?.relation_key)||null;
+    const ranked=rows.map((r,index)=>{
+      const exactHit=focusId&&String(r.item_id)===focusId;
+      const relatedHit=!exactHit&&relation&&r.relation_key===relation;
+      return {r,index,rank:exactHit?0:(relatedHit?1:2),exactHit,relatedHit};
+    }).sort((a,b)=>a.rank-b.rank||a.index-b.index);
+    return ranked.map(({r,exactHit,relatedHit})=>{
+      const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
+      const nameClass=exactHit?' exact':(relatedHit?' related':'');
+      const sub=[r.assortment_role,r.condition,exactHit?'exact item':(relatedHit?'related item':null)].filter(Boolean).join(' · ');
+      return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
+        '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
+        '<div class="stock-sub">'+esc(sub)+'</div></div>'+
+        '<div class="stock-meta"><strong>'+esc(String(r.quantity))+' here</strong><br>stock cycle '+esc(String(s.state?.stock_cycle??1))+'</div>'+
+        '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
+    }).join('');
+  }
+
+  if(children.length){
+    stockTitle.textContent='Shops here';
+    search.placeholder='SEARCH SHOPS HERE';
+    const placeHtml=children.map(child=>{
+      const tags=String(child.tags||'').split('|').map(x=>x.trim()).filter(Boolean).slice(0,3);
+      const hay=[child.name,child.copy,child.type,...tags].filter(Boolean).join(' ').toLowerCase();
+      return '<button class="place-row" type="button" data-child-shop="'+esc(child.entity_id)+'" data-search="'+esc(hay)+'">'+
+        '<div><div class="place-name">'+esc(child.name)+'</div>'+
+        '<div class="place-desc">'+esc(child.copy||child.type||'Independent business at this location.')+'</div>'+
+        (tags.length?'<div class="place-tags">'+tags.map(tag=>'<span class="place-tag">'+esc(tag)+'</span>').join('')+'</div>':'')+
+        '</div><div class="place-meta"><strong>'+esc(child.type||'Shop')+'</strong>'+esc(modeLabel(child.stock_mode)||'')+'</div>'+
+        '<div class="place-arrow">View →</div></button>';
+    }).join('');
+    const ownStock=sourceRows.length?'<div class="stock-subsection-title">Stock sold directly by '+esc(s.name||'this location')+'</div>'+stockRowsHtml(sourceRows):'';
+    list.innerHTML=placeHtml+ownStock;
+    list.querySelectorAll('[data-child-shop]').forEach(el=>el.addEventListener('click',()=>{
+      const id=el.dataset.childShop;
+      playWipe(()=>openVendor(id,null,{pushHistory:true}));
+    }));
+    document.getElementById('stockSummary').innerHTML=children.length+' place'+(children.length===1?'':'s')+' inside'+(sourceRows.length?'<br>'+sourceRows.length+' direct stock line'+(sourceRows.length===1?'':'s'):'');
+    document.getElementById('restockBand').textContent='Browse the businesses at '+(s.name||'this location');
     return;
   }
 
-  const focusId=focus?String(focus.item_id):null;
-  const exact=focusId?sourceRows.find(r=>String(r.item_id)===focusId):null;
-  const relation=(exact?.relation_key)||(focus?.relation_key)||null;
+  stockTitle.textContent='Stock';
+  search.placeholder='SEARCH THIS SHOP';
+  if(!sourceRows.length){
+    list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf stock</div><div class="stock-sub">This place does not currently list physical stock.</div></div><div class="stock-meta"><strong>—</strong><br>no count</div><div class="price amber">—</div></article>';
+    document.getElementById('stockSummary').innerHTML='No shelf stock<br>'+esc(modeLabel(s.stock_mode));
+    document.getElementById('restockBand').textContent=s.stock_mode==='SERVICE_ONLY'?'Services only':'No current shelf inventory';
+    return;
+  }
 
-  const ranked=sourceRows.map((r,index)=>{
-    const exactHit=focusId&&String(r.item_id)===focusId;
-    const relatedHit=!exactHit&&relation&&r.relation_key===relation;
-    return {r,index,rank:exactHit?0:(relatedHit?1:2),exactHit,relatedHit};
-  }).sort((a,b)=>a.rank-b.rank||a.index-b.index);
-
-  list.innerHTML=ranked.map(({r,exactHit,relatedHit})=>{
-    const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
-    const nameClass=exactHit?' exact':(relatedHit?' related':'');
-    const sub=[
-      r.assortment_role,
-      r.condition,
-      exactHit?'exact item':(relatedHit?'related item':null)
-    ].filter(Boolean).join(' · ');
-    return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
-      '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
-      '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-      '<div class="stock-meta"><strong>'+esc(String(r.quantity))+' here</strong><br>stock cycle '+esc(String(s.state?.stock_cycle??1))+'</div>'+
-      '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
-  }).join('');
-
+  list.innerHTML=stockRowsHtml(sourceRows);
   document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · cycle '+esc(String(s.state?.stock_cycle??1))+'<br>finite quantities';
   document.getElementById('restockBand').textContent='Stock cycle '+String(s.state?.stock_cycle??1)+' · current public snapshot';
 }
 function renderVendor(s,offers){
   currentSellerId=s.entity_id;
+  const children=childSellers(s);
+  const parent=parentSeller(s);
+  const parentLink=document.getElementById('parentLocationLink');
+  if(parent){
+    document.getElementById('parentLocationName').textContent=parent.name;
+    parentLink.hidden=false;
+    parentLink.dataset.parentShop=parent.entity_id;
+  }else{
+    parentLink.hidden=true;
+    parentLink.removeAttribute('data-parent-shop');
+  }
   const photoStrip=document.getElementById('vendorPhotoStrip');
   const photoCredit=document.getElementById('vendorPhotoCredit');
   if(s.image&&s.image.image_url){
@@ -1463,7 +1576,7 @@ function renderVendor(s,offers){
     photoCredit.textContent='';
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
-  document.getElementById('vendorStatus').textContent=(s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY';
+  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):((s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY');
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=modeLabel(s.stock_mode);
@@ -1477,16 +1590,20 @@ function renderVendor(s,offers){
   document.getElementById('factArchetype').textContent=s.type||'—';
   document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
   document.getElementById('factWorldState').textContent='Not materialized';
-  const children=s.child_places||[];
   if(children.length){
-    document.getElementById('contextKicker').textContent='Contained sellers';
-    document.getElementById('contextTitle').textContent=children.length+' linked place'+(children.length===1?'':'s');
-    document.getElementById('contextCopy').textContent=children.slice(0,4).map(x=>x.child_name).join(' · ');
-    document.getElementById('contextLine').textContent='Parent stock delegates to child businesses';
+    document.getElementById('contextKicker').textContent='At this location';
+    document.getElementById('contextTitle').textContent=children.length+' shop'+(children.length===1?'':'s')+' here';
+    document.getElementById('contextCopy').textContent='Each business below has its own profile, details and stock.';
+    document.getElementById('contextLine').textContent=(s.district||'Night City')+' · browse inside';
+  }else if(parent){
+    document.getElementById('contextKicker').textContent='Inside';
+    document.getElementById('contextTitle').textContent=parent.name;
+    document.getElementById('contextCopy').textContent=parent.copy||('Part of '+parent.name+'.');
+    document.getElementById('contextLine').textContent='View containing location';
   }else{
     document.getElementById('contextKicker').textContent='Commercial context';
     document.getElementById('contextTitle').textContent=s.district||'Night City';
-    document.getElementById('contextCopy').textContent=s.modelling_note||'Canonical commercial profile; shelf state has not been opened in this public build.';
+    document.getElementById('contextCopy').textContent=s.copy||s.modelling_note||'Local commercial profile.';
     document.getElementById('contextLine').textContent=modeLabel(s.stock_mode)+' · '+(s.type||'seller');
   }
   const tags=String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean);
@@ -1518,19 +1635,31 @@ function renderVendor(s,offers){
   renderVendorStock(s,focus);
   filterShopStock('');
 }
-async function openVendor(id,focus=null){
+async function openVendor(id,focus=null,options={}){
   if(busy)return;
+  const pushHistory=options.pushHistory!==false;
+  const previous=currentView==='vendor'&&currentSellerId?currentSellerId:'home';
   try{
     const s=await api({api:'shop',id});
+    if(pushHistory&&previous!==id)vendorHistory.push(previous);
     renderVendor(s,focus);
     switchTo('vendor');
   }catch(e){
     console.error(e);
   }
 }
+function goBackFromVendor(){
+  const previous=vendorHistory.pop()||'home';
+  if(previous==='home'){
+    currentSellerId=null;
+    switchTo('home');
+    return;
+  }
+  openVendor(previous,null,{pushHistory:false});
+}
 function filterShopStock(q){
   q=String(q||'').trim().toLowerCase();
-  document.querySelectorAll('#stockList .stock-row').forEach(row=>{
+  document.querySelectorAll('#stockList .stock-row, #stockList .place-row').forEach(row=>{
     const hay=(row.textContent+' '+(row.dataset.search||'')).toLowerCase();
     row.style.display=(!q||hay.includes(q))?'':'none';
   });
@@ -1636,7 +1765,11 @@ async function boot(){
 }
 document.getElementById('marketSearchTop').addEventListener('keydown',e=>{if(e.key==='Enter')runMarketSearch(e.currentTarget.value)});
 document.getElementById('marketBrowseButton').addEventListener('click',()=>{lastSearch=null;renderHomeDefault();window.scrollTo({top:document.querySelector('.grid-2').offsetTop-20,behavior:'smooth'})});
-document.getElementById('backToMarket').addEventListener('click',()=>switchTo('home'));
+document.getElementById('backToMarket').addEventListener('click',goBackFromVendor);
+document.getElementById('parentLocationLink').addEventListener('click',e=>{
+  const id=e.currentTarget.dataset.parentShop;
+  if(id)playWipe(()=>openVendor(id,null,{pushHistory:false}));
+});
 document.getElementById('shopSearch').addEventListener('input',e=>filterShopStock(e.currentTarget.value));
 boot();
 </script>
