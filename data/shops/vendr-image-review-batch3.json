@@ -331,5 +331,10 @@
       "review_status": "approve"
     }
   ],
-  "review_recorded_at": "2026-10-02"
+  "review_recorded_at": "2026-10-02",
+  "review_summary": {
+    "approve": 30,
+    "deny": 2,
+    "undecided": 4
+  }
 }
