@@ -15,7 +15,9 @@
     "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition.",
     "Batch 3 review recorded: approved candidates are eligible for live rotation; denied and undecided candidates remain disabled.",
     "Batch 2 and Batch 3 approved images merged into live pools on 2026-10-02; undecided candidates remain out of live rotation and denied candidates stay disabled.",
-    "Batch 3 review decisions recorded; approved Batch 2/3 candidates merged into live pools, undecideds remain disabled, denies remain disabled."
+    "Batch 3 review decisions recorded; approved Batch 2/3 candidates merged into live pools, undecideds remain disabled, denies remain disabled.",
+    "Batch 2 and Batch 3 approved candidates merged into live pools on 2026-10-02.",
+    "Undecided review candidates remain outside the live pool; denied candidates remain excluded/disabled."
   ],
   "families": {
     "street-storefront": [
