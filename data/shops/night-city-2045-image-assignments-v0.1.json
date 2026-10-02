@@ -1,0 +1,1047 @@
+{
+  "version": "0.1",
+  "generated_from": [
+    "night-city-2045-vendr-database-v0.8.json",
+    "night-city-2045-visual-profiles-v0.1.json",
+    "vendr-unsplash-image-pools-v0.1.json"
+  ],
+  "policy": "Match approved images to location semantics first; balance reuse citywide; never repeat the same photograph within one district.",
+  "summary": {
+    "assignments": 103,
+    "distinct_images": 56,
+    "district_duplicate_images": 0,
+    "max_image_reuse": 6
+  },
+  "assignments": [
+    {
+      "entity_id": "NC2045-IMP-NIGHT-MARKETS",
+      "name": "Local Night Markets",
+      "district": "Citywide",
+      "visual_family": "market-stall",
+      "image_pool_key": "night-market-neon",
+      "unsplash_id": "HNTYGJ5nbXE",
+      "photographer": "Sara Aurora Cimminiello",
+      "reason": "approved night-market-neon image; balanced against other assignments in Citywide"
+    },
+    {
+      "entity_id": "NC2045-IMP-MIDNIGHT-MARKETS",
+      "name": "Midnight Markets",
+      "district": "Citywide",
+      "visual_family": "market-stall",
+      "image_pool_key": "night-market-neon",
+      "unsplash_id": "ADkBdepSsqE",
+      "photographer": "Wenhao Ruan",
+      "reason": "approved night-market-neon image; balanced against other assignments in Citywide"
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "name": "Bella Vista Market",
+      "district": "Downtown",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FaMw2Jp9Ybo",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in Downtown"
+    },
+    {
+      "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
+      "name": "Oasis Megamart",
+      "district": "Downtown",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "MrCahxWmJoE",
+      "photographer": "Tanya Barrow",
+      "reason": "approved street-storefront image; balanced against other assignments in Downtown"
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "name": "Europa Meatworks",
+      "district": "Downtown",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in Downtown"
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "name": "Moleharty’s Books & Antiques",
+      "district": "Downtown",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "SKn0mKkEBrs",
+      "photographer": "Kouji Tsuru",
+      "reason": "books/antiques → dense antique-shop hallway"
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "name": "Munch Munch Munch",
+      "district": "Downtown",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "MZdJ0q1WwlY",
+      "photographer": "Jason Leung",
+      "reason": "approved hospitality-interior image; balanced against other assignments in Downtown"
+    },
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "district": "Executive Zone",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "8YDqTT5jNXI",
+      "photographer": "rawkkim",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Executive Zone"
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "name": "Piccolo",
+      "district": "Heywood Docks",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "tyVKffuLMxw",
+      "photographer": "Bernhard",
+      "reason": "approved food-retail image; balanced against other assignments in Heywood Docks"
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "name": "The Furnace",
+      "district": "Heywood Industrial Zone",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "NiFtfpp-AXk",
+      "photographer": "Austin Gardner",
+      "reason": "approved hospitality-interior image; balanced against other assignments in Heywood Industrial Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "name": "Animelocaris",
+      "district": "Kabuki",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "Wsi7-z0IhAY",
+      "photographer": "Raymond Kotewicz",
+      "reason": "approved street-storefront image; balanced against other assignments in Kabuki"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
+      "name": "Kabuki Market",
+      "district": "Kabuki",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "DAREHGu17Y0",
+      "photographer": "Andrii Solok",
+      "reason": "approved market-complex image; balanced against other assignments in Kabuki"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "name": "Murakami Suiun Imports",
+      "district": "Kabuki",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "workshop-garage",
+      "unsplash_id": "WhZ5pWTH4hM",
+      "photographer": "Kenny Letsoin",
+      "reason": "imports/vehicles → industrial garage/warehouse image"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
+      "name": "Nakagawa Garage Tower",
+      "district": "Kabuki",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "workshop-garage",
+      "unsplash_id": "isjTPQCOIMU",
+      "photographer": "zai Dan",
+      "reason": "vehicle storage → garage/workshop image"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "name": "Oasis (Kabuki)",
+      "district": "Kabuki",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "YilyVqUmRm4",
+      "photographer": "Andrea De Santis",
+      "reason": "approved street-storefront image; balanced against other assignments in Kabuki"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "name": "Sanroo Neuro-land",
+      "district": "Kabuki",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "uMBBaJp-FDQ",
+      "photographer": "Thomas Tucker",
+      "reason": "prestige firearms showroom → clean wall display"
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
+      "name": "Yum Seng",
+      "district": "Kabuki",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "MZdJ0q1WwlY",
+      "photographer": "Jason Leung",
+      "reason": "approved hospitality-interior image; balanced against other assignments in Kabuki"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
+      "name": "Jayaraman’s",
+      "district": "Little China",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "BO3UsWmpBoQ",
+      "photographer": "Mateusz Prowans",
+      "reason": "approved market-stall image; balanced against other assignments in Little China"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+      "name": "The Hong Kong Market",
+      "district": "Little China",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FPm0wZmRfmk",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in Little China"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
+      "name": "Yuenyang Tea Shop",
+      "district": "Little China",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "NiFtfpp-AXk",
+      "photographer": "Austin Gardner",
+      "reason": "approved hospitality-interior image; balanced against other assignments in Little China"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "name": "Ling Husan’s New China Pharmacy",
+      "district": "Little China",
+      "visual_family": "clinic-pharmacy",
+      "image_pool_key": "medical-neon",
+      "unsplash_id": "2JyjQERMU68",
+      "photographer": "Vien Dinh",
+      "reason": "pharmacy → illuminated urban drugstore"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
+      "name": "Prosperity Garden Tenements",
+      "district": "Little China",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "URh2ZUhkpTA",
+      "photographer": "Antonella Vilardo",
+      "reason": "approved large-complex image; balanced against other assignments in Little China"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "name": "Continental Brands Vertical Neighborhood",
+      "district": "Little Europe",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "UNMjv1G50Ww",
+      "photographer": "Tsuyoshi Kozu",
+      "reason": "approved large-complex image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "name": "Everything and More",
+      "district": "Little Europe",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "YTnmnUvNy4E",
+      "photographer": "Bernd Dittrich",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
+      "name": "Cheek Turn",
+      "district": "Little Europe",
+      "visual_family": "market-stall",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "5F8mlj5SAyo",
+      "photographer": "SHUXIN WU",
+      "reason": "rough sidearms/ammo seller → in-store rifle image"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
+      "name": "Imported Goods 4 Cheap",
+      "district": "Little Europe",
+      "visual_family": "street-storefront",
+      "image_pool_key": "cyber-tech",
+      "unsplash_id": "pfR18JNEMv8",
+      "photographer": "Vishnu Mohanan",
+      "reason": "cheap electronics/imports → exposed circuit-board imagery"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+      "name": "Kaito Market",
+      "district": "Little Europe",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "DAREHGu17Y0",
+      "photographer": "Andrii Solok",
+      "reason": "approved market-complex image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
+      "name": "Stone Mill",
+      "district": "Little Europe",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
+      "name": "Taco Taco",
+      "district": "Little Europe",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "qwRfzgi7b8g",
+      "photographer": "Airam Dato-on",
+      "reason": "approved market-stall image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "name": "Torrell and Chiang’s",
+      "district": "Little Europe",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "uNnx31GSPxk",
+      "photographer": "Jie Yeu Teoh",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Little Europe"
+    },
+    {
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+      "name": "Armory Pawn Shop",
+      "district": "New Westbrook",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "-71PqIuuHtU",
+      "photographer": "Sergio Guardiola Herrador",
+      "reason": "pawn/military second-hand → cluttered old-shop counter"
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "name": "Holliday Market",
+      "district": "New Westbrook",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "zEVsPWr5pg4",
+      "photographer": "MChe Lee",
+      "reason": "approved market-stall image; balanced against other assignments in New Westbrook"
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "name": "Post Exchange (PX)",
+      "district": "NorCal Military Base",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "MrCahxWmJoE",
+      "photographer": "Tanya Barrow",
+      "reason": "approved street-storefront image; balanced against other assignments in NorCal Military Base"
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "name": "Byte & Switch",
+      "district": "North Heywood",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "cyber-tech",
+      "unsplash_id": "rmvlyhncTDM",
+      "photographer": "Fotografia Lui Vlad",
+      "reason": "repair/refurbishment → hands-on circuit repair"
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "name": "Nana Meow’s Nursery",
+      "district": "North Heywood",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "Wsi7-z0IhAY",
+      "photographer": "Raymond Kotewicz",
+      "reason": "approved street-storefront image; balanced against other assignments in North Heywood"
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "name": "Sleepeasy Home Solutions",
+      "district": "North Heywood",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "8YDqTT5jNXI",
+      "photographer": "rawkkim",
+      "reason": "approved showroom-boutique image; balanced against other assignments in North Heywood"
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
+      "name": "Truvy’s Salon",
+      "district": "North Heywood",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "uNnx31GSPxk",
+      "photographer": "Jie Yeu Teoh",
+      "reason": "approved showroom-boutique image; balanced against other assignments in North Heywood"
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "name": "B. Breeze",
+      "district": "North Heywood",
+      "visual_family": "clinic-pharmacy",
+      "image_pool_key": "medical-neon",
+      "unsplash_id": "yVhQxLoUx_M",
+      "photographer": "Jahanzeb Ahsan",
+      "reason": "drug seller → neon apothecary signage"
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
+      "name": "Burning Bright Bodega",
+      "district": "North Heywood",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "tyVKffuLMxw",
+      "photographer": "Bernhard",
+      "reason": "approved food-retail image; balanced against other assignments in North Heywood"
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "name": "Woodland Park",
+      "district": "North Heywood",
+      "visual_family": "outdoor-camp",
+      "image_pool_key": "outdoor-camp",
+      "unsplash_id": "I-COr5sj0os",
+      "photographer": "Kenji Katahira",
+      "reason": "approved outdoor-camp image; balanced against other assignments in North Heywood"
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "name": "Kibble Kirkle",
+      "district": "Old Combat Zone",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in Old Combat Zone"
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "name": "B. Baskin Books",
+      "district": "Old Combat Zone",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "7o2QHkE8gKM",
+      "photographer": "The New York Public Library",
+      "reason": "used/recovered books → archival second-hand interior"
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "name": "E. Smithery",
+      "district": "Old Combat Zone",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "HiuNXyjGhjE",
+      "photographer": "Simon Takatomi",
+      "reason": "bespoke/reproduction weapons → timber-mounted collector display"
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
+      "name": "F. Uncle Anne’s",
+      "district": "Old Combat Zone",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "BO3UsWmpBoQ",
+      "photographer": "Mateusz Prowans",
+      "reason": "approved market-stall image; balanced against other assignments in Old Combat Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "name": "The Warren",
+      "district": "Old Combat Zone",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FPm0wZmRfmk",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in Old Combat Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "name": "Mrs. Suzuki’s Bodega",
+      "district": "Old Japantown",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "tyVKffuLMxw",
+      "photographer": "Bernhard",
+      "reason": "approved food-retail image; balanced against other assignments in Old Japantown"
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "name": "White Side",
+      "district": "Old Japantown",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "nicaCH7ae9o",
+      "photographer": "Zoshua Colah",
+      "reason": "scavenger trading post → crowded antique/salvage stall"
+    },
+    {
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-ROOTS-OF-THE-FOREST",
+      "name": "Roots of the Forest",
+      "district": "Pacifica Playground",
+      "visual_family": "outdoor-camp",
+      "image_pool_key": "outdoor-camp",
+      "unsplash_id": "Md1fvql3Kk0",
+      "photographer": "Dmitrii Shirnin",
+      "reason": "approved outdoor-camp image; balanced against other assignments in Pacifica Playground"
+    },
+    {
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-DOC-MILES",
+      "name": "Doc Miles",
+      "district": "Pacifica Playground",
+      "visual_family": "clinic-pharmacy",
+      "image_pool_key": "clinic-pharmacy",
+      "unsplash_id": "FOSgYGDktlE",
+      "photographer": "Bernd Dittrich",
+      "reason": "clinic/service location → clinical interior"
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
+      "name": "Jodes Camp",
+      "district": "Pacifica Playground",
+      "visual_family": "outdoor-camp",
+      "image_pool_key": "outdoor-camp",
+      "unsplash_id": "I-COr5sj0os",
+      "photographer": "Kenji Katahira",
+      "reason": "approved outdoor-camp image; balanced against other assignments in Pacifica Playground"
+    },
+    {
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
+      "name": "The Nomad’s Market",
+      "district": "Pacifica Playground",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FaMw2Jp9Ybo",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in Pacifica Playground"
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "name": "Pursuit Security Inc Showroom",
+      "district": "Pacifica Playground",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "mvSnr7qxzPM",
+      "photographer": "Frankie Lu",
+      "reason": "brand/security showroom → storefront/case presentation"
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "name": "Smile Another Day",
+      "district": "Pacifica Playground",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "DRhrtL8Lyjk",
+      "photographer": "Zoshua Colah",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in Pacifica Playground"
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "name": "Stop. Shop. Stitch.",
+      "district": "Pacifica Playground",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "YilyVqUmRm4",
+      "photographer": "Andrea De Santis",
+      "reason": "approved street-storefront image; balanced against other assignments in Pacifica Playground"
+    },
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "name": "Grand Junction Gift Shop",
+      "district": "Playland by the Sea Lands",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "MrCahxWmJoE",
+      "photographer": "Tanya Barrow",
+      "reason": "approved street-storefront image; balanced against other assignments in Playland by the Sea Lands"
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "district": "Port of Night City",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "ZWmAWS_XPgo",
+      "photographer": "Zhen Yao",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in Port of Night City"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
+      "name": "6th Street Station",
+      "district": "Rancho Coronado",
+      "visual_family": "office-service",
+      "image_pool_key": "office-service",
+      "unsplash_id": "-lxj69ckDCA",
+      "photographer": "ZEIN ZAIN",
+      "reason": "approved office-service image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-INGALLS-FARM",
+      "name": "B. Ingalls Farm",
+      "district": "Rancho Coronado",
+      "visual_family": "outdoor-camp",
+      "image_pool_key": "outdoor-camp",
+      "unsplash_id": "Md1fvql3Kk0",
+      "photographer": "Dmitrii Shirnin",
+      "reason": "approved outdoor-camp image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION",
+      "name": "Fuel Station",
+      "district": "Rancho Coronado",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "Wsi7-z0IhAY",
+      "photographer": "Raymond Kotewicz",
+      "reason": "approved street-storefront image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+      "name": "Minimallism",
+      "district": "Rancho Coronado",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "DAREHGu17Y0",
+      "photographer": "Andrii Solok",
+      "reason": "approved market-complex image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
+      "name": "RC Night Market",
+      "district": "Rancho Coronado",
+      "visual_family": "market-stall",
+      "image_pool_key": "night-market-neon",
+      "unsplash_id": "elOuTaR1td0",
+      "photographer": "PJH",
+      "reason": "approved night-market-neon image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
+      "name": "The Samaritan",
+      "district": "Rancho Coronado",
+      "visual_family": "clinic-pharmacy",
+      "image_pool_key": "clinic-pharmacy",
+      "unsplash_id": "T5si0dm2dGo",
+      "photographer": "Werapinthorn Jaijan",
+      "reason": "clinic/service location → distinct clinical interior"
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
+      "name": "XOOX",
+      "district": "Rancho Coronado",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in Rancho Coronado"
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "name": "Earl’s Second Hand Shop",
+      "district": "Reclamation Zone",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "nicaCH7ae9o",
+      "photographer": "Zoshua Colah",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+      "name": "Carmen’s Cosmetics",
+      "district": "Reclamation Zone",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "qwRfzgi7b8g",
+      "photographer": "Airam Dato-on",
+      "reason": "approved market-stall image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+      "name": "Forever Beautiful",
+      "district": "Reclamation Zone",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "YTnmnUvNy4E",
+      "photographer": "Bernd Dittrich",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+      "name": "Forgotten Treasures",
+      "district": "Reclamation Zone",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "DRhrtL8Lyjk",
+      "photographer": "Zoshua Colah",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "name": "Reclamation Zone Station",
+      "district": "Reclamation Zone",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FPm0wZmRfmk",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+      "name": "Underground Bodega",
+      "district": "Reclamation Zone",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "tyVKffuLMxw",
+      "photographer": "Bernhard",
+      "reason": "approved food-retail image; balanced against other assignments in Reclamation Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "name": "Aldecaldo Camp",
+      "district": "Santo Domingo",
+      "visual_family": "outdoor-camp",
+      "image_pool_key": "outdoor-camp",
+      "unsplash_id": "I-COr5sj0os",
+      "photographer": "Kenji Katahira",
+      "reason": "approved outdoor-camp image; balanced against other assignments in Santo Domingo"
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "name": "B. Bazaar El Saber",
+      "district": "Santo Domingo",
+      "visual_family": "market-stall",
+      "image_pool_key": "night-market-neon",
+      "unsplash_id": "rSRZElOKVZM",
+      "photographer": "Darien Attridge",
+      "reason": "approved night-market-neon image; balanced against other assignments in Santo Domingo"
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "name": "C. Caitlin Market",
+      "district": "Santo Domingo",
+      "visual_family": "market-stall",
+      "image_pool_key": "market-stall",
+      "unsplash_id": "zEVsPWr5pg4",
+      "photographer": "MChe Lee",
+      "reason": "approved market-stall image; balanced against other assignments in Santo Domingo"
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
+      "name": "YoBro!",
+      "district": "Santo Domingo",
+      "visual_family": "street-storefront",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "4csCb_5NVjE",
+      "photographer": "Ethan",
+      "reason": "gun shop/firing range → dark weapons rack"
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+      "name": "Woodchipper’s Garage",
+      "district": "Santo Domingo",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "workshop-garage",
+      "unsplash_id": "OfKjYtGGa2w",
+      "photographer": "Vitali Holstinin",
+      "reason": "Fixer garage → dim industrial workshop"
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
+      "name": "Container Bodega",
+      "district": "South Night City",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in South Night City"
+    },
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "name": "Container Mart",
+      "district": "South Night City",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "FaMw2Jp9Ybo",
+      "photographer": "MChe Lee",
+      "reason": "approved market-complex image; balanced against other assignments in South Night City"
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
+      "name": "Old Lady Stuff",
+      "district": "South Night City",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "SKn0mKkEBrs",
+      "photographer": "Kouji Tsuru",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in South Night City"
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "name": "Club Atlantis",
+      "district": "The Glen",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "MZdJ0q1WwlY",
+      "photographer": "Jason Leung",
+      "reason": "approved hospitality-interior image; balanced against other assignments in The Glen"
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "name": "Kasim’s",
+      "district": "The Glen",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "NiFtfpp-AXk",
+      "photographer": "Austin Gardner",
+      "reason": "approved hospitality-interior image; balanced against other assignments in The Glen"
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "name": "Worthy Housing",
+      "district": "The Glen",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "pfHb7wajowg",
+      "photographer": "Marcus Lenk",
+      "reason": "approved large-complex image; balanced against other assignments in The Glen"
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "district": "The Hot Zone",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "MZdJ0q1WwlY",
+      "photographer": "Jason Leung",
+      "reason": "approved hospitality-interior image; balanced against other assignments in The Hot Zone"
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "name": "Carriage Street Books/Afterwords Café",
+      "district": "University District",
+      "visual_family": "hospitality-interior",
+      "image_pool_key": "hospitality-interior",
+      "unsplash_id": "NiFtfpp-AXk",
+      "photographer": "Austin Gardner",
+      "reason": "approved hospitality-interior image; balanced against other assignments in University District"
+    },
+    {
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "name": "I. Lombardy Groceries",
+      "district": "University District",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "tyVKffuLMxw",
+      "photographer": "Bernhard",
+      "reason": "approved food-retail image; balanced against other assignments in University District"
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "name": "Night City University",
+      "district": "University District",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "1ZFjkN9hyng",
+      "photographer": "Simon Edwards",
+      "reason": "approved large-complex image; balanced against other assignments in University District"
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "name": "Retail Resale",
+      "district": "University District",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "ZWmAWS_XPgo",
+      "photographer": "Zhen Yao",
+      "reason": "approved secondhand-clutter image; balanced against other assignments in University District"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "name": "Bay Bridge Residences",
+      "district": "Upper Marina",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "QNyq04-TjrI",
+      "photographer": "nik radzi",
+      "reason": "approved large-complex image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
+      "name": "Combat Concierge",
+      "district": "Upper Marina",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "YilyVqUmRm4",
+      "photographer": "Andrea De Santis",
+      "reason": "approved street-storefront image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
+      "name": "Corporate Cool",
+      "district": "Upper Marina",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "vPqLkWohv3c",
+      "photographer": "Osmany M Leyva Aldana",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "name": "Crystal Park Market",
+      "district": "Upper Marina",
+      "visual_family": "market-complex",
+      "image_pool_key": "market-complex",
+      "unsplash_id": "DAREHGu17Y0",
+      "photographer": "Andrii Solok",
+      "reason": "approved market-complex image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
+      "name": "Cybershack",
+      "district": "Upper Marina",
+      "visual_family": "market-stall",
+      "image_pool_key": "cyber-tech",
+      "unsplash_id": "HpoYaT9-9aE",
+      "photographer": "Fotografia Lui Vlad",
+      "reason": "NET/electronics stall → repair-bench electronics"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
+      "name": "Maxwell’s",
+      "district": "Upper Marina",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "MrCahxWmJoE",
+      "photographer": "Tanya Barrow",
+      "reason": "approved street-storefront image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
+      "name": "Skinlight",
+      "district": "Upper Marina",
+      "visual_family": "clinic-pharmacy",
+      "image_pool_key": "clinic-pharmacy",
+      "unsplash_id": "cGVO7Eadi0g",
+      "photographer": "Spencer Plouzek",
+      "reason": "fashionware body shop → clinical retail interior"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
+      "name": "Tech Time",
+      "district": "Upper Marina",
+      "visual_family": "secondhand-clutter",
+      "image_pool_key": "secondhand-clutter",
+      "unsplash_id": "-71PqIuuHtU",
+      "photographer": "Sergio Guardiola Herrador",
+      "reason": "tools/scrap pawn → cluttered counter/workbench feel"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
+      "name": "Torch’s Total Repairs",
+      "district": "Upper Marina",
+      "visual_family": "workshop-garage",
+      "image_pool_key": "workshop-garage",
+      "unsplash_id": "Ws8SCmDS9mw",
+      "photographer": "Rizky Nuriman",
+      "reason": "repair storefront → active metalwork bench"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "name": "Metal Heaven",
+      "district": "Upper Marina",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "Wsi7-z0IhAY",
+      "photographer": "Raymond Kotewicz",
+      "reason": "approved street-storefront image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "name": "Midnight Arms Regional Office",
+      "district": "Upper Marina",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "weapons-security",
+      "unsplash_id": "CzqvQrjgfhM",
+      "photographer": "Teitur Hansen",
+      "reason": "manufacturer showroom → dedicated weapons/security image"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "name": "Ziggurat Headquarters",
+      "district": "Upper Marina",
+      "visual_family": "office-service",
+      "image_pool_key": "office-service",
+      "unsplash_id": "2-7reWtSod4",
+      "photographer": "ZEIN ZAIN",
+      "reason": "approved office-service image; balanced against other assignments in Upper Marina"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "name": "Gibson Battlegear Outlet",
+      "district": "Watson Development",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "vPqLkWohv3c",
+      "photographer": "Osmany M Leyva Aldana",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Watson Development"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "district": "Watson Development",
+      "visual_family": "street-storefront",
+      "image_pool_key": "street-storefront",
+      "unsplash_id": "YilyVqUmRm4",
+      "photographer": "Andrea De Santis",
+      "reason": "approved street-storefront image; balanced against other assignments in Watson Development"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
+      "name": "Data Inc",
+      "district": "Watson Development",
+      "visual_family": "street-storefront",
+      "image_pool_key": "cyber-tech",
+      "unsplash_id": "k27hkqXuveo",
+      "photographer": "Eric Stoynov",
+      "reason": "Netrunner electronics storefront → dense server infrastructure"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "name": "Megabuilding H10",
+      "district": "Watson Development",
+      "visual_family": "large-complex",
+      "image_pool_key": "large-complex",
+      "unsplash_id": "KDtyalmLWKY",
+      "photographer": "Artis Kančs",
+      "reason": "approved large-complex image; balanced against other assignments in Watson Development"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "name": "Snack & Shack",
+      "district": "Watson Development",
+      "visual_family": "food-retail",
+      "image_pool_key": "food-retail",
+      "unsplash_id": "_b34iJKRVpY",
+      "photographer": "- Kenny",
+      "reason": "approved food-retail image; balanced against other assignments in Watson Development"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "name": "Turbo Neon Motors",
+      "district": "Watson Development",
+      "visual_family": "showroom-boutique",
+      "image_pool_key": "showroom-boutique",
+      "unsplash_id": "8YDqTT5jNXI",
+      "photographer": "rawkkim",
+      "reason": "approved showroom-boutique image; balanced against other assignments in Watson Development"
+    }
+  ]
+}
