@@ -12,7 +12,8 @@
       "photographer": "Andrii Solok",
       "title": "Blue-lit indoor market",
       "source_url": "https://unsplash.com/photos/people-browse-an-indoor-market-under-blue-neon-lights-DAREHGu17Y0",
-      "image_url": "https://images.unsplash.com/photo-1784631912338-2c4ca8dfcd89?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1784631912338-2c4ca8dfcd89?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "market-complex",
@@ -20,7 +21,8 @@
       "photographer": "MChe Lee",
       "title": "Busy indoor market at night",
       "source_url": "https://unsplash.com/photos/people-browsing-in-a-busy-indoor-market-at-night-FaMw2Jp9Ybo",
-      "image_url": "https://images.unsplash.com/photo-1772588181186-b4476f380ea3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1772588181186-b4476f380ea3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "market-complex",
@@ -28,7 +30,8 @@
       "photographer": "MChe Lee",
       "title": "Crowded indoor stalls",
       "source_url": "https://unsplash.com/photos/people-browsing-stalls-in-a-busy-indoor-market-FPm0wZmRfmk",
-      "image_url": "https://images.unsplash.com/photo-1772285261838-71db6f63fd84?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1772285261838-71db6f63fd84?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "market-complex",
@@ -36,7 +39,8 @@
       "photographer": "Ivan Wong",
       "title": "Covered urban market arcade",
       "source_url": "https://unsplash.com/photos/bustling-indoor-market-filled-with-people-and-food-stalls-BPEQzft7Hyc",
-      "image_url": "https://images.unsplash.com/photo-1783328477292-1bf06cf29273?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1783328477292-1bf06cf29273?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "undecided"
     },
     {
       "pool": "night-market-neon",
@@ -44,7 +48,8 @@
       "photographer": "Sebastian Schuster",
       "title": "Crowded neon street at night",
       "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-h6rYFydQa8Q",
-      "image_url": "https://images.unsplash.com/photo-1757372429881-aa13dd832bec?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1757372429881-aa13dd832bec?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "undecided"
     },
     {
       "pool": "night-market-neon",
@@ -52,7 +57,8 @@
       "photographer": "PJH",
       "title": "Akihabara shopping street",
       "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-elOuTaR1td0",
-      "image_url": "https://images.unsplash.com/photo-1769321790864-1b00340a54ad?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1769321790864-1b00340a54ad?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "night-market-neon",
@@ -60,7 +66,8 @@
       "photographer": "Darien Attridge",
       "title": "Late-night Shinjuku crowd",
       "source_url": "https://unsplash.com/photos/crowded-street-at-night-with-neon-signs-rSRZElOKVZM",
-      "image_url": "https://images.unsplash.com/photo-1759200263187-d1f64da092f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1759200263187-d1f64da092f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "night-market-neon",
@@ -68,7 +75,8 @@
       "photographer": "Sara Aurora Cimminiello",
       "title": "Cyberpunk-tagged Tokyo crowd",
       "source_url": "https://unsplash.com/photos/crowded-street-scene-at-night-with-neon-signs-HNTYGJ5nbXE",
-      "image_url": "https://images.unsplash.com/photo-1775493215754-4487f9f089bc?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1775493215754-4487f9f089bc?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "night-market-neon",
@@ -76,7 +84,8 @@
       "photographer": "Ishaan Sen",
       "title": "Osaka night-market street",
       "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-IFf95tJcm1o",
-      "image_url": "https://images.unsplash.com/photo-1769451435307-0f4bb006471d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1769451435307-0f4bb006471d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "undecided"
     },
     {
       "pool": "night-market-neon",
@@ -84,7 +93,8 @@
       "photographer": "Wenhao Ruan",
       "title": "Dense Osaka neon street",
       "source_url": "https://unsplash.com/photos/crowded-street-with-bright-neon-signs-at-night-ADkBdepSsqE",
-      "image_url": "https://images.unsplash.com/photo-1759736693508-0b4fcd13e045?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1759736693508-0b4fcd13e045?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "workshop-garage",
@@ -92,7 +102,8 @@
       "photographer": "Rizky Nuriman",
       "title": "Welder at metalwork bench",
       "source_url": "https://unsplash.com/photos/a-welder-working-on-a-piece-of-metal-Ws8SCmDS9mw",
-      "image_url": "https://images.unsplash.com/photo-1683470157212-cd4005549fce?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1683470157212-cd4005549fce?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "workshop-garage",
@@ -100,7 +111,8 @@
       "photographer": "Vitali Holstinin",
       "title": "Dim industrial welding shop",
       "source_url": "https://unsplash.com/photos/welder-working-in-a-dimly-lit-workshop-OfKjYtGGa2w",
-      "image_url": "https://images.unsplash.com/photo-1762786478154-4678312f9ad6?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1762786478154-4678312f9ad6?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "workshop-garage",
@@ -108,7 +120,8 @@
       "photographer": "Dextar Studio",
       "title": "Working mechanic garage",
       "source_url": "https://unsplash.com/photos/mechanic-working-on-a-car-engine-in-a-workshop-XP8o9_Arwqg",
-      "image_url": "https://images.unsplash.com/photo-1771340012319-0b4fca008b54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1771340012319-0b4fca008b54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "deny"
     },
     {
       "pool": "workshop-garage",
@@ -116,7 +129,8 @@
       "photographer": "Maryam Saghandi",
       "title": "Welder with sparks",
       "source_url": "https://unsplash.com/photos/welder-working-with-sparks-flying-in-workshop-LnOOWZk5cE8",
-      "image_url": "https://images.unsplash.com/photo-1764245546004-e6b743242a80?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1764245546004-e6b743242a80?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "weapons-security",
@@ -124,7 +138,8 @@
       "photographer": "SHUXIN WU",
       "title": "Rifle inside store",
       "source_url": "https://unsplash.com/photos/a-man-holding-a-rifle-inside-of-a-store-5F8mlj5SAyo",
-      "image_url": "https://images.unsplash.com/photo-1650192771535-8f0316a124a5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1650192771535-8f0316a124a5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "weapons-security",
@@ -132,7 +147,8 @@
       "photographer": "Thomas Tucker",
       "title": "Firearms wall display",
       "source_url": "https://unsplash.com/photos/several-firearms-are-displayed-on-a-wall-uMBBaJp-FDQ",
-      "image_url": "https://images.unsplash.com/photo-1748443635007-81bfba67843e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1748443635007-81bfba67843e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "weapons-security",
@@ -140,7 +156,8 @@
       "photographer": "Simon Takatomi",
       "title": "Weapons on timber wall",
       "source_url": "https://unsplash.com/photos/a-wooden-wall-with-a-gun-and-two-revolvers-on-it-HiuNXyjGhjE",
-      "image_url": "https://images.unsplash.com/photo-1727468802376-d3b9048924ba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1727468802376-d3b9048924ba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "weapons-security",
@@ -148,7 +165,8 @@
       "photographer": "Frankie Lu",
       "title": "Arms storefront / cases",
       "source_url": "https://unsplash.com/photos/white-and-black-store-front-mvSnr7qxzPM",
-      "image_url": "https://images.unsplash.com/photo-1583774195556-a097cd7f1d3f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1583774195556-a097cd7f1d3f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "weapons-security",
@@ -156,7 +174,8 @@
       "photographer": "Ethan",
       "title": "Dark weapons rack",
       "source_url": "https://unsplash.com/photos/a-shelf-filled-with-lots-of-guns-in-a-dark-room-4csCb_5NVjE",
-      "image_url": "https://images.unsplash.com/photo-1714324410882-9cf576929a8a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1714324410882-9cf576929a8a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "secondhand-clutter",
@@ -164,7 +183,8 @@
       "photographer": "Kouji Tsuru",
       "title": "Antique-shop hallway",
       "source_url": "https://unsplash.com/photos/antique-shop-hallway-filled-with-various-items-SKn0mKkEBrs",
-      "image_url": "https://images.unsplash.com/photo-1755414717736-0d3ffe1f5a1a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1755414717736-0d3ffe1f5a1a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "secondhand-clutter",
@@ -172,7 +192,8 @@
       "photographer": "Zoshua Colah",
       "title": "Dense curios shelves",
       "source_url": "https://unsplash.com/photos/collection-of-assorted-antique-trinkets-and-curiosities-on-shelves-DRhrtL8Lyjk",
-      "image_url": "https://images.unsplash.com/photo-1767338718620-2179800c3747?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1767338718620-2179800c3747?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "secondhand-clutter",
@@ -180,7 +201,8 @@
       "photographer": "Zoshua Colah",
       "title": "Vintage clutter shelves",
       "source_url": "https://unsplash.com/photos/collection-of-vintage-trinkets-and-curios-on-shelves-WgHZ65lEaRs",
-      "image_url": "https://images.unsplash.com/photo-1767338718786-92f7934e925e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1767338718786-92f7934e925e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "undecided"
     },
     {
       "pool": "secondhand-clutter",
@@ -188,7 +210,8 @@
       "photographer": "Zoshua Colah",
       "title": "Crowded antique stall",
       "source_url": "https://unsplash.com/photos/man-looking-at-cluttered-antique-shop-stall-nicaCH7ae9o",
-      "image_url": "https://images.unsplash.com/photo-1765443454774-626e56274f33?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1765443454774-626e56274f33?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "showroom-boutique",
@@ -196,7 +219,8 @@
       "photographer": "Osmany M Leyva Aldana",
       "title": "Dark neon game-store interior",
       "source_url": "https://unsplash.com/photos/dark-store-interior-with-glowing-neon-sign-reflection-vPqLkWohv3c",
-      "image_url": "https://images.unsplash.com/photo-1772217104138-dcc501d2fd45?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1772217104138-dcc501d2fd45?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "showroom-boutique",
@@ -204,7 +228,8 @@
       "photographer": "Jie Yeu Teoh",
       "title": "Warm urban boutique",
       "source_url": "https://unsplash.com/photos/stylish-boutique-interior-with-clothing-racks-plants-and-warm-lighting-uNnx31GSPxk",
-      "image_url": "https://images.unsplash.com/photo-1784537642955-9d371c0cbf91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1784537642955-9d371c0cbf91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "showroom-boutique",
@@ -212,7 +237,8 @@
       "photographer": "Bayu Syaits",
       "title": "Boutique with neon branding",
       "source_url": "https://unsplash.com/photos/clothing-boutique-interior-with-racks-of-apparel-y5vzB7nisbk",
-      "image_url": "https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "deny"
     },
     {
       "pool": "large-complex",
@@ -220,7 +246,8 @@
       "photographer": "Simon Edwards",
       "title": "Dark brutalist complex",
       "source_url": "https://unsplash.com/photos/an-angular-building-stands-tall-against-the-sky-1ZFjkN9hyng",
-      "image_url": "https://images.unsplash.com/photo-1748830025561-0e722734f4dd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1748830025561-0e722734f4dd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -228,7 +255,8 @@
       "photographer": "nik radzi",
       "title": "High-rise at night",
       "source_url": "https://unsplash.com/photos/apartment-building-during-nighttime-QNyq04-TjrI",
-      "image_url": "https://images.unsplash.com/photo-1516707777878-caf57fb63951?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1516707777878-caf57fb63951?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -236,7 +264,8 @@
       "photographer": "Chelaxy Designs",
       "title": "Exterior stairs at night",
       "source_url": "https://unsplash.com/photos/apartment-building-exterior-at-night-with-stairs-and-balcony-BxbFVcFbO1g",
-      "image_url": "https://images.unsplash.com/photo-1768720406903-cb00a7ea67bb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1768720406903-cb00a7ea67bb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -244,7 +273,8 @@
       "photographer": "Marcus Lenk",
       "title": "Foggy brutalist housing",
       "source_url": "https://unsplash.com/photos/apartment-building-windows-lit-up-at-night-pfHb7wajowg",
-      "image_url": "https://images.unsplash.com/photo-1755896409980-1d5e8d957d79?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1755896409980-1d5e8d957d79?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -252,7 +282,8 @@
       "photographer": "Tsuyoshi Kozu",
       "title": "Dense towers at night",
       "source_url": "https://unsplash.com/photos/apartment-buildings-at-night-with-a-distant-tower-UNMjv1G50Ww",
-      "image_url": "https://images.unsplash.com/photo-1768711660634-28206b48a791?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1768711660634-28206b48a791?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "large-complex",
@@ -260,7 +291,8 @@
       "photographer": "Antonella Vilardo",
       "title": "Lit residential block",
       "source_url": "https://unsplash.com/photos/apartment-building-illuminated-at-night-with-many-lit-windows-URh2ZUhkpTA",
-      "image_url": "https://images.unsplash.com/photo-1765665017478-f10e88f8b85f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1765665017478-f10e88f8b85f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "medical-neon",
@@ -268,7 +300,8 @@
       "photographer": "Vien Dinh",
       "title": "Japanese drugstore at night",
       "source_url": "https://unsplash.com/photos/japanese-drugstore-at-night-with-illuminated-sign-2JyjQERMU68",
-      "image_url": "https://images.unsplash.com/photo-1767623356282-c5edc8d98766?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1767623356282-c5edc8d98766?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "medical-neon",
@@ -276,7 +309,8 @@
       "photographer": "Jahanzeb Ahsan",
       "title": "Neon apothecary sign",
       "source_url": "https://unsplash.com/photos/neon-sign-that-reads-apotek-at-night-yVhQxLoUx_M",
-      "image_url": "https://images.unsplash.com/photo-1741299955562-f35c9e2ce001?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1741299955562-f35c9e2ce001?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "cyber-tech",
@@ -284,7 +318,8 @@
       "photographer": "Fotografia Lui Vlad",
       "title": "Phone circuit-board repair",
       "source_url": "https://unsplash.com/photos/hand-holds-a-phones-circuit-board-for-repair-rmvlyhncTDM",
-      "image_url": "https://images.unsplash.com/photo-1746017240069-4b37791319ea?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1746017240069-4b37791319ea?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     },
     {
       "pool": "cyber-tech",
@@ -292,7 +327,9 @@
       "photographer": "Eric Stoynov",
       "title": "Dense server racks and wiring",
       "source_url": "https://unsplash.com/photos/two-server-racks-filled-with-electronic-components-and-wires-k27hkqXuveo",
-      "image_url": "https://images.unsplash.com/photo-1775519520461-6b6e068d9250?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800"
+      "image_url": "https://images.unsplash.com/photo-1775519520461-6b6e068d9250?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+      "review_status": "approve"
     }
-  ]
+  ],
+  "review_recorded_at": "2026-10-02"
 }
