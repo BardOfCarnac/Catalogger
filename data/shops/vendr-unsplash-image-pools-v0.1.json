@@ -11,9 +11,9 @@
     "Clinic/pharmacy pool now includes neon urban medical imagery.",
     "All image choices remain deterministic per entity.",
     "Review pass 1 recorded from user decisions on 2026-10-01. Denied images are disabled from live selection.",
-    "Batch 2 and Batch 3 approved candidates promoted on 2026-10-02.",
     "Live eligibility now requires explicit approval; undecided and denied candidates remain archived but disabled.",
-    "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition."
+    "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition.",
+    "Batch 3 review recorded: approved candidates are eligible for live rotation; denied and undecided candidates remain disabled."
   ],
   "families": {
     "street-storefront": [
@@ -193,6 +193,18 @@
         "order": 5,
         "review_status": "approve",
         "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "BPEQzft7Hyc",
+        "photographer": "Ivan Wong",
+        "source_url": "https://unsplash.com/photos/bustling-indoor-market-filled-with-people-and-food-stalls-BPEQzft7Hyc",
+        "image_url": "https://images.unsplash.com/photo-1783328477292-1bf06cf29273?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 6,
+        "review_status": "undecided"
       }
     ],
     "secondhand-clutter": [
@@ -271,6 +283,18 @@
         "order": 5,
         "review_status": "approve",
         "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "WgHZ65lEaRs",
+        "photographer": "Zoshua Colah",
+        "source_url": "https://unsplash.com/photos/collection-of-vintage-trinkets-and-curios-on-shelves-WgHZ65lEaRs",
+        "image_url": "https://images.unsplash.com/photo-1767338718786-92f7934e925e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 6,
+        "review_status": "undecided"
       }
     ],
     "showroom-boutique": [
@@ -349,6 +373,18 @@
         "order": 5,
         "review_status": "approve",
         "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "y5vzB7nisbk",
+        "photographer": "Bayu Syaits",
+        "source_url": "https://unsplash.com/photos/clothing-boutique-interior-with-racks-of-apparel-y5vzB7nisbk",
+        "image_url": "https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 6,
+        "review_status": "deny"
       }
     ],
     "workshop-garage": [
@@ -414,6 +450,18 @@
         "order": 4,
         "review_status": "approve",
         "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "XP8o9_Arwqg",
+        "photographer": "Dextar Studio",
+        "source_url": "https://unsplash.com/photos/mechanic-working-on-a-car-engine-in-a-workshop-XP8o9_Arwqg",
+        "image_url": "https://images.unsplash.com/photo-1771340012319-0b4fca008b54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 5,
+        "review_status": "deny"
       }
     ],
     "clinic-pharmacy": [
@@ -944,6 +992,30 @@
         "order": 6,
         "review_status": "approve",
         "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "h6rYFydQa8Q",
+        "photographer": "Sebastian Schuster",
+        "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-h6rYFydQa8Q",
+        "image_url": "https://images.unsplash.com/photo-1757372429881-aa13dd832bec?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 7,
+        "review_status": "undecided"
+      },
+      {
+        "unsplash_id": "IFf95tJcm1o",
+        "photographer": "Ishaan Sen",
+        "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-IFf95tJcm1o",
+        "image_url": "https://images.unsplash.com/photo-1769451435307-0f4bb006471d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": false,
+        "order": 8,
+        "review_status": "undecided"
       }
     ],
     "medical-neon": [
