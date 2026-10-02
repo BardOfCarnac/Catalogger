@@ -13,7 +13,8 @@
     "Review pass 1 recorded from user decisions on 2026-10-01. Denied images are disabled from live selection.",
     "Live eligibility now requires explicit approval; undecided and denied candidates remain archived but disabled.",
     "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition.",
-    "Batch 3 review recorded: approved candidates are eligible for live rotation; denied and undecided candidates remain disabled."
+    "Batch 3 review recorded: approved candidates are eligible for live rotation; denied and undecided candidates remain disabled.",
+    "Batch 2 and Batch 3 approved images merged into live pools on 2026-10-02; undecided candidates remain out of live rotation and denied candidates stay disabled."
   ],
   "families": {
     "street-storefront": [
