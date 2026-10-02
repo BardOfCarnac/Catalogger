@@ -1,14 +1,15 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "project": "Vend-R / Night City 2045 visual profiles",
   "generated_from": "data/shops/night-city-2045-vendr-database-v0.8.json",
-  "purpose": "Photographic hero-image assignment for Vend-R place/seller pages. These are presentation categories, not canonical lore claims.",
+  "purpose": "Visual-family classification plus curated photographic assignment for Vend-R place/seller pages.",
   "rules": {
     "deterministic_assignment": "Pick from visual_family image pool using a stable hash of entity_id unless image_override is set.",
     "no_random_reload": "The same entity must keep the same image across reloads.",
     "crop_metadata": "Store focal_x/focal_y per image so wide title strips can crop safely.",
     "terminology": "visual_condition and visual_setting guide image selection only; they are not canonical facts about the location.",
-    "image_pool_key": "Optional narrower photographic pool. This may differ from visual_family where semantic specificity matters."
+    "image_pool_key": "Optional narrower photographic pool. This may differ from visual_family where semantic specificity matters.",
+    "curated_assignment": "image_override is now explicitly curated per page-bearing profile; deterministic hashing is fallback only."
   },
   "summary": {
     "profiles": 109,
@@ -53,7 +54,10 @@
       "cyber-tech": 4,
       "outdoor-camp": 5,
       "office-service": 2
-    }
+    },
+    "curated_image_assignments": 103,
+    "district_duplicate_images": 0,
+    "distinct_approved_images_used": 56
   },
   "families": {
     "street-storefront": {
@@ -248,10 +252,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "HNTYGJ5nbXE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "night-market-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved night-market-neon image; balanced against other assignments in Citywide",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-IMP-MIDNIGHT-MARKETS",
@@ -265,10 +272,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "ADkBdepSsqE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "night-market-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved night-market-neon image; balanced against other assignments in Citywide",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-IMP-OASIS",
@@ -316,10 +326,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FaMw2Jp9Ybo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Downtown",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
@@ -333,10 +346,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MrCahxWmJoE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Downtown",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
@@ -350,10 +366,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Downtown",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
@@ -367,10 +386,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "SKn0mKkEBrs",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "books/antiques → dense antique-shop hallway",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
@@ -384,10 +406,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MZdJ0q1WwlY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in Downtown",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
@@ -401,10 +426,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "8YDqTT5jNXI",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Executive Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
@@ -418,10 +446,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "tyVKffuLMxw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Heywood Docks",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
@@ -435,10 +466,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "NiFtfpp-AXk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in Heywood Industrial Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
@@ -452,10 +486,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "Wsi7-z0IhAY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Kabuki",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
@@ -469,10 +506,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "DAREHGu17Y0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Kabuki",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
@@ -486,10 +526,13 @@
       "visual_setting": "warehouse-or-import-yard",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "WhZ5pWTH4hM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "workshop-garage"
+      "image_pool_key": "workshop-garage",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "imports/vehicles → industrial garage/warehouse image",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
@@ -503,10 +546,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "isjTPQCOIMU",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "workshop-garage"
+      "image_pool_key": "workshop-garage",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "vehicle storage → garage/workshop image",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
@@ -520,10 +566,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "YilyVqUmRm4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Kabuki",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
@@ -537,10 +586,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "uMBBaJp-FDQ",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "prestige firearms showroom → clean wall display",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
@@ -554,10 +606,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MZdJ0q1WwlY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in Kabuki",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
@@ -571,10 +626,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "BO3UsWmpBoQ",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in Little China",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
@@ -588,10 +646,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FPm0wZmRfmk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Little China",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
@@ -605,10 +666,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "NiFtfpp-AXk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in Little China",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
@@ -622,10 +686,13 @@
       "visual_setting": "clinic-or-medical-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "2JyjQERMU68",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "medical-neon"
+      "image_pool_key": "medical-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "pharmacy → illuminated urban drugstore",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
@@ -639,10 +706,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "URh2ZUhkpTA",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in Little China",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
@@ -673,10 +743,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "UNMjv1G50Ww",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
@@ -690,10 +763,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "YTnmnUvNy4E",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
@@ -707,10 +783,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "5F8mlj5SAyo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "rough sidearms/ammo seller → in-store rifle image",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
@@ -724,10 +803,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "pfR18JNEMv8",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "cyber-tech"
+      "image_pool_key": "cyber-tech",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "cheap electronics/imports → exposed circuit-board imagery",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
@@ -741,10 +823,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "DAREHGu17Y0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
@@ -758,10 +843,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
@@ -775,10 +863,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "qwRfzgi7b8g",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
@@ -792,10 +883,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "uNnx31GSPxk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Little Europe",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
@@ -809,10 +903,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "-71PqIuuHtU",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "pawn/military second-hand → cluttered old-shop counter",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
@@ -826,10 +923,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "zEVsPWr5pg4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in New Westbrook",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
@@ -843,10 +943,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MrCahxWmJoE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in NorCal Military Base",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
@@ -860,10 +963,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "rmvlyhncTDM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "cyber-tech"
+      "image_pool_key": "cyber-tech",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "repair/refurbishment → hands-on circuit repair",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
@@ -877,10 +983,13 @@
       "visual_setting": "garden-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "Wsi7-z0IhAY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in North Heywood",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
@@ -894,10 +1003,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "8YDqTT5jNXI",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in North Heywood",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
@@ -911,10 +1023,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "uNnx31GSPxk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in North Heywood",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
@@ -928,10 +1043,13 @@
       "visual_setting": "clinic-or-medical-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "yVhQxLoUx_M",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "medical-neon"
+      "image_pool_key": "medical-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "drug seller → neon apothecary signage",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
@@ -945,10 +1063,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "tyVKffuLMxw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in North Heywood",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
@@ -962,10 +1083,13 @@
       "visual_setting": "outdoor",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "I-COr5sj0os",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "outdoor-camp"
+      "image_pool_key": "outdoor-camp",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved outdoor-camp image; balanced against other assignments in North Heywood",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
@@ -979,10 +1103,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Old Combat Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
@@ -996,10 +1123,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "7o2QHkE8gKM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "used/recovered books → archival second-hand interior",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
@@ -1013,10 +1143,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "HiuNXyjGhjE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "bespoke/reproduction weapons → timber-mounted collector display",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
@@ -1030,10 +1163,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "BO3UsWmpBoQ",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in Old Combat Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
@@ -1047,10 +1183,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FPm0wZmRfmk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Old Combat Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
@@ -1064,10 +1203,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "tyVKffuLMxw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Old Japantown",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
@@ -1081,10 +1223,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "nicaCH7ae9o",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "scavenger trading post → crowded antique/salvage stall",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-ROOTS-OF-THE-FOREST",
@@ -1098,10 +1243,13 @@
       "visual_setting": "outdoor",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "Md1fvql3Kk0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "outdoor-camp"
+      "image_pool_key": "outdoor-camp",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved outdoor-camp image; balanced against other assignments in Pacifica Playground",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-DOC-MILES",
@@ -1115,10 +1263,13 @@
       "visual_setting": "clinic-or-medical-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FOSgYGDktlE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "medical-neon"
+      "image_pool_key": "clinic-pharmacy",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "clinic/service location → clinical interior",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
@@ -1132,10 +1283,13 @@
       "visual_setting": "outdoor",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "I-COr5sj0os",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "outdoor-camp"
+      "image_pool_key": "outdoor-camp",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved outdoor-camp image; balanced against other assignments in Pacifica Playground",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
@@ -1149,10 +1303,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "FaMw2Jp9Ybo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Pacifica Playground",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
@@ -1166,10 +1323,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "mvSnr7qxzPM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "brand/security showroom → storefront/case presentation",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
@@ -1183,10 +1343,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "DRhrtL8Lyjk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in Pacifica Playground",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
@@ -1200,10 +1363,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "YilyVqUmRm4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Pacifica Playground",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
@@ -1217,10 +1383,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MrCahxWmJoE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Playland by the Sea Lands",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
@@ -1234,10 +1403,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "ZWmAWS_XPgo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in Port of Night City",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
@@ -1251,10 +1423,13 @@
       "visual_setting": "office-or-institution",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "-lxj69ckDCA",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "office-service"
+      "image_pool_key": "office-service",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved office-service image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-INGALLS-FARM",
@@ -1268,10 +1443,13 @@
       "visual_setting": "outdoor",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "Md1fvql3Kk0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "outdoor-camp"
+      "image_pool_key": "outdoor-camp",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved outdoor-camp image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION",
@@ -1285,10 +1463,13 @@
       "visual_setting": "forecourt-and-shop",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "Wsi7-z0IhAY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
@@ -1302,10 +1483,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "DAREHGu17Y0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
@@ -1319,10 +1503,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "elOuTaR1td0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "night-market-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved night-market-neon image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
@@ -1336,10 +1523,13 @@
       "visual_setting": "clinic-or-medical-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "T5si0dm2dGo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "medical-neon"
+      "image_pool_key": "clinic-pharmacy",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "clinic/service location → distinct clinical interior",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
@@ -1353,10 +1543,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Rancho Coronado",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
@@ -1370,10 +1563,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "nicaCH7ae9o",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
@@ -1387,10 +1583,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "qwRfzgi7b8g",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
@@ -1404,10 +1603,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "YTnmnUvNy4E",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
@@ -1421,10 +1623,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "DRhrtL8Lyjk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
@@ -1438,10 +1643,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FPm0wZmRfmk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
@@ -1455,10 +1663,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "tyVKffuLMxw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Reclamation Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
@@ -1472,10 +1683,13 @@
       "visual_setting": "outdoor",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "I-COr5sj0os",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "outdoor-camp"
+      "image_pool_key": "outdoor-camp",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved outdoor-camp image; balanced against other assignments in Santo Domingo",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
@@ -1489,10 +1703,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "rSRZElOKVZM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "night-market-neon",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved night-market-neon image; balanced against other assignments in Santo Domingo",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
@@ -1506,10 +1723,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "zEVsPWr5pg4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-stall",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-stall image; balanced against other assignments in Santo Domingo",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
@@ -1523,10 +1743,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "4csCb_5NVjE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "gun shop/firing range → dark weapons rack",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
@@ -1557,10 +1780,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "OfKjYtGGa2w",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "workshop-garage"
+      "image_pool_key": "workshop-garage",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "Fixer garage → dim industrial workshop",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
@@ -1574,10 +1800,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in South Night City",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
@@ -1591,10 +1820,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "FaMw2Jp9Ybo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in South Night City",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
@@ -1608,10 +1840,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "SKn0mKkEBrs",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in South Night City",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
@@ -1625,10 +1860,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "MZdJ0q1WwlY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in The Glen",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
@@ -1642,10 +1880,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "NiFtfpp-AXk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in The Glen",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
@@ -1659,10 +1900,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "pfHb7wajowg",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in The Glen",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
@@ -1676,10 +1920,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "MZdJ0q1WwlY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in The Hot Zone",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
@@ -1693,10 +1940,13 @@
       "visual_setting": "bar-cafe-or-restaurant",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "NiFtfpp-AXk",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "hospitality-interior"
+      "image_pool_key": "hospitality-interior",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved hospitality-interior image; balanced against other assignments in University District",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
@@ -1710,10 +1960,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "tyVKffuLMxw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in University District",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
@@ -1727,10 +1980,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "1ZFjkN9hyng",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in University District",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
@@ -1744,10 +2000,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "ZWmAWS_XPgo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved secondhand-clutter image; balanced against other assignments in University District",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
@@ -1761,10 +2020,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "QNyq04-TjrI",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
@@ -1778,10 +2040,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "YilyVqUmRm4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
@@ -1795,10 +2060,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "vPqLkWohv3c",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
@@ -1812,10 +2080,13 @@
       "visual_setting": "market-hall-or-complex",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "DAREHGu17Y0",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "night-market-neon"
+      "image_pool_key": "market-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved market-complex image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
@@ -1829,10 +2100,13 @@
       "visual_setting": "stall-or-booth",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "HpoYaT9-9aE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "cyber-tech"
+      "image_pool_key": "cyber-tech",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "NET/electronics stall → repair-bench electronics",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
@@ -1846,10 +2120,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "MrCahxWmJoE",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "workshop-garage"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
@@ -1863,10 +2140,13 @@
       "visual_setting": "clinic-or-medical-retail",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "cGVO7Eadi0g",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "medical-neon"
+      "image_pool_key": "clinic-pharmacy",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "fashionware body shop → clinical retail interior",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
@@ -1880,10 +2160,13 @@
       "visual_setting": "dense-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "-71PqIuuHtU",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "secondhand-clutter"
+      "image_pool_key": "secondhand-clutter",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "tools/scrap pawn → cluttered counter/workbench feel",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
@@ -1897,10 +2180,13 @@
       "visual_setting": "workshop-or-garage",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "Ws8SCmDS9mw",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "workshop-garage"
+      "image_pool_key": "workshop-garage",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "repair storefront → active metalwork bench",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
@@ -1914,10 +2200,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "Wsi7-z0IhAY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
@@ -1931,10 +2220,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "manual-override",
       "assignment_confidence": "high",
-      "image_override": null,
+      "image_override": "CzqvQrjgfhM",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "weapons-security"
+      "image_pool_key": "weapons-security",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "manufacturer showroom → dedicated weapons/security image",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
@@ -1948,10 +2240,13 @@
       "visual_setting": "office-or-institution",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "2-7reWtSod4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "office-service"
+      "image_pool_key": "office-service",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved office-service image; balanced against other assignments in Upper Marina",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
@@ -1965,10 +2260,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "vPqLkWohv3c",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Watson Development",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
@@ -1982,10 +2280,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "YilyVqUmRm4",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "street-storefront"
+      "image_pool_key": "street-storefront",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved street-storefront image; balanced against other assignments in Watson Development",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
@@ -1999,10 +2300,13 @@
       "visual_setting": "retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "k27hkqXuveo",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "cyber-tech"
+      "image_pool_key": "cyber-tech",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "Netrunner electronics storefront → dense server infrastructure",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
@@ -2016,10 +2320,13 @@
       "visual_setting": "large-building",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "KDtyalmLWKY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "large-complex"
+      "image_pool_key": "large-complex",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved large-complex image; balanced against other assignments in Watson Development",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
@@ -2033,10 +2340,13 @@
       "visual_setting": "food-shop",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "_b34iJKRVpY",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "food-retail"
+      "image_pool_key": "food-retail",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved food-retail image; balanced against other assignments in Watson Development",
+      "image_assignment_version": "2026-10-02"
     },
     {
       "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
@@ -2050,10 +2360,13 @@
       "visual_setting": "curated-retail-interior",
       "assignment_basis": "rule",
       "assignment_confidence": "medium",
-      "image_override": null,
+      "image_override": "8YDqTT5jNXI",
       "focal_x": 0.5,
       "focal_y": 0.5,
-      "image_pool_key": "showroom-boutique"
+      "image_pool_key": "showroom-boutique",
+      "image_assignment_basis": "curated-v1",
+      "image_assignment_reason": "approved showroom-boutique image; balanced against other assignments in Watson Development",
+      "image_assignment_version": "2026-10-02"
     }
   ]
 }
