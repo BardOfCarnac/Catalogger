@@ -530,6 +530,95 @@ button,input{font:inherit}
   .offer-readout{text-align:left}
 }
 
+
+/* -------- SEARCH RESULT OFFERS -------- */
+.search-offer-section{
+  margin-top:18px;
+  border:4px solid var(--ink);
+  background:var(--cream);
+  box-shadow:var(--shadow);
+}
+.search-offer-head{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:end;
+  padding:12px 14px 10px;
+  border-bottom:3px solid var(--ink);
+}
+.search-offer-head h2{
+  margin:0;
+  font-size:24px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.search-offer-head span{
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  text-align:right;
+}
+.search-offer-list{display:grid}
+.search-offer{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.56);
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:11px 14px;
+  text-align:left;
+  cursor:pointer;
+}
+.search-offer:last-child{border-bottom:0}
+.search-offer:hover{background:rgba(244,210,70,.14)}
+.search-offer .item-name,
+.search-offer .seller-name{
+  display:block;
+  font-size:20px;
+  line-height:1;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+.search-offer .seller-name{font-size:17px}
+.search-offer .item-meta,
+.search-offer .place-meta,
+.search-offer .price-meta{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.search-offer .price-block{
+  min-width:104px;
+  text-align:right;
+}
+.search-offer .price{
+  display:block;
+  font:1000 20px ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.search-offer.plausible .price{
+  font-size:11px;
+  color:var(--muted);
+}
+.search-offer.exact-mode{
+  grid-template-columns:minmax(0,1fr) auto;
+}
+.search-offer.exact-mode .item-col{display:none}
+@media(max-width:700px){
+  .search-offer{
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+  .search-offer .seller-col{grid-column:1}
+  .search-offer .price-block{grid-column:2;grid-row:1 / span 2}
+  .search-offer.exact-mode{grid-template-columns:minmax(0,1fr) auto}
+}
+
 /* -------- VENDOR PAGE -------- */
 .vendor-hero{
   padding:0;
@@ -927,6 +1016,22 @@ button,input{font:inherit}
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="search-offer-section" id="availableOffersSection" hidden>
+        <div class="search-offer-head">
+          <h2 id="availableOffersTitle">Available now</h2>
+          <span id="availableOffersMeta">Current stock · cycle 1</span>
+        </div>
+        <div class="search-offer-list" id="availableOffersList"></div>
+      </section>
+
+      <section class="search-offer-section" id="plausibleOffersSection" hidden>
+        <div class="search-offer-head">
+          <h2>Other likely sellers</h2>
+          <span>Profile fit · not in current stock</span>
+        </div>
+        <div class="search-offer-list" id="plausibleOffersList"></div>
       </section>
 
       <div class="grid-2">
@@ -1415,6 +1520,8 @@ function renderMarkets(rows){
   bindSellerClicks(cards);
 }
 function renderHomeDefault(){
+  document.getElementById('availableOffersSection').hidden=true;
+  document.getElementById('plausibleOffersSection').hidden=true;
   const direct=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   const markets=sellers.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   document.getElementById('primarySellerTitle').textContent='Known sellers';
@@ -1435,14 +1542,75 @@ function groupSearchOffers(data){
   }
   return map;
 }
+
+function itemTypeLabel(o){
+  return String(o.primary_department||'item').replaceAll('-',' ');
+}
+function placeLabel(o){
+  const parts=[];
+  if(o.parent_name)parts.push(o.parent_name);
+  if(o.district&&!parts.includes(o.district))parts.push(o.district);
+  if(o.distance!==null&&o.distance!==undefined)parts.push(String(o.distance));
+  return parts.join(' · ')||'Night City';
+}
+function moneyEb(v){
+  if(v===null||v===undefined)return '—';
+  return Number(v).toLocaleString()+'eb';
+}
+function renderOfferSections(data){
+  const availableSection=document.getElementById('availableOffersSection');
+  const plausibleSection=document.getElementById('plausibleOffersSection');
+  const availableList=document.getElementById('availableOffersList');
+  const plausibleList=document.getElementById('plausibleOffersList');
+
+  const available=(data.offers||[]).filter(o=>o.kind==='available');
+  const plausible=(data.offers||[]).filter(o=>o.kind!=='available');
+  const exact=Boolean(data.active_item_id);
+
+  document.getElementById('availableOffersTitle').textContent=exact?'Who has it':'Available now';
+  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · cycle 1';
+
+  availableSection.hidden=!available.length;
+  plausibleSection.hidden=!plausible.length;
+
+  availableList.innerHTML=available.map(o=>
+    '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(String(o.quantity))+' available</span></div>'+
+      '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
+      '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
+      '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
+      '<span class="price-meta">'+esc(o.condition||'')+(o.quantity!=null?' · '+esc(String(o.quantity))+' here':'')+'</span></div>'+
+    '</button>'
+  ).join('');
+
+  plausibleList.innerHTML=plausible.map(o=>
+    '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · not in current stock</span></div>'+
+      '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
+      '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
+      '<div class="price-block"><span class="price">LIKELY SELLER</span>'+
+      '<span class="price-meta">no current offer</span></div>'+
+    '</button>'
+  ).join('');
+
+  document.querySelectorAll('[data-offer-shop]').forEach(el=>el.addEventListener('click',()=>{
+    const shopId=el.dataset.offerShop;
+    const itemId=el.dataset.offerItem;
+    const offer=(data.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId)&&String(o.item_id)===String(itemId))||null;
+    openVendor(shopId,offer);
+  }));
+}
 function renderSearch(data,q){
   lastSearch={data,q};
+  renderOfferSections(data);
   const offerMap=groupSearchOffers(data);
   const rows=[...offerMap.values()];
   const sellerRows=rows.map(r=>sellerById(r.entity_id)||r);
-  document.getElementById('primarySellerTitle').textContent='Search results';
+  document.getElementById('primarySellerTitle').textContent='Seller overview';
   document.getElementById('primarySellerMeta').innerHTML=esc(String(data.items?.length||0))+' catalogue names<br>contain “'+esc(q)+'”';
-  document.getElementById('secondarySellerTitle').textContent='More matches';
+  document.getElementById('secondarySellerTitle').textContent='More sellers';
   document.getElementById('secondarySellerMeta').innerHTML=esc(String(rows.length))+' seller profiles<br>fit this search';
   const statusFor=s=>{
     const os=offerMap.get(s.entity_id)?.offers||[];
