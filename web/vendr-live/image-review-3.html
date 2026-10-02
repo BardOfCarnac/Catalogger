@@ -1,0 +1,328 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vend-R Image Review · Batch 3</title>
+<style>
+:root{--cream:#f2eadb;--cream2:#fff6df;--ink:#17110c;--line:#b9ad99;--orange:#ed5a30;--yellow:#ffc84e}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,var(--orange),var(--yellow) 70%,#ffe58e)}
+.shell{width:min(1320px,calc(100% - 24px));margin:16px auto 40px;background:var(--cream);border:1px solid rgba(23,17,12,.2);box-shadow:14px 18px 40px rgba(80,40,20,.22)}
+.top{position:sticky;top:0;z-index:20;display:flex;gap:14px;align-items:center;padding:16px 20px;background:rgba(242,234,219,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{font-weight:950;letter-spacing:.05em}.summary{margin-left:auto;font:800 11px ui-monospace,monospace}.top button{border:1px solid var(--ink);background:var(--ink);color:var(--cream2);padding:9px 12px;font-weight:900}
+.intro{padding:28px 24px 8px;max-width:930px}.eyebrow{font:900 9px ui-monospace,monospace;letter-spacing:.12em;color:#b64025}
+h1{font-size:clamp(44px,7vw,86px);line-height:.88;letter-spacing:-.055em;margin:8px 0 16px}.intro p{max-width:790px;line-height:1.5;color:#5f5549}
+.pool{padding:22px 24px 30px;border-top:1px solid var(--line)}.pool-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:14px}.pool-head h2{margin:4px 0 0;font-size:28px}.pool-code{font:800 10px ui-monospace,monospace;color:#7e7365}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:var(--cream2);border:1px solid var(--line);overflow:hidden;box-shadow:5px 5px 0 rgba(23,17,12,.06)}
+.photo-wrap{position:relative;aspect-ratio:16/9;background:#ddd;display:block;overflow:hidden}.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}.photo-id{position:absolute;left:8px;bottom:8px;background:rgba(23,17,12,.82);color:#fff6df;padding:5px 7px;font:900 9px ui-monospace,monospace}
+.meta{padding:10px 12px;display:grid;gap:3px}.meta strong{font-size:13px}.meta span{font:700 9px ui-monospace,monospace;color:#7b7062}
+.actions{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}.actions button{min-height:40px;border:0;border-right:1px solid var(--line);background:#f8f0df;font:900 9px ui-monospace,monospace}.actions button:last-child{border-right:0}
+.card[data-state="approve"]{outline:4px solid #789772;outline-offset:-4px}.card[data-state="deny"]{outline:4px solid #c5523d;outline-offset:-4px}.card[data-state="undecided"]{outline:4px solid #d2b954;outline-offset:-4px}
+.card[data-state="approve"] [data-choice="approve"]{background:#789772;color:white}.card[data-state="deny"] [data-choice="deny"]{background:#c5523d;color:white}.card[data-state="undecided"] [data-choice="undecided"]{background:#d2b954}
+#copyBox{position:fixed;inset:auto 16px 16px 16px;z-index:50;display:none;background:var(--ink);color:white;padding:14px;font:700 11px ui-monospace,monospace;white-space:pre-wrap;max-height:45vh;overflow:auto}#copyBox.show{display:block}
+@media(max-width:880px){.cards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.cards{grid-template-columns:1fr}.top{flex-wrap:wrap}.summary{order:3;width:100%;margin-left:0}.pool,.intro{padding-inline:14px}}
+</style></head><body><div class="shell">
+<div class="top"><div class="brand">VEND-R / IMAGE REVIEW · BATCH 3</div><div class="summary" id="summary">0 APPROVED · 0 DENIED · 36 UNDECIDED</div><button id="copy">COPY DECISIONS</button><button id="reset">RESET</button></div>
+<div class="intro"><div class="eyebrow">LARGER SEARCH PASS · 36 FRESH IMAGES</div><h1>Approve the new imagery.</h1><p>This is back to the same review format as before. Every candidate is new to this batch. Tap a photograph to open its original Unsplash page; use the three buttons underneath to approve or reject it. Nothing in Batch 3 goes live until you approve it.</p></div><section class="pool" data-pool="market-complex">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Market complex</h2></div><div class="pool-code">market-complex</div></div>
+    <div class="cards">
+      <article class="card" data-key="market-complex:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/people-browse-an-indoor-market-under-blue-neon-lights-DAREHGu17Y0" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1784631912338-2c4ca8dfcd89?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Blue-lit indoor market" loading="lazy">
+          <div class="photo-id">MARKET COMPLEX 1</div>
+        </a>
+        <div class="meta"><strong>Blue-lit indoor market</strong><span>Andrii Solok</span><span>DAREHGu17Y0</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="market-complex:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/people-browsing-in-a-busy-indoor-market-at-night-FaMw2Jp9Ybo" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1772588181186-b4476f380ea3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Busy indoor market at night" loading="lazy">
+          <div class="photo-id">MARKET COMPLEX 2</div>
+        </a>
+        <div class="meta"><strong>Busy indoor market at night</strong><span>MChe Lee</span><span>FaMw2Jp9Ybo</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="market-complex:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/people-browsing-stalls-in-a-busy-indoor-market-FPm0wZmRfmk" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1772285261838-71db6f63fd84?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Crowded indoor stalls" loading="lazy">
+          <div class="photo-id">MARKET COMPLEX 3</div>
+        </a>
+        <div class="meta"><strong>Crowded indoor stalls</strong><span>MChe Lee</span><span>FPm0wZmRfmk</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="market-complex:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/bustling-indoor-market-filled-with-people-and-food-stalls-BPEQzft7Hyc" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1783328477292-1bf06cf29273?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Covered urban market arcade" loading="lazy">
+          <div class="photo-id">MARKET COMPLEX 4</div>
+        </a>
+        <div class="meta"><strong>Covered urban market arcade</strong><span>Ivan Wong</span><span>BPEQzft7Hyc</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="night-market-neon">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Night market / neon</h2></div><div class="pool-code">night-market-neon</div></div>
+    <div class="cards">
+      <article class="card" data-key="night-market-neon:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-h6rYFydQa8Q" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1757372429881-aa13dd832bec?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Crowded neon street at night" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 1</div>
+        </a>
+        <div class="meta"><strong>Crowded neon street at night</strong><span>Sebastian Schuster</span><span>h6rYFydQa8Q</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="night-market-neon:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-elOuTaR1td0" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1769321790864-1b00340a54ad?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Akihabara shopping street" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 2</div>
+        </a>
+        <div class="meta"><strong>Akihabara shopping street</strong><span>PJH</span><span>elOuTaR1td0</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="night-market-neon:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-at-night-with-neon-signs-rSRZElOKVZM" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1759200263187-d1f64da092f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Late-night Shinjuku crowd" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 3</div>
+        </a>
+        <div class="meta"><strong>Late-night Shinjuku crowd</strong><span>Darien Attridge</span><span>rSRZElOKVZM</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="night-market-neon:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-scene-at-night-with-neon-signs-HNTYGJ5nbXE" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1775493215754-4487f9f089bc?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Cyberpunk-tagged Tokyo crowd" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 4</div>
+        </a>
+        <div class="meta"><strong>Cyberpunk-tagged Tokyo crowd</strong><span>Sara Aurora Cimminiello</span><span>HNTYGJ5nbXE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="night-market-neon:5">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-IFf95tJcm1o" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1769451435307-0f4bb006471d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Osaka night-market street" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 5</div>
+        </a>
+        <div class="meta"><strong>Osaka night-market street</strong><span>Ishaan Sen</span><span>IFf95tJcm1o</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="night-market-neon:6">
+        <a class="photo-wrap" href="https://unsplash.com/photos/crowded-street-with-bright-neon-signs-at-night-ADkBdepSsqE" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1759736693508-0b4fcd13e045?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dense Osaka neon street" loading="lazy">
+          <div class="photo-id">NIGHT MARKET / NEON 6</div>
+        </a>
+        <div class="meta"><strong>Dense Osaka neon street</strong><span>Wenhao Ruan</span><span>ADkBdepSsqE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="workshop-garage">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Workshop / garage</h2></div><div class="pool-code">workshop-garage</div></div>
+    <div class="cards">
+      <article class="card" data-key="workshop-garage:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/a-welder-working-on-a-piece-of-metal-Ws8SCmDS9mw" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1683470157212-cd4005549fce?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Welder at metalwork bench" loading="lazy">
+          <div class="photo-id">WORKSHOP / GARAGE 1</div>
+        </a>
+        <div class="meta"><strong>Welder at metalwork bench</strong><span>Rizky Nuriman</span><span>Ws8SCmDS9mw</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="workshop-garage:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/welder-working-in-a-dimly-lit-workshop-OfKjYtGGa2w" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1762786478154-4678312f9ad6?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dim industrial welding shop" loading="lazy">
+          <div class="photo-id">WORKSHOP / GARAGE 2</div>
+        </a>
+        <div class="meta"><strong>Dim industrial welding shop</strong><span>Vitali Holstinin</span><span>OfKjYtGGa2w</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="workshop-garage:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/mechanic-working-on-a-car-engine-in-a-workshop-XP8o9_Arwqg" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1771340012319-0b4fca008b54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Working mechanic garage" loading="lazy">
+          <div class="photo-id">WORKSHOP / GARAGE 3</div>
+        </a>
+        <div class="meta"><strong>Working mechanic garage</strong><span>Dextar Studio</span><span>XP8o9_Arwqg</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="workshop-garage:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/welder-working-with-sparks-flying-in-workshop-LnOOWZk5cE8" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1764245546004-e6b743242a80?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Welder with sparks" loading="lazy">
+          <div class="photo-id">WORKSHOP / GARAGE 4</div>
+        </a>
+        <div class="meta"><strong>Welder with sparks</strong><span>Maryam Saghandi</span><span>LnOOWZk5cE8</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="weapons-security">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Weapons / security</h2></div><div class="pool-code">weapons-security</div></div>
+    <div class="cards">
+      <article class="card" data-key="weapons-security:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/a-man-holding-a-rifle-inside-of-a-store-5F8mlj5SAyo" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1650192771535-8f0316a124a5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Rifle inside store" loading="lazy">
+          <div class="photo-id">WEAPONS / SECURITY 1</div>
+        </a>
+        <div class="meta"><strong>Rifle inside store</strong><span>SHUXIN WU</span><span>5F8mlj5SAyo</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="weapons-security:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/several-firearms-are-displayed-on-a-wall-uMBBaJp-FDQ" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1748443635007-81bfba67843e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Firearms wall display" loading="lazy">
+          <div class="photo-id">WEAPONS / SECURITY 2</div>
+        </a>
+        <div class="meta"><strong>Firearms wall display</strong><span>Thomas Tucker</span><span>uMBBaJp-FDQ</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="weapons-security:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/a-wooden-wall-with-a-gun-and-two-revolvers-on-it-HiuNXyjGhjE" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1727468802376-d3b9048924ba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Weapons on timber wall" loading="lazy">
+          <div class="photo-id">WEAPONS / SECURITY 3</div>
+        </a>
+        <div class="meta"><strong>Weapons on timber wall</strong><span>Simon Takatomi</span><span>HiuNXyjGhjE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="weapons-security:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/white-and-black-store-front-mvSnr7qxzPM" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1583774195556-a097cd7f1d3f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Arms storefront / cases" loading="lazy">
+          <div class="photo-id">WEAPONS / SECURITY 4</div>
+        </a>
+        <div class="meta"><strong>Arms storefront / cases</strong><span>Frankie Lu</span><span>mvSnr7qxzPM</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="weapons-security:5">
+        <a class="photo-wrap" href="https://unsplash.com/photos/a-shelf-filled-with-lots-of-guns-in-a-dark-room-4csCb_5NVjE" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1714324410882-9cf576929a8a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dark weapons rack" loading="lazy">
+          <div class="photo-id">WEAPONS / SECURITY 5</div>
+        </a>
+        <div class="meta"><strong>Dark weapons rack</strong><span>Ethan</span><span>4csCb_5NVjE</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="secondhand-clutter">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Second-hand / clutter</h2></div><div class="pool-code">secondhand-clutter</div></div>
+    <div class="cards">
+      <article class="card" data-key="secondhand-clutter:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/antique-shop-hallway-filled-with-various-items-SKn0mKkEBrs" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1755414717736-0d3ffe1f5a1a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Antique-shop hallway" loading="lazy">
+          <div class="photo-id">SECOND-HAND / CLUTTER 1</div>
+        </a>
+        <div class="meta"><strong>Antique-shop hallway</strong><span>Kouji Tsuru</span><span>SKn0mKkEBrs</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="secondhand-clutter:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/collection-of-assorted-antique-trinkets-and-curiosities-on-shelves-DRhrtL8Lyjk" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1767338718620-2179800c3747?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dense curios shelves" loading="lazy">
+          <div class="photo-id">SECOND-HAND / CLUTTER 2</div>
+        </a>
+        <div class="meta"><strong>Dense curios shelves</strong><span>Zoshua Colah</span><span>DRhrtL8Lyjk</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="secondhand-clutter:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/collection-of-vintage-trinkets-and-curios-on-shelves-WgHZ65lEaRs" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1767338718786-92f7934e925e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Vintage clutter shelves" loading="lazy">
+          <div class="photo-id">SECOND-HAND / CLUTTER 3</div>
+        </a>
+        <div class="meta"><strong>Vintage clutter shelves</strong><span>Zoshua Colah</span><span>WgHZ65lEaRs</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="secondhand-clutter:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/man-looking-at-cluttered-antique-shop-stall-nicaCH7ae9o" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1765443454774-626e56274f33?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Crowded antique stall" loading="lazy">
+          <div class="photo-id">SECOND-HAND / CLUTTER 4</div>
+        </a>
+        <div class="meta"><strong>Crowded antique stall</strong><span>Zoshua Colah</span><span>nicaCH7ae9o</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="showroom-boutique">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Showroom / boutique</h2></div><div class="pool-code">showroom-boutique</div></div>
+    <div class="cards">
+      <article class="card" data-key="showroom-boutique:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/dark-store-interior-with-glowing-neon-sign-reflection-vPqLkWohv3c" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1772217104138-dcc501d2fd45?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dark neon game-store interior" loading="lazy">
+          <div class="photo-id">SHOWROOM / BOUTIQUE 1</div>
+        </a>
+        <div class="meta"><strong>Dark neon game-store interior</strong><span>Osmany M Leyva Aldana</span><span>vPqLkWohv3c</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="showroom-boutique:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/stylish-boutique-interior-with-clothing-racks-plants-and-warm-lighting-uNnx31GSPxk" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1784537642955-9d371c0cbf91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Warm urban boutique" loading="lazy">
+          <div class="photo-id">SHOWROOM / BOUTIQUE 2</div>
+        </a>
+        <div class="meta"><strong>Warm urban boutique</strong><span>Jie Yeu Teoh</span><span>uNnx31GSPxk</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="showroom-boutique:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/clothing-boutique-interior-with-racks-of-apparel-y5vzB7nisbk" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1777628530456-bb93d3a03faf?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Boutique with neon branding" loading="lazy">
+          <div class="photo-id">SHOWROOM / BOUTIQUE 3</div>
+        </a>
+        <div class="meta"><strong>Boutique with neon branding</strong><span>Bayu Syaits</span><span>y5vzB7nisbk</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="large-complex">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Large complex</h2></div><div class="pool-code">large-complex</div></div>
+    <div class="cards">
+      <article class="card" data-key="large-complex:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/an-angular-building-stands-tall-against-the-sky-1ZFjkN9hyng" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1748830025561-0e722734f4dd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dark brutalist complex" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 1</div>
+        </a>
+        <div class="meta"><strong>Dark brutalist complex</strong><span>Simon Edwards</span><span>1ZFjkN9hyng</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/apartment-building-during-nighttime-QNyq04-TjrI" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1516707777878-caf57fb63951?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="High-rise at night" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 2</div>
+        </a>
+        <div class="meta"><strong>High-rise at night</strong><span>nik radzi</span><span>QNyq04-TjrI</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:3">
+        <a class="photo-wrap" href="https://unsplash.com/photos/apartment-building-exterior-at-night-with-stairs-and-balcony-BxbFVcFbO1g" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1768720406903-cb00a7ea67bb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Exterior stairs at night" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 3</div>
+        </a>
+        <div class="meta"><strong>Exterior stairs at night</strong><span>Chelaxy Designs</span><span>BxbFVcFbO1g</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:4">
+        <a class="photo-wrap" href="https://unsplash.com/photos/apartment-building-windows-lit-up-at-night-pfHb7wajowg" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1755896409980-1d5e8d957d79?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Foggy brutalist housing" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 4</div>
+        </a>
+        <div class="meta"><strong>Foggy brutalist housing</strong><span>Marcus Lenk</span><span>pfHb7wajowg</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:5">
+        <a class="photo-wrap" href="https://unsplash.com/photos/apartment-buildings-at-night-with-a-distant-tower-UNMjv1G50Ww" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1768711660634-28206b48a791?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dense towers at night" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 5</div>
+        </a>
+        <div class="meta"><strong>Dense towers at night</strong><span>Tsuyoshi Kozu</span><span>UNMjv1G50Ww</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="large-complex:6">
+        <a class="photo-wrap" href="https://unsplash.com/photos/apartment-building-illuminated-at-night-with-many-lit-windows-URh2ZUhkpTA" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1765665017478-f10e88f8b85f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Lit residential block" loading="lazy">
+          <div class="photo-id">LARGE COMPLEX 6</div>
+        </a>
+        <div class="meta"><strong>Lit residential block</strong><span>Antonella Vilardo</span><span>URh2ZUhkpTA</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="medical-neon">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Medical / neon</h2></div><div class="pool-code">medical-neon</div></div>
+    <div class="cards">
+      <article class="card" data-key="medical-neon:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/japanese-drugstore-at-night-with-illuminated-sign-2JyjQERMU68" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1767623356282-c5edc8d98766?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Japanese drugstore at night" loading="lazy">
+          <div class="photo-id">MEDICAL / NEON 1</div>
+        </a>
+        <div class="meta"><strong>Japanese drugstore at night</strong><span>Vien Dinh</span><span>2JyjQERMU68</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="medical-neon:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/neon-sign-that-reads-apotek-at-night-yVhQxLoUx_M" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1741299955562-f35c9e2ce001?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Neon apothecary sign" loading="lazy">
+          <div class="photo-id">MEDICAL / NEON 2</div>
+        </a>
+        <div class="meta"><strong>Neon apothecary sign</strong><span>Jahanzeb Ahsan</span><span>yVhQxLoUx_M</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section><section class="pool" data-pool="cyber-tech">
+    <div class="pool-head"><div><div class="eyebrow">BATCH 3</div><h2>Cyber-tech</h2></div><div class="pool-code">cyber-tech</div></div>
+    <div class="cards">
+      <article class="card" data-key="cyber-tech:1">
+        <a class="photo-wrap" href="https://unsplash.com/photos/hand-holds-a-phones-circuit-board-for-repair-rmvlyhncTDM" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1746017240069-4b37791319ea?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Phone circuit-board repair" loading="lazy">
+          <div class="photo-id">CYBER-TECH 1</div>
+        </a>
+        <div class="meta"><strong>Phone circuit-board repair</strong><span>Fotografia Lui Vlad</span><span>rmvlyhncTDM</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article><article class="card" data-key="cyber-tech:2">
+        <a class="photo-wrap" href="https://unsplash.com/photos/two-server-racks-filled-with-electronic-components-and-wires-k27hkqXuveo" target="_blank" rel="noopener">
+          <img src="https://images.unsplash.com/photo-1775519520461-6b6e068d9250?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Dense server racks and wiring" loading="lazy">
+          <div class="photo-id">CYBER-TECH 2</div>
+        </a>
+        <div class="meta"><strong>Dense server racks and wiring</strong><span>Eric Stoynov</span><span>k27hkqXuveo</span></div>
+        <div class="actions"><button data-choice="approve">APPROVE</button><button data-choice="deny">DENY</button><button data-choice="undecided">UNDECIDED</button></div>
+      </article>
+    </div>
+  </section></div><div id="copyBox"></div>
+<script>
+const KEY='vendr-image-review-batch3';const state=JSON.parse(localStorage.getItem(KEY)||'{}');const cards=[...document.querySelectorAll('.card')];
+function render(){let a=0,d=0,u=0;cards.forEach(c=>{const s=state[c.dataset.key]||'undecided';c.dataset.state=s;if(s==='approve')a++;else if(s==='deny')d++;else u++});document.getElementById('summary').textContent=a+' APPROVED · '+d+' DENIED · '+u+' UNDECIDED'}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+cards.forEach(c=>c.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{state[c.dataset.key]=b.dataset.choice;save()}));
+document.getElementById('reset').onclick=()=>{if(confirm('Clear Batch 3 decisions?')){localStorage.removeItem(KEY);location.reload()}};
+document.getElementById('copy').onclick=async()=>{const grouped={};cards.forEach(c=>{const [p,n]=c.dataset.key.split(':');(grouped[p]??=[]).push(n+'='+(state[c.dataset.key]||'undecided'))});const t=Object.entries(grouped).map(([p,v])=>p+': '+v.join(', ')).join('\n');try{await navigator.clipboard.writeText(t)}catch(e){}const b=document.getElementById('copyBox');b.textContent=t+'\n\nCopied if clipboard access was allowed. Tap to close.';b.classList.add('show')};
+document.getElementById('copyBox').onclick=e=>e.currentTarget.classList.remove('show');render();
+</script></body></html>
