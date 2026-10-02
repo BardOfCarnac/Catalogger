@@ -330,6 +330,10 @@ function cycleQuantity(p:any,i:any,classMap:Map<string,any>,role:string,cycle:nu
   const roleMul=role==='core'?1.35:(role==='occasional'?0.70:1);
   return Math.max(1,Math.round(raw*depthMultiplier(p)*scaleQuantityMultiplier(p)*roleMul));
 }
+function pricingMultiplier(p:any){
+  const m:any={bargain:.90,fair:1,premium:1.12,gouging:1.28};
+  return m[String(p?.pricing_style||'fair').toLowerCase()]||1;
+}
 function cyclePrice(p:any,i:any,cycle:number){
   const base=basePrice(i); if(base===null) return null;
   const jitter=(stableIndex('price|'+cycle+'|'+p.entity_id+'|'+i.id,1201)-600)/10000;
@@ -397,7 +401,7 @@ async function search(u:URL){
   const suggestOnly=u.searchParams.get('suggest')==='1';
   if(!q) return out({query:q,active_item_id:null,items:[],offers:[],total_matches:0});
 
-  const [all,classMap,mfrMap]=await Promise.all([catalogue(),classifications(),manufacturers()]);
+  const [all,classMap]=await Promise.all([catalogue(),classifications()]);
   const f=q.toLowerCase();
 
   // Start with literal catalogue-name matches, then expand through their
@@ -435,6 +439,7 @@ async function search(u:URL){
   }
 
   const active=activeId?matches.find((i:any)=>String(i.id)===activeId):null;
+  const mfrMap=await manufacturers();
   const [profiles,placeRows,depletionRows]=await Promise.all([
     db('vendr_stock_profiles','select=*&order=name.asc'),
     db('vendr_places','select=entity_id,parent_name,district,spatial_mode'),
@@ -642,22 +647,121 @@ async function shop(u:URL){
   });
 }
 
-const HTML=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vend-R · Night City 2045</title>
+const HTML=`<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vend-R · Night City 2045</title>
 <style>
-:root{--a:#ef5a2f;--b:#ffc84c;--cream:#f4eddf;--paper:#fbf5e9;--ink:#171713;--muted:#6f685f;--line:#c7baa7;--dark:#252521;--red:#d94a34;--blue:#627d89}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--a) 0 34%,#f47f35 34.5%,var(--b) 72%,#ffe07a)}.shell{width:min(1180px,calc(100% - 24px));min-height:calc(100vh - 36px);margin:18px auto;background:var(--cream);box-shadow:14px 18px 40px #6c321f44;border:1px solid #6b4b2f33}header{height:62px;display:flex;align-items:center;padding:0 22px;border-bottom:1px solid var(--line);gap:18px;position:sticky;top:0;background:#f4eddfed;backdrop-filter:blur(8px);z-index:4}.brand{font-size:19px;font-weight:950;letter-spacing:.05em}.mark{display:inline-grid;place-items:center;width:30px;height:30px;color:#fff;background:linear-gradient(135deg,var(--red),var(--b));clip-path:polygon(50% 0,100% 25%,82% 100%,18% 100%,0 25%);margin-right:8px}.status{margin-left:auto;font:700 9px monospace;color:#68765d}main{padding:34px 28px 70px}.k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}h1{font-size:clamp(56px,9vw,108px);line-height:.79;letter-spacing:-.065em;margin:11px 0 24px}h2{font-size:28px;margin:6px 0}h3{margin:4px 0;font-size:18px}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:end}.hero p{color:#524b42;line-height:1.45}.search{display:flex;border:2px solid var(--dark);background:#fffaf0;padding:6px}.search input{flex:1;min-width:0;border:0;background:transparent;font-size:19px;padding:12px;outline:none}.search button{border:0;background:var(--red);color:#fff;font-weight:900;padding:12px 18px}.tabs{display:flex;gap:7px;overflow:auto;padding:28px 0 12px;border-bottom:1px solid var(--line)}.tabs button{flex:0 0 auto;border:1px solid #918473;background:transparent;padding:9px 12px;font-size:10px;font-weight:800}.tabs button.on{background:var(--dark);color:var(--cream);border-color:var(--dark)}.note{font-size:10px;color:var(--muted);padding:9px 0 22px}.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,.65fr);gap:24px}.head{display:flex;align-items:end;justify-content:space-between;border-bottom:4px solid var(--dark);padding-bottom:10px}.summary{font-size:9px;text-transform:uppercase;color:var(--muted)}.results{display:grid;gap:8px;padding-top:8px}.row{border:1px solid var(--line);background:var(--paper);padding:14px 13px 14px 18px;display:grid;grid-template-columns:1.15fr .9fr auto;gap:14px;text-align:left;position:relative;cursor:pointer}.row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--blue)}.row:hover{background:#fffaf0}.row b{display:block;font-size:13px}.row span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:4px}.sc{text-align:right}.side{display:grid;gap:12px;align-content:start}.panel{border:1px solid var(--line);padding:16px;background:#e9dfcf}.panel.dark{background:var(--dark);color:var(--cream);border-color:var(--dark)}.panel p{font-size:11px;line-height:1.5;color:var(--muted)}.panel.dark p{color:#c9bfb2}.shop{display:none}.shop.active{display:block}.hidden{display:none}.back{border:0;background:none;text-decoration:underline;padding:0;margin-bottom:20px}.card{background:var(--paper);border:1px solid var(--line);box-shadow:9px 9px 0 #d9cbb8}.sign{background:var(--dark);color:#fff;padding:28px}.sign h1{font-size:clamp(48px,8vw,88px)}.body{display:grid;grid-template-columns:1.6fr .7fr}.main,.aside{padding:24px}.aside{border-left:1px solid var(--line);background:#e9dfcf}.children button{display:block;width:100%;text-align:left;padding:10px;border:1px solid var(--line);background:#fffaf0;margin-top:7px}@media(max-width:800px){.hero,.layout,.body{grid-template-columns:1fr}.side{grid-row:1}.aside{border-left:0;border-top:1px solid var(--line)}main{padding:24px 16px}.row{grid-template-columns:1fr auto}.row>div:nth-child(2){grid-column:1}.sc{grid-column:2;grid-row:1/3}}
-</style></head><body><div class="shell"><header><div class="brand"><span class="mark">V</span>VEND-R</div><div class="k">Night City 2045</div><div id="status" class="status">CONNECTING</div></header><main>
-<section id="sv"><div class="hero"><div><div class="k">Night City stock index</div><h1>FIND IT<br>BEFORE YOU<br>INVENT IT.</h1><p>Search the actual Catalogger catalogue against Vend-R's canonical Night City commercial profiles. Search never creates a shop or changes the world.</p></div><form id="form" class="search"><input id="q" placeholder="shotgun, Agent, armor…" autocomplete="off"><button>SEARCH</button></form></div><div id="tabs" class="tabs"></div><div id="note" class="note"></div><div class="layout"><section><div class="head"><div><div id="mode" class="k">Broad search</div><h2 id="title">AVAILABLE AROUND NIGHT CITY</h2></div><div id="summary" class="summary"></div></div><div id="results" class="results"></div></section><aside class="side"><div class="panel dark"><div class="k">How this works</div><h3 id="ct">Broad search</h3><p id="cc">No exact catalogue item is selected. Choose one above to narrow the city to that object.</p></div><div class="panel"><div class="k">Current build</div><p>Read-only public build. Seller matches are plausible according to the canonical stock profiles; anonymous visitors cannot alter shared Night City state.</p></div></aside></div></section>
-<section id="shop" class="shop"><button id="back" class="back">← Back to search</button><article class="card"><div class="sign"><div id="smode" class="k"></div><h1 id="sname"></h1><div id="sdistrict"></div></div><div class="body"><div class="main"><div class="k">Commercial profile</div><h2 id="stype"></h2><p id="snote"></p><div id="children" class="children"></div></div><aside class="aside"><div class="k">Source</div><p id="ssource"></p><div class="k">Departments</div><p id="sdeps"></p></aside></div></article></section>
-</main></div><script>
-const $=id=>document.getElementById(id);let st={q:"",item:null};
-async function api(p){const u=new URL(location.href);u.search="";Object.entries(p).forEach(e=>e[1]!=null&&u.searchParams.set(e[0],e[1]));const r=await fetch(u);const j=await r.json();if(!r.ok)throw new Error(j.error||r.statusText);return j}
-function e(s){return String(s==null?"":s).replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
-async function h(){try{const x=await api({api:"health"});$("status").textContent="CONNECTED · "+x.catalog_items+" ITEMS · "+x.profiles+" SELLER PROFILES"}catch(_){$("status").textContent="OFFLINE"}}
-function render(d){st.item=d.active_item_id;const a=d.items.find(x=>String(x.item_id)===String(st.item));$("tabs").innerHTML=d.items.map(x=>'<button data-id="'+e(x.item_id)+'" class="'+(String(x.item_id)===String(st.item)?"on":"")+'">'+e(x.name)+'</button>').join("");$("tabs").querySelectorAll("button").forEach(b=>b.onclick=()=>search(st.q,String(st.item)===b.dataset.id?null:b.dataset.id));$("note").textContent=d.items.length?d.items.length+" catalogue item name"+(d.items.length===1?"":"s")+" contain “"+st.q+"”. "+(a?"Tap the selected item again for the broad search.":"Leave all unselected for the broad search."):"No catalogue item names contain “"+st.q+"”.";$("mode").textContent=a?"Exact catalogue item":"Broad search";$("title").textContent=a?"WHO HAS IT":"AVAILABLE AROUND NIGHT CITY";$("summary").textContent=d.offers.length+" seller results";$("ct").textContent=a?a.name:st.q+" search";$("cc").textContent=a?"Seller results are restricted to the exact catalogue object “"+a.name+"”." :"This is the broad search state for “"+st.q+"”; no exact item is selected.";$("results").innerHTML=d.offers.length?d.offers.map(r=>'<div class="row" data-shop="'+e(r.shop_entity_id)+'"><div><b>'+e(r.item_name)+'</b><span>plausible stock</span></div><div><b>'+e(r.shop_name)+'</b><span>'+e(r.district||"Night City")+'</span></div><div class="sc"><b>FIT '+r.score+'</b><span>'+e(String(r.stock_mode||"").replaceAll("_"," "))+'</span></div></div>').join(""):'<div class="panel">No seller profile matched this search state.</div>';$("results").querySelectorAll("[data-shop]").forEach(x=>x.onclick=()=>openShop(x.dataset.shop))}
-async function search(q,item){q=q.trim();if(!q)return;st.q=q;$("q").value=q;$("summary").textContent="SEARCHING…";try{render(await api({api:"search",q:q,item_id:item}))}catch(err){$("results").innerHTML='<div class="panel">'+e(err.message)+'</div>'}}
-async function openShop(id){const s=await api({api:"shop",id:id});$("sv").classList.add("hidden");$("shop").classList.add("active");$("sname").textContent=s.name;$("smode").textContent=String(s.stock_mode||"").replaceAll("_"," ");$("sdistrict").textContent=s.district||"Night City";$("stype").textContent=s.primary_archetype||"Commercial place";$("snote").textContent=s.modelling_note||"Canonical Vend-R commercial profile.";$("ssource").textContent=s.source_ref||"Night City 2045";$("sdeps").textContent=[s.primary_departments,s.secondary_departments].filter(Boolean).join(" · ")||"—";$("children").innerHTML=s.children&&s.children.length?'<div class="k">Contained sellers / places</div>'+s.children.map(c=>'<button data-child="'+e(c.child_entity_id)+'">'+e(c.child_name)+'</button>').join(""):"";$("children").querySelectorAll("[data-child]").forEach(b=>b.onclick=()=>openShop(b.dataset.child));scrollTo(0,0)}
-$("back").onclick=()=>{$("shop").classList.remove("active");$("sv").classList.remove("hidden");scrollTo(0,0)};$("form").onsubmit=x=>{x.preventDefault();search($("q").value,null)};h();
-</script></body></html>`;
+:root{--a:#ef5a2f;--b:#ffc84c;--cream:#f4eddf;--paper:#fbf5e9;--ink:#171713;--muted:#6f685f;--line:#c7baa7;--dark:#252521;--red:#d94a34;--blue:#627d89}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--a) 0 34%,#f47f35 34.5%,var(--b) 72%,#ffe07a)}
+.shell{width:min(1180px,calc(100% - 24px));min-height:calc(100vh - 36px);margin:18px auto;background:var(--cream);box-shadow:14px 18px 40px #6c321f44;border:1px solid #6b4b2f33}
+header{height:62px;display:flex;align-items:center;padding:0 22px;border-bottom:1px solid var(--line);gap:18px;position:sticky;top:0;background:#f4eddfed;backdrop-filter:blur(8px);z-index:40}
+.brand{font-size:19px;font-weight:950;letter-spacing:.05em}.mark{display:inline-grid;place-items:center;width:30px;height:30px;color:#fff;background:linear-gradient(135deg,var(--red),var(--b));clip-path:polygon(50% 0,100% 25%,82% 100%,18% 100%,0 25%);margin-right:8px}
+.status{margin-left:auto;font:700 9px monospace;color:#68765d}
+main{padding:34px 28px 70px}
+.k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}
+h1{font-size:clamp(56px,9vw,108px);line-height:.79;letter-spacing:-.065em;margin:11px 0 24px}
+h2{font-size:28px;margin:6px 0}h3{margin:4px 0;font-size:18px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:end}.hero p{color:#524b42;line-height:1.45}
+.search-wrap{position:relative}
+.search{display:flex;border:2px solid var(--dark);background:#fffaf0;padding:6px}
+.search input{flex:1;min-width:0;border:0;background:transparent;font-size:19px;padding:12px;outline:none}
+.search button{border:0;background:var(--red);color:#fff;font-weight:900;padding:12px 18px;cursor:pointer}
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:60;background:#fffaf0;border:2px solid var(--dark);box-shadow:9px 9px 0 #d9cbb8;max-height:min(62vh,520px);overflow:auto}
+.suggest.hidden{display:none}.suggest-head{padding:8px 11px;border-bottom:1px solid var(--line);font:800 9px monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.suggest button{display:block;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:11px 12px;cursor:pointer;color:var(--ink)}
+.suggest button:hover{background:#fff0c6}.suggest button strong{display:block;font-size:14px;text-transform:uppercase}.suggest button span{display:block;margin-top:4px;font:800 8px monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.suggest .all{background:var(--b);border-top:2px solid var(--dark)}
+.view.hidden{display:none}
+.search-head{display:flex;justify-content:space-between;gap:16px;align-items:end;border-bottom:4px solid var(--dark);padding-bottom:12px;margin-bottom:18px}
+.search-head h1{font-size:clamp(44px,8vw,88px);margin:8px 0 0}.back{border:0;background:none;text-decoration:underline;padding:0;cursor:pointer}
+.search-again{margin:0 0 24px}
+.block{margin-top:18px}.block-head{display:flex;justify-content:space-between;align-items:end;gap:12px;border-bottom:3px solid var(--dark);padding-bottom:8px}.block-head span{font:800 9px monospace;color:var(--muted);text-transform:uppercase}
+.results{display:grid;gap:8px;padding-top:8px}
+.row{border:1px solid var(--line);background:var(--paper);padding:13px 13px 13px 18px;display:grid;grid-template-columns:1.2fr .9fr auto;gap:14px;text-align:left;position:relative;cursor:pointer}
+.row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--blue)}.row:hover{background:#fffaf0}.row b{display:block;font-size:14px}.row span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:4px}.row .price{text-align:right;min-width:92px}.row .price b{font-size:17px}.row.exact{grid-template-columns:1fr auto}.row.exact .item{display:none}.row.plausible:before{background:#b4a896}.row.plausible .price b{font-size:10px;color:var(--muted)}
+.panel{border:1px solid var(--line);padding:16px;background:#e9dfcf}.empty{margin-top:20px}
+.card{background:var(--paper);border:1px solid var(--line);box-shadow:9px 9px 0 #d9cbb8}.sign{background:var(--dark);color:#fff;padding:28px}.sign h1{font-size:clamp(48px,8vw,88px)}.body{display:grid;grid-template-columns:1.6fr .7fr}.main,.aside{padding:24px}.aside{border-left:1px solid var(--line);background:#e9dfcf}
+.stock-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.stock-row:last-child{border-bottom:0}.stock-row small{display:block;color:var(--muted);text-transform:uppercase}.stock-row .qty,.stock-row .ask{font:800 11px monospace}.stock-row.focus b{color:#c84d1d}
+.children button{display:block;width:100%;text-align:left;padding:10px;border:1px solid var(--line);background:#fffaf0;margin-top:7px}
+@media(max-width:800px){.hero,.body{grid-template-columns:1fr}.hero{gap:20px}.row{grid-template-columns:1fr auto}.row .seller{grid-column:1}.row .price{grid-column:2;grid-row:1/3}.aside{border-left:0;border-top:1px solid var(--line)}main{padding:24px 16px}.search-head{align-items:start;flex-direction:column}.search-head h1{font-size:54px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><div class="brand"><span class="mark">V</span>VEND-R</div><div class="k">Night City 2045</div><div id="status" class="status">CONNECTING</div></header>
+<main>
+<section id="home" class="view">
+  <div class="hero">
+    <div><div class="k">Night City stock index</div><h1>FIND IT<br>BEFORE YOU<br>INVENT IT.</h1><p>Search the actual Catalogger catalogue against Vend-R's canonical Night City commercial profiles. Choose a catalogue object as you type, or press Enter to search the broader idea.</p></div>
+    <div class="search-wrap">
+      <form id="homeForm" class="search"><input id="homeQ" placeholder="pistol, Agent, armor…" autocomplete="off"><button>SEARCH</button></form>
+      <div id="suggest" class="suggest hidden"></div>
+    </div>
+  </div>
+</section>
+
+<section id="resultsView" class="view hidden">
+  <div class="search-head"><div><div id="mode" class="k">Broad search</div><h1 id="title">SEARCH</h1></div><button id="homeBack" class="back">← Market</button></div>
+  <form id="resultsForm" class="search search-again"><input id="resultsQ" placeholder="SEARCH AGAIN" autocomplete="off"><button>SEARCH</button></form>
+  <div id="searchNote" class="k"></div>
+  <section id="availableBlock" class="block"><div class="block-head"><h2 id="availableTitle">AVAILABLE NOW</h2><span id="availableMeta"></span></div><div id="available" class="results"></div></section>
+  <section id="likelyBlock" class="block"><div class="block-head"><h2>OTHER LIKELY SELLERS</h2><span>PROFILE FIT · NOT CURRENT STOCK</span></div><div id="likely" class="results"></div></section>
+  <div id="empty" class="panel empty hidden">No current Vend-R matches.</div>
+</section>
+
+<section id="shopView" class="view hidden">
+  <button id="shopBack" class="back">← Back to search</button>
+  <article class="card">
+    <div class="sign"><div id="smode" class="k"></div><h1 id="sname"></h1><div id="sdistrict"></div></div>
+    <div class="body">
+      <div class="main"><div class="k">Commercial profile</div><h2 id="stype"></h2><p id="snote"></p><div id="stock"></div><div id="children" class="children"></div></div>
+      <aside class="aside"><div class="k">Source</div><p id="ssource"></p><div class="k">Departments</div><p id="sdeps"></p></aside>
+    </div>
+  </article>
+</section>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const state={q:"",item:null,data:null,focus:null};
+async function api(p){const u=new URL(location.href);u.search="";Object.entries(p).forEach(x=>x[1]!=null&&x[1]!==""&&u.searchParams.set(x[0],x[1]));const r=await fetch(u);const j=await r.json();if(!r.ok)throw new Error(j.error||r.statusText);return j}
+function esc(s){return String(s==null?"":s).replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
+function show(name){["home","resultsView","shopView"].forEach(id=>$(id).classList.toggle("hidden",id!==name));scrollTo(0,0)}
+function typeLabel(x){return String(x.primary_department||"item").replaceAll("-"," ")}
+function placeLabel(x){return [x.parent_name,x.district,x.distance].filter(Boolean).join(" · ")||"Night City"}
+function money(v){return v==null?"—":Number(v).toLocaleString()+"eb"}
+async function health(){try{const x=await api({api:"health"});$("status").textContent="CONNECTED · "+x.catalog_items+" ITEMS · "+x.profiles+" SELLER PROFILES"}catch(_){$("status").textContent="OFFLINE"}}
+
+let suggestTimer=null,suggestToken=0;
+function hideSuggest(){$("suggest").classList.add("hidden");$("suggest").innerHTML=""}
+function renderSuggest(d,q){const items=d.items||[],total=Number(d.total_matches||items.length);$("suggest").innerHTML='<div class="suggest-head">Catalogue suggestions</div>'+items.map(x=>'<button type="button" data-item="'+esc(x.item_id)+'"><strong>'+esc(x.name)+'</strong><span>'+esc(typeLabel(x))+' · exact catalogue item</span></button>').join("")+'<button type="button" class="all" data-all="1"><strong>Search all “'+esc(q)+'”</strong><span>'+esc(total)+' related catalogue item'+(total===1?"":"s")+' →</span></button>';$("suggest").classList.remove("hidden");$("suggest").querySelectorAll("[data-item]").forEach(b=>b.onclick=()=>runSearch(q,b.dataset.item,true));$("suggest").querySelector("[data-all]").onclick=()=>runSearch(q,null,true)}
+function queueSuggest(raw){const q=String(raw||"").trim();clearTimeout(suggestTimer);if(q.length<2){hideSuggest();return}const token=++suggestToken;suggestTimer=setTimeout(async()=>{try{const d=await api({api:"search",q:q,suggest:1});if(token===suggestToken)renderSuggest(d,q)}catch(_){if(token===suggestToken)hideSuggest()}},160)}
+
+function resultRow(r,exact,plausible){const item='<div class="item"><b>'+esc(r.item_name)+'</b><span>'+esc(typeLabel(r))+(plausible?' · not in current stock':' · '+esc(r.condition||"stock item")+' · '+esc(r.quantity==null?"available":r.quantity+" available"))+'</span></div>';const seller='<div class="seller"><b>'+esc(r.shop_name)+'</b><span>'+esc(placeLabel(r))+'</span></div>';const price=plausible?'<div class="price"><b>LIKELY SELLER</b><span>no current offer</span></div>':'<div class="price"><b>'+esc(money(r.asking_price))+'</b><span>'+esc(r.condition||"")+(r.quantity!=null?' · '+esc(r.quantity)+' here':'')+'</span></div>';return '<button class="row '+(exact?'exact ':'')+(plausible?'plausible':'')+'" data-shop="'+esc(r.shop_entity_id)+'" data-item="'+esc(r.item_id)+'">'+item+seller+price+'</button>'}
+function bindRows(root){root.querySelectorAll("[data-shop]").forEach(b=>b.onclick=()=>{const o=(state.data.offers||[]).find(x=>String(x.shop_entity_id)===b.dataset.shop&&String(x.item_id)===b.dataset.item)||null;openShop(b.dataset.shop,o)})}
+function renderResults(d,q){state.data=d;state.q=q;state.item=d.active_item_id||null;const exact=Boolean(state.item);const active=exact?(d.items||[]).find(x=>String(x.item_id)===String(state.item)):null;const available=(d.offers||[]).filter(x=>x.kind==="available"),likely=(d.offers||[]).filter(x=>x.kind!=="available");$("mode").textContent=exact?"Exact catalogue item":"Broad search";$("title").textContent=(active&&active.name?active.name:q).toUpperCase();$("resultsQ").value=q;$("searchNote").textContent=exact?"CURRENT OFFERS FOR THIS EXACT CATALOGUE ITEM":"CURRENT OFFERS ACROSS "+String(d.total_matches||d.items.length)+" RELATED CATALOGUE ITEMS";$("availableTitle").textContent=exact?"WHO HAS IT":"AVAILABLE NOW";$("availableMeta").textContent=available.length+" CURRENT OFFER"+(available.length===1?"":"S");$("available").innerHTML=available.map(r=>resultRow(r,exact,false)).join("");$("likely").innerHTML=likely.map(r=>resultRow(r,exact,true)).join("");$("availableBlock").classList.toggle("hidden",!available.length);$("likelyBlock").classList.toggle("hidden",!likely.length);$("empty").classList.toggle("hidden",Boolean(available.length||likely.length));bindRows($("available"));bindRows($("likely"));show("resultsView")}
+function searchUrl(q,item){const u=new URL(location.href);u.search="";u.searchParams.set("q",q);if(item)u.searchParams.set("item",item);return u.pathname+u.search}
+async function runSearch(raw,item,push){const q=String(raw||"").trim();if(!q)return;hideSuggest();state.q=q;state.item=item||null;$("resultsQ").value=q;if(push!==false)history.pushState({q:q,item:item||null},"",searchUrl(q,item));show("resultsView");$("title").textContent=item?"LOADING ITEM…":q.toUpperCase();$("searchNote").textContent="RESOLVING NIGHT CITY OFFERS…";$("availableBlock").classList.add("hidden");$("likelyBlock").classList.add("hidden");$("empty").classList.add("hidden");try{renderResults(await api({api:"search",q:q,item_id:item||null}),q)}catch(err){$("empty").textContent="Search unavailable: "+err.message;$("empty").classList.remove("hidden")}}
+
+async function openShop(id,focus){state.focus=focus;const s=await api({api:"shop",id:id});$("sname").textContent=s.name;$("smode").textContent=String(s.stock_mode||"").replaceAll("_"," ");$("sdistrict").textContent=s.district||"Night City";$("stype").textContent=s.type||s.primary_archetype||"Commercial place";$("snote").textContent=s.blurb||s.copy||s.modelling_note||"Canonical Vend-R commercial profile.";$("ssource").textContent=s.source_ref||"Night City 2045";$("sdeps").textContent=s.tags||"—";const rows=s.stock||[];$("stock").innerHTML=rows.length?'<div class="k" style="margin-top:20px">Current stock</div>'+rows.map(r=>'<div class="stock-row '+(focus&&String(r.item_id)===String(focus.item_id)?"focus":"")+'"><div><b>'+esc(r.name)+'</b><small>'+esc([r.assortment_role,r.condition].filter(Boolean).join(" · "))+'</small></div><div class="qty">'+esc(r.quantity==null?"available":r.quantity+" here")+'</div><div class="ask">'+esc(money(r.asking_price))+'</div></div>').join(""):"";$("children").innerHTML=s.child_places&&s.child_places.length?'<div class="k" style="margin-top:20px">Contained sellers / places</div>'+s.child_places.map(c=>'<button data-child="'+esc(c.child_entity_id)+'">'+esc(c.child_name)+'</button>').join(""):"";$("children").querySelectorAll("[data-child]").forEach(b=>b.onclick=()=>openShop(b.dataset.child,null));show("shopView")}
+
+$("homeQ").addEventListener("input",x=>queueSuggest(x.currentTarget.value));
+$("homeQ").addEventListener("keydown",x=>{if(x.key==="Escape")hideSuggest()});
+$("homeForm").onsubmit=x=>{x.preventDefault();runSearch($("homeQ").value,null,true)};
+$("resultsForm").onsubmit=x=>{x.preventDefault();runSearch($("resultsQ").value,null,true)};
+$("homeBack").onclick=()=>{history.pushState({},"",location.pathname);show("home")};
+$("shopBack").onclick=()=>show("resultsView");
+document.addEventListener("click",x=>{if(!$("homeForm").contains(x.target)&&!$("suggest").contains(x.target))hideSuggest()});
+window.addEventListener("popstate",()=>{const p=new URLSearchParams(location.search),q=p.get("q"),item=p.get("item");if(q)runSearch(q,item,false);else show("home")});
+health();
+const initial=new URLSearchParams(location.search);if(initial.get("q"))runSearch(initial.get("q"),initial.get("item"),false);
+</script>
+</body>
+</html>`
 
 Deno.serve(async(req:Request)=>{
   if(req.method==='OPTIONS') return new Response('ok',{headers:JH});
