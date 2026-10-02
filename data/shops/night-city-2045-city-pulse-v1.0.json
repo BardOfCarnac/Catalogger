@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "purpose": "Lightweight deterministic Night City stock ebb-and-flow layered inside persistent shop refresh cycles.",
+  "stock_day": "UTC day number; deterministic and shared across public-2045",
+  "target_daily_mutations": "approximately 40–70 across the current visible Night City stock surface",
+  "calibrated_expected_daily_mutations": 62.5,
+  "calibrated_expected_visible_sku_lines": 1649.5,
+  "turnover_probabilities": {
+    "fast": 0.045,
+    "steady": 0.03,
+    "irregular": 0.04,
+    "slow": 0.015,
+    "volatile": 0.06
+  },
+  "actions": {
+    "ambient_sale": "60% of selected mutations; decreases a finite quantity",
+    "delivery": "25% of selected mutations; raises a finite quantity, capped around 150% of generated baseline",
+    "sellout": "8% of selected mutations; temporarily takes the line to zero",
+    "replenishment": "7% of selected mutations; moves stock back toward generated baseline"
+  },
+  "constraints": [
+    "Does not alter the shop assortment.",
+    "Does not affect continuous/on-demand stock.",
+    "Major assortment turnover remains controlled by each shop's stock lifecycle cadence.",
+    "Player or future user purchases are stored separately as persistent depletion deltas.",
+    "Ambient supply can increase effective current capacity without deleting persistent player depletion."
+  ]
+}
