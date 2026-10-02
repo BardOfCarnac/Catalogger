@@ -1781,10 +1781,11 @@ function renderVendor(s,offers){
   }
   const display=s.display_tags||{};
   const known=[...new Set([
+    s.shop_scale?('SIZE · '+String(s.shop_scale).toUpperCase()):null,
     ...(display.known_for||[]),
     ...(display.trade||[]),
     ...String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean)
-  ])].slice(0,6);
+  ].filter(Boolean))].slice(0,6);
   document.getElementById('knownGrid').innerHTML=(known.length?known:[s.type].filter(Boolean)).map(x=>'<span>'+esc(x)+'</span>').join('');
   const focus=offers||null;
   currentFocusOffer=focus;
