@@ -604,7 +604,7 @@ async function shop(u:URL){
     const poolKey=visual.image_pool_key||visual.visual_family;
     const pool=await db('vendr_image_pool','select=*&enabled=eq.true&visual_family=eq.'+encodeURIComponent(poolKey)+'&order=sort_order.asc');
     if(pool.length){
-      const chosen=pool[stableIndex(id+'|'+poolKey,pool.length)];
+      const chosen=(visual.image_override&&pool.find((row:any)=>String(row.unsplash_id)===String(visual.image_override)))||pool[stableIndex(id+'|'+poolKey,pool.length)];
       image={
         unsplash_id:chosen.unsplash_id,
         photographer:chosen.photographer,
