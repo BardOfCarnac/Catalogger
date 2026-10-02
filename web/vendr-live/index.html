@@ -2151,7 +2151,12 @@ function renderVendorStock(s,focus){
     return ranked.map(({r,exactHit,relatedHit})=>{
       const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
       const nameClass=exactHit?' exact':(relatedHit?' related':'');
-      const sub=[r.assortment_role,r.condition,exactHit?'exact item':(relatedHit?'related item':null)].filter(Boolean).join(' · ');
+      const flowLabel=r.ambient_last_event?.type==='delivery'?'fresh delivery':
+        r.ambient_last_event?.type==='replenishment'?'restocked':
+        r.ambient_state==='down'?'selling down':
+        r.ambient_state==='up'?'stock up':
+        null;
+      const sub=[r.assortment_role,r.condition,flowLabel,exactHit?'exact item':(relatedHit?'related item':null)].filter(Boolean).join(' · ');
       return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
         '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
         '<div class="stock-sub">'+esc(sub)+'</div></div>'+
