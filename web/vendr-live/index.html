@@ -457,6 +457,79 @@ button,input{font:inherit}
   text-transform:uppercase;
 }
 
+
+/* -------- ITEM-SEARCH ARRIVAL -------- */
+.offer-focus{
+  margin-bottom:18px;
+  border:4px solid var(--ink);
+  background:var(--cream);
+  box-shadow:var(--shadow);
+  padding:16px 18px 17px;
+}
+.offer-focus[hidden]{display:none}
+.offer-focus-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:end;
+}
+.offer-focus h1{
+  margin:5px 0 0;
+  font-size:clamp(34px,6.6vw,72px);
+  line-height:.86;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.offer-readout{
+  min-width:132px;
+  text-align:right;
+}
+.offer-readout strong{
+  display:block;
+  font:1000 clamp(20px,3.5vw,34px) ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.offer-readout span,
+.offer-sub{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.stock-row{padding:10px 16px}
+.stock-name{
+  font-size:23px;
+  line-height:.98;
+  letter-spacing:-.012em;
+}
+.stock-sub{font-size:11px;line-height:1.25;margin-top:4px}
+.stock-meta{font-size:11px;line-height:1.28}
+.stock-meta strong{font-size:14px}
+.stock-name.related{
+  color:var(--front-2);
+  -webkit-text-stroke:1.9px var(--ink);
+  paint-order:stroke fill;
+  text-shadow:.8px .8px 0 var(--ink);
+}
+.stock-name.exact{
+  color:var(--rear-2);
+  -webkit-text-stroke:2.1px var(--ink);
+  paint-order:stroke fill;
+  text-shadow:1px 1px 0 var(--ink);
+  animation:vendrFocus 2.5s cubic-bezier(.22,.72,.18,1);
+}
+@keyframes vendrFocus{
+  0%,100%{color:var(--rear-2)}
+  40%,68%{color:var(--rear-4)}
+}
+.stock-row.exact-row{background:rgba(244,210,70,.14)}
+.stock-row.related-row{background:rgba(244,123,16,.06)}
+@media (max-width:760px){
+  .offer-focus-row{grid-template-columns:1fr}
+  .offer-readout{text-align:left}
+}
+
 /* -------- VENDOR PAGE -------- */
 .vendor-hero{
   padding:0;
@@ -934,6 +1007,18 @@ button,input{font:inherit}
         <button class="action-btn" id="backToMarket">← Market</button>
       </header>
 
+      <section class="offer-focus" id="offerFocus" hidden>
+        <div class="kicker" id="offerKicker">Current offer</div>
+        <div class="offer-focus-row">
+          <h1 id="offerItemName">Selected item</h1>
+          <div class="offer-readout">
+            <strong id="offerPrice">—</strong>
+            <span id="offerQuantity">—</span>
+          </div>
+        </div>
+        <div class="offer-sub" id="offerSub"></div>
+      </section>
+
       <section class="hero vendor-hero">
         <div class="vendor-photo-strip" id="vendorPhotoStrip">
           <div class="vendor-photo-content">
@@ -1208,6 +1293,7 @@ const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
 let sellers=[];
 let lastSearch=null;
 let currentSellerId=null;
+let currentFocusOffer=null;
 
 function esc(v){
   return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -1231,7 +1317,9 @@ function sellerRow(s,sub,status){
 function bindSellerClicks(root,offerMap=null){
   root.querySelectorAll('[data-shop]').forEach(el=>el.addEventListener('click',()=>{
     const id=el.dataset.shop;
-    openVendor(id,offerMap?.get(id)||[]);
+    const offers=offerMap?.get(id)||[];
+    const focus=offers.find(o=>o.kind==='available')||offers[0]||null;
+    openVendor(id,focus);
   }));
 }
 function renderSellerPanel(panel,slice,subFn,statusFn,offerMap=null){
@@ -1281,6 +1369,11 @@ function renderSearch(data,q){
   document.getElementById('primarySellerMeta').innerHTML=esc(String(data.items?.length||0))+' catalogue names<br>contain “'+esc(q)+'”';
   document.getElementById('secondarySellerTitle').textContent='More matches';
   document.getElementById('secondarySellerMeta').innerHTML=esc(String(rows.length))+' seller profiles<br>fit this search';
+  const statusFor=s=>{
+    const os=offerMap.get(s.entity_id)?.offers||[];
+    const available=os.filter(x=>x.kind==='available').length;
+    return available?(available+' IN STOCK'):((os.length||0)+' MATCH');
+  };
   renderSellerPanel(
     document.getElementById('primarySellerPanel'),
     sellerRows.slice(0,3),
@@ -1288,7 +1381,7 @@ function renderSearch(data,q){
       const os=offerMap.get(s.entity_id)?.offers||[];
       return [os.slice(0,2).map(x=>x.item_name).join(' · '),s.district].filter(Boolean).join(' · ');
     },
-    s=>(offerMap.get(s.entity_id)?.offers.length||0)+' MATCH',
+    statusFor,
     new Map([...offerMap].map(([id,v])=>[id,v.offers]))
   );
   renderSellerPanel(
@@ -1298,7 +1391,7 @@ function renderSearch(data,q){
       const os=offerMap.get(s.entity_id)?.offers||[];
       return [os.slice(0,2).map(x=>x.item_name).join(' · '),s.district].filter(Boolean).join(' · ');
     },
-    s=>(offerMap.get(s.entity_id)?.offers.length||0)+' MATCH',
+    statusFor,
     new Map([...offerMap].map(([id,v])=>[id,v.offers]))
   );
 }
@@ -1316,21 +1409,43 @@ async function runMarketSearch(raw){
     document.getElementById('primarySellerMeta').textContent=e.message;
   }
 }
-function renderVendorStock(offers){
+function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
-  if(offers?.length){
-    list.innerHTML=offers.slice(0,8).map(o=>
-      '<article class="stock-row" data-search="'+esc((o.item_name||'').toLowerCase())+'"><div>'+
-      '<div class="stock-name">'+esc(o.item_name)+'</div>'+
-      '<div class="stock-sub">Plausible seller match · search signal only</div></div>'+
-      '<div class="stock-meta"><strong>Likely</strong><br>not materialized</div>'+
-      '<div class="price amber">MATCH</div></article>'
-    ).join('');
-    document.getElementById('stockSummary').innerHTML=offers.length+' search match'+(offers.length===1?'':'es')+'<br>Profile-level signal';
-  }else{
-    list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf state yet</div><div class="stock-sub">This public build does not materialize inventory simply because a shop was opened.</div></div><div class="stock-meta"><strong>Read only</strong><br>profile loaded</div><div class="price amber">—</div></article>';
-    document.getElementById('stockSummary').innerHTML='Read-only profile<br>No shelf state yet';
+  const sourceRows=Array.isArray(s.stock)?s.stock.slice():[];
+  if(!sourceRows.length){
+    list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf stock</div><div class="stock-sub">This place does not currently own a physical stock bundle.</div></div><div class="stock-meta"><strong>—</strong><br>no count</div><div class="price amber">—</div></article>';
+    document.getElementById('stockSummary').innerHTML='No shelf stock<br>'+esc(modeLabel(s.stock_mode));
+    document.getElementById('restockBand').textContent='No physical shelf inventory';
+    return;
   }
+
+  const focusId=focus?String(focus.item_id):null;
+  const exact=focusId?sourceRows.find(r=>String(r.item_id)===focusId):null;
+  const relation=(exact?.relation_key)||(focus?.relation_key)||null;
+
+  const ranked=sourceRows.map((r,index)=>{
+    const exactHit=focusId&&String(r.item_id)===focusId;
+    const relatedHit=!exactHit&&relation&&r.relation_key===relation;
+    return {r,index,rank:exactHit?0:(relatedHit?1:2),exactHit,relatedHit};
+  }).sort((a,b)=>a.rank-b.rank||a.index-b.index);
+
+  list.innerHTML=ranked.map(({r,exactHit,relatedHit})=>{
+    const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
+    const nameClass=exactHit?' exact':(relatedHit?' related':'');
+    const sub=[
+      r.assortment_role,
+      r.condition,
+      exactHit?'exact item':(relatedHit?'related item':null)
+    ].filter(Boolean).join(' · ');
+    return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
+      '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
+      '<div class="stock-sub">'+esc(sub)+'</div></div>'+
+      '<div class="stock-meta"><strong>'+esc(String(r.quantity))+' here</strong><br>stock cycle '+esc(String(s.state?.stock_cycle??1))+'</div>'+
+      '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
+  }).join('');
+
+  document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · cycle '+esc(String(s.state?.stock_cycle??1))+'<br>finite quantities';
+  document.getElementById('restockBand').textContent='Stock cycle '+String(s.state?.stock_cycle??1)+' · current public snapshot';
 }
 function renderVendor(s,offers){
   currentSellerId=s.entity_id;
@@ -1348,14 +1463,14 @@ function renderVendor(s,offers){
     photoCredit.textContent='';
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
-  document.getElementById('vendorStatus').textContent='PROFILE · READ ONLY';
+  document.getElementById('vendorStatus').textContent=(s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY';
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=modeLabel(s.stock_mode);
   document.getElementById('vendorCopy').textContent=s.copy||s.modelling_note||'Canonical Vend-R commercial profile.';
   document.getElementById('vendorOwnerLabel').textContent='Vend-R record';
   document.getElementById('vendorOwnerSub').textContent=s.source_ref||'Night City 2045 commercial graph';
-  document.getElementById('restockBand').textContent='Public preview · search does not materialize stock';
+  document.getElementById('restockBand').textContent='Loading stock snapshot…';
   document.getElementById('factStatus').textContent='Profile only';
   document.getElementById('factDistrict').textContent=s.district||'Night City';
   document.getElementById('factStockMode').textContent=modeLabel(s.stock_mode);
@@ -1377,14 +1492,37 @@ function renderVendor(s,offers){
   const tags=String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean);
   const known=[...new Set([s.type,...tags].filter(Boolean))].slice(0,4);
   document.getElementById('knownGrid').innerHTML=(known.length?known:['Commercial profile']).map(x=>'<span>'+esc(x)+'</span>').join('');
-  renderVendorStock(offers||[]);
+  const focus=offers||null;
+  currentFocusOffer=focus;
+  const exact=focus?(s.stock||[]).find(r=>String(r.item_id)===String(focus.item_id)):null;
+  const offer=document.getElementById('offerFocus');
+  if(focus){
+    offer.hidden=false;
+    document.getElementById('offerItemName').textContent=focus.item_name||exact?.name||'Selected item';
+    if(exact){
+      document.getElementById('offerKicker').textContent='Current offer';
+      document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
+      document.getElementById('offerQuantity').textContent=String(exact.quantity)+' available · '+(exact.condition||'stock item');
+      document.getElementById('offerSub').textContent='This is the item that brought you to '+(s.name||'this seller')+'.';
+    }else{
+      document.getElementById('offerKicker').textContent='You were looking for';
+      document.getElementById('offerPrice').textContent='NO CURRENT OFFER';
+      document.getElementById('offerQuantity').textContent='related stock shown first';
+      document.getElementById('offerSub').textContent=(s.name||'This seller')+' is a plausible seller for this catalogue item, but the current cycle does not contain it.';
+    }
+  }else{
+    offer.hidden=true;
+  }
+  document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock cycle '+String(s.state?.stock_cycle??1):'Profile only';
+  document.getElementById('factWorldState').textContent=(s.stock||[]).length?'Cycle 1 snapshot':'No shelf inventory';
+  renderVendorStock(s,focus);
   filterShopStock('');
 }
-async function openVendor(id,offers=[]){
+async function openVendor(id,focus=null){
   if(busy)return;
   try{
     const s=await api({api:'shop',id});
-    renderVendor(s,offers);
+    renderVendor(s,focus);
     switchTo('vendor');
   }catch(e){
     console.error(e);
