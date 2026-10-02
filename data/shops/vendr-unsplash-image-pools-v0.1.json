@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "project": "Vend-R / Unsplash visual pools",
   "purpose": "Verified hotlinkable photographic pools for Vend-R shop/place hero strips.",
   "provider": "Unsplash",
@@ -10,7 +10,10 @@
     "Market pools now favour neon urban night-market imagery.",
     "Clinic/pharmacy pool now includes neon urban medical imagery.",
     "All image choices remain deterministic per entity.",
-    "Review pass 1 recorded from user decisions on 2026-10-01. Denied images are disabled from live selection."
+    "Review pass 1 recorded from user decisions on 2026-10-01. Denied images are disabled from live selection.",
+    "Batch 2 and Batch 3 approved candidates promoted on 2026-10-02.",
+    "Live eligibility now requires explicit approval; undecided and denied candidates remain archived but disabled.",
+    "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition."
   ],
   "families": {
     "street-storefront": [
@@ -124,7 +127,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 0,
         "review_status": "undecided"
       },
@@ -136,7 +139,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
         "review_status": "undecided"
       },
@@ -148,9 +151,48 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 2,
         "review_status": "undecided"
+      },
+      {
+        "unsplash_id": "DAREHGu17Y0",
+        "photographer": "Andrii Solok",
+        "source_url": "https://unsplash.com/photos/people-browse-an-indoor-market-under-blue-neon-lights-DAREHGu17Y0?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1784631912338-2c4ca8dfcd89?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "FaMw2Jp9Ybo",
+        "photographer": "MChe Lee",
+        "source_url": "https://unsplash.com/photos/people-browsing-in-a-busy-indoor-market-at-night-FaMw2Jp9Ybo?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1772588181186-b4476f380ea3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "FPm0wZmRfmk",
+        "photographer": "MChe Lee",
+        "source_url": "https://unsplash.com/photos/people-browsing-stalls-in-a-busy-indoor-market-FPm0wZmRfmk?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1772285261838-71db6f63fd84?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "secondhand-clutter": [
@@ -177,6 +219,58 @@
         "enabled": true,
         "order": 1,
         "review_status": "approve"
+      },
+      {
+        "unsplash_id": "-71PqIuuHtU",
+        "photographer": "Sergio Guardiola Herrador",
+        "source_url": "https://unsplash.com/photos/cluttered-counter-in-an-old-shop-with-many-items--71PqIuuHtU?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1758812820306-807696371618?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "SKn0mKkEBrs",
+        "photographer": "Kouji Tsuru",
+        "source_url": "https://unsplash.com/photos/antique-shop-hallway-filled-with-various-items-SKn0mKkEBrs?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1755414717736-0d3ffe1f5a1a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "DRhrtL8Lyjk",
+        "photographer": "Zoshua Colah",
+        "source_url": "https://unsplash.com/photos/collection-of-assorted-antique-trinkets-and-curiosities-on-shelves-DRhrtL8Lyjk?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1767338718620-2179800c3747?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "nicaCH7ae9o",
+        "photographer": "Zoshua Colah",
+        "source_url": "https://unsplash.com/photos/man-looking-at-cluttered-antique-shop-stall-nicaCH7ae9o?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1765443454774-626e56274f33?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "showroom-boutique": [
@@ -188,7 +282,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 0,
         "review_status": "undecided"
       },
@@ -200,9 +294,61 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
         "review_status": "undecided"
+      },
+      {
+        "unsplash_id": "8YDqTT5jNXI",
+        "photographer": "rawkkim",
+        "source_url": "https://unsplash.com/photos/modern-luxury-store-interior-with-display-shelves-and-seating-8YDqTT5jNXI?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1758025554726-50b7ed346394?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "YTnmnUvNy4E",
+        "photographer": "Bernd Dittrich",
+        "source_url": "https://unsplash.com/photos/neon-sign-above-a-retail-display-with-various-items-YTnmnUvNy4E?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1774169440561-3b3d4eda3207?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "vPqLkWohv3c",
+        "photographer": "Osmany M Leyva Aldana",
+        "source_url": "https://unsplash.com/photos/dark-store-interior-with-glowing-neon-sign-reflection-vPqLkWohv3c?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1772217104138-dcc501d2fd45?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "uNnx31GSPxk",
+        "photographer": "Jie Yeu Teoh",
+        "source_url": "https://unsplash.com/photos/stylish-boutique-interior-with-clothing-racks-plants-and-warm-lighting-uNnx31GSPxk?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1784537642955-9d371c0cbf91?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "workshop-garage": [
@@ -229,6 +375,45 @@
         "enabled": true,
         "order": 1,
         "review_status": "approve"
+      },
+      {
+        "unsplash_id": "Ws8SCmDS9mw",
+        "photographer": "Rizky Nuriman",
+        "source_url": "https://unsplash.com/photos/a-welder-working-on-a-piece-of-metal-Ws8SCmDS9mw?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1683470157212-cd4005549fce?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "OfKjYtGGa2w",
+        "photographer": "Vitali Holstinin",
+        "source_url": "https://unsplash.com/photos/welder-working-in-a-dimly-lit-workshop-OfKjYtGGa2w?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1762786478154-4678312f9ad6?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "LnOOWZk5cE8",
+        "photographer": "Maryam Saghandi",
+        "source_url": "https://unsplash.com/photos/welder-working-with-sparks-flying-in-workshop-LnOOWZk5cE8?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1764245546004-e6b743242a80?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "clinic-pharmacy": [
@@ -304,7 +489,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 0,
         "review_status": "undecided"
       },
@@ -319,6 +504,110 @@
         "enabled": true,
         "order": 1,
         "review_status": "approve"
+      },
+      {
+        "unsplash_id": "uAL3cxNk9kE",
+        "photographer": "Ollie Singleton",
+        "source_url": "https://unsplash.com/photos/apartment-building-windows-lit-up-at-night-uAL3cxNk9kE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1764536602602-1adce9e18341?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 2,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "KDtyalmLWKY",
+        "photographer": "Artis Kančs",
+        "source_url": "https://unsplash.com/photos/brutalist-apartment-buildings-with-glass-block-windows-KDtyalmLWKY?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1762614449535-32fcb7bd177d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "1ZFjkN9hyng",
+        "photographer": "Simon Edwards",
+        "source_url": "https://unsplash.com/photos/an-angular-building-stands-tall-against-the-sky-1ZFjkN9hyng?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1748830025561-0e722734f4dd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "QNyq04-TjrI",
+        "photographer": "nik radzi",
+        "source_url": "https://unsplash.com/photos/apartment-building-during-nighttime-QNyq04-TjrI?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1516707777878-caf57fb63951?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "BxbFVcFbO1g",
+        "photographer": "Chelaxy Designs",
+        "source_url": "https://unsplash.com/photos/apartment-building-exterior-at-night-with-stairs-and-balcony-BxbFVcFbO1g?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1768720406903-cb00a7ea67bb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 6,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "pfHb7wajowg",
+        "photographer": "Marcus Lenk",
+        "source_url": "https://unsplash.com/photos/apartment-building-windows-lit-up-at-night-pfHb7wajowg?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1755896409980-1d5e8d957d79?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 7,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "UNMjv1G50Ww",
+        "photographer": "Tsuyoshi Kozu",
+        "source_url": "https://unsplash.com/photos/apartment-buildings-at-night-with-a-distant-tower-UNMjv1G50Ww?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1768711660634-28206b48a791?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 8,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "URh2ZUhkpTA",
+        "photographer": "Antonella Vilardo",
+        "source_url": "https://unsplash.com/photos/apartment-building-illuminated-at-night-with-many-lit-windows-URh2ZUhkpTA?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1765665017478-f10e88f8b85f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 9,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "outdoor-camp": [
@@ -409,6 +698,71 @@
         "enabled": true,
         "order": 2,
         "review_status": "approve"
+      },
+      {
+        "unsplash_id": "5F8mlj5SAyo",
+        "photographer": "SHUXIN WU",
+        "source_url": "https://unsplash.com/photos/a-man-holding-a-rifle-inside-of-a-store-5F8mlj5SAyo?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1650192771535-8f0316a124a5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "uMBBaJp-FDQ",
+        "photographer": "Thomas Tucker",
+        "source_url": "https://unsplash.com/photos/several-firearms-are-displayed-on-a-wall-uMBBaJp-FDQ?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1748443635007-81bfba67843e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "HiuNXyjGhjE",
+        "photographer": "Simon Takatomi",
+        "source_url": "https://unsplash.com/photos/a-wooden-wall-with-a-gun-and-two-revolvers-on-it-HiuNXyjGhjE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1727468802376-d3b9048924ba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "mvSnr7qxzPM",
+        "photographer": "Frankie Lu",
+        "source_url": "https://unsplash.com/photos/white-and-black-store-front-mvSnr7qxzPM?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1583774195556-a097cd7f1d3f?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 6,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "4csCb_5NVjE",
+        "photographer": "Ethan",
+        "source_url": "https://unsplash.com/photos/a-shelf-filled-with-lots-of-guns-in-a-dark-room-4csCb_5NVjE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1714324410882-9cf576929a8a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 7,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "cyber-tech": [
@@ -432,9 +786,10 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
-        "review_status": "approve"
+        "review_status": "approve",
+        "live_note": "Approved image retained, but disabled here to avoid cross-pool repetition."
       },
       {
         "unsplash_id": "Wsi7-z0IhAY",
@@ -447,6 +802,58 @@
         "enabled": false,
         "order": 2,
         "review_status": "deny"
+      },
+      {
+        "unsplash_id": "HpoYaT9-9aE",
+        "photographer": "Fotografia Lui Vlad",
+        "source_url": "https://unsplash.com/photos/circuit-board-being-repaired-with-a-screwdriver-HpoYaT9-9aE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1746017240064-188b45641552?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "pfR18JNEMv8",
+        "photographer": "Vishnu Mohanan",
+        "source_url": "https://unsplash.com/photos/close-up-of-dark-blue-circuit-board-pfR18JNEMv8?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1592659762303-90081d34b277?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "rmvlyhncTDM",
+        "photographer": "Fotografia Lui Vlad",
+        "source_url": "https://unsplash.com/photos/hand-holds-a-phones-circuit-board-for-repair-rmvlyhncTDM?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1746017240069-4b37791319ea?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "k27hkqXuveo",
+        "photographer": "Eric Stoynov",
+        "source_url": "https://unsplash.com/photos/two-server-racks-filled-with-electronic-components-and-wires-k27hkqXuveo?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1775519520461-6b6e068d9250?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 6,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "night-market-neon": [
@@ -458,7 +865,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 0,
         "review_status": "undecided"
       },
@@ -470,7 +877,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
         "review_status": "undecided"
       },
@@ -482,9 +889,61 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 2,
         "review_status": "undecided"
+      },
+      {
+        "unsplash_id": "elOuTaR1td0",
+        "photographer": "PJH",
+        "source_url": "https://unsplash.com/photos/crowded-street-with-neon-signs-at-night-elOuTaR1td0?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1769321790864-1b00340a54ad?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "rSRZElOKVZM",
+        "photographer": "Darien Attridge",
+        "source_url": "https://unsplash.com/photos/crowded-street-at-night-with-neon-signs-rSRZElOKVZM?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1759200263187-d1f64da092f7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "HNTYGJ5nbXE",
+        "photographer": "Sara Aurora Cimminiello",
+        "source_url": "https://unsplash.com/photos/crowded-street-scene-at-night-with-neon-signs-HNTYGJ5nbXE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1775493215754-4487f9f089bc?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "ADkBdepSsqE",
+        "photographer": "Wenhao Ruan",
+        "source_url": "https://unsplash.com/photos/crowded-street-with-bright-neon-signs-at-night-ADkBdepSsqE?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1759736693508-0b4fcd13e045?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 6,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ],
     "medical-neon": [
@@ -496,7 +955,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 0,
         "review_status": "undecided"
       },
@@ -508,7 +967,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
         "review_status": "undecided"
       },
@@ -520,9 +979,48 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 2,
         "review_status": "undecided"
+      },
+      {
+        "unsplash_id": "gFvmcAwXFBc",
+        "photographer": "Nicolás Flor",
+        "source_url": "https://unsplash.com/photos/a-street-scene-at-night-with-glowing-storefronts-gFvmcAwXFBc?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1775608523896-912ebbf4fb56?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 3,
+        "review_status": "approve",
+        "source_batch": "batch2"
+      },
+      {
+        "unsplash_id": "2JyjQERMU68",
+        "photographer": "Vien Dinh",
+        "source_url": "https://unsplash.com/photos/japanese-drugstore-at-night-with-illuminated-sign-2JyjQERMU68?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1767623356282-c5edc8d98766?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 4,
+        "review_status": "approve",
+        "source_batch": "batch3"
+      },
+      {
+        "unsplash_id": "yVhQxLoUx_M",
+        "photographer": "Jahanzeb Ahsan",
+        "source_url": "https://unsplash.com/photos/neon-sign-that-reads-apotek-at-night-yVhQxLoUx_M?utm_source=vend-r&utm_medium=referral",
+        "image_url": "https://images.unsplash.com/photo-1741299955562-f35c9e2ce001?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800",
+        "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
+        "focal_x": 0.5,
+        "focal_y": 0.5,
+        "enabled": true,
+        "order": 5,
+        "review_status": "approve",
+        "source_batch": "batch3"
       }
     ]
   }
