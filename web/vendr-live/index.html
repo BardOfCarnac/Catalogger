@@ -1793,6 +1793,7 @@ function playWipe(action){
     for(const [key,el] of Object.entries(panels))el.style.transform=`translateX(${fgX(elapsed,fgSpecs[key])}vw)`;
     if(!fired&&fgX(elapsed,fgSpecs.three)<=-108){
       fired=true;
+      busy=false;
       Promise.resolve(action()).catch(console.error);
       window.scrollTo(0,0);
     }
