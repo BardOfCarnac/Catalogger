@@ -239,11 +239,11 @@ function itemMatchesBucket(i:any,b:any,classMap:Map<string,any>){
 function lifecycle(p:any){return p?.data?.stock_lifecycle||{mode:'scheduled',cadence_hours:168,cadence_label:'Weekly',turnover:'steady',rotation:{core_cycles:null,regular_cycles:3,occasional_cycles:1}}}
 function cycleInfo(p:any,nowMs=Date.now()){
   const l=lifecycle(p), hours=Number(l.cadence_hours);
-  if(!Number.isFinite(hours)||hours<=0)return {cycle:1,next_restock_at:null,cadence_label:l.cadence_label||'No shelf stock',turnover:l.turnover||null};
+  if(!Number.isFinite(hours)||hours<=0)return {cycle:1,next_restock_at:null,cadence_label:l.cadence_label||'No shelf stock',turnover:l.turnover||null,stock_day:Math.floor(nowMs/86400000)};
   const ms=hours*3600000;
   const cycle=Math.floor(nowMs/ms);
   const next=(cycle+1)*ms;
-  return {cycle,next_restock_at:new Date(next).toISOString(),cadence_label:l.cadence_label||null,turnover:l.turnover||null};
+  return {cycle,next_restock_at:new Date(next).toISOString(),cadence_label:l.cadence_label||null,turnover:l.turnover||null,stock_day:Math.floor(nowMs/86400000)};
 }
 function roleEpoch(p:any,role:string,cycle:number){
   const rot=lifecycle(p)?.rotation||{};
@@ -367,6 +367,78 @@ function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,str
     stock_cycle:ci.cycle
   }));
 }
+const CITY_PULSE_VERSION='1.0';
+function pulseChance(p:any){
+  const t=String(lifecycle(p)?.turnover||'steady');
+  const m:any={fast:.045,steady:.030,irregular:.040,slow:.015,volatile:.060};
+  return m[t]??.030;
+}
+function cycleStartDay(p:any,cycle:number){
+  const h=Number(lifecycle(p)?.cadence_hours);
+  if(!Number.isFinite(h)||h<=0)return Math.floor(Date.now()/86400000);
+  return Math.floor((cycle*h*3600000)/86400000);
+}
+function pulseAmount(seed:string,max:number){
+  return 1+stableIndex(seed,Math.max(1,max));
+}
+function applyAmbientFlow(p:any,stock:any[],nowMs=Date.now()){
+  const ci=cycleInfo(p,nowMs);
+  const startDay=cycleStartDay(p,ci.cycle);
+  const today=Math.floor(nowMs/86400000);
+  const chance=Math.round(pulseChance(p)*10000);
+
+  return stock.map((row:any)=>{
+    if(row.quantity==null){
+      return {...row,generated_quantity:null,ambient_delta:0,ambient_state:'continuous',ambient_last_event:null};
+    }
+    const generated=Math.max(0,Number(row.quantity)||0);
+    let current=generated;
+    let lastEvent:any=null;
+
+    for(let day=startDay;day<=today;day++){
+      const hit=stableIndex(CITY_PULSE_VERSION+'|hit|'+day+'|'+p.entity_id+'|'+row.item_id,10000);
+      if(hit>=chance)continue;
+
+      const action=stableIndex(CITY_PULSE_VERSION+'|action|'+day+'|'+p.entity_id+'|'+row.item_id,1000);
+      const maxDemand=Math.max(1,Math.round(Math.max(generated,current)*.30));
+      const maxDelivery=Math.max(1,Math.round(Math.max(1,generated)*.25));
+
+      if(action<600){
+        const amount=pulseAmount('demand|'+day+'|'+p.entity_id+'|'+row.item_id,maxDemand);
+        current=Math.max(0,current-amount);
+        lastEvent={day,type:current===0?'sellout':'ambient_sale',quantity_delta:-amount};
+      }else if(action<850){
+        const amount=pulseAmount('delivery|'+day+'|'+p.entity_id+'|'+row.item_id,maxDelivery);
+        const before=current;
+        current=Math.min(Math.max(generated,1)*1.5, current+amount);
+        current=Math.round(current);
+        lastEvent={day,type:'delivery',quantity_delta:current-before};
+      }else if(action<930){
+        const before=current;
+        current=0;
+        lastEvent={day,type:'sellout',quantity_delta:-before};
+      }else{
+        const before=current;
+        const target=Math.max(generated,1);
+        const amount=pulseAmount('replenish|'+day+'|'+p.entity_id+'|'+row.item_id,Math.max(1,target-current));
+        current=Math.min(target,current+amount);
+        lastEvent={day,type:'replenishment',quantity_delta:current-before};
+      }
+    }
+
+    const delta=current-generated;
+    return {
+      ...row,
+      generated_quantity:generated,
+      ambient_delta:delta,
+      ambient_state:delta>0?'up':delta<0?(current===0?'sold_out':'down'):'steady',
+      ambient_last_event:lastEvent,
+      quantity:current,
+      status:current>0?'in_stock':'sold'
+    };
+  });
+}
+
 function depletionKey(entityId:string,cycle:number,itemId:string){return entityId+'|'+cycle+'|'+itemId}
 function applyDepletionRows(p:any,stock:any[],rows:any[]){
   const cycle=cycleInfo(p).cycle;
@@ -377,12 +449,20 @@ function applyDepletionRows(p:any,stock:any[],rows:any[]){
       quantity_depleted:Number(r.quantity_depleted||0)
     }]));
   return stock.map((row:any)=>{
-    if(row.quantity==null)return {...row,baseline_quantity:null,quantity_depleted:0};
+    if(row.quantity==null)return {...row,baseline_quantity:null,effective_capacity:null,quantity_depleted:0};
     const persisted:any=map.get(String(row.item_id))||null;
-    const baseline=persisted?.baseline_quantity??Number(row.quantity);
+    const generated=persisted?.baseline_quantity??Number(row.generated_quantity??row.quantity);
+    const effective=Math.max(0,Number(row.quantity)||0);
     const depleted=Number(persisted?.quantity_depleted||0);
-    const remaining=Math.max(0,baseline-depleted);
-    return {...row,baseline_quantity:baseline,quantity_depleted:depleted,quantity:remaining,status:remaining>0?'in_stock':'sold'};
+    const remaining=Math.max(0,effective-depleted);
+    return {
+      ...row,
+      baseline_quantity:generated,
+      effective_capacity:effective,
+      quantity_depleted:depleted,
+      quantity:remaining,
+      status:remaining>0?'in_stock':'sold'
+    };
   }).filter((row:any)=>row.quantity==null||row.quantity>0);
 }
 async function depletionForShop(p:any,worldKey='public-2045'){
@@ -456,7 +536,7 @@ async function search(u:URL){
       const fit=score(p,item,classMap,mfrMap); if(fit===null) continue;
       let stock=stockCache.get(String(p.entity_id));
       if(!stock){
-        stock=applyDepletionRows(p,stockFor(p,all,classMap,mfrMap),depletionRows);
+        stock=applyDepletionRows(p,applyAmbientFlow(p,stockFor(p,all,classMap,mfrMap)),depletionRows);
         stockCache.set(String(p.entity_id),stock)
       }
       const row=stock.find((r:any)=>String(r.item_id)===itemId);
@@ -511,10 +591,12 @@ async function purchase(req:Request){
     catalogue(),classifications(),manufacturers(),depletionForShop(p,worldKey)
   ]);
   const baseline=stockFor(p,all,classMap,mfrMap);
-  const current=applyDepletionRows(p,baseline,depletionRows);
+  const ambientStock=applyAmbientFlow(p,baseline);
+  const current=applyDepletionRows(p,ambientStock,depletionRows);
   const currentRow=current.find((r:any)=>String(r.item_id)===itemId);
   const baselineRow=baseline.find((r:any)=>String(r.item_id)===itemId);
-  if(!baselineRow)return out({error:'item is not in this shop cycle'},409);
+  const ambientRow=ambientStock.find((r:any)=>String(r.item_id)===itemId);
+  if(!baselineRow||!ambientRow)return out({error:'item is not in this shop cycle'},409);
 
   if(baselineRow.quantity==null){
     await dbInsert('vendr_stock_events',{
@@ -529,16 +611,22 @@ async function purchase(req:Request){
   if(quantity>available)return out({error:'insufficient stock',available},409);
 
   try{
-    const result=await rpc('vendr_apply_purchase',{
+    const result=await rpc('vendr_apply_purchase_v2',{
       p_world_key:worldKey,
       p_entity_id:entityId,
       p_item_id:itemId,
       p_stock_cycle:cycleInfo(p).cycle,
       p_quantity:quantity,
-      p_baseline_quantity:Number(baselineRow.quantity),
+      p_generated_quantity:Number(baselineRow.quantity),
+      p_effective_capacity:Number(ambientRow.quantity),
       p_unit_price:baselineRow.asking_price,
       p_actor_key:String(user.id),
-      p_metadata:{surface:'vendr-live',quantity_mode:baselineRow.quantity_profile||'finite'}
+      p_metadata:{
+        surface:'vendr-live',
+        quantity_mode:baselineRow.quantity_profile||'finite',
+        stock_day:cycleInfo(p).stock_day,
+        ambient_delta:Number(ambientRow.ambient_delta||0)
+      }
     });
     return out(result);
   }catch(e:any){
@@ -620,7 +708,7 @@ async function shop(u:URL){
       };
     }
   }
-  const stock=applyDepletionRows(p,stockFor(p,all,classMap,mfrMap),depletionRows);
+  const stock=applyDepletionRows(p,applyAmbientFlow(p,stockFor(p,all,classMap,mfrMap)),depletionRows);
   return out({
     entity_id:p.entity_id,name:p.name,district:p.district,
     parent_name:(p.data?.parent_name||null),book_page:p.book_page,source_ref:p.source_ref,
@@ -639,7 +727,7 @@ async function shop(u:URL){
     display_tags:p.data?.display_tags||null,
     modelling_note:p.modelling_note||'',children:edges.map((e:any)=>e.child_entity_id),
     child_places:edges,event_id:null,materialized:false,stock,
-    state:stock.length?{...cycleInfo(p),assortment_count:stock.length,incoming_count:0,history_count:0}:null,
+    state:stock.length?{...cycleInfo(p),city_pulse_version:CITY_PULSE_VERSION,assortment_count:stock.length,incoming_count:0,history_count:0}:null,
     source_contract:null,events:eventRows,visual_profile:visual,image,
     stock_snapshot:stock.length?('cycle_'+cycleInfo(p).cycle):null,
     catalog_match:p.data?.catalog_match||null,
