@@ -14,7 +14,8 @@
     "Live eligibility now requires explicit approval; undecided and denied candidates remain archived but disabled.",
     "Cross-pool duplicates may remain approved in metadata but are disabled in secondary pools to prevent visible repetition.",
     "Batch 3 review recorded: approved candidates are eligible for live rotation; denied and undecided candidates remain disabled.",
-    "Batch 2 and Batch 3 approved images merged into live pools on 2026-10-02; undecided candidates remain out of live rotation and denied candidates stay disabled."
+    "Batch 2 and Batch 3 approved images merged into live pools on 2026-10-02; undecided candidates remain out of live rotation and denied candidates stay disabled.",
+    "Batch 3 review decisions recorded; approved Batch 2/3 candidates merged into live pools, undecideds remain disabled, denies remain disabled."
   ],
   "families": {
     "street-storefront": [
@@ -835,7 +836,7 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": false,
+        "enabled": true,
         "order": 1,
         "review_status": "approve",
         "live_note": "Approved image retained, but disabled here to avoid cross-pool repetition."
