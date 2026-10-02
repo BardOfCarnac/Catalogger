@@ -1580,9 +1580,14 @@ function renderVendor(s,offers){
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=modeLabel(s.stock_mode);
-  document.getElementById('vendorCopy').textContent=s.copy||s.modelling_note||'Canonical Vend-R commercial profile.';
-  document.getElementById('vendorOwnerLabel').textContent='Vend-R record';
-  document.getElementById('vendorOwnerSub').textContent=s.source_ref||'Night City 2045 commercial graph';
+  document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
+  if(s.owner&&s.owner.name){
+    document.getElementById('vendorOwnerLabel').textContent=s.owner.name;
+    document.getElementById('vendorOwnerSub').textContent=[s.owner.role,s.owner.note].filter(Boolean).join(' · ');
+  }else{
+    document.getElementById('vendorOwnerLabel').textContent=parent?'Located in':'Vend-R listing';
+    document.getElementById('vendorOwnerSub').textContent=parent?parent.name:(s.source_ref||'Night City 2045');
+  }
   document.getElementById('restockBand').textContent='Loading stock snapshot…';
   document.getElementById('factStatus').textContent='Profile only';
   document.getElementById('factDistrict').textContent=s.district||'Night City';
@@ -1603,12 +1608,16 @@ function renderVendor(s,offers){
   }else{
     document.getElementById('contextKicker').textContent='Commercial context';
     document.getElementById('contextTitle').textContent=s.district||'Night City';
-    document.getElementById('contextCopy').textContent=s.copy||s.modelling_note||'Local commercial profile.';
+    document.getElementById('contextCopy').textContent=s.other||s.short_description||s.copy||s.modelling_note||'';
     document.getElementById('contextLine').textContent=modeLabel(s.stock_mode)+' · '+(s.type||'seller');
   }
-  const tags=String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean);
-  const known=[...new Set([s.type,...tags].filter(Boolean))].slice(0,4);
-  document.getElementById('knownGrid').innerHTML=(known.length?known:['Commercial profile']).map(x=>'<span>'+esc(x)+'</span>').join('');
+  const display=s.display_tags||{};
+  const known=[...new Set([
+    ...(display.known_for||[]),
+    ...(display.trade||[]),
+    ...String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean)
+  ])].slice(0,6);
+  document.getElementById('knownGrid').innerHTML=(known.length?known:[s.type].filter(Boolean)).map(x=>'<span>'+esc(x)+'</span>').join('');
   const focus=offers||null;
   currentFocusOffer=focus;
   const exact=focus?(s.stock||[]).find(r=>String(r.item_id)===String(focus.item_id)):null;
