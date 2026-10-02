@@ -20,11 +20,13 @@
     "Undecided review candidates remain outside the live pool; denied candidates remain excluded/disabled.",
     "Batch 2 and Batch 3 review decisions consolidated on 2026-10-02.",
     "Only approved images are enabled for live selection; denied and undecided candidates remain out of the live pool.",
-    "Approved Batch 2 and Batch 3 images merged into live pools on 2026-10-02. Undecided and denied review candidates remain out of live selection.",
     "Batch 2 and Batch 3 approvals folded into live pools on 2026-10-02.",
     "Undecided review candidates remain outside live pools; denied candidates are excluded.",
     "Batch 2 approved candidates merged into live pools.",
-    "Batch 3 approved candidates merged into live pools on 2026-10-02; undecided candidates remain review-only; denied candidates remain excluded."
+    "Batch 3 approved candidates merged into live pools on 2026-10-02; undecided candidates remain review-only; denied candidates remain excluded.",
+    "Approved Batch 2 and Batch 3 candidates folded into live pools on 2026-10-02.",
+    "Undecided and denied candidates are not active in live selection.",
+    "Exact cross-pool repetition is avoided where practical; cyber-tech duplicate YilyVqUmRm4 is held out in favour of its street-storefront use."
   ],
   "families": {
     "street-storefront": [
@@ -821,10 +823,11 @@
         "attribution_url": "https://unsplash.com/?utm_source=vend-r&utm_medium=referral",
         "focal_x": 0.5,
         "focal_y": 0.5,
-        "enabled": true,
+        "enabled": false,
         "order": 1,
         "review_status": "approve",
-        "live_note": "Approved image retained, but disabled here to avoid cross-pool repetition."
+        "live_note": "Approved image retained, but disabled here to avoid cross-pool repetition.",
+        "active_note": "Approved in Batch 1 but held out of cyber-tech to avoid exact cross-pool repetition; retained in street-storefront."
       },
       {
         "unsplash_id": "HpoYaT9-9aE",
