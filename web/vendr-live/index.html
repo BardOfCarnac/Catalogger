@@ -725,6 +725,168 @@ button,input{font:inherit}
   .search-offer.exact-mode{grid-template-columns:minmax(0,1fr) auto}
 }
 
+
+/* -------- NEARBY SEARCH PAGE -------- */
+.search-nearby-hero{padding:0;overflow:hidden}
+.search-nearby-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) clamp(370px,38vw,470px);
+  min-height:430px;
+  align-items:stretch;
+}
+.search-nearby-copy{
+  padding:27px 25px 24px 29px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.search-nearby-copy .hero-title{
+  margin:5px 0 7px;
+  font-size:clamp(42px,6.5vw,78px);
+}
+.search-query-line{
+  color:var(--muted);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:13px;
+}
+.nearby-offer-list{
+  border-top:3px solid var(--ink);
+  margin-top:auto;
+}
+.nearby-offer{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:10px 0;
+  text-align:left;
+  cursor:pointer;
+}
+.nearby-offer:last-child{border-bottom:0}
+.nearby-offer:hover{background:rgba(244,210,70,.12)}
+.nearby-offer strong{
+  display:block;
+  font-size:16px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.nearby-offer span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.nearby-offer .nearby-price{
+  margin:0;
+  min-width:82px;
+  text-align:right;
+  color:var(--ink);
+  font-size:15px;
+}
+.search-location-card{
+  position:relative;
+  align-self:center;
+  justify-self:center;
+  width:calc(100% - 48px);
+  max-width:410px;
+  aspect-ratio:1/1;
+  margin:24px;
+  padding:12px;
+  background:#fff4dc;
+}
+.search-location-card .spaciel-cutin{height:100%}
+.search-location-label{
+  position:absolute;
+  z-index:4;
+  left:22px;
+  right:22px;
+  bottom:54px;
+  border:2px solid rgba(255,246,223,.72);
+  background:rgba(12,17,20,.78);
+  padding:9px 10px;
+  color:#fff6df;
+}
+.search-location-label span{
+  display:block;
+  color:#c9d2cf;
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.search-location-label strong{
+  display:block;
+  margin-top:3px;
+  font-size:16px;
+  text-transform:uppercase;
+}
+.search-location-label small{
+  display:block;
+  margin-top:3px;
+  color:#f4d246;
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.results-sort{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:10px 14px;
+  border-bottom:2px solid var(--ink);
+  background:rgba(255,250,240,.45);
+}
+.results-sort button{
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:6px 8px;
+  color:var(--ink);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.results-sort button.on{background:var(--rear-4)}
+.related-items{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.related-item{
+  border:0;
+  border-right:1px solid var(--rule);
+  background:rgba(255,250,240,.42);
+  padding:15px;
+  text-align:left;
+  color:var(--ink);
+  cursor:pointer;
+}
+.related-item:last-child{border-right:0}
+.related-item:hover{background:rgba(244,210,70,.14)}
+.related-item strong{
+  display:block;
+  font-size:17px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.related-item span{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+@media(max-width:760px){
+  .search-nearby-grid{grid-template-columns:1fr}
+  .search-location-card{width:calc(100% - 36px);margin:0 18px 18px}
+  .related-items{grid-template-columns:1fr}
+  .related-item{border-right:0;border-bottom:1px solid var(--rule)}
+  .related-item:last-child{border-bottom:0}
+}
+
 /* -------- VENDOR PAGE -------- */
 .vendor-hero{
   padding:0;
@@ -1249,24 +1411,52 @@ button,input{font:inherit}
     <div class="shell">
       <header class="topbar">
         <div class="brand">VEND-R<small>Night City Market</small></div>
-        <div class="kicker" id="searchModeTop">Market search</div>
+        <form class="inline-search" id="searchPageForm">
+          <input id="searchPageInput" type="search" placeholder="SEARCH AGAIN" autocomplete="off">
+        </form>
         <button class="action-btn" id="searchBackHome">← Market</button>
       </header>
 
-      <section class="hero search-page-hero">
-        <div class="kicker" id="searchModeLabel">Broad search</div>
-        <h1 class="hero-title" id="searchPageTitle">SEARCH</h1>
-        <p class="search-page-copy" id="searchPageCopy">Searching Night City’s current stock.</p>
-        <form class="search-page-form" id="searchPageForm">
-          <input id="searchPageInput" type="search" placeholder="SEARCH AGAIN" autocomplete="off">
-          <button type="submit">Search</button>
-        </form>
+      <section class="hero search-nearby-hero">
+        <div class="search-nearby-grid">
+          <div class="search-nearby-copy">
+            <div class="kicker" id="searchModeLabel">Broad search</div>
+            <h1 class="hero-title">Results nearby</h1>
+            <div class="search-query-line" id="searchQueryLine">Searching Night City…</div>
+            <div class="nearby-offer-list" id="nearbyOffersList"></div>
+          </div>
+
+          <div class="search-location-card">
+            <div class="spaciel-cutin" aria-label="Spaciel search area preview">
+              <canvas id="searchSpacielCanvas"></canvas>
+              <div class="spaciel-hud spaciel-topline">
+                <strong>SPACIEL</strong><span>SEARCH AREA</span>
+              </div>
+              <div class="spaciel-hud spaciel-place">
+                RESULTS<br><strong id="searchMapQuery">NEARBY</strong>
+              </div>
+              <div class="spaciel-hud spaciel-readout" id="searchSpacielReadout">CONNECTING…</div>
+              <div class="search-location-label">
+                <span>Nearby to</span>
+                <strong id="searchLocationName">Night City</strong>
+                <small id="searchLocationMode">City-wide · changeable later</small>
+              </div>
+              <div class="spaciel-hud spaciel-powered">POWERED BY <strong>SPACIEL</strong></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="search-offer-section" id="availableOffersSection" hidden>
         <div class="search-offer-head">
-          <h2 id="availableOffersTitle">Available now</h2>
-          <span id="availableOffersMeta">Current stock · cycle 1</span>
+          <h2>More results</h2>
+          <span id="availableOffersMeta">Current stock</span>
+        </div>
+        <div class="results-sort" id="resultsSort">
+          <button type="button" data-sort="location" class="on">Location</button>
+          <button type="button" data-sort="price">Lowest price</button>
+          <button type="button" data-sort="condition">Condition</button>
+          <button type="button" data-sort="availability">Availability</button>
         </div>
         <div class="search-offer-list" id="availableOffersList"></div>
       </section>
@@ -1279,11 +1469,19 @@ button,input{font:inherit}
         <div class="search-offer-list" id="plausibleOffersList"></div>
       </section>
 
+      <section class="search-offer-section" id="relatedItemsSection" hidden>
+        <div class="search-offer-head">
+          <h2>Related items</h2>
+          <span>Same catalogue family · compatibility links later</span>
+        </div>
+        <div class="related-items" id="relatedItemsList"></div>
+      </section>
+
       <div class="search-empty" id="searchEmpty" hidden>No current Vend-R matches.</div>
 
       <footer class="footer">
         <span id="searchFooterLeft">Night City market search</span>
-        <span>Current stock · cycle 1</span>
+        <span>Current stock · live seller profiles</span>
       </footer>
     </div>
   </section>
@@ -1584,6 +1782,30 @@ function switchTo(target){
   requestAnimationFrame(frame);
 }
 
+function playWipe(action){
+  if(busy)return;
+  busy=true;
+  const panels={one:createFg('one','one'),two:createFg('two','two'),three:createFg('three','three')};
+  const start=performance.now();
+  let fired=false;
+  function frame(now){
+    const elapsed=now-start;
+    for(const [key,el] of Object.entries(panels))el.style.transform=`translateX(${fgX(elapsed,fgSpecs[key])}vw)`;
+    if(!fired&&fgX(elapsed,fgSpecs.three)<=-108){
+      fired=true;
+      Promise.resolve(action()).catch(console.error);
+      window.scrollTo(0,0);
+    }
+    if(elapsed<fgSpecs.three.delay+fgSpecs.three.duration){
+      requestAnimationFrame(frame);
+      return;
+    }
+    Object.values(panels).forEach(el=>el.remove());
+    busy=false;
+  }
+  requestAnimationFrame(frame);
+}
+
 
 const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
 let sellers=[];
@@ -1720,34 +1942,72 @@ function nextRefreshText(state){
   const when=new Intl.DateTimeFormat(undefined,{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(d);
   return (state?.cadence_label||'Refresh')+' · next '+when;
 }
-function renderOfferSections(data){
-  const availableSection=document.getElementById('availableOffersSection');
-  const plausibleSection=document.getElementById('plausibleOffersSection');
-  const availableList=document.getElementById('availableOffersList');
-  const plausibleList=document.getElementById('plausibleOffersList');
+let resultSortMode='location';
 
+function conditionRank(v){
+  const ranks={new:0,refurbished:1,used:2,salvaged:3,damaged:4,not_applicable:5};
+  return ranks[String(v||'').toLowerCase()]??9;
+}
+function sortOffers(rows,mode){
+  const arr=rows.slice();
+  if(mode==='price')return arr.sort((a,b)=>(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='condition')return arr.sort((a,b)=>conditionRank(a.condition)-conditionRank(b.condition)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='availability')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
+  return arr.sort((a,b)=>String(placeLabel(a)).localeCompare(String(placeLabel(b)))||String(a.shop_name).localeCompare(String(b.shop_name)));
+}
+function offerRow(o,exact=false){
+  return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+    '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
+    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
+    '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
+    '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
+    '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
+    '<span class="price-meta">'+esc(o.condition||'')+(o.quantity!=null?' · '+esc(String(o.quantity))+' here':'')+'</span></div>'+
+  '</button>';
+}
+function bindOfferRows(root,data){
+  root.querySelectorAll('[data-offer-shop]').forEach(el=>el.addEventListener('click',()=>{
+    const shopId=el.dataset.offerShop;
+    const itemId=el.dataset.offerItem;
+    const offer=(data.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId)&&String(o.item_id)===String(itemId))||null;
+    openVendor(shopId,offer);
+  }));
+}
+function renderNearbyOffers(data){
   const available=(data.offers||[]).filter(o=>o.kind==='available');
-  const plausible=(data.offers||[]).filter(o=>o.kind!=='available');
   const exact=Boolean(data.active_item_id);
-
-  document.getElementById('availableOffersTitle').textContent=exact?'Who has it':'Available now';
-  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s');
-
-  availableSection.hidden=!available.length;
-  plausibleSection.hidden=!plausible.length;
-
-  availableList.innerHTML=available.map(o=>
-    '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
-      '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
-      '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
-      '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
-      '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
-      '<span class="price-meta">'+esc(o.condition||'')+(o.quantity!=null?' · '+esc(String(o.quantity))+' here':'')+'</span></div>'+
+  const list=document.getElementById('nearbyOffersList');
+  const top=available.slice(0,4);
+  if(!top.length){
+    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports in the selected area.</div>';
+    return;
+  }
+  list.innerHTML=top.map(o=>
+    '<button class="nearby-offer" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      '<div><strong>'+esc(exact?o.shop_name:o.item_name)+'</strong>'+
+      '<span>'+esc(exact?placeLabel(o):(o.shop_name+' · '+placeLabel(o)))+'</span></div>'+
+      '<strong class="nearby-price">'+esc(moneyEb(o.asking_price))+'</strong>'+
     '</button>'
   ).join('');
-
-  plausibleList.innerHTML=plausible.map(o=>
+  bindOfferRows(list,data);
+}
+function renderAvailableOffers(data){
+  const section=document.getElementById('availableOffersSection');
+  const list=document.getElementById('availableOffersList');
+  const available=(data.offers||[]).filter(o=>o.kind==='available');
+  const exact=Boolean(data.active_item_id);
+  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · sort locally';
+  section.hidden=!available.length;
+  list.innerHTML=sortOffers(available,resultSortMode).map(o=>offerRow(o,exact)).join('');
+  bindOfferRows(list,data);
+}
+function renderLikelySellers(data){
+  const section=document.getElementById('plausibleOffersSection');
+  const list=document.getElementById('plausibleOffersList');
+  const exact=Boolean(data.active_item_id);
+  const plausible=(data.offers||[]).filter(o=>o.kind!=='available');
+  section.hidden=!plausible.length;
+  list.innerHTML=plausible.map(o=>
     '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
       '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
       '<span class="item-meta">'+esc(itemTypeLabel(o))+' · not in current stock</span></div>'+
@@ -1757,33 +2017,42 @@ function renderOfferSections(data){
       '<span class="price-meta">no current offer</span></div>'+
     '</button>'
   ).join('');
-
-  document.querySelectorAll('[data-offer-shop]').forEach(el=>el.addEventListener('click',()=>{
-    const shopId=el.dataset.offerShop;
-    const itemId=el.dataset.offerItem;
-    const offer=(data.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId)&&String(o.item_id)===String(itemId))||null;
-    openVendor(shopId,offer);
-  }));
+  bindOfferRows(list,data);
+}
+function renderRelatedItems(data,q){
+  const section=document.getElementById('relatedItemsSection');
+  const list=document.getElementById('relatedItemsList');
+  if(!data.active_item_id){section.hidden=true;list.innerHTML='';return}
+  const active=(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id));
+  if(!active){section.hidden=true;return}
+  const related=(data.items||[]).filter(x=>String(x.item_id)!==String(active.item_id)&&x.relation_key===active.relation_key).slice(0,6);
+  section.hidden=!related.length;
+  list.innerHTML=related.map(x=>
+    '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
+      '<strong>'+esc(x.name)+'</strong><span>Same catalogue family →</span></button>'
+  ).join('');
+  list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>runSearchPage(q,el.dataset.relatedItem)));
+}
+function renderOfferSections(data,q){
+  renderNearbyOffers(data);
+  renderAvailableOffers(data);
+  renderLikelySellers(data);
+  renderRelatedItems(data,q);
 }
 function renderSearchPage(data,q){
   lastSearch={data,q};
   const exact=Boolean(data.active_item_id);
   const active=exact?(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id)):null;
+  const label=(active?.name||q||'SEARCH').toUpperCase();
   document.getElementById('searchModeLabel').textContent=exact?'Exact catalogue item':'Broad search';
-  document.getElementById('searchModeTop').textContent=exact?'Exact item':'Market search';
-  document.getElementById('searchPageTitle').textContent=(active?.name||q||'SEARCH').toUpperCase();
+  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad catalogue search')+' · Night City-wide';
+  document.getElementById('searchMapQuery').textContent=label;
   document.getElementById('searchPageInput').value=q;
-  document.getElementById('searchPageCopy').textContent=exact
-    ? 'Current Night City offers for this exact catalogue item.'
-    : 'Current offers for “'+q+'” across related catalogue items and existing sellers.';
-  document.getElementById('searchFooterLeft').textContent=exact
-    ? (active?.name||q)+' · exact item'
-    : q+' · broad search';
-  renderOfferSections(data);
-  const hasOffers=(data.offers||[]).length>0;
-  document.getElementById('searchEmpty').hidden=hasOffers;
+  document.getElementById('searchFooterLeft').textContent=exact?(active?.name||q)+' · exact item':q+' · broad search';
+  renderOfferSections(data,q);
+  document.getElementById('searchEmpty').hidden=(data.offers||[]).length>0;
+  drawSearchSpaciel(data);
 }
-
 function searchUrl(q,itemId=null){
   const url=new URL(location.href);
   url.search='';
@@ -1803,10 +2072,11 @@ async function runSearchPage(raw,itemId=null,options={}){
   document.getElementById('marketSearchTop').value=q;
   document.getElementById('searchPageInput').value=q;
   document.getElementById('searchModeLabel').textContent=itemId?'Exact catalogue item':'Broad search';
-  document.getElementById('searchPageTitle').textContent=itemId?'LOADING ITEM…':q.toUpperCase();
-  document.getElementById('searchPageCopy').textContent='Resolving current Night City offers…';
+  document.getElementById('searchQueryLine').textContent=(itemId?'LOADING ITEM…':q.toUpperCase())+' · resolving current Night City offers…';
+  document.getElementById('searchMapQuery').textContent=itemId?'ITEM':q.toUpperCase();
   document.getElementById('availableOffersSection').hidden=true;
   document.getElementById('plausibleOffersSection').hidden=true;
+  document.getElementById('relatedItemsSection').hidden=true;
   document.getElementById('searchEmpty').hidden=true;
 
   if(options.push!==false){
@@ -1827,7 +2097,7 @@ async function runSearchPage(raw,itemId=null,options={}){
     const data=await api({api:'search',q,item_id:itemId||null});
     renderSearchPage(data,q);
   }catch(e){
-    document.getElementById('searchPageCopy').textContent='Search unavailable: '+e.message;
+    document.getElementById('searchQueryLine').textContent='Search unavailable · '+e.message;
     document.getElementById('searchEmpty').hidden=false;
   }
 }
@@ -2087,8 +2357,7 @@ function hash01(value,salt=0){
   }
   return ((h>>>0)%10000)/10000;
 }
-function drawSpaciel(){
-  const canvas=document.getElementById('spacielCanvas');
+function paintSpaciel(canvas,readoutId,signalRows){
   if(!canvas)return;
   const rect=canvas.getBoundingClientRect();
   if(rect.width<2||rect.height<2)return;
@@ -2099,7 +2368,6 @@ function drawSpaciel(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
   const w=rect.width,h=rect.height;
   ctx.clearRect(0,0,w,h);
-
   const roadSets=[
     [[.02,.77],[.18,.69],[.33,.63],[.49,.54],[.68,.49],[.97,.34]],
     [[.00,.33],[.17,.39],[.30,.43],[.46,.46],[.61,.55],[.79,.69],[1,.78]],
@@ -2112,58 +2380,44 @@ function drawSpaciel(){
   ctx.lineCap='round';
   roadSets.forEach((road,idx)=>{
     ctx.beginPath();
-    road.forEach((p,i)=>{
-      const x=p[0]*w,y=p[1]*h;
-      if(i===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
-    });
+    road.forEach((p,i)=>{const x=p[0]*w,y=p[1]*h;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});
     ctx.strokeStyle=idx===0?'rgba(244,210,70,.72)':'rgba(202,221,216,.24)';
-    ctx.lineWidth=idx===0?2.2:1.15;
-    ctx.stroke();
+    ctx.lineWidth=idx===0?2.2:1.15;ctx.stroke();
   });
-
-  // Secondary traces give the cut-in a denser Spaciel-like city surface.
   for(let i=0;i<18;i++){
-    const y=(.07+i*.051)*h;
-    const wobble=(i%3)*.012*w;
-    ctx.beginPath();
-    ctx.moveTo(-.02*w,y);
-    ctx.lineTo(.22*w+wobble,y-.035*h);
-    ctx.lineTo(.48*w-wobble,y+.012*h);
-    ctx.lineTo(.72*w+wobble,y-.02*h);
-    ctx.lineTo(1.02*w,y+.018*h);
-    ctx.strokeStyle='rgba(130,164,160,.08)';
-    ctx.lineWidth=.7;
-    ctx.stroke();
+    const y=(.07+i*.051)*h,wobble=(i%3)*.012*w;
+    ctx.beginPath();ctx.moveTo(-.02*w,y);ctx.lineTo(.22*w+wobble,y-.035*h);ctx.lineTo(.48*w-wobble,y+.012*h);ctx.lineTo(.72*w+wobble,y-.02*h);ctx.lineTo(1.02*w,y+.018*h);
+    ctx.strokeStyle='rgba(130,164,160,.08)';ctx.lineWidth=.7;ctx.stroke();
   }
-
-  const live=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET'].includes(s.stock_mode)).slice(0,18);
+  const live=(signalRows||[]).slice(0,18);
   live.forEach((s,i)=>{
-    const x=(.12+hash01(s.entity_id,31)*.76)*w;
-    const y=(.16+hash01(s.entity_id,79)*.68)*h;
-    const event=s.stock_mode==='EVENT_MARKET'||s.stock_mode==='HYBRID_DIRECT_EVENT';
-    ctx.beginPath();
-    ctx.arc(x,y,event?3.6:2.8,0,Math.PI*2);
-    ctx.fillStyle=event?'#f4d246':'#fff6df';
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(x,y,event?7:5.7,0,Math.PI*2);
-    ctx.strokeStyle=event?'rgba(244,210,70,.38)':'rgba(255,246,223,.22)';
-    ctx.lineWidth=1;
-    ctx.stroke();
+    const key=s.shop_entity_id||s.entity_id||s.shop_name||i;
+    const x=(.12+hash01(key,31)*.76)*w,y=(.16+hash01(key,79)*.68)*h;
+    ctx.beginPath();ctx.arc(x,y,3.3,0,Math.PI*2);ctx.fillStyle=i<4?'#f4d246':'#fff6df';ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,i<4?7:5.7,0,Math.PI*2);ctx.strokeStyle=i<4?'rgba(244,210,70,.38)':'rgba(255,246,223,.22)';ctx.lineWidth=1;ctx.stroke();
   });
-
-  ctx.strokeStyle='rgba(240,91,19,.74)';
-  ctx.lineWidth=1.2;
-  ctx.strokeRect(w*.44,h*.42,w*.12,h*.12);
-  ctx.beginPath();
-  ctx.moveTo(w*.50,h*.39);ctx.lineTo(w*.50,h*.57);
-  ctx.moveTo(w*.41,h*.48);ctx.lineTo(w*.59,h*.48);
-  ctx.stroke();
-
-  const readout=document.getElementById('spacielReadout');
-  if(readout)readout.textContent=(live.length||0)+' VEND-R SIGNALS · NIGHT CITY';
+  ctx.strokeStyle='rgba(240,91,19,.74)';ctx.lineWidth=1.2;ctx.strokeRect(w*.44,h*.42,w*.12,h*.12);
+  ctx.beginPath();ctx.moveTo(w*.50,h*.39);ctx.lineTo(w*.50,h*.57);ctx.moveTo(w*.41,h*.48);ctx.lineTo(w*.59,h*.48);ctx.stroke();
+  const readout=document.getElementById(readoutId);
+  if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · NIGHT CITY';
 }
-window.addEventListener('resize',()=>drawSpaciel());
+function drawSpaciel(){
+  const live=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET'].includes(s.stock_mode));
+  paintSpaciel(document.getElementById('spacielCanvas'),'spacielReadout',live);
+}
+function drawSearchSpaciel(data=lastSearch?.data){
+  const live=(data?.offers||[]).filter(o=>o.kind==='available');
+  paintSpaciel(document.getElementById('searchSpacielCanvas'),'searchSpacielReadout',live);
+}
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel()});
+
+document.getElementById('resultsSort').addEventListener('click',e=>{
+  const button=e.target.closest('[data-sort]');
+  if(!button||!lastSearch)return;
+  resultSortMode=button.dataset.sort;
+  document.querySelectorAll('#resultsSort [data-sort]').forEach(x=>x.classList.toggle('on',x===button));
+  renderAvailableOffers(lastSearch.data);
+});
 
 async function boot(){
   try{
