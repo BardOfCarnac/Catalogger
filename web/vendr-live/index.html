@@ -1693,6 +1693,19 @@ function moneyEb(v){
   if(v===null||v===undefined)return '—';
   return Number(v).toLocaleString()+'eb';
 }
+function quantityText(row,short=false){
+  if(row?.quantity==null){
+    return row?.quantity_profile==='continuous'?(short?'ON DEMAND':'On demand'):(short?'AVAILABLE':'Available');
+  }
+  return short?String(row.quantity):(String(row.quantity)+' here');
+}
+function nextRefreshText(state){
+  if(!state?.next_restock_at)return state?.cadence_label||'Current stock';
+  const d=new Date(state.next_restock_at);
+  if(Number.isNaN(d.getTime()))return state?.cadence_label||'Current stock';
+  const when=new Intl.DateTimeFormat(undefined,{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(d);
+  return (state?.cadence_label||'Refresh')+' · next '+when;
+}
 function renderOfferSections(data){
   const availableSection=document.getElementById('availableOffersSection');
   const plausibleSection=document.getElementById('plausibleOffersSection');
@@ -1704,7 +1717,7 @@ function renderOfferSections(data){
   const exact=Boolean(data.active_item_id);
 
   document.getElementById('availableOffersTitle').textContent=exact?'Who has it':'Available now';
-  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · cycle 1';
+  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s');
 
   availableSection.hidden=!available.length;
   plausibleSection.hidden=!plausible.length;
@@ -1712,7 +1725,7 @@ function renderOfferSections(data){
   availableList.innerHTML=available.map(o=>
     '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
       '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(String(o.quantity))+' available</span></div>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
       '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
       '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
       '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
@@ -1871,7 +1884,7 @@ function renderVendorStock(s,focus){
       return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
         '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
         '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-        '<div class="stock-meta"><strong>'+esc(String(r.quantity))+' here</strong><br>stock cycle '+esc(String(s.state?.stock_cycle??1))+'</div>'+
+        '<div class="stock-meta"><strong>'+esc(quantityText(r))+'</strong><br>'+esc((r.assortment_role||'stock')+' · cycle '+String(s.state?.cycle??s.state?.stock_cycle??r.stock_cycle??'—'))+'</div>'+
         '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
     }).join('');
   }
@@ -1910,8 +1923,8 @@ function renderVendorStock(s,focus){
   }
 
   list.innerHTML=stockRowsHtml(sourceRows);
-  document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · cycle '+esc(String(s.state?.stock_cycle??1))+'<br>finite quantities';
-  document.getElementById('restockBand').textContent='Stock cycle '+String(s.state?.stock_cycle??1)+' · current public snapshot';
+  document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · cycle '+esc(String(s.state?.cycle??s.state?.stock_cycle??'—'))+'<br>'+esc(s.state?.cadence_label||'Current stock');
+  document.getElementById('restockBand').textContent=nextRefreshText(s.state);
 }
 function renderVendor(s,offers){
   currentSellerId=s.entity_id;
@@ -1993,7 +2006,7 @@ function renderVendor(s,offers){
     if(exact){
       document.getElementById('offerKicker').textContent='Current offer';
       document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
-      document.getElementById('offerQuantity').textContent=String(exact.quantity)+' available · '+(exact.condition||'stock item');
+      document.getElementById('offerQuantity').textContent=(exact.quantity==null?'On demand':String(exact.quantity)+' available')+' · '+(exact.condition||'stock item');
       document.getElementById('offerSub').textContent='This is the item that brought you to '+(s.name||'this seller')+'.';
     }else{
       document.getElementById('offerKicker').textContent='You were looking for';
@@ -2004,8 +2017,8 @@ function renderVendor(s,offers){
   }else{
     offer.hidden=true;
   }
-  document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock cycle '+String(s.state?.stock_cycle??1):'Profile only';
-  document.getElementById('factWorldState').textContent=(s.stock||[]).length?'Cycle 1 snapshot':'No shelf inventory';
+  document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock cycle '+String(s.state?.cycle??s.state?.stock_cycle??'—'):'Profile only';
+  document.getElementById('factWorldState').textContent=(s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory';
   renderVendorStock(s,focus);
   filterShopStock('');
 }
