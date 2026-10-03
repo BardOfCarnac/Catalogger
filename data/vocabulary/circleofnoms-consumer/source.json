@@ -1,0 +1,28 @@
+{
+  "id": "circleofnoms-consumer",
+  "title": "CircleofNoms Consumer Vocabulary",
+  "creator": "u/CircleofNoms",
+  "host": "Dataterm",
+  "game": "Cyberpunk RED",
+  "source_type": "homebrew-random-tables",
+  "retrieved": "2026-08-19",
+  "pages": [
+    {
+      "key": "whats-in-this-vendit",
+      "title": "What's in this Vendit?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-this-vendit/"
+    },
+    {
+      "key": "whats-in-the-box",
+      "title": "What's in the Box?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-the-box/"
+    },
+    {
+      "key": "whats-in-their-pockets",
+      "title": "What's in Their Pockets?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-their-pockets/"
+    }
+  ],
+  "note": "Each source page identifies CircleofNoms's tables as homebrew random tables for use with Cyberpunk Red. Dataterm is recorded as host, not creator.",
+  "redistribution_note": "This pack stores Vend-R normalized concepts, classifications, and attribution rather than reproducing the source tables."
+}

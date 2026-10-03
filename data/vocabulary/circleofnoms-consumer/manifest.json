@@ -1,0 +1,21 @@
+{
+  "pack_version": "0.1.0",
+  "pack_id": "circleofnoms-consumer",
+  "counts": {
+    "concepts": 127,
+    "official_links": 15,
+    "descriptors": 23,
+    "brand_profiles": 27,
+    "brand_affinity_edges": 200,
+    "raw_source_outcomes_reviewed": 300
+  },
+  "files": [
+    "README.md",
+    "source.json",
+    "concepts.json",
+    "official-links.json",
+    "descriptors.json",
+    "brand-profiles.json",
+    "filtering.json"
+  ]
+}
