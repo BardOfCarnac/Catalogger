@@ -95,3 +95,11 @@ revoke all on function public.vendr_apply_snapshot_purchase(text,text,text,integ
 revoke all on function public.vendr_apply_snapshot_purchase(text,text,text,integer) from anon;
 revoke all on function public.vendr_apply_snapshot_purchase(text,text,text,integer) from authenticated;
 grant execute on function public.vendr_apply_snapshot_purchase(text,text,text,integer) to service_role;
+
+
+-- Disable the superseded depletion write path without dropping its empty table yet.
+comment on table public.vendr_stock_depletion is
+  'DEPRECATED by lazy-1.0. Retained temporarily as an empty migration relic; production Vend-R stock state lives in vendr_stock_observations.';
+
+revoke execute on function public.vendr_apply_purchase(text,text,text,bigint,integer,integer,numeric,text,jsonb) from service_role;
+revoke execute on function public.vendr_apply_purchase_v2(text,text,text,bigint,integer,integer,integer,numeric,text,jsonb) from service_role;
