@@ -611,6 +611,7 @@ async function search(u:URL){
 
   const matches=all.filter((i:any)=>{
     const name=String(i.name||'').toLowerCase();
+    if(exactDirect.length) return relatedKeys.has(relationKey(i,classMap));
     return name.includes(f) || relatedKeys.has(relationKey(i,classMap));
   }).sort((a:any,b:any)=>{
     const an=String(a.name||''),bn=String(b.name||''),af=an.toLowerCase(),bf=bn.toLowerCase();
