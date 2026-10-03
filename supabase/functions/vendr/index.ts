@@ -74,6 +74,12 @@ async function dbInsert(table:string,row:any){
   if(!r.ok) throw new Error(table+': '+r.status+' '+await r.text());
   return await r.json();
 }
+async function dbUpsert(table:string,row:any,onConflict:string){
+  const url=SB_URL+'/rest/v1/'+table+'?on_conflict='+encodeURIComponent(onConflict);
+  const r=await fetch(url,{method:'POST',headers:{...serviceHeaders,Prefer:'resolution=merge-duplicates,return=representation'},body:JSON.stringify(row)});
+  if(!r.ok) throw new Error(table+': '+r.status+' '+await r.text());
+  return await r.json();
+}
 async function rpc(name:string,args:any){
   const r=await fetch(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:serviceHeaders,body:JSON.stringify(args)});
   if(!r.ok){
@@ -345,134 +351,189 @@ function stockCondition(p:any,i:any,cycle:number){
   if(!Array.isArray(options)||!options.length)return 'new';
   return options[stableIndex('condition|'+cycle+'|'+p.entity_id+'|'+i.id,options.length)];
 }
-function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>){
+function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,stockGeneration=0){
   if(!['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||''))) return [];
-  const ci=cycleInfo(p),plan=assortmentPlan(p);
+  const generation=Math.max(0,Math.floor(Number(stockGeneration)||0)),plan=assortmentPlan(p);
   const ranked=all.map((item:any)=>({item,fit:score(p,item,classMap,mfrMap)}))
     .filter((x:any)=>x.fit!==null);
-  const chosen=selectAssortment(p,ranked,plan,classMap,ci.cycle);
+  const chosen=selectAssortment(p,ranked,plan,classMap,generation);
   return chosen.map((x:any)=>({
     item_id:String(x.item.id),
     name:x.item.name,
-    quantity:cycleQuantity(p,x.item,classMap,x.role,ci.cycle),
+    quantity:cycleQuantity(p,x.item,classMap,x.role,generation),
+    target_quantity:cycleQuantity(p,x.item,classMap,x.role,generation),
     quantity_profile:quantityClass(x.item,classMap),
-    condition:stockCondition(p,x.item,ci.cycle),
-    asking_price:cyclePrice(p,x.item,ci.cycle),
+    condition:stockCondition(p,x.item,generation),
+    asking_price:cyclePrice(p,x.item,generation),
     visibility:'public',
     status:'in_stock',
     assortment_role:x.role,
     primary_department:department(x.item,classMap),
     relation_key:relationKey(x.item,classMap),
     fit_score:x.fit,
-    stock_cycle:ci.cycle
+    stock_cycle:generation,
+    observation_generation:generation,
+    last_change:null
   }));
 }
-const CITY_PULSE_VERSION='1.0';
-function pulseChance(p:any){
+const LAZY_STOCK_VERSION='lazy-1.0';
+function turnoverChance(p:any){
   const t=String(lifecycle(p)?.turnover||'steady');
   const m:any={fast:.045,steady:.030,irregular:.040,slow:.015,volatile:.060};
   return m[t]??.030;
 }
-function cycleStartDay(p:any,cycle:number){
-  const h=Number(lifecycle(p)?.cadence_hours);
-  if(!Number.isFinite(h)||h<=0)return Math.floor(Date.now()/86400000);
-  return Math.floor((cycle*h*3600000)/86400000);
+function visibleStock(rows:any[]){
+  return (rows||[]).filter((row:any)=>row.quantity==null||Number(row.quantity)>0);
 }
-function pulseAmount(seed:string,max:number){
-  return 1+stableIndex(seed,Math.max(1,max));
+function initialSnapshot(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>){
+  return stockFor(p,all,classMap,mfrMap,0).map((row:any)=>({
+    ...row,
+    target_quantity:row.quantity,
+    observation_generation:0,
+    stock_cycle:0,
+    last_change:null
+  }));
 }
-function applyAmbientFlow(p:any,stock:any[],nowMs=Date.now()){
-  const ci=cycleInfo(p,nowMs);
-  const startDay=cycleStartDay(p,ci.cycle);
-  const today=Math.floor(nowMs/86400000);
-  const chance=Math.round(pulseChance(p)*10000);
+function transitionObservedStock(p:any,snapshot:any[],all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,generation:number,stateAt:string,nowMs=Date.now()){
+  const then=Date.parse(stateAt||'');
+  if(!Number.isFinite(then)||!snapshot.length)return {changed:false,generation,state_at:stateAt,snapshot,mutations:0,elapsed_days:0};
+  const elapsedDays=Math.max(0,(nowMs-then)/86400000);
+  if(elapsedDays<=0)return {changed:false,generation,state_at:stateAt,snapshot,mutations:0,elapsed_days:0};
 
-  return stock.map((row:any)=>{
-    if(row.quantity==null){
-      return {...row,generated_quantity:null,ambient_delta:0,ambient_state:'continuous',ambient_last_event:null};
-    }
-    const generated=Math.max(0,Number(row.quantity)||0);
-    let current=generated;
-    let lastEvent:any=null;
+  // One bounded catch-up transition. This approximates accumulated commercial
+  // movement without replaying the days between observations.
+  const fraction=1-Math.exp(-turnoverChance(p)*elapsedDays);
+  const expected=snapshot.length*fraction;
+  let mutations=Math.floor(expected);
+  const remainder=expected-mutations;
+  const seedBase=LAZY_STOCK_VERSION+'|'+p.entity_id+'|'+generation+'|'+stateAt;
+  if(stableIndex(seedBase+'|round',10000)<Math.round(remainder*10000))mutations++;
+  mutations=Math.min(snapshot.length,mutations);
+  if(mutations<1)return {changed:false,generation,state_at:stateAt,snapshot,mutations:0,elapsed_days:elapsedDays};
 
-    for(let day=startDay;day<=today;day++){
-      const hit=stableIndex(CITY_PULSE_VERSION+'|hit|'+day+'|'+p.entity_id+'|'+row.item_id,10000);
-      if(hit>=chance)continue;
+  const nextGeneration=generation+1;
+  const candidates=stockFor(p,all,classMap,mfrMap,nextGeneration);
+  const rows=snapshot.map((r:any)=>({...r,last_change:null}));
+  const used=new Set(rows.map((r:any)=>String(r.item_id)));
+  const order=rows.map((_:any,i:number)=>i).sort((a:number,b:number)=>
+    stableIndex(seedBase+'|pick|'+rows[a].item_id,2147483647)-
+    stableIndex(seedBase+'|pick|'+rows[b].item_id,2147483647)
+  );
 
-      const action=stableIndex(CITY_PULSE_VERSION+'|action|'+day+'|'+p.entity_id+'|'+row.item_id,1000);
-      const maxDemand=Math.max(1,Math.round(Math.max(generated,current)*.30));
-      const maxDelivery=Math.max(1,Math.round(Math.max(1,generated)*.25));
+  function replacementChance(role:string){
+    if(role==='occasional')return Math.min(.95,.15+elapsedDays*.04);
+    if(role==='regular')return Math.min(.80,elapsedDays*.02);
+    if(role==='core')return elapsedDays<90?0:Math.min(.20,(elapsedDays-90)*.0025);
+    return Math.min(.55,elapsedDays*.015);
+  }
+  function replacementFor(row:any,idx:number){
+    const role=String(row.assortment_role||'regular');
+    const same=candidates.filter((x:any)=>String(x.assortment_role||'regular')===role&&!used.has(String(x.item_id)));
+    const pool=same.length?same:candidates.filter((x:any)=>!used.has(String(x.item_id)));
+    if(!pool.length)return null;
+    return pool[stableIndex(seedBase+'|replace|'+idx+'|'+row.item_id,pool.length)];
+  }
 
-      if(action<600){
-        const amount=pulseAmount('demand|'+day+'|'+p.entity_id+'|'+row.item_id,maxDemand);
-        current=Math.max(0,current-amount);
-        lastEvent={day,type:current===0?'sellout':'ambient_sale',quantity_delta:-amount};
-      }else if(action<850){
-        const amount=pulseAmount('delivery|'+day+'|'+p.entity_id+'|'+row.item_id,maxDelivery);
-        const before=current;
-        current=Math.min(Math.max(generated,1)*1.5, current+amount);
-        current=Math.round(current);
-        lastEvent={day,type:'delivery',quantity_delta:current-before};
-      }else if(action<930){
-        const before=current;
-        current=0;
-        lastEvent={day,type:'sellout',quantity_delta:-before};
-      }else{
-        const before=current;
-        const target=Math.max(generated,1);
-        const amount=pulseAmount('replenish|'+day+'|'+p.entity_id+'|'+row.item_id,Math.max(1,target-current));
-        current=Math.min(target,current+amount);
-        lastEvent={day,type:'replenishment',quantity_delta:current-before};
+  for(const idx of order.slice(0,mutations)){
+    const row=rows[idx], role=String(row.assortment_role||'regular');
+    const replaceRoll=stableIndex(seedBase+'|replace-roll|'+row.item_id,10000)/10000;
+    if(replaceRoll<replacementChance(role)){
+      const candidate=replacementFor(row,idx);
+      if(candidate){
+        used.delete(String(row.item_id));used.add(String(candidate.item_id));
+        rows[idx]={
+          ...candidate,
+          target_quantity:candidate.quantity,
+          observation_generation:nextGeneration,
+          stock_cycle:nextGeneration,
+          last_change:'new arrival'
+        };
+        continue;
       }
     }
 
-    const delta=current-generated;
-    return {
-      ...row,
-      generated_quantity:generated,
-      ambient_delta:delta,
-      ambient_state:delta>0?'up':delta<0?(current===0?'sold_out':'down'):'steady',
-      ambient_last_event:lastEvent,
-      quantity:current,
-      status:current>0?'in_stock':'sold'
-    };
-  });
-}
+    if(row.quantity==null){
+      rows[idx]={...row,observation_generation:nextGeneration,stock_cycle:nextGeneration};
+      continue;
+    }
 
-function depletionKey(entityId:string,cycle:number,itemId:string){return entityId+'|'+cycle+'|'+itemId}
-function applyDepletionRows(p:any,stock:any[],rows:any[]){
-  const cycle=cycleInfo(p).cycle;
-  const map=new Map(rows
-    .filter((r:any)=>String(r.entity_id)===String(p.entity_id)&&Number(r.stock_cycle)===Number(cycle))
-    .map((r:any)=>[String(r.item_id),{
-      baseline_quantity:r.baseline_quantity==null?null:Number(r.baseline_quantity),
-      quantity_depleted:Number(r.quantity_depleted||0)
-    }]));
-  return stock.map((row:any)=>{
-    if(row.quantity==null)return {...row,baseline_quantity:null,effective_capacity:null,quantity_depleted:0};
-    const persisted:any=map.get(String(row.item_id))||null;
-    const generated=persisted?.baseline_quantity??Number(row.generated_quantity??row.quantity);
-    const effective=Math.max(0,Number(row.quantity)||0);
-    const depleted=Number(persisted?.quantity_depleted||0);
-    const remaining=Math.max(0,effective-depleted);
-    return {
+    let qty=Math.max(0,Number(row.quantity)||0);
+    const target=Math.max(1,Number(row.target_quantity??row.quantity??1));
+    const action=stableIndex(seedBase+'|action|'+row.item_id,1000);
+    let change:string|null=null;
+
+    if(action<600){
+      const max=Math.max(1,Math.round(Math.max(qty,target)*.30));
+      const amount=1+stableIndex(seedBase+'|sale|'+row.item_id,max);
+      qty=Math.max(0,qty-amount);
+      change=qty===0?'sold out':'selling down';
+    }else if(action<850){
+      const max=Math.max(1,Math.round(target*.25));
+      const amount=1+stableIndex(seedBase+'|delivery|'+row.item_id,max);
+      qty=Math.min(Math.round(target*1.5),qty+amount);
+      change='fresh delivery';
+    }else if(action<930){
+      qty=0;change='sold out';
+    }else{
+      const room=Math.max(1,target-qty);
+      const amount=1+stableIndex(seedBase+'|restock|'+row.item_id,room);
+      qty=Math.min(target,qty+amount);
+      change='restocked';
+    }
+    rows[idx]={
       ...row,
-      baseline_quantity:generated,
-      effective_capacity:effective,
-      quantity_depleted:depleted,
-      quantity:remaining,
-      status:remaining>0?'in_stock':'sold'
+      quantity:qty,
+      status:qty>0?'in_stock':'sold',
+      observation_generation:nextGeneration,
+      stock_cycle:nextGeneration,
+      last_change:change
     };
-  }).filter((row:any)=>row.quantity==null||row.quantity>0);
+  }
+
+  return {
+    changed:true,
+    generation:nextGeneration,
+    state_at:new Date(nowMs).toISOString(),
+    snapshot:rows,
+    mutations,
+    elapsed_days:elapsedDays
+  };
 }
-async function depletionForShop(p:any,worldKey='public-2045'){
-  const cycle=cycleInfo(p).cycle;
-  return await db('vendr_stock_depletion',
-    'select=entity_id,item_id,stock_cycle,baseline_quantity,quantity_depleted,updated_at'+
+async function observationForShop(entityId:string,worldKey='public-2045'){
+  return await db('vendr_stock_observations',
+    'select=world_key,entity_id,generation,state_at,snapshot,model_version,updated_at'+
     '&world_key=eq.'+encodeURIComponent(worldKey)+
-    '&entity_id=eq.'+encodeURIComponent(String(p.entity_id))+
-    '&stock_cycle=eq.'+encodeURIComponent(String(cycle))
+    '&entity_id=eq.'+encodeURIComponent(entityId)
   );
+}
+async function saveObservation(worldKey:string,p:any,generation:number,stateAt:string,snapshot:any[]){
+  const rows=await dbUpsert('vendr_stock_observations',{
+    world_key:worldKey,
+    entity_id:String(p.entity_id),
+    generation,
+    state_at:stateAt,
+    snapshot,
+    model_version:LAZY_STOCK_VERSION,
+    updated_at:new Date().toISOString()
+  },'world_key,entity_id');
+  return rows[0]||null;
+}
+async function resolveObservedStock(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,worldKey='public-2045'){
+  const obsRows=await observationForShop(String(p.entity_id),worldKey);
+  const obs=obsRows[0]||null;
+  const nowMs=Date.now();
+
+  if(!obs){
+    const snapshot=initialSnapshot(p,all,classMap,mfrMap);
+    const stateAt=new Date(nowMs).toISOString();
+    if(snapshot.length)await saveObservation(worldKey,p,0,stateAt,snapshot);
+    return {snapshot,visible:visibleStock(snapshot),generation:0,state_at:stateAt,first_observation:true,changed:false,mutations:0,elapsed_days:0};
+  }
+
+  const snapshot=Array.isArray(obs.snapshot)?obs.snapshot:[];
+  const result=transitionObservedStock(p,snapshot,all,classMap,mfrMap,Number(obs.generation||0),String(obs.state_at||obs.updated_at||new Date(nowMs).toISOString()),nowMs);
+  if(result.changed)await saveObservation(worldKey,p,result.generation,result.state_at,result.snapshot);
+  return {...result,visible:visibleStock(result.snapshot),first_observation:false};
 }
 
 async function search(u:URL){
@@ -520,12 +581,13 @@ async function search(u:URL){
 
   const active=activeId?matches.find((i:any)=>String(i.id)===activeId):null;
   const mfrMap=await manufacturers();
-  const [profiles,placeRows,depletionRows]=await Promise.all([
+  const [profiles,placeRows,observationRows]=await Promise.all([
     db('vendr_stock_profiles','select=*&order=name.asc'),
     db('vendr_places','select=entity_id,parent_name,district,spatial_mode'),
-    db('vendr_stock_depletion','select=entity_id,item_id,stock_cycle,baseline_quantity,quantity_depleted&world_key=eq.public-2045')
+    db('vendr_stock_observations','select=entity_id,generation,state_at,snapshot&world_key=eq.public-2045')
   ]);
   const placeMap=new Map(placeRows.map((r:any)=>[String(r.entity_id),r]));
+  const observationMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
   const offerItems=active?[active]:matches.slice(0,12);
   const stockCache=new Map<string,any[]>();
   const offers:any[]=[];
@@ -536,7 +598,9 @@ async function search(u:URL){
       const fit=score(p,item,classMap,mfrMap); if(fit===null) continue;
       let stock=stockCache.get(String(p.entity_id));
       if(!stock){
-        stock=applyDepletionRows(p,applyAmbientFlow(p,stockFor(p,all,classMap,mfrMap)),depletionRows);
+        const obs:any=observationMap.get(String(p.entity_id));
+        const raw=obs&&Array.isArray(obs.snapshot)?obs.snapshot:initialSnapshot(p,all,classMap,mfrMap);
+        stock=visibleStock(raw);
         stockCache.set(String(p.entity_id),stock)
       }
       const row=stock.find((r:any)=>String(r.item_id)===itemId);
@@ -587,44 +651,19 @@ async function purchase(req:Request){
   if(!p)return out({error:'shop not found'},404);
   if(!['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||'')))return out({error:'place does not own shelf stock'},409);
 
-  const [all,classMap,mfrMap,depletionRows]=await Promise.all([
-    catalogue(),classifications(),manufacturers(),depletionForShop(p,worldKey)
-  ]);
-  const baseline=stockFor(p,all,classMap,mfrMap);
-  const ambientStock=applyAmbientFlow(p,baseline);
-  const current=applyDepletionRows(p,ambientStock,depletionRows);
-  const currentRow=current.find((r:any)=>String(r.item_id)===itemId);
-  const baselineRow=baseline.find((r:any)=>String(r.item_id)===itemId);
-  const ambientRow=ambientStock.find((r:any)=>String(r.item_id)===itemId);
-  if(!baselineRow||!ambientRow)return out({error:'item is not in this shop cycle'},409);
-
-  if(baselineRow.quantity==null){
-    // Continuous/on-demand stock has no depletion state and creates no history row.
-    return out({ok:true,depletes:false,entity_id:entityId,item_id:itemId,quantity_purchased:quantity,remaining:null,stock_cycle:cycleInfo(p).cycle});
-  }
-
-  const available=Number(currentRow?.quantity||0);
-  if(quantity>available)return out({error:'insufficient stock',available},409);
+  const [all,classMap,mfrMap]=await Promise.all([catalogue(),classifications(),manufacturers()]);
+  const resolved=await resolveObservedStock(p,all,classMap,mfrMap,worldKey);
+  const currentRow=resolved.snapshot.find((r:any)=>String(r.item_id)===itemId);
+  if(!currentRow)return out({error:'item is not in current stock'},409);
+  if(currentRow.quantity!=null&&quantity>Number(currentRow.quantity||0))return out({error:'insufficient stock',available:Number(currentRow.quantity||0)},409);
 
   try{
-    const result=await rpc('vendr_apply_purchase_v2',{
+    return out(await rpc('vendr_apply_snapshot_purchase',{
       p_world_key:worldKey,
       p_entity_id:entityId,
       p_item_id:itemId,
-      p_stock_cycle:cycleInfo(p).cycle,
-      p_quantity:quantity,
-      p_generated_quantity:Number(baselineRow.quantity),
-      p_effective_capacity:Number(ambientRow.quantity),
-      p_unit_price:baselineRow.asking_price,
-      p_actor_key:String(user.id),
-      p_metadata:{
-        surface:'vendr-live',
-        quantity_mode:baselineRow.quantity_profile||'finite',
-        stock_day:cycleInfo(p).stock_day,
-        ambient_delta:Number(ambientRow.ambient_delta||0)
-      }
-    });
-    return out(result);
+      p_quantity:quantity
+    }));
   }catch(e:any){
     if(String(e?.message||'').toLowerCase().includes('insufficient stock'))return out({error:'insufficient stock'},409);
     throw e;
@@ -632,7 +671,7 @@ async function purchase(req:Request){
 }
 async function health(){
   const all=await catalogue(), profiles=await db('vendr_stock_profiles','select=entity_id'), places=await db('vendr_places','select=entity_id');
-  return out({ok:true,service:'vend-r-supabase',catalog_items:all.length,profiles:profiles.length,places:places.length,read_only:true});
+  return out({ok:true,service:'vend-r-supabase',catalog_items:all.length,profiles:profiles.length,places:places.length,read_only:true,stock_model:LAZY_STOCK_VERSION});
 }
 function planFor(p:any){
   const mode=String(p.stock_mode||'');
@@ -668,18 +707,15 @@ async function shop(u:URL){
   const rows=await db('vendr_stock_profiles','select=*&entity_id=eq.'+encodeURIComponent(id));
   if(!rows[0]) return out({error:'not found'},404);
   const p=rows[0];
-  const ci=cycleInfo(p);
-  const [edges,visualRows,all,classMap,mfrMap,depletionRows,eventRows]=await Promise.all([
+  const [edges,visualRows,all,classMap,mfrMap,eventRows]=await Promise.all([
     db('vendr_parent_child_edges','select=child_entity_id,child_name,relation_type&parent_entity_id=eq.'+encodeURIComponent(id)),
     db('vendr_visual_profiles','select=*&entity_id=eq.'+encodeURIComponent(id)),
     catalogue(),
     classifications(),
     manufacturers(),
-    depletionForShop(p,'public-2045'),
     db('vendr_stock_events',
-      'select=event_uuid,event_type,item_id,stock_cycle,quantity_delta,unit_price,actor_key,occurred_at'+
+      'select=event_uuid,event_type,item_id,quantity_delta,unit_price,actor_key,occurred_at'+
       '&world_key=eq.public-2045&entity_id=eq.'+encodeURIComponent(id)+
-      '&stock_cycle=eq.'+encodeURIComponent(String(ci.cycle))+
       '&order=occurred_at.desc&limit=8')
   ]);
   const visual=visualRows[0]||null;
@@ -704,7 +740,8 @@ async function shop(u:URL){
       };
     }
   }
-  const stock=applyDepletionRows(p,applyAmbientFlow(p,stockFor(p,all,classMap,mfrMap)),depletionRows);
+  const resolved=await resolveObservedStock(p,all,classMap,mfrMap,'public-2045');
+  const stock=resolved.visible;
   return out({
     entity_id:p.entity_id,name:p.name,district:p.district,
     parent_name:(p.data?.parent_name||null),book_page:p.book_page,source_ref:p.source_ref,
@@ -723,9 +760,22 @@ async function shop(u:URL){
     display_tags:p.data?.display_tags||null,
     modelling_note:p.modelling_note||'',children:edges.map((e:any)=>e.child_entity_id),
     child_places:edges,event_id:null,materialized:false,stock,
-    state:stock.length?{...cycleInfo(p),city_pulse_version:CITY_PULSE_VERSION,assortment_count:stock.length,incoming_count:0,history_count:0}:null,
+    state:resolved.snapshot.length?{
+      stock_cycle:resolved.generation,
+      generation:resolved.generation,
+      state_at:resolved.state_at,
+      first_observation:resolved.first_observation,
+      catchup_mutations:resolved.mutations,
+      elapsed_days:resolved.elapsed_days,
+      cadence_label:'Updates when checked',
+      turnover:lifecycle(p)?.turnover||null,
+      lazy_model_version:LAZY_STOCK_VERSION,
+      assortment_count:stock.length,
+      incoming_count:0,
+      history_count:eventRows.length
+    }:null,
     source_contract:null,events:eventRows,visual_profile:visual,image,
-    stock_snapshot:stock.length?('cycle_'+cycleInfo(p).cycle):null,
+    stock_snapshot:resolved.snapshot.length?('observed_'+resolved.generation):null,
     catalog_match:p.data?.catalog_match||null,
     trusted_stock_note:p.data?.catalog_match?.strategy==='tiered'?'Additional stock may be available to trusted customers.':null
   });
