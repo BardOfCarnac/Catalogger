@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "model": "lazy_observation",
+  "principle": "Unobserved shops are not continuously simulated. Stock resolves when a shop is viewed and advances by one bounded catch-up transition only when enough time has elapsed.",
+  "initial_state": {
+    "storage": "implicit_until_first_shop_view",
+    "generation": 0,
+    "source": "deterministic shop seed + catalogue eligibility + size + assortment rules",
+    "search_behavior": "Search may inspect a deterministic initial state or an existing stored snapshot, but does not advance shop state."
+  },
+  "observation": {
+    "trigger": "opening a shop profile",
+    "persistence": "one current snapshot per world + shop",
+    "state_fields": [
+      "generation",
+      "state_at",
+      "snapshot",
+      "model_version"
+    ],
+    "replay_missed_days": false
+  },
+  "catch_up": {
+    "formula": "mutation_fraction = 1 - exp(-turnover_rate * elapsed_days)",
+    "turnover_rates_per_day": {
+      "fast": 0.045,
+      "steady": 0.03,
+      "irregular": 0.04,
+      "slow": 0.015,
+      "volatile": 0.06
+    },
+    "mutation_budget": "bounded by current snapshot size with deterministic stochastic rounding",
+    "quantities": [
+      "selling down",
+      "fresh delivery",
+      "sold out",
+      "restocked"
+    ],
+    "replacement": {
+      "occasional": "turns over fastest",
+      "regular": "moderate turnover",
+      "core": "normally retained; only small replacement chance after roughly 90 days"
+    },
+    "long_gap_behavior": "Regular and occasional stock increasingly forget the prior state; core identity remains anchored."
+  },
+  "history": {
+    "intermediate_ebb_flow": false,
+    "scheduled_refresh_history": false,
+    "ordinary_purchase_history": false,
+    "meaningful_interventions_only": true
+  },
+  "purchase_future": {
+    "mutation_target": "resolved snapshot",
+    "atomic_function": "vendr_apply_snapshot_purchase",
+    "continuous_stock": "non-depleting"
+  },
+  "supersedes": "night-city-2045-city-pulse-v1.0"
+}
