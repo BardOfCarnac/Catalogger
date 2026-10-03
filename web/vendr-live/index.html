@@ -374,13 +374,8 @@ button,input,select{font:inherit}
   padding:26px;
   margin-bottom:18px;
 }
-.scroll-clipped{
-  clip-path:inset(
-    var(--scroll-clip-top,0px)
-    -24px
-    calc(-1 * var(--scroll-shadow-tail,24px))
-    -24px
-  );
+.header-shadowless{
+  box-shadow:none !important;
 }
 .home-hero{padding:0;overflow:hidden}
 .home-hero-grid{
@@ -1932,43 +1927,30 @@ function syncHeaderBackdrop(){
   if(!headerBackdrop) return;
   headerBackdrop.style.height = headerCutoff() + 'px';
 }
-const scrollClipSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty,.template-note';
-let scrollClipRaf = 0;
-function syncScrollClips(){
-  scrollClipRaf = 0;
+const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty,.template-note';
+let headerShadowRaf = 0;
+function syncHeaderShadows(){
+  headerShadowRaf = 0;
   const cutoff = headerCutoff();
   if(!cutoff) return;
-  document.querySelectorAll('.view.active ' + scrollClipSelector).forEach(el=>{
+  document.querySelectorAll('.view.active ' + headerShadowSelector).forEach(el=>{
     const rect = el.getBoundingClientRect();
-    const clipTop = cutoff - rect.top;
-    if(clipTop <= 0){
-      el.classList.remove('scroll-clipped');
-      el.style.removeProperty('--scroll-clip-top');
-      el.style.removeProperty('--scroll-shadow-tail');
-      return;
-    }
-    // Keep the normal shadow while enough of the box remains visible.
-    // As the remaining box becomes shallower than the shadow, reduce the
-    // permitted shadow depth with it; when the box reaches the cutoff,
-    // the shadow allowance reaches zero too.
-    const remainingBody = Math.max(0, rect.height - clipTop);
-    const clipped = Math.min(rect.height, clipTop);
-    const shadowTail = Math.min(24, remainingBody);
-    el.classList.add('scroll-clipped');
-    el.style.setProperty('--scroll-clip-top', clipped + 'px');
-    el.style.setProperty('--scroll-shadow-tail', shadowTail + 'px');
+    const remaining = rect.bottom - cutoff;
+    // Only suppress the shadow for the final shadow-depth of the box's exit.
+    // The masking boundary itself never changes while scrolling.
+    el.classList.toggle('header-shadowless', remaining <= 24);
   });
 }
-function queueScrollClip(){
-  if(scrollClipRaf) return;
-  scrollClipRaf = requestAnimationFrame(syncScrollClips);
+function queueHeaderShadowSync(){
+  if(headerShadowRaf) return;
+  headerShadowRaf = requestAnimationFrame(syncHeaderShadows);
 }
-window.addEventListener('scroll', queueScrollClip, {passive:true});
+window.addEventListener('scroll', queueHeaderShadowSync, {passive:true});
 
 buildBackgroundTrain(bgTrain);
 buildBackgroundTrain(headerBgTrain);
 setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
-requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
+requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
 /* -------- VIEW STATE -------- */
 const homeView = document.getElementById('homeView');
@@ -2062,7 +2044,7 @@ function switchTo(target){
       Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
       currentView = target;
       window.scrollTo(0,0);
-      requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
+      requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
     }
 
     const doneFG = elapsed >= fgSpecs.three.delay + fgSpecs.three.duration;
@@ -3023,7 +3005,7 @@ function drawSearchSpaciel(data=lastSearch?.data){
   const readout=document.getElementById('searchSpacielReadout');
   if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
-window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncScrollClips()});
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
 
 document.getElementById('resultsSort').addEventListener('click',e=>{
   const button=e.target.closest('[data-sort]');
@@ -3043,7 +3025,7 @@ async function boot(){
     document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
-    requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
+    requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
     const params=new URLSearchParams(location.search);
     const q=params.get('q');
