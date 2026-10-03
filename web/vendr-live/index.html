@@ -172,15 +172,32 @@ button,input,select{font:inherit}
   gap:12px;
   margin-bottom:14px;
 }
-.topbar::after{
-  content:"";
-  position:absolute;
+.header-backdrop{
+  position:fixed;
+  top:0;
   left:0;
   right:0;
-  top:100%;
-  height:14px;
-  background:var(--paper);
+  height:0;
+  z-index:300;
+  overflow:hidden;
   pointer-events:none;
+  background:var(--rear-4);
+}
+.header-backdrop .bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  height:100vh;
+  will-change:transform;
+}
+.header-backdrop:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
 }
 .brand{
   font-weight:1000;
@@ -1424,6 +1441,10 @@ button,input,select{font:inherit}
 </div>
 
 <div class="app">
+  <div class="header-backdrop" id="headerBackdrop" aria-hidden="true">
+    <div class="bg-train" id="headerBgTrain"></div>
+  </div>
+
   <!-- ========== HOME TEMPLATE ========== -->
   <section class="view active" id="homeView">
     <div class="shell">
@@ -1873,18 +1894,37 @@ button,input,select{font:inherit}
 <script>
 /* -------- REPEATING BACK FIELD -------- */
 const bgTrain = document.getElementById('bgTrain');
-for(let i=-3;i<24;i++){
-  const p = document.createElement('div');
-  p.className = 'bg-period';
-  p.style.left = `${i * 204}vw`;
-  p.innerHTML = `
-    <div class="bg-band one"></div>
-    <div class="bg-band two"></div>
-    <div class="bg-band three"></div>
-    <div class="bg-band four"></div>`;
-  bgTrain.appendChild(p);
+const headerBgTrain = document.getElementById('headerBgTrain');
+const headerBackdrop = document.getElementById('headerBackdrop');
+
+function buildBackgroundTrain(train){
+  for(let i=-3;i<24;i++){
+    const p = document.createElement('div');
+    p.className = 'bg-period';
+    p.style.left = `${i * 204}vw`;
+    p.innerHTML = `
+      <div class="bg-band one"></div>
+      <div class="bg-band two"></div>
+      <div class="bg-band three"></div>
+      <div class="bg-band four"></div>`;
+    train.appendChild(p);
+  }
 }
-bgTrain.style.transform = `translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`;
+function setBackgroundTransform(value){
+  bgTrain.style.transform = value;
+  headerBgTrain.style.transform = value;
+}
+function syncHeaderBackdrop(){
+  const activeTopbar = document.querySelector('.view.active .topbar');
+  if(!activeTopbar || !headerBackdrop) return;
+  const bottom = activeTopbar.getBoundingClientRect().bottom;
+  headerBackdrop.style.height = Math.ceil(bottom + 14) + 'px';
+}
+
+buildBackgroundTrain(bgTrain);
+buildBackgroundTrain(headerBgTrain);
+setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
+requestAnimationFrame(syncHeaderBackdrop);
 
 /* -------- VIEW STATE -------- */
 const homeView = document.getElementById('homeView');
@@ -1970,7 +2010,7 @@ function switchTo(target){
     const bp = Math.min(1, elapsed / BG_DURATION);
     const eased = gentleBackgroundProgress(bp);
     const bgX = bgStart + (bgEnd - bgStart) * eased;
-    bgTrain.style.transform = `translateX(${bgX}vw)`;
+    setBackgroundTransform(`translateX(${bgX}vw)`);
 
     const amberLead = fgX(elapsed, fgSpecs.three);
     if (!swapped && amberLead <= -108){
@@ -1978,6 +2018,7 @@ function switchTo(target){
       Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
       currentView = target;
       window.scrollTo(0,0);
+      requestAnimationFrame(syncHeaderBackdrop);
     }
 
     const doneFG = elapsed >= fgSpecs.three.delay + fgSpecs.three.duration;
@@ -1989,7 +2030,7 @@ function switchTo(target){
     }
 
     bgStep++;
-    bgTrain.style.transform = `translateX(${BG_BASE - (bgStep * BG_PERIOD)}vw)`;
+    setBackgroundTransform(`translateX(${BG_BASE - (bgStep * BG_PERIOD)}vw)`);
 
     Object.values(panels).forEach(el => el.remove());
     busy = false;
@@ -2938,7 +2979,7 @@ function drawSearchSpaciel(data=lastSearch?.data){
   const readout=document.getElementById('searchSpacielReadout');
   if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
-window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel()});
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop()});
 
 document.getElementById('resultsSort').addEventListener('click',e=>{
   const button=e.target.closest('[data-sort]');
@@ -2958,6 +2999,7 @@ async function boot(){
     document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
+    requestAnimationFrame(syncHeaderBackdrop);
 
     const params=new URLSearchParams(location.search);
     const q=params.get('q');
