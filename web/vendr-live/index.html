@@ -2071,6 +2071,25 @@ function searchUrl(q,itemId=null){
   return url.pathname+url.search;
 }
 
+let fullscreenSearchAttempted=false;
+async function requestSearchFullscreenOnce(){
+  if(fullscreenSearchAttempted||document.fullscreenElement||document.webkitFullscreenElement)return;
+  fullscreenSearchAttempted=true;
+  const target=document.documentElement;
+  const request=target.requestFullscreen||target.webkitRequestFullscreen;
+  if(typeof request!=='function')return;
+  try{
+    const pending=request.call(target);
+    if(pending&&typeof pending.then==='function')await pending;
+  }catch(e){
+    console.debug('Vend-R fullscreen request was not granted.',e);
+  }
+}
+async function startSearchFromGesture(raw,itemId=null){
+  await requestSearchFullscreenOnce();
+  return runSearchPage(raw,itemId);
+}
+
 async function runSearchPage(raw,itemId=null,options={}){
   const q=String(raw||'').trim();
   if(!q){
@@ -2147,9 +2166,9 @@ function renderSuggestions(data,q){
     playWipe(()=>openVendor(button.dataset.suggestPlace,null,{pushHistory:true}));
   }));
   box.querySelectorAll('[data-suggest-item]').forEach(button=>button.addEventListener('click',()=>{
-    runSearchPage(q,button.dataset.suggestItem);
+    startSearchFromGesture(q,button.dataset.suggestItem);
   }));
-  box.querySelector('[data-search-all]')?.addEventListener('click',()=>runSearchPage(q,null));
+  box.querySelector('[data-search-all]')?.addEventListener('click',()=>startSearchFromGesture(q,null));
 }
 function queueSuggestions(raw){
   const q=String(raw||'').trim();
@@ -2459,7 +2478,7 @@ marketInput.addEventListener('input',e=>queueSuggestions(e.currentTarget.value))
 marketInput.addEventListener('keydown',e=>{
   if(e.key==='Enter'){
     e.preventDefault();
-    runSearchPage(e.currentTarget.value,null);
+    startSearchFromGesture(e.currentTarget.value,null);
   }else if(e.key==='Escape'){
     hideSuggestions();
   }
@@ -2476,7 +2495,7 @@ document.getElementById('marketBrowseButton').addEventListener('click',()=>{
 });
 document.getElementById('searchPageForm').addEventListener('submit',e=>{
   e.preventDefault();
-  runSearchPage(document.getElementById('searchPageInput').value,null);
+  startSearchFromGesture(document.getElementById('searchPageInput').value,null);
 });
 document.getElementById('searchBackHome').addEventListener('click',()=>{
   history.pushState({view:'home'},'',location.pathname);
