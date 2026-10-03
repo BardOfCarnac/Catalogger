@@ -375,7 +375,12 @@ button,input,select{font:inherit}
   margin-bottom:18px;
 }
 .scroll-clipped{
-  clip-path:inset(var(--scroll-clip-top,0px) -24px -24px -24px);
+  clip-path:inset(
+    var(--scroll-clip-top,0px)
+    -24px
+    calc(-1 * var(--scroll-shadow-tail,24px))
+    -24px
+  );
 }
 .home-hero{padding:0;overflow:hidden}
 .home-hero-grid{
@@ -1938,13 +1943,19 @@ function syncScrollClips(){
     if(clipTop <= 0){
       el.classList.remove('scroll-clipped');
       el.style.removeProperty('--scroll-clip-top');
+      el.style.removeProperty('--scroll-shadow-tail');
       return;
     }
-    // Allow for the largest existing down/right shadow so the shadow is clipped
-    // at exactly the same viewport boundary as the box itself.
-    const clipped = Math.min(rect.height + 24, clipTop);
+    // Keep the normal shadow while enough of the box remains visible.
+    // As the remaining box becomes shallower than the shadow, reduce the
+    // permitted shadow depth with it; when the box reaches the cutoff,
+    // the shadow allowance reaches zero too.
+    const remainingBody = Math.max(0, rect.height - clipTop);
+    const clipped = Math.min(rect.height, clipTop);
+    const shadowTail = Math.min(24, remainingBody);
     el.classList.add('scroll-clipped');
     el.style.setProperty('--scroll-clip-top', clipped + 'px');
+    el.style.setProperty('--scroll-shadow-tail', shadowTail + 'px');
   });
 }
 function queueScrollClip(){
