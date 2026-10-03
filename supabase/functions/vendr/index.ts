@@ -179,6 +179,7 @@ function score(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,string[]>)
   const rule=matchRule(p)||{};
   const itemMfrs=mfrMap.get(String(i.id))||[];
   if(d==='weapons'&&!itemMfrs.length&&!(rule.required_manufacturers||[]).length) s+=30;
+  s+=availabilityAdjustment(p,i);
   return s+gate.boost;
 }
 
@@ -195,6 +196,62 @@ function basePrice(i:any){
   }
   return null;
 }
+function priceTier(i:any){
+  const raw=String(i?.base_price?.tier||i?.price_tier||'').trim();
+  if(raw)return raw;
+  const p=basePrice(i);
+  if(p===null)return 'Unknown';
+  if(p<=10)return 'Cheap';
+  if(p<=20)return 'Everyday';
+  if(p<=50)return 'Costly';
+  if(p<=100)return 'Premium';
+  if(p<=500)return 'Expensive';
+  if(p<=1000)return 'Very Expensive';
+  if(p<=5000)return 'Luxury';
+  return 'Super Luxury';
+}
+function availabilityInfo(i:any){
+  const tier=priceTier(i);
+  const key=tier.toLowerCase().replace(/[^a-z]/g,'');
+  if(key==='expensive')return {key:'restricted',label:'Restricted circulation',rank:1,tier};
+  if(key==='veryexpensive')return {key:'scarce',label:'Scarce',rank:2,tier};
+  if(key==='luxury')return {key:'rare_market',label:'Rare market',rank:3,tier};
+  if(key==='superluxury')return {key:'exceptional',label:'Exceptional',rank:4,tier};
+  return {key:'common',label:'Common circulation',rank:0,tier};
+}
+function availabilityContext(p:any){
+  const mode=String(p?.stock_mode||'');
+  const cap=String(p?.supply_capability||'ordinary').toLowerCase();
+  const channels=parts(p?.market_channel_override).map((x:string)=>x.toLowerCase());
+  const strategy=String(matchRule(p)?.strategy||'').toLowerCase();
+  if(
+    mode==='EVENT_MARKET' ||
+    channels.includes('black_market') ||
+    (String(p?.primary_archetype||'')==='night-market-stall'&&mode!=='DIRECT_SELLER')
+  ) return 'market';
+  if(
+    ['specialist','bespoke','corporate','clandestine'].includes(cap) ||
+    channels.some((x:string)=>['specialist','direct_order','grey_market'].includes(x)) ||
+    ['manufacturer','specialist'].includes(strategy)
+  ) return 'specialist';
+  if(
+    ['irregular','nomad'].includes(cap) ||
+    channels.some((x:string)=>['pawn','street','nomad'].includes(x))
+  ) return 'irregular';
+  return 'ordinary';
+}
+function availabilityAdjustment(p:any,i:any){
+  const rank=availabilityInfo(i).rank;
+  const context=availabilityContext(p);
+  const table:any={
+    ordinary:[18,-8,-32,-52,-82],
+    irregular:[12,0,-16,-28,-62],
+    specialist:[8,10,4,2,-34],
+    market:[2,10,14,20,-8]
+  };
+  return (table[context]||table.ordinary)[rank]??0;
+}
+
 function relationKey(i:any,classMap?:Map<string,any>){
   const cls=classification(i,classMap);
   if(cls){
@@ -410,13 +467,17 @@ function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,str
     assortment_role:x.role,
     primary_department:department(x.item,classMap),
     relation_key:relationKey(x.item,classMap),
+    price_tier:availabilityInfo(x.item).tier,
+    availability_band:availabilityInfo(x.item).key,
+    availability_label:availabilityInfo(x.item).label,
+    availability_rank:availabilityInfo(x.item).rank,
     fit_score:x.fit,
     stock_cycle:generation,
     observation_generation:generation,
     last_change:null
   }));
 }
-const LAZY_STOCK_VERSION='lazy-1.0';
+const LAZY_STOCK_VERSION='lazy-1.1-availability';
 function turnoverChance(p:any){
   const t=String(lifecycle(p)?.turnover||'steady');
   const m:any={fast:.045,steady:.030,irregular:.040,slow:.015,volatile:.060};
@@ -625,7 +686,11 @@ async function search(u:URL){
     item_id:i.id,
     name:i.name,
     primary_department:department(i,classMap),
-    relation_key:relationKey(i,classMap)
+    relation_key:relationKey(i,classMap),
+    price_tier:availabilityInfo(i).tier,
+    availability_band:availabilityInfo(i).key,
+    availability_label:availabilityInfo(i).label,
+    availability_rank:availabilityInfo(i).rank
   }));
 
   if(suggestOnly){
@@ -675,7 +740,11 @@ async function search(u:URL){
         distance:null,
         score:fit,stock_mode:p.stock_mode,
         quantity:row?.quantity??null,asking_price:row?.asking_price??null,
-        condition:row?.condition??null,stock_cycle:row?.stock_cycle??null
+        condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
+        price_tier:row?.price_tier??availabilityInfo(item).tier,
+        availability_band:row?.availability_band??availabilityInfo(item).key,
+        availability_label:row?.availability_label??availabilityInfo(item).label,
+        availability_rank:row?.availability_rank??availabilityInfo(item).rank
       });
     }
   }
@@ -740,22 +809,42 @@ async function stockAudit(){
   const rows=owners.map((p:any)=>{
     const plan=assortmentPlan(p);
     const stock=initialSnapshot(p,all,classMap,mfrMap);
-    const deps:any={};
+    const deps:any={}, availability:any={};
     for(const row of stock){
       const d=String(row.primary_department||'other');
       deps[d]=(deps[d]||0)+1;
+      const a=String(row.availability_band||'common');
+      availability[a]=(availability[a]||0)+1;
     }
     return {
       entity_id:p.entity_id,name:p.name,district:p.district,stock_mode:p.stock_mode,
       archetype:p.primary_archetype,planned:plan.total,generated:stock.length,
-      departments:deps
+      availability_context:availabilityContext(p),
+      departments:deps,availability
     };
   });
+  const catalogueAvailability:any={};
+  for(const item of all){
+    const a=availabilityInfo(item).key;
+    catalogueAvailability[a]=(catalogueAvailability[a]||0)+1;
+  }
   return out({
     stock_model:LAZY_STOCK_VERSION,
     owners:rows.length,
     zero_count:rows.filter((r:any)=>r.generated===0).length,
     underfilled_count:rows.filter((r:any)=>r.generated>0&&r.generated<Math.max(3,Math.floor(r.planned*.5))).length,
+    catalogue_availability:catalogueAvailability,
+    catalogue_high_tier_samples:all
+      .filter((item:any)=>availabilityInfo(item).rank>=2)
+      .map((item:any)=>({
+        id:item.id,name:item.name,
+        department:department(item,classMap),
+        subcategory:classification(item,classMap)?.source_subcategory||null,
+        price:basePrice(item),
+        price_tier:availabilityInfo(item).tier,
+        availability_band:availabilityInfo(item).key
+      }))
+      .slice(0,120),
     rows
   });
 }
