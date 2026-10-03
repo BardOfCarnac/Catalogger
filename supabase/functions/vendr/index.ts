@@ -433,14 +433,43 @@ function cycleQuantity(p:any,i:any,classMap:Map<string,any>,role:string,cycle:nu
   return Math.max(1,Math.round(raw*depthMultiplier(p)*scaleQuantityMultiplier(p)*roleMul));
 }
 function pricingMultiplier(p:any){
-  const m:any={bargain:.90,fair:1,premium:1.12,gouging:1.28};
+  // Shop character nudges shelf prices, but RED's canonical value remains the
+  // mechanical settlement price. Keep the fiction lively without turning the
+  // catalogue into a second economy simulation.
+  const m:any={bargain:.94,fair:1,premium:1.06,gouging:1.12};
   return m[String(p?.pricing_style||'fair').toLowerCase()]||1;
+}
+function roundMarketPrice(value:number){
+  if(value<10)return Math.round(value*100)/100;
+  if(value<100)return Math.round(value);
+  if(value<1000)return Math.round(value/5)*5;
+  if(value<5000)return Math.round(value/10)*10;
+  return Math.round(value/50)*50;
 }
 function cyclePrice(p:any,i:any,cycle:number){
   const base=basePrice(i); if(base===null) return null;
-  const jitter=(stableIndex('price|'+cycle+'|'+p.entity_id+'|'+i.id,1201)-600)/10000;
-  const value=Math.max(.01,base*pricingMultiplier(p)*(1+jitter));
-  return value<10?Math.round(value*100)/100:Math.round(value);
+  // Deterministic per seller × item × stock generation: prices look like a
+  // market but do not reshuffle simply because somebody reloads the page.
+  const jitter=(stableIndex('market-price|'+cycle+'|'+p.entity_id+'|'+i.id,1201)-600)/10000;
+  const multiplier=Math.max(.82,Math.min(1.18,pricingMultiplier(p)*(1+jitter)));
+  return Math.max(.01,roundMarketPrice(base*multiplier));
+}
+function marketPriceFields(p:any,i:any,cycle:number){
+  const book=basePrice(i);
+  const display=cyclePrice(p,i,cycle);
+  if(book===null||display===null){
+    return {book_price:book,asking_price:display,checkout_unit_price:book,checkout_mode:'standard',checkout_label:'BUY'};
+  }
+  const epsilon=Math.max(.01,book*.001);
+  const below=display<book-epsilon;
+  const above=display>book+epsilon;
+  return {
+    book_price:book,
+    asking_price:display,
+    checkout_unit_price:book,
+    checkout_mode:below?'plus_tax':above?'discount':'standard',
+    checkout_label:below?'BUY + TAX':above?'BUY WITH DISCOUNT':'BUY'
+  };
 }
 function stockCondition(p:any,i:any,cycle:number,classMap?:Map<string,any>){
   if(classMap&&quantityClass(i,classMap)==='continuous')return 'not_applicable';
@@ -461,7 +490,7 @@ function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,str
     target_quantity:cycleQuantity(p,x.item,classMap,x.role,generation),
     quantity_profile:quantityClass(x.item,classMap),
     condition:stockCondition(p,x.item,generation,classMap),
-    asking_price:cyclePrice(p,x.item,generation),
+    ...marketPriceFields(p,x.item,generation),
     visibility:'public',
     status:'in_stock',
     assortment_role:x.role,
@@ -477,7 +506,7 @@ function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,str
     last_change:null
   }));
 }
-const LAZY_STOCK_VERSION='lazy-1.1-availability';
+const LAZY_STOCK_VERSION='lazy-1.2-market-prices';
 function turnoverChance(p:any){
   const t=String(lifecycle(p)?.turnover||'steady');
   const m:any={fast:.045,steady:.030,irregular:.040,slow:.015,volatile:.060};
@@ -485,6 +514,15 @@ function turnoverChance(p:any){
 }
 function visibleStock(rows:any[]){
   return (rows||[]).filter((row:any)=>row.quantity==null||Number(row.quantity)>0);
+}
+function decorateStockPrices(p:any,rows:any[],all:any[],generation=0){
+  const itemById=new Map(all.map((item:any)=>[String(item.id),item]));
+  return (rows||[]).map((row:any)=>{
+    const item=itemById.get(String(row.item_id));
+    if(!item)return row;
+    const cycle=Number(row.stock_cycle??row.observation_generation??generation??0)||0;
+    return {...row,...marketPriceFields(p,item,cycle)};
+  });
 }
 function initialSnapshot(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>){
   return stockFor(p,all,classMap,mfrMap,0).map((row:any)=>({
@@ -628,13 +666,15 @@ async function resolveObservedStock(p:any,all:any[],classMap:Map<string,any>,mfr
     const snapshot=initialSnapshot(p,all,classMap,mfrMap);
     const stateAt=new Date(nowMs).toISOString();
     if(snapshot.length)await saveObservation(worldKey,p,0,stateAt,snapshot);
-    return {snapshot,visible:visibleStock(snapshot),generation:0,state_at:stateAt,first_observation:true,changed:false,mutations:0,elapsed_days:0};
+    const priced=decorateStockPrices(p,snapshot,all,0);
+    return {snapshot:priced,visible:visibleStock(priced),generation:0,state_at:stateAt,first_observation:true,changed:false,mutations:0,elapsed_days:0};
   }
 
   const snapshot=Array.isArray(obs.snapshot)?obs.snapshot:[];
   const result=transitionObservedStock(p,snapshot,all,classMap,mfrMap,Number(obs.generation||0),String(obs.state_at||obs.updated_at||new Date(nowMs).toISOString()),nowMs);
   if(result.changed)await saveObservation(worldKey,p,result.generation,result.state_at,result.snapshot);
-  return {...result,visible:visibleStock(result.snapshot),first_observation:false};
+  const priced=decorateStockPrices(p,result.snapshot,all,result.generation);
+  return {...result,snapshot:priced,visible:visibleStock(priced),first_observation:false};
 }
 
 async function search(u:URL){
@@ -687,6 +727,7 @@ async function search(u:URL){
     name:i.name,
     primary_department:department(i,classMap),
     relation_key:relationKey(i,classMap),
+    book_price:basePrice(i),
     price_tier:availabilityInfo(i).tier,
     availability_band:availabilityInfo(i).key,
     availability_label:availabilityInfo(i).label,
@@ -724,7 +765,7 @@ async function search(u:URL){
       if(!stock){
         const obs:any=observationMap.get(String(p.entity_id));
         const raw=obs&&Array.isArray(obs.snapshot)?obs.snapshot:initialSnapshot(p,all,classMap,mfrMap);
-        stock=visibleStock(raw);
+        stock=visibleStock(decorateStockPrices(p,raw,all,Number(obs?.generation??0)));
         stockCache.set(String(p.entity_id),stock)
       }
       const row=stock.find((r:any)=>String(r.item_id)===itemId);
@@ -740,6 +781,10 @@ async function search(u:URL){
         distance:null,
         score:fit,stock_mode:p.stock_mode,
         quantity:row?.quantity??null,asking_price:row?.asking_price??null,
+        book_price:row?.book_price??basePrice(item),
+        checkout_unit_price:row?.checkout_unit_price??basePrice(item),
+        checkout_mode:row?.checkout_mode??null,
+        checkout_label:row?.checkout_label??null,
         condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
         price_tier:row?.price_tier??availabilityInfo(item).tier,
         availability_band:row?.availability_band??availabilityInfo(item).key,
