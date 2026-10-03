@@ -374,6 +374,9 @@ button,input,select{font:inherit}
   padding:26px;
   margin-bottom:18px;
 }
+.scroll-clipped{
+  clip-path:inset(var(--scroll-clip-top,0px) -24px -24px -24px);
+}
 .home-hero{padding:0;overflow:hidden}
 .home-hero-grid{
   display:grid;
@@ -1914,17 +1917,46 @@ function setBackgroundTransform(value){
   bgTrain.style.transform = value;
   headerBgTrain.style.transform = value;
 }
-function syncHeaderBackdrop(){
+function headerCutoff(){
   const activeTopbar = document.querySelector('.view.active .topbar');
-  if(!activeTopbar || !headerBackdrop) return;
-  const bottom = activeTopbar.getBoundingClientRect().bottom;
-  headerBackdrop.style.height = Math.ceil(bottom + 14) + 'px';
+  if(!activeTopbar) return 0;
+  return Math.ceil(activeTopbar.getBoundingClientRect().bottom + 14);
 }
+function syncHeaderBackdrop(){
+  if(!headerBackdrop) return;
+  headerBackdrop.style.height = headerCutoff() + 'px';
+}
+const scrollClipSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty,.template-note';
+let scrollClipRaf = 0;
+function syncScrollClips(){
+  scrollClipRaf = 0;
+  const cutoff = headerCutoff();
+  if(!cutoff) return;
+  document.querySelectorAll('.view.active ' + scrollClipSelector).forEach(el=>{
+    const rect = el.getBoundingClientRect();
+    const clipTop = cutoff - rect.top;
+    if(clipTop <= 0){
+      el.classList.remove('scroll-clipped');
+      el.style.removeProperty('--scroll-clip-top');
+      return;
+    }
+    // Allow for the largest existing down/right shadow so the shadow is clipped
+    // at exactly the same viewport boundary as the box itself.
+    const clipped = Math.min(rect.height + 24, clipTop);
+    el.classList.add('scroll-clipped');
+    el.style.setProperty('--scroll-clip-top', clipped + 'px');
+  });
+}
+function queueScrollClip(){
+  if(scrollClipRaf) return;
+  scrollClipRaf = requestAnimationFrame(syncScrollClips);
+}
+window.addEventListener('scroll', queueScrollClip, {passive:true});
 
 buildBackgroundTrain(bgTrain);
 buildBackgroundTrain(headerBgTrain);
 setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
-requestAnimationFrame(syncHeaderBackdrop);
+requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
 
 /* -------- VIEW STATE -------- */
 const homeView = document.getElementById('homeView');
@@ -2018,7 +2050,7 @@ function switchTo(target){
       Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
       currentView = target;
       window.scrollTo(0,0);
-      requestAnimationFrame(syncHeaderBackdrop);
+      requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
     }
 
     const doneFG = elapsed >= fgSpecs.three.delay + fgSpecs.three.duration;
@@ -2979,7 +3011,7 @@ function drawSearchSpaciel(data=lastSearch?.data){
   const readout=document.getElementById('searchSpacielReadout');
   if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
-window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop()});
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncScrollClips()});
 
 document.getElementById('resultsSort').addEventListener('click',e=>{
   const button=e.target.closest('[data-sort]');
@@ -2999,7 +3031,7 @@ async function boot(){
     document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
-    requestAnimationFrame(syncHeaderBackdrop);
+    requestAnimationFrame(()=>{syncHeaderBackdrop();syncScrollClips()});
 
     const params=new URLSearchParams(location.search);
     const q=params.get('q');
