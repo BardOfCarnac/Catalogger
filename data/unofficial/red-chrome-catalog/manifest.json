@@ -1,0 +1,39 @@
+{
+  "pack_version": "0.1.0",
+  "format_version": "0.1.0",
+  "items": {
+    "rows": 84,
+    "parts": [
+      {
+        "path": "items.part01.json",
+        "rows": 21,
+        "sha256": "6907f0a79529dac1131f82f7d493148c54d51124abbb694a99e280947602713f"
+      },
+      {
+        "path": "items.part02.json",
+        "rows": 21,
+        "sha256": "84f32e1d2797f9fd50bac6b6189d76ff7300a1ef33ad33227a706cf84b999afb"
+      },
+      {
+        "path": "items.part03.json",
+        "rows": 21,
+        "sha256": "2e7cce377713f9be62916a479e4ee96e9fc972a73f97ef9ef2191e264f718d3c"
+      },
+      {
+        "path": "items.part04.json",
+        "rows": 21,
+        "sha256": "9d76d272cc3dab8c7231e258f234995a8894ee895e1ecf5a8206ec37c4be8b1d"
+      }
+    ]
+  },
+  "relationships": {
+    "rows": 15,
+    "path": "relationships.json"
+  },
+  "manufacturers": {
+    "path": "manufacturers.json"
+  },
+  "source": {
+    "path": "source.json"
+  }
+}
