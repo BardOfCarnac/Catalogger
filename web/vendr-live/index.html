@@ -1545,9 +1545,9 @@ button,input{font:inherit}
               <strong id="vendorOwnerLabel">Vend-R record</strong>
               <span id="vendorOwnerSub">Canonical Night City commercial profile</span>
               <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
-                <span>Inside</span>
+                <span>← Back to containing location</span>
                 <strong id="parentLocationName">Containing location</strong>
-                <small>View containing location →</small>
+                <small>Browse the larger market / complex</small>
               </button>
             </div>
           </div>
@@ -2242,9 +2242,11 @@ function renderVendor(s,offers){
     document.getElementById('parentLocationName').textContent=parent.name;
     parentLink.hidden=false;
     parentLink.dataset.parentShop=parent.entity_id;
+    parentLink.setAttribute('aria-label','Back to '+parent.name);
   }else{
     parentLink.hidden=true;
     parentLink.removeAttribute('data-parent-shop');
+    parentLink.removeAttribute('aria-label');
   }
   const photoStrip=document.getElementById('vendorPhotoStrip');
   const photoCredit=document.getElementById('vendorPhotoCredit');
@@ -2260,6 +2262,7 @@ function renderVendor(s,offers){
     photoCredit.textContent='';
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
+  document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
   document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):((s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY');
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
