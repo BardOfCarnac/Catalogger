@@ -164,13 +164,23 @@ button,input,select{font:inherit}
 }
 .topbar{
   position:sticky;
-  top:0;
+  top:18px;
   z-index:400;
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
   gap:12px;
   margin-bottom:14px;
+}
+.topbar::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:100%;
+  height:14px;
+  background:var(--paper);
+  pointer-events:none;
 }
 .brand{
   font-weight:1000;
@@ -1310,6 +1320,7 @@ button,input,select{font:inherit}
 }
 @media (max-width:760px){
   .shell{width:min(100% - 22px,680px);padding-top:11px}
+  .topbar{top:11px}
   .topbar{grid-template-columns:1fr auto}
   .inline-search{grid-column:1/-1;grid-row:2}
   .grid-2,.vendor-layout{grid-template-columns:1fr}
