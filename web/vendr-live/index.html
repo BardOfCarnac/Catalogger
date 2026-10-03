@@ -1902,15 +1902,16 @@ function renderMarkets(rows){
   bindSellerClicks(cards);
 }
 function renderHomeDefault(){
-  const direct=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
-  const markets=sellers.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
+  const profiled=sellers.filter(s=>s.stock_profile_present||s.stock_mode!=='PLACE_ONLY');
+  const direct=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
+  const markets=profiled.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   document.getElementById('primarySellerTitle').textContent='Known sellers';
   document.getElementById('primarySellerMeta').innerHTML='Canonical commercial<br>profiles';
   document.getElementById('secondarySellerTitle').textContent='Direct sellers';
   document.getElementById('secondarySellerMeta').innerHTML='Likely stocked<br>places';
   document.getElementById('marketPanelTitle').textContent='Markets';
   document.getElementById('marketPanelMeta').innerHTML='Containers / events<br>from the city graph';
-  renderSellerPanel(document.getElementById('primarySellerPanel'),sellers.slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
+  renderSellerPanel(document.getElementById('primarySellerPanel'),profiled.slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
   renderSellerPanel(document.getElementById('secondarySellerPanel'),direct.slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
   renderMarkets(markets);
 }
@@ -2121,18 +2122,29 @@ function renderSuggestions(data,q){
   const box=document.getElementById('marketSuggest');
   const items=data.items||[];
   const total=Number(data.total_matches??items.length);
+  const needle=String(q||'').trim().toLowerCase();
+  const placeMatches=needle?sellers.filter(s=>String(s.name||'').toLowerCase().includes(needle)).slice(0,6):[];
   if(!q){hideSuggestions();return}
   box.innerHTML=
-    '<div class="suggest-head">Catalogue suggestions</div>'+
+    '<div class="suggest-head">Places & catalogue</div>'+
+    placeMatches.map(place=>
+      '<button class="suggest-row" type="button" data-suggest-place="'+esc(place.entity_id)+'">'+
+      '<strong>'+esc(place.name)+'</strong>'+
+      '<span>'+esc([place.type,place.district,place.stock_mode==='PLACE_ONLY'?'place profile':modeLabel(place.stock_mode)].filter(Boolean).join(' · '))+'</span></button>'
+    ).join('')+
     items.map(item=>
       '<button class="suggest-row" type="button" data-suggest-item="'+esc(item.item_id)+'">'+
       '<strong>'+esc(item.name)+'</strong>'+
       '<span>'+esc(itemTypeLabel(item))+' · exact catalogue item</span></button>'
     ).join('')+
     '<button class="suggest-row search-all" type="button" data-search-all="1">'+
-    '<strong>Search all “'+esc(q)+'”</strong>'+
+    '<strong>Search catalogue for “'+esc(q)+'”</strong>'+
     '<span>'+esc(String(total))+' related catalogue item'+(total===1?'':'s')+' →</span></button>';
   box.hidden=false;
+  box.querySelectorAll('[data-suggest-place]').forEach(button=>button.addEventListener('click',()=>{
+    hideSuggestions();
+    playWipe(()=>openVendor(button.dataset.suggestPlace,null,{pushHistory:true}));
+  }));
   box.querySelectorAll('[data-suggest-item]').forEach(button=>button.addEventListener('click',()=>{
     runSearchPage(q,button.dataset.suggestItem);
   }));
