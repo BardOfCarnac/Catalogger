@@ -32,5 +32,9 @@
     "meaningful_intervention": "event_log",
     "history_retained": false,
     "principle": "The simulation is reconstructable; only deliberate world-state deviations are recorded."
-  }
+  },
+  "status": "superseded",
+  "superseded_by": "night-city-2045-lazy-stock-v1.0.json",
+  "runtime_active": false,
+  "note": "Retained only as design history. Vend-R no longer replays or derives daily citywide pulses; shop stock now advances lazily when a shop profile is observed."
 }
