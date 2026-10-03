@@ -24,5 +24,13 @@
     "Major assortment turnover remains controlled by each shop's stock lifecycle cadence.",
     "Player or future user purchases are stored separately as persistent depletion deltas.",
     "Ambient supply can increase effective current capacity without deleting persistent player depletion."
-  ]
+  ],
+  "persistence_policy": {
+    "ambient_flow": "derived_only",
+    "scheduled_refresh": "derived_only",
+    "ordinary_purchase": "current_depletion_state_only",
+    "meaningful_intervention": "event_log",
+    "history_retained": false,
+    "principle": "The simulation is reconstructable; only deliberate world-state deviations are recorded."
+  }
 }
