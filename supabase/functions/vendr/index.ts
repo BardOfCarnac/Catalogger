@@ -144,6 +144,7 @@ function ruleAllows(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,strin
   if(!rule) return {allow:true,boost:0};
   if(rule.strategy==='no_catalog_stock') return {allow:false,boost:0};
   const d=department(i,classMap), sub=String(classification(i,classMap)?.source_subcategory||'');
+  if(rule.strategy==='used_specialist' && quantityClass(i,classMap)==='continuous' && rule.allow_continuous!==true) return {allow:false,boost:0};
   const allowedDeps=rule.allowed_departments||[];
   if(allowedDeps.length&&(!d||!allowedDeps.includes(d))) return {allow:false,boost:0};
   if((rule.exclude_departments||[]).includes(d)) return {allow:false,boost:0};
@@ -166,7 +167,11 @@ function score(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,string[]>)
   const gate=ruleAllows(p,i,classMap,mfrMap); if(!gate.allow) return null;
   const d=department(i,classMap), pri=parts(p.primary_departments), sec=parts(p.secondary_departments);
   let s=0;
-  if(d&&pri.includes(d)) s=100; else if(d&&sec.includes(d)) s=55; else if(d) return null; else s=15;
+  const strategy=String(matchRule(p)?.strategy||'');
+  if(strategy==='event_market'&&!pri.length&&!sec.length){
+    if(!d||['housing-property','services-entertainment'].includes(d)) return null;
+    s=70;
+  }else if(d&&pri.includes(d)) s=100; else if(d&&sec.includes(d)) s=55; else if(d) return null; else s=15;
   const max=Number(matchRule(p)?.max_base_price_eb??p.max_base_price_eb), price=basePrice(i);
   if(Number.isFinite(max)&&max>0&&price!==null&&price>max) return null;
   if(p.breadth_profile==='broad') s+=10;
@@ -237,6 +242,9 @@ function itemMatchesBucket(i:any,b:any,classMap:Map<string,any>){
   const dep=department(i,classMap);
   const subs=Array.isArray(b?.subcategories)?b.subcategories:[];
   const deps=Array.isArray(b?.departments)?b.departments:[];
+  const excludedSubs=Array.isArray(b?.exclude_subcategories)?b.exclude_subcategories:[];
+  const excludedDeps=Array.isArray(b?.exclude_departments)?b.exclude_departments:[];
+  if(excludedSubs.includes(sub)||excludedDeps.includes(dep))return false;
   if(subs.length&&subs.includes(sub))return true;
   if(deps.length&&dep&&deps.includes(dep))return true;
   return !subs.length&&!deps.length;
@@ -267,37 +275,65 @@ function roleOrder(p:any,ranked:any[],role:string,cycle:number){
     return (Number(b.fit)+bj)-(Number(a.fit)+aj)||String(a.item.id).localeCompare(String(b.item.id));
   });
 }
-function selectRole(p:any,ranked:any[],count:number,classMap:Map<string,any>,used:Set<string>,role:string,cycle:number){
-  if(count<=0)return [];
-  const explicit=Array.isArray(p?.data?.assortment?.shape)?p.data.assortment.shape:[];
-  const shape=explicit.length?explicit:defaultShape(p);
-  const ordered=roleOrder(p,ranked,role,cycle);
-  const selected:any[]=[];
-  if(shape.length){
-    for(const bucket of shape){
-      if(selected.length>=count)break;
-      const target=Math.max(1,Math.round(count*Number(bucket.weight||0)));
-      let got=0;
-      for(const row of ordered){
-        if(selected.length>=count||got>=target)break;
-        const id=String(row.item.id);
-        if(used.has(id)||!itemMatchesBucket(row.item,bucket,classMap))continue;
-        selected.push({...row,role});used.add(id);got++;
-      }
-    }
-  }
-  for(const row of ordered){
-    if(selected.length>=count)break;
-    const id=String(row.item.id);
-    if(used.has(id))continue;
-    selected.push({...row,role});used.add(id);
-  }
-  return selected;
+function shapeQuotas(shape:any[],total:number,seed:string){
+  if(!shape.length||total<=0)return [];
+  const weights=shape.map((b:any)=>Math.max(0,Number(b?.weight)||0));
+  let sum=weights.reduce((n:number,x:number)=>n+x,0);
+  if(sum<=0){sum=shape.length;for(let i=0;i<weights.length;i++)weights[i]=1}
+  const raw=weights.map((w:number)=>total*w/sum);
+  const quotas=raw.map((x:number)=>Math.floor(x));
+  let remaining=total-quotas.reduce((n:number,x:number)=>n+x,0);
+  const order=raw.map((x:number,i:number)=>({i,frac:x-Math.floor(x)}))
+    .sort((a:any,b:any)=>b.frac-a.frac||
+      stableIndex(seed+'|quota|'+a.i,2147483647)-stableIndex(seed+'|quota|'+b.i,2147483647));
+  for(let k=0;k<remaining;k++)quotas[order[k%order.length].i]++;
+  return quotas;
 }
 function selectAssortment(p:any,ranked:any[],plan:any,classMap:Map<string,any>,cycle:number){
-  const used=new Set<string>();const selected:any[]=[];
-  for(const role of ['core','regular','occasional']){
-    selected.push(...selectRole(p,ranked,Number(plan[role]||0),classMap,used,role,cycle));
+  const explicit=Array.isArray(p?.data?.assortment?.shape)?p.data.assortment.shape:[];
+  const shape=explicit.length?explicit:defaultShape(p);
+  const quotas=shapeQuotas(shape,Number(plan.total||0),String(p.entity_id)+'|'+cycle);
+  const used=new Set<string>();
+  const selected:any[]=[];
+  const roles=['core','regular','occasional'];
+  for(const role of roles){
+    const count=Math.max(0,Number(plan[role]||0));
+    if(count<=0)continue;
+    const ordered=roleOrder(p,ranked,role,cycle);
+    const roleSelected:any[]=[];
+    while(roleSelected.length<count&&shape.length&&quotas.some((q:number)=>q>0)){
+      const bucketOrder=shape.map((_:any,i:number)=>i)
+        .filter((i:number)=>quotas[i]>0)
+        .sort((a:number,b:number)=>quotas[b]-quotas[a]||
+          stableIndex(String(p.entity_id)+'|'+cycle+'|'+role+'|bucket|'+a,2147483647)-
+          stableIndex(String(p.entity_id)+'|'+cycle+'|'+role+'|bucket|'+b,2147483647));
+      let progressed=false;
+      for(const bi of bucketOrder){
+        if(roleSelected.length>=count)break;
+        const bucket=shape[bi];
+        const row=ordered.find((candidate:any)=>{
+          const id=String(candidate.item.id);
+          return !used.has(id)&&itemMatchesBucket(candidate.item,bucket,classMap);
+        });
+        if(!row)continue;
+        const id=String(row.item.id);
+        roleSelected.push({...row,role});
+        used.add(id);
+        quotas[bi]=Math.max(0,quotas[bi]-1);
+        progressed=true;
+      }
+      if(!progressed)break;
+    }
+    const fallbackRows=(explicit.length&&p?.data?.assortment?.shape_allow_fallback!==true)
+      ? ordered.filter((row:any)=>shape.some((bucket:any)=>itemMatchesBucket(row.item,bucket,classMap)))
+      : ordered;
+    for(const row of fallbackRows){
+      if(roleSelected.length>=count)break;
+      const id=String(row.item.id);
+      if(used.has(id))continue;
+      roleSelected.push({...row,role});used.add(id);
+    }
+    selected.push(...roleSelected);
   }
   return selected;
 }
@@ -346,7 +382,8 @@ function cyclePrice(p:any,i:any,cycle:number){
   const value=Math.max(.01,base*pricingMultiplier(p)*(1+jitter));
   return value<10?Math.round(value*100)/100:Math.round(value);
 }
-function stockCondition(p:any,i:any,cycle:number){
+function stockCondition(p:any,i:any,cycle:number,classMap?:Map<string,any>){
+  if(classMap&&quantityClass(i,classMap)==='continuous')return 'not_applicable';
   const options=matchRule(p)?.allowed_conditions;
   if(!Array.isArray(options)||!options.length)return 'new';
   return options[stableIndex('condition|'+cycle+'|'+p.entity_id+'|'+i.id,options.length)];
@@ -363,7 +400,7 @@ function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,str
     quantity:cycleQuantity(p,x.item,classMap,x.role,generation),
     target_quantity:cycleQuantity(p,x.item,classMap,x.role,generation),
     quantity_profile:quantityClass(x.item,classMap),
-    condition:stockCondition(p,x.item,generation),
+    condition:stockCondition(p,x.item,generation,classMap),
     asking_price:cyclePrice(p,x.item,generation),
     visibility:'public',
     status:'in_stock',
@@ -545,11 +582,28 @@ async function search(u:URL){
   const [all,classMap]=await Promise.all([catalogue(),classifications()]);
   const f=q.toLowerCase();
 
-  // Start with literal catalogue-name matches, then expand through their
-  // Catalogger classification so a broad term like "pistol" also finds
-  // named pistol models which do not contain the word "pistol".
+  // Start with literal catalogue-name matches, then expand through the
+  // most relevant Catalogger classifications. A query like "pistol" should
+  // expand pistol families, not every ammunition family touched by a name.
   const direct=all.filter((i:any)=>String(i.name||'').toLowerCase().includes(f));
-  const relatedKeys=new Set(direct.map((i:any)=>relationKey(i,classMap)).filter(Boolean));
+  const qnorm=f.replace(/[^a-z0-9]+/g,' ').trim();
+  const qterms=qnorm.split(/\s+/).filter(Boolean).map(t=>t==='ammo'?'ammunition':t);
+  const anchorDirect=direct.filter((i:any)=>{
+    const cls=classification(i,classMap)||{};
+    const label=(String(cls.source_category||'')+' '+String(cls.source_subcategory||'')).toLowerCase().replace(/[^a-z0-9]+/g,' ');
+    return qterms.length&&qterms.every(t=>label.includes(t));
+  });
+  let relationAnchors=anchorDirect;
+  if(!relationAnchors.length&&direct.length){
+    const counts=new Map<string,number>();
+    for(const i of direct){
+      const d=department(i,classMap)||'other';
+      counts.set(d,(counts.get(d)||0)+1);
+    }
+    const dominant=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))[0]?.[0];
+    relationAnchors=direct.filter((i:any)=>(department(i,classMap)||'other')===dominant);
+  }
+  const relatedKeys=new Set(relationAnchors.map((i:any)=>relationKey(i,classMap)).filter(Boolean));
 
   const matches=all.filter((i:any)=>{
     const name=String(i.name||'').toLowerCase();
@@ -588,7 +642,7 @@ async function search(u:URL){
   ]);
   const placeMap=new Map(placeRows.map((r:any)=>[String(r.entity_id),r]));
   const observationMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
-  const offerItems=active?[active]:matches.slice(0,12);
+  const offerItems=active?[active]:matches;
   const stockCache=new Map<string,any[]>();
   const offers:any[]=[];
 
@@ -672,6 +726,33 @@ async function purchase(req:Request){
 async function health(){
   const all=await catalogue(), profiles=await db('vendr_stock_profiles','select=entity_id'), places=await db('vendr_places','select=entity_id');
   return out({ok:true,service:'vend-r-supabase',catalog_items:all.length,profiles:profiles.length,places:places.length,read_only:true,stock_model:LAZY_STOCK_VERSION});
+}
+async function stockAudit(){
+  const [all,classMap,mfrMap,profiles]=await Promise.all([
+    catalogue(),classifications(),manufacturers(),db('vendr_stock_profiles','select=*&order=name.asc')
+  ]);
+  const owners=profiles.filter((p:any)=>['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||'')));
+  const rows=owners.map((p:any)=>{
+    const plan=assortmentPlan(p);
+    const stock=initialSnapshot(p,all,classMap,mfrMap);
+    const deps:any={};
+    for(const row of stock){
+      const d=String(row.primary_department||'other');
+      deps[d]=(deps[d]||0)+1;
+    }
+    return {
+      entity_id:p.entity_id,name:p.name,district:p.district,stock_mode:p.stock_mode,
+      archetype:p.primary_archetype,planned:plan.total,generated:stock.length,
+      departments:deps
+    };
+  });
+  return out({
+    stock_model:LAZY_STOCK_VERSION,
+    owners:rows.length,
+    zero_count:rows.filter((r:any)=>r.generated===0).length,
+    underfilled_count:rows.filter((r:any)=>r.generated>0&&r.generated<Math.max(3,Math.floor(r.planned*.5))).length,
+    rows
+  });
 }
 function planFor(p:any){
   const mode=String(p.stock_mode||'');
@@ -829,6 +910,7 @@ Deno.serve(async(req:Request)=>{
   try{
     const u=new URL(req.url), a=u.searchParams.get('api');
     if(a==='health') return await health();
+    if(a==='stock_audit') return await stockAudit();
     if(a==='shops') return await shops();
     if(a==='search') return await search(u);
     if(a==='shop') return await shop(u);
