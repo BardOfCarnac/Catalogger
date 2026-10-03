@@ -2398,6 +2398,7 @@ function renderVendorStock(s,focus){
   const stockTitle=document.getElementById('stockPanelTitle');
   const search=document.getElementById('shopSearch');
   const browser=document.getElementById('stockBrowser');
+  search.value='';
 
   stockBrowserState={shop:null,rows:[],focusId:null,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
   browser.hidden=true;
