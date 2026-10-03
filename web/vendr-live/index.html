@@ -351,12 +351,14 @@ button,input{font:inherit}
   background-size:24px 24px;
   mix-blend-mode:screen;
 }
-#spacielCanvas{
+#spacielCanvas,
+#searchSpacielCanvas{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   z-index:1;
+  display:block;
 }
 .spaciel-hud{
   position:absolute;
@@ -901,8 +903,29 @@ button,input{font:inherit}
   text-transform:uppercase;
 }
 @media(max-width:760px){
-  .search-nearby-grid{grid-template-columns:1fr}
-  .search-location-card{width:calc(100% - 36px);margin:0 18px 18px}
+  .search-nearby-hero{padding:0}
+  .search-nearby-grid{
+    display:block;
+    min-height:0;
+    width:100%;
+  }
+  .search-nearby-copy{
+    padding:20px 18px 17px;
+    min-height:0;
+  }
+  .search-nearby-copy .hero-title{
+    font-size:clamp(42px,14vw,58px);
+    line-height:.82;
+  }
+  .search-location-card{
+    box-sizing:border-box;
+    width:calc(100% - 28px);
+    max-width:none;
+    margin:0 14px 14px;
+    padding:8px;
+    aspect-ratio:4/3;
+  }
+  .search-location-card .spaciel-cutin{width:100%;height:100%}
   .related-items{grid-template-columns:1fr}
   .related-item{border-right:0;border-bottom:1px solid var(--rule)}
   .related-item:last-child{border-bottom:0}
@@ -1043,6 +1066,69 @@ button,input{font:inherit}
 }
 .price.alt{background:var(--front-2)}
 .price.amber{background:var(--rear-3); color:var(--ink)}
+
+.stock-browser{
+  border-bottom:3px solid var(--ink);
+  background:rgba(255,250,240,.72);
+}
+.stock-filter-row{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding:10px 12px 9px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--front-1) var(--cream);
+}
+.stock-filter-row::-webkit-scrollbar{height:9px}
+.stock-filter-row::-webkit-scrollbar-track{background:var(--cream);border-top:1px solid var(--ink)}
+.stock-filter-row::-webkit-scrollbar-thumb{background:var(--front-1);border:1px solid var(--ink)}
+.stock-filter{
+  flex:0 0 auto;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  color:var(--ink);
+  padding:6px 8px;
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.stock-filter.on{background:var(--rear-4)}
+.stock-browser-nav{
+  min-height:38px;
+  border-top:1px solid var(--rule);
+  padding:7px 10px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.stock-pager{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:var(--ink);
+}
+.stock-pager button{
+  min-width:34px;
+  min-height:27px;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  color:var(--ink);
+  font:1000 11px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;
+}
+.stock-pager button:disabled{opacity:.32;cursor:default}
+.stock-page-status{min-width:54px;text-align:center}
+.stock-empty{
+  padding:22px 18px;
+  color:var(--muted);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+
 .fact-list{padding:3px 16px}
 .fact{
   display:grid;
@@ -1176,6 +1262,7 @@ button,input{font:inherit}
   .mini-card{border-right:0;border-bottom:1px solid var(--rule)}
   .mini-card:last-child{border-bottom:0}
   .hero{padding:18px}
+  .search-nearby-hero{padding:0}
   .hero-columns{grid-template-columns:1fr}
   .vendor-photo-strip{min-height:205px;padding:20px 18px 18px}
   .vendor-info-body{padding:18px}
@@ -1563,6 +1650,18 @@ button,input{font:inherit}
 
           <div class="restock-band" id="restockBand">Public preview · search does not materialize stock</div>
 
+          <div class="stock-browser" id="stockBrowser" hidden>
+            <div class="stock-filter-row" id="stockFilters"></div>
+            <div class="stock-browser-nav">
+              <span id="stockBrowserMeta">All stock</span>
+              <div class="stock-pager">
+                <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
+                <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
+                <button type="button" id="stockNext" aria-label="Next stock page">→</button>
+              </div>
+            </div>
+          </div>
+
           <div id="stockList">
             <article class="stock-row" data-search="tool kit basic repair tools">
               <div>
@@ -1829,6 +1928,16 @@ let lastSearch=null;
 let currentSellerId=null;
 let currentFocusOffer=null;
 let vendorHistory=[];
+const STOCK_PAGE_SIZE=8;
+let stockBrowserState={
+  shop:null,
+  rows:[],
+  focusId:null,
+  category:'all',
+  query:'',
+  page:0,
+  pageSize:STOCK_PAGE_SIZE
+};
 
 function esc(v){
   return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -2185,35 +2294,113 @@ function queueSuggestions(raw){
     }
   },170);
 }
+function stockDepartmentKey(row){
+  return String(row?.primary_department||'other');
+}
+function stockDepartmentLabel(key){
+  const labels={
+    'weapons':'Weapons',
+    'ammunition-ordnance':'Ammo',
+    'weapon-parts':'Attachments & parts',
+    'armor-protection':'Armor',
+    'cyberware':'Cyberware',
+    'electronics-comms':'Tech & comms',
+    'general-equipment':'Gear',
+    'food-consumables':'Food & drink',
+    'medical-chemical':'Medical & chemical',
+    'fashion-personal':'Fashion',
+    'vehicles-mobility':'Vehicles',
+    'netrunning':'Netrunning',
+    'virtual-goods-games':'Software & games',
+    'services-entertainment':'Services',
+    'housing-property':'Property',
+    'other':'Other'
+  };
+  return labels[key]||String(key||'Other').replaceAll('-',' ');
+}
+function stockSearchText(row){
+  return [
+    row?.name,row?.primary_department,row?.relation_key,row?.assortment_role,
+    row?.condition,row?.last_change
+  ].filter(Boolean).join(' ').toLowerCase();
+}
+function stockRowHtml(s,row,focusId){
+  const exactHit=focusId&&String(row.item_id)===String(focusId);
+  const rowClass=exactHit?' exact-row':'';
+  const nameClass=exactHit?' exact':'';
+  const flowLabel=row.last_change||null;
+  const sub=[row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+  return '<article class="stock-row'+rowClass+'" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
+    '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
+    '<div class="stock-sub">'+esc(sub)+'</div></div>'+
+    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+esc((row.assortment_role||'stock')+' · state '+String(s.state?.generation??s.state?.stock_cycle??row.stock_cycle??'—'))+
+    '</div>'+
+    '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
+}
+function filteredStockRows(){
+  const st=stockBrowserState;
+  let rows=st.rows.slice();
+  if(st.category!=='all')rows=rows.filter(r=>stockDepartmentKey(r)===st.category);
+  if(st.query){
+    const q=st.query.toLowerCase();
+    rows=rows.filter(r=>stockSearchText(r).includes(q));
+  }
+  return rows;
+}
+function renderStockBrowserPage(){
+  const st=stockBrowserState;
+  if(!st.shop)return;
+  const browser=document.getElementById('stockBrowser');
+  const list=document.getElementById('stockList');
+  const rows=filteredStockRows();
+  const pageCount=Math.max(1,Math.ceil(rows.length/st.pageSize));
+  st.page=Math.max(0,Math.min(st.page,pageCount-1));
+  const start=st.page*st.pageSize;
+  const pageRows=rows.slice(start,start+st.pageSize);
+  list.innerHTML=pageRows.length
+    ?pageRows.map(r=>stockRowHtml(st.shop,r,st.focusId)).join('')
+    :'<div class="stock-empty">No stock matches these filters.</div>';
+  document.getElementById('stockBrowserMeta').textContent=
+    rows.length+' item'+(rows.length===1?'':'s')+
+    (st.category==='all'?'':' · '+stockDepartmentLabel(st.category))+
+    (st.query?' · filtered':'');
+  document.getElementById('stockPageStatus').textContent=(st.page+1)+' / '+pageCount;
+  document.getElementById('stockPrev').disabled=st.page<=0;
+  document.getElementById('stockNext').disabled=st.page>=pageCount-1;
+  browser.hidden=false;
+  document.querySelectorAll('#stockFilters [data-stock-category]').forEach(btn=>{
+    btn.classList.toggle('on',btn.dataset.stockCategory===st.category);
+  });
+}
+function buildStockFilters(rows){
+  const filters=document.getElementById('stockFilters');
+  const seen=[];
+  for(const row of rows){
+    const key=stockDepartmentKey(row);
+    if(!seen.includes(key))seen.push(key);
+  }
+  filters.innerHTML=
+    '<button class="stock-filter on" type="button" data-stock-category="all">All</button>'+
+    seen.map(key=>'<button class="stock-filter" type="button" data-stock-category="'+esc(key)+'">'+esc(stockDepartmentLabel(key))+'</button>').join('');
+}
+function openStockAtFocus(rows,focusId){
+  stockBrowserState.category='all';
+  stockBrowserState.query='';
+  stockBrowserState.page=0;
+  if(!focusId)return;
+  const index=rows.findIndex(r=>String(r.item_id)===String(focusId));
+  if(index>=0)stockBrowserState.page=Math.floor(index/stockBrowserState.pageSize);
+}
 function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
   const sourceRows=Array.isArray(s.stock)?s.stock.slice():[];
   const children=childSellers(s);
   const stockTitle=document.getElementById('stockPanelTitle');
   const search=document.getElementById('shopSearch');
+  const browser=document.getElementById('stockBrowser');
 
-  function stockRowsHtml(rows){
-    const focusId=focus?String(focus.item_id):null;
-    const exact=focusId?rows.find(r=>String(r.item_id)===focusId):null;
-    const relation=(exact?.relation_key)||(focus?.relation_key)||null;
-    const ranked=rows.map((r,index)=>{
-      const exactHit=focusId&&String(r.item_id)===focusId;
-      const relatedHit=!exactHit&&relation&&r.relation_key===relation;
-      return {r,index,rank:exactHit?0:(relatedHit?1:2),exactHit,relatedHit};
-    }).sort((a,b)=>a.rank-b.rank||a.index-b.index);
-    return ranked.map(({r,exactHit,relatedHit})=>{
-      const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
-      const nameClass=exactHit?' exact':(relatedHit?' related':'');
-      const flowLabel=r.last_change||null;
-      const sub=[r.assortment_role,r.condition,flowLabel,exactHit?'exact item':(relatedHit?'related item':null)].filter(Boolean).join(' · ');
-      return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
-        '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
-        '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-        '<div class="stock-meta"><strong>'+esc(quantityText(r))+'</strong><br>'+esc((r.assortment_role||'stock')+' · state '+String(s.state?.generation??s.state?.stock_cycle??r.stock_cycle??'—'))+
-        '</div>'+
-        '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
-    }).join('');
-  }
+  stockBrowserState={shop:null,rows:[],focusId:null,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
+  browser.hidden=true;
 
   if(children.length){
     stockTitle.textContent='Shops here';
@@ -2228,7 +2415,7 @@ function renderVendorStock(s,focus){
         '</div><div class="place-meta"><strong>'+esc(child.type||'Shop')+'</strong>'+esc(modeLabel(child.stock_mode)||'')+'</div>'+
         '<div class="place-arrow">View →</div></button>';
     }).join('');
-    const ownStock=sourceRows.length?'<div class="stock-subsection-title">Stock sold directly by '+esc(s.name||'this location')+'</div>'+stockRowsHtml(sourceRows):'';
+    const ownStock=sourceRows.length?'<div class="stock-subsection-title">Stock sold directly by '+esc(s.name||'this location')+'</div>'+sourceRows.map(r=>stockRowHtml(s,r,focus?.item_id||null)).join(''):'';
     list.innerHTML=placeHtml+ownStock;
     list.querySelectorAll('[data-child-shop]').forEach(el=>el.addEventListener('click',()=>{
       const id=el.dataset.childShop;
@@ -2240,7 +2427,7 @@ function renderVendorStock(s,focus){
   }
 
   stockTitle.textContent='Stock';
-  search.placeholder='SEARCH THIS SHOP';
+  search.placeholder='FILTER THIS SHOP';
   if(!sourceRows.length){
     list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf stock</div><div class="stock-sub">This place does not currently list physical stock.</div></div><div class="stock-meta"><strong>—</strong><br>no count</div><div class="price amber">—</div></article>';
     document.getElementById('stockSummary').innerHTML='No shelf stock<br>'+esc(modeLabel(s.stock_mode));
@@ -2248,7 +2435,11 @@ function renderVendorStock(s,focus){
     return;
   }
 
-  list.innerHTML=stockRowsHtml(sourceRows);
+  const focusId=focus?.item_id?String(focus.item_id):null;
+  stockBrowserState={shop:s,rows:sourceRows,focusId,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
+  buildStockFilters(sourceRows);
+  openStockAtFocus(sourceRows,focusId);
+  renderStockBrowserPage();
   document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · state '+esc(String(s.state?.generation??s.state?.stock_cycle??'—'))+'<br>'+esc(s.state?.cadence_label||'Current stock');
   document.getElementById('restockBand').textContent=nextRefreshText(s.state);
 }
@@ -2340,7 +2531,7 @@ function renderVendor(s,offers){
     }else{
       document.getElementById('offerKicker').textContent='You were looking for';
       document.getElementById('offerPrice').textContent='NO CURRENT OFFER';
-      document.getElementById('offerQuantity').textContent='related stock shown first';
+      document.getElementById('offerQuantity').textContent='no current shelf stock';
       document.getElementById('offerSub').textContent=(s.name||'This seller')+' is a plausible seller for this catalogue item, but its current resolved stock does not contain it.';
     }
   }else{
@@ -2349,7 +2540,6 @@ function renderVendor(s,offers){
   document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):'Profile only';
   document.getElementById('factWorldState').textContent=(s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory';
   renderVendorStock(s,focus);
-  filterShopStock('');
 }
 async function openVendor(id,focus=null,options={}){
   if(busy)return;
@@ -2375,6 +2565,12 @@ function goBackFromVendor(){
 }
 function filterShopStock(q){
   q=String(q||'').trim().toLowerCase();
+  if(stockBrowserState.shop){
+    stockBrowserState.query=q;
+    stockBrowserState.page=0;
+    renderStockBrowserPage();
+    return;
+  }
   document.querySelectorAll('#stockList .stock-row, #stockList .place-row').forEach(row=>{
     const hay=(row.textContent+' '+(row.dataset.search||'')).toLowerCase();
     row.style.display=(!q||hay.includes(q))?'':'none';
@@ -2505,6 +2701,23 @@ document.getElementById('backToMarket').addEventListener('click',goBackFromVendo
 document.getElementById('parentLocationLink').addEventListener('click',e=>{
   const id=e.currentTarget.dataset.parentShop;
   if(id)playWipe(()=>openVendor(id,null,{pushHistory:false}));
+});
+document.getElementById('stockFilters').addEventListener('click',e=>{
+  const button=e.target.closest('[data-stock-category]');
+  if(!button||!stockBrowserState.shop)return;
+  stockBrowserState.category=button.dataset.stockCategory||'all';
+  stockBrowserState.page=0;
+  renderStockBrowserPage();
+});
+document.getElementById('stockPrev').addEventListener('click',()=>{
+  if(!stockBrowserState.shop)return;
+  stockBrowserState.page=Math.max(0,stockBrowserState.page-1);
+  renderStockBrowserPage();
+});
+document.getElementById('stockNext').addEventListener('click',()=>{
+  if(!stockBrowserState.shop)return;
+  stockBrowserState.page+=1;
+  renderStockBrowserPage();
 });
 document.getElementById('shopSearch').addEventListener('input',e=>filterShopStock(e.currentTarget.value));
 
