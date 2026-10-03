@@ -1,4 +1,9 @@
 <!doctype html>
+<!-- LIVE VEND-R FRONTEND NOTE:
+     Canonical browser UI and source: main/index.html
+     This is the Supabase-connected Vend-R frontend.
+     GitHub Pages publishes this file directly. Do not maintain a second frontend copy.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -158,11 +163,41 @@ button,input,select{font:inherit}
   padding:18px 0 46px;
 }
 .topbar{
+  position:sticky;
+  top:18px;
+  z-index:400;
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
   gap:12px;
   margin-bottom:14px;
+}
+.header-backdrop{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:0;
+  z-index:300;
+  overflow:hidden;
+  pointer-events:none;
+  background:var(--rear-4);
+}
+.header-backdrop .bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  height:100vh;
+  will-change:transform;
+}
+.header-backdrop:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
 }
 .brand{
   font-weight:1000;
@@ -338,6 +373,9 @@ button,input,select{font:inherit}
   box-shadow:var(--hero-shadow);
   padding:26px;
   margin-bottom:18px;
+}
+.header-shadowless{
+  box-shadow:none !important;
 }
 .home-hero{padding:0;overflow:hidden}
 .home-hero-grid{
@@ -1302,6 +1340,7 @@ button,input,select{font:inherit}
 }
 @media (max-width:760px){
   .shell{width:min(100% - 22px,680px);padding-top:11px}
+  .topbar{top:11px}
   .topbar{grid-template-columns:1fr auto}
   .inline-search{grid-column:1/-1;grid-row:2}
   .grid-2,.vendor-layout{grid-template-columns:1fr}
@@ -1405,6 +1444,10 @@ button,input,select{font:inherit}
 </div>
 
 <div class="app">
+  <div class="header-backdrop" id="headerBackdrop" aria-hidden="true">
+    <div class="bg-train" id="headerBgTrain"></div>
+  </div>
+
   <!-- ========== HOME TEMPLATE ========== -->
   <section class="view active" id="homeView">
     <div class="shell">
@@ -1618,6 +1661,7 @@ button,input,select{font:inherit}
           <button type="button" data-sort="price">Lowest price</button>
           <button type="button" data-sort="condition">Condition</button>
           <button type="button" data-sort="availability">Availability</button>
+          <button type="button" data-sort="stock">Stock level</button>
         </div>
         <div class="search-offer-list" id="availableOffersList"></div>
       </section>
@@ -1853,18 +1897,60 @@ button,input,select{font:inherit}
 <script>
 /* -------- REPEATING BACK FIELD -------- */
 const bgTrain = document.getElementById('bgTrain');
-for(let i=-3;i<24;i++){
-  const p = document.createElement('div');
-  p.className = 'bg-period';
-  p.style.left = `${i * 204}vw`;
-  p.innerHTML = `
-    <div class="bg-band one"></div>
-    <div class="bg-band two"></div>
-    <div class="bg-band three"></div>
-    <div class="bg-band four"></div>`;
-  bgTrain.appendChild(p);
+const headerBgTrain = document.getElementById('headerBgTrain');
+const headerBackdrop = document.getElementById('headerBackdrop');
+
+function buildBackgroundTrain(train){
+  for(let i=-3;i<24;i++){
+    const p = document.createElement('div');
+    p.className = 'bg-period';
+    p.style.left = `${i * 204}vw`;
+    p.innerHTML = `
+      <div class="bg-band one"></div>
+      <div class="bg-band two"></div>
+      <div class="bg-band three"></div>
+      <div class="bg-band four"></div>`;
+    train.appendChild(p);
+  }
 }
-bgTrain.style.transform = `translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`;
+function setBackgroundTransform(value){
+  bgTrain.style.transform = value;
+  headerBgTrain.style.transform = value;
+}
+function headerCutoff(){
+  const activeTopbar = document.querySelector('.view.active .topbar');
+  if(!activeTopbar) return 0;
+  const stickyTop = parseFloat(getComputedStyle(activeTopbar).top) || 0;
+  return Math.ceil(stickyTop + activeTopbar.offsetHeight + 14);
+}
+function syncHeaderBackdrop(){
+  if(!headerBackdrop) return;
+  headerBackdrop.style.height = headerCutoff() + 'px';
+}
+const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty,.template-note';
+let headerShadowRaf = 0;
+function syncHeaderShadows(){
+  headerShadowRaf = 0;
+  const cutoff = headerCutoff();
+  if(!cutoff) return;
+  document.querySelectorAll('.view.active ' + headerShadowSelector).forEach(el=>{
+    const rect = el.getBoundingClientRect();
+    const remaining = rect.bottom - cutoff;
+    // Only suppress the shadow for the final shadow-depth of the box's exit.
+    // The masking boundary itself never changes while scrolling.
+    el.classList.toggle('header-shadowless', remaining <= 24);
+  });
+}
+function queueHeaderShadowSync(){
+  if(headerShadowRaf) return;
+  headerShadowRaf = requestAnimationFrame(syncHeaderShadows);
+}
+window.addEventListener('scroll', queueHeaderShadowSync, {passive:true});
+
+buildBackgroundTrain(bgTrain);
+buildBackgroundTrain(headerBgTrain);
+setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
+requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
 /* -------- VIEW STATE -------- */
 const homeView = document.getElementById('homeView');
@@ -1950,7 +2036,7 @@ function switchTo(target){
     const bp = Math.min(1, elapsed / BG_DURATION);
     const eased = gentleBackgroundProgress(bp);
     const bgX = bgStart + (bgEnd - bgStart) * eased;
-    bgTrain.style.transform = `translateX(${bgX}vw)`;
+    setBackgroundTransform(`translateX(${bgX}vw)`);
 
     const amberLead = fgX(elapsed, fgSpecs.three);
     if (!swapped && amberLead <= -108){
@@ -1958,6 +2044,7 @@ function switchTo(target){
       Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
       currentView = target;
       window.scrollTo(0,0);
+      requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
     }
 
     const doneFG = elapsed >= fgSpecs.three.delay + fgSpecs.three.duration;
@@ -1969,7 +2056,7 @@ function switchTo(target){
     }
 
     bgStep++;
-    bgTrain.style.transform = `translateX(${BG_BASE - (bgStep * BG_PERIOD)}vw)`;
+    setBackgroundTransform(`translateX(${BG_BASE - (bgStep * BG_PERIOD)}vw)`);
 
     Object.values(panels).forEach(el => el.remove());
     busy = false;
@@ -2302,17 +2389,22 @@ function conditionRank(v){
   const ranks={new:0,refurbished:1,used:2,salvaged:3,damaged:4,not_applicable:5};
   return ranks[String(v||'').toLowerCase()]??9;
 }
+function availabilityRank(v){
+  const ranks={common:0,restricted:1,scarce:2,rare_market:3,exceptional:4};
+  return ranks[String(v||'common')]??9;
+}
 function sortOffers(rows,mode){
   const arr=rows.slice();
   if(mode==='price')return arr.sort((a,b)=>(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
   if(mode==='condition')return arr.sort((a,b)=>conditionRank(a.condition)-conditionRank(b.condition)||String(a.shop_name).localeCompare(String(b.shop_name)));
-  if(mode==='availability')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='availability')return arr.sort((a,b)=>availabilityRank(a.availability_band)-availabilityRank(b.availability_band)||(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='stock')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
   return arr.sort((a,b)=>String(placeLabel(a)).localeCompare(String(placeLabel(b)))||String(a.shop_name).localeCompare(String(b.shop_name)));
 }
 function offerRow(o,exact=false){
   return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
     '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
+    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
     '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
     '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
     '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
@@ -2365,7 +2457,7 @@ function renderLikelySellers(data){
   list.innerHTML=plausible.map(o=>
     '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
       '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · not in current stock</span></div>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · not in current stock</span></div>'+
       '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
       '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
       '<div class="price-block"><span class="price">LIKELY SELLER</span>'+
@@ -2384,7 +2476,7 @@ function renderRelatedItems(data,q){
   section.hidden=!related.length;
   list.innerHTML=related.map(x=>
     '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
-      '<strong>'+esc(x.name)+'</strong><span>Same catalogue family →</span></button>'
+      '<strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+' · same family →</span></button>'
   ).join('');
   list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>runSearchPage(q,el.dataset.relatedItem)));
 }
@@ -2559,14 +2651,13 @@ function stockDepartmentLabel(key){
 function stockSearchText(row){
   return [
     row?.name,row?.primary_department,row?.relation_key,row?.assortment_role,
-    row?.condition,row?.last_change
+    row?.condition,row?.last_change,row?.availability_label,row?.price_tier
   ].filter(Boolean).join(' ').toLowerCase();
 }
 function isFoodDrinkVenue(s,rows=null){
   const sourceRows=Array.isArray(rows)?rows:(Array.isArray(s?.stock)?s.stock:[]);
-  const venueText=[
-    s?.type,s?.tags,s?.blurb,s?.copy,s?.short_description,s?.modelling_note,s?.archetype
-  ].filter(Boolean).join(' ').toLowerCase();
+  const venueText=[s?.type,s?.tags,s?.blurb,s?.copy,s?.short_description,s?.modelling_note,s?.archetype]
+    .filter(Boolean).join(' ').toLowerCase();
   const venueHint=/\b(bar|cafe|café|restaurant|diner|eatery|food stall|food stand|food vendor|canteen|coffee shop|coffeehouse|pub|tavern|izakaya|noodle shop|grill|pizzeria|tea house|teahouse)\b/.test(venueText);
   const allFood=sourceRows.length>0&&sourceRows.every(row=>stockDepartmentKey(row)==='food-consumables');
   return venueHint||allFood;
@@ -2581,7 +2672,7 @@ function stockRowHtml(s,row,focusId){
       '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
   }
   const flowLabel=row.last_change||null;
-  const sub=[row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+  const sub=[row.price_tier,row.availability_label,row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
   return '<article class="stock-row'+rowClass+'" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
@@ -2605,11 +2696,11 @@ function renderStockBrowserPage(){
   const browser=document.getElementById('stockBrowser');
   const list=document.getElementById('stockList');
   const rows=filteredStockRows();
+  const menuMode=isFoodDrinkVenue(st.shop,st.rows);
   const pageCount=Math.max(1,Math.ceil(rows.length/st.pageSize));
   st.page=Math.max(0,Math.min(st.page,pageCount-1));
   const start=st.page*st.pageSize;
   const pageRows=rows.slice(start,start+st.pageSize);
-  const menuMode=isFoodDrinkVenue(st.shop,st.rows);
   list.innerHTML=pageRows.length
     ?pageRows.map(r=>stockRowHtml(st.shop,r,st.focusId)).join('')
     :'<div class="stock-empty">'+(menuMode?'No menu items match this filter.':'No stock matches these filters.')+'</div>';
@@ -2628,10 +2719,7 @@ function renderStockBrowserPage(){
 function buildStockFilters(rows,menuMode=false){
   const filters=document.getElementById('stockFilters');
   filters.hidden=menuMode;
-  if(menuMode){
-    filters.innerHTML='';
-    return;
-  }
+  if(menuMode){filters.innerHTML='';return;}
   const seen=[];
   for(const row of rows){
     const key=stockDepartmentKey(row);
@@ -2690,7 +2778,7 @@ function renderVendorStock(s,focus){
   search.placeholder=menuMode?'FILTER THIS MENU':'FILTER THIS SHOP';
   if(!sourceRows.length){
     if(menuMode){
-      list.innerHTML='<article class="stock-row menu-row" data-search=""><div><div class="stock-name">No menu listed</div><div class="stock-sub">This venue does not currently publish menu items.</div></div><div class="price amber">—</div></article>';
+      list.innerHTML='<article class="stock-row menu-row" data-search=""><div><div class="stock-name">No menu listed</div></div><div class="price amber">—</div></article>';
       document.getElementById('stockSummary').innerHTML='No menu items<br>Food & drink';
       document.getElementById('restockBand').textContent='Menu';
     }else{
@@ -2745,9 +2833,7 @@ function renderVendor(s,offers){
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
   document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
-  document.getElementById('vendorStatus').textContent=children.length
-    ?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE')
-    :(menuMode?('MENU · '+String((s.stock||[]).length)+' ITEM'+((s.stock||[]).length===1?'':'S')):((s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY'));
+  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(menuMode?('MENU · '+String((s.stock||[]).length)+' ITEM'+((s.stock||[]).length===1?'':'S')):((s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY'));
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=menuMode?'MENU':modeLabel(s.stock_mode);
@@ -2802,26 +2888,18 @@ function renderVendor(s,offers){
       document.getElementById('offerKicker').textContent=menuMode?'Menu item':'Current offer';
       document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
       document.getElementById('offerQuantity').textContent=menuMode?'MENU ITEM':((exact.quantity==null?'On demand':String(exact.quantity)+' available')+' · '+(exact.condition||'stock item'));
-      document.getElementById('offerSub').textContent=menuMode
-        ?'This menu item brought you to '+(s.name||'this venue')+'.'
-        :'This is the item that brought you to '+(s.name||'this seller')+'.';
+      document.getElementById('offerSub').textContent=menuMode?'This menu item brought you to '+(s.name||'this venue')+'.':[exact.availability_label,exact.price_tier,'This is the item that brought you to '+(s.name||'this seller')+'.'].filter(Boolean).join(' · ');
     }else{
       document.getElementById('offerKicker').textContent='You were looking for';
       document.getElementById('offerPrice').textContent=menuMode?'NOT ON MENU':'NO CURRENT OFFER';
       document.getElementById('offerQuantity').textContent=menuMode?'menu item unavailable':'no current shelf stock';
-      document.getElementById('offerSub').textContent=menuMode
-        ?(s.name||'This venue')+' is a plausible match, but the item is not on its current menu.'
-        :(s.name||'This seller')+' is a plausible seller for this catalogue item, but its current resolved stock does not contain it.';
+      document.getElementById('offerSub').textContent=menuMode?(s.name||'This venue')+' is a plausible match, but the item is not on its current menu.':(s.name||'This seller')+' is a plausible seller for this catalogue item, but its current resolved stock does not contain it.';
     }
   }else{
     offer.hidden=true;
   }
-  document.getElementById('factStatus').textContent=menuMode
-    ?((s.stock||[]).length?('Menu · '+String((s.stock||[]).length)+' items'):'Menu profile')
-    :((s.stock||[]).length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):'Profile only');
-  document.getElementById('factWorldState').textContent=menuMode
-    ?((s.stock||[]).length?'Current menu':'No menu listed')
-    :((s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory');
+  document.getElementById('factStatus').textContent=menuMode?((s.stock||[]).length?('Menu · '+String((s.stock||[]).length)+' items'):'Menu profile'):((s.stock||[]).length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):'Profile only');
+  document.getElementById('factWorldState').textContent=menuMode?((s.stock||[]).length?'Current menu':'No menu listed'):((s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory');
   renderVendorStock(s,focus);
 }
 async function openVendor(id,focus=null,options={}){
@@ -2927,7 +3005,7 @@ function drawSearchSpaciel(data=lastSearch?.data){
   const readout=document.getElementById('searchSpacielReadout');
   if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
-window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel()});
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
 
 document.getElementById('resultsSort').addEventListener('click',e=>{
   const button=e.target.closest('[data-sort]');
@@ -2947,6 +3025,7 @@ async function boot(){
     document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
+    requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
     const params=new URLSearchParams(location.search);
     const q=params.get('q');
