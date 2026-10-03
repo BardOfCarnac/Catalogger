@@ -1617,6 +1617,7 @@ button,input,select{font:inherit}
           <button type="button" data-sort="price">Lowest price</button>
           <button type="button" data-sort="condition">Condition</button>
           <button type="button" data-sort="availability">Availability</button>
+          <button type="button" data-sort="stock">Stock level</button>
         </div>
         <div class="search-offer-list" id="availableOffersList"></div>
       </section>
@@ -2301,17 +2302,22 @@ function conditionRank(v){
   const ranks={new:0,refurbished:1,used:2,salvaged:3,damaged:4,not_applicable:5};
   return ranks[String(v||'').toLowerCase()]??9;
 }
+function availabilityRank(v){
+  const ranks={common:0,restricted:1,scarce:2,rare_market:3,exceptional:4};
+  return ranks[String(v||'common')]??9;
+}
 function sortOffers(rows,mode){
   const arr=rows.slice();
   if(mode==='price')return arr.sort((a,b)=>(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
   if(mode==='condition')return arr.sort((a,b)=>conditionRank(a.condition)-conditionRank(b.condition)||String(a.shop_name).localeCompare(String(b.shop_name)));
-  if(mode==='availability')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='availability')return arr.sort((a,b)=>availabilityRank(a.availability_band)-availabilityRank(b.availability_band)||(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='stock')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
   return arr.sort((a,b)=>String(placeLabel(a)).localeCompare(String(placeLabel(b)))||String(a.shop_name).localeCompare(String(b.shop_name)));
 }
 function offerRow(o,exact=false){
   return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
     '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
+    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
     '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
     '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
     '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
@@ -2364,7 +2370,7 @@ function renderLikelySellers(data){
   list.innerHTML=plausible.map(o=>
     '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
       '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
-      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · not in current stock</span></div>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · not in current stock</span></div>'+
       '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
       '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
       '<div class="price-block"><span class="price">LIKELY SELLER</span>'+
@@ -2383,7 +2389,7 @@ function renderRelatedItems(data,q){
   section.hidden=!related.length;
   list.innerHTML=related.map(x=>
     '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
-      '<strong>'+esc(x.name)+'</strong><span>Same catalogue family →</span></button>'
+      '<strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+' · same family →</span></button>'
   ).join('');
   list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>runSearchPage(q,el.dataset.relatedItem)));
 }
@@ -2558,7 +2564,7 @@ function stockDepartmentLabel(key){
 function stockSearchText(row){
   return [
     row?.name,row?.primary_department,row?.relation_key,row?.assortment_role,
-    row?.condition,row?.last_change
+    row?.condition,row?.last_change,row?.availability_label,row?.price_tier
   ].filter(Boolean).join(' ').toLowerCase();
 }
 function stockRowHtml(s,row,focusId){
@@ -2566,7 +2572,7 @@ function stockRowHtml(s,row,focusId){
   const rowClass=exactHit?' exact-row':'';
   const nameClass=exactHit?' exact':'';
   const flowLabel=row.last_change||null;
-  const sub=[row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+  const sub=[row.price_tier,row.availability_label,row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
   return '<article class="stock-row'+rowClass+'" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
@@ -2765,7 +2771,7 @@ function renderVendor(s,offers){
       document.getElementById('offerKicker').textContent='Current offer';
       document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
       document.getElementById('offerQuantity').textContent=(exact.quantity==null?'On demand':String(exact.quantity)+' available')+' · '+(exact.condition||'stock item');
-      document.getElementById('offerSub').textContent='This is the item that brought you to '+(s.name||'this seller')+'.';
+      document.getElementById('offerSub').textContent=[exact.availability_label,exact.price_tier,'This is the item that brought you to '+(s.name||'this seller')+'.'].filter(Boolean).join(' · ');
     }else{
       document.getElementById('offerKicker').textContent='You were looking for';
       document.getElementById('offerPrice').textContent='NO CURRENT OFFER';
