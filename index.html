@@ -1,4 +1,8 @@
 <!doctype html>
+<!-- LIVE VEND-R FRONTEND NOTE:
+     This index.html is the browser-facing Vend-R frontend and is connected to the Supabase Vend-R backend.
+     Apply live UI changes here; do not confuse it with the duplicate/embedded frontend copy unless intentionally syncing both.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -158,11 +162,19 @@ button,input,select{font:inherit}
   padding:18px 0 46px;
 }
 .topbar{
+  position:sticky;
+  top:0;
+  z-index:400;
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
   gap:12px;
   margin-bottom:14px;
+  padding:10px 0 12px;
+  background:rgba(255,250,240,.96);
+  border-bottom:3px solid var(--ink);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 .brand{
   font-weight:1000;
