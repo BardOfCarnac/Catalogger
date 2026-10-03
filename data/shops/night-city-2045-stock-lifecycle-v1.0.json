@@ -67,7 +67,7 @@
         "selection_mode": "weighted_shape"
       },
       "shop_scale": "small",
-      "stock_mode": "EVENT_MARKET",
+      "stock_mode": "CHANNEL_TEMPLATE",
       "stock_lifecycle": {
         "mode": "event",
         "version": "1.0",
@@ -94,7 +94,7 @@
         "selection_mode": "weighted_shape"
       },
       "shop_scale": "small",
-      "stock_mode": "EVENT_MARKET",
+      "stock_mode": "CHANNEL_TEMPLATE",
       "stock_lifecycle": {
         "mode": "event",
         "version": "1.0",
