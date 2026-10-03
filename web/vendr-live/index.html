@@ -46,7 +46,61 @@ body{
   color:var(--ink);
   font-family:Arial,Helvetica,sans-serif;
 }
-button,input{font:inherit}
+button,input,select{font:inherit}
+
+/* -------- MOCK SPATIAL CONTROL -------- */
+.topbar-actions{display:flex;gap:8px;align-items:center}
+.spatial-source-token{background:var(--front-1);color:#fff}
+.spatial-overlay[hidden]{display:none}
+.spatial-overlay{
+  position:fixed;inset:0;z-index:9000;display:grid;place-items:center;
+  padding:18px;background:rgba(23,17,12,.58)
+}
+.spatial-dialog{
+  width:min(620px,100%);border:4px solid var(--ink);background:var(--cream);
+  box-shadow:18px 18px 0 rgba(0,0,0,.23)
+}
+.spatial-dialog-head{
+  display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
+  padding:18px;border-bottom:3px solid var(--ink)
+}
+.spatial-dialog-head h2{
+  margin:5px 0 0;font-size:clamp(28px,5vw,42px);line-height:.9;
+  letter-spacing:-.04em;text-transform:uppercase
+}
+.spatial-dialog-head p{
+  max-width:500px;margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.45
+}
+.spatial-close{
+  flex:0 0 38px;width:38px;height:38px;border:2px solid var(--ink);
+  background:var(--paper);font-weight:1000;cursor:pointer
+}
+.spatial-dialog-body{display:grid;gap:14px;padding:18px}
+.spatial-dialog-body label{
+  display:grid;gap:7px;font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase
+}
+.spatial-dialog-body select{
+  width:100%;min-height:48px;border:3px solid var(--ink);background:var(--paper);
+  color:var(--ink);padding:0 12px;font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace
+}
+.spatial-readout{
+  border:2px solid var(--ink);background:var(--paper);padding:12px;
+  font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.65;text-transform:uppercase
+}
+.spatial-actions{display:flex;justify-content:flex-end;gap:9px}
+.spatial-actions button{
+  min-height:44px;border:3px solid var(--ink);background:var(--rear-4);color:var(--ink);
+  padding:0 14px;font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;cursor:pointer
+}
+.spatial-actions .primary{background:var(--front-1);color:#fff}
+@media(max-width:620px){
+  .topbar-actions{gap:5px}
+  .topbar-actions .action-btn{padding:0 9px}
+  .spatial-dialog{box-shadow:10px 10px 0 rgba(0,0,0,.23)}
+}
 
 /* -------- BACKGROUND FIELD -------- */
 .background{
@@ -1359,7 +1413,10 @@ button,input{font:inherit}
           <input id="marketSearchTop" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
           <div class="search-suggest" id="marketSuggest" hidden></div>
         </label>
-        <button class="action-btn" id="marketBrowseButton">Browse</button>
+        <div class="topbar-actions">
+          <button class="action-btn" id="marketBrowseButton">Browse</button>
+          <button class="action-btn" id="spatialMockButton">Location</button>
+        </div>
       </header>
 
       <section class="hero home-hero">
@@ -1376,7 +1433,8 @@ button,input{font:inherit}
 
             <div class="nearby-line hero-location-line">
               <span>Selected area</span>
-              <span class="token">Night City</span>
+              <span class="token" id="selectedAreaToken">Night City</span>
+              <span class="token spatial-source-token" id="spatialSourceToken">Mock Spaciel</span>
               <span class="muted" id="marketPulse">Connecting to Night City market data…</span>
             </div>
           </div>
@@ -1388,7 +1446,7 @@ button,input{font:inherit}
                 <strong>SPACIEL</strong><span>MARKET LAYER</span>
               </div>
               <div class="spaciel-hud spaciel-place">
-                NIGHT CITY<br><strong>PLACE FEED</strong>
+                <span id="spacielAreaLabel">NIGHT CITY</span><br><strong id="spacielAreaMode">MOCK POSITION</strong>
               </div>
               <div class="spaciel-hud spaciel-readout" id="spacielReadout">CONNECTING…</div>
               <div class="spaciel-hud spaciel-powered">POWERED BY <strong>SPACIEL</strong></div>
@@ -1766,6 +1824,29 @@ button,input{font:inherit}
   </section>
 </div>
 
+<div class="spatial-overlay" id="spatialOverlay" hidden>
+  <section class="spatial-dialog" role="dialog" aria-modal="true" aria-labelledby="spatialDialogTitle">
+    <div class="spatial-dialog-head">
+      <div>
+        <div class="kicker">Developer location source</div>
+        <h2 id="spatialDialogTitle">Spoof Spaciel signal</h2>
+        <p>Choose a district test point. VEND-R receives a normalised Night City position through the Radian Spatial interface; the mock resolver turns that position into local context.</p>
+      </div>
+      <button class="spatial-close" id="spatialClose" aria-label="Close">×</button>
+    </div>
+    <div class="spatial-dialog-body">
+      <label>Test district
+        <select id="spatialDistrictSelect"></select>
+      </label>
+      <div class="spatial-readout" id="spatialReadout">Preparing mock signal…</div>
+      <div class="spatial-actions">
+        <button id="spatialReset" type="button">Default</button>
+        <button class="primary" id="spatialApply" type="button">Send spoof signal</button>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="stinger-layer" id="stingerLayer"></div>
 
 <script>
@@ -1928,6 +2009,155 @@ let lastSearch=null;
 let currentSellerId=null;
 let currentFocusOffer=null;
 let vendorHistory=[];
+
+/* -------- RADIAN SPATIAL ADAPTER -------- */
+let mockSpatialAnchors={};
+let spatialSnapshot=null;
+
+const MockSpacielProvider={
+  _listeners:new Set(),
+  _position:null,
+  _storageKey:'radian.mockSpatial.district',
+  async getPosition(){
+    return this._position?{...this._position,timestamp:Date.now()}:null;
+  },
+  setTestDistrict(district,{persist=true,emit=true}={}){
+    const anchor=mockSpatialAnchors[district];
+    if(!anchor)return false;
+    if(persist){try{localStorage.setItem(this._storageKey,district)}catch(_){}}
+    this._position={
+      map:'night-city-2045',
+      x:anchor.x,
+      y:anchor.y,
+      heading:0,
+      accuracy:null,
+      timestamp:Date.now(),
+      source:'mock-spaciel'
+    };
+    if(emit){
+      const packet={...this._position};
+      this._listeners.forEach(fn=>fn(packet));
+    }
+    return true;
+  },
+  subscribe(fn){
+    this._listeners.add(fn);
+    return ()=>this._listeners.delete(fn);
+  }
+};
+
+const MockSpatialResolver={
+  id:'mock-district-grid-v1',
+  async resolve(position){
+    if(!position)return {district:null,area:null,confidence:null,source:'mock-resolver',resolver:this.id};
+    let best=null;
+    for(const [district,a] of Object.entries(mockSpatialAnchors)){
+      const dx=Number(position.x)-a.x;
+      const dy=Number(position.y)-a.y;
+      const d=(dx*dx)+(dy*dy);
+      if(!best||d<best.d)best={district,d};
+    }
+    return {
+      district:best?.district||null,
+      area:null,
+      confidence:best?1:null,
+      source:'mock-resolver',
+      resolver:this.id
+    };
+  }
+};
+
+const RadianSpatial={
+  provider:MockSpacielProvider,
+  resolver:MockSpatialResolver,
+  _listeners:new Set(),
+  _unsubscribe:null,
+  async snapshot(){
+    const position=await this.provider.getPosition();
+    const context=await this.resolver.resolve(position);
+    return {position,context};
+  },
+  useProvider(provider,resolver=this.resolver){
+    if(this._unsubscribe)this._unsubscribe();
+    this.provider=provider;
+    this.resolver=resolver;
+    this._unsubscribe=provider?.subscribe?provider.subscribe(()=>this._emit()):null;
+  },
+  subscribe(fn){
+    this._listeners.add(fn);
+    return ()=>this._listeners.delete(fn);
+  },
+  async _emit(){
+    const snap=await this.snapshot();
+    this._listeners.forEach(fn=>fn(snap));
+    window.dispatchEvent(new CustomEvent('radian:spatial-update',{detail:snap}));
+  }
+};
+window.RadianSpatial=RadianSpatial;
+RadianSpatial.useProvider(MockSpacielProvider,MockSpatialResolver);
+
+function buildMockSpatialAnchors(){
+  const districts=[...new Set(sellers.map(s=>String(s.district||'').trim()).filter(d=>d&&d!=='Citywide'))].sort((a,b)=>a.localeCompare(b));
+  const cols=6;
+  const rows=Math.max(1,Math.ceil(districts.length/cols));
+  mockSpatialAnchors={};
+  districts.forEach((district,i)=>{
+    const row=Math.floor(i/cols),col=i%cols;
+    mockSpatialAnchors[district]={
+      x:Number((.08+col*(.84/Math.max(1,cols-1))).toFixed(4)),
+      y:Number((.08+row*(.84/Math.max(1,rows-1))).toFixed(4))
+    };
+  });
+  let saved=null;
+  try{saved=localStorage.getItem(MockSpacielProvider._storageKey)}catch(_){}
+  const fallback=mockSpatialAnchors['Little Europe']?'Little Europe':districts[0];
+  MockSpacielProvider.setTestDistrict(mockSpatialAnchors[saved]?saved:fallback,{persist:false,emit:false});
+}
+
+function activeSpatialDistrict(){
+  return spatialSnapshot?.context?.district||null;
+}
+function sellerInSpatialDistrict(s,district=activeSpatialDistrict()){
+  return !district||String(s?.district||'')===String(district);
+}
+function offerInSpatialDistrict(o,district=activeSpatialDistrict()){
+  if(!district)return true;
+  if(String(o?.district||'')===String(district))return true;
+  return sellerInSpatialDistrict(sellerById(o?.shop_entity_id),district);
+}
+function updateSpatialReadout(district){
+  const a=mockSpatialAnchors[district];
+  const el=document.getElementById('spatialReadout');
+  if(!el)return;
+  el.textContent=a
+    ?'MAP night-city-2045 · X '+a.x.toFixed(4)+' · Y '+a.y.toFixed(4)+' · SOURCE mock-spaciel · RESOLVER '+MockSpatialResolver.id
+    :'No test anchor';
+}
+function applySpatialLabels(){
+  const district=activeSpatialDistrict()||'Night City';
+  const selected=document.getElementById('selectedAreaToken');
+  if(selected)selected.textContent=district;
+  const source=document.getElementById('spatialSourceToken');
+  if(source)source.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'Mock Spaciel':(spatialSnapshot?.position?.source||'Spatial');
+  const homeArea=document.getElementById('spacielAreaLabel');
+  if(homeArea)homeArea.textContent=district.toUpperCase();
+  const homeMode=document.getElementById('spacielAreaMode');
+  if(homeMode)homeMode.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'MOCK POSITION':'LIVE POSITION';
+  const searchName=document.getElementById('searchLocationName');
+  if(searchName)searchName.textContent=district;
+  const searchMode=document.getElementById('searchLocationMode');
+  if(searchMode)searchMode.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'Spoof signal · district resolver':'Spaciel position';
+}
+async function acceptSpatialSnapshot(snap){
+  spatialSnapshot=snap;
+  applySpatialLabels();
+  if(currentView==='home')renderHomeDefault();
+  if(currentView==='search'&&lastSearch)renderOfferSections(lastSearch.data,lastSearch.q);
+  drawSpaciel();
+  drawSearchSpaciel();
+}
+RadianSpatial.subscribe(acceptSpatialSnapshot);
+
 const STOCK_PAGE_SIZE=8;
 let stockBrowserState={
   shop:null,
@@ -2011,19 +2241,23 @@ function renderMarkets(rows){
   bindSellerClicks(cards);
 }
 function renderHomeDefault(){
+  const district=activeSpatialDistrict();
   const profiled=sellers.filter(s=>s.stock_profile_present||s.stock_mode!=='PLACE_ONLY');
   const browseable=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode));
   const direct=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   const markets=profiled.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
-  document.getElementById('primarySellerTitle').textContent='Known sellers';
-  document.getElementById('primarySellerMeta').innerHTML='Canonical commercial<br>profiles';
-  document.getElementById('secondarySellerTitle').textContent='Direct sellers';
-  document.getElementById('secondarySellerMeta').innerHTML='Likely stocked<br>places';
-  document.getElementById('marketPanelTitle').textContent='Markets';
-  document.getElementById('marketPanelMeta').innerHTML='Containers / events<br>from the city graph';
-  renderSellerPanel(document.getElementById('primarySellerPanel'),browseable.slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
-  renderSellerPanel(document.getElementById('secondarySellerPanel'),direct.slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
-  renderMarkets(markets);
+  const localBrowseable=browseable.filter(s=>sellerInSpatialDistrict(s,district));
+  const localDirect=direct.filter(s=>sellerInSpatialDistrict(s,district));
+  const localMarkets=markets.filter(s=>sellerInSpatialDistrict(s,district));
+  document.getElementById('primarySellerTitle').textContent=district?'Near you':'Known sellers';
+  document.getElementById('primarySellerMeta').innerHTML=district?esc(district)+'<br>commercial profiles':'Canonical commercial<br>profiles';
+  document.getElementById('secondarySellerTitle').textContent=district?'Local direct sellers':'Direct sellers';
+  document.getElementById('secondarySellerMeta').innerHTML=district?'Stock-capable<br>in selected area':'Likely stocked<br>places';
+  document.getElementById('marketPanelTitle').textContent=district?'Markets nearby':'Markets';
+  document.getElementById('marketPanelMeta').innerHTML=district?esc(district)+'<br>containers / events':'Containers / events<br>from the city graph';
+  renderSellerPanel(document.getElementById('primarySellerPanel'),(district?localBrowseable:browseable).slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
+  renderSellerPanel(document.getElementById('secondarySellerPanel'),(district?localDirect:direct).slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
+  renderMarkets(district?localMarkets:markets);
 }
 function groupSearchOffers(data){
   const map=new Map();
@@ -2093,12 +2327,13 @@ function bindOfferRows(root,data){
   }));
 }
 function renderNearbyOffers(data){
-  const available=(data.offers||[]).filter(o=>o.kind==='available');
+  const district=activeSpatialDistrict();
+  const available=(data.offers||[]).filter(o=>o.kind==='available'&&offerInSpatialDistrict(o,district));
   const exact=Boolean(data.active_item_id);
   const list=document.getElementById('nearbyOffersList');
   const top=available.slice(0,4);
   if(!top.length){
-    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports in the selected area.</div>';
+    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports in '+esc(district||'the selected area')+'.</div>';
     return;
   }
   list.innerHTML=top.map(o=>
@@ -2163,9 +2398,11 @@ function renderSearchPage(data,q){
   const exact=Boolean(data.active_item_id);
   const active=exact?(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id)):null;
   const label=(active?.name||q||'SEARCH').toUpperCase();
+  const district=activeSpatialDistrict();
   document.getElementById('searchModeLabel').textContent=exact?'Exact catalogue item':'Broad search';
-  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad catalogue search')+' · Night City-wide';
+  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad catalogue search')+' · nearby: '+(district||'Night City')+' · citywide offers below';
   document.getElementById('searchMapQuery').textContent=label;
+  applySpatialLabels();
   document.getElementById('searchPageInput').value=q;
   document.getElementById('searchFooterLeft').textContent=exact?(active?.name||q)+' · exact item':q+' · broad search';
   renderOfferSections(data,q);
@@ -2632,12 +2869,18 @@ function paintSpaciel(canvas,readoutId,signalRows){
   if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · NIGHT CITY';
 }
 function drawSpaciel(){
-  const live=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET'].includes(s.stock_mode));
+  const district=activeSpatialDistrict();
+  const live=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET'].includes(s.stock_mode)&&sellerInSpatialDistrict(s,district));
   paintSpaciel(document.getElementById('spacielCanvas'),'spacielReadout',live);
+  const readout=document.getElementById('spacielReadout');
+  if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
 function drawSearchSpaciel(data=lastSearch?.data){
-  const live=(data?.offers||[]).filter(o=>o.kind==='available');
+  const district=activeSpatialDistrict();
+  const live=(data?.offers||[]).filter(o=>o.kind==='available'&&offerInSpatialDistrict(o,district));
   paintSpaciel(document.getElementById('searchSpacielCanvas'),'searchSpacielReadout',live);
+  const readout=document.getElementById('searchSpacielReadout');
+  if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
 window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel()});
 
@@ -2653,6 +2896,9 @@ async function boot(){
   try{
     const [h,s]=await Promise.all([api({api:'health'}),api({api:'shops'})]);
     sellers=s.shops||[];
+    buildMockSpatialAnchors();
+    spatialSnapshot=await RadianSpatial.snapshot();
+    applySpatialLabels();
     document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
@@ -2690,6 +2936,30 @@ document.getElementById('marketBrowseButton').addEventListener('click',()=>{
   hideSuggestions();
   window.scrollTo({top:document.querySelector('#homeView .grid-2').offsetTop-20,behavior:'smooth'});
 });
+
+const spatialOverlay=document.getElementById('spatialOverlay');
+const spatialSelect=document.getElementById('spatialDistrictSelect');
+function openSpatialDialog(){
+  const districts=Object.keys(mockSpatialAnchors);
+  spatialSelect.innerHTML=districts.map(d=>'<option value="'+esc(d)+'">'+esc(d)+'</option>').join('');
+  const district=activeSpatialDistrict()||districts[0]||'';
+  spatialSelect.value=district;
+  updateSpatialReadout(district);
+  spatialOverlay.hidden=false;
+}
+function closeSpatialDialog(){spatialOverlay.hidden=true}
+document.getElementById('spatialMockButton').addEventListener('click',openSpatialDialog);
+document.getElementById('spatialClose').addEventListener('click',closeSpatialDialog);
+spatialOverlay.addEventListener('click',e=>{if(e.target===spatialOverlay)closeSpatialDialog()});
+spatialSelect.addEventListener('change',e=>updateSpatialReadout(e.currentTarget.value));
+document.getElementById('spatialReset').addEventListener('click',()=>{
+  const fallback=mockSpatialAnchors['Little Europe']?'Little Europe':Object.keys(mockSpatialAnchors)[0];
+  if(fallback){spatialSelect.value=fallback;updateSpatialReadout(fallback)}
+});
+document.getElementById('spatialApply').addEventListener('click',()=>{
+  if(MockSpacielProvider.setTestDistrict(spatialSelect.value))closeSpatialDialog();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!spatialOverlay.hidden)closeSpatialDialog()});
 document.getElementById('searchPageForm').addEventListener('submit',e=>{
   e.preventDefault();
   startSearchFromGesture(document.getElementById('searchPageInput').value,null);
