@@ -1,0 +1,247 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-new-westbrook-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [214, 216],
+    "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "name": "Canalside Plaza",
+      "entity_type": "container",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Strip mall containing a talent agency and several named service, food and retail tenants.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed"
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-SIZZLE-JAMS-TALENT-AGENCY",
+      "name": "Sizzle Jams Talent Agency",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Talent-management agency representing performers and organizing livecasters and Garden Patch creators.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "talent-management", "label": "Talent representation and management"},
+        {"service_key": "creator-management", "label": "Livecaster and Garden Patch creator management"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-RICK-SHAWS-TAXI-SERVICE",
+      "name": "Rick Shaw’s Taxi Service",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Taxi-service tenant in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "taxi-transport", "label": "Taxi transport"}]
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-CAPITAN-CALIENTE",
+      "name": "Capitán Caliente (Canalside Plaza)",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Capitán Caliente restaurant branch in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "restaurant-food", "label": "Prepared restaurant food"}],
+      "services": [{"service_key": "restaurant-hospitality", "label": "Restaurant hospitality"}]
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-HARDWARE-VALUE",
+      "name": "Hardware Value",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Named hardware-store tenant in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [{"offering_key": "hardware-supplies", "label": "Hardware and repair supplies"}],
+      "catalogue_note": "The source establishes the store identity but not a catalogue-level assortment, so the tenant stays source-local in this pass."
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-THE-MANE-EVENT",
+      "name": "The Mane Event",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Hair and nail salon in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "hair-nail-salon", "label": "Hair and nail salon services"}]
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-OASIS",
+      "name": "Oasis (Canalside Plaza)",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Explicit Oasis branch in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "chain_affiliation": {"name": "Oasis", "operator": "Continental Brands"},
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:new-westbrook:canalside-oasis:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 10},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 9, "used": 1, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NEW-WESTBROOK-214-TAKAYUKI-LAW",
+      "name": "Takayuki Law",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Named law-office tenant in Canalside Plaza.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "legal-services", "label": "Legal services"}]
+    },
+    {
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+      "name": "Armory Pawn Shop",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "district": "New Westbrook",
+      "map_no": 3,
+      "book_page": 214,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 214",
+      "source_summary": "Named pawn-shop tenant whose identity supports second-hand general goods plus armory/security merchandise.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "pawn-shop",
+        "seed": "nc2045:new-westbrook:armory-pawn-shop:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "electronics-comms", "weapons", "armor-protection"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "shallow",
+          "supply_capability": "irregular",
+          "price_tier_center": "Costly",
+          "pricing_style": "bargain",
+          "channel_weights": {"pawn": 8, "retail": 3, "street": 3},
+          "allowed_classification_prefixes": [
+            ["General Equipment"],
+            ["Electronics & Communications"],
+            ["Weapons"],
+            ["Armor & Protection"]
+          ],
+          "condition_weights": {"new": 1, "used": 8, "refurbished": 5, "damaged": 2, "salvaged": 4},
+          "specials": [0, 1, 2]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's fashion spillover is removed; generated stock follows the explicit pawn/armory identity."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "name": "Holliday Market",
+      "entity_type": "event_market",
+      "district": "New Westbrook",
+      "map_no": 10,
+      "book_page": 216,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 216",
+      "source_summary": "Day market in a burned-out restaurant parking lot where local sellers set up temporary pitches; much of the trade is scavenged or otherwise dubious second-hand stock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_container",
+      "stock_policy": "CHILDREN_ONLY",
+      "services": [{"service_key": "merchant-storage", "label": "Lockable basement storage used by prominent merchants"}],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "EVENT_MARKET",
+        "decision": "SPLIT_MARKET_FROM_ROTATING_VENDOR_CHANNEL"
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-NEW-WESTBROOK-216-HOLLIDAY-ROTATING-VENDORS",
+      "name": "Holliday Market rotating vendors",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "district": "New Westbrook",
+      "map_no": 10,
+      "book_page": 216,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 216",
+      "source_summary": "Editorial aggregate for the unnamed rotating local sellers explicitly described at Holliday Market; it carries the event assortment so the market place itself does not own stock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_stock_channel",
+      "stocking": {
+        "archetype_id": "night-market-stall",
+        "seed": "nc2045:new-westbrook:holliday-market-rotating-vendors:v1",
+        "overrides": {
+          "breadth_profile": "small",
+          "depth_profile": "shallow",
+          "supply_capability": "irregular",
+          "price_tier_center": "Expensive",
+          "pricing_style": "bargain",
+          "channel_weights": {"street": 7, "pawn": 7, "grey_market": 5},
+          "condition_weights": {"new": 1, "used": 6, "refurbished": 3, "damaged": 3, "salvaged": 8},
+          "specials": [0, 1, 2]
+        }
+      }
+    }
+  ]
+}

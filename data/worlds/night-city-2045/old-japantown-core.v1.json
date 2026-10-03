@@ -1,0 +1,132 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-japantown-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [131, 132, 134],
+    "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "relationships": [
+    {
+      "relationship_type": "operated_by",
+      "source_entity_id": "NC2045-EVT-OLD-JAPANTOWN-132-SUZUKI-MONTHLY-NIGHT-MARKET",
+      "target_entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 133",
+      "note": "The monthly market is run by the Suzuki family associated with the bodega, but takes place in a separate abandoned big-box store; the legacy parent link therefore means operation rather than physical containment."
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
+      "name": "Honest Hiro’s Used Cars",
+      "entity_type": "local_vendor",
+      "district": "Old Japantown",
+      "map_no": 9,
+      "book_page": 131,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 131",
+      "source_summary": "Used-car dealership operated around the clock, normally keeping at least a dozen used vehicles ready for sale; supply comes primarily through the Steel Vaqueros.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "used-vehicles", "label": "Used city-suitable vehicles", "minimum_ready_inventory": 12}
+      ],
+      "supply_relationships": [
+        {"supplier": "Steel Vaqueros", "relationship": "primary-used-vehicle-supplier"}
+      ],
+      "catalogue_note": "The source guarantees used-vehicle availability but does not establish specific models. Keeping the stock source-local avoids inventing a model mix from the broader vehicle catalogue.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "PROMOTE_RETAIL_CAPABLE_LOCAL_VENDOR",
+        "note": "Recovered during district review because the source explicitly establishes a used-car dealership even though it was not part of the 103 CORE_RETAIL count."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "name": "Mrs. Suzuki’s Bodega",
+      "entity_type": "seller",
+      "district": "Old Japantown",
+      "map_no": 16,
+      "book_page": 132,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 132-133",
+      "source_summary": "Flagship of a small family bodega chain, particularly known for Japanese foods and ingredients and for exclusive distribution of Shroomer-grown mushrooms and lichen.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "chain_affiliation": {"name": "Mrs. Suzuki's bodega chain", "operator": "Mrs. Suzuki and family"},
+      "local_offerings": [
+        {"offering_key": "shroomer-mushrooms-lichen", "label": "Shroomer-grown mushrooms and lichen"}
+      ],
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:old-japantown:mrs-suzukis-bodega:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 9, "street": 2},
+          "allowed_classification_prefixes": [["Food, Drink & Consumables", "Foodstuffs"]],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_HARD_NARROWED",
+        "note": "Direct source review supports food and ingredient retail, while the distinctive fungi remain local wares. The audit's electronics/fashion spillover is removed."
+      }
+    },
+    {
+      "entity_id": "NC2045-EVT-OLD-JAPANTOWN-132-SUZUKI-MONTHLY-NIGHT-MARKET",
+      "name": "Mrs. Suzuki’s monthly Night Market",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "district": "Old Japantown",
+      "map_no": 16,
+      "book_page": 133,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 133",
+      "source_summary": "Editorial label for the source-established Night Market run by the Suzuki family once per month in an abandoned big-box store; attendance is invitation-only for favored customers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_context",
+      "access_model": "invite_only",
+      "schedule": {"frequency": "monthly"},
+      "stock_policy": "NO_STOCK",
+      "catalogue_note": "The source establishes the event and access model but does not define its merchandise, so no invented aggregate assortment is generated."
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "name": "White Side",
+      "entity_type": "local_vendor",
+      "district": "Old Japantown",
+      "map_no": 26,
+      "book_page": 134,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 134",
+      "source_summary": "Trading post near the Hot Zone frequented by scavvers; its explicitly dependable essentials are non-irradiated water and Kibble.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "non-irradiated-water", "label": "Non-irradiated water"},
+        {"offering_key": "kibble", "label": "Kibble"},
+        {"offering_key": "scavver-trade", "label": "Scavenged goods trading"}
+      ],
+      "catalogue_note": "The source establishes a scavver trading post but does not identify a stable department mix. The v0.2 audit's weapons/armor/cyberware/vehicle spread is therefore not promoted into persistent catalogue stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_SOURCE_LOCAL_TRADE",
+        "note": "Direct review removes the audit's broad generated assortment and preserves only the source-supported essentials and scavver-trade identity."
+      }
+    }
+  ]
+}

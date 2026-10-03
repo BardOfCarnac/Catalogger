@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vend-r.invalid/schema/world-runtime-v0.3.schema.json",
+  "title": "Vend-R world runtime graph v0.3",
+  "type": "object",
+  "required": ["format_version", "world_id", "fixture_id", "fixture_status", "entities", "relationships"],
+  "properties": {
+    "format_version": {"const": "0.3.0"},
+    "source_format_version": {"type": "string"},
+    "world_id": {"type": "string", "minLength": 1},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_status": {"const": "source_reviewed"},
+    "provenance": {"type": ["string", "null"]},
+    "source": {"type": "object"},
+    "entities": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/entity"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "supplyProfileRow": {
+      "type": "object",
+      "required": ["counterparty_label", "relationship"],
+      "properties": {
+        "counterparty_label": {"type": "string", "minLength": 1},
+        "relationship": {"type": "string", "minLength": 1},
+        "goods": {"type": "string"},
+        "product_family": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "supplyProfile": {
+      "type": "object",
+      "required": ["outbound", "inbound"],
+      "properties": {
+        "outbound": {"type": "array", "items": {"$ref": "#/$defs/supplyProfileRow"}},
+        "inbound": {"type": "array", "items": {"$ref": "#/$defs/supplyProfileRow"}}
+      },
+      "additionalProperties": false
+    },
+    "chainProfile": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "operator": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "purchaseProfileRow": {
+      "type": "object",
+      "required": ["purchase_key", "label"],
+      "properties": {
+        "purchase_key": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "price_eb": {"type": "number"},
+        "price_eb_each": {"type": "number"},
+        "price_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "purchaseProfile": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/purchaseProfileRow"}
+    },
+    "marketProfile": {
+      "type": "object",
+      "required": ["archetype_id", "channels", "vendor_rotation"],
+      "properties": {
+        "archetype_id": {"type": "string", "minLength": 1},
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "vendor_rotation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "entity": {
+      "type": "object",
+      "required": ["entity_id", "name", "entity_kind", "capabilities"],
+      "properties": {
+        "entity_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "entity_kind": {
+          "enum": ["place", "outlet", "vendor", "service_point", "market_event", "channel", "chain", "template", "reference", "unclassified"]
+        },
+        "capabilities": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["catalog_stock", "local_wares", "services", "event", "distribution", "scheduled", "access_controlled", "purchase_policy"]}
+        },
+        "entity_type": {"type": "string"},
+        "parent_entity_id": {"type": "string"},
+        "district": {"type": ["string", "null"]},
+        "map_no": {"type": ["integer", "null"]},
+        "book_page": {"type": ["integer", "null"]},
+        "provenance": {"type": ["string", "null"]},
+        "source_ref": {"type": ["string", "null"]},
+        "source_summary": {"type": ["string", "null"]},
+        "stock_policy": {"type": "string"},
+        "local_offerings": {"type": "array", "items": {"type": "object"}},
+        "services": {"type": "array", "items": {"type": "object"}},
+        "schedule": {"type": "object"},
+        "supply_profile": {"$ref": "#/$defs/supplyProfile"},
+        "chain_profile": {"$ref": "#/$defs/chainProfile"},
+        "purchase_profile": {"$ref": "#/$defs/purchaseProfile"},
+        "market_profile": {"$ref": "#/$defs/marketProfile"},
+        "shop": {"type": "object"},
+        "assortment": {"type": "array"},
+        "stock": {"type": "array"},
+        "state": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["relationship_type", "source_entity_id", "target_entity_id"],
+      "properties": {
+        "relationship_type": {
+          "enum": ["contained_in", "appears_at", "operated_by", "service_point_for", "chain_branch_of", "market_event_at", "supplies", "fulfills_for"]
+        },
+        "source_entity_id": {"type": "string", "minLength": 1},
+        "target_entity_id": {"type": "string", "minLength": 1},
+        "external_target": {"type": "boolean"},
+        "inferred_from": {"type": "string"},
+        "provenance": {"type": ["string", "null"]},
+        "source_ref": {"type": ["string", "null"]},
+        "note": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  }
+}

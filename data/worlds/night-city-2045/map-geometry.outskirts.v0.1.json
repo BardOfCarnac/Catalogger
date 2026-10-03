@@ -1,0 +1,37 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-OUTSKIRTS-P295",
+  "district": "Outskirts",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 295,
+    "source_ref": "Night City 2045 p. 295",
+    "note": "Source map geometry verified against the user-provided purchased source. The map draws #1 and #3-#18 plus Independent Farms child pins 2a-2c; there is no standalone #2 point. Nomad Campsites and Raffen Shiv Campsites are explicitly listed as not shown on the map and therefore receive no invented source coordinates."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "107.3 Morro Rock Radio", "entity_id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO", "x": 0.187908, "y": 0.430556, "source_ref": "Night City 2045 p. 294"},
+    {"map_no": 2, "map_suffix": "a", "name": "Edgewood Farm", "entity_id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM", "x": 0.65, "y": 0.591667, "source_ref": "Night City 2045 p. 294"},
+    {"map_no": 2, "map_suffix": "b", "name": "Ingalls Farm", "entity_id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM", "x": 0.708497, "y": 0.630556, "source_ref": "Night City 2045 p. 294"},
+    {"map_no": 2, "map_suffix": "c", "name": "Poppy Farm", "entity_id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM", "x": 0.596078, "y": 0.737626, "source_ref": "Night City 2045 p. 296"},
+    {"map_no": 3, "name": "Jackson Plains Regional Airport", "entity_id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT", "x": 0.407843, "y": 0.833081, "source_ref": "Night City 2045 p. 296"},
+    {"map_no": 4, "name": "Laguna Bend", "entity_id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND", "x": 0.654575, "y": 0.690152, "source_ref": "Night City 2045 p. 296"},
+    {"map_no": 5, "name": "Municipal Landfill", "entity_id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL", "x": 0.603922, "y": 0.595707, "source_ref": "Night City 2045 p. 296"},
+    {"map_no": 6, "name": "Night City Spaceport", "entity_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT", "x": 0.204248, "y": 0.458333, "source_ref": "Night City 2045 p. 297"},
+    {"map_no": 7, "name": "NorCal Marshal Station", "entity_id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION", "x": 0.721569, "y": 0.551263, "source_ref": "Night City 2045 p. 297"},
+    {"map_no": 8, "name": "Militech Ballistics & Explosives Range", "entity_id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE", "x": 0.49085, "y": 0.291162, "source_ref": "Night City 2045 p. 297"},
+    {"map_no": 9, "name": "Night Corp Solar Station", "entity_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION", "x": 0.465359, "y": 0.77197, "source_ref": "Night City 2045 p. 297"},
+    {"map_no": 10, "name": "Northern Oil Fields", "entity_id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS", "x": 0.312418, "y": 0.246717, "source_ref": "Night City 2045 pp. 297-298"},
+    {"map_no": 11, "name": "Petrochem CHOOH2 Station", "entity_id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION", "x": 0.616993, "y": 0.575, "source_ref": "Night City 2045 p. 298"},
+    {"map_no": 12, "name": "Pol-Bud Cement Factory", "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY", "x": 0.713399, "y": 0.663384, "source_ref": "Night City 2045 p. 298"},
+    {"map_no": 13, "name": "Pol-Bud Miasto", "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO", "x": 0.661111, "y": 0.52096, "source_ref": "Night City 2045 p. 298"},
+    {"map_no": 14, "name": "Pol-Bud Mine", "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE", "x": 0.631699, "y": 0.494444, "source_ref": "Night City 2045 p. 298"},
+    {"map_no": 15, "name": "Sheriff’s Station", "entity_id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION", "x": 0.61732, "y": 0.77601, "source_ref": "Night City 2045 p. 299"},
+    {"map_no": 16, "name": "SovOil CHOOH2 Station", "entity_id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION", "x": 0.368627, "y": 0.764899, "source_ref": "Night City 2045 p. 299"},
+    {"map_no": 17, "name": "Sunshine Motel", "entity_id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL", "x": 0.757516, "y": 0.572475, "source_ref": "Night City 2045 p. 299"},
+    {"map_no": 18, "name": "Union Railroad Station", "entity_id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION", "x": 0.618627, "y": 0.558838, "source_ref": "Night City 2045 p. 299"}
+  ]
+}

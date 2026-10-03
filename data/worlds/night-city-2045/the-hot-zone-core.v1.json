@@ -1,0 +1,47 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-hot-zone-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [93],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "entity_type": "hybrid",
+      "district": "The Hot Zone",
+      "map_no": 11,
+      "book_page": 93,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 93",
+      "source_summary": "Maelstrom-run nightclub where visitors can bargain for tech and drugs, but the source does not establish a formal recurring market or stable shelf inventory.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {
+        "name": "Warlock",
+        "role": "Solo",
+        "rank": 6
+      },
+      "local_offerings": [
+        {"offering_key": "ad-hoc-tech-bargains", "label": "Ad-hoc tech bargains"},
+        {"offering_key": "ad-hoc-drug-bargains", "label": "Ad-hoc drug bargains"},
+        {"offering_key": "discounted-smash", "label": "Discounted Smash"}
+      ],
+      "services": [
+        {"service_key": "nightclub-hospitality", "label": "Nightclub hospitality"}
+      ],
+      "catalogue_note": "The audit's night-market archetype would create a much more formal and predictable inventory than the source supports. Commerce is kept as ad-hoc local bargaining instead of a persistent generated assortment.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "HYBRID_DIRECT_EVENT",
+        "decision": "REMOVE_UNSUPPORTED_EVENT_STOCK_AND_LOCALIZE_TRADE",
+        "note": "Direct review confirms commercial bargaining but not a Night Market event structure or stable item categories."
+      }
+    }
+  ]
+}

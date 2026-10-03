@@ -1,0 +1,54 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-charter-hill-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [224, 226],
+    "note": "Map-visible Charter Hill places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-224-ANJELIKA-S",
+      "name": "Anjelika’s",
+      "entity_type": "hybrid",
+      "district": "Charter Hill",
+      "map_no": 2,
+      "book_page": 224,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 224-226",
+      "source_summary": "Android-themed host and hostess bar whose bodysculpted staff provide attentive social company; the venue also operates a bar with themed drinks.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "coolant-flush", "label": "Coolant Flush highball", "price_eb": 30}
+      ],
+      "services": [
+        {"service_key": "host-hostess-company", "label": "Booked host or hostess social company"},
+        {"service_key": "bar-hospitality", "label": "Themed bar hospitality"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-226-BELLA-MIA",
+      "name": "Bella Mia",
+      "entity_type": "hybrid",
+      "district": "Charter Hill",
+      "map_no": 3,
+      "book_page": 226,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 226",
+      "source_summary": "Fashion-conscious nightclub created by Velvet Lux, serving as both an exclusive nightlife venue and a publicity/soft-launch space for her Lux Lines fashion label.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "velvet-lush", "label": "Velvet Lush signature drink", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "nightclub-admission", "label": "Nightclub admission subject to fashion screening"},
+        {"service_key": "fashion-promotion-venue", "label": "Lux Lines fashion publicity and soft-launch venue"}
+      ]
+    }
+  ]
+}

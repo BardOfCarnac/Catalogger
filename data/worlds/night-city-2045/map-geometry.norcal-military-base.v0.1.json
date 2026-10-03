@@ -1,0 +1,34 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-NORCAL-MILITARY-BASE-P179",
+  "district": "NorCal Military Base",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 179,
+    "source_ref": "Night City 2045 p. 179",
+    "note": "Source map geometry verified against the user-provided purchased source. The map contains seventeen ordinary numbered pins #1-#17 with no suffix hierarchy."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "157th Tactical Air Squadron Airfield", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-180-157TH-TACTICAL-AIR-SQUADRON-AIRFIELD", "x": 0.659085, "y": 0.275317, "source_ref": "Night City 2045 p. 180"},
+    {"map_no": 2, "name": "COG Treatment Facility (CTF)", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-COG-TREATMENT-FACILITY-CTF", "x": 0.340588, "y": 0.301858, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 3, "name": "Estero Bay Military COG Academy", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-ESTERO-BAY-MILITARY-COG-ACADEMY", "x": 0.452941, "y": 0.253954, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 4, "name": "Fire & Emergency Response Center", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-FIRE-EMERGENCY-RESPONSE-CENTER", "x": 0.539861, "y": 0.243651, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 5, "name": "Main Gate", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MAIN-GATE", "x": 0.620654, "y": 0.482407, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 6, "name": "Mess Hall", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MESS-HALL", "x": 0.508497, "y": 0.296883, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 7, "name": "Military Police Headquarters", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MILITARY-POLICE-HEADQUARTERS", "x": 0.592876, "y": 0.449593, "source_ref": "Night City 2045 p. 181"},
+    {"map_no": 8, "name": "Militech Corporate Housing", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-CORPORATE-HOUSING", "x": 0.661765, "y": 0.433992, "source_ref": "Night City 2045 p. 182"},
+    {"map_no": 9, "name": "Militech Offices", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-OFFICES", "x": 0.536422, "y": 0.449593, "source_ref": "Night City 2045 p. 182"},
+    {"map_no": 10, "name": "Motor Pool", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MOTOR-POOL", "x": 0.714706, "y": 0.367457, "source_ref": "Night City 2045 p. 182"},
+    {"map_no": 11, "name": "The Oaks", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-THE-OAKS", "x": 0.638366, "y": 0.360974, "source_ref": "Night City 2045 pp. 182-183"},
+    {"map_no": 12, "name": "Parade Ground", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-PARADE-GROUND", "x": 0.583333, "y": 0.318008, "source_ref": "Night City 2045 p. 183"},
+    {"map_no": 13, "name": "The Potentilla", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-THE-POTENTILLA", "x": 0.552353, "y": 0.387885, "source_ref": "Night City 2045 p. 183"},
+    {"map_no": 14, "name": "Post Exchange (PX)", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX", "x": 0.541177, "y": 0.330974, "source_ref": "Night City 2045 p. 183"},
+    {"map_no": 15, "name": "The Rec Center", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-THE-REC-CENTER", "x": 0.416405, "y": 0.327016, "source_ref": "Night City 2045 p. 183"},
+    {"map_no": 16, "name": "Task Force 384 Docks", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-TASK-FORCE-384-DOCKS", "x": 0.176830, "y": 0.419010, "source_ref": "Night City 2045 p. 183"},
+    {"map_no": 17, "name": "USO Hall", "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-184-USO-HALL", "x": 0.500000, "y": 0.388816, "source_ref": "Night City 2045 p. 184"}
+  ]
+}

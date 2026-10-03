@@ -1,0 +1,102 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only relationship migrations for source-reviewed mobile/street-food vendors whose legacy parent_entity_id expressed where they appear rather than structural containment. Each edge was manually checked against the reviewed source metadata.",
+  "fixtures": {
+    "nc2045-university-district-context-only-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-BUCK-A-SLICE",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Buck-a-Slice is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-CAPTAIN-CAJUNS-NIFTY-NUGGETS",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Captain Cajun's Nifty Nuggets is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-GREEN-PRETZELS",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Green Pretzels is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-HAPPY-NOODLES",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Happy Noodles is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-KIBBLE-COOKIE-KRAZE",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Kibble Cookie Kraze is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-RAMEN-LATE",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Ramen Late is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-SOSUSHIME",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "SoSushiMe is a named food-truck vendor appearing at the campus Food Truck Plaza."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-107-VENDIT-WAGON",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+        "source_ref": "Night City 2045 p. 107",
+        "note": "Vendit Wagon is a mobile flatbed-mounted vendit operation appearing at the campus Food Truck Plaza."
+      }
+    ],
+    "nc2045-santo-domingo-context-only-v1": [
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-268-BUCK-A-SLICE",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+        "source_ref": "Night City 2045 p. 268",
+        "note": "Buck-a-Slice is a named food truck appearing in the daytime Hunger Street cluster."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-268-CART-CHROME",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+        "source_ref": "Night City 2045 p. 268",
+        "note": "Cart Chrome is a named food truck appearing in the daytime Hunger Street cluster."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-268-MONSTER-T",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+        "source_ref": "Night City 2045 p. 268",
+        "note": "Monster T is a named food truck appearing in the daytime Hunger Street cluster."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-268-SHARKBITES",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+        "source_ref": "Night City 2045 p. 268",
+        "note": "SharkBites is a named food truck appearing in the daytime Hunger Street cluster."
+      },
+      {
+        "relationship_type": "appears_at",
+        "source_entity_id": "NC2045-MEN-SANTO-DOMINGO-268-TACOSCOP",
+        "target_entity_id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+        "source_ref": "Night City 2045 p. 268",
+        "note": "TacoSCOP is a named food truck appearing in the daytime Hunger Street cluster."
+      }
+    ]
+  }
+}

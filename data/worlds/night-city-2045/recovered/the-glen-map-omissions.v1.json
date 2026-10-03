@@ -1,0 +1,94 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-glen-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [117, 119, 122],
+    "note": "Map-visible The Glen places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-117-BEAR-S",
+      "name": "Bear’s",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 5,
+      "book_page": 117,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 117",
+      "source_summary": "Popular microbrewery and bar run by Bear Young, centered on house-brewed beer and neighborhood drinking rather than a stable merchandise shelf.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "house-brewed-beer", "label": "House-brewed beer"}
+      ],
+      "services": [
+        {"service_key": "microbrewery-bar-hospitality", "label": "Microbrewery and bar hospitality"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-119-DIPLOMATIC-IMMUNITY",
+      "name": "Diplomatic Immunity",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 10,
+      "book_page": 119,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 119",
+      "source_summary": "Exclusive appointment-only club near the Consulate Causeway used by foreign dignitaries and local counterparts for private meetings, with a restricted adult club in the basement.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "appointment-card-required",
+      "services": [
+        {"service_key": "private-diplomatic-meeting-club", "label": "Private club and meeting hospitality"},
+        {"service_key": "restricted-adult-club", "label": "Restricted adult-club hospitality", "availability": "authorized clientele"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-122-LE-JARDIN",
+      "name": "Le Jardin",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 18,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "Extremely expensive high-class restaurant in a Baroque-style building outside the Consulate Causeway, with a signature mixed drink and strict expectations around clientele presentation.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "deadly-diplomacy", "label": "Deadly Diplomacy signature cocktail"}
+      ],
+      "services": [
+        {"service_key": "fine-dining", "label": "High-end restaurant dining"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-122-THE-MOLLY-MAY",
+      "name": "The Molly May",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 20,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 122",
+      "source_summary": "DeadWoods-owned Western-themed complex combining a casino, full bars, round-the-clock kitchen and short-stay rooms, with additional adult entertainment available on request.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "icards-trail", "label": "Icard’s Trail house stout", "price_eb": 20},
+        {"offering_key": "kitchen-menu", "label": "Simple kitchen menu", "availability": "24/7"}
+      ],
+      "services": [
+        {"service_key": "casino-gambling", "label": "Casino card games"},
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"},
+        {"service_key": "short-stay-room-hour", "label": "Room rental by the hour", "price_eb": 20},
+        {"service_key": "short-stay-room-day", "label": "Room rental by the day", "price_eb": 100},
+        {"service_key": "adult-entertainment", "label": "Adult entertainment and braindance on request"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+name: Audit CONTEXT_ONLY commercial false negatives
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  context-only-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/build_commercial_profiles.py
+      - run: python scripts/test_world_fixture_context_only_hiz.py
+      - run: python scripts/test_world_fixture_context_only_old_japantown.py
+      - run: python scripts/test_world_fixture_context_only_upper_marina.py
+      - run: python scripts/test_world_fixture_context_only_new_westbrook.py
+      - run: python scripts/test_world_fixture_context_only_downtown.py
+      - run: python scripts/test_world_fixture_context_only_south_glen_kabuki.py
+      - run: python scripts/test_world_fixture_context_only_playland_littleeurope_charter.py
+      - run: python scripts/test_world_fixture_context_only_norcal_reclamation_santo.py
+      - run: python scripts/test_world_fixture_context_only_watson_ocz_university.py
+      - run: python scripts/test_world_fixture_context_only_docks_north_pacifica.py
+      - run: python scripts/test_world_fixture_context_only_exec_hot_port.py
+      - run: python scripts/test_world_fixture_context_only_little_china_rancho.py
+      - run: python scripts/test_world_fixture_context_only_census.py
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-industrial-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-japantown-context-only.v1.json --output build/data/worlds/night-city-2045/old-japantown-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/upper-marina-context-only.v1.json --output build/data/worlds/night-city-2045/upper-marina-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/new-westbrook-context-only.v1.json --output build/data/worlds/night-city-2045/new-westbrook-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/downtown-context-only.v1.json --output build/data/worlds/night-city-2045/downtown-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/south-night-city-context-only.v1.json --output build/data/worlds/night-city-2045/south-night-city-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-glen-context-only.v1.json --output build/data/worlds/night-city-2045/the-glen-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/kabuki-context-only.v1.json --output build/data/worlds/night-city-2045/kabuki-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/playland-by-the-sea-lands-context-only.v1.json --output build/data/worlds/night-city-2045/playland-by-the-sea-lands-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-europe-context-only.v1.json --output build/data/worlds/night-city-2045/little-europe-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/charter-hill-context-only.v1.json --output build/data/worlds/night-city-2045/charter-hill-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/norcal-military-base-context-only.v1.json --output build/data/worlds/night-city-2045/norcal-military-base-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/reclamation-zone-context-only.v1.json --output build/data/worlds/night-city-2045/reclamation-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/santo-domingo-context-only.v1.json --output build/data/worlds/night-city-2045/santo-domingo-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/watson-development-context-only.v1.json --output build/data/worlds/night-city-2045/watson-development-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/old-combat-zone-context-only.v1.json --output build/data/worlds/night-city-2045/old-combat-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/university-district-context-only.v1.json --output build/data/worlds/night-city-2045/university-district-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/heywood-docks-context-only.v1.json --output build/data/worlds/night-city-2045/heywood-docks-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/north-heywood-context-only.v1.json --output build/data/worlds/night-city-2045/north-heywood-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/pacifica-playground-context-only.v1.json --output build/data/worlds/night-city-2045/pacifica-playground-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/executive-zone-context-only.v1.json --output build/data/worlds/night-city-2045/executive-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/the-hot-zone-context-only.v1.json --output build/data/worlds/night-city-2045/the-hot-zone-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/port-of-night-city-context-only.v1.json --output build/data/worlds/night-city-2045/port-of-night-city-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/little-china-context-only.v1.json --output build/data/worlds/night-city-2045/little-china-context-only.v1.json
+      - run: python scripts/build_world_fixture.py --input data/worlds/night-city-2045/rancho-coronado-context-only.v1.json --output build/data/worlds/night-city-2045/rancho-coronado-context-only.v1.json

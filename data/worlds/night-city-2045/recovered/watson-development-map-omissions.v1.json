@@ -1,0 +1,242 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-watson-development-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [189, 193, 194, 195],
+    "note": "Map-visible Watson Development locations omitted from the active world fixtures, recovered directly from the user-provided purchased source. The Fork facilities are modeled conservatively as non-retail world places; ordinary venues retain only source-explicit services and local wares. Factual metadata and concise paraphrases only."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-BODYWEIGHT-LIFE-PRESERVATION-SYSTEMS",
+      "name": "Bodyweight Life Preservation Systems",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Bodyweight distribution center storing medical and fitness equipment received from Seattle before onward shipment to Southern California.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-CACTUS-WATER",
+      "name": "Cactus Water",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Bottling plant for a homeopathic-water company that has recently shut down.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR",
+      "name": "Gibson Battlegear",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Small Gibson Battlegear manufacturing facility producing armor and clothing, with the company seeking room to expand.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-HAMMERED-INDUSTRIES",
+      "name": "Hammered Industries",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Regional warehouse storing chemicals used in Hammered Industries drink-mixing machines.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-KENDACHI",
+      "name": "Kendachi",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Kendachi's primary Pacific Confederation distribution hub for melee weapons and orbital crystal products.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-KIROSHI",
+      "name": "Kiroshi",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Kiroshi's primary North American cyberoptics manufacturing plant.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-MAKIGAI-AUTOMOTIVE",
+      "name": "Makigai Automotive",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "New automotive factory awaiting a shipment of parts from Japan before opening.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-SEGOTARI",
+      "name": "Segotari",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Segotari manufacturing plant producing consoles and video games, with rumors of Elflines Online servers below the facility.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-189-TOWA-MANUFACTURING",
+      "name": "Towa Manufacturing",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-THE-FORK",
+      "district": "Watson Development",
+      "map_no": 6,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Towa's first North American manufacturing facility, currently under construction after recently breaking ground.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-193-REDLINE",
+      "name": "Redline",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 25,
+      "book_page": 193,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 193",
+      "source_summary": "Wild Things-run bar built around a fighting pit hosting nightly unscripted bloodsport, with a source-priced house drink.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "fight-juice", "label": "Fight Juice", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "fight-pit-entertainment", "label": "Fighting-pit entertainment"},
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_BAR_AND_FIGHT_VENUE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-193-SAKURA-S",
+      "name": "Sakura’s",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 26,
+      "book_page": 193,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 193",
+      "source_summary": "Longstanding Night City izakaya-style bar serving Japanese drinking snacks and sake, and functioning as neutral ground for rival local criminal groups.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "sake-flask", "label": "Sake flask", "price_eb": 20},
+        {"offering_key": "izakaya-snacks", "label": "Japanese drinking snacks"}
+      ],
+      "services": [
+        {"service_key": "izakaya-hospitality", "label": "Izakaya-style bar hospitality"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_IZAKAYA"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SMASH-CUT",
+      "name": "Smash/Cut",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 28,
+      "book_page": 194,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 194",
+      "source_summary": "EDM dance club owned by UBRIS, centered on a large dance floor and high-intensity nightlife; the source prices bottled isotonic water rather than a signature drink.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "isotonic-water", "label": "Isotonic water bottle", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "dance-club-nightlife", "label": "EDM dance-club nightlife"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_DANCE_CLUB"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-TRAUMA-TEAM-TOWER",
+      "name": "Trauma Team Tower",
+      "entity_type": "service",
+      "district": "Watson Development",
+      "map_no": 32,
+      "book_page": 194,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 194",
+      "source_summary": "Trauma Team regional headquarters and rapid-response base with AV maintenance and launch facilities plus a hospital reserved for Executive-level clients.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "executive-clients-and-trauma-team-operations",
+      "services": [
+        {"service_key": "exclusive-client-hospital", "label": "Hospital care for eligible Executive-level clients", "access": "restricted"},
+        {"service_key": "trauma-team-response-base", "label": "Trauma Team rapid-response operations", "access": "operational"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_RESTRICTED_MEDICAL_HQ"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-VARGTIMMEN",
+      "name": "Vargtimmen",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 36,
+      "book_page": 195,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 195",
+      "source_summary": "Neo-pagan Viking-themed meadery known for seasonal religious celebrations and a source-priced house mead served in a techprinted ram's horn.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "freki-golden-mead", "label": "Freki’s Golden Mead", "price_eb": 50}
+      ],
+      "services": [
+        {"service_key": "meadery-hospitality", "label": "Meadery and bar hospitality"},
+        {"service_key": "seasonal-celebrations", "label": "Solstice and equinox celebrations"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_MEADERY"}
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-pacifica-playground-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [278, 279],
+    "note": "Map-visible Pacifica Playground location omitted from the active reviewed fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-FLAIRE",
+      "name": "Flaire",
+      "entity_type": "hybrid",
+      "district": "Pacifica Playground",
+      "map_no": 5,
+      "book_page": 278,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 278-279",
+      "source_summary": "High-end full-body-conversion clinic founded by Dr. Gray Wilkes. Flaire builds custom Raven Microcybernetics Gemini bodies, performs same-day conversion, supplies the first month of high-end brain solution, and includes post-conversion adjustment therapy.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "proprietor": {
+        "name": "Dr. Gray Wilkes",
+        "role": "Medtech 6 / Tech 4"
+      },
+      "local_offerings": [
+        {
+          "offering_key": "custom-raven-gemini-fbc-package",
+          "label": "Bespoke Raven Microcybernetics Gemini FBC package"
+        }
+      ],
+      "services": [
+        {
+          "service_key": "custom-fbc-body-build",
+          "label": "Custom Gemini FBC body and outer-shell build"
+        },
+        {
+          "service_key": "full-body-conversion",
+          "label": "Full-body conversion surgery"
+        },
+        {
+          "service_key": "post-conversion-therapy",
+          "label": "Post-conversion adjustment therapy"
+        }
+      ],
+      "catalogue_note": "The source describes a bespoke integrated conversion package rather than a generic cyberware shelf, so Flaire carries no generated catalogue assortment in this pass.",
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_DROPPED_BESPOKE_FBC_SERVICE"
+      }
+    }
+  ]
+}

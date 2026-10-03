@@ -1,0 +1,485 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "target_coordinate_space": {
+    "id": "night_city_clean_master_5175x7966_px",
+    "width": 5175,
+    "height": 7966,
+    "origin": "top-left",
+    "x_axis": "+right",
+    "y_axis": "+down"
+  },
+  "source_page_space": {
+    "width_pt": 612,
+    "height_pt": 792,
+    "origin": "top-left"
+  },
+  "method": "For district maps backed by the full-city master raster, source_page_uv -> PDF page points -> inverse image placement -> master raster normalized coordinates.",
+  "calibrations": [
+    {
+      "slug": "little-europe",
+      "district": "Little Europe",
+      "book_page": 55,
+      "pdf_page": 56,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2484,
+        "d": 3823.68017578125,
+        "e": -597.679931640625,
+        "f": -1321.99951171875
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "upper-marina",
+      "district": "Upper Marina",
+      "book_page": 67,
+      "pdf_page": 68,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 1925.0999755859375,
+        "d": 2963.35205078125,
+        "e": -769.7801513671875,
+        "f": -825.8359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "downtown",
+      "district": "Downtown",
+      "book_page": 81,
+      "pdf_page": 82,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -585.9098510742188,
+        "f": -1605.8994140625
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "the-hot-zone",
+      "district": "The Hot Zone",
+      "book_page": 91,
+      "pdf_page": 92,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -1061.9097900390625,
+        "f": -1606.8994140625
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "little-china",
+      "district": "Little China",
+      "book_page": 97,
+      "pdf_page": 98,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -1403.7098388671875,
+        "f": -1721.3193359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "university-district",
+      "district": "University District",
+      "book_page": 105,
+      "pdf_page": 106,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2359.800048828125,
+        "d": 3632.49609375,
+        "e": -523.0098876953125,
+        "f": -1416.7470703125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "the-glen",
+      "district": "The Glen",
+      "book_page": 115,
+      "pdf_page": 116,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2359.800048828125,
+        "d": 3632.49609375,
+        "e": -743.0098876953125,
+        "f": -1586.7471923828125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "old-japantown",
+      "district": "Old Japantown",
+      "book_page": 129,
+      "pdf_page": 130,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -1227.7098388671875,
+        "f": -1861.3193359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "south-night-city",
+      "district": "South Night City",
+      "book_page": 139,
+      "pdf_page": 140,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2173.5,
+        "d": 3345.719970703125,
+        "e": -516.7100219726562,
+        "f": -1501.35986328125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "port-of-night-city",
+      "district": "Port of Night City",
+      "book_page": 151,
+      "pdf_page": 152,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2639.25,
+        "d": 4062.66015625,
+        "e": -542.4600219726562,
+        "f": -1889.830078125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "reclamation-zone",
+      "district": "Reclamation Zone",
+      "book_page": 159,
+      "pdf_page": 160,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -687.7098999023438,
+        "f": -2109.3193359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "old-combat-zone",
+      "district": "Old Combat Zone",
+      "book_page": 167,
+      "pdf_page": 168,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2794.5,
+        "d": 4301.64013671875,
+        "e": -1115.7999267578125,
+        "f": -2079.599609375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "norcal-military-base",
+      "district": "NorCal Military Base",
+      "book_page": 179,
+      "pdf_page": 180,
+      "image_xref": 7678,
+      "image_size_px": [
+        3235,
+        4979
+      ],
+      "placement_matrix": {
+        "a": 1552.499755859375,
+        "d": 2389.7998046875,
+        "e": -278.1200866699219,
+        "f": -285.61962890625
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "watson-development",
+      "district": "Watson Development",
+      "book_page": 187,
+      "pdf_page": 188,
+      "image_xref": 7988,
+      "image_size_px": [
+        2329,
+        3585
+      ],
+      "placement_matrix": {
+        "a": 1117.7999267578125,
+        "d": 1720.65625,
+        "e": -172.41995239257812,
+        "f": -122.0479736328125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "kabuki",
+      "district": "Kabuki",
+      "book_page": 201,
+      "pdf_page": 202,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2328.75,
+        "d": 3584.7001953125,
+        "e": -913.3699951171875,
+        "f": -834.0693359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "new-westbrook",
+      "district": "New Westbrook",
+      "book_page": 213,
+      "pdf_page": 214,
+      "image_xref": 9081,
+      "image_size_px": [
+        1941,
+        2988
+      ],
+      "placement_matrix": {
+        "a": 931.5,
+        "d": 1433.880126953125,
+        "e": -246.11993408203125,
+        "f": -159.6600341796875
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "charter-hill",
+      "district": "Charter Hill",
+      "book_page": 225,
+      "pdf_page": 226,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2328.75,
+        "d": 3584.7001953125,
+        "e": -1403.3699951171875,
+        "f": -1045.0693359375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "executive-zone",
+      "district": "Executive Zone",
+      "book_page": 233,
+      "pdf_page": 234,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2484,
+        "d": 3823.68017578125,
+        "e": -1558.619873046875,
+        "f": -1164.5595703125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "heywood-docks",
+      "district": "Heywood Docks",
+      "book_page": 241,
+      "pdf_page": 242,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2639.25,
+        "d": 4062.66015625,
+        "e": -1526.4000244140625,
+        "f": -1759.41015625
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "north-heywood",
+      "district": "North Heywood",
+      "book_page": 247,
+      "pdf_page": 248,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2018.25,
+        "d": 3106.739990234375,
+        "e": -1225.39990234375,
+        "f": -1351.4493408203125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "heywood-industrial-zone",
+      "district": "Heywood Industrial Zone",
+      "book_page": 257,
+      "pdf_page": 258,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 2484,
+        "d": 3823.68017578125,
+        "e": -1241.14990234375,
+        "f": -1899.9200439453125
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "santo-domingo",
+      "district": "Santo Domingo",
+      "book_page": 265,
+      "pdf_page": 266,
+      "image_xref": 11058,
+      "image_size_px": [
+        2588,
+        3984
+      ],
+      "placement_matrix": {
+        "a": 1242,
+        "d": 1911.840087890625,
+        "e": -487.02001953125,
+        "f": -888.9199829101562
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "pacifica-playground",
+      "district": "Pacifica Playground",
+      "book_page": 277,
+      "pdf_page": 278,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 1863,
+        "d": 2867.760009765625,
+        "e": -326.6300048828125,
+        "f": -1644.468505859375
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "rancho-coronado",
+      "district": "Rancho Coronado",
+      "book_page": 287,
+      "pdf_page": 288,
+      "image_xref": 13234,
+      "image_size_px": [
+        5175,
+        7966
+      ],
+      "placement_matrix": {
+        "a": 1707.75,
+        "d": 2628.780029296875,
+        "e": -578.3798828125,
+        "f": -1549.978759765625
+      },
+      "status": "exact_full_city_master_registration"
+    },
+    {
+      "slug": "outskirts",
+      "district": "Outskirts",
+      "book_page": 295,
+      "pdf_page": 296,
+      "image_xref": 12231,
+      "image_size_px": [
+        813,
+        1251
+      ],
+      "placement_matrix": {
+        "a": 389.79925537109375,
+        "d": 600.0272827148438,
+        "e": 43.110389709472656,
+        "f": 130.50030517578125
+      },
+      "status": "exact_full_city_master_registration"
+    }
+  ],
+  "local_only_maps": [
+    {
+      "slug": "playland-by-the-sea-lands",
+      "district": "Playland by the Sea Lands",
+      "book_page": 301,
+      "pdf_page": 302,
+      "image_xref": 12474,
+      "image_size_px": [
+        1278,
+        1655
+      ],
+      "status": "nested_local_map",
+      "reason": "The source uses an illustrated Playland souvenir map rather than the full-city master raster; its 52 attraction positions are source-exact within Playland but do not have an exact city-scale transform in the book."
+    }
+  ]
+}

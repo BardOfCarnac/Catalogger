@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-RECLAMATION-ZONE-P159",
+  "district": "Reclamation Zone",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 159,
+    "source_ref": "Night City 2045 p. 159",
+    "note": "All fifteen numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "Booster Bistro", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-158-BOOSTER-BISTRO", "x": 0.567386, "y": 0.319881, "source_ref": "Night City 2045 pp. 158, 160"},
+    {"map_no": 2, "name": "Country Cars", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-COUNTRY-CARS", "x": 0.478235, "y": 0.351075, "source_ref": "Night City 2045 p. 160"},
+    {"map_no": 3, "name": "Earl’s Second Hand Shop", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP", "x": 0.515817, "y": 0.412925, "source_ref": "Night City 2045 p. 160"},
+    {"map_no": 4, "name": "Flashback", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-FLASHBACK", "x": 0.515196, "y": 0.323838, "source_ref": "Night City 2045 p. 160"},
+    {"map_no": 5, "name": "Foundry Tech School", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-FOUNDRY-TECH-SCHOOL", "x": 0.529085, "y": 0.338109, "source_ref": "Night City 2045 p. 160"},
+    {"map_no": 6, "name": "Freddie Douglas School", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-FREDDIE-DOUGLAS-SCHOOL", "x": 0.590131, "y": 0.473569, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 7, "name": "Gordon’s Garage", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-GORDON-S-GARAGE", "x": 0.515196, "y": 0.353982, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 8, "name": "McGee Speedway", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-MCGEE-SPEEDWAY", "x": 0.532353, "y": 0.492251, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 9, "name": "Herschel’s Crematorium", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-HERSCHEL-S-CREMATORIUM", "x": 0.565752, "y": 0.438968, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 10, "name": "La Perrera", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-LA-PERRERA", "x": 0.515196, "y": 0.306915, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 11, "name": "Metal Mountain", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-161-METAL-MOUNTAIN", "x": 0.451569, "y": 0.420671, "source_ref": "Night City 2045 p. 161"},
+    {"map_no": 12, "name": "Mobile Mosque Prayer Center", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-MOBILE-MOSQUE-PRAYER-CENTER", "x": 0.567386, "y": 0.362499, "source_ref": "Night City 2045 p. 162"},
+    {"map_no": 13, "name": "NCART Yards", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-NCART-YARDS", "x": 0.402222, "y": 0.492590, "source_ref": "Night City 2045 p. 162"},
+    {"map_no": 14, "name": "Reclamation Zone Station", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION", "x": 0.495098, "y": 0.450856, "source_ref": "Night City 2045 p. 162"},
+    {"map_no": 15, "name": "Second City Solos Firing Range", "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-SECOND-CITY-SOLOS-FIRING-RANGE", "x": 0.515196, "y": 0.370754, "source_ref": "Night City 2045 p. 162"}
+  ]
+}

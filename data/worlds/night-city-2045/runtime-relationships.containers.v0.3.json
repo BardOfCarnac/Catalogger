@@ -1,0 +1,183 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only explicit containment confirmations for source-reviewed child entities whose parent entry directly establishes a physical compound, building, campus, settlement or named site relationship.",
+  "fixtures": {
+    "nc2045-executive-zone-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-EXECUTIVE-ZONE-235-SEACLIFF",
+        "target_entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB",
+        "source_ref": "Night City 2045 p. 235",
+        "note": "Seacliff is the poolside bar within the Executive Zone Casino/Country Club complex."
+      }
+    ],
+    "nc2045-heywood-docks-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES",
+        "source_ref": "Night City 2045 p. 243",
+        "note": "SK Securities' reviewed parent entry explicitly says its headquarters complex physically contains the Piccolo bodega."
+      }
+    ],
+    "nc2045-heywood-industrial-zone-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-261-VODKA-CONTAINER",
+        "target_entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+        "source_ref": "Night City 2045 pp. 261-262",
+        "note": "Vodka Container is a named first-floor bar inside the Zhirafa MicroVillage complex."
+      }
+    ],
+    "nc2045-little-china-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-LITTLE-CHINA-098-GOLD-DRAGONS-SECURITY",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+        "source_ref": "Night City 2045 p. 98",
+        "note": "Gold Dragons Security has its official offices and basement facilities in Guăngbō Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-LITTLE-CHINA-098-LIBERTINE-LANES",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+        "source_ref": "Night City 2045 pp. 98-99",
+        "note": "Libertine Lanes occupies two floors of Guăngbō Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-LITTLE-CHINA-099-LING-PO-PUBLIC-LIBRARY",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+        "source_ref": "Night City 2045 p. 99",
+        "note": "Ling Po Public Library is a named public-service tenant of Guăngbō Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-CHINA-099-LCRA-CLINIC",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+        "source_ref": "Night City 2045 p. 99",
+        "note": "The source-explicit LCRA clinic shares tenant space within Guăngbō Tower."
+      }
+    ],
+    "nc2045-north-heywood-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NORTH-HEYWOOD-250-EDGEWORK-ESCAPES",
+        "target_entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NEON-HOLLOW-STRIP",
+        "source_ref": "Night City 2045 p. 250",
+        "note": "Edgework Escapes is the named virtuality business on the Neon Hollow Strip."
+      }
+    ],
+    "nc2045-port-of-night-city-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-PORT-OF-NIGHT-CITY-152-RANDY-DANDY",
+        "target_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
+        "source_ref": "Night City 2045 p. 152",
+        "note": "Randy Dandy is the source-named ferry/bar forming part of the permanent Flotsam settlement."
+      }
+    ],
+    "nc2045-rancho-coronado-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "6th Street Station is a persistent venue-security occupant inside the former Minimallism shopping mall."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
+        "target_entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+        "source_ref": "Night City 2045 p. 290",
+        "note": "The Samaritan clinic is a persistent occupant operating from a former shop unit inside Minimallism."
+      }
+    ],
+    "nc2045-the-glen-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-118-JAPANESE-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Japanese Consulate is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-MEXICAN-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Mexican Consulate is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-OAS-MISSION",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The Organization of American States Mission is one of the named diplomatic missions contained by the Consulate Causeway compound."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-THE-GLEN-123-DOCTOR-WILLIAM-GALEN",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "Doctor William Galen maintains medical offices in the Raven-affiliated skyscraper."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-123-KILLSTROM-MUSIC",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "KillStrom Music is one of the named affiliated tenants in the Raven Microcybernetics complex."
+      }
+    ],
+    "nc2045-kabuki-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-KABUKI-202-THE-CABBIT",
+        "target_entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+        "source_ref": "Night City 2045 p. 202",
+        "note": "The Cabbit occupies the ground floor of the G3 Gun-Gal Station building."
+      }
+    ],
+    "nc2045-reclamation-zone-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Carmen's Cosmetics is an outlet within Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Forever Beautiful is an outlet within Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Forgotten Treasures is one of the named businesses contained by Reclamation Zone Station."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+        "target_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+        "source_ref": "Night City 2045 p. 162",
+        "note": "Underground Bodega is one of the named businesses contained by Reclamation Zone Station."
+      }
+    ],
+    "nc2045-university-district-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-106-ATTRACTION-SPHERE-SIGMA",
+        "target_entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS",
+        "source_ref": "Night City 2045 p. 106",
+        "note": "Attraction Sphere Sigma is the named public-facing attraction on the Biotechnica Campus."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-OLD-COMBAT-ZONE-P167",
+  "district": "Old Combat Zone",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 167,
+    "source_ref": "Night City 2045 p. 167",
+    "note": "All sixteen numbered map pins and six Warren submarkers were visually verified against the user-provided purchased source. The source draws both the #16 Warren parent point and 16a-16f internal locations."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "Alice’s", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-168-ALICE-S", "x": 0.542745, "y": 0.266179, "source_ref": "Night City 2045 p. 168"},
+    {"map_no": 2, "name": "Always Hot", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-168-ALWAYS-HOT", "x": 0.480114, "y": 0.523792, "source_ref": "Night City 2045 p. 168"},
+    {"map_no": 3, "name": "The Arena", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-168-THE-ARENA", "x": 0.316471, "y": 0.524915, "source_ref": "Night City 2045 p. 168"},
+    {"map_no": 4, "name": "Bladeware", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-168-BLADEWARE", "x": 0.542745, "y": 0.308416, "source_ref": "Night City 2045 p. 168"},
+    {"map_no": 5, "name": "The Farnsworth Building", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-THE-FARNSWORTH-BUILDING", "x": 0.431961, "y": 0.288892, "source_ref": "Night City 2045 p. 169"},
+    {"map_no": 6, "name": "Flasher’s Corner", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER", "x": 0.473856, "y": 0.353362, "source_ref": "Night City 2045 p. 169"},
+    {"map_no": 7, "name": "From the Ashes", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FROM-THE-ASHES", "x": 0.512876, "y": 0.266179, "source_ref": "Night City 2045 p. 169"},
+    {"map_no": 8, "name": "Ionic Semiconductor Building", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-IONIC-SEMICONDUCTOR-BUILDING", "x": 0.673529, "y": 0.308416, "source_ref": "Night City 2045 p. 169"},
+    {"map_no": 9, "name": "Jesse James’ Kosher Deli", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-JESSE-JAMES-KOSHER-DELI", "x": 0.404967, "y": 0.534688, "source_ref": "Night City 2045 pp. 169-170"},
+    {"map_no": 10, "name": "Kibble Kirkle", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE", "x": 0.495425, "y": 0.324491, "source_ref": "Night City 2045 p. 170"},
+    {"map_no": 11, "name": "The Laydown", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-LAYDOWN", "x": 0.464118, "y": 0.378030, "source_ref": "Night City 2045 p. 170"},
+    {"map_no": 12, "name": "The Lodge", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-LODGE", "x": 0.406340, "y": 0.430590, "source_ref": "Night City 2045 p. 170"},
+    {"map_no": 13, "name": "Substation 12", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-SUBSTATION-12", "x": 0.351634, "y": 0.589812, "source_ref": "Night City 2045 p. 170"},
+    {"map_no": 14, "name": "The Terrace", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-TERRACE", "x": 0.435425, "y": 0.565754, "source_ref": "Night City 2045 p. 170"},
+    {"map_no": 15, "name": "The Underground", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-UNDERGROUND", "x": 0.604706, "y": 0.266179, "source_ref": "Night City 2045 p. 171"},
+    {"map_no": 16, "name": "The Warren", "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN", "x": 0.590654, "y": 0.374369, "source_ref": "Night City 2045 pp. 171-172"},
+    {"map_no": 16, "map_suffix": "a", "name": "Angel Radio", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-ANGEL-RADIO", "x": 0.509314, "y": 0.411127, "source_ref": "Night City 2045 p. 171"},
+    {"map_no": 16, "map_suffix": "b", "name": "Baskin Books", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS", "x": 0.593072, "y": 0.337356, "source_ref": "Night City 2045 p. 171"},
+    {"map_no": 16, "map_suffix": "c", "name": "OCZ Schoolhouse", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-OCZ-SCHOOLHOUSE", "x": 0.511242, "y": 0.452288, "source_ref": "Night City 2045 pp. 171-172"},
+    {"map_no": 16, "map_suffix": "d", "name": "The Pantheon", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-172-THE-PANTHEON", "x": 0.611373, "y": 0.327016, "source_ref": "Night City 2045 p. 172"},
+    {"map_no": 16, "map_suffix": "e", "name": "Smithery", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY", "x": 0.668791, "y": 0.333398, "source_ref": "Night City 2045 p. 172"},
+    {"map_no": 16, "map_suffix": "f", "name": "Uncle Anne’s", "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S", "x": 0.643889, "y": 0.326915, "source_ref": "Night City 2045 p. 172"}
+  ]
+}

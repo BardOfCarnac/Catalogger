@@ -1,0 +1,99 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-japantown-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [128, 131, 133, 134],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT",
+      "name": "The Basement",
+      "entity_type": "local_vendor",
+      "district": "Old Japantown",
+      "map_no": 1,
+      "book_page": 128,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 128",
+      "source_summary": "Pawnshop in the surviving basement of the former Japan Trade Center, run by Fixer Yomotsu Hirasaka; common inexpensive goods are public while rarer and more expensive merchandise is shown to customers who impress the owner.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Yomotsu Hirasaka", "role": "Fixer", "rank": 5},
+      "local_offerings": [
+        {"offering_key": "cheap-pawn-goods", "label": "Cheap pawned goods and common collectibles", "visibility": "public"},
+        {"offering_key": "rare-expensive-goods", "label": "Rare and expensive goods", "visibility": "trusted-customers"}
+      ],
+      "services": [{"service_key": "pawn-buying", "label": "Purchase and resale of customers’ goods"}],
+      "catalogue_note": "The source explicitly gates rarer inventory by relationship with the proprietor. A generic pawn assortment would erase that distinction, so merchandise remains source-local.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_ACCESS_TIERED_PAWN_VENDOR"}
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HIGHCOURT-PLAZA-HOTEL",
+      "name": "Highcourt Plaza Hotel",
+      "entity_type": "service",
+      "district": "Old Japantown",
+      "map_no": 8,
+      "book_page": 131,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 131",
+      "source_summary": "Upscale hotel offering pools, spas, high-quality meals and unusually secure accommodation, with Aerocab transport arranged for guests.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "luxury-hotel-lodging", "label": "Upscale hotel lodging"},
+        {"service_key": "hotel-spa-pool", "label": "Pools and spa amenities"},
+        {"service_key": "hotel-dining", "label": "Hotel dining"},
+        {"service_key": "guest-aerocab-transfer", "label": "Aerocab guest transfer"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_LUXURY_HOSPITALITY_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-IMPERIAL-BANK",
+      "name": "Imperial Bank",
+      "entity_type": "service",
+      "district": "Old Japantown",
+      "map_no": 10,
+      "book_page": 131,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 131",
+      "source_summary": "Former conventional bank reduced to a payday-loan business charging very high interest; ordinary banking services are no longer offered.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "payday-loan", "label": "High-interest payday loans"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "NARROW_TO_PAYDAY_LOAN_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-ONI-YAMA-JAIL",
+      "name": "Oni-Yama Jail",
+      "entity_type": "context",
+      "district": "Old Japantown",
+      "map_no": 18,
+      "book_page": 133,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 133",
+      "source_summary": "Kimen-Gumi detention site where detainees may pay a fine, be transferred for prosecution, or be compelled into labor for the Tyger Claws and associated businesses; this is coercive detention, not a customer-facing commercial service.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "DOWNGRADE_TO_DETENTION_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-UNNAMED-CUBE-HOTEL",
+      "name": "Unnamed Cube Hotel",
+      "entity_type": "service",
+      "district": "Old Japantown",
+      "map_no": 25,
+      "book_page": 134,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 134",
+      "source_summary": "Automated, minimally secured cube hotel with electronic lobby-vendit payment and no on-site staff.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "automated-cube-lodging", "label": "Automated cube-hotel lodging"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_AUTOMATED_LODGING_SERVICE"}
+    }
+  ]
+}

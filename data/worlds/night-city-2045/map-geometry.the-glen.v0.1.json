@@ -1,0 +1,52 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-THE-GLEN-P115",
+  "district": "The Glen",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 115,
+    "source_ref": "Night City 2045 p. 115",
+    "note": "Numbered and lettered map pins were visually verified against the user-provided purchased source. Consulate Causeway has no fabricated unsuffixed #9 point; its six drawn 9a-9f mission markers resolve to their existing child entities."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "1st Night City Bank", "entity_id": "NC2045-LOC-THE-GLEN-116-1ST-NIGHT-CITY-BANK", "x": 0.387124, "y": 0.502691, "source_ref": "Night City 2045 p. 116"},
+    {"map_no": 2, "name": "96.1 Fever Dream", "entity_id": "NC2045-LOC-THE-GLEN-116-96-1-FEVER-DREAM", "x": 0.650646, "y": 0.371998, "source_ref": "Night City 2045 p. 116"},
+    {"map_no": 3, "name": "Air", "entity_id": "NC2045-LOC-THE-GLEN-116-AIR", "x": 0.554641, "y": 0.348550, "source_ref": "Night City 2045 pp. 116-117"},
+    {"map_no": 4, "name": "Archer & Li", "entity_id": "NC2045-LOC-THE-GLEN-117-ARCHER-LI", "x": 0.406209, "y": 0.292610, "source_ref": "Night City 2045 p. 117"},
+    {"map_no": 5, "name": "Bear’s", "entity_id": "NC2045-LOC-THE-GLEN-117-BEAR-S", "x": 0.332941, "y": 0.316670, "source_ref": "Night City 2045 p. 117"},
+    {"map_no": 6, "name": "Beth El Congregation", "entity_id": "NC2045-LOC-THE-GLEN-117-BETH-EL-CONGREGATION", "x": 0.455621, "y": 0.371998, "source_ref": "Night City 2045 pp. 117-118"},
+    {"map_no": 7, "name": "City Hall", "entity_id": "NC2045-LOC-THE-GLEN-118-CITY-HALL", "x": 0.439469, "y": 0.562250, "source_ref": "Night City 2045 p. 118"},
+    {"map_no": 8, "name": "Club Atlantis", "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS", "x": 0.614951, "y": 0.320617, "source_ref": "Night City 2045 p. 118"},
+
+    {"map_no": 9, "map_suffix": "a", "name": "EEC Consulate", "entity_id": "NC2045-OUT-THE-GLEN-118-EEC-CONSULATE", "x": 0.523072, "y": 0.416329, "source_ref": "Night City 2045 pp. 118-119"},
+    {"map_no": 9, "map_suffix": "b", "name": "Japanese Consulate", "entity_id": "NC2045-OUT-THE-GLEN-118-JAPANESE-CONSULATE", "x": 0.557386, "y": 0.404965, "source_ref": "Night City 2045 p. 119"},
+    {"map_no": 9, "map_suffix": "c", "name": "Mexican Consulate", "entity_id": "NC2045-OUT-THE-GLEN-119-MEXICAN-CONSULATE", "x": 0.523072, "y": 0.398652, "source_ref": "Night City 2045 p. 119"},
+    {"map_no": 9, "map_suffix": "d", "name": "Pacifica Confederation Offices", "entity_id": "NC2045-OUT-THE-GLEN-119-PACIFICA-CONFEDERATION-OFFICES", "x": 0.557386, "y": 0.387289, "source_ref": "Night City 2045 p. 119"},
+    {"map_no": 9, "map_suffix": "e", "name": "Organization of American States Mission", "entity_id": "NC2045-OUT-THE-GLEN-119-OAS-MISSION", "x": 0.523072, "y": 0.374662, "source_ref": "Night City 2045 p. 119"},
+    {"map_no": 9, "map_suffix": "f", "name": "United States Consulate", "entity_id": "NC2045-OUT-THE-GLEN-119-UNITED-STATES-CONSULATE", "x": 0.557386, "y": 0.373400, "source_ref": "Night City 2045 p. 119"},
+
+    {"map_no": 10, "name": "Diplomatic Immunity", "entity_id": "NC2045-LOC-THE-GLEN-119-DIPLOMATIC-IMMUNITY", "x": 0.490065, "y": 0.418854, "source_ref": "Night City 2045 p. 119"},
+    {"map_no": 11, "name": "DMV", "entity_id": "NC2045-LOC-THE-GLEN-120-DMV", "x": 0.383856, "y": 0.553418, "source_ref": "Night City 2045 p. 120"},
+    {"map_no": 12, "name": "EuroBank", "entity_id": "NC2045-LOC-THE-GLEN-120-EUROBANK", "x": 0.554641, "y": 0.462558, "source_ref": "Night City 2045 p. 120"},
+    {"map_no": 13, "name": "First Baptist Church of Night City", "entity_id": "NC2045-LOC-THE-GLEN-120-FIRST-BAPTIST-CHURCH-OF-NIGHT-CITY", "x": 0.287639, "y": 0.334446, "source_ref": "Night City 2045 p. 120"},
+    {"map_no": 14, "name": "Glenlife Perfected", "entity_id": "NC2045-LOC-THE-GLEN-120-GLENLIFE-PERFECTED", "x": 0.280253, "y": 0.457826, "source_ref": "Night City 2045 p. 120"},
+    {"map_no": 15, "name": "Hall of Justice", "entity_id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE", "x": 0.534175, "y": 0.549220, "source_ref": "Night City 2045 p. 121"},
+    {"map_no": 16, "name": "Kasim’s", "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S", "x": 0.354706, "y": 0.455810, "source_ref": "Night City 2045 p. 121"},
+    {"map_no": 17, "name": "Lazarus Regional HQ", "entity_id": "NC2045-LOC-THE-GLEN-121-LAZARUS-REGIONAL-HQ", "x": 0.302606, "y": 0.420287, "source_ref": "Night City 2045 p. 121"},
+    {"map_no": 18, "name": "Le Jardin", "entity_id": "NC2045-LOC-THE-GLEN-122-LE-JARDIN", "x": 0.557059, "y": 0.418854, "source_ref": "Night City 2045 p. 122"},
+    {"map_no": 19, "name": "Merrill, Asukaga & Finch Offices", "entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES", "x": 0.494967, "y": 0.489726, "source_ref": "Night City 2045 p. 122"},
+    {"map_no": 20, "name": "The Molly May", "entity_id": "NC2045-LOC-THE-GLEN-122-THE-MOLLY-MAY", "x": 0.269755, "y": 0.388879, "source_ref": "Night City 2045 p. 122"},
+    {"map_no": 21, "name": "NCPD Precinct #1", "entity_id": "NC2045-LOC-THE-GLEN-122-NCPD-PRECINCT-1", "x": 0.650646, "y": 0.441073, "source_ref": "Night City 2045 pp. 122-123"},
+    {"map_no": 22, "name": "Night City News Today", "entity_id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-NEWS-TODAY", "x": 0.294510, "y": 0.275357, "source_ref": "Night City 2045 p. 123"},
+    {"map_no": 23, "name": "Night City Plaza", "entity_id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-PLAZA", "x": 0.332941, "y": 0.380976, "source_ref": "Night City 2045 p. 123"},
+    {"map_no": 24, "name": "Raven Microcybernetics", "entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS", "x": 0.406209, "y": 0.322743, "source_ref": "Night City 2045 pp. 123-124"},
+    {"map_no": 25, "name": "Seafoam", "entity_id": "NC2045-LOC-THE-GLEN-124-SEAFOAM", "x": 0.553791, "y": 0.293872, "source_ref": "Night City 2045 p. 124"},
+    {"map_no": 26, "name": "Souls Respite", "entity_id": "NC2045-LOC-THE-GLEN-124-SOULS-RESPITE", "x": 0.629927, "y": 0.348550, "source_ref": "Night City 2045 p. 124"},
+    {"map_no": 27, "name": "World Stock Exchange", "entity_id": "NC2045-LOC-THE-GLEN-124-WORLD-STOCK-EXCHANGE", "x": 0.452410, "y": 0.441600, "source_ref": "Night City 2045 p. 124"},
+    {"map_no": 28, "name": "Worthy Housing", "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING", "x": 0.555425, "y": 0.441582, "source_ref": "Night City 2045 p. 124"}
+  ]
+}

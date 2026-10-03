@@ -1,0 +1,27 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-HEYWOOD-DOCKS-P241",
+  "district": "Heywood Docks",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 241,
+    "source_ref": "Night City 2045 p. 241",
+    "note": "Source map geometry verified against the user-provided purchased source. The map contains ten ordinary numbered pins #1-#10 with no suffix hierarchy."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "The Cylinders", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-242-THE-CYLINDERS", "x": 0.546536, "y": 0.286890, "source_ref": "Night City 2045 p. 242"},
+    {"map_no": 2, "name": "Decker, Tanaka & Rogers", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-242-DECKER-TANAKA-ROGERS", "x": 0.581699, "y": 0.436934, "source_ref": "Night City 2045 p. 242"},
+    {"map_no": 3, "name": "Dockside Billhooks Track", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-242-DOCKSIDE-BILLHOOKS-TRACK", "x": 0.288235, "y": 0.533400, "source_ref": "Night City 2045 p. 242"},
+    {"map_no": 4, "name": "Greenbox Storage Units", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-242-GREENBOX-STORAGE-UNITS", "x": 0.310588, "y": 0.570115, "source_ref": "Night City 2045 p. 242"},
+    {"map_no": 5, "name": "HF&S Construction", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-242-HF-S-CONSTRUCTION", "x": 0.606863, "y": 0.412875, "source_ref": "Night City 2045 p. 242"},
+    {"map_no": 6, "name": "LoadStar Continental Shipping", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-LOADSTAR-CONTINENTAL-SHIPPING", "x": 0.559347, "y": 0.376542, "source_ref": "Night City 2045 p. 243"},
+    {"map_no": 7, "name": "Rail Yard", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-RAIL-YARD", "x": 0.431961, "y": 0.507301, "source_ref": "Night City 2045 p. 243"},
+    {"map_no": 8, "name": "Shipping Yard", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SHIPPING-YARD", "x": 0.338235, "y": 0.492251, "source_ref": "Night City 2045 p. 243"},
+    {"map_no": 9, "name": "SK Securities", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES", "x": 0.498726, "y": 0.395145, "source_ref": "Night City 2045 p. 243"},
+    {"map_no": 10, "name": "Warehouse 13", "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-WAREHOUSE-13", "x": 0.570523, "y": 0.324491, "source_ref": "Night City 2045 p. 243"}
+  ]
+}

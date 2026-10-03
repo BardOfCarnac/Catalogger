@@ -1,0 +1,34 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "batch_id": "port-of-night-city-core-audit-v0.2",
+  "source_profile_version": "0.2",
+  "profiles": [
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "district": "Port of Night City",
+      "book_page": 152,
+      "entity_level": "mapped_location",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 152",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "primary_archetype": "pawn-shop",
+      "secondary_archetypes": "night-market-stall",
+      "primary_departments": "general-equipment|electronics-comms",
+      "secondary_departments": "weapons|fashion-personal",
+      "market_channel_override": "pawn|street|grey_market|nomad",
+      "breadth_profile": "broad",
+      "depth_profile": "shallow",
+      "supply_capability": "irregular",
+      "price_tier_center": "Costly",
+      "pricing_style": "bargain",
+      "parent_stock_policy": "OWN_AND_EVENT",
+      "audit_action": "KEEP_HYBRID",
+      "assignment_confidence": "HIGH",
+      "catalog_rule": "SCORE_EXISTING_CATALOG",
+      "candidate_rule_summary": "department match",
+      "modelling_note": "Fixer storefront with intermittent market activity."
+    }
+  ]
+}
