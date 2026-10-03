@@ -599,11 +599,7 @@ async function purchase(req:Request){
   if(!baselineRow||!ambientRow)return out({error:'item is not in this shop cycle'},409);
 
   if(baselineRow.quantity==null){
-    await dbInsert('vendr_stock_events',{
-      world_key:worldKey,entity_id:entityId,item_id:itemId,stock_cycle:cycleInfo(p).cycle,
-      event_type:'purchase',quantity_delta:-quantity,unit_price:baselineRow.asking_price,
-      actor_key:String(user.id),metadata:{quantity_mode:'continuous',non_depleting:true}
-    });
+    // Continuous/on-demand stock has no depletion state and creates no history row.
     return out({ok:true,depletes:false,entity_id:entityId,item_id:itemId,quantity_purchased:quantity,remaining:null,stock_cycle:cycleInfo(p).cycle});
   }
 
