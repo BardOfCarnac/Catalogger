@@ -40,13 +40,13 @@
       "assortment": {
         "basis": "shop_scale + retail character",
         "version": "1.0",
-        "capacity_max": 14,
-        "capacity_min": 7,
+        "capacity_max": 0,
+        "capacity_min": 0,
         "shape_source": "archetype_or_shop_override",
-        "selection_mode": "weighted_shape"
+        "selection_mode": "none"
       },
       "shop_scale": "small",
-      "stock_mode": "EVENT_MARKET",
+      "stock_mode": "CHANNEL_TEMPLATE",
       "scale_basis": "inferred_from_profile"
     },
     {
@@ -56,13 +56,13 @@
       "assortment": {
         "basis": "shop_scale + retail character",
         "version": "1.0",
-        "capacity_max": 14,
-        "capacity_min": 7,
+        "capacity_max": 0,
+        "capacity_min": 0,
         "shape_source": "archetype_or_shop_override",
-        "selection_mode": "weighted_shape"
+        "selection_mode": "none"
       },
       "shop_scale": "small",
-      "stock_mode": "EVENT_MARKET",
+      "stock_mode": "CHANNEL_TEMPLATE",
       "scale_basis": "inferred_from_profile"
     },
     {
@@ -187,7 +187,43 @@
         "capacity_max": 22,
         "capacity_min": 12,
         "shape_source": "archetype_or_shop_override",
-        "selection_mode": "weighted_shape"
+        "selection_mode": "weighted_shape",
+        "shape": [
+          {
+            "label": "sidearms",
+            "weight": 0.45,
+            "subcategories": [
+              "Medium Pistols",
+              "Heavy Pistols",
+              "Very Heavy Pistols"
+            ]
+          },
+          {
+            "label": "long guns",
+            "weight": 0.25,
+            "subcategories": [
+              "SMG",
+              "Heavy SMG",
+              "Shotguns",
+              "Assault Rifles",
+              "Sniper Rifles"
+            ]
+          },
+          {
+            "label": "ammunition",
+            "weight": 0.2,
+            "subcategories": [
+              "Ammunition"
+            ]
+          },
+          {
+            "label": "attachments",
+            "weight": 0.1,
+            "subcategories": [
+              "Weapon Attachments"
+            ]
+          }
+        ]
       },
       "shop_scale": "medium",
       "stock_mode": "DIRECT_SELLER",
@@ -1790,23 +1826,30 @@
         "shape": [
           {
             "label": "groceries",
-            "weight": 0.5,
-            "departments": [
-              "food-consumables"
+            "weight": 0.45,
+            "subcategories": [
+              "Foodstuffs"
             ]
           },
           {
-            "label": "guns",
-            "weight": 0.3,
-            "departments": [
-              "weapons"
+            "label": "ordinary firearms",
+            "weight": 0.35,
+            "subcategories": [
+              "Medium Pistols",
+              "Heavy Pistols",
+              "Very Heavy Pistols",
+              "SMG",
+              "Heavy SMG",
+              "Shotguns",
+              "Assault Rifles",
+              "Sniper Rifles"
             ]
           },
           {
             "label": "ammunition",
             "weight": 0.2,
-            "departments": [
-              "ammunition-ordnance"
+            "subcategories": [
+              "Ammunition"
             ]
           }
         ],
@@ -2070,7 +2113,32 @@
         "capacity_max": 9,
         "capacity_min": 5,
         "shape_source": "archetype_or_shop_override",
-        "selection_mode": "weighted_shape"
+        "selection_mode": "weighted_shape",
+        "shape": [
+          {
+            "label": "drinks",
+            "weight": 0.25,
+            "subcategories": [
+              "Drinks (and similar substances served in bars and pubs)"
+            ]
+          },
+          {
+            "label": "drugs",
+            "weight": 0.35,
+            "subcategories": [
+              "Street Drugs"
+            ]
+          },
+          {
+            "label": "tech",
+            "weight": 0.4,
+            "departments": [
+              "electronics-comms",
+              "general-equipment",
+              "cyberware"
+            ]
+          }
+        ]
       },
       "shop_scale": "large",
       "stock_mode": "HYBRID_DIRECT_EVENT",
