@@ -1903,6 +1903,7 @@ function renderMarkets(rows){
 }
 function renderHomeDefault(){
   const profiled=sellers.filter(s=>s.stock_profile_present||s.stock_mode!=='PLACE_ONLY');
+  const browseable=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode));
   const direct=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   const markets=profiled.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
   document.getElementById('primarySellerTitle').textContent='Known sellers';
@@ -1911,7 +1912,7 @@ function renderHomeDefault(){
   document.getElementById('secondarySellerMeta').innerHTML='Likely stocked<br>places';
   document.getElementById('marketPanelTitle').textContent='Markets';
   document.getElementById('marketPanelMeta').innerHTML='Containers / events<br>from the city graph';
-  renderSellerPanel(document.getElementById('primarySellerPanel'),profiled.slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
+  renderSellerPanel(document.getElementById('primarySellerPanel'),browseable.slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
   renderSellerPanel(document.getElementById('secondarySellerPanel'),direct.slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
   renderMarkets(markets);
 }
