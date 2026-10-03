@@ -176,6 +176,9 @@ function score(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,string[]>)
   if(Number.isFinite(max)&&max>0&&price!==null&&price>max) return null;
   if(p.breadth_profile==='broad') s+=10;
   if(p.assignment_confidence==='HIGH') s+=5;
+  const rule=matchRule(p)||{};
+  const itemMfrs=mfrMap.get(String(i.id))||[];
+  if(d==='weapons'&&!itemMfrs.length&&!(rule.required_manufacturers||[]).length) s+=30;
   return s+gate.boost;
 }
 
@@ -588,12 +591,13 @@ async function search(u:URL){
   const direct=all.filter((i:any)=>String(i.name||'').toLowerCase().includes(f));
   const qnorm=f.replace(/[^a-z0-9]+/g,' ').trim();
   const qterms=qnorm.split(/\s+/).filter(Boolean).map(t=>t==='ammo'?'ammunition':t);
+  const exactDirect=direct.filter((i:any)=>String(i.name||'').trim().toLowerCase()===f);
   const anchorDirect=direct.filter((i:any)=>{
     const cls=classification(i,classMap)||{};
     const label=(String(cls.source_category||'')+' '+String(cls.source_subcategory||'')).toLowerCase().replace(/[^a-z0-9]+/g,' ');
     return qterms.length&&qterms.every(t=>label.includes(t));
   });
-  let relationAnchors=anchorDirect;
+  let relationAnchors=exactDirect.length?exactDirect:anchorDirect;
   if(!relationAnchors.length&&direct.length){
     const counts=new Map<string,number>();
     for(const i of direct){
@@ -915,7 +919,20 @@ Deno.serve(async(req:Request)=>{
     if(a==='search') return await search(u);
     if(a==='shop') return await shop(u);
     if(a==='purchase') return await purchase(req);
-    if(a==='debug-item'){const all=await catalogue();return out(all[0]||null)}
+    if(a==='debug-item'){
+      const id=u.searchParams.get('id');
+      const [all,classMap,mfrMap]=await Promise.all([catalogue(),classifications(),manufacturers()]);
+      const item=id?all.find((x:any)=>String(x.id)===String(id)):all[0];
+      return out(item?{
+        item,
+        classification:classification(item,classMap),
+        department:department(item,classMap),
+        relation_key:relationKey(item,classMap),
+        manufacturers:mfrMap.get(String(item.id))||[],
+        quantity_class:quantityClass(item,classMap),
+        base_price:basePrice(item)
+      }:null)
+    }
     return new Response(HTML,{headers:{'content-type':'text/html; charset=utf-8'}});
   }catch(e){return out({error:e instanceof Error?e.message:String(e)},500)}
 });
