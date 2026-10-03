@@ -2151,16 +2151,12 @@ function renderVendorStock(s,focus){
     return ranked.map(({r,exactHit,relatedHit})=>{
       const rowClass=exactHit?' exact-row':(relatedHit?' related-row':'');
       const nameClass=exactHit?' exact':(relatedHit?' related':'');
-      const flowLabel=r.ambient_last_event?.type==='delivery'?'fresh delivery':
-        r.ambient_last_event?.type==='replenishment'?'restocked':
-        r.ambient_state==='down'?'selling down':
-        r.ambient_state==='up'?'stock up':
-        null;
+      const flowLabel=r.last_change||null;
       const sub=[r.assortment_role,r.condition,flowLabel,exactHit?'exact item':(relatedHit?'related item':null)].filter(Boolean).join(' · ');
       return '<article class="stock-row'+rowClass+'" data-search="'+esc((r.name+' '+sub).toLowerCase())+'"><div>'+
         '<div class="stock-name'+nameClass+'">'+esc(r.name)+'</div>'+
         '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-        '<div class="stock-meta"><strong>'+esc(quantityText(r))+'</strong><br>'+esc((r.assortment_role||'stock')+' · cycle '+String(s.state?.cycle??s.state?.stock_cycle??r.stock_cycle??'—'))+
+        '<div class="stock-meta"><strong>'+esc(quantityText(r))+'</strong><br>'+esc((r.assortment_role||'stock')+' · state '+String(s.state?.generation??s.state?.stock_cycle??r.stock_cycle??'—'))+
         '</div>'+
         '<div class="price">'+esc(r.asking_price==null?'—':Number(r.asking_price).toLocaleString()+'eb')+'</div></article>';
     }).join('');
@@ -2200,7 +2196,7 @@ function renderVendorStock(s,focus){
   }
 
   list.innerHTML=stockRowsHtml(sourceRows);
-  document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · cycle '+esc(String(s.state?.cycle??s.state?.stock_cycle??'—'))+'<br>'+esc(s.state?.cadence_label||'Current stock');
+  document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · state '+esc(String(s.state?.generation??s.state?.stock_cycle??'—'))+'<br>'+esc(s.state?.cadence_label||'Current stock');
   document.getElementById('restockBand').textContent=nextRefreshText(s.state);
 }
 function renderVendor(s,offers){
@@ -2289,12 +2285,12 @@ function renderVendor(s,offers){
       document.getElementById('offerKicker').textContent='You were looking for';
       document.getElementById('offerPrice').textContent='NO CURRENT OFFER';
       document.getElementById('offerQuantity').textContent='related stock shown first';
-      document.getElementById('offerSub').textContent=(s.name||'This seller')+' is a plausible seller for this catalogue item, but the current cycle does not contain it.';
+      document.getElementById('offerSub').textContent=(s.name||'This seller')+' is a plausible seller for this catalogue item, but its current resolved stock does not contain it.';
     }
   }else{
     offer.hidden=true;
   }
-  document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock cycle '+String(s.state?.cycle??s.state?.stock_cycle??'—'):'Profile only';
+  document.getElementById('factStatus').textContent=(s.stock||[]).length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):'Profile only';
   document.getElementById('factWorldState').textContent=(s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory';
   renderVendorStock(s,focus);
   filterShopStock('');
