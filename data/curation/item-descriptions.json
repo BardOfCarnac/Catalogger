@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "note": "Human-authored concise Vend-R item descriptions keyed to canonical Catalogger item IDs. Each description identifies the object and includes one small distinguishing qualifier or feature; mechanical statistics remain in structured catalogue data.",
+  "version": "0.2.0",
+  "note": "Human-authored concise Vend-R item descriptions keyed to canonical Catalogger item IDs. Every canonical catalogue entity has one description. Each description identifies the object and includes a small distinguishing qualifier or feature; mechanical statistics remain in structured catalogue data.",
   "items": {
     "VENDR-0001": "Compact air-powered medium pistol.",
     "VENDR-0002": "Cheap street-grade medium pistol.",
@@ -1269,6 +1269,13 @@
     "VENDR-1269": "Uncommon ELO Jack of Hearts card.",
     "VENDR-1270": "Uncommon ELO Jack of Spades card.",
     "VENDR-1271": "Variable-rarity ELO Joker card.",
-    "VENDR-1275": "Common ELO Queen of Clubs card."
+    "VENDR-1275": "Common ELO Queen of Clubs card.",
+    "VENDR-1276": "Common ELO Queen of Diamonds card.",
+    "VENDR-1277": "Uncommon ELO Queen of Hearts card.",
+    "VENDR-1278": "Uncommon ELO Queen of Spades card.",
+    "VENDR-1279": "Common ELO King of Clubs card.",
+    "VENDR-1280": "Common ELO King of Diamonds card.",
+    "VENDR-1281": "Uncommon ELO King of Hearts card.",
+    "VENDR-1282": "Uncommon ELO King of Spades card."
   }
 }
