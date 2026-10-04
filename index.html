@@ -1491,6 +1491,24 @@ button,input,select{font:inherit}
   padding:12px 18px;border-bottom:3px solid var(--ink);background:var(--rear-4);
   font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.07em;
 }
+.nonstock-profile{
+  padding:20px 18px 22px;
+  background:rgba(255,250,240,.42);
+}
+.nonstock-profile strong{
+  display:block;
+  margin-bottom:6px;
+  font-size:20px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.nonstock-profile span{
+  display:block;
+  max-width:680px;
+  color:var(--muted);
+  font:10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
 @media(max-width:760px){
   .place-row{grid-template-columns:minmax(0,1fr) auto}
   .place-row .place-meta{grid-column:1;text-align:left}
@@ -2361,12 +2379,40 @@ function childSellers(s){
       tags:obj.child_tags||obj.tags||listed?.tags||'',
       stock_mode:obj.child_stock_mode||obj.stock_mode||listed?.stock_mode||''
     };
-  }).filter(x=>x.entity_id&&x.name);
+  }).filter(x=>x.entity_id&&x.name&&String(x.entity_id)!==String(s?.entity_id));
 }
 function parentSeller(s){
+  const selfId=String(s?.entity_id||'');
+  const selfName=String(s?.name||'').trim().toLowerCase();
   const explicit=s.parent_id||s.parent_entity_id||s.parent?.entity_id||null;
-  if(explicit&&sellerById(explicit))return sellerById(explicit);
-  return sellerByName(s.parent_name||s.parent?.name||'',s.district);
+  let parent=explicit?sellerById(explicit):null;
+  if(!parent)parent=sellerByName(s.parent_name||s.parent?.name||'',s.district);
+  if(!parent)return null;
+  if(String(parent.entity_id||'')===selfId)return null;
+  if(selfName&&String(parent.name||'').trim().toLowerCase()===selfName)return null;
+  return parent;
+}
+function stockPolicyValue(s,key){
+  return s?.[key]??s?.data?.[key]??null;
+}
+function ownsRetailStock(s){
+  const mode=String(s?.stock_mode||'').toUpperCase();
+  const policy=String(stockPolicyValue(s,'parent_stock_policy')||'').toUpperCase();
+  const rule=String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase();
+  const persistent=stockPolicyValue(s,'persistent_inventory');
+  if(policy==='CHILDREN_ONLY'||policy==='NO_STOCK')return false;
+  if(rule==='DELEGATE_TO_CHILDREN'||rule==='NO_STATIC_INVENTORY')return false;
+  if(mode==='SERVICE_ONLY')return false;
+  if(persistent===false&&mode!=='EVENT_MARKET'&&mode!=='HYBRID_DIRECT_EVENT')return false;
+  return true;
+}
+function nonStockLabel(s){
+  const mode=String(s?.stock_mode||'').toUpperCase();
+  const policy=String(stockPolicyValue(s,'parent_stock_policy')||'').toUpperCase();
+  const rule=String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase();
+  if(mode==='SERVICE_ONLY'||rule==='NO_STATIC_INVENTORY')return 'Service only';
+  if(policy==='CHILDREN_ONLY'||rule==='DELEGATE_TO_CHILDREN')return 'Container only';
+  return 'Profile only';
 }
 function modeLabel(v){return String(v||'').replaceAll('_',' ')}
 function clampMap(v){return Math.max(.025,Math.min(.975,Number(v)))}
@@ -2892,9 +2938,10 @@ function openStockAtFocus(rows,focusId){
 }
 function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
-  const sourceRows=Array.isArray(s.stock)?s.stock.slice():[];
+  const canOwnStock=ownsRetailStock(s);
+  const sourceRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
   const children=childSellers(s);
-  const menuMode=!children.length&&isFoodDrinkVenue(s,sourceRows);
+  const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s,sourceRows);
   const stockTitle=document.getElementById('stockPanelTitle');
   const search=document.getElementById('shopSearch');
   const browser=document.getElementById('stockBrowser');
@@ -2924,6 +2971,20 @@ function renderVendorStock(s,focus){
     }));
     document.getElementById('stockSummary').innerHTML=children.length+' place'+(children.length===1?'':'s')+' inside'+(sourceRows.length?'<br>'+sourceRows.length+' direct stock line'+(sourceRows.length===1?'':'s'):'');
     document.getElementById('restockBand').textContent='Browse the businesses at '+(s.name||'this location');
+    return;
+  }
+
+  if(!canOwnStock){
+    const service=String(s.stock_mode||'').toUpperCase()==='SERVICE_ONLY'||
+      String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase()==='NO_STATIC_INVENTORY';
+    stockTitle.textContent=service?'Services':'Place profile';
+    search.placeholder=service?'SERVICE PROFILE':'PLACE PROFILE';
+    const note=stockPolicyValue(s,'operational_stock_note')||
+      s.short_description||s.copy||s.blurb||
+      (service?'This place offers services rather than retail stock.':'This location does not hold retail stock.');
+    list.innerHTML='<div class="nonstock-profile"><strong>'+esc(nonStockLabel(s))+'</strong><span>'+esc(note)+'</span></div>';
+    document.getElementById('stockSummary').innerHTML=esc(nonStockLabel(s))+'<br>No retail inventory';
+    document.getElementById('restockBand').textContent=service?'Services · no shelf stock':'No retail stock at this record';
     return;
   }
 
@@ -2958,7 +3019,11 @@ function renderVendorStock(s,focus){
 function renderVendor(s,offers){
   currentSellerId=s.entity_id;
   const children=childSellers(s);
-  const menuMode=!children.length&&isFoodDrinkVenue(s);
+  const canOwnStock=ownsRetailStock(s);
+  const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s);
+  const shopSearch=document.getElementById('shopSearch');
+  const shopSearchWrap=shopSearch.closest('.inline-search');
+  if(shopSearchWrap)shopSearchWrap.hidden=!children.length&&!canOwnStock;
   const parent=parentSeller(s);
   const parentLink=document.getElementById('parentLocationLink');
   if(parent){
@@ -2986,7 +3051,8 @@ function renderVendor(s,offers){
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
   document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
-  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(menuMode?('MENU · '+String((s.stock||[]).length)+' ITEM'+((s.stock||[]).length===1?'':'S')):((s.stock||[]).length?'STOCK · CYCLE 1':'PROFILE · READ ONLY'));
+  const visibleStock=canOwnStock?(s.stock||[]):[];
+  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(menuMode?('MENU · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):(visibleStock.length?'STOCK · CYCLE 1':nonStockLabel(s).toUpperCase()));
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=menuMode?'MENU':modeLabel(s.stock_mode);
@@ -2998,11 +3064,11 @@ function renderVendor(s,offers){
     document.getElementById('vendorOwnerLabel').textContent=parent?'Located in':'Vend-R listing';
     document.getElementById('vendorOwnerSub').textContent=parent?parent.name:(s.source_ref||'Night City 2045');
   }
-  document.getElementById('restockBand').textContent=menuMode?'Loading menu…':'Loading stock snapshot…';
-  document.getElementById('factStatus').textContent=menuMode?'Menu':'Profile only';
+  document.getElementById('restockBand').textContent=menuMode?'Loading menu…':(canOwnStock?'Loading stock snapshot…':'No retail inventory');
+  document.getElementById('factStatus').textContent=menuMode?'Menu':nonStockLabel(s);
   document.getElementById('factDistrict').textContent=s.district||'Night City';
-  document.getElementById('factStockModeLabel').textContent=menuMode?'Format':'Stock mode';
-  document.getElementById('factStockMode').textContent=menuMode?'Menu':modeLabel(s.stock_mode);
+  document.getElementById('factStockModeLabel').textContent=menuMode?'Format':(canOwnStock?'Stock mode':'Commerce mode');
+  document.getElementById('factStockMode').textContent=menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s));
   document.getElementById('factArchetype').textContent=s.type||'—';
   document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
   document.getElementById('factWorldState').textContent='Not materialized';
@@ -3051,8 +3117,8 @@ function renderVendor(s,offers){
   }else{
     offer.hidden=true;
   }
-  document.getElementById('factStatus').textContent=menuMode?((s.stock||[]).length?('Menu · '+String((s.stock||[]).length)+' items'):'Menu profile'):((s.stock||[]).length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):'Profile only');
-  document.getElementById('factWorldState').textContent=menuMode?((s.stock||[]).length?'Current menu':'No menu listed'):((s.stock||[]).length?nextRefreshText(s.state):'No shelf inventory');
+  document.getElementById('factStatus').textContent=menuMode?(visibleStock.length?('Menu · '+String(visibleStock.length)+' items'):'Menu profile'):(visibleStock.length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):nonStockLabel(s));
+  document.getElementById('factWorldState').textContent=menuMode?(visibleStock.length?'Current menu':'No menu listed'):(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':'No retail inventory'));
   renderVendorStock(s,focus);
 }
 async function openVendor(id,focus=null,options={}){
