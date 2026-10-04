@@ -2356,11 +2356,9 @@ let sellers=[];
 let lastSearch=null;
 let currentSellerId=null;
 let currentFocusOffer=null;
-let vendorHistory=[];
 let currentItemId=null;
 let currentItemData=null;
 let currentItemOfferShop=null;
-let itemReturnContext=null;
 
 /* -------- RADIAN SPATIAL ADAPTER -------- */
 let mockSpatialAnchors={};
@@ -2876,6 +2874,36 @@ function renderSearchPage(data,q){
   document.getElementById('searchEmpty').hidden=(data.offers||[]).length>0;
   drawSearchSpaciel(data);
 }
+function vendrState(view,extra={}){
+  const depth=(history.state&&history.state.vendr===true)?Number(history.state.depth||0):0;
+  return {vendr:true,view,depth,...extra};
+}
+function pushVendrState(view,url,extra={}){
+  const depth=(history.state&&history.state.vendr===true)?Number(history.state.depth||0)+1:1;
+  history.pushState({vendr:true,view,depth,...extra},'',url);
+}
+function replaceVendrState(view,url,extra={}){
+  const depth=(history.state&&history.state.vendr===true)?Number(history.state.depth||0):0;
+  history.replaceState({vendr:true,view,depth,...extra},'',url);
+}
+function appBack(fallback='home'){
+  const depth=(history.state&&history.state.vendr===true)?Number(history.state.depth||0):0;
+  if(depth>0){
+    history.back();
+    return;
+  }
+  if(fallback==='home'){
+    replaceVendrState('home',location.pathname);
+    if(currentView!=='home')switchTo('home');
+  }
+}
+function vendorUrl(id,offerItemId=null){
+  const url=new URL(location.href);
+  url.search='';
+  url.searchParams.set('vendor',id);
+  if(offerItemId)url.searchParams.set('offer',offerItemId);
+  return url.pathname+url.search;
+}
 function searchUrl(q,itemId=null){
   const url=new URL(location.href);
   url.search='';
@@ -2906,7 +2934,7 @@ async function startSearchFromGesture(raw,itemId=null){
 async function runSearchPage(raw,itemId=null,options={}){
   const q=String(raw||'').trim();
   if(!q){
-    if(options.push!==false)history.pushState({view:'home'},'',location.pathname);
+    if(options.push!==false)pushVendrState('home',location.pathname);
     if(currentView!=='home')switchTo('home');
     return;
   }
@@ -2922,7 +2950,7 @@ async function runSearchPage(raw,itemId=null,options={}){
   document.getElementById('searchEmpty').hidden=true;
 
   if(options.push!==false){
-    history.pushState({view:'search',q,itemId:itemId||null},'',searchUrl(q,itemId));
+    pushVendrState('search',searchUrl(q,itemId),{q,itemId:itemId||null});
   }
 
   if(options.animate===false){
@@ -3161,7 +3189,7 @@ function showSelectedItemOffer(shopId,{updateUrl=false}={}){
   document.getElementById('itemSelectedSeller').dataset.shop=offer.shop_entity_id;
   document.querySelectorAll('#itemOfferList .item-offer').forEach(x=>x.classList.toggle('selected',String(x.dataset.itemOfferShop)===String(shopId)));
   if(updateUrl&&currentItemId){
-    history.pushState({view:'item',itemId:currentItemId,shopId},'',itemUrl(currentItemId,shopId));
+    replaceVendrState('item',itemUrl(currentItemId,shopId),{itemId:currentItemId,shopId});
   }
 }
 function renderItemPage(data,selectedShopId=null){
@@ -3208,14 +3236,8 @@ function renderItemPage(data,selectedShopId=null){
 async function openItem(itemId,options={}){
   if(!itemId||busy)return;
   const offerShop=options.offerShop||null;
-  if(options.captureReturn!==false){
-    itemReturnContext={
-      view:currentView,
-      sellerId:currentView==='vendor'?currentSellerId:null
-    };
-  }
   if(options.push!==false){
-    history.pushState({view:'item',itemId,shopId:offerShop},'',itemUrl(itemId,offerShop));
+    pushVendrState('item',itemUrl(itemId,offerShop),{itemId,shopId:offerShop});
   }
   try{
     const data=await api({api:'item',id:itemId});
@@ -3234,19 +3256,7 @@ async function openItem(itemId,options={}){
   }
 }
 function goBackFromItem(){
-  const back=itemReturnContext;
-  itemReturnContext=null;
-  if(back?.view==='vendor'&&back.sellerId){
-    history.replaceState({view:'vendor'},'',location.pathname);
-    openVendor(back.sellerId,null,{pushHistory:false});
-    return;
-  }
-  if(history.length>1){
-    history.back();
-    return;
-  }
-  history.replaceState({view:'home'},'',location.pathname);
-  switchTo('home');
+  appBack('home');
 }
 
 function renderVendorStock(s,focus){
@@ -3437,26 +3447,31 @@ function renderVendor(s,offers){
   renderVendorStock(s,focus);
 }
 async function openVendor(id,focus=null,options={}){
-  if(busy)return;
+  if(!id||busy)return;
   const pushHistory=options.pushHistory!==false;
-  const previous=currentView==='vendor'&&currentSellerId?currentSellerId:currentView;
+  const offerItemId=String(focus?.item_id||options.offerItemId||'').trim()||null;
+  if(pushHistory){
+    pushVendrState('vendor',vendorUrl(id,offerItemId),{vendorId:id,offerItemId});
+  }
   try{
     const s=await api({api:'shop',id});
-    if(pushHistory&&previous!==id)vendorHistory.push(previous);
-    renderVendor(s,focus);
-    switchTo('vendor');
+    const resolvedFocus=focus||(offerItemId?{item_id:offerItemId}:null);
+    renderVendor(s,resolvedFocus);
+    if(options.animate===false){
+      Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name==='vendor'));
+      currentView='vendor';
+      window.scrollTo(0,0);
+    }else if(currentView!=='vendor'){
+      switchTo('vendor');
+    }else{
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
   }catch(e){
     console.error(e);
   }
 }
 function goBackFromVendor(){
-  const previous=vendorHistory.pop()||'home';
-  if(previous==='home'||previous==='search'||previous==='item'){
-    currentSellerId=null;
-    switchTo(previous);
-    return;
-  }
-  openVendor(previous,null,{pushHistory:false});
+  appBack('home');
 }
 function filterShopStock(q){
   q=String(q||'').trim().toLowerCase();
@@ -3583,12 +3598,19 @@ async function boot(){
     const q=params.get('q');
     const item=params.get('item');
     const shop=params.get('shop');
+    const vendor=params.get('vendor');
+    const offer=params.get('offer');
     if(item){
-      await openItem(item,{offerShop:shop,push:false,animate:false,captureReturn:false});
+      replaceVendrState('item',itemUrl(item,shop),{itemId:item,shopId:shop||null});
+      await openItem(item,{offerShop:shop,push:false,animate:false});
+    }else if(vendor){
+      replaceVendrState('vendor',vendorUrl(vendor,offer),{vendorId:vendor,offerItemId:offer||null});
+      await openVendor(vendor,null,{offerItemId:offer,pushHistory:false,animate:false});
     }else if(q){
+      replaceVendrState('search',searchUrl(q),{q});
       await runSearchPage(q,null,{push:false,animate:false});
     }else{
-      history.replaceState({view:'home'},'',location.pathname);
+      replaceVendrState('home',location.pathname);
     }
   }catch(e){
     document.getElementById('marketPulse').textContent='Market data unavailable';
@@ -3644,8 +3666,7 @@ document.getElementById('searchPageForm').addEventListener('submit',e=>{
   startSearchFromGesture(document.getElementById('searchPageInput').value,null);
 });
 document.getElementById('searchBackHome').addEventListener('click',()=>{
-  history.pushState({view:'home'},'',location.pathname);
-  switchTo('home');
+  appBack('home');
 });
 document.getElementById('backToMarket').addEventListener('click',goBackFromVendor);
 document.getElementById('itemBack').addEventListener('click',goBackFromItem);
@@ -3673,7 +3694,7 @@ document.getElementById('stockList').addEventListener('keydown',e=>{
 });
 document.getElementById('parentLocationLink').addEventListener('click',e=>{
   const id=e.currentTarget.dataset.parentShop;
-  if(id)playWipe(()=>openVendor(id,null,{pushHistory:false}));
+  if(id)playWipe(()=>openVendor(id,null,{pushHistory:true}));
 });
 document.getElementById('stockFilters').addEventListener('click',e=>{
   const button=e.target.closest('[data-stock-category]');
@@ -3699,12 +3720,18 @@ window.addEventListener('popstate',()=>{
   const q=params.get('q');
   const item=params.get('item');
   const shop=params.get('shop');
+  const vendor=params.get('vendor');
+  const offer=params.get('offer');
   if(item){
-    openItem(item,{offerShop:shop,push:false,captureReturn:false});
+    openItem(item,{offerShop:shop,push:false});
+  }else if(vendor){
+    openVendor(vendor,null,{offerItemId:offer,pushHistory:false});
   }else if(q){
     runSearchPage(q,null,{push:false});
-  }else if(currentView!=='home'){
-    switchTo('home');
+  }else{
+    currentSellerId=null;
+    currentItemId=null;
+    if(currentView!=='home')switchTo('home');
   }
 });
 
