@@ -1090,7 +1090,7 @@ button,input,select{font:inherit}
 }
 .vendor-photo-strip{
   position:relative;
-  min-height:245px;
+  min-height:220px;
   padding:25px 27px 22px;
   display:flex;
   flex-direction:column;
@@ -1134,19 +1134,19 @@ button,input,select{font:inherit}
   right:13px;
   bottom:10px;
   z-index:2;
-  max-width:48%;
+  max-width:58%;
   text-align:right;
-  color:rgba(255,246,223,.72);
-  font:700 8px ui-monospace,SFMono-Regular,Menlo,monospace;
-  letter-spacing:.05em;
+  color:var(--front-1);
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.06em;
   text-transform:uppercase;
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
 }
 .vendor-photo-credit a{
   color:inherit;
   text-decoration:none;
-  border-bottom:1px solid rgba(255,246,223,.35);
 }
-.vendor-photo-credit a:hover{color:#fff}
+.vendor-photo-credit a:hover{color:var(--rear-4)}
 .vendor-info-body{padding:22px 27px 25px}
 .hero-columns{
   display:grid;
@@ -1336,60 +1336,109 @@ button,input,select{font:inherit}
 }
 
 /* -------- ITEM PAGE -------- */
-.item-hero{overflow:hidden}
-.item-hero-grid{
-  display:grid;
-  grid-template-columns:minmax(240px,.72fr) minmax(0,1.45fr);
-  min-height:330px;
-}
+.item-hero{padding:0;overflow:hidden}
+.item-hero-grid{display:block}
 .item-image{
-  min-height:330px;
-  border-right:4px solid var(--ink);
+  height:190px;
+  min-height:190px;
+  border-bottom:4px solid var(--ink);
   background:
     linear-gradient(135deg,rgba(240,91,19,.16),rgba(244,210,70,.28)),
     repeating-linear-gradient(135deg,transparent 0 18px,rgba(23,17,12,.04) 18px 20px);
-  display:flex;
-  align-items:flex-end;
-  padding:18px;
   position:relative;
+  overflow:hidden;
   background-size:cover;
-  background-position:center;
+  background-position:50% 50%;
 }
 .item-image.has-image:after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(0deg,rgba(23,17,12,.48),transparent 55%);
+  pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.34),transparent 52%);
 }
 .item-image-label{
-  position:relative;
-  z-index:1;
-  border:2px solid var(--ink);
-  background:var(--cream);
-  color:var(--ink);
+  position:absolute;
+  right:14px;
+  bottom:10px;
+  z-index:2;
+  max-width:70%;
+  color:var(--front-1);
   text-decoration:none;
-  padding:9px 11px;
-  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-align:right;
+  padding:0;
+  border:0;
+  background:none;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
+}
+.item-image.has-image .item-image-label:hover{color:var(--rear-4)}
+.item-copy{padding:25px 28px 27px}
+.item-copy .hero-title{margin:8px 0 12px}
+.item-description{
+  margin:0;
+  max-width:920px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.42;
+}
+.item-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin-top:20px;
+}
+.item-stat{
+  min-width:0;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:9px 10px 10px;
+}
+.item-stat dt{
+  margin:0 0 4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
   text-transform:uppercase;
   letter-spacing:.06em;
 }
-.item-image.has-image .item-image-label:hover{background:var(--rear-4)}
-.item-copy{padding:30px 32px 28px;display:flex;flex-direction:column;justify-content:center}
-.item-copy .hero-title{margin:8px 0 14px}
-.item-description{
+.item-stat dd{
   margin:0;
-  max-width:720px;
+  overflow-wrap:anywhere;
+  font-size:12px;
+  font-weight:1000;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.item-stat.price{background:var(--rear-4);color:var(--ink);text-align:left;min-width:0}
+.item-stat.availability{background:rgba(240,91,19,.10)}
+.item-shop-detail{margin-bottom:18px}
+.item-shop-detail-body{padding:17px 18px 18px}
+.item-shop-detail-copy{
+  margin:0;
+  max-width:850px;
   color:var(--muted);
-  font-size:18px;
-  line-height:1.42;
+  font-size:13px;
+  line-height:1.45;
 }
-.item-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.item-layout{
-  display:grid;
-  grid-template-columns:minmax(0,1.55fr) minmax(270px,.7fr);
-  gap:18px;
-  margin-top:18px;
+.item-shop-detail-line{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:2px solid var(--ink);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
 }
+.item-selected-actions{display:flex;justify-content:flex-end;margin-top:12px}
+.item-selected-actions button{
+  border:2px solid var(--ink);
+  background:var(--rear-4);
+  padding:8px 12px;
+  font-weight:900;
+  text-transform:uppercase;
+  cursor:pointer
+}
+.item-offers-panel,.item-related-panel{margin-bottom:18px}
 .item-offer{
   width:100%;
   display:grid;
@@ -1405,18 +1454,16 @@ button,input,select{font:inherit}
   cursor:pointer;
 }
 .item-offer:last-child{border-bottom:0}
-.item-offer:hover,.item-offer.selected{background:rgba(244,210,70,.19)}
+.item-offer:hover{background:rgba(244,210,70,.19)}
 .item-offer strong{display:block;font-size:18px;text-transform:uppercase}
 .item-offer span{display:block;margin-top:4px;color:var(--muted);font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
 .item-offer-price{text-align:right;font-size:22px!important;color:var(--ink)!important;margin:0!important}
-.item-selected-actions{display:flex;justify-content:flex-end;margin-top:10px}
-.item-selected-actions button{border:2px solid var(--ink);background:var(--rear-4);padding:8px 12px;font-weight:900;text-transform:uppercase;cursor:pointer}
-.item-related{display:grid}
+.item-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .item-related button{
-  border:0;border-bottom:1px solid var(--rule);background:transparent;text-align:left;
-  padding:11px 13px;cursor:pointer;color:var(--ink)
+  border:0;border-right:1px solid var(--rule);background:transparent;text-align:left;
+  padding:13px 14px;cursor:pointer;color:var(--ink)
 }
-.item-related button:last-child{border-bottom:0}
+.item-related button:last-child{border-right:0}
 .item-related strong{display:block;text-transform:uppercase}
 .item-related span{display:block;color:var(--muted);font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:3px;text-transform:uppercase}
 .offer-item-link{
@@ -1424,12 +1471,17 @@ button,input,select{font:inherit}
   font-weight:900;text-transform:uppercase;cursor:pointer
 }
 @media (max-width:760px){
-  .item-hero-grid,.item-layout{grid-template-columns:1fr}
-  .item-image{min-height:220px;border-right:0;border-bottom:4px solid var(--ink)}
-  .item-copy{padding:22px 20px}
-  .item-description{font-size:16px}
+  .item-image{height:145px;min-height:145px}
+  .item-copy{padding:20px 18px}
+  .item-description{font-size:15px}
+  .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .item-related{grid-template-columns:1fr}
+  .item-related button{border-right:0;border-bottom:1px solid var(--rule)}
+  .item-related button:last-child{border-bottom:0}
 }
-
+@media (max-width:420px){
+  .item-stat-grid{grid-template-columns:1fr}
+}
 /* -------- FOOTER -------- */
 .footer{
   margin-top:18px;
@@ -1843,17 +1895,22 @@ button,input,select{font:inherit}
             <div class="kicker" id="itemKicker">Catalogue item</div>
             <h1 class="hero-title" id="itemName">Item</h1>
             <p class="item-description" id="itemDescription">Loading catalogue description…</p>
-            <div class="item-tags">
-              <span class="tag yellow" id="itemPriceTier">—</span>
-              <span class="tag" id="itemAvailability">—</span>
-              <span class="tag orange" id="itemIdTag">—</span>
-            </div>
+
+            <dl class="item-stat-grid">
+              <div class="item-stat price"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
+              <div class="item-stat availability"><dt>Availability</dt><dd id="itemAvailability">—</dd></div>
+              <div class="item-stat"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
+              <div class="item-stat"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
+              <div class="item-stat"><dt>Category</dt><dd id="itemCategory">—</dd></div>
+              <div class="item-stat"><dt>Index</dt><dd id="itemSource">—</dd></div>
+              <div class="item-stat"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
+            </dl>
           </div>
         </div>
       </section>
 
       <section class="offer-focus" id="itemSelectedOffer" hidden>
-        <div class="kicker">Selected offer</div>
+        <div class="kicker">Offer from</div>
         <div class="offer-focus-row">
           <h1 id="itemOfferShop">Seller</h1>
           <div class="offer-readout">
@@ -1862,37 +1919,33 @@ button,input,select{font:inherit}
           </div>
         </div>
         <div class="offer-sub" id="itemOfferSub">Current offer context.</div>
-        <div class="item-selected-actions"><button type="button" id="itemSelectedSeller">View seller →</button></div>
       </section>
 
-      <div class="item-layout">
-        <section class="panel">
-          <div class="section-head">
-            <h2>Available now</h2>
-            <span id="itemOfferCount">Checking Night City</span>
-          </div>
-          <div id="itemOfferList"></div>
-          <div class="stock-empty" id="itemOfferEmpty" hidden>No current offers found.</div>
-        </section>
+      <section class="panel item-shop-detail" id="itemShopDetail" hidden>
+        <div class="section-head">
+          <h2 id="itemShopDetailTitle">Shop detail</h2>
+          <span id="itemShopDetailMeta">Seller profile</span>
+        </div>
+        <div class="item-shop-detail-body">
+          <p class="item-shop-detail-copy" id="itemShopDetailCopy">Seller information.</p>
+          <div class="item-shop-detail-line" id="itemShopDetailLocation">Night City</div>
+          <div class="item-selected-actions"><button type="button" id="itemSelectedSeller">View seller →</button></div>
+        </div>
+      </section>
 
-        <aside class="side-stack">
-          <section class="panel">
-            <div class="section-head"><h2>Catalogue</h2><span>Reference</span></div>
-            <dl class="fact-list">
-              <div class="fact"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
-              <div class="fact"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
-              <div class="fact"><dt>Category</dt><dd id="itemCategory">—</dd></div>
-              <div class="fact"><dt>Index</dt><dd id="itemSource">—</dd></div>
-              <div class="fact"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
-            </dl>
-          </section>
+      <section class="panel item-offers-panel">
+        <div class="section-head">
+          <h2 id="itemOfferHeading">Shops selling it</h2>
+          <span id="itemOfferCount">Checking Night City</span>
+        </div>
+        <div id="itemOfferList"></div>
+        <div class="stock-empty" id="itemOfferEmpty" hidden>No other current offers found.</div>
+      </section>
 
-          <section class="panel">
-            <div class="section-head"><h2>Related</h2><span>Same catalogue family</span></div>
-            <div class="item-related" id="itemRelated"></div>
-          </section>
-        </aside>
-      </div>
+      <section class="panel item-related-panel">
+        <div class="section-head"><h2>Related</h2><span>Same catalogue family</span></div>
+        <div class="item-related" id="itemRelated"></div>
+      </section>
 
       <footer class="footer">
         <span id="itemFooterLeft">Vend-R catalogue</span>
@@ -3108,7 +3161,7 @@ function setItemImage(item){
   if(image?.image_url){
     box.classList.add('has-image');
     box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
-    box.style.backgroundPosition=((Number(image.focal_x??.5)*100)+'% '+(Number(image.focal_y??.5)*100)+'%');
+    box.style.backgroundPosition='50% 50%';
     const credit=image.by||image.photographer||image.credit||null;
     label.textContent=credit?('Photo · '+credit+' ↗'):'Catalogue image';
     if(image.source){
@@ -3157,7 +3210,6 @@ function renderItemPage(data,selectedShopId=null){
   document.getElementById('itemKicker').textContent=itemTypeText(item);
   document.getElementById('itemPriceTier').textContent=item.price_tier||'Price unknown';
   document.getElementById('itemAvailability').textContent=item.availability_label||'Availability unknown';
-  document.getElementById('itemIdTag').textContent=item.item_id||'—';
   document.getElementById('itemManufacturer').textContent=item.local?'Local / shop-specific':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
   document.getElementById('itemBookPrice').textContent=item.local?'Not catalogued':moneyEb(item.book_price);
   document.getElementById('itemCategory').textContent=itemTypeText(item);
@@ -3330,7 +3382,7 @@ function renderVendor(s,offers){
     const fx=Math.max(0,Math.min(1,Number(s.image.focal_x??0.5)))*100;
     const fy=Math.max(0,Math.min(1,Number(s.image.focal_y??0.5)))*100;
     photoStrip.style.backgroundImage='linear-gradient(90deg,rgba(23,17,12,.48) 0%,rgba(23,17,12,.22) 46%,rgba(23,17,12,.04) 100%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
-    photoStrip.style.backgroundPosition=fx+'% '+fy+'%';
+    photoStrip.style.backgroundPosition='50% 50%';
     photoCredit.innerHTML='PHOTO · <a href="'+esc(s.image.source_url)+'" target="_blank" rel="noopener">'+esc(s.image.photographer)+'</a> / <a href="'+esc(s.image.attribution_url)+'" target="_blank" rel="noopener">UNSPLASH</a>';
   }else{
     photoStrip.style.backgroundImage='linear-gradient(135deg,#3c3329,#17110c)';
