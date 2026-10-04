@@ -3240,13 +3240,15 @@ function goBackFromItem(){
   const back=itemReturnContext;
   itemReturnContext=null;
   if(back?.view==='vendor'&&back.sellerId){
+    history.replaceState({view:'vendor'},'',location.pathname);
     openVendor(back.sellerId,null,{pushHistory:false});
     return;
   }
-  if(back?.view==='search'&&lastSearch){
-    switchTo('search');
+  if(history.length>1){
+    history.back();
     return;
   }
+  history.replaceState({view:'home'},'',location.pathname);
   switchTo('home');
 }
 
@@ -3452,7 +3454,7 @@ async function openVendor(id,focus=null,options={}){
 }
 function goBackFromVendor(){
   const previous=vendorHistory.pop()||'home';
-  if(previous==='home'||previous==='search'){
+  if(previous==='home'||previous==='search'||previous==='item'){
     currentSellerId=null;
     switchTo(previous);
     return;
