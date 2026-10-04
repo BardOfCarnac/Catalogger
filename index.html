@@ -1366,11 +1366,14 @@ button,input,select{font:inherit}
   z-index:1;
   border:2px solid var(--ink);
   background:var(--cream);
+  color:var(--ink);
+  text-decoration:none;
   padding:9px 11px;
   font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
   text-transform:uppercase;
   letter-spacing:.06em;
 }
+.item-image.has-image .item-image-label:hover{background:var(--rear-4)}
 .item-copy{padding:30px 32px 28px;display:flex;flex-direction:column;justify-content:center}
 .item-copy .hero-title{margin:8px 0 14px}
 .item-description{
@@ -1834,7 +1837,7 @@ button,input,select{font:inherit}
       <section class="hero item-hero">
         <div class="item-hero-grid">
           <div class="item-image" id="itemImage">
-            <span class="item-image-label" id="itemImageLabel">Catalogue image pending</span>
+            <a class="item-image-label" id="itemImageLabel" target="_blank" rel="noopener">Catalogue image pending</a>
           </div>
           <div class="item-copy">
             <div class="kicker" id="itemKicker">Catalogue item</div>
@@ -2253,6 +2256,12 @@ let currentItemId=null;
 let currentItemData=null;
 let currentItemOfferShop=null;
 
+const ITEM_IMAGE_ASSIGNMENTS_URL='data/curation/item-images.json';
+const ITEM_IMAGE_POOL_URL='data/curation/item-image-pool.json';
+let itemImageAssignments=null;
+let itemImagePool=null;
+let itemImageManifestPromise=null;
+
 /* -------- RADIAN SPATIAL ADAPTER -------- */
 let mockSpatialAnchors={};
 let spatialSnapshot=null;
@@ -2424,6 +2433,30 @@ async function api(params){
   const j=await r.json().catch(()=>({}));
   if(!r.ok)throw new Error(j.error||r.statusText);
   return j;
+}
+async function loadItemImageManifest(){
+  if(itemImageManifestPromise)return itemImageManifestPromise;
+  itemImageManifestPromise=Promise.all([
+    fetch(ITEM_IMAGE_ASSIGNMENTS_URL,{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(new Error('Item image assignments '+r.status))),
+    fetch(ITEM_IMAGE_POOL_URL,{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(new Error('Item image pool '+r.status)))
+  ]).then(([assignments,pool])=>{
+    itemImageAssignments=assignments;
+    itemImagePool=pool;
+    return {assignments,pool};
+  }).catch(error=>{
+    console.warn('Vend-R curated item images unavailable; falling back to API images.',error);
+    itemImageAssignments=null;
+    itemImagePool=null;
+    return null;
+  });
+  return itemImageManifestPromise;
+}
+function curatedItemImage(itemId){
+  const assignment=itemImageAssignments?.items?.[itemId];
+  if(!assignment?.image_id)return null;
+  const image=itemImagePool?.images?.[assignment.image_id];
+  if(!image)return null;
+  return {...image,assignment};
 }
 function sellerById(id){return sellers.find(s=>s.entity_id===id)}
 function sellerByName(name,district=null){
@@ -3058,12 +3091,20 @@ function setItemImage(item){
   const label=document.getElementById('itemImageLabel');
   box.classList.remove('has-image');
   box.style.backgroundImage='';
-  const image=item?.image;
+  label.removeAttribute('href');
+  label.removeAttribute('title');
+
+  const image=curatedItemImage(item?.item_id)||item?.image;
   if(image?.image_url){
     box.classList.add('has-image');
     box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
     box.style.backgroundPosition=((Number(image.focal_x??.5)*100)+'% '+(Number(image.focal_y??.5)*100)+'%');
-    label.textContent='Catalogue image';
+    const credit=image.by||image.photographer||image.credit||null;
+    label.textContent=credit?('Photo · '+credit+' ↗'):'Catalogue image';
+    if(image.source){
+      label.href=image.source;
+      label.title=image.title?String(image.title):'Open image source';
+    }
   }else{
     label.textContent=(stockDepartmentLabel(item?.primary_department)||'Catalogue')+' · image pending';
   }
@@ -3145,7 +3186,10 @@ async function openItem(itemId,options={}){
     pushVendrState('item',itemUrl(itemId,offerShop),{itemId,shopId:offerShop});
   }
   try{
-    const data=await api({api:'item',id:itemId});
+    const [data]=await Promise.all([
+      api({api:'item',id:itemId}),
+      loadItemImageManifest()
+    ]);
     renderItemPage(data,offerShop);
     if(options.animate===false){
       Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name==='item'));
