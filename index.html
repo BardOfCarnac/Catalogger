@@ -2666,7 +2666,7 @@ function groupSearchOffers(data){
 }
 
 function itemTypeLabel(o){
-  return String(o.primary_department||'item').replaceAll('-',' ');
+  return stockDepartmentLabel(o?.primary_department||'other');
 }
 function placeLabel(o){
   const parts=[];
@@ -2679,7 +2679,11 @@ function moneyEb(v){
   if(v===null||v===undefined)return '—';
   return Number(v).toLocaleString()+'eb';
 }
+function priceText(v,label=null){
+  return label||moneyEb(v);
+}
 function quantityText(row,short=false){
+  if(row?.quantity_label)return short?String(row.quantity_label).toUpperCase():String(row.quantity_label);
   if(row?.quantity==null){
     return row?.quantity_profile==='continuous'?(short?'ON DEMAND':'On demand'):(short?'AVAILABLE':'Available');
   }
@@ -2923,7 +2927,9 @@ function renderSuggestions(data,q){
   const items=data.items||[];
   const total=Number(data.total_matches??items.length);
   const needle=String(q||'').trim().toLowerCase();
-  const placeMatches=needle?sellers.filter(s=>String(s.name||'').toLowerCase().includes(needle)).slice(0,6):[];
+  const placeMatches=needle?sellers.filter(s=>[
+    s.name,s.type,s.copy,s.blurb,s.tags
+  ].filter(Boolean).join(' ').toLowerCase().includes(needle)).slice(0,6):[];
   if(!q){hideSuggestions();return}
   box.innerHTML=
     '<div class="suggest-head">Places & catalogue</div>'+
@@ -2986,14 +2992,16 @@ function stockDepartmentLabel(key){
     'virtual-goods-games':'Software & games',
     'services-entertainment':'Services',
     'housing-property':'Property',
+    'local-speciality':'Local speciality',
     'other':'Other'
   };
   return labels[key]||String(key||'Other').replaceAll('-',' ');
 }
 function stockSearchText(row){
   return [
-    row?.name,row?.primary_department,row?.relation_key,row?.assortment_role,
-    row?.condition,row?.last_change,row?.availability_label,row?.price_tier
+    row?.name,row?.description,row?.primary_department,row?.relation_key,row?.assortment_role,
+    row?.condition,row?.last_change,row?.availability_label,row?.price_tier,
+    row?.quantity_label,row?.price_label
   ].filter(Boolean).join(' ').toLowerCase();
 }
 function isFoodDrinkVenue(){
@@ -3011,12 +3019,14 @@ function stockRowHtml(s,row,focusId){
       '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
   }
   const flowLabel=row.last_change||null;
-  const sub=[row.price_tier,row.availability_label,row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+  const sub=row.is_local
+    ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
+    :[row.price_tier,row.availability_label,row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
   return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>current stock</div>'+
-    '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
+    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+(row.is_local?'shop speciality':'current stock')+'</div>'+
+    '<div class="price">'+esc(priceText(row.asking_price,row.price_label))+'</div></article>';
 }
 function filteredStockRows(){
   const st=stockBrowserState;
@@ -3123,9 +3133,9 @@ function showSelectedItemOffer(shopId,{updateUrl=false}={}){
   }
   section.hidden=false;
   document.getElementById('itemOfferShop').textContent=offer.shop_name||'Seller';
-  document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?moneyEb(offer.asking_price):'NO CURRENT OFFER';
+  document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?priceText(offer.asking_price,offer.price_label):'NO CURRENT OFFER';
   document.getElementById('itemOfferMeta').textContent=offer.kind==='available'
-    ?[offer.condition,offer.quantity==null?'on demand':String(offer.quantity)+' available'].filter(Boolean).join(' · ')
+    ?[offer.condition,offer.quantity_label||(offer.quantity==null?'on demand':String(offer.quantity)+' available')].filter(Boolean).join(' · ')
     :'Likely seller · not in current stock';
   document.getElementById('itemOfferSub').textContent=[
     offer.district,
@@ -3148,10 +3158,10 @@ function renderItemPage(data,selectedShopId=null){
   document.getElementById('itemPriceTier').textContent=item.price_tier||'Price unknown';
   document.getElementById('itemAvailability').textContent=item.availability_label||'Availability unknown';
   document.getElementById('itemIdTag').textContent=item.item_id||'—';
-  document.getElementById('itemManufacturer').textContent=(item.manufacturers||[]).join(' · ')||'Unbranded / unspecified';
-  document.getElementById('itemBookPrice').textContent=moneyEb(item.book_price);
+  document.getElementById('itemManufacturer').textContent=item.local?'Local / shop-specific':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
+  document.getElementById('itemBookPrice').textContent=item.local?'Not catalogued':moneyEb(item.book_price);
   document.getElementById('itemCategory').textContent=itemTypeText(item);
-  document.getElementById('itemSource').textContent=item.source_index_page==null?'Night Market Index':('Night Market Index · p. '+item.source_index_page);
+  document.getElementById('itemSource').textContent=item.source_ref||(item.source_index_page==null?'Night Market Index':('Night Market Index · p. '+item.source_index_page));
   document.getElementById('itemCatalogueId').textContent=item.item_id||'—';
   document.getElementById('itemFooterLeft').textContent=(item.name||'Catalogue item')+' · '+(item.item_id||'');
   document.getElementById('itemSearchInput').value='';
@@ -3164,8 +3174,8 @@ function renderItemPage(data,selectedShopId=null){
   list.innerHTML=sortOffers(offers,'location').map(o=>
     '<button class="item-offer" type="button" data-item-offer-shop="'+esc(o.shop_entity_id)+'">'+
       '<div><strong>'+esc(o.shop_name)+'</strong>'+
-      '<span>'+esc([o.district,o.parent_name?('inside '+o.parent_name):null,o.condition,o.quantity==null?'on demand':String(o.quantity)+' available'].filter(Boolean).join(' · '))+'</span></div>'+
-      '<span class="item-offer-price">'+esc(moneyEb(o.asking_price))+'</span>'+
+      '<span>'+esc([o.district,o.parent_name?('inside '+o.parent_name):null,o.condition,o.quantity_label||(o.quantity==null?'on demand':String(o.quantity)+' available')].filter(Boolean).join(' · '))+'</span></div>'+
+      '<span class="item-offer-price">'+esc(priceText(o.asking_price,o.price_label))+'</span>'+
     '</button>'
   ).join('');
   list.querySelectorAll('[data-item-offer-shop]').forEach(button=>button.addEventListener('click',()=>showSelectedItemOffer(button.dataset.itemOfferShop,{updateUrl:true})));
@@ -3174,7 +3184,7 @@ function renderItemPage(data,selectedShopId=null){
   related.innerHTML=(data.related||[]).map(x=>
     '<button type="button" data-item-related="'+esc(x.item_id)+'"><strong>'+esc(x.name)+'</strong>'+
     '<span>'+esc(x.price_tier||'Same family')+' · view item →</span></button>'
-  ).join('')||'<div class="stock-empty">No related catalogue items.</div>';
+  ).join('')||'<div class="stock-empty">No related items.</div>';
   related.querySelectorAll('[data-item-related]').forEach(button=>button.addEventListener('click',()=>openItem(button.dataset.itemRelated)));
 
   showSelectedItemOffer(selectedShopId,{updateUrl:false});
@@ -3211,7 +3221,10 @@ function goBackFromItem(){
 function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
   const canOwnStock=ownsRetailStock(s);
-  const sourceRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
+  const localRows=Array.isArray(s.local_offerings)?s.local_offerings.slice():[];
+  const canonicalRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
+  const sourceRows=[...localRows,...canonicalRows];
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
   const children=childSellers(s);
   const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s,sourceRows);
   const stockTitle=document.getElementById('stockPanelTitle');
@@ -3260,8 +3273,8 @@ function renderVendorStock(s,focus){
     return;
   }
 
-  stockTitle.textContent=menuMode?'Menu':'Stock';
-  search.placeholder=menuMode?'FILTER THIS MENU':'FILTER THIS SHOP';
+  stockTitle.textContent=localOnly?'Specialities':(menuMode?'Menu':'Stock');
+  search.placeholder=localOnly?'FILTER SPECIALITIES':(menuMode?'FILTER THIS MENU':'FILTER THIS SHOP');
   if(!sourceRows.length){
     if(menuMode){
       list.innerHTML='<article class="stock-row menu-row" data-search=""><div><div class="stock-name">No menu listed</div></div><div class="price amber">—</div></article>';
@@ -3280,7 +3293,10 @@ function renderVendorStock(s,focus){
   buildStockFilters(sourceRows,menuMode);
   openStockAtFocus(sourceRows,focusId);
   renderStockBrowserPage();
-  if(menuMode){
+  if(localOnly){
+    document.getElementById('stockSummary').innerHTML=sourceRows.length+' local specialit'+(sourceRows.length===1?'y':'ies')+'<br>Source-backed shop wares';
+    document.getElementById('restockBand').textContent='Local specialities · not quantity-tracked';
+  }else if(menuMode){
     document.getElementById('stockSummary').innerHTML=sourceRows.length+' menu item'+(sourceRows.length===1?'':'s')+'<br>Food & drink';
     document.getElementById('restockBand').textContent='Current menu';
   }else{
@@ -3323,11 +3339,16 @@ function renderVendor(s,offers){
   }
   document.getElementById('vendorName').textContent=s.name||'Seller';
   document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
-  const visibleStock=canOwnStock?(s.stock||[]):[];
-  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(visibleStock.length?('STOCK · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):nonStockLabel(s).toUpperCase());
+  const localRows=Array.isArray(s.local_offerings)?s.local_offerings:[];
+  const canonicalRows=canOwnStock?(s.stock||[]):[];
+  const visibleStock=[...localRows,...canonicalRows];
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
+  document.getElementById('vendorStatus').textContent=children.length
+    ?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE')
+    :(visibleStock.length?((localOnly?'SPECIALITIES':'STOCK')+' · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):nonStockLabel(s).toUpperCase());
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
-  document.getElementById('vendorStockMode').textContent=menuMode?'MENU':modeLabel(s.stock_mode);
+  document.getElementById('vendorStockMode').textContent=localOnly?'SPECIALITY SHOP':(menuMode?'MENU':modeLabel(s.stock_mode));
   document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
   if(s.owner&&s.owner.name){
     document.getElementById('vendorOwnerLabel').textContent=s.owner.name;
@@ -3340,7 +3361,7 @@ function renderVendor(s,offers){
   document.getElementById('factStatus').textContent=menuMode?'Menu':nonStockLabel(s);
   document.getElementById('factDistrict').textContent=s.district||'Night City';
   document.getElementById('factStockModeLabel').textContent='Listing';
-  document.getElementById('factStockMode').textContent=menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s));
+  document.getElementById('factStockMode').textContent=localOnly?'Speciality shop':(menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s)));
   document.getElementById('factArchetype').textContent=s.type||'—';
   document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
   document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':'No retail inventory';
