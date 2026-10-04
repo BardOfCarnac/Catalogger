@@ -3029,13 +3029,10 @@ function stockSearchText(row){
     row?.condition,row?.last_change,row?.availability_label,row?.price_tier
   ].filter(Boolean).join(' ').toLowerCase();
 }
-function isFoodDrinkVenue(s,rows=null){
-  const sourceRows=Array.isArray(rows)?rows:(Array.isArray(s?.stock)?s.stock:[]);
-  const venueText=[s?.type,s?.tags,s?.blurb,s?.copy,s?.short_description,s?.modelling_note,s?.archetype]
-    .filter(Boolean).join(' ').toLowerCase();
-  const venueHint=/\b(bar|cafe|café|restaurant|diner|eatery|food stall|food stand|food vendor|canteen|coffee shop|coffeehouse|pub|tavern|izakaya|noodle shop|grill|pizzeria|tea house|teahouse)\b/.test(venueText);
-  const allFood=sourceRows.length>0&&sourceRows.every(row=>stockDepartmentKey(row)==='food-consumables');
-  return venueHint||allFood;
+function isFoodDrinkVenue(){
+  // Hospitality venues are excluded by the Vend-R API.
+  // Food retailers remain ordinary stock-bearing retailers.
+  return false;
 }
 function stockRowHtml(s,row,focusId){
   const exactHit=focusId&&String(row.item_id)===String(focusId);
@@ -3577,7 +3574,7 @@ async function boot(){
     buildMockSpatialAnchors();
     spatialSnapshot=await RadianSpatial.snapshot();
     applySpatialLabels();
-    document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' seller profiles · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
+    document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' Vend-R places · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
     renderHomeDefault();
     drawSpaciel();
     requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
