@@ -3175,15 +3175,45 @@ function setItemImage(item){
 function selectedItemOffer(shopId){
   return (currentItemData?.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId))||null;
 }
+function renderItemOfferList(selectedShopId=null){
+  const all=(currentItemData?.offers||[]).filter(o=>o.kind==='available');
+  const rows=sortOffers(
+    selectedShopId?all.filter(o=>String(o.shop_entity_id)!==String(selectedShopId)):all,
+    'location'
+  );
+  const list=document.getElementById('itemOfferList');
+  document.getElementById('itemOfferHeading').textContent=selectedShopId?'Other shops selling it':'Shops selling it';
+  document.getElementById('itemOfferCount').textContent=selectedShopId
+    ?(rows.length+' other current offer'+(rows.length===1?'':'s'))
+    :(rows.length+' current offer'+(rows.length===1?'':'s')+' · Night City');
+  document.getElementById('itemOfferEmpty').hidden=rows.length>0;
+  list.innerHTML=rows.map(o=>
+    '<button class="item-offer" type="button" data-item-offer-shop="'+esc(o.shop_entity_id)+'">'+
+      '<div><strong>'+esc(o.shop_name)+'</strong>'+
+      '<span>'+esc([
+        o.parent_name?('inside '+o.parent_name):null,
+        o.district,
+        offerDistanceLabel(o),
+        o.condition,
+        o.quantity_label||(o.quantity==null?'on demand':String(o.quantity)+' available')
+      ].filter(Boolean).join(' · '))+'</span></div>'+
+      '<span class="item-offer-price">'+esc(priceText(o.asking_price,o.price_label))+'</span>'+
+    '</button>'
+  ).join('');
+  list.querySelectorAll('[data-item-offer-shop]').forEach(button=>button.addEventListener('click',()=>showSelectedItemOffer(button.dataset.itemOfferShop,{updateUrl:true})));
+}
 function showSelectedItemOffer(shopId,{updateUrl=false}={}){
   currentItemOfferShop=shopId||null;
   const section=document.getElementById('itemSelectedOffer');
+  const detail=document.getElementById('itemShopDetail');
   const offer=shopId?selectedItemOffer(shopId):null;
   if(!offer){
     section.hidden=true;
-    document.querySelectorAll('#itemOfferList .item-offer').forEach(x=>x.classList.remove('selected'));
+    detail.hidden=true;
+    renderItemOfferList(null);
     return;
   }
+
   section.hidden=false;
   document.getElementById('itemOfferShop').textContent=offer.shop_name||'Seller';
   document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?priceText(offer.asking_price,offer.price_label):'NO CURRENT OFFER';
@@ -3191,12 +3221,27 @@ function showSelectedItemOffer(shopId,{updateUrl=false}={}){
     ?[offer.condition,offer.quantity_label||(offer.quantity==null?'on demand':String(offer.quantity)+' available')].filter(Boolean).join(' · ')
     :'Likely seller · not in current stock';
   document.getElementById('itemOfferSub').textContent=[
-    offer.district,
     offer.parent_name?('inside '+offer.parent_name):null,
+    offer.district,
+    offerDistanceLabel(offer),
     offer.availability_label
   ].filter(Boolean).join(' · ');
+
+  const seller=sellerById(offer.shop_entity_id)||sellerByName(offer.shop_name,offer.district);
+  detail.hidden=false;
+  document.getElementById('itemShopDetailTitle').textContent=seller?.name||offer.shop_name||'Seller';
+  document.getElementById('itemShopDetailMeta').textContent=[seller?.type||'Seller',seller?.district||offer.district].filter(Boolean).join(' · ');
+  document.getElementById('itemShopDetailCopy').textContent=
+    seller?.blurb||seller?.copy||seller?.short_description||seller?.modelling_note||
+    'Vend-R seller profile. Open the seller page for its full listing and commercial context.';
+  document.getElementById('itemShopDetailLocation').textContent=[
+    offer.parent_name?('Inside '+offer.parent_name):null,
+    seller?.district||offer.district||'Night City',
+    offerDistanceLabel(offer)
+  ].filter(Boolean).join(' · ');
   document.getElementById('itemSelectedSeller').dataset.shop=offer.shop_entity_id;
-  document.querySelectorAll('#itemOfferList .item-offer').forEach(x=>x.classList.toggle('selected',String(x.dataset.itemOfferShop)===String(shopId)));
+
+  renderItemOfferList(shopId);
   if(updateUrl&&currentItemId){
     replaceVendrState('item',itemUrl(currentItemId,shopId),{itemId:currentItemId,shopId});
   }
@@ -3218,19 +3263,6 @@ function renderItemPage(data,selectedShopId=null){
   document.getElementById('itemFooterLeft').textContent=(item.name||'Catalogue item')+' · '+(item.item_id||'');
   document.getElementById('itemSearchInput').value='';
   setItemImage(item);
-
-  const offers=(data.offers||[]).filter(o=>o.kind==='available');
-  const list=document.getElementById('itemOfferList');
-  document.getElementById('itemOfferCount').textContent=offers.length+' current offer'+(offers.length===1?'':'s')+' · Night City';
-  document.getElementById('itemOfferEmpty').hidden=offers.length>0;
-  list.innerHTML=sortOffers(offers,'location').map(o=>
-    '<button class="item-offer" type="button" data-item-offer-shop="'+esc(o.shop_entity_id)+'">'+
-      '<div><strong>'+esc(o.shop_name)+'</strong>'+
-      '<span>'+esc([o.district,o.parent_name?('inside '+o.parent_name):null,o.condition,o.quantity_label||(o.quantity==null?'on demand':String(o.quantity)+' available')].filter(Boolean).join(' · '))+'</span></div>'+
-      '<span class="item-offer-price">'+esc(priceText(o.asking_price,o.price_label))+'</span>'+
-    '</button>'
-  ).join('');
-  list.querySelectorAll('[data-item-offer-shop]').forEach(button=>button.addEventListener('click',()=>showSelectedItemOffer(button.dataset.itemOfferShop,{updateUrl:true})));
 
   const related=document.getElementById('itemRelated');
   related.innerHTML=(data.related||[]).map(x=>
