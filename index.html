@@ -2404,9 +2404,15 @@ function spatialDistanceForSeller(s){
   const km=score*11.5;
   let label;
   if(km<.1)label='<100 m';
-  else if(km<1)label=(Math.round(km*10)/10).toFixed(1)+' km';
   else label=(Math.round(km*10)/10).toFixed(1)+' km';
   return {score,label,point};
+}
+function spatialDistanceForOffer(o){
+  const seller=sellerById(o?.shop_entity_id)||sellerByName(o?.shop_name,o?.district);
+  return spatialDistanceForSeller(seller||o);
+}
+function offerDistanceLabel(o){
+  return spatialDistanceForOffer(o).label;
 }
 function nearbyShopPool(){
   return sellers.filter(s=>
@@ -2417,11 +2423,7 @@ function nearbyShopPool(){
 function nearestHomeSellers(limit=5){
   const district=activeSpatialDistrict();
   return nearbyShopPool().map(s=>({seller:s,...spatialDistanceForSeller(s)}))
-    .sort((a,b)=>{
-      const ad=String(a.seller.district||'')===String(district||'')?0:1;
-      const bd=String(b.seller.district||'')===String(district||'')?0:1;
-      return ad-bd||a.score-b.score||String(a.seller.name).localeCompare(String(b.seller.name));
-    })
+    .sort((a,b)=>a.score-b.score||String(a.seller.name).localeCompare(String(b.seller.name)))
     .slice(0,limit);
 }
 function renderHomeNearby(){
@@ -2547,7 +2549,7 @@ function sortOffers(rows,mode){
   if(mode==='condition')return arr.sort((a,b)=>conditionRank(a.condition)-conditionRank(b.condition)||String(a.shop_name).localeCompare(String(b.shop_name)));
   if(mode==='availability')return arr.sort((a,b)=>availabilityRank(a.availability_band)-availabilityRank(b.availability_band)||(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
   if(mode==='stock')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
-  return arr.sort((a,b)=>String(placeLabel(a)).localeCompare(String(placeLabel(b)))||String(a.shop_name).localeCompare(String(b.shop_name)));
+  return arr.sort((a,b)=>spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score||String(a.shop_name).localeCompare(String(b.shop_name)));
 }
 function offerRow(o,exact=false){
   return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
@@ -2568,22 +2570,25 @@ function bindOfferRows(root,data){
   }));
 }
 function renderNearbyOffers(data){
-  const district=activeSpatialDistrict();
-  const available=(data.offers||[]).filter(o=>o.kind==='available'&&offerInSpatialDistrict(o,district));
+  const available=(data.offers||[]).filter(o=>o.kind==='available');
   const exact=Boolean(data.active_item_id);
   const list=document.getElementById('nearbyOffersList');
-  const top=available.slice(0,4);
+  const top=available.slice().sort((a,b)=>
+    spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score||
+    String(a.shop_name).localeCompare(String(b.shop_name))
+  ).slice(0,4);
   if(!top.length){
-    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports in '+esc(district||'the selected area')+'.</div>';
+    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports found in Night City.</div>';
     return;
   }
-  list.innerHTML=top.map(o=>
-    '<button class="nearby-offer" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+  list.innerHTML=top.map(o=>{
+    const where=[o.district,offerDistanceLabel(o)].filter(Boolean).join(' · ');
+    return '<button class="nearby-offer" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
       '<div><strong>'+esc(exact?o.shop_name:o.item_name)+'</strong>'+
-      '<span>'+esc(exact?placeLabel(o):(o.shop_name+' · '+placeLabel(o)))+'</span></div>'+
+      '<span>'+esc(exact?where:(o.shop_name+' · '+where))+'</span></div>'+
       '<strong class="nearby-price">'+esc(moneyEb(o.asking_price))+'</strong>'+
-    '</button>'
-  ).join('');
+    '</button>';
+  }).join('');
   bindOfferRows(list,data);
 }
 function renderAvailableOffers(data){
@@ -2591,7 +2596,7 @@ function renderAvailableOffers(data){
   const list=document.getElementById('availableOffersList');
   const available=(data.offers||[]).filter(o=>o.kind==='available');
   const exact=Boolean(data.active_item_id);
-  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · sort locally';
+  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · citywide · distance-aware';
   section.hidden=!available.length;
   list.innerHTML=sortOffers(available,resultSortMode).map(o=>offerRow(o,exact)).join('');
   bindOfferRows(list,data);
@@ -2641,7 +2646,7 @@ function renderSearchPage(data,q){
   const label=(active?.name||q||'SEARCH').toUpperCase();
   const district=activeSpatialDistrict();
   document.getElementById('searchModeLabel').textContent=exact?'Exact catalogue item':'Broad search';
-  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad catalogue search')+' · nearby: '+(district||'Night City')+' · citywide offers below';
+  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad catalogue search')+' · nearest offers from '+(district||'Night City')+' · citywide results below';
   document.getElementById('searchMapQuery').textContent=label;
   applySpatialLabels();
   document.getElementById('searchPageInput').value=q;
@@ -3159,10 +3164,17 @@ function drawSpaciel(){
 }
 function drawSearchSpaciel(data=lastSearch?.data){
   const district=activeSpatialDistrict();
-  const live=(data?.offers||[]).filter(o=>o.kind==='available'&&offerInSpatialDistrict(o,district));
-  paintSpaciel(document.getElementById('searchSpacielCanvas'),'searchSpacielReadout',live);
+  const live=(data?.offers||[]).filter(o=>o.kind==='available').slice().sort((a,b)=>
+    spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score
+  ).slice(0,18);
+  paintSpaciel(
+    document.getElementById('searchSpacielCanvas'),
+    'searchSpacielReadout',
+    live,
+    {userPosition:spatialSnapshot?.position||null}
+  );
   const readout=document.getElementById('searchSpacielReadout');
-  if(readout)readout.textContent=live.length+' LOCAL OFFER'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
+  if(readout)readout.textContent=live.length+' NEAREST OFFER'+(live.length===1?'':'S')+' · FROM '+(district||'NIGHT CITY').toUpperCase();
 }
 window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
 
