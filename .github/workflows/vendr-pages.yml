@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "index.html"
+      - "data/curation/item-images.json"
+      - "data/curation/item-image-pool.json"
       - ".github/workflows/vendr-pages.yml"
   workflow_dispatch:
 
@@ -33,8 +35,10 @@ jobs:
 
       - name: Prepare Vend-R site
         run: |
-          mkdir -p _site
+          mkdir -p _site/data/curation
           cp index.html _site/index.html
+          cp data/curation/item-images.json _site/data/curation/item-images.json
+          cp data/curation/item-image-pool.json _site/data/curation/item-image-pool.json
 
       - name: Upload Vend-R site
         uses: actions/upload-pages-artifact@v4
