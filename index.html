@@ -3095,7 +3095,7 @@ function hash01(value,salt=0){
   }
   return ((h>>>0)%10000)/10000;
 }
-function paintSpaciel(canvas,readoutId,signalRows){
+function paintSpaciel(canvas,readoutId,signalRows,{userPosition=null}={}){
   if(!canvas)return;
   const rect=canvas.getBoundingClientRect();
   if(rect.width<2||rect.height<2)return;
@@ -3129,22 +3129,33 @@ function paintSpaciel(canvas,readoutId,signalRows){
   }
   const live=(signalRows||[]).slice(0,18);
   live.forEach((s,i)=>{
-    const key=s.shop_entity_id||s.entity_id||s.shop_name||i;
-    const x=(.12+hash01(key,31)*.76)*w,y=(.16+hash01(key,79)*.68)*h;
-    ctx.beginPath();ctx.arc(x,y,3.3,0,Math.PI*2);ctx.fillStyle=i<4?'#f4d246':'#fff6df';ctx.fill();
-    ctx.beginPath();ctx.arc(x,y,i<4?7:5.7,0,Math.PI*2);ctx.strokeStyle=i<4?'rgba(244,210,70,.38)':'rgba(255,246,223,.22)';ctx.lineWidth=1;ctx.stroke();
+    const point=signalSpatialPoint(s);
+    if(!point)return;
+    const x=point.x*w,y=point.y*h;
+    ctx.beginPath();ctx.arc(x,y,3.3,0,Math.PI*2);ctx.fillStyle=i<5?'#f4d246':'#fff6df';ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,i<5?7:5.7,0,Math.PI*2);ctx.strokeStyle=i<5?'rgba(244,210,70,.42)':'rgba(255,246,223,.22)';ctx.lineWidth=1;ctx.stroke();
   });
-  ctx.strokeStyle='rgba(240,91,19,.74)';ctx.lineWidth=1.2;ctx.strokeRect(w*.44,h*.42,w*.12,h*.12);
-  ctx.beginPath();ctx.moveTo(w*.50,h*.39);ctx.lineTo(w*.50,h*.57);ctx.moveTo(w*.41,h*.48);ctx.lineTo(w*.59,h*.48);ctx.stroke();
+  if(userPosition&&Number.isFinite(Number(userPosition.x))&&Number.isFinite(Number(userPosition.y))){
+    const ux=clampMap(userPosition.x)*w,uy=clampMap(userPosition.y)*h;
+    ctx.beginPath();ctx.arc(ux,uy,8.5,0,Math.PI*2);ctx.fillStyle='rgba(240,91,19,.18)';ctx.fill();
+    ctx.beginPath();ctx.arc(ux,uy,5.5,0,Math.PI*2);ctx.strokeStyle='#f05b13';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(ux,uy-11);ctx.lineTo(ux,uy+11);ctx.moveTo(ux-11,uy);ctx.lineTo(ux+11,uy);ctx.strokeStyle='#fff6df';ctx.lineWidth=1.4;ctx.stroke();
+    ctx.beginPath();ctx.arc(ux,uy,2.2,0,Math.PI*2);ctx.fillStyle='#f4d246';ctx.fill();
+  }
   const readout=document.getElementById(readoutId);
   if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · NIGHT CITY';
 }
 function drawSpaciel(){
   const district=activeSpatialDistrict();
-  const live=sellers.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET'].includes(s.stock_mode)&&sellerInSpatialDistrict(s,district));
-  paintSpaciel(document.getElementById('spacielCanvas'),'spacielReadout',live);
+  const live=nearestHomeSellers(18).map(x=>x.seller);
+  paintSpaciel(
+    document.getElementById('spacielCanvas'),
+    'spacielReadout',
+    live,
+    {userPosition:spatialSnapshot?.position||null}
+  );
   const readout=document.getElementById('spacielReadout');
-  if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
+  if(readout)readout.textContent=live.length+' NEARBY PLACE'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
 }
 function drawSearchSpaciel(data=lastSearch?.data){
   const district=activeSpatialDistrict();
