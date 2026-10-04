@@ -385,19 +385,78 @@ button,input,select{font:inherit}
   align-items:stretch;
 }
 .home-hero-copy{
-  padding:30px 28px 26px 32px;
+  min-width:0;
+  padding:24px 26px 22px 28px;
   display:flex;
   flex-direction:column;
+}
+.home-nearby-head{
+  display:flex;
+  align-items:end;
   justify-content:space-between;
-  gap:30px;
+  gap:18px;
+  padding-bottom:12px;
+  border-bottom:3px solid var(--ink);
 }
-.home-hero .hero-title{
-  max-width:720px;
-  margin-bottom:22px;
-  font-size:clamp(46px,6.8vw,88px);
+.home-nearby-head h1{
+  margin:4px 0 0;
+  font-size:clamp(34px,4.4vw,58px);
+  line-height:.86;
+  letter-spacing:-.055em;
+  text-transform:uppercase;
 }
-.home-hero .hero-copy{max-width:640px;font-size:16px}
-.hero-location-line{margin-top:0}
+.home-nearby-head span{
+  flex:0 0 auto;
+  text-align:right;
+  color:var(--muted);
+  font:900 9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.home-nearby-list{
+  flex:1;
+  min-height:0;
+}
+.home-nearby-row{
+  width:100%;
+  min-height:56px;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:10px 0;
+  text-align:left;
+  cursor:pointer;
+}
+.home-nearby-row:hover{background:rgba(244,210,70,.12)}
+.home-nearby-name{
+  font-size:18px;
+  font-weight:1000;
+  line-height:1;
+  text-transform:uppercase;
+}
+.home-nearby-meta{
+  margin-top:4px;
+  color:var(--muted);
+  font:9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.home-nearby-distance{
+  min-width:66px;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:7px 8px;
+  text-align:center;
+  font:1000 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.hero-location-line{
+  margin-top:12px;
+  padding-top:0;
+}
 
 /* Spaciel sits inside an equal cream surround. The bevel is one simple sloped frame. */
 .spaciel-aperture{
@@ -1372,8 +1431,11 @@ button,input,select{font:inherit}
 }
 @media (max-width:520px){
   .hero-title{font-size:48px}
-  .home-hero-copy{padding:22px 18px}
-  .home-hero .hero-title{font-size:52px}
+  .home-hero-copy{padding:18px}
+  .home-nearby-head{align-items:start}
+  .home-nearby-head h1{font-size:42px}
+  .home-nearby-row{min-height:54px}
+  .home-nearby-name{font-size:16px}
   .hero-search{grid-template-columns:1fr}
   .hero-search input{min-height:60px}
   .hero-search button{
@@ -1466,17 +1528,25 @@ button,input,select{font:inherit}
       <section class="hero home-hero">
         <div class="home-hero-grid">
           <div class="home-hero-copy">
-            <div>
-              <h1 class="hero-title">Find what’s already out there.</h1>
-              <p class="hero-copy">
-                Night City is full of places to buy, sell and trade. Vend-R brings together established shops,
-                markets, stalls and services, with stock that can change as the city does. Search above for
-                something specific, or browse below to see who is trading and what is happening around the city.
-              </p>
+            <div class="home-nearby-head">
+              <div>
+                <div class="kicker">Vend-R local market</div>
+                <h1>Shops near you</h1>
+              </div>
+              <span id="homeNearbyArea">Finding your area…</span>
+            </div>
+
+            <div class="home-nearby-list" id="homeNearbyList" aria-live="polite">
+              <div class="home-nearby-row">
+                <div>
+                  <div class="home-nearby-name">Locating nearby shops…</div>
+                  <div class="home-nearby-meta">Waiting for Spaciel position</div>
+                </div>
+                <div class="home-nearby-distance">—</div>
+              </div>
             </div>
 
             <div class="nearby-line hero-location-line">
-              <span>Selected area</span>
               <span class="token" id="selectedAreaToken">Night City</span>
               <span class="token spatial-source-token" id="spatialSourceToken">Mock Spaciel</span>
               <span class="muted" id="marketPulse">Connecting to Night City market data…</span>
@@ -1484,7 +1554,7 @@ button,input,select{font:inherit}
           </div>
 
           <div class="spaciel-aperture">
-            <div class="spaciel-cutin" aria-label="Spaciel Night City market layer preview">
+            <div class="spaciel-cutin" aria-label="Spaciel nearby shops and current location">
               <canvas id="spacielCanvas"></canvas>
               <div class="spaciel-hud spaciel-topline">
                 <strong>SPACIEL</strong><span>MARKET LAYER</span>
