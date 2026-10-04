@@ -1427,27 +1427,6 @@ button,input,select{font:inherit}
   .item-description{font-size:16px}
 }
 
-/* -------- TEMPLATE NOTES -------- */
-.template-note{
-  margin-top:18px;
-  border:var(--panel-border);
-  background:rgba(255,246,223,.96);
-  box-shadow:var(--shadow);
-  padding:12px 14px;
-}
-.template-note h3{
-  margin:0 0 8px;
-  font-size:16px;
-  text-transform:uppercase;
-}
-.template-note ul{
-  margin:8px 0 0 18px;
-  padding:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-}
-
 /* -------- FOOTER -------- */
 .footer{
   margin-top:18px;
@@ -1543,7 +1522,6 @@ button,input,select{font:inherit}
   .footer span:last-child{text-align:left}
 }
 
-.template-note{display:none}
 .mini-card[data-shop]{cursor:pointer}
 .mini-card[data-shop]:hover{background:rgba(255,255,255,.48)}
 .action-btn[disabled]{opacity:.65;cursor:default}
@@ -1749,38 +1727,9 @@ button,input,select{font:inherit}
           </div>
 
           <div class="cards-3" id="marketCards">
-            <article class="mini-card">
-              <div class="mini-time">20:00–01:00</div>
-              <h3>Kabuki Night Market</h3>
-              <p>Electronics, salvage, food, improvised tools and whatever arrived after dark.</p>
-              <div class="mini-dist">0.4 km · 18 sellers reporting</div>
-            </article>
-
-            <article class="mini-card">
-              <div class="mini-time">21:30–late</div>
-              <h3>Underpass Exchange</h3>
-              <p>Small moving market with vehicle parts, ammunition, clothing and fixer tables.</p>
-              <div class="mini-dist">1.9 km · location confirmed</div>
-            </article>
-
-            <article class="mini-card">
-              <div class="mini-time">From 22:00</div>
-              <h3>Red Lantern Pop-Up</h3>
-              <p>Food, music, cheap consumer goods and sellers who do not advertise stock.</p>
-              <div class="mini-dist">2.6 km · 9 sellers reporting</div>
-            </article>
+            <div class="stock-empty">Loading markets…</div>
           </div>
         </section>
-      </div>
-
-      <div class="template-note">
-        <h3>Homepage template rules</h3>
-        <ul>
-          <li>Lead with the large search ask.</li>
-          <li>Front page objects are shops, sellers, and markets — not abstract product categories.</li>
-          <li>Favour states like open now, restocked recently, and tonight.</li>
-          <li>Cards should stay cream-on-field, with dark text and orange/yellow used as status emphasis.</li>
-        </ul>
       </div>
 
       <footer class="footer">
@@ -1981,7 +1930,7 @@ button,input,select{font:inherit}
               <span class="tag yellow" id="vendorStatus">Profile</span>
               <span class="tag" id="vendorDistrict">Night City</span>
               <span class="tag" id="vendorType">Commercial place</span>
-              <span class="tag orange" id="vendorStockMode">Stock model</span>
+              <span class="tag orange" id="vendorStockMode">Listing</span>
             </div>
           </div>
           <div class="vendor-photo-credit" id="vendorPhotoCredit"></div>
@@ -1991,8 +1940,8 @@ button,input,select{font:inherit}
           <div class="hero-columns">
             <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
             <div class="owner">
-              <strong id="vendorOwnerLabel">Vend-R record</strong>
-              <span id="vendorOwnerSub">Canonical Night City commercial profile</span>
+              <strong id="vendorOwnerLabel">Vend-R listing</strong>
+              <span id="vendorOwnerSub">Night City market record</span>
               <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
                 <span>← Back to containing location</span>
                 <strong id="parentLocationName">Containing location</strong>
@@ -2007,10 +1956,10 @@ button,input,select{font:inherit}
         <section class="panel">
           <div class="section-head">
             <h2 id="stockPanelTitle">Stock</h2>
-            <span id="stockSummary">Read-only profile<br>No shelf state yet</span>
+            <span id="stockSummary">Loading listing<br>Checking current stock</span>
           </div>
 
-          <div class="restock-band" id="restockBand">Public preview · search does not materialize stock</div>
+          <div class="restock-band" id="restockBand">Checking current market state…</div>
 
           <div class="stock-browser" id="stockBrowser" hidden>
             <div class="stock-filter-row" id="stockFilters"></div>
@@ -2025,50 +1974,7 @@ button,input,select{font:inherit}
           </div>
 
           <div id="stockList">
-            <article class="stock-row" data-search="tool kit basic repair tools">
-              <div>
-                <div class="stock-name">Basic Techtool</div>
-                <div class="stock-sub">Tools · general repair · clean stock</div>
-              </div>
-              <div class="stock-meta"><strong>4 here</strong><br>restocked today</div>
-              <div class="price">100eb</div>
-            </article>
-
-            <article class="stock-row" data-search="cyberdeck case electronics carry">
-              <div>
-                <div class="stock-name">Armoured Deck Case</div>
-                <div class="stock-sub">Electronics · used · cosmetic wear</div>
-              </div>
-              <div class="stock-meta"><strong>1 here</strong><br>new arrival</div>
-              <div class="price alt">220eb</div>
-            </article>
-
-            <article class="stock-row" data-search="battery pack power cell rechargeable">
-              <div>
-                <div class="stock-name">Rechargeable Power Cell</div>
-                <div class="stock-sub">Power · sealed pack · generic</div>
-              </div>
-              <div class="stock-meta"><strong>6 here</strong><br>steady stock</div>
-              <div class="price">50eb</div>
-            </article>
-
-            <article class="stock-row" data-search="radio scanner comms communications">
-              <div>
-                <div class="stock-name">Pocket Scanner</div>
-                <div class="stock-sub">Comms · second-hand · tested</div>
-              </div>
-              <div class="stock-meta"><strong>2 here</strong><br>selling fast</div>
-              <div class="price alt">180eb</div>
-            </article>
-
-            <article class="stock-row" data-search="optics lens camera salvaged">
-              <div>
-                <div class="stock-name">Salvaged Optical Assembly</div>
-                <div class="stock-sub">Optics · incomplete · buyer beware</div>
-              </div>
-              <div class="stock-meta"><strong>1 here</strong><br>oddity</div>
-              <div class="price amber">75eb</div>
-            </article>
+            <div class="stock-empty">Loading current stock…</div>
           </div>
         </section>
 
@@ -2079,20 +1985,20 @@ button,input,select{font:inherit}
               <span>Live vendor record</span>
             </div>
             <dl class="fact-list">
-              <div class="fact"><dt>Status</dt><dd id="factStatus">Profile only</dd></div>
+              <div class="fact"><dt>Status</dt><dd id="factStatus">Loading…</dd></div>
               <div class="fact"><dt>District</dt><dd id="factDistrict">Night City</dd></div>
-              <div class="fact"><dt id="factStockModeLabel">Stock mode</dt><dd id="factStockMode">—</dd></div>
-              <div class="fact"><dt>Archetype</dt><dd id="factArchetype">—</dd></div>
+              <div class="fact"><dt id="factStockModeLabel">Listing</dt><dd id="factStockMode">—</dd></div>
+              <div class="fact"><dt>Category</dt><dd id="factArchetype">—</dd></div>
               <div class="fact"><dt>Source</dt><dd id="factSource">—</dd></div>
-              <div class="fact"><dt>World state</dt><dd id="factWorldState">Not materialized</dd></div>
+              <div class="fact"><dt>Availability</dt><dd id="factWorldState">Checking…</dd></div>
             </dl>
           </section>
 
           <section class="panel market-card-side">
             <div class="kicker" id="contextKicker">Commercial context</div>
             <h3 id="contextTitle">Night City</h3>
-            <p id="contextCopy">Seller profile context appears here.</p>
-            <div class="market-line" id="contextLine">Read-only public preview</div>
+            <p id="contextCopy">Loading local market context…</p>
+            <div class="market-line" id="contextLine">Night City market feed</div>
           </section>
 
           <section class="panel">
@@ -2101,27 +2007,14 @@ button,input,select{font:inherit}
               <span>Local pattern</span>
             </div>
             <div class="known-grid" id="knownGrid">
-              <span>Repair parts</span>
-              <span>Used tech</span>
-              <span>Odd electronics</span>
-              <span>Fair haggling</span>
+              <span>Loading seller profile…</span>
             </div>
           </section>
         </aside>
       </div>
 
-      <div class="template-note">
-        <h3>Vendor page template rules</h3>
-        <ul>
-          <li>Shop identity comes first: name, status, distance, type, owner.</li>
-          <li>Then show stock, not with modern e-commerce polish, but as a local market board.</li>
-          <li>The side column should carry state, local context, and what the seller is known for.</li>
-          <li>Desktop keeps context beside stock; mobile stacks the same blocks without changing their logic.</li>
-        </ul>
-      </div>
-
       <footer class="footer">
-        <span>Vendor record · updated 21:04</span>
+        <span>Vend-R vendor record</span>
         <span>Night City / local market feed / seller supplied</span>
       </footer>
     </div>
@@ -2186,7 +2079,7 @@ function syncHeaderBackdrop(){
   if(!headerBackdrop) return;
   headerBackdrop.style.height = headerCutoff() + 'px';
 }
-const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty,.template-note';
+const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty';
 let headerShadowRaf = 0;
 function syncHeaderShadows(){
   headerShadowRaf = 0;
@@ -2584,11 +2477,24 @@ function nonStockLabel(s){
   const mode=String(s?.stock_mode||'').toUpperCase();
   const policy=String(stockPolicyValue(s,'parent_stock_policy')||'').toUpperCase();
   const rule=String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase();
-  if(mode==='SERVICE_ONLY'||rule==='NO_STATIC_INVENTORY')return 'Service only';
-  if(policy==='CHILDREN_ONLY'||rule==='DELEGATE_TO_CHILDREN')return 'Container only';
-  return 'Profile only';
+  if(mode==='SERVICE_ONLY'||rule==='NO_STATIC_INVENTORY')return 'Services';
+  if(policy==='CHILDREN_ONLY'||rule==='DELEGATE_TO_CHILDREN'||mode==='AGGREGATE_CONTAINER')return 'Shopping location';
+  return 'Listing';
 }
-function modeLabel(v){return String(v||'').replaceAll('_',' ')}
+function modeLabel(v){
+  const labels={
+    DIRECT_SELLER:'Shop',
+    EVENT_MARKET:'Night market',
+    HYBRID_DIRECT_EVENT:'Shop / market',
+    AGGREGATE_CONTAINER:'Shopping location',
+    PLACE_ONLY:'Place',
+    SERVICE_ONLY:'Services',
+    REFERENCE_ONLY:'Reference',
+    CHANNEL_TEMPLATE:'Network'
+  };
+  const key=String(v||'').toUpperCase();
+  return labels[key]||String(v||'').replaceAll('_',' ').toLowerCase().replace(/^./,m=>m.toUpperCase());
+}
 function clampMap(v){return Math.max(.025,Math.min(.975,Number(v)))}
 function sellerSpatialPoint(s){
   if(!s)return null;
@@ -3076,8 +2982,7 @@ function stockRowHtml(s,row,focusId){
   return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
-    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+esc((row.assortment_role||'stock')+' · state '+String(s.state?.generation??s.state?.stock_cycle??row.stock_cycle??'—'))+
-    '</div>'+
+    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>current stock</div>'+
     '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
 }
 function filteredStockRows(){
@@ -3335,7 +3240,7 @@ function renderVendorStock(s,focus){
     document.getElementById('stockSummary').innerHTML=sourceRows.length+' menu item'+(sourceRows.length===1?'':'s')+'<br>Food & drink';
     document.getElementById('restockBand').textContent='Current menu';
   }else{
-    document.getElementById('stockSummary').innerHTML=sourceRows.length+' listed · state '+esc(String(s.state?.generation??s.state?.stock_cycle??'—'))+'<br>'+esc(s.state?.cadence_label||'Current stock');
+    document.getElementById('stockSummary').innerHTML=sourceRows.length+' item'+(sourceRows.length===1?'':'s')+' listed<br>'+esc(s.state?.cadence_label||'Current stock');
     document.getElementById('restockBand').textContent=nextRefreshText(s.state);
   }
 }
@@ -3375,7 +3280,7 @@ function renderVendor(s,offers){
   document.getElementById('vendorName').textContent=s.name||'Seller';
   document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
   const visibleStock=canOwnStock?(s.stock||[]):[];
-  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(menuMode?('MENU · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):(visibleStock.length?'STOCK · CYCLE 1':nonStockLabel(s).toUpperCase()));
+  document.getElementById('vendorStatus').textContent=children.length?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE'):(visibleStock.length?('STOCK · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):nonStockLabel(s).toUpperCase());
   document.getElementById('vendorDistrict').textContent=s.district||'Night City';
   document.getElementById('vendorType').textContent=s.type||'Commercial place';
   document.getElementById('vendorStockMode').textContent=menuMode?'MENU':modeLabel(s.stock_mode);
@@ -3390,11 +3295,11 @@ function renderVendor(s,offers){
   document.getElementById('restockBand').textContent=menuMode?'Loading menu…':(canOwnStock?'Loading stock snapshot…':'No retail inventory');
   document.getElementById('factStatus').textContent=menuMode?'Menu':nonStockLabel(s);
   document.getElementById('factDistrict').textContent=s.district||'Night City';
-  document.getElementById('factStockModeLabel').textContent=menuMode?'Format':(canOwnStock?'Stock mode':'Commerce mode');
+  document.getElementById('factStockModeLabel').textContent='Listing';
   document.getElementById('factStockMode').textContent=menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s));
   document.getElementById('factArchetype').textContent=s.type||'—';
   document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
-  document.getElementById('factWorldState').textContent='Not materialized';
+  document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':'No retail inventory';
   if(children.length){
     document.getElementById('contextKicker').textContent='At this location';
     document.getElementById('contextTitle').textContent=children.length+' shop'+(children.length===1?'':'s')+' here';
@@ -3442,7 +3347,7 @@ function renderVendor(s,offers){
     offer.hidden=true;
     document.getElementById('offerItemLink').removeAttribute('data-item-id');
   }
-  document.getElementById('factStatus').textContent=menuMode?(visibleStock.length?('Menu · '+String(visibleStock.length)+' items'):'Menu profile'):(visibleStock.length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):nonStockLabel(s));
+  document.getElementById('factStatus').textContent=visibleStock.length?('Stock · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s);
   document.getElementById('factWorldState').textContent=menuMode?(visibleStock.length?'Current menu':'No menu listed'):(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':'No retail inventory'));
   renderVendorStock(s,focus);
 }
