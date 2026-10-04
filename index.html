@@ -2301,6 +2301,8 @@ function applySpatialLabels(){
   if(homeArea)homeArea.textContent=district.toUpperCase();
   const homeMode=document.getElementById('spacielAreaMode');
   if(homeMode)homeMode.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'MOCK POSITION':'LIVE POSITION';
+  const nearbyArea=document.getElementById('homeNearbyArea');
+  if(nearbyArea)nearbyArea.innerHTML=esc(district)+'<br>nearest first';
   const searchName=document.getElementById('searchLocationName');
   if(searchName)searchName.textContent=district;
   const searchMode=document.getElementById('searchLocationMode');
@@ -2367,6 +2369,78 @@ function parentSeller(s){
   return sellerByName(s.parent_name||s.parent?.name||'',s.district);
 }
 function modeLabel(v){return String(v||'').replaceAll('_',' ')}
+function clampMap(v){return Math.max(.025,Math.min(.975,Number(v)))}
+function sellerSpatialPoint(s){
+  if(!s)return null;
+  const explicit=[
+    [s.map_x,s.map_y],
+    [s.spatial_x,s.spatial_y],
+    [s.position?.x,s.position?.y],
+    [s.spatial?.x,s.spatial?.y]
+  ].find(([x,y])=>Number.isFinite(Number(x))&&Number.isFinite(Number(y)));
+  if(explicit)return {x:clampMap(explicit[0]),y:clampMap(explicit[1]),synthetic:false};
+  const anchor=mockSpatialAnchors[String(s.district||'')];
+  if(!anchor)return null;
+  const key=s.entity_id||s.name||s.district||'seller';
+  const angle=hash01(key,173)*Math.PI*2;
+  const radius=.008+Math.sqrt(hash01(key,257))*.034;
+  return {
+    x:clampMap(anchor.x+Math.cos(angle)*radius),
+    y:clampMap(anchor.y+Math.sin(angle)*radius),
+    synthetic:true
+  };
+}
+function signalSpatialPoint(row){
+  const seller=sellerById(row?.shop_entity_id||row?.entity_id)||row;
+  return sellerSpatialPoint(seller);
+}
+function spatialDistanceForSeller(s){
+  const user=spatialSnapshot?.position;
+  const point=sellerSpatialPoint(s);
+  if(!user||!point||!Number.isFinite(Number(user.x))||!Number.isFinite(Number(user.y))){
+    return {score:Infinity,label:'Nearby',point};
+  }
+  const score=Math.hypot(Number(user.x)-point.x,Number(user.y)-point.y);
+  const km=score*11.5;
+  let label;
+  if(km<.1)label='<100 m';
+  else if(km<1)label=(Math.round(km*10)/10).toFixed(1)+' km';
+  else label=(Math.round(km*10)/10).toFixed(1)+' km';
+  return {score,label,point};
+}
+function nearbyShopPool(){
+  return sellers.filter(s=>
+    (s.stock_profile_present||s.stock_mode!=='PLACE_ONLY')&&
+    ['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode)
+  );
+}
+function nearestHomeSellers(limit=5){
+  const district=activeSpatialDistrict();
+  return nearbyShopPool().map(s=>({seller:s,...spatialDistanceForSeller(s)}))
+    .sort((a,b)=>{
+      const ad=String(a.seller.district||'')===String(district||'')?0:1;
+      const bd=String(b.seller.district||'')===String(district||'')?0:1;
+      return ad-bd||a.score-b.score||String(a.seller.name).localeCompare(String(b.seller.name));
+    })
+    .slice(0,limit);
+}
+function renderHomeNearby(){
+  const list=document.getElementById('homeNearbyList');
+  if(!list)return;
+  const rows=nearestHomeSellers(5);
+  if(!rows.length){
+    list.innerHTML='<div class="home-nearby-row"><div><div class="home-nearby-name">No nearby shops resolved</div><div class="home-nearby-meta">Try another location signal</div></div><div class="home-nearby-distance">—</div></div>';
+    return;
+  }
+  list.innerHTML=rows.map(({seller,label})=>
+    '<button class="home-nearby-row" type="button" data-shop="'+esc(seller.entity_id)+'">'+
+      '<div><div class="home-nearby-name">'+esc(seller.name)+'</div>'+
+      '<div class="home-nearby-meta">'+esc([seller.type,seller.district].filter(Boolean).join(' · '))+'</div></div>'+
+      '<div class="home-nearby-distance">'+esc(label)+'</div>'+
+    '</button>'
+  ).join('');
+  bindSellerClicks(list);
+}
 function sellerRow(s,sub,status){
   return '<button class="list-row" data-shop="'+esc(s.entity_id)+'"><div>'+
     '<div class="row-title">'+esc(s.name)+'</div>'+
@@ -2400,6 +2474,8 @@ function renderMarkets(rows){
 }
 function renderHomeDefault(){
   const district=activeSpatialDistrict();
+  renderHomeNearby();
+  const heroIds=new Set(nearestHomeSellers(5).map(x=>x.seller.entity_id));
   const profiled=sellers.filter(s=>s.stock_profile_present||s.stock_mode!=='PLACE_ONLY');
   const browseable=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode));
   const direct=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
@@ -2407,13 +2483,15 @@ function renderHomeDefault(){
   const localBrowseable=browseable.filter(s=>sellerInSpatialDistrict(s,district));
   const localDirect=direct.filter(s=>sellerInSpatialDistrict(s,district));
   const localMarkets=markets.filter(s=>sellerInSpatialDistrict(s,district));
-  document.getElementById('primarySellerTitle').textContent=district?'Near you':'Known sellers';
-  document.getElementById('primarySellerMeta').innerHTML=district?esc(district)+'<br>commercial profiles':'Canonical commercial<br>profiles';
+  document.getElementById('primarySellerTitle').textContent=district?'More nearby':'Known sellers';
+  document.getElementById('primarySellerMeta').innerHTML=district?esc(district)+'<br>beyond the nearest five':'Canonical commercial<br>profiles';
   document.getElementById('secondarySellerTitle').textContent=district?'Local direct sellers':'Direct sellers';
   document.getElementById('secondarySellerMeta').innerHTML=district?'Stock-capable<br>in selected area':'Likely stocked<br>places';
   document.getElementById('marketPanelTitle').textContent=district?'Markets nearby':'Markets';
   document.getElementById('marketPanelMeta').innerHTML=district?esc(district)+'<br>containers / events':'Containers / events<br>from the city graph';
-  renderSellerPanel(document.getElementById('primarySellerPanel'),(district?localBrowseable:browseable).slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
+  const primaryBase=district?localBrowseable:browseable;
+  const primaryBeyond=primaryBase.filter(s=>!heroIds.has(s.entity_id));
+  renderSellerPanel(document.getElementById('primarySellerPanel'),(primaryBeyond.length?primaryBeyond:primaryBase).slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
   renderSellerPanel(document.getElementById('secondarySellerPanel'),(district?localDirect:direct).slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
   renderMarkets(district?localMarkets:markets);
 }
