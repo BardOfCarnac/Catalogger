@@ -1335,6 +1335,98 @@ button,input,select{font:inherit}
   text-align:center;
 }
 
+/* -------- ITEM PAGE -------- */
+.item-hero{overflow:hidden}
+.item-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(240px,.72fr) minmax(0,1.45fr);
+  min-height:330px;
+}
+.item-image{
+  min-height:330px;
+  border-right:4px solid var(--ink);
+  background:
+    linear-gradient(135deg,rgba(240,91,19,.16),rgba(244,210,70,.28)),
+    repeating-linear-gradient(135deg,transparent 0 18px,rgba(23,17,12,.04) 18px 20px);
+  display:flex;
+  align-items:flex-end;
+  padding:18px;
+  position:relative;
+  background-size:cover;
+  background-position:center;
+}
+.item-image.has-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(23,17,12,.48),transparent 55%);
+}
+.item-image-label{
+  position:relative;
+  z-index:1;
+  border:2px solid var(--ink);
+  background:var(--cream);
+  padding:9px 11px;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.item-copy{padding:30px 32px 28px;display:flex;flex-direction:column;justify-content:center}
+.item-copy .hero-title{margin:8px 0 14px}
+.item-description{
+  margin:0;
+  max-width:720px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.42;
+}
+.item-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.item-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(270px,.7fr);
+  gap:18px;
+  margin-top:18px;
+}
+.item-offer{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  text-align:left;
+  padding:15px 16px;
+  cursor:pointer;
+}
+.item-offer:last-child{border-bottom:0}
+.item-offer:hover,.item-offer.selected{background:rgba(244,210,70,.19)}
+.item-offer strong{display:block;font-size:18px;text-transform:uppercase}
+.item-offer span{display:block;margin-top:4px;color:var(--muted);font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.item-offer-price{text-align:right;font-size:22px!important;color:var(--ink)!important;margin:0!important}
+.item-selected-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.item-selected-actions button{border:2px solid var(--ink);background:var(--rear-4);padding:8px 12px;font-weight:900;text-transform:uppercase;cursor:pointer}
+.item-related{display:grid}
+.item-related button{
+  border:0;border-bottom:1px solid var(--rule);background:transparent;text-align:left;
+  padding:11px 13px;cursor:pointer;color:var(--ink)
+}
+.item-related button:last-child{border-bottom:0}
+.item-related strong{display:block;text-transform:uppercase}
+.item-related span{display:block;color:var(--muted);font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:3px;text-transform:uppercase}
+.offer-item-link{
+  margin-top:10px;border:2px solid var(--ink);background:var(--rear-4);padding:8px 11px;
+  font-weight:900;text-transform:uppercase;cursor:pointer
+}
+@media (max-width:760px){
+  .item-hero-grid,.item-layout{grid-template-columns:1fr}
+  .item-image{min-height:220px;border-right:0;border-bottom:4px solid var(--ink)}
+  .item-copy{padding:22px 20px}
+  .item-description{font-size:16px}
+}
+
 /* -------- TEMPLATE NOTES -------- */
 .template-note{
   margin-top:18px;
@@ -1779,6 +1871,84 @@ button,input,select{font:inherit}
     </div>
   </section>
 
+  <!-- ========== ITEM PAGE ========== -->
+  <section class="view" id="itemView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Catalogue item</small></div>
+        <form class="inline-search" id="itemSearchForm">
+          <input id="itemSearchInput" type="search" placeholder="SEARCH CATALOGUE" autocomplete="off">
+        </form>
+        <button class="action-btn" id="itemBack">← Back</button>
+      </header>
+
+      <section class="hero item-hero">
+        <div class="item-hero-grid">
+          <div class="item-image" id="itemImage">
+            <span class="item-image-label" id="itemImageLabel">Catalogue image pending</span>
+          </div>
+          <div class="item-copy">
+            <div class="kicker" id="itemKicker">Catalogue item</div>
+            <h1 class="hero-title" id="itemName">Item</h1>
+            <p class="item-description" id="itemDescription">Loading catalogue description…</p>
+            <div class="item-tags">
+              <span class="tag yellow" id="itemPriceTier">—</span>
+              <span class="tag" id="itemAvailability">—</span>
+              <span class="tag orange" id="itemIdTag">—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-focus" id="itemSelectedOffer" hidden>
+        <div class="kicker">Selected offer</div>
+        <div class="offer-focus-row">
+          <h1 id="itemOfferShop">Seller</h1>
+          <div class="offer-readout">
+            <strong id="itemOfferPrice">—</strong>
+            <span id="itemOfferMeta">—</span>
+          </div>
+        </div>
+        <div class="offer-sub" id="itemOfferSub">Current offer context.</div>
+        <div class="item-selected-actions"><button type="button" id="itemSelectedSeller">View seller →</button></div>
+      </section>
+
+      <div class="item-layout">
+        <section class="panel">
+          <div class="section-head">
+            <h2>Available now</h2>
+            <span id="itemOfferCount">Checking Night City</span>
+          </div>
+          <div id="itemOfferList"></div>
+          <div class="stock-empty" id="itemOfferEmpty" hidden>No current offers found.</div>
+        </section>
+
+        <aside class="side-stack">
+          <section class="panel">
+            <div class="section-head"><h2>Catalogue</h2><span>Reference</span></div>
+            <dl class="fact-list">
+              <div class="fact"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
+              <div class="fact"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
+              <div class="fact"><dt>Category</dt><dd id="itemCategory">—</dd></div>
+              <div class="fact"><dt>Index</dt><dd id="itemSource">—</dd></div>
+              <div class="fact"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
+            </dl>
+          </section>
+
+          <section class="panel">
+            <div class="section-head"><h2>Related</h2><span>Same catalogue family</span></div>
+            <div class="item-related" id="itemRelated"></div>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        <span id="itemFooterLeft">Vend-R catalogue</span>
+        <span>Catalogue identity · live market availability</span>
+      </footer>
+    </div>
+  </section>
+
   <!-- ========== VENDOR TEMPLATE ========== -->
   <section class="view" id="vendorView">
     <div class="shell">
@@ -1798,6 +1968,7 @@ button,input,select{font:inherit}
           </div>
         </div>
         <div class="offer-sub" id="offerSub"></div>
+        <button class="offer-item-link" id="offerItemLink" type="button">View item →</button>
       </section>
 
       <section class="hero vendor-hero">
@@ -2044,7 +2215,8 @@ requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 const homeView = document.getElementById('homeView');
 const searchView = document.getElementById('searchView');
 const vendorView = document.getElementById('vendorView');
-const allViews = {home:homeView,search:searchView,vendor:vendorView};
+const itemView = document.getElementById('itemView');
+const allViews = {home:homeView,search:searchView,item:itemView,vendor:vendorView};
 const stingerLayer = document.getElementById('stingerLayer');
 
 let currentView = 'home';
@@ -2185,6 +2357,10 @@ let lastSearch=null;
 let currentSellerId=null;
 let currentFocusOffer=null;
 let vendorHistory=[];
+let currentItemId=null;
+let currentItemData=null;
+let currentItemOfferShop=null;
+let itemReturnContext=null;
 
 /* -------- RADIAN SPATIAL ADAPTER -------- */
 let mockSpatialAnchors={};
@@ -2611,8 +2787,7 @@ function bindOfferRows(root,data){
   root.querySelectorAll('[data-offer-shop]').forEach(el=>el.addEventListener('click',()=>{
     const shopId=el.dataset.offerShop;
     const itemId=el.dataset.offerItem;
-    const offer=(data.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId)&&String(o.item_id)===String(itemId))||null;
-    openVendor(shopId,offer);
+    openItem(itemId,{offerShop:shopId});
   }));
 }
 function renderNearbyOffers(data){
@@ -2677,7 +2852,7 @@ function renderRelatedItems(data,q){
     '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
       '<strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+' · same family →</span></button>'
   ).join('');
-  list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>runSearchPage(q,el.dataset.relatedItem)));
+  list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>openItem(el.dataset.relatedItem)));
 }
 function renderOfferSections(data,q){
   renderNearbyOffers(data);
@@ -2804,7 +2979,8 @@ function renderSuggestions(data,q){
     playWipe(()=>openVendor(button.dataset.suggestPlace,null,{pushHistory:true}));
   }));
   box.querySelectorAll('[data-suggest-item]').forEach(button=>button.addEventListener('click',()=>{
-    startSearchFromGesture(q,button.dataset.suggestItem);
+    hideSuggestions();
+    openItem(button.dataset.suggestItem);
   }));
   box.querySelector('[data-search-all]')?.addEventListener('click',()=>startSearchFromGesture(q,null));
 }
@@ -2866,13 +3042,13 @@ function stockRowHtml(s,row,focusId){
   const rowClass=exactHit?' exact-row':'';
   const nameClass=exactHit?' exact':'';
   if(isFoodDrinkVenue(s)){
-    return '<article class="stock-row menu-row'+rowClass+'" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
+    return '<article class="stock-row menu-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
       '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div></div>'+
       '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
   }
   const flowLabel=row.last_change||null;
   const sub=[row.price_tier,row.availability_label,row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
-  return '<article class="stock-row'+rowClass+'" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
+  return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
     '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+esc((row.assortment_role||'stock')+' · state '+String(s.state?.generation??s.state?.stock_cycle??row.stock_cycle??'—'))+
@@ -2936,6 +3112,144 @@ function openStockAtFocus(rows,focusId){
   const index=rows.findIndex(r=>String(r.item_id)===String(focusId));
   if(index>=0)stockBrowserState.page=Math.floor(index/stockBrowserState.pageSize);
 }
+function itemUrl(itemId,shopId=null){
+  const url=new URL(location.href);
+  url.search='';
+  url.searchParams.set('item',itemId);
+  if(shopId)url.searchParams.set('shop',shopId);
+  return url.pathname+url.search;
+}
+function itemTypeText(item){
+  const cls=item?.classification||{};
+  return cls.source_subcategory||stockDepartmentLabel(item?.primary_department)||'Catalogue item';
+}
+function setItemImage(item){
+  const box=document.getElementById('itemImage');
+  const label=document.getElementById('itemImageLabel');
+  box.classList.remove('has-image');
+  box.style.backgroundImage='';
+  const image=item?.image;
+  if(image?.image_url){
+    box.classList.add('has-image');
+    box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
+    box.style.backgroundPosition=((Number(image.focal_x??.5)*100)+'% '+(Number(image.focal_y??.5)*100)+'%');
+    label.textContent='Catalogue image';
+  }else{
+    label.textContent=(stockDepartmentLabel(item?.primary_department)||'Catalogue')+' · image pending';
+  }
+}
+function selectedItemOffer(shopId){
+  return (currentItemData?.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId))||null;
+}
+function showSelectedItemOffer(shopId,{updateUrl=false}={}){
+  currentItemOfferShop=shopId||null;
+  const section=document.getElementById('itemSelectedOffer');
+  const offer=shopId?selectedItemOffer(shopId):null;
+  if(!offer){
+    section.hidden=true;
+    document.querySelectorAll('#itemOfferList .item-offer').forEach(x=>x.classList.remove('selected'));
+    return;
+  }
+  section.hidden=false;
+  document.getElementById('itemOfferShop').textContent=offer.shop_name||'Seller';
+  document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?moneyEb(offer.asking_price):'NO CURRENT OFFER';
+  document.getElementById('itemOfferMeta').textContent=offer.kind==='available'
+    ?[offer.condition,offer.quantity==null?'on demand':String(offer.quantity)+' available'].filter(Boolean).join(' · ')
+    :'Likely seller · not in current stock';
+  document.getElementById('itemOfferSub').textContent=[
+    offer.district,
+    offer.parent_name?('inside '+offer.parent_name):null,
+    offer.availability_label
+  ].filter(Boolean).join(' · ');
+  document.getElementById('itemSelectedSeller').dataset.shop=offer.shop_entity_id;
+  document.querySelectorAll('#itemOfferList .item-offer').forEach(x=>x.classList.toggle('selected',String(x.dataset.itemOfferShop)===String(shopId)));
+  if(updateUrl&&currentItemId){
+    history.pushState({view:'item',itemId:currentItemId,shopId},'',itemUrl(currentItemId,shopId));
+  }
+}
+function renderItemPage(data,selectedShopId=null){
+  currentItemData=data;
+  const item=data.item||{};
+  currentItemId=item.item_id||null;
+  document.getElementById('itemName').textContent=item.name||'Catalogue item';
+  document.getElementById('itemDescription').textContent=item.description||'No catalogue description has been added yet.';
+  document.getElementById('itemKicker').textContent=itemTypeText(item);
+  document.getElementById('itemPriceTier').textContent=item.price_tier||'Price unknown';
+  document.getElementById('itemAvailability').textContent=item.availability_label||'Availability unknown';
+  document.getElementById('itemIdTag').textContent=item.item_id||'—';
+  document.getElementById('itemManufacturer').textContent=(item.manufacturers||[]).join(' · ')||'Unbranded / unspecified';
+  document.getElementById('itemBookPrice').textContent=moneyEb(item.book_price);
+  document.getElementById('itemCategory').textContent=itemTypeText(item);
+  document.getElementById('itemSource').textContent=item.source_index_page==null?'Night Market Index':('Night Market Index · p. '+item.source_index_page);
+  document.getElementById('itemCatalogueId').textContent=item.item_id||'—';
+  document.getElementById('itemFooterLeft').textContent=(item.name||'Catalogue item')+' · '+(item.item_id||'');
+  document.getElementById('itemSearchInput').value='';
+  setItemImage(item);
+
+  const offers=(data.offers||[]).filter(o=>o.kind==='available');
+  const list=document.getElementById('itemOfferList');
+  document.getElementById('itemOfferCount').textContent=offers.length+' current offer'+(offers.length===1?'':'s')+' · Night City';
+  document.getElementById('itemOfferEmpty').hidden=offers.length>0;
+  list.innerHTML=sortOffers(offers,'location').map(o=>
+    '<button class="item-offer" type="button" data-item-offer-shop="'+esc(o.shop_entity_id)+'">'+
+      '<div><strong>'+esc(o.shop_name)+'</strong>'+
+      '<span>'+esc([o.district,o.parent_name?('inside '+o.parent_name):null,o.condition,o.quantity==null?'on demand':String(o.quantity)+' available'].filter(Boolean).join(' · '))+'</span></div>'+
+      '<span class="item-offer-price">'+esc(moneyEb(o.asking_price))+'</span>'+
+    '</button>'
+  ).join('');
+  list.querySelectorAll('[data-item-offer-shop]').forEach(button=>button.addEventListener('click',()=>showSelectedItemOffer(button.dataset.itemOfferShop,{updateUrl:true})));
+
+  const related=document.getElementById('itemRelated');
+  related.innerHTML=(data.related||[]).map(x=>
+    '<button type="button" data-item-related="'+esc(x.item_id)+'"><strong>'+esc(x.name)+'</strong>'+
+    '<span>'+esc(x.price_tier||'Same family')+' · view item →</span></button>'
+  ).join('')||'<div class="stock-empty">No related catalogue items.</div>';
+  related.querySelectorAll('[data-item-related]').forEach(button=>button.addEventListener('click',()=>openItem(button.dataset.itemRelated)));
+
+  showSelectedItemOffer(selectedShopId,{updateUrl:false});
+}
+async function openItem(itemId,options={}){
+  if(!itemId||busy)return;
+  const offerShop=options.offerShop||null;
+  if(options.captureReturn!==false){
+    itemReturnContext={
+      view:currentView,
+      sellerId:currentView==='vendor'?currentSellerId:null
+    };
+  }
+  if(options.push!==false){
+    history.pushState({view:'item',itemId,shopId:offerShop},'',itemUrl(itemId,offerShop));
+  }
+  try{
+    const data=await api({api:'item',id:itemId});
+    renderItemPage(data,offerShop);
+    if(options.animate===false){
+      Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name==='item'));
+      currentView='item';
+      window.scrollTo(0,0);
+    }else if(currentView!=='item'){
+      switchTo('item');
+    }else{
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  }catch(e){
+    console.error(e);
+  }
+}
+function goBackFromItem(){
+  const back=itemReturnContext;
+  itemReturnContext=null;
+  if(back?.view==='vendor'&&back.sellerId){
+    openVendor(back.sellerId,null,{pushHistory:false});
+    return;
+  }
+  if(back?.view==='search'&&lastSearch){
+    switchTo('search');
+    return;
+  }
+  switchTo('home');
+}
+
 function renderVendorStock(s,focus){
   const list=document.getElementById('stockList');
   const canOwnStock=ownsRetailStock(s);
@@ -3102,6 +3416,7 @@ function renderVendor(s,offers){
   const offer=document.getElementById('offerFocus');
   if(focus){
     offer.hidden=false;
+    document.getElementById('offerItemLink').dataset.itemId=String(focus.item_id||exact?.item_id||'');
     document.getElementById('offerItemName').textContent=focus.item_name||exact?.name||'Selected item';
     if(exact){
       document.getElementById('offerKicker').textContent=menuMode?'Menu item':'Current offer';
@@ -3116,6 +3431,7 @@ function renderVendor(s,offers){
     }
   }else{
     offer.hidden=true;
+    document.getElementById('offerItemLink').removeAttribute('data-item-id');
   }
   document.getElementById('factStatus').textContent=menuMode?(visibleStock.length?('Menu · '+String(visibleStock.length)+' items'):'Menu profile'):(visibleStock.length?'Stock state '+String(s.state?.generation??s.state?.stock_cycle??'—'):nonStockLabel(s));
   document.getElementById('factWorldState').textContent=menuMode?(visibleStock.length?'Current menu':'No menu listed'):(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':'No retail inventory'));
@@ -3267,8 +3583,11 @@ async function boot(){
     const params=new URLSearchParams(location.search);
     const q=params.get('q');
     const item=params.get('item');
-    if(q){
-      await runSearchPage(q,item,{push:false,animate:false});
+    const shop=params.get('shop');
+    if(item){
+      await openItem(item,{offerShop:shop,push:false,animate:false,captureReturn:false});
+    }else if(q){
+      await runSearchPage(q,null,{push:false,animate:false});
     }else{
       history.replaceState({view:'home'},'',location.pathname);
     }
@@ -3330,6 +3649,29 @@ document.getElementById('searchBackHome').addEventListener('click',()=>{
   switchTo('home');
 });
 document.getElementById('backToMarket').addEventListener('click',goBackFromVendor);
+document.getElementById('itemBack').addEventListener('click',goBackFromItem);
+document.getElementById('itemSearchForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  runSearchPage(document.getElementById('itemSearchInput').value,null);
+});
+document.getElementById('itemSelectedSeller').addEventListener('click',e=>{
+  const shopId=e.currentTarget.dataset.shop;
+  const offer=shopId?selectedItemOffer(shopId):null;
+  if(shopId)openVendor(shopId,offer,{pushHistory:true});
+});
+document.getElementById('offerItemLink').addEventListener('click',e=>{
+  const itemId=e.currentTarget.dataset.itemId;
+  if(itemId)openItem(itemId,{offerShop:currentSellerId});
+});
+document.getElementById('stockList').addEventListener('click',e=>{
+  const row=e.target.closest('[data-stock-item]');
+  if(row)openItem(row.dataset.stockItem,{offerShop:currentSellerId});
+});
+document.getElementById('stockList').addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  const row=e.target.closest('[data-stock-item]');
+  if(row){e.preventDefault();openItem(row.dataset.stockItem,{offerShop:currentSellerId})}
+});
 document.getElementById('parentLocationLink').addEventListener('click',e=>{
   const id=e.currentTarget.dataset.parentShop;
   if(id)playWipe(()=>openVendor(id,null,{pushHistory:false}));
@@ -3357,8 +3699,11 @@ window.addEventListener('popstate',()=>{
   const params=new URLSearchParams(location.search);
   const q=params.get('q');
   const item=params.get('item');
-  if(q){
-    runSearchPage(q,item,{push:false});
+  const shop=params.get('shop');
+  if(item){
+    openItem(item,{offerShop:shop,push:false,captureReturn:false});
+  }else if(q){
+    runSearchPage(q,null,{push:false});
   }else if(currentView!=='home'){
     switchTo('home');
   }
