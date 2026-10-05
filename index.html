@@ -2512,10 +2512,6 @@ function curatedItemImage(itemId){
   return {...image,assignment};
 }
 function sellerById(id){return sellers.find(s=>s.entity_id===id)}
-function sellerByName(name,district=null){
-  if(!name)return null;
-  return sellers.find(s=>s.name===name&&(!district||s.district===district))||sellers.find(s=>s.name===name)||null;
-}
 function childSellers(s){
   const raw=(Array.isArray(s.child_places)&&s.child_places.length)?s.child_places:(Array.isArray(s.children)?s.children:[]);
   return raw.map(ref=>{
@@ -2538,8 +2534,7 @@ function parentSeller(s){
   const selfId=String(s?.entity_id||'');
   const selfName=String(s?.name||'').trim().toLowerCase();
   const explicit=s.parent_id||s.parent_entity_id||s.parent?.entity_id||null;
-  let parent=explicit?sellerById(explicit):null;
-  if(!parent)parent=sellerByName(s.parent_name||s.parent?.name||'',s.district);
+  const parent=explicit?sellerById(explicit):null;
   if(!parent)return null;
   if(String(parent.entity_id||'')===selfId)return null;
   if(selfName&&String(parent.name||'').trim().toLowerCase()===selfName)return null;
@@ -2620,7 +2615,7 @@ function spatialDistanceForSeller(s){
   return {score,label,point};
 }
 function spatialDistanceForOffer(o){
-  const seller=sellerById(o?.shop_entity_id)||sellerByName(o?.shop_name,o?.district);
+  const seller=sellerById(o?.shop_entity_id);
   return spatialDistanceForSeller(seller||o);
 }
 function offerDistanceLabel(o){
