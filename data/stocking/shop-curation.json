@@ -1,0 +1,4043 @@
+{
+  "version": "1.0",
+  "stock_model": "lazy-1.6.2-explicit-staples",
+  "generated_from": "vendr_stock_profiles.data.stock_curation",
+  "profiles": [
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "name": "Animelocaris",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "general-equipment",
+          "virtual-goods-games"
+        ],
+        "boost_subcategories": [
+          "Specific Fashions",
+          "Fashion Styles",
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "anime merchandise",
+          "cosplay wigs",
+          "costume materials",
+          "model kits",
+          "crafting supplies",
+          "collector media"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Cosplay Wig & Makeup Kit",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Model & Crafting Materials",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APOCALYPSE-ZONE-TATTOO",
+      "name": "Apocalypse Zone Tattoo",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0708",
+          "VENDR-0703",
+          "VENDR-0710"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "boost_subcategories": [
+          "Fashionware"
+        ],
+        "refresh_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "refresh_pool_factor": 5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashionware",
+          "Specific Fashions",
+          "Fashion Styles"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APP-SHACK",
+      "name": "App Shack",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0450",
+          "VENDR-0457",
+          "VENDR-0462"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "electronics-comms",
+          "virtual-goods-games"
+        ],
+        "boost_subcategories": [
+          "Apps and Software"
+        ],
+        "refresh_departments": [
+          "electronics-comms",
+          "virtual-goods-games"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Apps and Software",
+          "Agents"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+      "name": "Armory Pawn Shop",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0372",
+          "VENDR-0359",
+          "VENDR-0301"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "name": "B. Baskin Books",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "paperbacks",
+          "reference books",
+          "technical manuals",
+          "recovered novels",
+          "old magazines",
+          "book bundles"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Pulp Paperbacks",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Reference & Technical Books",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "name": "B. Bazaar El Saber",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0484",
+          "VENDR-0359",
+          "VENDR-0254",
+          "VENDR-0372"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons",
+          "armor-protection",
+          "food-consumables",
+          "medical-chemical",
+          "vehicles-mobility"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "name": "B. Breeze",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0502",
+          "VENDR-0501",
+          "VENDR-0504",
+          "VENDR-0349"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "medical-chemical"
+        ],
+        "boost_subcategories": [
+          "Street Drugs",
+          "Pharmaceuticals"
+        ],
+        "refresh_departments": [
+          "medical-chemical"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Pharmaceuticals",
+          "Street Drugs"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS",
+      "name": "Bits’n’Bolts",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0433",
+          "VENDR-0372",
+          "VENDR-0363",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
+      "name": "Burning Bright Bodega",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0369",
+          "VENDR-0481"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "name": "Byte & Switch",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0611",
+          "VENDR-0548",
+          "VENDR-0433",
+          "VENDR-0566"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "cyberware",
+          "electronics-comms",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Cyberware Enhancements",
+          "Cyberlimbs",
+          "Cyberoptics",
+          "Cyberaudio",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "cyberware",
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberlimbs",
+          "Cyberoptics",
+          "Cyberaudio",
+          "Chipware",
+          "Cyberware Enhancements"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "name": "C. Caitlin Market",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0254",
+          "VENDR-0359",
+          "VENDR-0485"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables",
+          "weapons",
+          "ammunition-ordnance"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+      "name": "Carmen’s Cosmetics",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "Fashionware",
+          "Specific Fashions"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "makeup",
+          "skin care",
+          "hair products",
+          "nail products",
+          "cosmetic kits",
+          "seasonal colours"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Makeup & Skin-Care Assortment",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Hair & Nail Cosmetic Pack",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "name": "Carriage Street Books/Afterwords Café",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "electronics-comms",
+          "virtual-goods-games"
+        ],
+        "boost_subcategories": [
+          "Apps and Software",
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "books",
+          "magazines",
+          "graphic novels",
+          "course readers",
+          "memory-chip texts",
+          "stationery",
+          "notebooks"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Stationery & Notebooks",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Used Course Readers",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
+      "name": "Cheek Turn",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0252",
+          "VENDR-0332",
+          "VENDR-0301"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Armor",
+          "Weapon Attachments",
+          "Medium Pistols",
+          "Heavy Pistols",
+          "Very Heavy Pistols"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "armor-protection",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
+      "name": "Combat Concierge",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0332",
+          "VENDR-0433",
+          "VENDR-0418"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments",
+          "Armor",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "food-consumables",
+          "weapons",
+          "ammunition-ordnance",
+          "armor-protection",
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
+      "name": "Container Bodega",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359",
+          "VENDR-0485"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
+      "name": "Corporate Cool",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0819",
+          "VENDR-0818",
+          "VENDR-0820"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "Fashion Styles",
+          "Specific Fashions",
+          "Fashion Linings"
+        ],
+        "refresh_departments": [
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashion Styles",
+          "Fashion Linings",
+          "Specific Fashions"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
+      "name": "Cybershack",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-1018",
+          "VENDR-1053",
+          "VENDR-1067",
+          "VENDR-0442"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "netrunning",
+          "electronics-comms",
+          "virtual-goods-games"
+        ],
+        "boost_subcategories": [
+          "Cyberdecks",
+          "Cyberdeck Hardware",
+          "Attacker Programs",
+          "Defender Programs",
+          "Booster Programs",
+          "Black ICE"
+        ],
+        "refresh_departments": [
+          "netrunning",
+          "electronics-comms",
+          "virtual-goods-games",
+          "cyberware"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberdecks",
+          "Cyberdeck Hardware",
+          "Attacker Programs",
+          "Defender Programs",
+          "Booster Programs",
+          "Black ICE",
+          "Netrunning Accessories",
+          "Apps and Software"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-CYBORG-STATION",
+      "name": "Cyborg Station",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0566",
+          "VENDR-0686",
+          "VENDR-0645",
+          "VENDR-0611"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "cyberware"
+        ],
+        "boost_subcategories": [
+          "Cyberlimbs",
+          "Chipware",
+          "Cyberware Enhancements"
+        ],
+        "refresh_departments": [
+          "cyberware"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberlimbs",
+          "Cyberoptics",
+          "Cyberaudio",
+          "Chipware",
+          "Cyberware Enhancements"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
+      "name": "Data Inc",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0363",
+          "VENDR-1018",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "electronics-comms",
+          "netrunning",
+          "virtual-goods-games",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Cyberdecks",
+          "Cyberdeck Hardware",
+          "Attacker Programs",
+          "Defender Programs",
+          "Booster Programs",
+          "Netrunning Accessories"
+        ],
+        "refresh_departments": [
+          "electronics-comms",
+          "netrunning",
+          "virtual-goods-games",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Agents",
+          "Apps and Software",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA",
+      "name": "Denya Jinja",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "shrine charms",
+          "incense",
+          "offering candles",
+          "prayer tags",
+          "fortune slips",
+          "small keepsakes"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Incense & Offering Candles",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Prayer Tags & Keepsakes",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-DIGG-S",
+      "name": "Digg’s",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 1,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0372",
+          "VENDR-0433",
+          "VENDR-0369",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "weapons",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "weapons",
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-101-PROSPERITY-GARDEN-DRY-GOODS-BODEGA",
+      "name": "Dry Goods Store / Bodega",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0436"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "name": "E. Smithery",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0301",
+          "VENDR-0313",
+          "VENDR-0254",
+          "VENDR-0252"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "weapon-parts",
+          "ammunition-ordnance"
+        ],
+        "boost_subcategories": [
+          "Weapon Attachments",
+          "Ammunition"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "weapon-parts",
+          "ammunition-ordnance"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "name": "Earl’s Second Hand Shop",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0372",
+          "VENDR-0369",
+          "VENDR-0332",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "weapons",
+          "armor-protection"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "weapons",
+          "fashion-personal",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-EGGHEADZ",
+      "name": "Eggheadz",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-1018",
+          "VENDR-1053",
+          "VENDR-1067",
+          "VENDR-0442"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "netrunning",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [
+          "Cyberdecks",
+          "Cyberdeck Hardware",
+          "Attacker Programs",
+          "Defender Programs",
+          "Booster Programs",
+          "Netrunning Accessories"
+        ],
+        "refresh_departments": [
+          "netrunning",
+          "electronics-comms",
+          "cyberware"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberdecks",
+          "Cyberdeck Hardware",
+          "Attacker Programs",
+          "Defender Programs",
+          "Booster Programs",
+          "Black ICE",
+          "Netrunning Accessories",
+          "Apps and Software"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "name": "Europa Meatworks",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "sausages",
+          "cured meat",
+          "speciality cuts",
+          "offal",
+          "stock bones",
+          "experimental meat products"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Cured Sausage Assortment",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Offal & Stock Cuts",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "name": "Everything and More",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "name": "Faisal’s Customs",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0301",
+          "VENDR-0313",
+          "VENDR-0254",
+          "VENDR-0252"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "Weapon Attachments",
+          "Ammunition"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "weapon-parts",
+          "ammunition-ordnance"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-FIFTY-FARMS",
+      "name": "Fifty Farms",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "fresh fruit",
+          "fresh vegetables",
+          "herbs",
+          "preserved produce",
+          "seasonal boxes",
+          "salad greens"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Seasonal Herb Bundles",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Preserved Produce Jars",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER",
+      "name": "Flasher’s Corner",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 1,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+      "name": "Forever Beautiful",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "housing-property",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Home Accessories",
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "plastic flowers",
+          "bouquet materials",
+          "ribbon",
+          "vases",
+          "planter inserts",
+          "seasonal arrangements"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Bouquet Wrap & Ribbon",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Decorative Planter Inserts",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+      "name": "Forgotten Treasures",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Specific Fashions",
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "plastic bangles",
+          "metal ornaments",
+          "wire jewellery",
+          "pendants",
+          "reclaimed charms",
+          "upcycled accessories"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Reclaimed Wire Jewellery",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Upcycled Pendants",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OUTSKIRTS-296-FUEL-STATION",
+      "name": "Fuel Station",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0481",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-GETAWAY-TOURS",
+      "name": "Getaway Tours",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "virtual-goods-games"
+        ],
+        "boost_subcategories": [
+          "Apps and Software"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "city-break braindances",
+          "beach braindances",
+          "adventure holidays",
+          "luxury escapes",
+          "family resorts",
+          "exotic destinations"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Weekend Escape Braindance",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Adventure Holiday Braindance",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "name": "Gibson Battlegear Outlet",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0332",
+          "VENDR-0838",
+          "VENDR-0885",
+          "VENDR-0329"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Armor",
+          "Fashion Styles",
+          "Fashion Linings"
+        ],
+        "refresh_departments": [
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashion Styles",
+          "Fashion Linings",
+          "Specific Fashions"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA",
+      "name": "Goosetopia",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "common figures",
+          "numbered figures",
+          "rare variants",
+          "display stands",
+          "protective cases",
+          "collector catalogues"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Figure Display Stand & Case",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Collector Catalogue",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "name": "GraffitiX",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "original artwork",
+          "small prints",
+          "postcards",
+          "exhibition catalogues",
+          "artist merchandise",
+          "gift items"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Small Art Prints",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Exhibition Postcards",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "name": "Grand Junction Gift Shop",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "Specific Fashions",
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "T-shirts",
+          "postcards",
+          "keyrings",
+          "mascot figures",
+          "collectibles",
+          "keepsakes",
+          "park souvenirs"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Playland Postcards",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Souvenir Keyrings",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "name": "Guns & Dolls",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0252",
+          "VENDR-0301",
+          "VENDR-0313"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "name": "Holliday Market",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0372",
+          "VENDR-0359",
+          "VENDR-0332",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons",
+          "armor-protection",
+          "food-consumables",
+          "medical-chemical"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
+      "name": "Honest Hiro’s Used Cars",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0971",
+          "VENDR-0964",
+          "VENDR-0972",
+          "VENDR-0953"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "vehicles-mobility"
+        ],
+        "boost_subcategories": [
+          "Ground Vehicle Types",
+          "Ground Vehicles",
+          "Unique Vehicles",
+          "Vehicle Upgrades"
+        ],
+        "refresh_departments": [
+          "vehicles-mobility",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ground Vehicle Types",
+          "Ground Vehicles",
+          "Unique Vehicles",
+          "Vehicle Upgrades"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0436",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "name": "I. Lombardy Groceries",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359",
+          "VENDR-0485"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
+      "name": "Imported Goods 4 Cheap",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0369",
+          "VENDR-0837",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "electronics-comms",
+          "fashion-personal",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Agents",
+          "General Gear",
+          "Specific Fashions"
+        ],
+        "refresh_departments": [
+          "electronics-comms",
+          "fashion-personal",
+          "general-equipment",
+          "virtual-goods-games"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Agents",
+          "Apps and Software",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
+      "name": "Jayaraman’s",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "fresh fish",
+          "whole catch",
+          "prepared fillets",
+          "smoked fish",
+          "ice packs",
+          "fish wrapping"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Smoked Fish Portions",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Insulated Fish Wrap & Ice",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "name": "Kibble Kirkle",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0482",
+          "VENDR-0372",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "name": "Ling Husan’s New China Pharmacy",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0501",
+          "VENDR-0502",
+          "VENDR-0504",
+          "VENDR-0407"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "medical-chemical"
+        ],
+        "boost_subcategories": [
+          "Street Drugs",
+          "Pharmaceuticals",
+          "Poisons"
+        ],
+        "refresh_departments": [
+          "medical-chemical"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Pharmaceuticals",
+          "Street Drugs"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY",
+      "name": "Maritime Supply",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0355",
+          "VENDR-0418",
+          "VENDR-0887",
+          "VENDR-0433"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "vehicles-mobility",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Vehicle Upgrades",
+          "Specific Fashions"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "vehicles-mobility",
+          "fashion-personal",
+          "electronics-comms"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "General Gear",
+          "Sea Vehicle Types",
+          "Sea Vehicles",
+          "Vehicle Upgrades",
+          "Fashion Styles",
+          "Fashion Linings"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS",
+      "name": "Matsura Food Products",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "Chinese foods",
+          "Japanese foods",
+          "Korean foods",
+          "sauces",
+          "seasonings",
+          "noodles",
+          "rice",
+          "snacks"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 32,
+        "inferred_local_offerings": [
+          {
+            "name": "Imported Sauce & Seasoning Pack",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Noodle & Rice Assortment",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "name": "Metal Heaven",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "music recordings",
+          "instrument strings",
+          "pickups",
+          "instrument components",
+          "used instruments",
+          "custom instrument parts"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Instrument Strings & Consumables",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Used Pickups & Components",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "name": "Midnight Arms Regional Office",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0301",
+          "VENDR-0313",
+          "VENDR-0252"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "name": "Moleharty’s Books & Antiques",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "virtual-goods-games",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "used books",
+          "rare books",
+          "old maps",
+          "ephemera",
+          "small antiques",
+          "collector curios",
+          "paper archives"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Old Maps & Ephemera",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Small Antiques & Curios",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MORGAN-S",
+      "name": "Morgan’s",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0332",
+          "VENDR-0301",
+          "VENDR-0252"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "weapons",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Armor",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "armor-protection",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "name": "Mrs. Suzuki’s Bodega",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "Japanese ingredients",
+          "condiments",
+          "tea",
+          "snacks",
+          "mushrooms",
+          "lichen",
+          "speciality groceries"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Japanese Sauce & Condiment Pack",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Imported Tea & Snack Assortment",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "name": "Murakami Suiun Imports",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0972",
+          "VENDR-0313",
+          "VENDR-0355"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "electronics-comms",
+          "vehicles-mobility",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Agents",
+          "Vehicle Upgrades",
+          "Weapon Attachments",
+          "Armor",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "electronics-comms",
+          "weapons",
+          "armor-protection",
+          "vehicles-mobility",
+          "housing-property",
+          "general-equipment",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "name": "Nana Meow’s Nursery",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "housing-property",
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Home Accessories",
+          "Foodstuffs"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "seed packets",
+          "grow media",
+          "nutrients",
+          "aquaponic parts",
+          "plant supports",
+          "home-grow supplies",
+          "replacement pumps"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Seed Assortment",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Hydroponic Nutrient Pack",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS",
+      "name": "Neo Galaxy Cards and Comics",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "virtual-goods-games",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Elflines Online the TCG Cards"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [
+          "trading cards",
+          "comic issues",
+          "deck boxes",
+          "card sleeves",
+          "tabletop accessories",
+          "collector editions"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Card Sleeves & Deck Boxes",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Comic Back Issues",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0819",
+          "VENDR-0480",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal",
+          "electronics-comms",
+          "housing-property"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "name": "Oasis (Kabuki)",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359",
+          "VENDR-0485"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
+      "name": "Oasis Megamart",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0372",
+          "VENDR-0359",
+          "VENDR-0485",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
+      "name": "Old Lady Stuff",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "General Gear"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "yarn",
+          "fabric",
+          "thread",
+          "needles",
+          "crochet hooks",
+          "patterns",
+          "sewing notions",
+          "craft kits"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 32,
+        "inferred_local_offerings": [
+          {
+            "name": "Yarn & Fabric Bundles",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Needles, Hooks & Sewing Notions",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-OTHER-LIVES",
+      "name": "Other Lives",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "virtual-goods-games",
+          "medical-chemical",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [
+          "Apps and Software",
+          "In-Game Purchases",
+          "Street Drugs"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "movies",
+          "braindances",
+          "cult media",
+          "imported recordings",
+          "adult media",
+          "blue-glass related stock"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 24,
+        "inferred_local_offerings": [
+          {
+            "name": "Budget Braindance Reel",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Imported Movie Chip",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-PANIK",
+      "name": "Panik",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0707",
+          "VENDR-0643",
+          "VENDR-0708"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "boost_subcategories": [
+          "Fashionware",
+          "Cyberfingers"
+        ],
+        "refresh_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashionware",
+          "Cyberfingers"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "name": "Piccolo",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0372",
+          "VENDR-0369",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "name": "Post Exchange (PX)",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0484",
+          "VENDR-0418",
+          "VENDR-0254",
+          "VENDR-0332"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Foodstuffs",
+          "Fashion Styles",
+          "Apps and Software",
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal",
+          "electronics-comms",
+          "weapons",
+          "ammunition-ordnance",
+          "virtual-goods-games",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "General Gear",
+          "Foodstuffs",
+          "Ammunition",
+          "Weapon Attachments",
+          "Fashion Styles",
+          "Apps and Software"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "name": "Pursuit Security Inc Showroom",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0282",
+          "VENDR-0332",
+          "VENDR-0381",
+          "VENDR-0418"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments",
+          "Armor",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-RAINBOW-ART-SUPPLY",
+      "name": "Rainbow Art Supply",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "medical-chemical"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Street Drugs",
+          "Pharmaceuticals"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "paints",
+          "inks",
+          "markers",
+          "canvas",
+          "art boards",
+          "artist chemicals",
+          "brushes",
+          "spray supplies"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 32,
+        "inferred_local_offerings": [
+          {
+            "name": "Brush & Marker Set",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Canvas & Art Board Pack",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
+      "name": "RC Night Market",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0837",
+          "VENDR-0359",
+          "VENDR-0254",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons",
+          "armor-protection",
+          "food-consumables",
+          "medical-chemical"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "name": "Retail Resale",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0837",
+          "VENDR-0855",
+          "VENDR-0854",
+          "VENDR-0838"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "Fashion Styles",
+          "Specific Fashions",
+          "Fashion Linings"
+        ],
+        "refresh_departments": [
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashion Styles",
+          "Fashion Linings",
+          "Specific Fashions"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "name": "Sanroo Neuro-land",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0301",
+          "VENDR-0313",
+          "VENDR-0252"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
+      "name": "Skinlight",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0708",
+          "VENDR-0710",
+          "VENDR-0712",
+          "VENDR-0703"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "boost_subcategories": [
+          "Fashionware"
+        ],
+        "refresh_departments": [
+          "cyberware",
+          "fashion-personal",
+          "electronics-comms",
+          "vehicles-mobility"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberlimbs",
+          "Cyberoptics",
+          "Cyberaudio",
+          "Chipware",
+          "Cyberware Enhancements"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "name": "Sleepeasy Home Solutions",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0389",
+          "VENDR-0363",
+          "VENDR-0442",
+          "VENDR-0436"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "housing-property"
+        ],
+        "boost_subcategories": [
+          "Furniture Sets",
+          "Home Accessories",
+          "Agents",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "housing-property",
+          "electronics-comms"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "General Gear",
+          "Agents",
+          "Home Accessories",
+          "Furniture Sets"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "name": "Smile Another Day",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 0,
+        "refresh_mode": "local",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "general-equipment",
+          "fashion-personal",
+          "vehicles-mobility"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Vehicle Upgrades",
+          "Specific Fashions"
+        ],
+        "refresh_departments": [],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [
+          "park maps",
+          "retired costumes",
+          "ride parts",
+          "old signage",
+          "souvenirs",
+          "decorative salvage",
+          "memorabilia"
+        ],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 28,
+        "inferred_local_offerings": [
+          {
+            "name": "Reproduction Park Maps",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          },
+          {
+            "name": "Salvaged Ride Signage",
+            "provenance": "Vend-R inferred",
+            "description": "Vend-R inferred house stock.",
+            "offering_type": "inferred_staple",
+            "availability_label": "House stock"
+          }
+        ]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "name": "Snack & Shack",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables",
+          "general-equipment"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
+      "name": "Stone Mill",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0480",
+          "VENDR-0481",
+          "VENDR-0485"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs"
+        ],
+        "refresh_departments": [
+          "food-consumables",
+          "electronics-comms",
+          "fashion-personal",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "name": "Stop. Shop. Stitch.",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0372",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
+      "name": "Tech Time",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0433",
+          "VENDR-0372",
+          "VENDR-0363",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Agents"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "weapons",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT",
+      "name": "The Basement",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0369",
+          "VENDR-0436",
+          "VENDR-0372"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "name": "The Forge",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0611",
+          "VENDR-0566",
+          "VENDR-0433",
+          "VENDR-0645"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "cyberware",
+          "electronics-comms",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Cyberware Enhancements",
+          "Cyberlimbs",
+          "Cyberoptics",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "cyberware",
+          "electronics-comms",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Cyberlimbs",
+          "Cyberoptics",
+          "Cyberaudio",
+          "Chipware",
+          "Cyberware Enhancements"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "name": "The Furnace",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0481",
+          "VENDR-0359",
+          "VENDR-0372"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
+      "name": "The Nomad’s Market",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0484",
+          "VENDR-0434",
+          "VENDR-0418",
+          "VENDR-0372"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "weapons",
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [
+          "General Gear",
+          "Foodstuffs",
+          "Vehicle Upgrades",
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "general-equipment",
+          "food-consumables",
+          "fashion-personal",
+          "ammunition-ordnance",
+          "weapon-parts",
+          "vehicles-mobility"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "name": "Torrell and Chiang’s",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0322",
+          "VENDR-0820",
+          "VENDR-0819",
+          "VENDR-0818"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "boost_subcategories": [
+          "Armor",
+          "Fashion Styles",
+          "Specific Fashions",
+          "Fashion Linings"
+        ],
+        "refresh_departments": [
+          "fashion-personal",
+          "armor-protection"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashion Styles",
+          "Fashion Linings",
+          "Specific Fashions"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0442",
+          "VENDR-0502",
+          "VENDR-0369",
+          "VENDR-0407"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "electronics-comms",
+          "general-equipment",
+          "cyberware",
+          "medical-chemical"
+        ],
+        "boost_subcategories": [
+          "Agents",
+          "Apps and Software",
+          "Street Drugs",
+          "Cyberware Enhancements",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "electronics-comms",
+          "general-equipment",
+          "cyberware",
+          "medical-chemical"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Agents",
+          "Apps and Software",
+          "Street Drugs",
+          "Pharmaceuticals",
+          "General Gear",
+          "Cyberware Enhancements"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
+      "name": "Truvy’s Salon",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0712",
+          "VENDR-0707",
+          "VENDR-0708",
+          "VENDR-0710"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "fashion-personal",
+          "cyberware"
+        ],
+        "boost_subcategories": [
+          "Fashionware",
+          "Cyberfingers"
+        ],
+        "refresh_departments": [
+          "cyberware",
+          "fashion-personal",
+          "vehicles-mobility"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Fashionware",
+          "Cyberfingers"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "name": "Turbo Neon Motors",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0953",
+          "VENDR-0964",
+          "VENDR-0951",
+          "VENDR-0972"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "vehicles-mobility",
+          "general-equipment"
+        ],
+        "boost_subcategories": [
+          "Vehicle Upgrades",
+          "Ground Vehicles",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "vehicles-mobility",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ground Vehicle Types",
+          "Ground Vehicles",
+          "Unique Vehicles",
+          "Vehicle Upgrades"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+      "name": "Underground Bodega",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0359",
+          "VENDR-0372",
+          "VENDR-0369"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "boost_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "refresh_departments": [
+          "general-equipment",
+          "food-consumables"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "name": "White Side",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0484",
+          "VENDR-0372",
+          "VENDR-0359",
+          "VENDR-0418"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "food-consumables"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "electronics-comms",
+          "general-equipment"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-EVT-SANTO-DOMINGO-270-WOODCHIPPER-NIGHT-MARKET",
+      "name": "Woodchipper’s Night Market",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 3,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0433",
+          "VENDR-0372",
+          "VENDR-0254",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "volatile",
+        "boost_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal",
+          "weapons",
+          "armor-protection",
+          "food-consumables",
+          "medical-chemical",
+          "vehicles-mobility"
+        ],
+        "refresh_pool_factor": 8,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
+      "name": "XOOX",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0484",
+          "VENDR-0434",
+          "VENDR-0418",
+          "VENDR-0359"
+        ],
+        "refresh_profile": "balanced",
+        "boost_departments": [
+          "food-consumables",
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "boost_subcategories": [],
+        "refresh_departments": [
+          "food-consumables",
+          "general-equipment",
+          "electronics-comms",
+          "fashion-personal"
+        ],
+        "refresh_pool_factor": 6,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Foodstuffs",
+          "General Gear"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
+      "name": "YoBro!",
+      "stock_curation": {
+        "note": "Per-shop reviewed. Exact Catalogger staples are pinned where appropriate; catalogue-poor specialties use Vend-R inferred local wares.",
+        "source": "Vend-R inferred",
+        "version": "1.0",
+        "provenance": "inferred",
+        "boost_count": 2,
+        "refresh_mode": "catalog",
+        "selection_mode": "explicit_staples",
+        "pinned_item_ids": [
+          "VENDR-0254",
+          "VENDR-0301",
+          "VENDR-0252",
+          "VENDR-0313"
+        ],
+        "refresh_profile": "specialist",
+        "boost_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "boost_subcategories": [
+          "Ammunition",
+          "Weapon Attachments",
+          "Medium Pistols",
+          "Heavy Pistols",
+          "Very Heavy Pistols",
+          "SMG"
+        ],
+        "refresh_departments": [
+          "weapons",
+          "ammunition-ordnance",
+          "weapon-parts"
+        ],
+        "refresh_pool_factor": 4.5,
+        "local_refresh_themes": [],
+        "refresh_subcategories": [
+          "Ammunition",
+          "Weapon Attachments"
+        ],
+        "local_refresh_capacity": 0,
+        "inferred_local_offerings": []
+      }
+    }
+  ]
+}
