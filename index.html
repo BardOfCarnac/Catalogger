@@ -3375,7 +3375,7 @@ function renderVendorStock(s,focus){
   const localRows=Array.isArray(s.local_offerings)?s.local_offerings.slice():[];
   const canonicalRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
   const sourceRows=[...localRows,...canonicalRows];
-  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only'&&canonicalRows.length===0;
   const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
   const children=childSellers(s);
   const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s,sourceRows);
@@ -3512,7 +3512,7 @@ function renderVendor(s,offers){
   const localRows=Array.isArray(s.local_offerings)?s.local_offerings:[];
   const canonicalRows=canOwnStock?(s.stock||[]):[];
   const visibleStock=[...localRows,...canonicalRows];
-  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only'&&canonicalRows.length===0;
   const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
   document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
   if(s.owner&&s.owner.name){
