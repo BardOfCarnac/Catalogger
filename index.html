@@ -3376,6 +3376,7 @@ function renderVendorStock(s,focus){
   const canonicalRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
   const sourceRows=[...localRows,...canonicalRows];
   const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
+  const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
   const children=childSellers(s);
   const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s,sourceRows);
   const stockTitle=document.getElementById('stockPanelTitle');
@@ -3399,14 +3400,26 @@ function renderVendorStock(s,focus){
         '</div><div class="place-meta"><strong>'+esc(child.type||'Shop')+'</strong>'+esc(modeLabel(child.stock_mode)||'')+'</div>'+
         '<div class="place-arrow">View →</div></button>';
     }).join('');
+    const sourceRetailNote=unnamedRetail
+      ?'<div class="nonstock-profile"><strong>'+esc(unnamedRetail.label||'Other shops')+'</strong><span>'+esc(unnamedRetail.note||'Additional retail is present here, but the source does not name the individual businesses.')+'</span></div>'
+      :'';
     const ownStock=sourceRows.length?'<div class="stock-subsection-title">Stock sold directly by '+esc(s.name||'this location')+'</div>'+sourceRows.map(r=>stockRowHtml(s,r,focus?.item_id||null)).join(''):'';
-    list.innerHTML=placeHtml+ownStock;
+    list.innerHTML=placeHtml+sourceRetailNote+ownStock;
     list.querySelectorAll('[data-child-shop]').forEach(el=>el.addEventListener('click',()=>{
       const id=el.dataset.childShop;
       playWipe(()=>openVendor(id,null,{pushHistory:true}));
     }));
-    document.getElementById('stockSummary').innerHTML=children.length+' place'+(children.length===1?'':'s')+' inside'+(sourceRows.length?'<br>'+sourceRows.length+' direct stock line'+(sourceRows.length===1?'':'s'):'');
+    document.getElementById('stockSummary').innerHTML=children.length+' shop'+(children.length===1?'':'s')+' listed'+(unnamedRetail?'<br>Other source-described retail present':'')+(sourceRows.length?'<br>'+sourceRows.length+' direct stock line'+(sourceRows.length===1?'':'s'):'');
     document.getElementById('restockBand').textContent='Browse the businesses at '+(s.name||'this location');
+    return;
+  }
+
+  if(unnamedRetail){
+    stockTitle.textContent='Shops here';
+    search.placeholder='SHOP LIST';
+    list.innerHTML='<div class="nonstock-profile"><strong>'+esc(unnamedRetail.label||'Retail here')+'</strong><span>'+esc(unnamedRetail.note||'The source confirms retail at this location but does not name the individual shops.')+'</span></div>';
+    document.getElementById('stockSummary').innerHTML='Retail present<br>Individual shops not named';
+    document.getElementById('restockBand').textContent=unnamedRetail.source_ref||s.source_ref||'Source-described retail';
     return;
   }
 
@@ -3500,6 +3513,7 @@ function renderVendor(s,offers){
   const canonicalRows=canOwnStock?(s.stock||[]):[];
   const visibleStock=[...localRows,...canonicalRows];
   const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
+  const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
   document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
   if(s.owner&&s.owner.name){
     document.getElementById('vendorOwnerLabel').textContent=s.owner.name;
@@ -3510,19 +3524,26 @@ function renderVendor(s,offers){
   }
   document.getElementById('restockBand').textContent=menuMode?'Loading menu…':(canOwnStock?'Loading stock snapshot…':'No retail inventory');
   document.getElementById('factStatus').textContent=children.length
-    ?(children.length+' place'+(children.length===1?'':'s')+' inside')
-    :(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s));
+    ?(children.length+' shop'+(children.length===1?'':'s')+' listed')
+    :(unnamedRetail?'Retail present':(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s)));
   document.getElementById('factDistrict').textContent=s.district||'Night City';
   document.getElementById('factStockModeLabel').textContent='Listing';
   document.getElementById('factStockMode').textContent=localOnly?'Speciality shop':(menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s)));
   document.getElementById('factArchetype').textContent=s.type||'—';
   document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
-  document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':'No retail inventory';
+  document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':(unnamedRetail?'Retailers not individually named':'No retail inventory');
   if(children.length){
     document.getElementById('contextKicker').textContent='At this location';
-    document.getElementById('contextTitle').textContent=children.length+' shop'+(children.length===1?'':'s')+' here';
-    document.getElementById('contextCopy').textContent='Each business below has its own profile, details and stock.';
+    document.getElementById('contextTitle').textContent=children.length+' shop'+(children.length===1?'':'s')+' listed';
+    document.getElementById('contextCopy').textContent=unnamedRetail
+      ?'Named Vend-R retailers are shown below. The source also confirms additional retail here without naming the individual businesses.'
+      :'Each business below has its own profile, details and stock.';
     document.getElementById('contextLine').textContent=(s.district||'Night City')+' · browse inside';
+  }else if(unnamedRetail){
+    document.getElementById('contextKicker').textContent='Retail at this location';
+    document.getElementById('contextTitle').textContent=unnamedRetail.label||'Other shops';
+    document.getElementById('contextCopy').textContent=unnamedRetail.note||'The source confirms retail here but does not name the individual shops.';
+    document.getElementById('contextLine').textContent=unnamedRetail.source_ref||s.source_ref||'Source-described retail';
   }else if(parent){
     document.getElementById('contextKicker').textContent='Inside';
     document.getElementById('contextTitle').textContent=parent.name;
@@ -3566,9 +3587,11 @@ function renderVendor(s,offers){
     document.getElementById('offerItemLink').removeAttribute('data-item-id');
   }
   document.getElementById('factStatus').textContent=children.length
-    ?(children.length+' place'+(children.length===1?'':'s')+' inside')
-    :(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s));
-  document.getElementById('factWorldState').textContent=menuMode?(visibleStock.length?'Current menu':'No menu listed'):(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':'No retail inventory'));
+    ?(children.length+' shop'+(children.length===1?'':'s')+' listed')
+    :(unnamedRetail?'Retail present':(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s)));
+  document.getElementById('factWorldState').textContent=menuMode
+    ?(visibleStock.length?'Current menu':'No menu listed')
+    :(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':(unnamedRetail?'Retailers not individually named':'No retail inventory')));
   renderVendorStock(s,focus);
 }
 async function openVendor(id,focus=null,options={}){
