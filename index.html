@@ -3222,7 +3222,7 @@ function showSelectedItemOffer(shopId,{updateUrl=false}={}){
     offer.availability_label
   ].filter(Boolean).join(' · ');
 
-  const seller=sellerById(offer.shop_entity_id)||sellerByName(offer.shop_name,offer.district);
+  const seller=sellerById(offer.shop_entity_id);
   detail.hidden=false;
   document.getElementById('itemShopDetailTitle').textContent=seller?.name||offer.shop_name||'Seller';
   document.getElementById('itemShopDetailMeta').textContent=[seller?.type||'Seller',seller?.district||offer.district].filter(Boolean).join(' · ');
