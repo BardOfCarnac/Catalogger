@@ -1171,6 +1171,80 @@ button,input,select{font:inherit}
   line-height:1.35;
   text-transform:uppercase;
 }
+.vendor-summary{
+  margin-top:18px;
+}
+.vendor-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+}
+.vendor-stat{
+  min-width:0;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:9px 10px 10px;
+}
+.vendor-stat dt{
+  margin:0 0 4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.vendor-stat dd{
+  margin:0;
+  overflow-wrap:anywhere;
+  font-size:12px;
+  font-weight:1000;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.vendor-stat.status{background:var(--rear-4)}
+.vendor-stat.availability{background:rgba(240,91,19,.10)}
+.vendor-stat .vendor-owner-sub{
+  margin-top:3px;
+  color:var(--muted);
+  font:800 8px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.vendor-context-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);
+  gap:18px;
+  margin-top:18px;
+  padding-top:17px;
+  border-top:3px solid var(--ink);
+}
+.vendor-context-copy .kicker{margin-bottom:5px}
+.vendor-context-copy h3{
+  margin:0 0 7px;
+  font-size:22px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.vendor-context-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.42;
+}
+.vendor-context-copy .market-line{margin-top:11px}
+.vendor-known .section-head{
+  padding:0 0 9px;
+  border-bottom:2px solid var(--ink);
+}
+.vendor-hero .known-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  padding:11px 0 0;
+}
+.vendor-stock-panel{margin-bottom:18px}
+@media (max-width:760px){
+  .vendor-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vendor-context-grid{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .vendor-stat-grid{grid-template-columns:1fr}
+}
 .restock-band{
   background:var(--rear-4);
   border-bottom:3px solid var(--ink);
@@ -1963,6 +2037,63 @@ button,input,select{font:inherit}
         <button class="action-btn" id="backToMarket">← Back</button>
       </header>
 
+      <section class="hero vendor-hero">
+        <div class="vendor-photo-strip" id="vendorPhotoStrip">
+          <div class="vendor-photo-content">
+            <div class="kicker" id="vendorKicker">Night City / seller profile</div>
+            <h1 class="hero-title vendor" id="vendorName">Seller</h1>
+          </div>
+          <div class="vendor-photo-credit" id="vendorPhotoCredit"></div>
+        </div>
+
+        <div class="vendor-info-body">
+          <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
+
+          <div class="vendor-summary">
+            <dl class="vendor-stat-grid">
+              <div class="vendor-stat status"><dt>Status</dt><dd id="factStatus">Loading…</dd></div>
+              <div class="vendor-stat"><dt>District</dt><dd id="factDistrict">Night City</dd></div>
+              <div class="vendor-stat"><dt>Category</dt><dd id="factArchetype">—</dd></div>
+              <div class="vendor-stat"><dt id="factStockModeLabel">Listing</dt><dd id="factStockMode">—</dd></div>
+              <div class="vendor-stat">
+                <dt>Proprietor</dt>
+                <dd><span id="vendorOwnerLabel">Vend-R listing</span><span class="vendor-owner-sub" id="vendorOwnerSub">Night City market record</span></dd>
+              </div>
+              <div class="vendor-stat"><dt>Source</dt><dd id="factSource">—</dd></div>
+              <div class="vendor-stat availability"><dt>Availability</dt><dd id="factWorldState">Checking…</dd></div>
+              <div class="vendor-stat" id="parentStat">
+                <dt>Contained in</dt>
+                <dd>
+                  <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
+                    <strong id="parentLocationName">Containing location</strong>
+                    <small>View containing location →</small>
+                  </button>
+                  <span id="standaloneLocation">Standalone location</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="vendor-context-grid">
+            <div class="vendor-context-copy">
+              <div class="kicker" id="contextKicker">Commercial context</div>
+              <h3 id="contextTitle">Night City</h3>
+              <p id="contextCopy">Loading local market context…</p>
+              <div class="market-line" id="contextLine">Night City market feed</div>
+            </div>
+            <div class="vendor-known">
+              <div class="section-head">
+                <h2>Known for</h2>
+                <span>Local pattern</span>
+              </div>
+              <div class="known-grid" id="knownGrid">
+                <span>Loading seller profile…</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="offer-focus" id="offerFocus" hidden>
         <div class="kicker" id="offerKicker">Current offer</div>
         <div class="offer-focus-row">
@@ -1976,98 +2107,30 @@ button,input,select{font:inherit}
         <button class="offer-item-link" id="offerItemLink" type="button">View item →</button>
       </section>
 
-      <section class="hero vendor-hero">
-        <div class="vendor-photo-strip" id="vendorPhotoStrip">
-          <div class="vendor-photo-content">
-            <div class="kicker" id="vendorKicker">Night City / seller profile</div>
-            <h1 class="hero-title vendor" id="vendorName">Seller</h1>
-
-            <div class="hero-meta">
-              <span class="tag yellow" id="vendorStatus">Profile</span>
-              <span class="tag" id="vendorDistrict">Night City</span>
-              <span class="tag" id="vendorType">Commercial place</span>
-              <span class="tag orange" id="vendorStockMode">Listing</span>
-            </div>
-          </div>
-          <div class="vendor-photo-credit" id="vendorPhotoCredit"></div>
+      <section class="panel vendor-stock-panel">
+        <div class="section-head">
+          <h2 id="stockPanelTitle">Stock</h2>
+          <span id="stockSummary">Loading listing<br>Checking current stock</span>
         </div>
 
-        <div class="vendor-info-body">
-          <div class="hero-columns">
-            <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
-            <div class="owner">
-              <strong id="vendorOwnerLabel">Vend-R listing</strong>
-              <span id="vendorOwnerSub">Night City market record</span>
-              <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
-                <span>← Back to containing location</span>
-                <strong id="parentLocationName">Containing location</strong>
-                <small>Browse the larger market / complex</small>
-              </button>
+        <div class="restock-band" id="restockBand">Checking current market state…</div>
+
+        <div class="stock-browser" id="stockBrowser" hidden>
+          <div class="stock-filter-row" id="stockFilters"></div>
+          <div class="stock-browser-nav">
+            <span id="stockBrowserMeta">All stock</span>
+            <div class="stock-pager">
+              <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
+              <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
+              <button type="button" id="stockNext" aria-label="Next stock page">→</button>
             </div>
           </div>
+        </div>
+
+        <div id="stockList">
+          <div class="stock-empty">Loading current stock…</div>
         </div>
       </section>
-
-      <div class="vendor-layout">
-        <section class="panel">
-          <div class="section-head">
-            <h2 id="stockPanelTitle">Stock</h2>
-            <span id="stockSummary">Loading listing<br>Checking current stock</span>
-          </div>
-
-          <div class="restock-band" id="restockBand">Checking current market state…</div>
-
-          <div class="stock-browser" id="stockBrowser" hidden>
-            <div class="stock-filter-row" id="stockFilters"></div>
-            <div class="stock-browser-nav">
-              <span id="stockBrowserMeta">All stock</span>
-              <div class="stock-pager">
-                <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
-                <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
-                <button type="button" id="stockNext" aria-label="Next stock page">→</button>
-              </div>
-            </div>
-          </div>
-
-          <div id="stockList">
-            <div class="stock-empty">Loading current stock…</div>
-          </div>
-        </section>
-
-        <aside class="side-stack">
-          <section class="panel">
-            <div class="section-head">
-              <h2>Shop state</h2>
-              <span>Live vendor record</span>
-            </div>
-            <dl class="fact-list">
-              <div class="fact"><dt>Status</dt><dd id="factStatus">Loading…</dd></div>
-              <div class="fact"><dt>District</dt><dd id="factDistrict">Night City</dd></div>
-              <div class="fact"><dt id="factStockModeLabel">Listing</dt><dd id="factStockMode">—</dd></div>
-              <div class="fact"><dt>Category</dt><dd id="factArchetype">—</dd></div>
-              <div class="fact"><dt>Source</dt><dd id="factSource">—</dd></div>
-              <div class="fact"><dt>Availability</dt><dd id="factWorldState">Checking…</dd></div>
-            </dl>
-          </section>
-
-          <section class="panel market-card-side">
-            <div class="kicker" id="contextKicker">Commercial context</div>
-            <h3 id="contextTitle">Night City</h3>
-            <p id="contextCopy">Loading local market context…</p>
-            <div class="market-line" id="contextLine">Night City market feed</div>
-          </section>
-
-          <section class="panel">
-            <div class="section-head">
-              <h2>Known for</h2>
-              <span>Local pattern</span>
-            </div>
-            <div class="known-grid" id="knownGrid">
-              <span>Loading seller profile…</span>
-            </div>
-          </section>
-        </aside>
-      </div>
 
       <footer class="footer">
         <span>Vend-R vendor record</span>
@@ -3393,13 +3456,16 @@ function renderVendor(s,offers){
   if(shopSearchWrap)shopSearchWrap.hidden=!children.length&&!canOwnStock;
   const parent=parentSeller(s);
   const parentLink=document.getElementById('parentLocationLink');
+  const standaloneLocation=document.getElementById('standaloneLocation');
   if(parent){
     document.getElementById('parentLocationName').textContent=parent.name;
     parentLink.hidden=false;
+    if(standaloneLocation)standaloneLocation.hidden=true;
     parentLink.dataset.parentShop=parent.entity_id;
-    parentLink.setAttribute('aria-label','Back to '+parent.name);
+    parentLink.setAttribute('aria-label','View '+parent.name);
   }else{
     parentLink.hidden=true;
+    if(standaloneLocation)standaloneLocation.hidden=false;
     parentLink.removeAttribute('data-parent-shop');
     parentLink.removeAttribute('aria-label');
   }
@@ -3422,12 +3488,6 @@ function renderVendor(s,offers){
   const canonicalRows=canOwnStock?(s.stock||[]):[];
   const visibleStock=[...localRows,...canonicalRows];
   const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only';
-  document.getElementById('vendorStatus').textContent=children.length
-    ?(children.length+' SHOP'+(children.length===1?'':'S')+' HERE')
-    :(visibleStock.length?((localOnly?'SPECIALITIES':'STOCK')+' · '+String(visibleStock.length)+' ITEM'+(visibleStock.length===1?'':'S')):nonStockLabel(s).toUpperCase());
-  document.getElementById('vendorDistrict').textContent=s.district||'Night City';
-  document.getElementById('vendorType').textContent=s.type||'Commercial place';
-  document.getElementById('vendorStockMode').textContent=localOnly?'SPECIALITY SHOP':(menuMode?'MENU':modeLabel(s.stock_mode));
   document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
   if(s.owner&&s.owner.name){
     document.getElementById('vendorOwnerLabel').textContent=s.owner.name;
@@ -3437,7 +3497,9 @@ function renderVendor(s,offers){
     document.getElementById('vendorOwnerSub').textContent=parent?parent.name:(s.source_ref||'Night City 2045');
   }
   document.getElementById('restockBand').textContent=menuMode?'Loading menu…':(canOwnStock?'Loading stock snapshot…':'No retail inventory');
-  document.getElementById('factStatus').textContent=menuMode?'Menu':nonStockLabel(s);
+  document.getElementById('factStatus').textContent=children.length
+    ?(children.length+' place'+(children.length===1?'':'s')+' inside')
+    :(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s));
   document.getElementById('factDistrict').textContent=s.district||'Night City';
   document.getElementById('factStockModeLabel').textContent='Listing';
   document.getElementById('factStockMode').textContent=localOnly?'Speciality shop':(menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s)));
@@ -3491,7 +3553,9 @@ function renderVendor(s,offers){
     offer.hidden=true;
     document.getElementById('offerItemLink').removeAttribute('data-item-id');
   }
-  document.getElementById('factStatus').textContent=visibleStock.length?('Stock · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s);
+  document.getElementById('factStatus').textContent=children.length
+    ?(children.length+' place'+(children.length===1?'':'s')+' inside')
+    :(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s));
   document.getElementById('factWorldState').textContent=menuMode?(visibleStock.length?'Current menu':'No menu listed'):(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':'No retail inventory'));
   renderVendorStock(s,focus);
 }
