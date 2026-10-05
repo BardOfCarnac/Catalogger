@@ -3141,7 +3141,7 @@ function stockRowHtml(s,row,focusId){
   const flowLabel=row.last_change||null;
   const sub=row.is_local
     ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
-    :[row.price_tier,row.availability_label,row.compatibility_label,row.support_reason?'support stock':row.assortment_role,row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+    :[row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
   return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
