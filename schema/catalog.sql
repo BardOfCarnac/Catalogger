@@ -11,6 +11,39 @@ create table if not exists manufacturers (
   name text not null unique
 );
 
+create table if not exists brands (
+  id text primary key,
+  name text not null unique,
+  kind text not null check (kind in (
+    'corporation','product_line','retail_chain','restaurant_chain',
+    'importer_distributor','producer_brand','food_vendor_brand'
+  )),
+  status_2045 text not null check (status_2045 in ('active','inactive','uncertain')),
+  manufacturer_id text references manufacturers(id),
+  owner_manufacturer_id text references manufacturers(id),
+  parent_brand_id text references brands(id),
+  note text
+);
+
+create table if not exists brand_aliases (
+  brand_id text not null references brands(id) on delete cascade,
+  alias text not null,
+  primary key (brand_id, alias)
+);
+
+create table if not exists brand_sources (
+  brand_id text not null references brands(id) on delete cascade,
+  source_code text not null references source_books(code),
+  page text,
+  primary key (brand_id, source_code, page)
+);
+
+create table if not exists brand_departments (
+  brand_id text not null references brands(id) on delete cascade,
+  department text not null,
+  primary key (brand_id, department)
+);
+
 create table if not exists items (
   id text primary key,
   name text not null,
@@ -42,6 +75,16 @@ create table if not exists item_manufacturers (
   item_id text not null references items(id) on delete cascade,
   manufacturer_id text not null references manufacturers(id),
   primary key (item_id, manufacturer_id)
+);
+
+
+create table if not exists item_brands (
+  item_id text not null references items(id) on delete cascade,
+  brand_id text not null references brands(id) on delete cascade,
+  relationship text not null default 'product' check (relationship in (
+    'product','product_line','retail_exclusive','licensed','ingredient'
+  )),
+  primary key (item_id, brand_id, relationship)
 );
 
 -- Source provenance plus the first-pass Vend-R classification currently attached
