@@ -63,6 +63,43 @@ create table if not exists items (
   updated_at timestamptz not null default now()
 );
 
+-- Consumer-facing brand products and named variants. The editorial JSON uses
+-- catalog_item_name as a stable reviewable binding; importers resolve that name to
+-- catalog_item_id when loading this relational form.
+create table if not exists brand_products (
+  id text primary key,
+  brand_id text not null references brands(id) on delete cascade,
+  name text not null,
+  product_kind text not null check (product_kind in ('base_product','named_product')),
+  catalog_item_id text references items(id),
+  note text,
+  unique (brand_id, name)
+);
+
+create table if not exists brand_product_sources (
+  product_id text not null references brand_products(id) on delete cascade,
+  source_code text not null references source_books(code),
+  page text,
+  primary key (product_id, source_code)
+);
+
+create table if not exists brand_product_variants (
+  id text primary key,
+  product_id text not null references brand_products(id) on delete cascade,
+  name text not null,
+  vendr_variant_kind text not null check (
+    vendr_variant_kind in ('flavor','formula','format','sensory_effect')
+  ),
+  unique (product_id, name)
+);
+
+create table if not exists brand_product_variant_sources (
+  variant_id text not null references brand_product_variants(id) on delete cascade,
+  source_code text not null references source_books(code),
+  page text,
+  primary key (variant_id, source_code)
+);
+
 create table if not exists item_sources (
   item_id text not null references items(id) on delete cascade,
   source_code text not null references source_books(code),
