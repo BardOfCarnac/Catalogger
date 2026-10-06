@@ -43,6 +43,67 @@ for line in core_only["assortment"]:
 assert core_only["state"]["source_filter"]["enabled_source_codes"] == ["CP:R"]
 engine.validate_bundle(core_only)
 
+# Canon food variants remain children of the base catalogue item and honor
+# source filtering independently of the base item.
+kibble_id = next(row["id"] for row in engine.items if row["name"] == "Kibble Pack")
+triti_id = next(row["id"] for row in engine.items if row["name"] == "Triti-Fizz")
+
+variant_context = engine.make_context(
+    "general-store",
+    "ci-food-variants",
+    overrides={"depth_profile": "normal"},
+)
+kibble_row = engine._stock_row(
+    random.Random("ci-kibble-variants"),
+    variant_context,
+    kibble_id,
+    "core",
+    0,
+)
+triti_row = engine._stock_row(
+    random.Random("ci-triti-variants"),
+    variant_context,
+    triti_id,
+    "core",
+    0,
+)
+assert 5 <= len(kibble_row.get("variants", [])) <= 7
+assert 3 <= len(triti_row.get("variants", [])) <= 5
+assert all(v["product_id"] == "BPROD-0001" for v in kibble_row["variants"])
+assert all(v["product_id"] == "BPROD-0002" for v in triti_row["variants"])
+
+core_kibble_context = engine.make_context(
+    "general-store",
+    "ci-food-variants-core-only",
+    overrides={"depth_profile": "normal", "enabled_source_codes": ["CP:R"]},
+)
+core_kibble_row = engine._stock_row(
+    random.Random("ci-kibble-core-only"),
+    core_kibble_context,
+    kibble_id,
+    "core",
+    0,
+)
+assert "variants" not in core_kibble_row, "DLC Kibble variants leaked through CP:R-only filter"
+
+enabled_kibble_context = engine.make_context(
+    "general-store",
+    "ci-food-variants-enabled",
+    overrides={"depth_profile": "normal", "enabled_source_codes": ["CP:R", "DL:Random"]},
+)
+enabled_kibble_row = engine._stock_row(
+    random.Random("ci-kibble-enabled"),
+    enabled_kibble_context,
+    kibble_id,
+    "core",
+    0,
+)
+assert enabled_kibble_row.get("variants")
+assert all(
+    any(ref["source_code"] == "DL:Random" for ref in variant["source_refs"])
+    for variant in enabled_kibble_row["variants"]
+)
+
 # Targeted temporary conditions affect only matching products.
 core_line = next(
     row for row in bundle["assortment"]

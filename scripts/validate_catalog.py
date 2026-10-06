@@ -33,6 +33,10 @@ manufacturers = load("catalog/manufacturers.json")
 sources = load("catalog/sources.json")
 brand_doc = load("catalog/brands.json")
 brands = brand_doc["brands"]
+brand_products_doc = load("catalog/brand-products.json")
+brand_products = brand_products_doc["products"]
+brand_variants = brand_products_doc["variants"]
+stock_variant_policies = brand_products_doc["stock_variant_policies"]
 taxonomy = load("catalog/taxonomy.json")
 identity_rules = load("curation/product-identity.json")
 default_docs = [
@@ -54,11 +58,17 @@ unique(items, "id", "item IDs")
 unique(manufacturers, "id", "manufacturer IDs")
 unique(sources, "code", "source codes")
 unique(brands, "id", "brand IDs")
+unique(brand_products, "id", "brand product IDs")
+unique(brand_variants, "id", "brand variant IDs")
 
 item_ids = {r["id"] for r in items}
 mfr_ids = {r["id"] for r in manufacturers}
 source_codes = {r["code"] for r in sources}
 brand_ids = {r["id"] for r in brands}
+brand_product_ids = {r["id"] for r in brand_products}
+item_names = {}
+for r in items:
+    item_names.setdefault(r["name"], []).append(r["id"])
 brand_kinds = {
     "corporation", "product_line", "retail_chain", "restaurant_chain",
     "importer_distributor", "producer_brand", "food_vendor_brand"
@@ -79,6 +89,50 @@ for r in brands:
         assert ref["source_code"] in source_codes, r
         assert ref["source_code"] not in seen_brand_sources, r
         seen_brand_sources.add(ref["source_code"])
+
+
+allowed_product_kinds = {"base_product", "named_product"}
+allowed_variant_kinds = {"flavor", "formula", "format", "sensory_effect"}
+for r in brand_products:
+    assert r["brand_id"] in brand_ids, r
+    assert r["product_kind"] in allowed_product_kinds, r
+    catalog_name = r.get("catalog_item_name")
+    if catalog_name is not None:
+        assert len(item_names.get(catalog_name, [])) == 1, (
+            f"brand product catalog binding must resolve exactly once: {catalog_name!r}"
+        )
+    assert r.get("source_refs"), r
+    for ref in r["source_refs"]:
+        assert ref["source_code"] in source_codes, r
+
+seen_variant_names = set()
+for r in brand_variants:
+    assert r["product_id"] in brand_product_ids, r
+    assert r["vendr_variant_kind"] in allowed_variant_kinds, r
+    key = (r["product_id"], r["name"])
+    assert key not in seen_variant_names, f"duplicate product variant name: {key}"
+    seen_variant_names.add(key)
+    assert r.get("source_refs"), r
+    for ref in r["source_refs"]:
+        assert ref["source_code"] in source_codes, r
+
+seen_variant_policies = set()
+for r in stock_variant_policies:
+    assert r["product_id"] in brand_product_ids, r
+    assert r["product_id"] not in seen_variant_policies, f"duplicate variant policy: {r['product_id']}"
+    seen_variant_policies.add(r["product_id"])
+    assert len(item_names.get(r["catalog_item_name"], [])) == 1, r
+    product = next(p for p in brand_products if p["id"] == r["product_id"])
+    assert product.get("catalog_item_name") == r["catalog_item_name"], r
+    ranges = r["display_range_by_depth"]
+    assert set(ranges) == {"shallow", "normal", "deep", "warehouse"}, r
+    for bounds in ranges.values():
+        assert (
+            isinstance(bounds, list) and len(bounds) == 2
+            and all(isinstance(v, int) and v >= 0 for v in bounds)
+            and bounds[0] <= bounds[1]
+        ), r
+    assert any(v["product_id"] == r["product_id"] for v in brand_variants), r
 
 for r in item_mfrs:
     assert r["item_id"] in item_ids and r["manufacturer_id"] in mfr_ids, r
@@ -200,6 +254,7 @@ assert len(items) == 1275
 mixed = sum(1 for r in default_rows if r["requires_item_curation"])
 print(
     f"OK: {len(items)} items, {len(manufacturers)} manufacturers, {len(brands)} brands, "
+    f"{len(brand_products)} brand products, {len(brand_variants)} brand variants, "
     f"{len(item_sources)} item-source links, {len(default_rows)} commercial defaults, "
     f"{len(identity_rules['exact'])} exact identity decisions, {len(seen_buckets)} branded identity buckets "
     f"({mixed} mixed source buckets flagged for item review)"

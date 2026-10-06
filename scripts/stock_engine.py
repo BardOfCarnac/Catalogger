@@ -90,6 +90,20 @@ class StockEngine:
         self.items = load_table(self.manifest, "items")
         self.item_manufacturers = load_table(self.manifest, "item-manufacturers")
         self.commercial_profiles = load_json(PROFILE_PATH)
+        self.brand_products_doc = load_json(DATA / "catalog/brand-products.json")
+        self.brand_products_by_id = {
+            row["id"]: row for row in self.brand_products_doc.get("products", [])
+        }
+        self.brand_variants_by_id = {
+            row["id"]: row for row in self.brand_products_doc.get("variants", [])
+        }
+        self.brand_variants_by_product: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for row in self.brand_products_doc.get("variants", []):
+            self.brand_variants_by_product[row["product_id"]].append(row)
+        self.stock_variant_policy_by_item_name = {
+            row["catalog_item_name"]: row
+            for row in self.brand_products_doc.get("stock_variant_policies", [])
+        }
 
         self.items_by_id = {row["id"]: row for row in self.items}
         self.commercial_by_id = {row["item_id"]: row for row in self.commercial_profiles}
@@ -482,6 +496,55 @@ class StockEngine:
             return weighted_choice(rng, ["public", "ask", "hidden"], [4, 5, 1])
         return "public"
 
+    def _stock_variants(
+        self,
+        rng: random.Random,
+        item: dict[str, Any],
+        context: dict[str, Any],
+    ) -> list[dict[str, Any]]:
+        """Pick the named consumer variants displayed for a stock line.
+
+        Variants do not become separate rules items. They are presentation/stock-detail
+        children of the canonical catalogue item, so a shop can carry several Kibble
+        flavors without multiplying the mechanical catalogue.
+        """
+        policy = self.stock_variant_policy_by_item_name.get(item.get("name"))
+        if policy is None:
+            return []
+
+        product_id = policy["product_id"]
+        product = self.brand_products_by_id[product_id]
+        candidates = sorted(
+            self.brand_variants_by_product.get(product_id, []),
+            key=lambda row: row["id"],
+        )
+        enabled = context.get("enabled_source_codes")
+        if enabled is not None:
+            enabled_set = set(enabled)
+            candidates = [
+                row for row in candidates
+                if any(ref["source_code"] in enabled_set for ref in row.get("source_refs", []))
+            ]
+        if not candidates:
+            return []
+
+        depth = context.get("depth_profile", "normal")
+        ranges = policy["display_range_by_depth"]
+        low, high = ranges.get(depth, ranges["normal"])
+        wanted = min(len(candidates), rng.randint(int(low), int(high)))
+        picked = rng.sample(candidates, wanted)
+        return [
+            {
+                "variant_id": row["id"],
+                "product_id": product_id,
+                "brand_id": product["brand_id"],
+                "name": row["name"],
+                "kind": row["vendr_variant_kind"],
+                "source_refs": copy.deepcopy(row.get("source_refs", [])),
+            }
+            for row in picked
+        ]
+
     def _stock_row(
         self,
         rng: random.Random,
@@ -495,7 +558,8 @@ class StockEngine:
         condition = self._condition(rng, profile, context)
         quantity = self._quantity(rng, profile, context)
         sid = str(uuid.uuid5(NAMESPACE, f"stock:{context['id']}:{cycle}:{item_id}:{role}"))
-        return {
+        variants = self._stock_variants(rng, item, context)
+        row = {
             "id": sid,
             "shop_id": context["id"],
             "item_id": item_id,
@@ -509,6 +573,10 @@ class StockEngine:
             "added_cycle": cycle,
             "stock_reason": role,
         }
+        if variants:
+            row["variants"] = variants
+            row["variant_set_version"] = self.brand_products_doc["version"]
+        return row
 
     def _pick_specials(
         self,

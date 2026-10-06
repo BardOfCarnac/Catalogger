@@ -1,0 +1,118 @@
+{
+  "version": "0.1.0",
+  "note": "Canon consumer products and named variants layered over Vend-R catalogue items. Variant names are indexing data only; source descriptions are not reproduced. vendr_variant_kind is editorial classification, not source terminology.",
+  "products": [
+    {
+      "id": "BPROD-0001",
+      "brand_id": "BRAND-0002",
+      "name": "Kibble Pack",
+      "product_kind": "base_product",
+      "catalog_item_name": "Kibble Pack",
+      "source_refs": [{"source_code": "CP:R", "page": "354"}]
+    },
+    {
+      "id": "BPROD-0002",
+      "brand_id": "BRAND-0003",
+      "name": "Triti-Fizz",
+      "product_kind": "base_product",
+      "catalog_item_name": "Triti-Fizz",
+      "source_refs": [{"source_code": "BC", "page": "124"}]
+    },
+    {
+      "id": "BPROD-0003",
+      "brand_id": "BRAND-0004",
+      "name": "Continental Brands Koff Pops",
+      "product_kind": "base_product",
+      "catalog_item_name": "Continental Brands Koff Pops",
+      "source_refs": [
+        {"source_code": "DL:Cargo", "page": "5"},
+        {"source_code": "IR2", "page": "37"}
+      ]
+    },
+    {
+      "id": "BPROD-0004",
+      "brand_id": "BRAND-0005",
+      "name": "C Brands Real Instant Coffee",
+      "product_kind": "base_product",
+      "catalog_item_name": "C Brands Real Instant Coffee",
+      "source_refs": [
+        {"source_code": "DL:Conapts", "page": "7"},
+        {"source_code": "IR4", "page": "51"}
+      ]
+    },
+    {
+      "id": "BPROD-0005",
+      "brand_id": "BRAND-0001",
+      "name": "Continental Brands Maple Syrup",
+      "product_kind": "named_product",
+      "catalog_item_name": null,
+      "source_refs": [{"source_code": "DL:Random", "page": "14"}]
+    },
+    {
+      "id": "BPROD-0006",
+      "brand_id": "BRAND-0012",
+      "name": "Cactus Water",
+      "product_kind": "named_product",
+      "catalog_item_name": null,
+      "source_refs": [
+        {"source_code": "T:Street", "page": null},
+        {"source_code": "NC2045", "page": "189"}
+      ]
+    }
+  ],
+  "variants": [
+    {"id":"BVAR-0001","product_id":"BPROD-0001","name":"Fizzy","vendr_variant_kind":"sensory_effect","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0002","product_id":"BPROD-0001","name":"Chili Lime","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0003","product_id":"BPROD-0001","name":"Protein Kibble","vendr_variant_kind":"formula","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0004","product_id":"BPROD-0001","name":"Kibble SportFlakes","vendr_variant_kind":"format","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0005","product_id":"BPROD-0001","name":"Extra Fluffy Pancake","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0006","product_id":"BPROD-0001","name":"Kibble SportMix","vendr_variant_kind":"formula","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0007","product_id":"BPROD-0001","name":"Fruit Fantasy","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0008","product_id":"BPROD-0001","name":"Popcorn","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0009","product_id":"BPROD-0001","name":"Caramel Crunch Popcorn","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0010","product_id":"BPROD-0001","name":"Bacon Cheddar Dumpburger","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0011","product_id":"BPROD-0001","name":"Kiwi","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0012","product_id":"BPROD-0001","name":"Cheese","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0013","product_id":"BPROD-0001","name":"Lemon Ginger","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0014","product_id":"BPROD-0001","name":"Aromatic Beef","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0015","product_id":"BPROD-0001","name":"Paprika","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0016","product_id":"BPROD-0001","name":"Pineapple Pizza","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0017","product_id":"BPROD-0001","name":"Collagen Boost","vendr_variant_kind":"formula","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0018","product_id":"BPROD-0001","name":"Kibble XXL","vendr_variant_kind":"format","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0019","product_id":"BPROD-0001","name":"Mystery","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+    {"id":"BVAR-0020","product_id":"BPROD-0001","name":"Adobo","vendr_variant_kind":"flavor","source_refs":[{"source_code":"DL:Random","page":"14"}]},
+
+    {"id":"BVAR-0021","product_id":"BPROD-0002","name":"Blood Rain","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0022","product_id":"BPROD-0002","name":"Bubble Crunch","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0023","product_id":"BPROD-0002","name":"Cherry Choomba","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0024","product_id":"BPROD-0002","name":"Elflines Elixir","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0025","product_id":"BPROD-0002","name":"Lightning","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0026","product_id":"BPROD-0002","name":"Mystery","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0027","product_id":"BPROD-0002","name":"National Anthem","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0028","product_id":"BPROD-0002","name":"Pancake Dinner","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0029","product_id":"BPROD-0002","name":"Rainbow Rally","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]},
+    {"id":"BVAR-0030","product_id":"BPROD-0002","name":"Solar Flare","vendr_variant_kind":"flavor","source_refs":[{"source_code":"SPM","page":"63"}]}
+  ],
+  "stock_variant_policies": [
+    {
+      "product_id": "BPROD-0001",
+      "catalog_item_name": "Kibble Pack",
+      "display_range_by_depth": {
+        "shallow": [3,4],
+        "normal": [5,7],
+        "deep": [7,10],
+        "warehouse": [10,14]
+      }
+    },
+    {
+      "product_id": "BPROD-0002",
+      "catalog_item_name": "Triti-Fizz",
+      "display_range_by_depth": {
+        "shallow": [2,3],
+        "normal": [3,5],
+        "deep": [5,7],
+        "warehouse": [7,10]
+      }
+    }
+  ]
+}

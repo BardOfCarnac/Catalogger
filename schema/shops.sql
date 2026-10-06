@@ -105,6 +105,12 @@ create table if not exists stock (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists stock_variants (
+  stock_id uuid not null references stock(id) on delete cascade,
+  variant_id text not null references brand_product_variants(id),
+  primary key (stock_id, variant_id)
+);
+
 create index if not exists stock_shop_idx on stock(shop_id);
 create index if not exists stock_item_idx on stock(item_id);
 create index if not exists stock_shop_role_idx on stock(shop_id, assortment_role);

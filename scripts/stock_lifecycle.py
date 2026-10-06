@@ -385,6 +385,25 @@ class StockLifecycleEngine(StockEngine):
                 raise ValueError(f"bad stock status: {row.get('status')}")
             if row.get("assortment_role") not in {"core", "regular", "occasional", "special"}:
                 raise ValueError(f"bad stock role: {row.get('assortment_role')}")
+            variants = row.get("variants", [])
+            if variants:
+                if row.get("variant_set_version") != self.brand_products_doc["version"]:
+                    raise ValueError(f"bad stock variant version: {row['item_id']}")
+                seen_variants = set()
+                for variant in variants:
+                    variant_id = variant.get("variant_id")
+                    if variant_id not in self.brand_variants_by_id:
+                        raise ValueError(f"unknown stock variant: {variant_id}")
+                    if variant_id in seen_variants:
+                        raise ValueError(f"duplicate stock variant: {variant_id}")
+                    seen_variants.add(variant_id)
+                    source_refs = self.brand_variants_by_id[variant_id].get("source_refs", [])
+                    if enabled is not None and not any(
+                        ref["source_code"] in set(enabled) for ref in source_refs
+                    ):
+                        raise ValueError(
+                            f"stock variant outside source filter: {variant_id}"
+                        )
             if row.get("status") == "incoming":
                 arrival = row.get("metadata", {}).get("arrival_cycle")
                 if not isinstance(arrival, int):
