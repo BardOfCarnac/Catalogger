@@ -1,0 +1,56 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-europe-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [59],
+    "note": "Map-visible Little Europe places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-FIDDLER-S-GREEN",
+      "name": "Fiddler’s Green",
+      "entity_type": "hybrid",
+      "district": "Little Europe",
+      "map_no": 11,
+      "book_page": 59,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 59",
+      "source_summary": "Irish-themed family pub popular with police, veterans and local edgerunners, serving SCOP-based pub food, imported stout and occasional real soda bread; the proprietor also informally holds packages and messages for regulars.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "pub-lunch", "label": "SCOP-based pub lunch"},
+        {"offering_key": "pint-o-plain", "label": "Pint O’ Plain imported stout", "price_eb": 20, "unit": "pint"},
+        {"offering_key": "real-soda-bread", "label": "Real soda bread", "availability": "third Monday of the month"}
+      ],
+      "services": [
+        {"service_key": "pub-hospitality", "label": "Family-pub hospitality"},
+        {"service_key": "informal-message-and-package-hold", "label": "Informal package and message holding for regular customers", "availability": "regular customers"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-GRETA-S",
+      "name": "Greta’s",
+      "entity_type": "hybrid",
+      "district": "Little Europe",
+      "map_no": 12,
+      "book_page": 59,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 59",
+      "source_summary": "Long-running dive bar that evolved into a major Night City pool hall, with strong ties to its historic lesbian clientele and substantial drink sales around competitive play.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "sunk-pocket", "label": "Sunk Pocket house drink", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Dive-bar hospitality"},
+        {"service_key": "pool-hall", "label": "Pool-hall access and play"}
+      ]
+    }
+  ]
+}

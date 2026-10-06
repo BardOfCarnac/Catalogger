@@ -1,0 +1,55 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-new-westbrook-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [218],
+    "note": "RETAIL_CAPABLE candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-CAMPUS",
+      "name": "Rocklin Augmentics Campus",
+      "entity_type": "container",
+      "district": "New Westbrook",
+      "map_no": 19,
+      "book_page": 218,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 218",
+      "source_summary": "Rocklin Augmentics offices, research and hospital campus; its source-explicit public commerce belongs to the Hidalgo Gallery rather than the campus as a whole.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "CORRECT_TO_CORPORATE_CAMPUS_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-218-HIDALGO-GALLERY",
+      "name": "Hidalgo Gallery",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-CAMPUS",
+      "district": "New Westbrook",
+      "map_no": 19,
+      "book_page": 218,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 218",
+      "source_summary": "Public campus gallery displaying custom Signature Cybernetics Series prototypes, with a gift shop where customers can purchase implants and have them installed by certified Medtechs.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "signature-cybernetics-series", "label": "Rocklin Signature Cybernetics Series implants"}
+      ],
+      "services": [
+        {"service_key": "cyberware-installation", "label": "Certified Medtech implant installation"},
+        {"service_key": "prototype-gallery", "label": "Public custom cybernetics prototype gallery"}
+      ],
+      "catalogue_note": "The source supports Rocklin-specific implants but this pass does not attach broad cyberware stock without a hard Rocklin product allowlist.",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_PUBLIC_CYBERWARE_GALLERY"}
+    }
+  ]
+}

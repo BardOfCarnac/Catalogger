@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "batch_id": "heywood-docks-core-audit-v0.2",
+  "source_profile_version": "0.2",
+  "profiles": [
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "name": "Piccolo",
+      "district": "Heywood Docks",
+      "book_page": 243,
+      "entity_level": "mentioned_outlet",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 243",
+      "stock_mode": "DIRECT_SELLER",
+      "primary_archetype": "general-store",
+      "primary_departments": "food-consumables|general-equipment",
+      "secondary_departments": "electronics-comms|fashion-personal",
+      "breadth_profile": "compact",
+      "depth_profile": "deep",
+      "supply_capability": "ordinary",
+      "price_tier_center": "Everyday",
+      "pricing_style": "fair",
+      "parent_stock_policy": "OWN_STOCK",
+      "audit_action": "KEEP",
+      "assignment_confidence": "HIGH",
+      "catalog_rule": "SCORE_EXISTING_CATALOG",
+      "candidate_rule_summary": "department match",
+      "modelling_note": "Small laborer bodega; prioritize cheap food/consumables."
+    }
+  ]
+}

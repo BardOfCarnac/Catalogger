@@ -1,0 +1,41 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-KABUKI-P201",
+  "district": "Kabuki",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 201,
+    "source_ref": "Night City 2045 p. 201",
+    "note": "All twenty-four numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "100.0 G3 Gun-Gal Station", "entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION", "x": 0.366275, "y": 0.641025, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 2, "name": "91.9 Royal Blue", "entity_id": "NC2045-LOC-KABUKI-202-91-9-ROYAL-BLUE", "x": 0.540915, "y": 0.258444, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 3, "name": "Animelocaris", "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS", "x": 0.345033, "y": 0.613247, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 4, "name": "Cyborg Station", "entity_id": "NC2045-LOC-KABUKI-202-CYBORG-STATION", "x": 0.549766, "y": 0.371238, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 5, "name": "Delphi X", "entity_id": "NC2045-LOC-KABUKI-202-DELPHI-X", "x": 0.388954, "y": 0.387237, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 6, "name": "Hiroto Miyamoto Memorial Clinic", "entity_id": "NC2045-LOC-KABUKI-202-HIROTO-MIYAMOTO-MEMORIAL-CLINIC", "x": 0.467124, "y": 0.415570, "source_ref": "Night City 2045 p. 202"},
+    {"map_no": 7, "name": "Houou", "entity_id": "NC2045-LOC-KABUKI-203-HOUOU", "x": 0.397320, "y": 0.320317, "source_ref": "Night City 2045 p. 203"},
+    {"map_no": 8, "name": "Kabuki Ceremonial Hall", "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-CEREMONIAL-HALL", "x": 0.540305, "y": 0.285454, "source_ref": "Night City 2045 p. 203"},
+    {"map_no": 9, "name": "Kabuki Market", "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET", "x": 0.452680, "y": 0.268550, "source_ref": "Night City 2045 p. 203"},
+    {"map_no": 10, "name": "Matsura Food Products", "entity_id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS", "x": 0.549504, "y": 0.405014, "source_ref": "Night City 2045 pp. 203-204"},
+    {"map_no": 11, "name": "Murakami Suiun Imports", "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS", "x": 0.460850, "y": 0.375873, "source_ref": "Night City 2045 p. 204"},
+    {"map_no": 12, "name": "Nakagawa Academy", "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-ACADEMY", "x": 0.390033, "y": 0.433077, "source_ref": "Night City 2045 p. 204"},
+    {"map_no": 13, "name": "Nakagawa Garage Tower", "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER", "x": 0.353007, "y": 0.547590, "source_ref": "Night City 2045 p. 204"},
+    {"map_no": 14, "name": "Nakagawa Kabuki Theater", "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-KABUKI-THEATER", "x": 0.384052, "y": 0.516025, "source_ref": "Night City 2045 p. 204"},
+    {"map_no": 15, "name": "No-Tell Motel", "entity_id": "NC2045-LOC-KABUKI-205-NO-TELL-MOTEL", "x": 0.358105, "y": 0.480671, "source_ref": "Night City 2045 p. 205"},
+    {"map_no": 16, "name": "Oasis (Kabuki)", "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI", "x": 0.457582, "y": 0.312742, "source_ref": "Night City 2045 p. 205"},
+    {"map_no": 17, "name": "Rokumei-kan", "entity_id": "NC2045-LOC-KABUKI-205-ROKUMEI-KAN", "x": 0.507157, "y": 0.375534, "source_ref": "Night City 2045 p. 205"},
+    {"map_no": 18, "name": "Sanroo Neuro-land", "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND", "x": 0.507157, "y": 0.280253, "source_ref": "Night City 2045 p. 205"},
+    {"map_no": 19, "name": "Segotari HQ/EXCEL-1", "entity_id": "NC2045-LOC-KABUKI-205-SEGOTARI-HQ", "x": 0.408562, "y": 0.276125, "source_ref": "Night City 2045 p. 205"},
+    {"map_no": 20, "name": "Tengen Towers", "entity_id": "NC2045-LOC-KABUKI-206-TENGEN-TOWERS", "x": 0.459216, "y": 0.528651, "source_ref": "Night City 2045 p. 206"},
+    {"map_no": 21, "name": "Toranoko Gakuen", "entity_id": "NC2045-LOC-KABUKI-206-TORANOKO-GAKUEN", "x": 0.540915, "y": 0.319224, "source_ref": "Night City 2045 p. 206"},
+    {"map_no": 22, "name": "Tyger Dojo/Tora-no-Ana", "entity_id": "NC2045-LOC-KABUKI-206-TYGER-DOJO-TORA-NO-ANA", "x": 0.546089, "y": 0.343575, "source_ref": "Night City 2045 p. 206"},
+    {"map_no": 23, "name": "Tyger Works Tower", "entity_id": "NC2045-LOC-KABUKI-206-TYGER-WORKS-TOWER", "x": 0.413464, "y": 0.481934, "source_ref": "Night City 2045 p. 206"},
+    {"map_no": 24, "name": "Yum Seng", "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG", "x": 0.393856, "y": 0.363247, "source_ref": "Night City 2045 p. 206"}
+  ]
+}

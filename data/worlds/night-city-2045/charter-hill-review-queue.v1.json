@@ -1,0 +1,110 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-charter-hill-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [227, 228],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-227-THE-COLUMBARIUM",
+      "name": "The Columbarium",
+      "entity_type": "service",
+      "district": "Charter Hill",
+      "map_no": 7,
+      "book_page": 227,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 227",
+      "source_summary": "Night Corp memorial complex for storing cremains after traditional burial was banned; individual niches can carry a paid epitaph and Tombstone Preservers help visitors locate memorials.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "cremains-memorial-niche", "label": "Cremains memorial niche"},
+        {"service_key": "paid-epitaph", "label": "Memorial epitaph inscription"},
+        {"service_key": "niche-location-assistance", "label": "Assistance locating a memorial niche"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_MEMORIAL_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-227-HILLSIDE-COUNTRY-CLUB",
+      "name": "Hillside Country Club",
+      "entity_type": "container",
+      "district": "Charter Hill",
+      "map_no": 11,
+      "book_page": 227,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 227-228",
+      "source_summary": "Private-membership country club for affluent Charter Hill residents and outside Execs, with pool, sauna, gym, driving range and a named restaurant.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "services": [
+        {"service_key": "country-club-membership", "label": "Country-club membership"},
+        {"service_key": "club-recreation", "label": "Pool, sauna, gym and driving-range access"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_MEMBERSHIP_SERVICE_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-MEN-CHARTER-HILL-228-THE-LADDER",
+      "name": "The Ladder",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-CHARTER-HILL-227-HILLSIDE-COUNTRY-CLUB",
+      "district": "Charter Hill",
+      "map_no": 11,
+      "book_page": 228,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 228",
+      "source_summary": "Country-club restaurant; fresh meat is available with meals on weekends.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "club-restaurant-meals", "label": "Country-club meals, including fresh meat on weekends"}],
+      "services": [{"service_key": "restaurant-hospitality", "label": "Restaurant hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_RESTAURANT_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-228-HOTEL-MUY-CARO",
+      "name": "Hotel Muy Caro",
+      "entity_type": "container",
+      "district": "Charter Hill",
+      "map_no": 12,
+      "book_page": 228,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 228",
+      "source_summary": "Luxury business hotel with double rooms, deluxe suites, private conference rooms, secure valuables storage, valet parking, concierge-arranged entertainment and a named restaurant.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "proprietor": {"name": "Carolina Albaz", "role": "Fixer/Rockerboy", "rank": 4},
+      "services": [
+        {"service_key": "luxury-hotel-lodging", "label": "Luxury hotel lodging"},
+        {"service_key": "conference-room-rental", "label": "Private conference-room use"},
+        {"service_key": "secure-vault-storage", "label": "Valuables storage"},
+        {"service_key": "valet-parking", "label": "Valet parking"},
+        {"service_key": "concierge-entertainment", "label": "Concierge-arranged entertainment"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_LUXURY_HOSPITALITY_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-MEN-CHARTER-HILL-228-CAFE-DIVINE",
+      "name": "Café Divine",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-CHARTER-HILL-228-HOTEL-MUY-CARO",
+      "district": "Charter Hill",
+      "map_no": 12,
+      "book_page": 228,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 228",
+      "source_summary": "Theatrically themed Hotel Muy Caro restaurant serving both dining-room guests and hotel rooms.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "cafe-divine-meals", "label": "Café Divine meals"}],
+      "services": [
+        {"service_key": "restaurant-hospitality", "label": "Restaurant dining"},
+        {"service_key": "room-service", "label": "Hotel room service"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_RESTAURANT_CHILD"}
+    }
+  ]
+}

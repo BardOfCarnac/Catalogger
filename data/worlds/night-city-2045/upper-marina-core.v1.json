@@ -1,0 +1,452 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-upper-marina-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [68, 69, 70, 74, 77],
+    "note": "Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "name": "Bay Bridge Residences",
+      "entity_type": "container",
+      "district": "Upper Marina",
+      "map_no": 2,
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 68",
+      "source_summary": "Residential building with both short- and long-term tenants; public-facing businesses operate inside rather than the building carrying stock itself.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
+      "name": "Combat Concierge",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "district": "Upper Marina",
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 68",
+      "source_summary": "Lobby bodega selling basic food plus weapons and ammunition, with armor repair and armed escort services.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:upper-marina:combat-concierge:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "weapons", "ammunition-ordnance"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 5, "specialist": 4, "street": 3},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "armor-repair", "label": "Armor repair"},
+        {"service_key": "armed-escort", "label": "Armed escort to or from Bay Bridge Residences"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Removed inferred armor/general/electronics/fashion shelf departments; armor is explicitly a repair service, while the source names food, weapons and ammunition as goods."
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-NIGHT-OWL-BAR",
+      "name": "Night Owl Bar",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "district": "Upper Marina",
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 68",
+      "source_summary": "Always-open top-floor bar known for quiet booths and real beer.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "real-beer", "label": "Real beer", "example_price_eb": 20, "unit": "pint"}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar service and private booth hospitality"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-069-BROWNSTONE-WATERFRONT",
+      "name": "Brownstone Waterfront",
+      "entity_type": "container",
+      "district": "Upper Marina",
+      "map_no": 5,
+      "book_page": 69,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 69",
+      "source_summary": "Office high-rise hosting numerous independent small businesses, including Corporate Cool.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed"
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
+      "name": "Corporate Cool",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-069-BROWNSTONE-WATERFRONT",
+      "district": "Upper Marina",
+      "book_page": 69,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 69",
+      "source_summary": "Workwear and uniform retailer supplying occupational clothing and organization-branded garments, including institutional bulk contracts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:upper-marina:corporate-cool:v1",
+        "overrides": {
+          "primary_departments": ["fashion-personal"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "corporate",
+          "price_tier_center": "Costly",
+          "pricing_style": "fair",
+          "channel_weights": {"corporate": 7, "institutional": 7, "retail": 4, "direct_order": 6},
+          "allowed_classification_prefixes": [["Fashion & Personal"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Removed inferred armor stock: the source supports occupational clothing and bulk uniform contracts, not protective gear."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "name": "Crystal Park Market",
+      "entity_type": "container",
+      "district": "Upper Marina",
+      "map_no": 10,
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Covered day market of pop-up booths and permanent named stalls; inventory belongs to the individual traders rather than the market itself.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-BILL-S",
+      "name": "Bill’s",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "One-chair hair salon run by a highly regarded stylist.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "hair-styling", "label": "Hair cutting and styling"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
+      "name": "Cybershack",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Specialist Netrunner stall carrying programs and cyberdeck hardware; counter work can be exchanged for store credit.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "netrunner-supplier",
+        "seed": "nc2045:upper-marina:cybershack:v1",
+        "overrides": {
+          "primary_departments": ["netrunning"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "shallow",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "fair",
+          "channel_weights": {"specialist": 7, "street": 4, "direct_order": 3},
+          "allowed_classification_prefixes": [
+            ["NET & Netrunning", "Cyberdeck Hardware"],
+            ["NET & Netrunning", "Programs"]
+          ],
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Hard-limited to the two stock classes named by the source instead of the audit's broader electronics/software/cyberware inference."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
+      "name": "Maxwell’s",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Traditional shoe-cobbler stall focused on footwear repair and care.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "shoe-repair", "label": "Shoe and footwear repair"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_SERVICE_ONLY"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-OTHER-LIVES",
+      "name": "Other Lives",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Entertainment stall offering old movies, current braindances and more unusual nightlife goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "classic-movies", "label": "Classic movies"},
+        {"offering_key": "braindance", "label": "Current braindance entertainment"},
+        {"offering_key": "blue-glass", "label": "Untainted blue glass", "visibility": "ask"}
+      ],
+      "catalogue_note": "The source-defined mixture is narrower and stranger than a generic entertainment catalogue assortment, so it remains world-local for now."
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-PIZZA-TO-GO",
+      "name": "Pizza to Go",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Long-running fast-food pizza chain represented by a Crystal Park stall.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "pizza-fast-food", "label": "Pizza and fast food"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
+      "name": "Skinlight",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Cosmetic body shop carrying most fashionware options and providing the associated bodywork/installations.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "cyberware-clinic",
+        "seed": "nc2045:upper-marina:skinlight:v1",
+        "overrides": {
+          "primary_departments": ["cyberware"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "specialist",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "channel_weights": {"specialist": 7, "retail": 3, "direct_order": 4},
+          "allowed_classification_prefixes": [["Cyberware", "Fashionware"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "fashionware-installation", "label": "Fashionware fitting and cosmetic bodywork"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_HARD_NARROWED",
+        "note": "The audit's broad cyberware/fashion/electronics profile is replaced by the source's explicit Fashionware scope."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
+      "name": "Tech Time",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Tech-oriented stall selling tools and scrap.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "stocking": {
+        "archetype_id": "pawn-shop",
+        "seed": "nc2045:upper-marina:tech-time:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "electronics-comms"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "shallow",
+          "supply_capability": "irregular",
+          "price_tier_center": "Costly",
+          "pricing_style": "bargain",
+          "channel_weights": {"street": 5, "pawn": 6, "specialist": 5, "retail": 2},
+          "allowed_item_ids": ["VENDR-0431", "VENDR-0432", "VENDR-0433"],
+          "condition_weights": {"new": 1, "used": 6, "refurbished": 3, "damaged": 2, "salvaged": 7},
+          "specials": [0, 1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "technical-scrap", "label": "Assorted technical scrap"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_WITH_EXACT_CATALOG_ALLOWLIST",
+        "note": "The generic General Gear classification is too broad for a source-defined tool stall. Catalogue stock is therefore restricted to Tech Bag, Techscanner and Techtool; scrap remains a local offering."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
+      "name": "Torch’s Total Repairs",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "district": "Upper Marina",
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Repair drop-off counter; broken technology is sent to an off-site workshop and returned later.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "tech-repair-dropoff", "label": "Technology repair drop-off and collection"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_SERVICE_ONLY"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "name": "Metal Heaven",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 27,
+      "book_page": 74,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 74",
+      "source_summary": "Specialist music store able to source recordings and instrument parts and build unusual instruments to order.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "music-tracks-bootlegs", "label": "Music tracks and bootlegs"},
+        {"offering_key": "instrument-parts", "label": "Parts for musical instruments of many makes"}
+      ],
+      "services": [
+        {"service_key": "custom-instrument-build", "label": "Custom and unusual instrument construction"},
+        {"service_key": "special-order-music", "label": "Locate hard-to-find recordings and bootlegs"}
+      ],
+      "catalogue_note": "The current catalogue does not cleanly model ordinary recordings and musical-instrument inventory, so broad electronics/entertainment generation would invent unsupported stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES_AND_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "name": "Midnight Arms Regional Office",
+      "entity_type": "seller",
+      "district": "Upper Marina",
+      "map_no": 28,
+      "book_page": 74,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 74",
+      "source_summary": "Midnight Arms regional facility with a small public showroom selling firearms after the site’s rebranding from Mustang Arms.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:upper-marina:midnight-arms-showroom:v1",
+        "overrides": {
+          "primary_departments": ["weapons"],
+          "secondary_departments": [],
+          "breadth_profile": "small",
+          "depth_profile": "normal",
+          "supply_capability": "corporate",
+          "price_tier_center": "Expensive",
+          "pricing_style": "fair",
+          "channel_weights": {"corporate": 8, "specialist": 7, "retail": 4},
+          "brand_affinities": {"Midnight Arms": 20},
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Source supports firearms in a small showroom. Audit-inferred ammunition, attachments and armor are not promoted without source support; Midnight Arms manufacturer affinity is retained."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "name": "Ziggurat Headquarters",
+      "entity_type": "container",
+      "district": "Upper Marina",
+      "map_no": 40,
+      "book_page": 77,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 77",
+      "source_summary": "Corporate headquarters containing fleet service bays, development and business departments, with public business access, tours and a Net museum on the first floor.",
+      "stock_policy": "NO_STOCK",
+      "review_status": "source_reviewed",
+      "commercial_mode": "context_and_service",
+      "services": [
+        {"service_key": "ihara-grubb-net-museum", "label": "Public Ihara-Grubb Net Museum visit"},
+        {"service_key": "headquarters-tour", "label": "Public headquarters tour"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_CONTEXT_NO_RETAIL",
+        "note": "The audit correctly removed static inventory; source review further models the headquarters as a contextual corporate container with public museum/tour access, not a retail outlet."
+      }
+    }
+  ]
+}

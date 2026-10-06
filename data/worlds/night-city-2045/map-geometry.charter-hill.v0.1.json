@@ -1,0 +1,35 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-CHARTER-HILL-P225",
+  "district": "Charter Hill",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 225,
+    "source_ref": "Night City 2045 p. 225",
+    "note": "All eighteen numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "92.9 Night FM", "entity_id": "NC2045-LOC-CHARTER-HILL-224-92-9-NIGHT-FM", "x": 0.369673, "y": 0.199939, "source_ref": "Night City 2045 p. 224"},
+    {"map_no": 2, "name": "Anjelika’s", "entity_id": "NC2045-LOC-CHARTER-HILL-224-ANJELIKA-S", "x": 0.297124, "y": 0.466346, "source_ref": "Night City 2045 pp. 224-226"},
+    {"map_no": 3, "name": "Bella Mia", "entity_id": "NC2045-LOC-CHARTER-HILL-226-BELLA-MIA", "x": 0.319477, "y": 0.403045, "source_ref": "Night City 2045 p. 226"},
+    {"map_no": 4, "name": "Charter Hill Museum of All Art", "entity_id": "NC2045-LOC-CHARTER-HILL-226-CHARTER-HILL-MUSEUM-OF-ALL-ART", "x": 0.366405, "y": 0.615097, "source_ref": "Night City 2045 p. 226"},
+    {"map_no": 5, "name": "Checkpoint Lincoln", "entity_id": "NC2045-LOC-CHARTER-HILL-226-CHECKPOINT-LINCOLN", "x": 0.297255, "y": 0.448436, "source_ref": "Night City 2045 p. 226"},
+    {"map_no": 6, "name": "Colonial Studios", "entity_id": "NC2045-LOC-CHARTER-HILL-226-COLONIAL-STUDIOS", "x": 0.470980, "y": 0.642875, "source_ref": "Night City 2045 p. 226"},
+    {"map_no": 7, "name": "The Columbarium", "entity_id": "NC2045-LOC-CHARTER-HILL-227-THE-COLUMBARIUM", "x": 0.604183, "y": 0.376542, "source_ref": "Night City 2045 p. 227"},
+    {"map_no": 8, "name": "DRGS 247", "entity_id": "NC2045-LOC-CHARTER-HILL-227-DRGS-247", "x": 0.327647, "y": 0.256580, "source_ref": "Night City 2045 p. 227"},
+    {"map_no": 9, "name": "Eye of the Tiger", "entity_id": "NC2045-LOC-CHARTER-HILL-227-EYE-OF-THE-TIGER", "x": 0.262288, "y": 0.380317, "source_ref": "Night City 2045 p. 227"},
+    {"map_no": 10, "name": "The Flow Megachurch", "entity_id": "NC2045-LOC-CHARTER-HILL-227-THE-FLOW-MEGACHURCH", "x": 0.270221, "y": 0.526196, "source_ref": "Night City 2045 p. 227"},
+    {"map_no": 11, "name": "Hillside Country Club", "entity_id": "NC2045-LOC-CHARTER-HILL-227-HILLSIDE-COUNTRY-CLUB", "x": 0.578431, "y": 0.270808, "source_ref": "Night City 2045 pp. 227-228"},
+    {"map_no": 12, "name": "Hotel Muy Caro", "entity_id": "NC2045-LOC-CHARTER-HILL-228-HOTEL-MUY-CARO", "x": 0.312704, "y": 0.569125, "source_ref": "Night City 2045 p. 228"},
+    {"map_no": 13, "name": "L’Ermitage", "entity_id": "NC2045-LOC-CHARTER-HILL-228-L-ERMITAGE", "x": 0.343464, "y": 0.552155, "source_ref": "Night City 2045 pp. 228-229"},
+    {"map_no": 14, "name": "Many Hands", "entity_id": "NC2045-LOC-CHARTER-HILL-228-MANY-HANDS", "x": 0.278170, "y": 0.413077, "source_ref": "Night City 2045 p. 228"},
+    {"map_no": 15, "name": "Seral Grove", "entity_id": "NC2045-LOC-CHARTER-HILL-228-SERAL-GROVE", "x": 0.506307, "y": 0.221959, "source_ref": "Night City 2045 p. 228"},
+    {"map_no": 16, "name": "Ward Security", "entity_id": "NC2045-LOC-CHARTER-HILL-229-WARD-SECURITY", "x": 0.439935, "y": 0.654239, "source_ref": "Night City 2045 p. 229"},
+    {"map_no": 17, "name": "Your Neighborhood", "entity_id": "NC2045-LOC-CHARTER-HILL-229-YOUR-NEIGHBORHOOD", "x": 0.513922, "y": 0.304560, "source_ref": "Night City 2045 p. 229"},
+    {"map_no": 18, "name": "Your Next Big Crèche", "entity_id": "NC2045-LOC-CHARTER-HILL-229-YOUR-NEXT-BIG-CRECHE", "x": 0.326013, "y": 0.313398, "source_ref": "Night City 2045 p. 229"}
+  ]
+}

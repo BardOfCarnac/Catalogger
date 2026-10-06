@@ -1,0 +1,155 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-combat-zone-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [170, 171, 172],
+    "note": "Commercial facts are source-reviewed against the book pages. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "name": "Kibble Kirkle",
+      "entity_type": "seller",
+      "district": "Old Combat Zone",
+      "map_no": 10,
+      "book_page": 170,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 170",
+      "source_summary": "Bodega centered on low-quality but usable everyday supplies.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:old-combat-zone:kibble-kirkle:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "food-consumables"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "bargain",
+          "channel_weights": {"retail": 6, "street": 6, "pawn": 2},
+          "allowed_classification_prefixes": [
+            ["General Equipment"],
+            ["Food, Drink & Consumables", "Foodstuffs"]
+          ],
+          "condition_weights": {"new": 4, "used": 6, "refurbished": 3, "damaged": 1, "salvaged": 2},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's inherited electronics/fashion signals are removed; generated stock is limited to ordinary bodega supplies."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "name": "The Warren",
+      "entity_type": "container",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 171,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 171-172",
+      "source_summary": "Self-sufficient megastructure containing markets, shops and other community facilities; commerce belongs to its individual outlets.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "name": "B. Baskin Books",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 171,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 171",
+      "source_summary": "Small shop specializing in heavily used and recovered books.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "used-recovered-books", "label": "Used and recovered books in almost any condition"}
+      ],
+      "purchase_policy": {
+        "offering_key": "book-buyback",
+        "label": "Buys recovered books from local children and scavengers",
+        "price_eb_each": 1
+      },
+      "catalogue_note": "The current catalogue does not represent ordinary physical books well enough to replace this source-defined stock with generic entertainment or equipment items.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "name": "E. Smithery",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 172,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 172",
+      "source_summary": "Rotating shop stock of unique hand-forged firearms and reproductions of models no longer normally available first-hand.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "unique-hand-forged-firearms", "label": "Unique hand-forged firearms"},
+        {"offering_key": "reproduction-firearms", "label": "Reproductions of discontinued firearm models"}
+      ],
+      "customer_pricing": {
+        "ocz_resident_multiplier": 1.0,
+        "outsider_multiplier": 3.0,
+        "note": "Source-defined customer distinction; this is not a universal Vend-R pricing rule."
+      },
+      "catalogue_note": "Generic catalogue firearms would erase the defining fact that the Smithery's rotating inventory consists of unique crafted pieces, so no persistent catalogue assortment is generated here.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_book_page": 171,
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_PAGE_AND_LOCALIZE",
+        "note": "Direct source review moves the outlet's detail to p. 172 and replaces the generic weapons-dealer approximation with source-local bespoke stock."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
+      "name": "F. Uncle Anne’s",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 172,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 172",
+      "source_summary": "Small food stall selling real meat and Kibble by the bag, with deliberately dubious sourcing.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "real-meat", "label": "Real meat"},
+        {"offering_key": "kibble-by-bag", "label": "Kibble by the bag"}
+      ],
+      "catalogue_note": "The stall's source-defined food identity is more specific than the broad consumables pool, so unrelated packaged food is not generated as shelf stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_book_page": 171,
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_PAGE_AND_LOCALIZE"
+      }
+    }
+  ]
+}

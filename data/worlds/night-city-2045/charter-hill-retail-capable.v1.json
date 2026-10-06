@@ -1,0 +1,62 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-charter-hill-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [227, 229],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-227-DRGS-247",
+      "name": "DRGS 247",
+      "entity_type": "local_vendor",
+      "district": "Charter Hill",
+      "map_no": 8,
+      "book_page": 227,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 227",
+      "source_summary": "Newest and most profitable branch of the DRGS 247 chain, selling a small source-named range of high-quality street drugs; its pharmacist sometimes handles more dangerous chemicals for corporate clients.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "boost", "label": "Boost"},
+        {"offering_key": "prime-time", "label": "Prime Time"},
+        {"offering_key": "synthcoke", "label": "Synthcoke"},
+        {"offering_key": "white-lace", "label": "White Lace"},
+        {"offering_key": "corporate-biotoxin-poison-trade", "label": "Occasional biotoxin or poison sales to corporate clients", "availability": "discretionary"}
+      ],
+      "catalogue_note": "The source names the branch's ordinary drug range exactly. Keeping those products local avoids turning it into a broad pharmacy or generic Street Drugs assortment.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_EXACT_SOURCE_LOCAL_DRUG_RETAILER"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-CHARTER-HILL-229-YOUR-NEXT-BIG-CRECHE",
+      "name": "Your Next Big Crèche",
+      "entity_type": "service",
+      "district": "Charter Hill",
+      "map_no": 18,
+      "book_page": 229,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 229",
+      "source_summary": "Childcare operation for children aged zero to seven offering two source-defined programs rather than a customer-facing merchandise business.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "working-parent-program", "label": "Working Parent cryostasis and educational braindance childcare"},
+        {"service_key": "protect-and-learn-program", "label": "Protect and Learn live instruction, outdoor activity and combat-oriented childcare"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_CHILDCARE_SERVICE"
+      }
+    }
+  ]
+}

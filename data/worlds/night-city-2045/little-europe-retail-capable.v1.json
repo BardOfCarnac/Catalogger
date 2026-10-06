@@ -1,0 +1,106 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-europe-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [57, 62],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S",
+      "name": "Chopper’s",
+      "entity_type": "hybrid",
+      "district": "Little Europe",
+      "map_no": 5,
+      "book_page": 57,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 57",
+      "source_summary": "Former butcher shop operating as a rough bar, with a separate second-hand cyberware trade run from the premises.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "cheap-bar-drink", "label": "Rotgut or beer", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "bar-hospitality", "label": "Bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "SPLIT_BAR_FROM_SECOND_HAND_CYBERWARE_TRADER"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-LITTLE-EUROPE-057-80-20",
+      "name": "80/20",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S",
+      "district": "Little Europe",
+      "map_no": 5,
+      "book_page": 57,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 57",
+      "source_summary": "Fixer operating from Chopper’s and dealing in second-hand cyberware.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "proprietor": {"name": "80/20", "role": "Fixer", "rank": 3},
+      "local_offerings": [
+        {"offering_key": "second-hand-cyberware", "label": "Second-hand cyberware"}
+      ],
+      "catalogue_note": "The source specifies second-hand cyberware without a stable model list; it remains local rather than drawing from the catalogue's new installed-goods pool.",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_LOCAL_VENDOR"}
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
+      "name": "Short Circuit",
+      "entity_type": "hybrid",
+      "district": "Little Europe",
+      "map_no": 21,
+      "book_page": 62,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 62",
+      "source_summary": "Tech and Netrunner bar combining hospitality, workshop rental and technology refurbishment, with a separate recurring Night Market upstairs.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "code-freeze", "label": "Code Freeze house drink", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "tech-netrunner-bar", "label": "Tech and Netrunner bar hospitality"},
+        {"service_key": "workshop-rental", "label": "Workshop rental with techprinter and microfactory", "price_eb_per_hour": 5},
+        {"service_key": "technology-refurbishment", "label": "Technology refurbishment collaboration"},
+        {"service_key": "trusted-netrunner-access", "label": "Trusted Netrunner access to private NET facilities", "availability": "trusted customers"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "SPLIT_BAR_SERVICES_FROM_RECURRING_TECH_MARKET"
+      }
+    },
+    {
+      "entity_id": "NC2045-EVT-LITTLE-EUROPE-062-3-PIECE-S-JOINT",
+      "name": "3-Piece’s Joint",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
+      "district": "Little Europe",
+      "map_no": 21,
+      "book_page": 62,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 62",
+      "source_summary": "Recurring top-floor Night Market run by 3-Piece and specializing in hard-to-find technology.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_market",
+      "stock_policy": "EVENT_ONLY",
+      "schedule": {"frequency": "recurring"},
+      "event_profile": {
+        "market_channels": ["specialist", "grey_market", "street"],
+        "known_departments": ["electronics-comms", "netrunning", "general-equipment"]
+      },
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_TECH_NIGHT_MARKET"}
+    }
+  ]
+}

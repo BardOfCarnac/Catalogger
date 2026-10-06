@@ -1,0 +1,287 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-santo-domingo-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [
+      266,
+      267,
+      268,
+      269
+    ],
+    "note": "Map-visible Santo Domingo locations omitted from the active reviewed fixtures, recovered directly from the user-provided purchased source. Aldecaldo Camp child locations are preserved as children of the mapped camp rather than promoted to independent district places. Factual metadata and concise paraphrases only."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-ALLNATIONS-CONSTRUCTION",
+      "name": "AllNations Construction",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 266,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 266",
+      "source_summary": "Mobile headquarters for the nomad construction organization coordinating hundreds of crews; it also handles temporary identification cards and vehicle plates for nomads.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "access_model": "nomad-network",
+      "services": [
+        {
+          "service_key": "construction-crew-coordination",
+          "label": "Nomad construction-crew coordination"
+        },
+        {
+          "service_key": "temporary-id-and-plates",
+          "label": "Temporary ID cards and vehicle plates for nomads"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_CAMP_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-DR-PEDRO-MARIA-GUTIERREZ-SCHOOL",
+      "name": "Dr. Pedro María Gutierrez School",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 266,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 266",
+      "source_summary": "Community school serving the Camp and wider Santo Domingo from kindergarten through twelfth grade, including general-education and trade tracks; it charges no tuition and encourages voluntary donations.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "access_model": "community",
+      "services": [
+        {
+          "service_key": "community-schooling",
+          "label": "Kindergarten through twelfth-grade education"
+        },
+        {
+          "service_key": "trade-education",
+          "label": "Specialized trade classes"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_COMMUNITY_SCHOOL"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-RADIO-TENT",
+      "name": "Radio Tent",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 266,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 266",
+      "source_summary": "The Camp's central communications hub, coordinating official traffic and offering radio time to nomads contacting family and loved ones on the road.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "access_model": "nomad-network",
+      "services": [
+        {
+          "service_key": "camp-communications",
+          "label": "Camp communications coordination"
+        },
+        {
+          "service_key": "nomad-radio-time",
+          "label": "Radio time for nomads contacting people on the road"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_COMMUNICATION_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SKINNY-JAMES-LOT",
+      "name": "Skinny James’ Lot",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 266,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 266",
+      "source_summary": "Hiring and brokerage point for transport, cargo and labor crews; Skinny James matches clients to appropriate nomads and collects a fee from both sides once a deal is made.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "proprietor": {
+        "name": "Skinny James",
+        "role": "Fixer 4 / Nomad 2"
+      },
+      "services": [
+        {
+          "service_key": "nomad-crew-brokerage",
+          "label": "Transport, cargo and labor crew brokerage"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_CREW_BROKERAGE_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SOL-CANELA-PARK",
+      "name": "Sol Canela Park",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 266,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 266",
+      "source_summary": "Volunteer-maintained Camp recreation area with planted greenery, picnic space, football and a splash fountain; the source establishes community use rather than customer-facing commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_RECREATION_CONTEXT"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-267-TEPUI",
+      "name": "Tepui",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "district": "Santo Domingo",
+      "map_no": 2,
+      "book_page": 267,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 267",
+      "source_summary": "Short-stay parking area for visiting nomads' kombis, allowing stays of up to a week with basic electricity, sink and toilet access; the source gives no price.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "access_model": "nomad-visitors",
+      "services": [
+        {
+          "service_key": "short-stay-kombi-parking",
+          "label": "Short-stay kombi parking"
+        },
+        {
+          "service_key": "basic-camp-utilities",
+          "label": "Basic electricity, sink and toilet access"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_MAP_VISIBLE_SHORT_STAY_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-LIVE-WIRE-BARB-HOUSE",
+      "name": "Live Wire Barb House",
+      "entity_type": "hybrid",
+      "district": "Santo Domingo",
+      "map_no": 11,
+      "book_page": 268,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 268",
+      "source_summary": "Live-music club welcoming talented bands across genres; its common drink is Smash mixed with soda water for 5eb per glass.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "stock_policy": "NO_STOCK",
+      "local_offerings": [
+        {
+          "offering_key": "smash-soda-water",
+          "label": "Smash with soda water",
+          "price_eb": 5
+        }
+      ],
+      "services": [
+        {
+          "service_key": "live-music-club",
+          "label": "Live music and club hospitality"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_DROPPED_CANON_CLUB"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-268-MARIA-S",
+      "name": "María’s",
+      "entity_type": "hybrid",
+      "district": "Santo Domingo",
+      "map_no": 12,
+      "book_page": 268,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 268-269",
+      "source_summary": "Family-owned beer tent with strong Aldecaldo connections, serving genuine beer and tequila and popular with caravans heading out of town.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "stock_policy": "NO_STOCK",
+      "local_offerings": [
+        {
+          "offering_key": "beer-bottle",
+          "label": "Beer",
+          "price_eb": 20
+        },
+        {
+          "offering_key": "tequila-shot",
+          "label": "Tequila",
+          "price_eb": 20
+        }
+      ],
+      "services": [
+        {
+          "service_key": "beer-tent-hospitality",
+          "label": "Beer-tent hospitality"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_DROPPED_CANON_BEER_TENT"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-269-METALSTORM",
+      "name": "MetalStorm",
+      "entity_type": "hybrid",
+      "district": "Santo Domingo",
+      "map_no": 14,
+      "book_page": 269,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 269",
+      "source_summary": "Heavy-duty bar beneath the Pacifica Bridge and a social center for FBCs and heavily chromed patrons; its signature Moscow Mule costs 50eb and can be served in a glass or nutrient bag.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "stock_policy": "NO_STOCK",
+      "local_offerings": [
+        {
+          "offering_key": "metalstorm-moscow-mule",
+          "label": "Moscow Mule",
+          "price_eb": 50
+        }
+      ],
+      "services": [
+        {
+          "service_key": "bar-hospitality",
+          "label": "Bar hospitality"
+        }
+      ],
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "previous_relevance": "COMMERCIAL_SERVICE",
+        "decision": "RECOVER_DROPPED_CANON_FBC_BAR"
+      }
+    }
+  ]
+}

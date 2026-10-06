@@ -1,0 +1,159 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-upper-marina-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [68, 71, 72, 73, 74, 75, 76],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BLESS-YOUR-HEART",
+      "name": "Bless Your Heart",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 3,
+      "book_page": 68,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 68",
+      "source_summary": "One branch of Cosina Tigo's café chain, specializing in her own Kibble-based recipes and receiving new Kibble flavors unusually early.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "cosina-tigo-kibble-menu", "label": "Cosina Tigo's Kibble-based café menu"},
+        {"offering_key": "early-kibble-flavors", "label": "New and unusual Kibble flavors", "availability": "early access"}
+      ],
+      "services": [{"service_key": "cafe-hospitality", "label": "Café hospitality"}],
+      "catalogue_note": "The source defines prepared recipes and early-access flavors rather than an ordinary grocery shelf, so stock remains local.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_SOURCE_LOCAL_CAFE_CHAIN_BRANCH"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "name": "GraffitiX",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 15,
+      "book_page": 71,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 71",
+      "source_summary": "Two-floor contemporary art gallery: many exhibited works are sold for the artists, the upper floor hosts ticketed exhibitions, and visitors exit through a gift shop.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "artist-consignment-art", "label": "Artwork sold on behalf of exhibiting artists"},
+        {"offering_key": "gallery-gift-shop", "label": "Gallery gift-shop merchandise"}
+      ],
+      "services": [
+        {"service_key": "free-ground-floor-gallery", "label": "Ground-floor gallery admission"},
+        {"service_key": "ticketed-special-exhibitions", "label": "Ticketed upper-floor exhibitions"}
+      ],
+      "catalogue_note": "Artwork and gallery merchandise are source-local rather than substitutable with generic Catalogger items.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_ART_GALLERY_RETAIL_HYBRID"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-KRAKEN-LINE-WATER-TAXIS",
+      "name": "Kraken Line Water Taxis",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 20,
+      "book_page": 72,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 72",
+      "source_summary": "Largest organized water-taxi operator across Del Coronado Bay, selling walk-up or pre-booked passenger trips.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "water-taxi-trip", "label": "Single water-taxi trip", "price_eb": 20}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_TRANSPORT_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-CUBES",
+      "name": "McCartney Cubes",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 24,
+      "book_page": 73,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 73",
+      "source_summary": "Low-rent cube hotel beside McCartney Field Stadium, primarily attracting sports fans and low-income tenants.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "cube-hotel-lodging", "label": "Low-rent cube-hotel lodging"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_LODGING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-FIELD-STADIUM",
+      "name": "McCartney Field Stadium",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 25,
+      "book_page": 73,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 73-74",
+      "source_summary": "Large stadium hosting several sports franchises plus concerts, speeches, bloodsport, vehicle shows and other performances between games.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "sports-events", "label": "Ticketed sports events"},
+        {"service_key": "concert-performance-events", "label": "Concerts and performances"},
+        {"service_key": "special-events", "label": "Bloodsport, rallies, derbies and other stadium events"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_EVENT_VENUE_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MORRO-STRAND-YACHT-CLUB",
+      "name": "Morro Strand Yacht Club",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 29,
+      "book_page": 74,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 74-75",
+      "source_summary": "Private marina and yacht club serving affluent slip-owners in the Upper Marina; no separate retail merchandise is stated.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "private-marina-yacht-club", "label": "Private marina and yacht-club access"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_PRIVATE_MARINA_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-BUBBLES",
+      "name": "Night City Bubbles",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 31,
+      "book_page": 75,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 75",
+      "source_summary": "Exec-oriented spa providing baths, massages, sauna and trained personal attention; staff can also be hired externally as social escorts and corporate accounts are supported.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "spa-services", "label": "Bubble baths, massage, sauna and skincare"},
+        {"service_key": "social-escort", "label": "External social escort service"},
+        {"service_key": "corporate-account", "label": "Corporate account service"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_SPA_AND_ESCORT_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-QUARANTINE",
+      "name": "Quarantine",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 35,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Affordable neighborhood bar and burger joint for local workers, also hosting volunteer Fixit Fridays with a communal repair toolkit.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "worker-bar-food-drink", "label": "Affordable burgers and bar drinks"}],
+      "services": [
+        {"service_key": "pub-hospitality", "label": "Neighborhood pub hospitality"},
+        {"service_key": "fixit-fridays", "label": "Volunteer basic-repair teaching and communal toolkit access"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_RETAIL_TO_PUB_AND_COMMUNITY_REPAIR_SERVICE"}
+    }
+  ]
+}

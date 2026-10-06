@@ -383,7 +383,7 @@ class StockLifecycleEngine(StockEngine):
                 raise ValueError(f"unknown stock item: {row['item_id']}")
             if row.get("status") not in {"in_stock", "reserved", "sold", "incoming"}:
                 raise ValueError(f"bad stock status: {row.get('status')}")
-            if row.get("assortment_role") not in {"core", "regular", "occasional", "special"}:
+            if row.get("assortment_role") not in {"core", "regular", "occasional", "special", "order"}:
                 raise ValueError(f"bad stock role: {row.get('assortment_role')}")
             variants = row.get("variants", [])
             if variants:
@@ -457,6 +457,12 @@ class StockLifecycleEngine(StockEngine):
 
         for row in result["stock"]:
             role = row.get("assortment_role") or row.get("stock_reason")
+            if role == "order":
+                if row.get("status") == "incoming":
+                    incoming_by_item[row["item_id"]].append(row)
+                elif self._is_present(row):
+                    standing_order_rows.append(row)
+                continue
             if role == "special":
                 if self._is_present(row):
                     surviving_specials.append(row)
@@ -476,6 +482,8 @@ class StockLifecycleEngine(StockEngine):
                 current_by_item[row["item_id"]] = row
 
         delivered_by_item: dict[str, dict[str, Any]] = {}
+        delivered_order_rows: list[dict[str, Any]] = []
+        standing_order_rows: list[dict[str, Any]] = []
         pending_rows: list[dict[str, Any]] = []
         for item_id, rows in incoming_by_item.items():
             rows.sort(key=lambda row: row.get("metadata", {}).get("arrival_cycle", 10**9))
@@ -488,6 +496,8 @@ class StockLifecycleEngine(StockEngine):
                     row.setdefault("metadata", {})["delivered_cycle"] = cycle
                     self._refresh_price(rng, row, context, state)
                     delivered_by_item[item_id] = row
+                    if row.get("assortment_role") == "order" and item_id not in assortment_by_item:
+                        delivered_order_rows.append(row)
                     delivered = True
                     event = self._append_event(
                         result,
@@ -617,10 +627,16 @@ class StockLifecycleEngine(StockEngine):
 
         excluded = set(assortment_by_item) | {row["item_id"] for row in surviving_specials}
         special_context = copy.deepcopy(context)
-        low, high = special_context.get("specials") or [
+        special_range = special_context.get("specials") or [
             self.model["specials"]["default_min"],
             self.model["specials"]["default_max"],
         ]
+        if not isinstance(special_range, (list, tuple)) or len(special_range) < 2:
+            special_range = [
+                self.model["specials"]["default_min"],
+                self.model["specials"]["default_max"],
+            ]
+        low, high = special_range[0], special_range[1]
         delta = self._special_delta(state)
         special_context["specials"] = [max(0, int(low) + delta), max(0, int(high) + delta)]
         new_specials = self._pick_specials(rng, special_context, excluded, cycle)
@@ -639,7 +655,14 @@ class StockLifecycleEngine(StockEngine):
         # Avoid duplicating an incoming row already converted to delivered stock.
         delivered_ids = {id(row) for row in delivered_by_item.values()}
         remaining_pending = [row for row in pending_rows if id(row) not in delivered_ids]
-        result["stock"] = new_stock + remaining_pending + surviving_specials + new_specials
+        result["stock"] = (
+            new_stock
+            + remaining_pending
+            + standing_order_rows
+            + delivered_order_rows
+            + surviving_specials
+            + new_specials
+        )
         state["stock_cycle"] = cycle
         self.validate_bundle(result)
         return result

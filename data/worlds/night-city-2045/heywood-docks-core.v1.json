@@ -1,0 +1,52 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-heywood-docks-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [243],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES",
+      "name": "SK Securities",
+      "entity_type": "context",
+      "district": "Heywood Docks",
+      "map_no": 9,
+      "book_page": 243,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 243",
+      "source_summary": "Security-company headquarters complex that physically contains the small Piccolo bodega.",
+      "stock_policy": "NO_STOCK",
+      "review_status": "source_reviewed"
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "name": "Piccolo",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES",
+      "district": "Heywood Docks",
+      "map_no": 9,
+      "book_page": 243,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 243",
+      "source_summary": "Small worker-facing bodega attached to SK Securities and explicitly centered on Kibble and Smash.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "kibble", "label": "Kibble"},
+        {"offering_key": "smash", "label": "Smash"}
+      ],
+      "catalogue_note": "Direct source review is narrower than the audit's general-store approximation. No unrelated general gear, electronics or fashion is synthesized for Piccolo.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_SOURCE_LOCAL_WARES",
+        "note": "The parent relationship to SK Securities is recovered and the generated broad bodega assortment is removed."
+      }
+    }
+  ]
+}

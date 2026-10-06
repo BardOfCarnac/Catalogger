@@ -1,0 +1,94 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-north-heywood-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [246, 248, 251],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-246-ACORN-TOWERS",
+      "name": "Acorn Towers",
+      "entity_type": "context",
+      "district": "North Heywood",
+      "map_no": 1,
+      "book_page": 246,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 246",
+      "source_summary": "Modern twin-tower conapt building primarily occupied by Dynalar employees; the source describes resident life and informal drug supply at parties rather than a public housing or retail business.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_CORPORATE_RESIDENTIAL_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BLUE-AIR-STUDIO-APARTMENTS",
+      "name": "Blue Air Studio Apartments",
+      "entity_type": "service",
+      "district": "North Heywood",
+      "map_no": 4,
+      "book_page": 248,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 248",
+      "source_summary": "Former roadside motel converted into simple long-term studio accommodation, especially popular with nomads on extended city contracts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "long-term-studio-rental", "label": "Long-term studio-apartment rental"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_LONG_TERM_HOUSING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-PERENNIAL-HEIGHTS-THE-RUPTURE",
+      "name": "Perennial Heights/The Rupture",
+      "entity_type": "container",
+      "district": "North Heywood",
+      "map_no": 15,
+      "book_page": 251,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 251",
+      "source_summary": "Office building with mundane professional tenants, a ground-floor laundromat and café, while its hidden sublevels contain a clandestine fight club run by Fixer Crux.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_MIXED_SERVICE_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-251-WASH-N-RUN",
+      "name": "Wash n’ Run",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-PERENNIAL-HEIGHTS-THE-RUPTURE",
+      "district": "North Heywood",
+      "map_no": 15,
+      "book_page": 251,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 251",
+      "source_summary": "Named ground-floor laundromat in Perennial Heights.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "laundromat", "label": "Laundry service"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_SERVICE_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-251-THE-RUPTURE",
+      "name": "The Rupture",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-PERENNIAL-HEIGHTS-THE-RUPTURE",
+      "district": "North Heywood",
+      "map_no": 15,
+      "book_page": 251,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 251",
+      "source_summary": "Secret fight club in the building's sublevels, managed by Fixer Crux, who runs bouts and takes a cut of betting while enforcing a no-guns, no-cops and no-advertising rule.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Crux", "role": "Fixer", "rank": 4},
+      "access_model": "discreet",
+      "services": [
+        {"service_key": "fight-club-bouts", "label": "Underground fight-club bouts"},
+        {"service_key": "fight-betting", "label": "Betting on bouts"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_CLANDESTINE_SERVICE_CHILD"}
+    }
+  ]
+}

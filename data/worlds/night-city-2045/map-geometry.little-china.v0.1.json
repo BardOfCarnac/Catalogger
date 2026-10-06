@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-LITTLE-CHINA-P097",
+  "district": "Little China",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 97,
+    "source_ref": "Night City 2045 p. 97",
+    "note": "Numbered map pins and labels were visually verified against the user-provided purchased source."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude. A later Spaciel calibration can transform this layer into city-map coordinates without changing world entity IDs.",
+  "points": [
+    {"map_no": 1, "name": "Bridgetown", "entity_id": "NC2045-LOC-LITTLE-CHINA-098-BRIDGETOWN", "x": 0.639759, "y": 0.353832, "source_ref": "Night City 2045 p. 98"},
+    {"map_no": 2, "name": "Chrome Cross", "entity_id": "NC2045-LOC-LITTLE-CHINA-098-CHROME-CROSS", "x": 0.33355, "y": 0.472239, "source_ref": "Night City 2045 p. 98"},
+    {"map_no": 3, "name": "The Forlorn Hope Wreckage", "entity_id": "NC2045-LOC-LITTLE-CHINA-098-THE-FORLORN-HOPE-WRECKAGE", "x": 0.408374, "y": 0.555592, "source_ref": "Night City 2045 p. 98"},
+    {"map_no": 4, "name": "Guăngbō Tower", "entity_id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER", "x": 0.479025, "y": 0.331459, "source_ref": "Night City 2045 p. 98"},
+    {"map_no": 5, "name": "Guānyīn Temple", "entity_id": "NC2045-LOC-LITTLE-CHINA-099-GUANYIN-TEMPLE", "x": 0.569406, "y": 0.373756, "source_ref": "Night City 2045 p. 99"},
+    {"map_no": 6, "name": "The Hong Kong Market", "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET", "x": 0.351721, "y": 0.382661, "source_ref": "Night City 2045 p. 99"},
+    {"map_no": 7, "name": "Hydrosubsidium", "entity_id": "NC2045-LOC-LITTLE-CHINA-100-HYDROSUBSIDIUM", "x": 0.501982, "y": 0.456999, "source_ref": "Night City 2045 p. 100"},
+    {"map_no": 8, "name": "Ling Husan’s New China Pharmacy", "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY", "x": 0.334038, "y": 0.405227, "source_ref": "Night City 2045 p. 100"},
+    {"map_no": 9, "name": "Ling Po Imports Wreckage", "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-PO-IMPORTS-WRECKAGE", "x": 0.390251, "y": 0.419814, "source_ref": "Night City 2045 p. 100"},
+    {"map_no": 10, "name": "Madam Yap’s", "entity_id": "NC2045-LOC-LITTLE-CHINA-100-MADAM-YAP-S", "x": 0.37548, "y": 0.358951, "source_ref": "Night City 2045 p. 100"},
+    {"map_no": 11, "name": "Madame Lin’s Massage Parlor", "entity_id": "NC2045-LOC-LITTLE-CHINA-100-MADAME-LIN-S-MASSAGE-PARLOR", "x": 0.430743, "y": 0.386859, "source_ref": "Night City 2045 p. 100"},
+    {"map_no": 12, "name": "The Parisian", "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-PARISIAN", "x": 0.32877, "y": 0.519744, "source_ref": "Night City 2045 p. 101"},
+    {"map_no": 13, "name": "Prosperity Garden Tenements", "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS", "x": 0.307838, "y": 0.377048, "source_ref": "Night City 2045 p. 101"},
+    {"map_no": 14, "name": "Richard Night Aquarium", "entity_id": "NC2045-LOC-LITTLE-CHINA-101-RICHARD-NIGHT-AQUARIUM", "x": 0.564368, "y": 0.447597, "source_ref": "Night City 2045 p. 101"},
+    {"map_no": 15, "name": "The Seep", "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP", "x": 0.258043, "y": 0.426093, "source_ref": "Night City 2045 p. 101"}
+  ]
+}

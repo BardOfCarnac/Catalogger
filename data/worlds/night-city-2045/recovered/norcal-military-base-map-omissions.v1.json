@@ -1,0 +1,99 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-norcal-military-base-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [181, 184],
+    "note": "Map-visible NorCal Military Base locations omitted from the active world fixtures, recovered directly from the user-provided purchased source. Access remains base-restricted and only source-explicit medical, cyberware, food, drink and recreation functions are represented."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-COG-TREATMENT-FACILITY-CTF",
+      "name": "COG Treatment Facility (CTF)",
+      "entity_type": "service",
+      "district": "NorCal Military Base",
+      "map_no": 2,
+      "book_page": 181,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 181",
+      "source_summary": "The base hospital, providing high-quality medical treatment with particular expertise in combat wounds and burns; it also manages troop cyberware and cyberpsychosis care.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "military-base-personnel",
+      "services": [
+        {"service_key": "base-hospital-care", "label": "Base hospital medical care", "access": "base-personnel"},
+        {"service_key": "combat-wound-treatment", "label": "Combat-wound treatment", "access": "base-personnel"},
+        {"service_key": "burn-treatment", "label": "Specialist burn treatment", "access": "base-personnel"},
+        {"service_key": "approved-troop-cyberware", "label": "Command-approved cyberware for troops", "access": "troops-with-command-approval", "pricing_note": "Free to eligible troops"},
+        {"service_key": "cyberpsychosis-evaluation", "label": "Routine cyberpsychosis evaluation", "access": "base-personnel"},
+        {"service_key": "cyberpsychosis-therapy", "label": "Cyberpsychosis therapy and, when required, cyberware extraction", "access": "base-personnel"}
+      ],
+      "catalogue_note": "The source supports institutional cyberware provision to approved troops, not a public cyberware shop or browsable retail inventory.",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_RESTRICTED_BASE_HOSPITAL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-184-USO-HALL",
+      "name": "USO Hall",
+      "entity_type": "container",
+      "district": "NorCal Military Base",
+      "map_no": 17,
+      "book_page": 184,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 184",
+      "source_summary": "The base entertainment center, divided between the larger Relief Valve enlisted club and the quieter Officers' Club.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "access_model": "military-base-access",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_DROPPED_CANON_BASE_ENTERTAINMENT_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-184-RELIEF-VALVE",
+      "name": "Relief Valve",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-184-USO-HALL",
+      "district": "NorCal Military Base",
+      "map_no": 17,
+      "book_page": 184,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 184",
+      "source_summary": "The enlisted club inside USO Hall, used after shifts for drinking, dancing and socializing; officers may enter as well.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "access_model": "military-base-access",
+      "local_offerings": [
+        {"offering_key": "club-drinks", "label": "Drinks"}
+      ],
+      "services": [
+        {"service_key": "enlisted-club-hospitality", "label": "Enlisted-club hospitality"},
+        {"service_key": "dancing", "label": "Dancing and social recreation"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_NAMED_ENLISTED_CLUB_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-184-OFFICERS-CLUB",
+      "name": "Officers’ Club",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-184-USO-HALL",
+      "district": "NorCal Military Base",
+      "map_no": 17,
+      "book_page": 184,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 184",
+      "source_summary": "Quieter officers' section of USO Hall where senior personnel socialize over better-quality food and alcohol than the base mess provides.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "access_model": "officers",
+      "local_offerings": [
+        {"offering_key": "officers-club-food", "label": "Higher-quality food"},
+        {"offering_key": "officers-club-alcohol", "label": "Higher-quality alcoholic drinks"}
+      ],
+      "services": [
+        {"service_key": "officers-club-hospitality", "label": "Officers' club hospitality"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_NAMED_OFFICERS_CLUB_CHILD"}
+    }
+  ]
+}

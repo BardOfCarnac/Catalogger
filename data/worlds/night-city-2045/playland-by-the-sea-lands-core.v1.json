@@ -1,0 +1,46 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-playland-by-the-sea-lands-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [306],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "name": "Grand Junction Gift Shop",
+      "entity_type": "hybrid",
+      "district": "Playland by the Sea Lands",
+      "map_no": 30,
+      "book_page": 306,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 306",
+      "source_summary": "Playland souvenir shop with a defined 20-100eb gift range and a daily scooter-rental service.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {
+          "offering_key": "playland-souvenirs",
+          "label": "Playland souvenirs and mascot merchandise",
+          "price_eb_min": 20,
+          "price_eb_max": 100,
+          "examples": ["t-shirts", "shot glasses", "mugs", "vanity license plates", "collectible spoons", "pins", "mascot originals", "magnets"]
+        }
+      ],
+      "services": [
+        {"service_key": "scooter-rental", "label": "Scooter rental", "price_eb": 50, "billing_unit": "day"}
+      ],
+      "catalogue_note": "The source gives a specific souvenir assortment. Substituting broad entertainment, fashion, electronics or general-equipment catalogue items would make the shop less accurate, so no generated catalogue shelf is used.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_SOURCE_LOCAL_WARES_AND_SERVICE",
+        "note": "The audit's 100eb cap is retained as a source-defined gift range rather than being applied to unrelated generated merchandise."
+      }
+    }
+  ]
+}

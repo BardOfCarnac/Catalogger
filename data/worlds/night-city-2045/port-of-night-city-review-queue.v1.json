@@ -1,0 +1,77 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-port-of-night-city-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [152, 153],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-14-STUDIO-APARTMENTS",
+      "name": "Dock 14 Studio Apartments",
+      "entity_type": "context",
+      "district": "Port of Night City",
+      "map_no": 3,
+      "book_page": 152,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 152",
+      "source_summary": "Residential building beside Dock 13; the source describes it as static housing but gives no public leasing business, proprietor or customer-facing commercial operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_RESIDENTIAL_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
+      "name": "Flotsam",
+      "entity_type": "container",
+      "district": "Port of Night City",
+      "map_no": 5,
+      "book_page": 152,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 152-153",
+      "source_summary": "Permanent Thelas settlement assembled from ships, docks and floats; its source-explicit hospitality includes the Randy Dandy ferry/bar and the Pilot's Club tug-pilot lounge.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_SETTLEMENT_CONTAINER_AND_RECOVER_HOSPITALITY"}
+    },
+    {
+      "entity_id": "NC2045-MEN-PORT-OF-NIGHT-CITY-152-RANDY-DANDY",
+      "name": "Randy Dandy",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
+      "district": "Port of Night City",
+      "map_no": 5,
+      "book_page": 152,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 152",
+      "source_summary": "Ferry/bar at Flotsam run by the retired captain known as the Skipper; a Blackbeard cocktail costs 20eb.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "the Skipper", "role": "Nomad", "rank": 4},
+      "local_offerings": [{"offering_key": "blackbeard", "label": "Blackbeard cocktail", "price_eb": 20}],
+      "services": [{"service_key": "ferry-bar-hospitality", "label": "Ferry/bar hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_HOSPITALITY_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-MEN-PORT-OF-NIGHT-CITY-153-PILOTS-CLUB",
+      "name": "Pilot's Club",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
+      "district": "Port of Night City",
+      "map_no": 5,
+      "book_page": 153,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 153",
+      "source_summary": "Lounge aboard the Rose for tug pilots who guide ships into and out of the Port.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "access_model": "tug-pilots",
+      "services": [{"service_key": "pilot-lounge", "label": "Tug-pilot lounge"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_RESTRICTED_HOSPITALITY_CHILD"}
+    }
+  ]
+}

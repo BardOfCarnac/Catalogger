@@ -1,0 +1,206 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only explicit containment confirmations for source-reviewed recovered tenant/child groups. These edges were manually checked against the reviewed parent and child metadata; audit decision strings were used only to find candidates.",
+  "fixtures": {
+    "nc2045-little-europe-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-056-LITTLE-EUROPE-COMMUNAL-BATHHOUSE",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 56",
+        "note": "The communal bathhouse is one of the named businesses recovered inside Bristol Business Park."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-056-DEWEY-CHEATUM-HOWE",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 56",
+        "note": "Dewey, Cheatum, and Howe operates from Bristol's second floor."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-056-THE-PARK",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 56",
+        "note": "The Park is the rentable indoor event space on Bristol's third floor."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-ORG-LITTLE-EUROPE-056-FAX-PRESS",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 56",
+        "note": "Fax-Press occupies Bristol's fourth and fifth floors."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-ORG-LITTLE-EUROPE-056-BLACK-STONE-GAMING",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 56",
+        "note": "Black Stone Gaming rents sixth-floor offices in Bristol Business Park."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-057-E-Z-CYBERWARE",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "E-Z Cyberware is one of the source-reviewed named Bristol Business Park tenants."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-057-HOTDESK-CO-OP",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "Hotdesk Co-op occupies a coworking floor within Bristol Business Park."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-EUROPE-057-AURAL-EXPERIENCES",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "Aural Experiences is one of the source-reviewed named Bristol Business Park tenants."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-ORG-LITTLE-EUROPE-057-SOFTWARE-SOLUTIONS",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "Software Solutions occupies half of Bristol Business Park's top floor."
+      }
+    ],
+    "nc2045-downtown-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-ALLWORLD-INSURANCE",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Allworld Insurance is a named office tenant of the Cortex Complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-BODYWEIGHT-FITNESS",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Bodyweight Fitness occupies two floors of the Cortex Complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-JACK-SKORKOWSKY-REAL-ESTATE",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Jack Skorkowsky's real-estate business is run from the Cortex Complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-RECLON",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Reclon is a named industrial tenant occupying floors in the Cortex Complex."
+      }
+    ],
+    "nc2045-downtown-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-086-GUELLER-AND-STRAVINSKY",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER",
+        "source_ref": "Night City 2045 p. 86",
+        "note": "Gueller and Stravinsky is one of the professional businesses housed by New Libertine Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-086-RAEL-SANSCHEZ-CLINIC",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER",
+        "source_ref": "Night City 2045 p. 86",
+        "note": "Rael Sanschez's private clinic is explicitly on the fifth floor of New Libertine Tower."
+      }
+    ],
+    "nc2045-kabuki-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-KABUKI-206-KIROSHI-RETAIL-SHOWROOM",
+        "target_entity_id": "NC2045-LOC-KABUKI-206-TENGEN-TOWERS",
+        "source_ref": "Night City 2045 p. 206",
+        "note": "Kiroshi's public retail/showroom operation is on Tengen Towers' shared lower floors."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-KABUKI-206-KENDACHI-RETAIL-SHOWROOM",
+        "target_entity_id": "NC2045-LOC-KABUKI-206-TENGEN-TOWERS",
+        "source_ref": "Night City 2045 p. 206",
+        "note": "Kendachi's public retail/showroom operation is on Tengen Towers' shared lower floors."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-KABUKI-206-TENGEN-CYBERWARE-CLINIC",
+        "target_entity_id": "NC2045-LOC-KABUKI-206-TENGEN-TOWERS",
+        "source_ref": "Night City 2045 p. 206",
+        "note": "The public cyberware installation and maintenance clinic is on Tengen Towers' shared lower floors."
+      }
+    ],
+    "nc2045-watson-development-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-BIG-H-CASINO",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Big H Casino is one of the named businesses operating in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-DATA-INC",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Data Inc is a surviving storefront inside Megabuilding H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-HAMMER-ME-NAIL-SALON",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Hammer Me Nail Salon is one of the named businesses in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-UNITED-MARTIAL-ARTS",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "United Martial Arts is one of the named businesses in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-WATSON-COMMUNITY-COLLEGE",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Watson Community College is one of the named services in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-DELTA-777",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Delta 777 is one of the named businesses in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-DIVINE-TASTES",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Divine Tastes is one of the named businesses in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-IRON-SPIRIT",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Iron Spirit is one of the named businesses in H11's occupied lower levels."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-191-SAVAGE-DOCS-NORTH",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+        "source_ref": "Night City 2045 p. 191",
+        "note": "Savage Docs North is one of the named medical businesses in H11's occupied lower levels."
+      }
+    ]
+  }
+}

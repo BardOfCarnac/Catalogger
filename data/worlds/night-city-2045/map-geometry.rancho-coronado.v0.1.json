@@ -1,0 +1,28 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-RANCHO-CORONADO-P287",
+  "district": "Rancho Coronado",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 287,
+    "source_ref": "Night City 2045 p. 287",
+    "note": "Source map geometry verified against the user-provided purchased source. The map draws ordinary pins #1-#11. The Maquiladoras are explicitly listed as not shown on the map and therefore receive no invented source coordinate."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "106.9 Sangre y arena", "entity_id": "NC2045-LOC-RANCHO-CORONADO-286-106-9-SANGRE-Y-ARENA", "x": 0.5302, "y": 0.450019, "source_ref": "Night City 2045 p. 286"},
+    {"map_no": 2, "name": "Albino Alligator Car Wash", "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-ALBINO-ALLIGATOR-CAR-WASH", "x": 0.162388, "y": 0.472817, "source_ref": "Night City 2045 p. 288"},
+    {"map_no": 3, "name": "Bread and Roses", "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-BREAD-AND-ROSES", "x": 0.325081, "y": 0.413269, "source_ref": "Night City 2045 p. 288"},
+    {"map_no": 4, "name": "Coronado Heights", "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-CORONADO-HEIGHTS", "x": 0.167428, "y": 0.336337, "source_ref": "Night City 2045 p. 288"},
+    {"map_no": 5, "name": "The Culms", "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-THE-CULMS", "x": 0.714778, "y": 0.417118, "source_ref": "Night City 2045 p. 288"},
+    {"map_no": 6, "name": "Digital Divinity Ruins", "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-DIGITAL-DIVINITY-RUINS", "x": 0.250765, "y": 0.339923, "source_ref": "Night City 2045 p. 289"},
+    {"map_no": 7, "name": "Eagle Rock Stadium", "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-EAGLE-ROCK-STADIUM", "x": 0.430379, "y": 0.219063, "source_ref": "Night City 2045 p. 289"},
+    {"map_no": 8, "name": "The Henhouse", "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-THE-HENHOUSE", "x": 0.236621, "y": 0.418507, "source_ref": "Night City 2045 p. 289"},
+    {"map_no": 9, "name": "The Island", "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-THE-ISLAND", "x": 0.476823, "y": 0.385303, "source_ref": "Night City 2045 p. 289"},
+    {"map_no": 10, "name": "Jack 'N' the Green", "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-JACK-N-THE-GREEN", "x": 0.600793, "y": 0.278686, "source_ref": "Night City 2045 p. 289"},
+    {"map_no": 11, "name": "Minimallism", "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM", "x": 0.273008, "y": 0.268371, "source_ref": "Night City 2045 p. 290"}
+  ]
+}

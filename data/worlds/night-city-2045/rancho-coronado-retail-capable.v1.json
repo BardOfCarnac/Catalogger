@@ -1,0 +1,35 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-rancho-coronado-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [289],
+    "note": "RETAIL_CAPABLE candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-THE-HENHOUSE",
+      "name": "The Henhouse",
+      "entity_type": "service",
+      "district": "Rancho Coronado",
+      "map_no": 8,
+      "book_page": 289,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 289",
+      "source_summary": "Former sporting-goods store stripped of its merchandise after the collapse and subsequently converted into the Rancho Coronado Roosters' roller-derby stadium.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "roller-derby-venue", "label": "Roller-derby stadium and event venue"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "CORRECT_FORMER_RETAIL_SITE_TO_CURRENT_EVENT_VENUE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-NEW-WESTBROOK-P213",
+  "district": "New Westbrook",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 213,
+    "source_ref": "Night City 2045 p. 213",
+    "note": "Source map geometry verified against the user-provided purchased source. The map contains ordinary numbered pins #1-#25. The Soup Truck is explicitly listed by the source as not shown on the map and therefore receives no invented map point."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "Aerocab", "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-AEROCAB", "x": 0.514837, "y": 0.452811, "source_ref": "Night City 2045 p. 214"},
+    {"map_no": 2, "name": "Augmented Optic", "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-AUGMENTED-OPTIC", "x": 0.437337, "y": 0.345287, "source_ref": "Night City 2045 p. 214"},
+    {"map_no": 3, "name": "Canalside Plaza", "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA", "x": 0.683922, "y": 0.660180, "source_ref": "Night City 2045 p. 214"},
+    {"map_no": 4, "name": "Chatelaine’s", "entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CHATELAINE-S", "x": 0.577124, "y": 0.434088, "source_ref": "Night City 2045 p. 214"},
+    {"map_no": 5, "name": "The Combat Zone", "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-THE-COMBAT-ZONE", "x": 0.492680, "y": 0.260015, "source_ref": "Night City 2045 p. 215"},
+    {"map_no": 6, "name": "Denya Jinja", "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA", "x": 0.636176, "y": 0.342067, "source_ref": "Night City 2045 p. 215"},
+    {"map_no": 7, "name": "Dilly’s", "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DILLY-S", "x": 0.540833, "y": 0.371845, "source_ref": "Night City 2045 pp. 215-216"},
+    {"map_no": 8, "name": "Evergreen Apartments", "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-EVERGREEN-APARTMENTS", "x": 0.505033, "y": 0.403031, "source_ref": "Night City 2045 p. 216"},
+    {"map_no": 9, "name": "HardGrind", "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HARDGRIND", "x": 0.525490, "y": 0.484991, "source_ref": "Night City 2045 p. 216"},
+    {"map_no": 10, "name": "Holliday Market", "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET", "x": 0.474706, "y": 0.427191, "source_ref": "Night City 2045 p. 216"},
+    {"map_no": 11, "name": "Lincoln Lot", "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-LINCOLN-LOT", "x": 0.551242, "y": 0.494946, "source_ref": "Night City 2045 p. 216"},
+    {"map_no": 12, "name": "Medical Errors", "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-MEDICAL-ERRORS", "x": 0.463170, "y": 0.366625, "source_ref": "Night City 2045 p. 217"},
+    {"map_no": 13, "name": "Megabuilding H6 Construction Site", "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-MEGABUILDING-H6-CONSTRUCTION-SITE", "x": 0.529216, "y": 0.339221, "source_ref": "Night City 2045 p. 217"},
+    {"map_no": 14, "name": "Net54 88.2", "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NET54-88-2", "x": 0.534445, "y": 0.219625, "source_ref": "Night City 2045 p. 217"},
+    {"map_no": 15, "name": "Network 54 Plaza", "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-PLAZA", "x": 0.584052, "y": 0.394023, "source_ref": "Night City 2045 p. 217"},
+    {"map_no": 16, "name": "Network 54 Westbrook Private Acres", "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-WESTBROOK-PRIVATE-ACRES", "x": 0.610556, "y": 0.416751, "source_ref": "Night City 2045 p. 217"},
+    {"map_no": 17, "name": "Night City Firestation #1", "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-NIGHT-CITY-FIRESTATION-1", "x": 0.684706, "y": 0.633835, "source_ref": "Night City 2045 p. 218"},
+    {"map_no": 18, "name": "North Cargo Village", "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-NORTH-CARGO-VILLAGE", "x": 0.450147, "y": 0.379591, "source_ref": "Night City 2045 p. 218"},
+    {"map_no": 19, "name": "Rocklin Augmentics Campus", "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-CAMPUS", "x": 0.637974, "y": 0.631140, "source_ref": "Night City 2045 p. 218"},
+    {"map_no": 20, "name": "Rocklin Augmentics Innovation Hub", "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-INNOVATION-HUB", "x": 0.657059, "y": 0.642843, "source_ref": "Night City 2045 pp. 218-219"},
+    {"map_no": 21, "name": "Silver Pixel Cloud", "entity_id": "NC2045-LOC-NEW-WESTBROOK-219-SILVER-PIXEL-CLOUD", "x": 0.584052, "y": 0.249744, "source_ref": "Night City 2045 p. 219"},
+    {"map_no": 22, "name": "ValueMart Village", "entity_id": "NC2045-LOC-NEW-WESTBROOK-219-VALUEMART-VILLAGE", "x": 0.396863, "y": 0.253853, "source_ref": "Night City 2045 p. 219"},
+    {"map_no": 23, "name": "Virtual Variety", "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-VIRTUAL-VARIETY", "x": 0.637974, "y": 0.608412, "source_ref": "Night City 2045 p. 220"},
+    {"map_no": 24, "name": "Woody’s", "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-WOODY-S", "x": 0.607320, "y": 0.551984, "source_ref": "Night City 2045 p. 220"},
+    {"map_no": 25, "name": "WorldSat Communications Offices", "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-WORLDSAT-COMMUNICATIONS-OFFICES", "x": 0.582026, "y": 0.293936, "source_ref": "Night City 2045 p. 220"}
+  ]
+}
