@@ -1,0 +1,207 @@
+{
+  "version": "0.1.0",
+  "scope": "Official Cyberpunk RED-era food and drink commercial identities useful to Vend-R. This is not a list of every individual restaurant or food stall.",
+  "brands": [
+    {
+      "id": "BRAND-0001",
+      "name": "Continental Brands",
+      "kind": "corporation",
+      "status_2045": "active",
+      "manufacturer_id": "MFR-0013",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "CP:R", "page": "269-270"},
+        {"source_code": "NC2045", "page": "20"}
+      ],
+      "note": "Major North American food manufacturer and distributor; parent of Oasis."
+    },
+    {
+      "id": "BRAND-0002",
+      "name": "Kibble",
+      "kind": "product_line",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "manufacturer_id": "MFR-0013",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "CP:R", "page": "354"},
+        {"source_code": "NC2045", "page": "82, 258"}
+      ],
+      "note": "Ubiquitous synthetic staple. The name behaves like a genericized product category, but Continental Brands is the confirmed RED-era producer used by Vend-R."
+    },
+    {
+      "id": "BRAND-0003",
+      "name": "Triti-Fizz",
+      "kind": "product_line",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "manufacturer_id": "MFR-0013",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "BC", "page": "124"},
+        {"source_code": "NC2045", "page": "82, 189"}
+      ],
+      "note": "Continental Brands soft-drink line with frequent flavor variants."
+    },
+    {
+      "id": "BRAND-0004",
+      "name": "Koff Pops",
+      "kind": "product_line",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "manufacturer_id": "MFR-0013",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "DL:Cargo", "page": "5"},
+        {"source_code": "IR2", "page": "37"}
+      ],
+      "note": "Continental Brands coffee pellets used with Koff Popper appliances."
+    },
+    {
+      "id": "BRAND-0005",
+      "name": "Continental Brands Real Instant Coffee",
+      "kind": "product_line",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "manufacturer_id": "MFR-0013",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "DL:Conapts", "page": "7"},
+        {"source_code": "IR4", "page": "51"}
+      ],
+      "note": "Premium instant coffee product sold under the Continental Brands name."
+    },
+    {
+      "id": "BRAND-0006",
+      "name": "Oasis",
+      "kind": "retail_chain",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "departments": ["food-consumables", "general-equipment"],
+      "source_refs": [
+        {"source_code": "BC", "page": "156"},
+        {"source_code": "NC2045", "page": "25, 82"}
+      ],
+      "note": "Continental Brands convenience-store chain and principal controlled retail channel for its food products."
+    },
+    {
+      "id": "BRAND-0007",
+      "name": "FūdHouse",
+      "kind": "restaurant_chain",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0001",
+      "departments": ["food-consumables", "services-entertainment"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "189"}
+      ],
+      "note": "Continental Brands fast-food chain serving prepak meals and Triti-Fizz."
+    },
+    {
+      "id": "BRAND-0008",
+      "name": "Hundred Under Haven",
+      "aliases": ["Euro Shop"],
+      "kind": "retail_chain",
+      "status_2045": "active",
+      "owner_manufacturer_id": "MFR-0072",
+      "departments": ["food-consumables", "general-equipment"],
+      "source_refs": [
+        {"source_code": "BC", "page": "156"},
+        {"source_code": "NC2045", "page": "25"}
+      ],
+      "note": "Petrochem-owned low-price convenience-store chain and direct competitor to Oasis."
+    },
+    {
+      "id": "BRAND-0009",
+      "name": "Hammered Industries",
+      "kind": "corporation",
+      "status_2045": "active",
+      "manufacturer_id": "MFR-0036",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "BC", "page": "42"},
+        {"source_code": "NC2045", "page": "189"}
+      ],
+      "note": "Alcohol producer and maker of drink-mixing equipment."
+    },
+    {
+      "id": "BRAND-0010",
+      "name": "Hammered Up Liquor",
+      "kind": "retail_chain",
+      "status_2045": "active",
+      "parent_brand_id": "BRAND-0009",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "189"}
+      ],
+      "note": "Hammered Industries retail/vendit brand for pre-packaged synthetic alcohol."
+    },
+    {
+      "id": "BRAND-0011",
+      "name": "Matsura Food Products",
+      "kind": "importer_distributor",
+      "status_2045": "active",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "203-204"}
+      ],
+      "note": "Importer and seller of non-perishable Chinese, Japanese, and Korean foodstuffs."
+    },
+    {
+      "id": "BRAND-0012",
+      "name": "Cactus Water",
+      "kind": "producer_brand",
+      "status_2045": "active",
+      "owner_manufacturer_id": "MFR-0072",
+      "departments": ["food-consumables"],
+      "source_refs": [
+        {"source_code": "T:Street", "page": null},
+        {"source_code": "NC2045", "page": "189"}
+      ],
+      "note": "Petrochem-linked bottled-water producer and consumer brand."
+    },
+    {
+      "id": "BRAND-0013",
+      "name": "Buck-A-Slice",
+      "kind": "restaurant_chain",
+      "status_2045": "active",
+      "departments": ["food-consumables", "services-entertainment"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "107"}
+      ],
+      "note": "Cheap pizza chain with multiple Night City locations."
+    },
+    {
+      "id": "BRAND-0014",
+      "name": "Pizza to Go",
+      "kind": "restaurant_chain",
+      "status_2045": "active",
+      "departments": ["food-consumables", "services-entertainment"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": null}
+      ],
+      "note": "Long-running Night City pizza fast-food chain."
+    },
+    {
+      "id": "BRAND-0015",
+      "name": "Kibble Cookie Kraze",
+      "kind": "food_vendor_brand",
+      "status_2045": "active",
+      "departments": ["food-consumables", "services-entertainment"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "107"}
+      ],
+      "note": "Food-truck brand selling complete meals as cookies made with crushed Kibble in multiple flavors."
+    },
+    {
+      "id": "BRAND-0016",
+      "name": "Moo Moo Burger",
+      "kind": "restaurant_chain",
+      "status_2045": "active",
+      "departments": ["food-consumables", "services-entertainment"],
+      "source_refs": [
+        {"source_code": "NC2045", "page": "310"}
+      ],
+      "note": "Legacy burger chain with one remaining Night City location in 2045."
+    }
+  ]
+}
