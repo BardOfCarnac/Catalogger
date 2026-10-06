@@ -14,6 +14,7 @@ The initial catalogue is derived from **R. Talsorian Games' Night Market Index v
 - **482 item/manufacturer links**
 - **113 normalized manufacturers**
 - **16 canonical RED-era food/drink commercial identities** (corporations, product lines, retail chains, and food brands)
+- **6 canonical branded food/drink products** and **30 named official variants**
 - **1,316 retained raw index listings** for audit/provenance
 - **7 retired IDs** redirected to canonical items
 
@@ -28,6 +29,7 @@ data/
     *.json.gz                   canonical source-data shards
     manufacturers.json          normalized manufacturers
     brands.json                 canonical RED-era food/drink brand registry
+    brand-products.json         branded products, named variants + stock display policy
     sources.json                source-book/DLC legend
     taxonomy.json               Vend-R departments + controlled vocabularies
   curation/
@@ -125,6 +127,12 @@ The helper in `stock_engine.py` can create a realized stocking context for testi
 The current controlled temporary conditions are `shortage`, `surplus`, `disrupted_supply`, `fresh_delivery`, `liquidation`, and `hot_merchandise`. They may apply globally or target particular departments, supply profiles, market channels, manufacturers or item IDs. They bend current supply behaviour without rewriting the permanent assortment.
 
 The lifecycle event stream records meaningful transitions such as `supplier_failed`, `backorder_placed`, `delivery_received`, `replenished`, `restocked`, `special_arrival` and `special_departed`. This gives later services an explainable world-state history instead of silent rerolls.
+
+### Named consumer variants
+
+Vend-R keeps mechanically identical consumer variants beneath the canonical catalogue item instead of duplicating rules entries. `data/catalog/brand-products.json` currently binds the published Kibble and Triti-Fizz variant lists to `Kibble Pack` and `Triti-Fizz`. A stock row can therefore expose several named flavors/formulas/formats while price, rules identity, quantity and assortment remain attached to the base item.
+
+The number of variants shown scales with shop stock depth. Variant source provenance is filtered independently: for example, a CP:R-only dataset can still contain the base Kibble Pack while omitting variants sourced from `Collecting the Random`. This keeps the source-selection UI meaningful all the way down to flavor level.
 
 Generate a deterministic persistent bundle, optionally restricted to books/sources the user has enabled:
 
