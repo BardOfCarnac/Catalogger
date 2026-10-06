@@ -31,6 +31,8 @@ item_sources = load_table("item-sources")
 item_mfrs = load_table("item-manufacturers")
 manufacturers = load("catalog/manufacturers.json")
 sources = load("catalog/sources.json")
+brand_doc = load("catalog/brands.json")
+brands = brand_doc["brands"]
 taxonomy = load("catalog/taxonomy.json")
 identity_rules = load("curation/product-identity.json")
 default_docs = [
@@ -51,10 +53,32 @@ def unique(rows, key, label):
 unique(items, "id", "item IDs")
 unique(manufacturers, "id", "manufacturer IDs")
 unique(sources, "code", "source codes")
+unique(brands, "id", "brand IDs")
 
 item_ids = {r["id"] for r in items}
 mfr_ids = {r["id"] for r in manufacturers}
 source_codes = {r["code"] for r in sources}
+brand_ids = {r["id"] for r in brands}
+brand_kinds = {
+    "corporation", "product_line", "retail_chain", "restaurant_chain",
+    "importer_distributor", "producer_brand", "food_vendor_brand"
+}
+
+for r in brands:
+    assert r["name"] and r["kind"] in brand_kinds, r
+    assert r["status_2045"] in {"active", "inactive", "uncertain"}, r
+    if r.get("parent_brand_id") is not None:
+        assert r["parent_brand_id"] in brand_ids and r["parent_brand_id"] != r["id"], r
+    if r.get("manufacturer_id") is not None:
+        assert r["manufacturer_id"] in mfr_ids, r
+    if r.get("owner_manufacturer_id") is not None:
+        assert r["owner_manufacturer_id"] in mfr_ids, r
+    assert len(r.get("aliases", [])) == len(set(r.get("aliases", []))), r
+    seen_brand_sources = set()
+    for ref in r.get("source_refs", []):
+        assert ref["source_code"] in source_codes, r
+        assert ref["source_code"] not in seen_brand_sources, r
+        seen_brand_sources.add(ref["source_code"])
 
 for r in item_mfrs:
     assert r["item_id"] in item_ids and r["manufacturer_id"] in mfr_ids, r
@@ -67,6 +91,10 @@ for r in redirects:
 
 # Controlled commercial vocabulary.
 dept_ids = {r["id"] for r in taxonomy["departments"]}
+for r in brands:
+    assert r.get("departments"), r
+    assert all(v in dept_ids for v in r["departments"]), r
+
 identity_ids = {r["id"] for r in taxonomy["product_identity"]}
 commodity_ids = {r["id"] for r in taxonomy["commodity_kinds"]}
 quantity_ids = {r["id"] for r in taxonomy["quantity_profiles"]}
@@ -171,7 +199,7 @@ for r in identity_rules["branded_source_buckets"]:
 assert len(items) == 1275
 mixed = sum(1 for r in default_rows if r["requires_item_curation"])
 print(
-    f"OK: {len(items)} items, {len(manufacturers)} manufacturers, "
+    f"OK: {len(items)} items, {len(manufacturers)} manufacturers, {len(brands)} brands, "
     f"{len(item_sources)} item-source links, {len(default_rows)} commercial defaults, "
     f"{len(identity_rules['exact'])} exact identity decisions, {len(seen_buckets)} branded identity buckets "
     f"({mixed} mixed source buckets flagged for item review)"
