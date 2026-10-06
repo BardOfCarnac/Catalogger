@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
-  "source_pool_version": "1.3",
+  "version": "1.1.0",
+  "source_pool_version": "1.4",
   "provider": "unsplash",
-  "note": "User-reviewed Vend-R item image pool. Photo page is retained for attribution; image_url uses Unsplash's photo download route so the browser receives the current image asset.",
-  "image_count": 166,
+  "note": "Vend-R approved Unsplash image pool expanded with abstract, close-up, object, workbench and related-scene imagery for item-led presentation.",
+  "image_count": 184,
   "images": {
     "rtSDJpHpWW8": {
       "id": "rtSDJpHpWW8",
@@ -2699,23 +2699,9 @@
         "Weapons"
       ],
       "source_subcategories": [
-        "Assault Rifles",
-        "Bows and Crossbows",
-        "Grenade Launchers",
-        "Heavy Melee Weapons",
-        "Heavy Pistols",
-        "Heavy SMG",
-        "Light Melee Weapons",
-        "Machine Guns",
-        "Medium Melee Weapons",
-        "Medium Pistols",
-        "Rocket Launchers",
         "SMG",
-        "Shotguns",
-        "Sniper Rifles",
-        "Thrown Weapons",
-        "Very Heavy Melee Weapons",
-        "Very Heavy Pistols"
+        "Heavy SMG",
+        "Weapon Attachments"
       ]
     },
     "d2lY_pkD3bA": {
@@ -2730,23 +2716,7 @@
         "Weapons"
       ],
       "source_subcategories": [
-        "Assault Rifles",
-        "Bows and Crossbows",
-        "Grenade Launchers",
-        "Heavy Melee Weapons",
-        "Heavy Pistols",
-        "Heavy SMG",
-        "Light Melee Weapons",
-        "Machine Guns",
-        "Medium Melee Weapons",
-        "Medium Pistols",
-        "Rocket Launchers",
-        "SMG",
-        "Shotguns",
-        "Sniper Rifles",
-        "Thrown Weapons",
-        "Very Heavy Melee Weapons",
-        "Very Heavy Pistols"
+        "Machine Guns"
       ]
     },
     "8NDwuSSYl5c": {
@@ -2762,22 +2732,8 @@
       ],
       "source_subcategories": [
         "Assault Rifles",
-        "Bows and Crossbows",
-        "Grenade Launchers",
-        "Heavy Melee Weapons",
-        "Heavy Pistols",
-        "Heavy SMG",
-        "Light Melee Weapons",
-        "Machine Guns",
-        "Medium Melee Weapons",
-        "Medium Pistols",
-        "Rocket Launchers",
         "SMG",
-        "Shotguns",
-        "Sniper Rifles",
-        "Thrown Weapons",
-        "Very Heavy Melee Weapons",
-        "Very Heavy Pistols"
+        "Heavy SMG"
       ]
     },
     "LBvZzMXjh58": {
@@ -2793,22 +2749,8 @@
       ],
       "source_subcategories": [
         "Assault Rifles",
-        "Bows and Crossbows",
-        "Grenade Launchers",
-        "Heavy Melee Weapons",
-        "Heavy Pistols",
-        "Heavy SMG",
-        "Light Melee Weapons",
-        "Machine Guns",
-        "Medium Melee Weapons",
-        "Medium Pistols",
-        "Rocket Launchers",
-        "SMG",
-        "Shotguns",
         "Sniper Rifles",
-        "Thrown Weapons",
-        "Very Heavy Melee Weapons",
-        "Very Heavy Pistols"
+        "Machine Guns"
       ]
     },
     "amXQTiylIDM": {
@@ -2823,6 +2765,313 @@
         "Weapons / Exotic Weapon Forms"
       ],
       "source_subcategories": []
+    },
+    "HYb8y22q3e4": {
+      "id": "HYb8y22q3e4",
+      "title": "Black pistol with brown grip on rough concrete",
+      "by": "Taiwangun",
+      "contexts": [
+        "Pistols — Rough / Street Detail"
+      ],
+      "source_subcategories": [
+        "Medium Pistols",
+        "Heavy Pistols",
+        "Very Heavy Pistols"
+      ],
+      "source": "https://unsplash.com/photos/HYb8y22q3e4",
+      "image_url": "https://unsplash.com/photos/HYb8y22q3e4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "MsdDbOUTiu4": {
+      "id": "MsdDbOUTiu4",
+      "title": "Large pistol on black surface",
+      "by": "Thomas Tucker",
+      "contexts": [
+        "Pistols — Heavy / Dark Detail"
+      ],
+      "source_subcategories": [
+        "Heavy Pistols",
+        "Very Heavy Pistols"
+      ],
+      "source": "https://unsplash.com/photos/MsdDbOUTiu4",
+      "image_url": "https://unsplash.com/photos/MsdDbOUTiu4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "WFi35k-opAw": {
+      "id": "WFi35k-opAw",
+      "title": "Pistol with red-dot optic on bag",
+      "by": "Creed Ferguson",
+      "contexts": [
+        "Pistols — Optics / Tactical Detail"
+      ],
+      "source_subcategories": [
+        "Medium Pistols",
+        "Heavy Pistols",
+        "Very Heavy Pistols"
+      ],
+      "source": "https://unsplash.com/photos/WFi35k-opAw",
+      "image_url": "https://unsplash.com/photos/WFi35k-opAw/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "tV91tLofBu8": {
+      "id": "tV91tLofBu8",
+      "title": "Rifle detail close-up",
+      "by": "Guru Ankam",
+      "contexts": [
+        "Rifles — Close Detail"
+      ],
+      "source_subcategories": [
+        "Assault Rifles",
+        "Sniper Rifles",
+        "Machine Guns"
+      ],
+      "source": "https://unsplash.com/photos/tV91tLofBu8",
+      "image_url": "https://unsplash.com/photos/tV91tLofBu8/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "RxeJyzTpvog": {
+      "id": "RxeJyzTpvog",
+      "title": "Rifle scope on wooden surface",
+      "by": "Rex Allen",
+      "contexts": [
+        "Precision Optics / Scope Detail"
+      ],
+      "source_subcategories": [
+        "Sniper Rifles",
+        "Weapon Attachments"
+      ],
+      "source": "https://unsplash.com/photos/RxeJyzTpvog",
+      "image_url": "https://unsplash.com/photos/RxeJyzTpvog/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "Nxa__nM1twU": {
+      "id": "Nxa__nM1twU",
+      "title": "Loading shotgun shells",
+      "by": "Rodrigo Rodrigues | WOLF Λ R T",
+      "contexts": [
+        "Shotguns — Handling / Ammunition"
+      ],
+      "source_subcategories": [
+        "Shotguns"
+      ],
+      "source": "https://unsplash.com/photos/Nxa__nM1twU",
+      "image_url": "https://unsplash.com/photos/Nxa__nM1twU/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "RoQq44h7QC4": {
+      "id": "RoQq44h7QC4",
+      "title": "Brass ammunition close-up",
+      "by": "Marek Studzinski",
+      "contexts": [
+        "Ammunition — Macro Detail"
+      ],
+      "source_subcategories": [
+        "Ammunition"
+      ],
+      "source": "https://unsplash.com/photos/RoQq44h7QC4",
+      "image_url": "https://unsplash.com/photos/RoQq44h7QC4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "MWHSw0zOY5o": {
+      "id": "MWHSw0zOY5o",
+      "title": "Black knife on black surface",
+      "by": "shri",
+      "contexts": [
+        "Melee — Minimal Object Detail"
+      ],
+      "source_subcategories": [
+        "Light Melee Weapons",
+        "Medium Melee Weapons",
+        "Heavy Melee Weapons",
+        "Thrown Weapons"
+      ],
+      "source": "https://unsplash.com/photos/MWHSw0zOY5o",
+      "image_url": "https://unsplash.com/photos/MWHSw0zOY5o/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "dbEkxltnNEc": {
+      "id": "dbEkxltnNEc",
+      "title": "Knife and tool detail on craftsman workbench",
+      "by": "Markus Spiske",
+      "contexts": [
+        "Melee / Workshop Detail",
+        "General Equipment"
+      ],
+      "source_subcategories": [
+        "Light Melee Weapons",
+        "Medium Melee Weapons",
+        "Heavy Melee Weapons",
+        "Thrown Weapons",
+        "General Gear"
+      ],
+      "source": "https://unsplash.com/photos/dbEkxltnNEc",
+      "image_url": "https://unsplash.com/photos/dbEkxltnNEc/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "WhRGvt7USX4": {
+      "id": "WhRGvt7USX4",
+      "title": "Neon circuit-board close-up",
+      "by": "Bjorn Pierre",
+      "contexts": [
+        "Cybertech / Electronics Macro"
+      ],
+      "source_subcategories": [
+        "Agents",
+        "Cyberdeck Hardware",
+        "Cyberdecks",
+        "Netrunning Accessories",
+        "Apps and Software"
+      ],
+      "source": "https://unsplash.com/photos/WhRGvt7USX4",
+      "image_url": "https://unsplash.com/photos/WhRGvt7USX4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "FCrYdP8gohg": {
+      "id": "FCrYdP8gohg",
+      "title": "Blue circuit and wiring macro",
+      "by": "Tim Käbel",
+      "contexts": [
+        "Electronics / Wiring Detail"
+      ],
+      "source_subcategories": [
+        "Agents",
+        "Cyberdeck Hardware",
+        "Cyberdecks",
+        "Netrunning Accessories",
+        "Apps and Software"
+      ],
+      "source": "https://unsplash.com/photos/FCrYdP8gohg",
+      "image_url": "https://unsplash.com/photos/FCrYdP8gohg/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "4ORzA3kWBiw": {
+      "id": "4ORzA3kWBiw",
+      "title": "Discarded circuit boards",
+      "by": "banah",
+      "contexts": [
+        "Electronics Salvage / Secondhand Tech"
+      ],
+      "source_subcategories": [
+        "Agents",
+        "General Gear",
+        "Cyberdeck Hardware"
+      ],
+      "source": "https://unsplash.com/photos/4ORzA3kWBiw",
+      "image_url": "https://unsplash.com/photos/4ORzA3kWBiw/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "NGiuYCI6phY": {
+      "id": "NGiuYCI6phY",
+      "title": "Medical instruments close-up",
+      "by": "camera obscura",
+      "contexts": [
+        "Medical Instruments / Clinical Detail"
+      ],
+      "source_subcategories": [
+        "Medical Services",
+        "Pharmaceuticals"
+      ],
+      "source": "https://unsplash.com/photos/NGiuYCI6phY",
+      "image_url": "https://unsplash.com/photos/NGiuYCI6phY/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "r-JzshhX04Y": {
+      "id": "r-JzshhX04Y",
+      "title": "Luxury jewellery display",
+      "by": "Slavan",
+      "contexts": [
+        "Premium Fashion / Display Detail"
+      ],
+      "source_subcategories": [
+        "Fashion Styles",
+        "Specific Fashions",
+        "Lifestyle"
+      ],
+      "source": "https://unsplash.com/photos/r-JzshhX04Y",
+      "image_url": "https://unsplash.com/photos/r-JzshhX04Y/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "ErnvqL3Fvpc": {
+      "id": "ErnvqL3Fvpc",
+      "title": "Luxury watches in display",
+      "by": "Slavan",
+      "contexts": [
+        "Premium Lifestyle / Display Detail"
+      ],
+      "source_subcategories": [
+        "Fashion Styles",
+        "Specific Fashions",
+        "Lifestyle"
+      ],
+      "source": "https://unsplash.com/photos/ErnvqL3Fvpc",
+      "image_url": "https://unsplash.com/photos/ErnvqL3Fvpc/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "dUpnF8v_qrU": {
+      "id": "dUpnF8v_qrU",
+      "title": "Vacuum tube on electronics workbench",
+      "by": "Madalozzo",
+      "contexts": [
+        "Retro Electronics / Component Detail"
+      ],
+      "source_subcategories": [
+        "General Gear",
+        "Agents",
+        "Cyberaudio",
+        "Cyberdeck Hardware"
+      ],
+      "source": "https://unsplash.com/photos/dUpnF8v_qrU",
+      "image_url": "https://unsplash.com/photos/dUpnF8v_qrU/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "voszGFTXEuE": {
+      "id": "voszGFTXEuE",
+      "title": "Cluttered electronics repair shop",
+      "by": "Ruth Leong",
+      "contexts": [
+        "Electronics Repair / Workshop Context"
+      ],
+      "source_subcategories": [
+        "General Gear",
+        "Agents"
+      ],
+      "source": "https://unsplash.com/photos/voszGFTXEuE",
+      "image_url": "https://unsplash.com/photos/voszGFTXEuE/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
+    },
+    "glw-aJb71T8": {
+      "id": "glw-aJb71T8",
+      "title": "Cluttered workbench with tools and supplies",
+      "by": "Dave Meckler",
+      "contexts": [
+        "Repair / Fabrication Workbench"
+      ],
+      "source_subcategories": [
+        "General Gear",
+        "Punknaught Parts",
+        "Vehicle Upgrades"
+      ],
+      "source": "https://unsplash.com/photos/glw-aJb71T8",
+      "image_url": "https://unsplash.com/photos/glw-aJb71T8/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5
     }
   }
 }
