@@ -2,8 +2,8 @@
   "version": "1.1.0",
   "source_pool_version": "1.4",
   "provider": "unsplash",
-  "note": "Vend-R approved Unsplash image pool expanded with abstract, close-up, object, workbench and related-scene imagery for item-led presentation.",
-  "image_count": 184,
+  "note": "Vend-R image pool with explicit user curation states; denied images are blocked at render time and pending images remain unresolved until re-reviewed.",
+  "image_count": 185,
   "images": {
     "rtSDJpHpWW8": {
       "id": "rtSDJpHpWW8",
@@ -749,15 +749,20 @@
     "sbVu5zitZt0": {
       "id": "sbVu5zitZt0",
       "title": "Blue robotic prosthetic hand on teal",
-      "by": "Possessed Photography",
-      "source": "https://unsplash.com/photos/sbVu5zitZt0",
+      "by": "ThisisEngineering",
+      "source": "https://unsplash.com/photos/blue-robotic-prosthetic-hand-against-teal-background-sbVu5zitZt0",
       "image_url": "https://unsplash.com/photos/sbVu5zitZt0/download?force=true&w=1400",
       "focal_x": 0.5,
       "focal_y": 0.5,
       "contexts": [
         "Cyberware & Prosthetics"
       ],
-      "source_subcategories": []
+      "source_subcategories": [
+        "Cyberlimbs",
+        "Cyberfingers",
+        "Internal Body Cyberware"
+      ],
+      "curation_status": "approved"
     },
     "IzskHY_RQJc": {
       "id": "IzskHY_RQJc",
@@ -1813,7 +1818,8 @@
       "contexts": [
         "Medical / Biotech / Cybernetic Hardware"
       ],
-      "source_subcategories": []
+      "source_subcategories": [],
+      "curation_status": "pending"
     },
     "-DCNY22iDeI": {
       "id": "-DCNY22iDeI",
@@ -2781,7 +2787,8 @@
       "source": "https://unsplash.com/photos/HYb8y22q3e4",
       "image_url": "https://unsplash.com/photos/HYb8y22q3e4/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "MsdDbOUTiu4": {
       "id": "MsdDbOUTiu4",
@@ -2847,7 +2854,8 @@
       "source": "https://unsplash.com/photos/RxeJyzTpvog",
       "image_url": "https://unsplash.com/photos/RxeJyzTpvog/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "Nxa__nM1twU": {
       "id": "Nxa__nM1twU",
@@ -2877,7 +2885,8 @@
       "source": "https://unsplash.com/photos/RoQq44h7QC4",
       "image_url": "https://unsplash.com/photos/RoQq44h7QC4/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "MWHSw0zOY5o": {
       "id": "MWHSw0zOY5o",
@@ -2895,7 +2904,8 @@
       "source": "https://unsplash.com/photos/MWHSw0zOY5o",
       "image_url": "https://unsplash.com/photos/MWHSw0zOY5o/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "denied"
     },
     "dbEkxltnNEc": {
       "id": "dbEkxltnNEc",
@@ -2934,7 +2944,8 @@
       "source": "https://unsplash.com/photos/WhRGvt7USX4",
       "image_url": "https://unsplash.com/photos/WhRGvt7USX4/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "pending"
     },
     "FCrYdP8gohg": {
       "id": "FCrYdP8gohg",
@@ -2986,7 +2997,8 @@
       "source": "https://unsplash.com/photos/NGiuYCI6phY",
       "image_url": "https://unsplash.com/photos/NGiuYCI6phY/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "pending"
     },
     "r-JzshhX04Y": {
       "id": "r-JzshhX04Y",
@@ -3003,7 +3015,8 @@
       "source": "https://unsplash.com/photos/r-JzshhX04Y",
       "image_url": "https://unsplash.com/photos/r-JzshhX04Y/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "ErnvqL3Fvpc": {
       "id": "ErnvqL3Fvpc",
@@ -3020,7 +3033,8 @@
       "source": "https://unsplash.com/photos/ErnvqL3Fvpc",
       "image_url": "https://unsplash.com/photos/ErnvqL3Fvpc/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "dUpnF8v_qrU": {
       "id": "dUpnF8v_qrU",
@@ -3038,7 +3052,8 @@
       "source": "https://unsplash.com/photos/dUpnF8v_qrU",
       "image_url": "https://unsplash.com/photos/dUpnF8v_qrU/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "approved"
     },
     "voszGFTXEuE": {
       "id": "voszGFTXEuE",
@@ -3071,7 +3086,26 @@
       "source": "https://unsplash.com/photos/glw-aJb71T8",
       "image_url": "https://unsplash.com/photos/glw-aJb71T8/download?force=true&w=1400",
       "focal_x": 0.5,
-      "focal_y": 0.5
+      "focal_y": 0.5,
+      "curation_status": "pending"
+    },
+    "vXpbB4-4OOM": {
+      "id": "vXpbB4-4OOM",
+      "title": "RED.01 — blurred red fashion silhouette",
+      "by": "devn",
+      "source": "https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-wearing-black-hat-vXpbB4-4OOM",
+      "image_url": "https://unsplash.com/photos/vXpbB4-4OOM/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Abstract Fashion / Lifestyle / Experimental Culture"
+      ],
+      "source_subcategories": [
+        "Fashion Styles",
+        "Specific Fashions",
+        "Lifestyle"
+      ],
+      "curation_status": "approved"
     }
   }
 }

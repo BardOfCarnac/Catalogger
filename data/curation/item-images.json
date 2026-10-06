@@ -16,8 +16,8 @@
   "stats": {
     "item_count": 1275,
     "approved_pool_size": 184,
-    "images_used": 153,
-    "max_reuse": 37,
+    "images_used": 154,
+    "max_reuse": 36,
     "median_reuse": 7,
     "general_fallback_count": 100,
     "audited_item_changes": 394,
@@ -1844,13 +1844,13 @@
       "fit_score": 115
     },
     "VENDR-0203": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "Vb4Ki0osSkc",
       "primary_visual_family": "Thrown Weapons",
       "matched_visual_families": [
         "Thrown Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0204": {
       "image_id": "3TfP0jvlj8s",
@@ -1880,13 +1880,13 @@
       "fit_score": 115
     },
     "VENDR-0207": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "KngqPcxxvXc",
       "primary_visual_family": "Medium Melee Weapons",
       "matched_visual_families": [
         "Medium Melee Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0208": {
       "image_id": "TqlRiiLNRDY",
@@ -1907,13 +1907,13 @@
       "fit_score": 115
     },
     "VENDR-0210": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "3TfP0jvlj8s",
       "primary_visual_family": "Heavy Melee Weapons",
       "matched_visual_families": [
         "Heavy Melee Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0211": {
       "image_id": "3TfP0jvlj8s",
@@ -1943,13 +1943,13 @@
       "fit_score": 115
     },
     "VENDR-0214": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "iLOsH36ZsSY",
       "primary_visual_family": "Heavy Melee Weapons",
       "matched_visual_families": [
         "Heavy Melee Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0215": {
       "image_id": "TqlRiiLNRDY",
@@ -1970,13 +1970,13 @@
       "fit_score": 115
     },
     "VENDR-0218": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "KngqPcxxvXc",
       "primary_visual_family": "Heavy Melee Weapons",
       "matched_visual_families": [
         "Heavy Melee Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0219": {
       "image_id": "KngqPcxxvXc",
@@ -1997,13 +1997,13 @@
       "fit_score": 115
     },
     "VENDR-0221": {
-      "image_id": "MWHSw0zOY5o",
+      "image_id": "TqlRiiLNRDY",
       "primary_visual_family": "Heavy Melee Weapons",
       "matched_visual_families": [
         "Heavy Melee Weapons"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-curated-replacement",
+      "fit_score": 130
     },
     "VENDR-0222": {
       "image_id": "3TfP0jvlj8s",
@@ -4886,13 +4886,13 @@
       "fit_score": 125
     },
     "VENDR-0543": {
-      "image_id": "o9PNfa3FYCU",
+      "image_id": "sbVu5zitZt0",
       "primary_visual_family": "Cyberlimbs",
       "matched_visual_families": [
         "Cyberlimbs"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-specific",
+      "fit_score": 135
     },
     "VENDR-0544": {
       "image_id": "GlXUHkmCa7o",
@@ -5147,13 +5147,13 @@
       "fit_score": 115
     },
     "VENDR-0572": {
-      "image_id": "uYDitQVXccc",
+      "image_id": "sbVu5zitZt0",
       "primary_visual_family": "Cyberlimbs",
       "matched_visual_families": [
         "Cyberlimbs"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-specific",
+      "fit_score": 135
     },
     "VENDR-0573": {
       "image_id": "3aG08v591o0",
@@ -5165,13 +5165,13 @@
       "fit_score": 115
     },
     "VENDR-0574": {
-      "image_id": "1c8k838LXpk",
+      "image_id": "sbVu5zitZt0",
       "primary_visual_family": "Cyberfingers",
       "matched_visual_families": [
         "Cyberfingers"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-specific",
+      "fit_score": 135
     },
     "VENDR-0576": {
       "image_id": "utNqAnoLEaQ",
@@ -5372,13 +5372,13 @@
       "fit_score": 115
     },
     "VENDR-0598": {
-      "image_id": "Q-UJHElsKOc",
+      "image_id": "sbVu5zitZt0",
       "primary_visual_family": "Cyberlimbs",
       "matched_visual_families": [
         "Cyberlimbs"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-specific",
+      "fit_score": 135
     },
     "VENDR-0599": {
       "image_id": "uYDitQVXccc",
@@ -5777,13 +5777,13 @@
       "fit_score": 115
     },
     "VENDR-0643": {
-      "image_id": "1c8k838LXpk",
+      "image_id": "sbVu5zitZt0",
       "primary_visual_family": "Cyberfingers",
       "matched_visual_families": [
         "Cyberfingers"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-specific",
+      "fit_score": 135
     },
     "VENDR-0644": {
       "image_id": "Q-UJHElsKOc",
@@ -7127,13 +7127,13 @@
       "fit_score": 115
     },
     "VENDR-0793": {
-      "image_id": "YTnmnUvNy4E",
+      "image_id": "vXpbB4-4OOM",
       "primary_visual_family": "Fashion Styles",
       "matched_visual_families": [
         "Fashion Styles"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-abstract",
+      "fit_score": 135
     },
     "VENDR-0794": {
       "image_id": "NoxwkSkOdCY",
@@ -7442,22 +7442,22 @@
       "fit_score": 115
     },
     "VENDR-0828": {
-      "image_id": "NILubKwP8JQ",
+      "image_id": "vXpbB4-4OOM",
       "primary_visual_family": "Fashion Styles",
       "matched_visual_families": [
         "Fashion Styles"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-abstract",
+      "fit_score": 135
     },
     "VENDR-0829": {
-      "image_id": "YTnmnUvNy4E",
+      "image_id": "vXpbB4-4OOM",
       "primary_visual_family": "Fashion Styles",
       "matched_visual_families": [
         "Fashion Styles"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-abstract",
+      "fit_score": 135
     },
     "VENDR-0830": {
       "image_id": "fzYypnVZ3DA",
@@ -7613,13 +7613,13 @@
       "fit_score": 115
     },
     "VENDR-0847": {
-      "image_id": "YTnmnUvNy4E",
+      "image_id": "vXpbB4-4OOM",
       "primary_visual_family": "Fashion Styles",
       "matched_visual_families": [
         "Fashion Styles"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-abstract",
+      "fit_score": 135
     },
     "VENDR-0848": {
       "image_id": "ErnvqL3Fvpc",
@@ -7640,13 +7640,13 @@
       "fit_score": 115
     },
     "VENDR-0850": {
-      "image_id": "NILubKwP8JQ",
+      "image_id": "vXpbB4-4OOM",
       "primary_visual_family": "Fashion Styles",
       "matched_visual_families": [
         "Fashion Styles"
       ],
-      "assignment_tier": "audited-item",
-      "fit_score": 115
+      "assignment_tier": "user-approved-abstract",
+      "fit_score": 135
     },
     "VENDR-0851": {
       "image_id": "fzYypnVZ3DA",

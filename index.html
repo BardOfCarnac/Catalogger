@@ -2581,6 +2581,7 @@ function curatedItemImage(itemId){
   if(!assignment?.image_id)return null;
   const image=itemImagePool?.images?.[assignment.image_id];
   if(!image)return null;
+  if(String(image.curation_status||'approved').toLowerCase()==='denied')return null;
   return {...image,assignment};
 }
 function sellerById(id){return sellers.find(s=>s.entity_id===id)}
