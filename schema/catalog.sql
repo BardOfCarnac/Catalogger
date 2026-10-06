@@ -35,7 +35,7 @@ create table if not exists brand_sources (
   brand_id text not null references brands(id) on delete cascade,
   source_code text not null references source_books(code),
   page text,
-  primary key (brand_id, source_code, page)
+  primary key (brand_id, source_code)
 );
 
 create table if not exists brand_departments (
