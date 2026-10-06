@@ -13,6 +13,7 @@ The initial catalogue is derived from **R. Talsorian Games' Night Market Index v
 - **1,709 item/source-page links**
 - **482 item/manufacturer links**
 - **113 normalized manufacturers**
+- **16 canonical RED-era food/drink commercial identities** (corporations, product lines, retail chains, and food brands)
 - **1,316 retained raw index listings** for audit/provenance
 - **7 retired IDs** redirected to canonical items
 
@@ -26,6 +27,7 @@ data/
     manifest.json               versioned shard manifest/checksums
     *.json.gz                   canonical source-data shards
     manufacturers.json          normalized manufacturers
+    brands.json                 canonical RED-era food/drink brand registry
     sources.json                source-book/DLC legend
     taxonomy.json               Vend-R departments + controlled vocabularies
   curation/
@@ -63,7 +65,7 @@ Large, mostly static factual tables are stored as deterministic, versioned gzip 
 
 ## Commercial profile layer
 
-The catalogue keeps **source classification** and **Vend-R classification** separate. RTG categories/subcategories are retained for provenance; Vend-R layers a commercial model over them for generating plausible sellers and inventory.
+The catalogue keeps **source classification** and **Vend-R classification** separate. Food/drink commercial identities are also kept distinct from manufacturers: `brands.json` can represent product lines, retailers, restaurant chains, importers, and producer brands without pretending they are all manufacturers. RTG categories/subcategories are retained for provenance; Vend-R layers a commercial model over them for generating plausible sellers and inventory.
 
 `data/catalog/taxonomy.json` defines controlled values for:
 
