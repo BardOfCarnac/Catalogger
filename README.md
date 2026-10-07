@@ -6,9 +6,9 @@ Vend-R treats a shop as a stable world entity: its identity is generated once an
 
 ## Current dataset
 
-The initial catalogue is derived from **R. Talsorian Games' Night Market Index v1.24 (January 2026)**. The canonicalized dataset currently contains:
+The initial catalogue is derived from **R. Talsorian Games' Night Market Index v1.24 (January 2026)**. Post-index official additions are kept as explicit source supplements; the first is `data/catalog/nc2045-supplement.json`, audited directly from **Night City 2045**. The canonicalized dataset currently contains:
 
-- **1,275 canonical catalogue entities**
+- **1,279 canonical catalogue entities** (1,275 from Night Market Index v1.24 + 4 audited Night City 2045 additions)
 - **1,313 item classification links**
 - **1,709 item/source-page links**
 - **482 item/manufacturer links**
