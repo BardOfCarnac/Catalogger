@@ -16,10 +16,17 @@ const CLASS_PARTS = [
 const ITEM_MFR_PART='data/catalog/item-manufacturers.v1.24.json.gz';
 const MFR_PATH='data/catalog/manufacturers.json';
 const DESC_PATH='data/curation/item-descriptions.json';
+const SOURCE_PARTS=[
+  'data/catalog/item-sources.v1.24.part01.json.gz',
+  'data/catalog/item-sources.v1.24.part02.json.gz'
+];
+const SOURCES_PATH='data/catalog/sources.json';
 let cache: Promise<any[]> | null = null;
 let classCache: Promise<Map<string,any>> | null = null;
 let mfrCache: Promise<Map<string,string[]>> | null = null;
 let descCache: Promise<Map<string,string>> | null = null;
+let itemSourceCache: Promise<Map<string,any[]>> | null = null;
+let sourceBookCache: Promise<any[]> | null = null;
 
 async function gunzipJson(url:string){
   const r=await fetch(url,{headers:{'user-agent':'Vend-R/0.1'}});
@@ -67,6 +74,100 @@ function descriptions(){
     .then(async r=>{if(!r.ok)throw new Error('description fetch failed: '+r.status);return await r.json()})
     .then((data:any)=>new Map(Object.entries(data?.items||{}).map(([id,value])=>[String(id),String(value)])));
   return descCache;
+}
+function sourceBooks(){
+  if(!sourceBookCache) sourceBookCache=fetch(ROOT+SOURCES_PATH,{headers:{'user-agent':'Vend-R/0.1'}})
+    .then(async r=>{if(!r.ok)throw new Error('source manifest fetch failed: '+r.status);return await r.json()})
+    .then((rows:any[])=>Array.isArray(rows)?rows:[]);
+  return sourceBookCache;
+}
+function itemSourceMap(){
+  if(!itemSourceCache) itemSourceCache=Promise.all(SOURCE_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>{
+    const map=new Map<string,any[]>();
+    for(const row of parts.flat()){
+      const id=String(row.item_id||'');
+      if(!id)continue;
+      const list=map.get(id)||[];
+      list.push({
+        code:String(row.source_code||''),
+        page:row.page==null?null:String(row.page),
+        raw_reference:row.raw_reference==null?null:String(row.raw_reference)
+      });
+      map.set(id,list);
+    }
+    return map;
+  });
+  return itemSourceCache;
+}
+function sourceMeta(row:any){
+  const code=String(row?.code||'');
+  const sourceType=code.startsWith('DL:')?'official-dlc':(code==='CPCW'?'official-promo':'official-book');
+  return {
+    code,
+    title:String(row?.title||code),
+    publisher:'R. Talsorian Games',
+    source_type:sourceType,
+    family:'official'
+  };
+}
+const VENDR_SOURCE={
+  code:'VENDR',
+  title:'Vend-R Originals',
+  publisher:'Vend-R',
+  source_type:'original',
+  family:'vendr',
+  description:'Original and inferred market material created for Vend-R.'
+};
+function requestedSourceCodes(u:URL){
+  const raw=u.searchParams.get('sources');
+  if(raw===null)return null;
+  const value=raw.trim();
+  if(!value||value==='-')return new Set<string>();
+  return new Set(value.split(',').map(x=>x.trim()).filter(Boolean));
+}
+function sourceCodeFromRef(ref:any,books:any[]){
+  const text=String(ref||'').trim();
+  if(!text)return 'VENDR';
+  if(/\bvend-?r\b/i.test(text))return 'VENDR';
+  const lower=text.toLowerCase();
+  const rows=books.slice().sort((a:any,b:any)=>String(b.title||'').length-String(a.title||'').length);
+  for(const row of rows){
+    const title=String(row.title||'').trim();
+    if(title&&lower.startsWith(title.toLowerCase()))return String(row.code);
+  }
+  return null;
+}
+function sourceRowsForItem(id:any,sourceMap:Map<string,any[]>,books:any[]){
+  const names=new Map(books.map((row:any)=>[String(row.code),String(row.title)]));
+  return (sourceMap.get(String(id))||[]).map((row:any)=>({
+    code:String(row.code),
+    title:names.get(String(row.code))||String(row.code),
+    page:row.page??null,
+    raw_reference:row.raw_reference??null,
+    family:'official'
+  }));
+}
+function itemAllowed(id:any,sourceMap:Map<string,any[]>,active:Set<string>|null){
+  if(active===null)return true;
+  return (sourceMap.get(String(id))||[]).some((row:any)=>active.has(String(row.code)));
+}
+function profileAllowed(p:any,active:Set<string>|null,books:any[]){
+  if(active===null)return true;
+  const code=sourceCodeFromRef(p?.source_ref,books);
+  return Boolean(code&&active.has(code));
+}
+function offeringSourceCode(offering:any,books:any[]){
+  if(offering?.is_inferred)return 'VENDR';
+  return sourceCodeFromRef(offering?.source_ref,books)||'VENDR';
+}
+function offeringAllowed(offering:any,active:Set<string>|null,books:any[]){
+  return active===null||active.has(offeringSourceCode(offering,books));
+}
+function localSourceRows(offering:any,books:any[]){
+  const code=offeringSourceCode(offering,books);
+  if(code==='VENDR')return [{...VENDR_SOURCE}];
+  const row=books.find((x:any)=>String(x.code)===code);
+  return row?[{...sourceMeta(row)}]:[];
 }
 
 const SB_URL=Deno.env.get('SUPABASE_URL')!;
@@ -157,7 +258,7 @@ function textHit(i:any,terms:any[]){const n=(String(i?.name||'')+' '+displayName
 function ruleAllows(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,string[]>){
   const rule=matchRule(p);
   if(!rule) return {allow:true,boost:0};
-  if(rule.strategy==='no_catalog_stock') return {allow:false,boost:0};
+  if(rule.strategy==='no_catalog_stock'||rule.strategy==='local_only') return {allow:false,boost:0};
   const d=department(i,classMap), sub=String(classification(i,classMap)?.source_subcategory||'');
   const rel=relationKey(i,classMap);
   const itemName=String(i?.display_name||i?.name||'').toLowerCase();
@@ -208,16 +309,23 @@ function score(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,string[]>)
   const gate=ruleAllows(p,i,classMap,mfrMap); if(!gate.allow) return null;
   const d=department(i,classMap), pri=parts(p.primary_departments), sec=parts(p.secondary_departments);
   let s=0;
-  const strategy=String(matchRule(p)?.strategy||'');
+  const rule=matchRule(p)||{};
+  const strategy=String(rule.strategy||'');
+  const hardSubs=rule.allowed_subcategories||[];
+  const sub=sourceSubcategory(i,classMap);
+  const hardSubMatch=hardSubs.length>0&&hardSubs.includes(sub);
   if(strategy==='event_market'&&!pri.length&&!sec.length){
     if(!d||['housing-property','services-entertainment'].includes(d)) return null;
     s=70;
-  }else if(d&&pri.includes(d)) s=100; else if(d&&sec.includes(d)) s=55; else if(d) return null; else s=15;
+  }else if(d&&pri.includes(d)) s=100;
+  else if(d&&sec.includes(d)) s=55;
+  else if(hardSubMatch) s=90;
+  else if(d) return null;
+  else s=15;
   const max=Number(matchRule(p)?.max_base_price_eb??p.max_base_price_eb), price=basePrice(i);
   if(Number.isFinite(max)&&max>0&&price!==null&&price>max) return null;
   if(p.breadth_profile==='broad') s+=10;
   if(p.assignment_confidence==='HIGH') s+=5;
-  const rule=matchRule(p)||{};
   const itemMfrs=mfrMap.get(String(i.id))||[];
   if(d==='weapons'&&!itemMfrs.length&&!(rule.required_manufacturers||[]).length) s+=30;
   s+=availabilityAdjustment(p,i);
@@ -456,6 +564,8 @@ function scaleQuantityMultiplier(p:any){
 function quantityClass(i:any,classMap:Map<string,any>){
   const sub=String(classification(i,classMap)?.source_subcategory||'');
   const dep=department(i,classMap);
+  const itemName=String(i?.display_name||i?.name||'').trim().toLowerCase();
+  if(itemName==='live chicken')return 'low';
   if(['Apps and Software','Attacker Programs','Defender Programs','Booster Programs','Black ICE','Demons','In-Game Purchases','Medical Services'].includes(sub))return 'continuous';
   if(['Ground Vehicle Types','Ground Vehicles','Air Vehicle Types','Air Vehicles','Sea Vehicle Types','Sea Vehicles','Unique Vehicles','Housing','Headquarters Improvements'].includes(sub))return 'singular';
   if(['Ammunition','Foodstuffs','Drinks (and similar substances served in bars and pubs)'].includes(sub))return 'bulk';
@@ -748,7 +858,9 @@ function curationFit(p:any,i:any,classMap:Map<string,any>,mfrMap:Map<string,stri
   if(String(c0.refresh_mode||'catalog')==='local')return null;
   if(!curationTargetMatch(p,i,classMap,mode))return null;
   const rule=matchRule(p)||{};
-  if(rule.strategy==='no_catalog_stock')return null;
+  if(rule.strategy==='no_catalog_stock'||rule.strategy==='local_only')return null;
+  const hardGate=ruleAllows(p,i,classMap,mfrMap);
+  if(!hardGate.allow)return null;
   const d=department(i,classMap),sub=sourceSubcategory(i,classMap),rel=relationKey(i,classMap);
   const itemName=String(i?.display_name||i?.name||'').toLowerCase();
   if((rule.exclude_departments||[]).includes(d))return null;
@@ -811,6 +923,7 @@ function stockRowFromChoice(p:any,x:any,classMap:Map<string,any>,generation:numb
 }
 function stockFor(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,stockGeneration=0){
   if(!['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||''))) return [];
+  if(localOnlyProfile(p))return [];
   if(String(stockCuration(p).refresh_mode||'catalog')==='local')return [];
   const generation=Math.max(0,Math.floor(Number(stockGeneration)||0)),plan=assortmentPlan(p);
   const ranked=all.map((item:any)=>({item,fit:score(p,item,classMap,mfrMap)})).filter((x:any)=>x.fit!==null);
@@ -1017,6 +1130,13 @@ async function saveObservation(worldKey:string,p:any,generation:number,stateAt:s
   return rows[0]||null;
 }
 async function resolveObservedStock(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,worldKey='public-2045'){
+  if(localOnlyProfile(p)){
+    return {
+      snapshot:[],visible:[],generation:0,state_at:null,
+      first_observation:false,model_migrated:false,changed:false,
+      mutations:0,elapsed_days:0
+    };
+  }
   const obsRows=await observationForShop(String(p.entity_id),worldKey);
   const obs=obsRows[0]||null;
   const nowMs=Date.now();
@@ -1040,19 +1160,78 @@ async function resolveObservedStock(p:any,all:any[],classMap:Map<string,any>,mfr
   return {...result,snapshot:priced,visible:visibleStock(priced),first_observation:false};
 }
 
+async function sourcesApi(u:URL){
+  const active=requestedSourceCodes(u);
+  const [all,sourceMap,books,profileRows]=await Promise.all([
+    catalogue(),itemSourceMap(),sourceBooks(),
+    db('vendr_stock_profiles','select=*&order=name.asc')
+  ]);
+  const profiles=profileRows.filter(isVendrVisibleProfile);
+  const countMap=new Map<string,Set<string>>();
+  for(const [itemId,links] of sourceMap.entries()){
+    for(const link of links){
+      const code=String(link.code||'');
+      if(!code)continue;
+      const set=countMap.get(code)||new Set<string>();
+      set.add(String(itemId)); countMap.set(code,set);
+    }
+  }
+  const localEntries=new Map<string,Set<string>>();
+  for(const p of profiles){
+    for(const offering of localOfferings(p)){
+      const code=offeringSourceCode(offering,books);
+      const set=localEntries.get(code)||new Set<string>();
+      set.add(String(offering.item_id)); localEntries.set(code,set);
+    }
+  }
+  const profileCounts=new Map<string,number>();
+  for(const p of profiles){
+    const code=sourceCodeFromRef(p.source_ref,books);
+    if(!code)continue;
+    profileCounts.set(code,(profileCounts.get(code)||0)+1);
+  }
+  const definitions=[
+    ...books.map((row:any)=>sourceMeta(row)),
+    {...VENDR_SOURCE}
+  ].map((row:any)=>{
+    const ids=new Set<string>([...(countMap.get(String(row.code))||[]),...(localEntries.get(String(row.code))||[])]);
+    return {...row,item_count:ids.size,profile_count:profileCounts.get(String(row.code))||0};
+  });
+  const visibleIds=new Set<string>();
+  for(const item of all)if(itemAllowed(item.id,sourceMap,active))visibleIds.add(String(item.id));
+  for(const [code,ids] of localEntries.entries()){
+    if(active===null||active.has(code))for(const id of ids)visibleIds.add(id);
+  }
+  const allCodes=definitions.map((row:any)=>String(row.code));
+  const activeCodes=active===null?allCodes:allCodes.filter(code=>active.has(code));
+  const visibleProfiles=profiles.filter((p:any)=>profileAllowed(p,active,books)).length;
+  return out({
+    sources:definitions,
+    active_source_codes:activeCodes,
+    visible_item_count:visibleIds.size,
+    visible_profile_count:visibleProfiles,
+    total_catalogue_items:all.length,
+    total_source_count:definitions.length
+  });
+}
+
 async function search(u:URL){
   const q=(u.searchParams.get('q')||'').trim();
   const activeId=u.searchParams.get('item_id');
   const suggestOnly=u.searchParams.get('suggest')==='1';
   if(!q) return out({query:q,active_item_id:null,items:[],offers:[],total_matches:0});
 
-  const [all,classMap,descMap]=await Promise.all([catalogue(),classifications(),descriptions()]);
+  const activeSources=requestedSourceCodes(u);
+  const [all,classMap,descMap,profileRows,sourceMap,books]=await Promise.all([
+    catalogue(),classifications(),descriptions(),
+    db('vendr_stock_profiles','select=*&order=name.asc'),
+    itemSourceMap(),sourceBooks()
+  ]);
+  const visibleAll=all.filter((i:any)=>itemAllowed(i.id,sourceMap,activeSources));
+  const profiles=profileRows.filter((p:any)=>isVendrVisibleProfile(p)&&profileAllowed(p,activeSources,books));
   const f=q.toLowerCase();
 
-  // Start with literal catalogue-name matches, then expand through the
-  // most relevant Catalogger classifications. A query like "pistol" should
-  // expand pistol families, not every ammunition family touched by a name.
-  const direct=all.filter((i:any)=>(String(i.name||'')+' '+displayName(i)).toLowerCase().includes(f));
+  const direct=visibleAll.filter((i:any)=>(String(i.name||'')+' '+displayName(i)).toLowerCase().includes(f));
   const qnorm=f.replace(/[^a-z0-9]+/g,' ').trim();
   const qterms=qnorm.split(/\s+/).filter(Boolean).map(t=>t==='ammo'?'ammunition':t);
   const exactDirect=direct.filter((i:any)=>[String(i.name||''),displayName(i)].some(n=>n.trim().toLowerCase()===f));
@@ -1073,7 +1252,7 @@ async function search(u:URL){
   }
   const relatedKeys=new Set(relationAnchors.map((i:any)=>relationKey(i,classMap)).filter(Boolean));
 
-  const matches=all.filter((i:any)=>{
+  const matches=visibleAll.filter((i:any)=>{
     const name=(String(i.name||'')+' '+displayName(i)).toLowerCase();
     if(exactDirect.length) return relatedKeys.has(relationKey(i,classMap));
     return name.includes(f) || relatedKeys.has(relationKey(i,classMap));
@@ -1085,7 +1264,7 @@ async function search(u:URL){
     return ar-br||an.length-bn.length||an.localeCompare(bn);
   });
 
-  const itemRows=matches.map((i:any)=>({
+  const catalogItemRows=matches.map((i:any)=>({
     item_id:i.id,
     name:displayName(i),
     catalog_name:i.name,
@@ -1097,32 +1276,80 @@ async function search(u:URL){
     price_tier:availabilityInfo(i).tier,
     availability_band:availabilityInfo(i).key,
     availability_label:availabilityInfo(i).label,
-    availability_rank:availabilityInfo(i).rank
+    availability_rank:availabilityInfo(i).rank,
+    sources:sourceRowsForItem(i.id,sourceMap,books)
   }));
 
+  const localMatches:any[]=[];
+  for(const p of profiles){
+    for(const offering of localOfferings(p)){
+      if(!offeringAllowed(offering,activeSources,books))continue;
+      const hay=[offering.name,offering.description,p.name,p.data?.short_description]
+        .filter(Boolean).join(' ').toLowerCase();
+      if(hay.includes(f)) localMatches.push({profile:p,offering});
+    }
+  }
+  localMatches.sort((a:any,b:any)=>{
+    const an=String(a.offering.name||''),bn=String(b.offering.name||'');
+    const af=an.toLowerCase(),bf=bn.toLowerCase();
+    const ar=af===f?0:af.startsWith(f)?1:af.includes(f)?2:3;
+    const br=bf===f?0:bf.startsWith(f)?1:bf.includes(f)?2:3;
+    return ar-br||an.length-bn.length||an.localeCompare(bn);
+  });
+  const localItemRows=localMatches.map(({profile:p,offering}:any)=>({
+    item_id:offering.item_id,
+    name:offering.name,
+    catalog_name:null,
+    context_qualifier:p.name,
+    description:offering.description||null,
+    primary_department:'local-speciality',
+    relation_key:offering.relation_key,
+    book_price:null,
+    price_tier:'Local speciality',
+    availability_band:'local',
+    availability_label:offering.availability_label||'Available here',
+    availability_rank:0,
+    source_ref:offering.source_ref||p.source_ref||null,
+    sources:localSourceRows(offering,books),
+    is_local:true,
+    shop_entity_id:p.entity_id,
+    shop_name:p.name
+  }));
+  const itemRows=[...localItemRows,...catalogItemRows];
+
   if(suggestOnly){
-    return out({
-      query:q,
-      active_item_id:null,
-      items:itemRows.slice(0,10),
-      total_matches:itemRows.length,
-      offers:[]
-    });
+    return out({query:q,active_item_id:null,items:itemRows.slice(0,10),total_matches:itemRows.length,offers:[]});
   }
 
-  const active=activeId?matches.find((i:any)=>String(i.id)===activeId):null;
+  const activeCatalog=activeId?matches.find((i:any)=>String(i.id)===activeId):null;
+  const activeLocal=activeId?localMatches.find((x:any)=>String(x.offering.item_id)===activeId):null;
   const mfrMap=await manufacturers();
-  const [profileRows,placeRows,observationRows]=await Promise.all([
-    db('vendr_stock_profiles','select=*&order=name.asc'),
+  const [placeRows,observationRows]=await Promise.all([
     db('vendr_places','select=entity_id,parent_name,district,spatial_mode'),
     db('vendr_stock_observations','select=entity_id,generation,state_at,snapshot,model_version&world_key=eq.public-2045')
   ]);
-  const profiles=profileRows.filter(isVendrVisibleProfile);
   const placeMap=new Map(placeRows.map((r:any)=>[String(r.entity_id),r]));
   const observationMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
-  const offerItems=active?[active]:matches;
+  const offerItems=activeCatalog?[activeCatalog]:(activeLocal?[]:matches);
   const stockCache=new Map<string,any[]>();
   const offers:any[]=[];
+
+  const localOfferMatches=activeLocal?[activeLocal]:(activeCatalog?[]:localMatches);
+  for(const {profile:p,offering} of localOfferMatches){
+    const place:any=placeMap.get(String(p.entity_id))||{};
+    offers.push({
+      kind:'available',item_id:offering.item_id,item_name:offering.name,
+      primary_department:'local-speciality',relation_key:offering.relation_key,
+      shop_entity_id:p.entity_id,shop_name:p.name,district:place.district||p.district,
+      parent_name:place.parent_name||null,spatial_mode:place.spatial_mode||null,
+      distance:null,score:999,stock_mode:p.stock_mode,quantity:null,
+      quantity_label:offering.quantity_label||'Available',asking_price:offering.asking_price??null,
+      price_label:offering.price_label||'Price varies',book_price:null,checkout_unit_price:null,
+      checkout_mode:null,checkout_label:null,condition:null,stock_cycle:null,
+      price_tier:'Local speciality',availability_band:'local',
+      availability_label:offering.availability_label||'Available here',availability_rank:0,is_local:true
+    });
+  }
 
   for(const item of offerItems){
     const itemId=String(item.id);
@@ -1130,55 +1357,40 @@ async function search(u:URL){
       let stock=stockCache.get(String(p.entity_id));
       if(!stock){
         const obs:any=observationMap.get(String(p.entity_id));
-        const raw=obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot)
-          ?obs.snapshot
-          :initialSnapshot(p,all,classMap,mfrMap);
+        const raw=!localOnlyProfile(p)&&obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot)
+          ?obs.snapshot:initialSnapshot(p,all,classMap,mfrMap);
         stock=visibleStock(decorateStockPrices(p,raw,all,Number(obs?.generation??0)));
-        stockCache.set(String(p.entity_id),stock)
+        stockCache.set(String(p.entity_id),stock);
       }
       const row=stock.find((r:any)=>String(r.item_id)===itemId);
       const localMode=String(stockCuration(p).refresh_mode||'catalog')==='local';
       const fit=localMode?null:score(p,item,classMap,mfrMap),curatedFit=localMode?null:curationFit(p,item,classMap,mfrMap,'refresh');
-      if(fit===null&&curatedFit===null&&!row) continue;
+      if(fit===null&&curatedFit===null&&!row)continue;
       const effectiveFit=fit===null?(curatedFit??(row?.support_reason?90:70)):Math.max(fit,curatedFit??-999);
       const place=placeMap.get(String(p.entity_id))||{};
       offers.push({
-        kind:row?'available':'plausible',
-        item_id:itemId,item_name:displayName(item),
+        kind:row?'available':'plausible',item_id:itemId,item_name:displayName(item),
         primary_department:department(item,classMap),relation_key:relationKey(item,classMap),
-        shop_entity_id:p.entity_id,shop_name:p.name,
-        district:place.district||p.district,
-        parent_name:place.parent_name||null,
-        spatial_mode:place.spatial_mode||null,
-        distance:null,
-        score:effectiveFit,stock_mode:p.stock_mode,
-        quantity:row?.quantity??null,asking_price:row?.asking_price??null,
-        book_price:row?.book_price??basePrice(item),
-        checkout_unit_price:row?.checkout_unit_price??basePrice(item),
-        checkout_mode:row?.checkout_mode??null,
-        checkout_label:row?.checkout_label??null,
-        condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
-        support_reason:row?.support_reason??null,
-        support_key:row?.support_key??null,
-        compatibility_label:row?.compatibility_label??null,
-        price_tier:row?.price_tier??availabilityInfo(item).tier,
+        shop_entity_id:p.entity_id,shop_name:p.name,district:place.district||p.district,
+        parent_name:place.parent_name||null,spatial_mode:place.spatial_mode||null,distance:null,
+        score:effectiveFit,stock_mode:p.stock_mode,quantity:row?.quantity??null,
+        asking_price:row?.asking_price??null,book_price:row?.book_price??basePrice(item),
+        checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
+        checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
+        support_reason:row?.support_reason??null,support_key:row?.support_key??null,
+        compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
         availability_band:row?.availability_band??availabilityInfo(item).key,
         availability_label:row?.availability_label??availabilityInfo(item).label,
         availability_rank:row?.availability_rank??availabilityInfo(item).rank
       });
     }
   }
-
   offers.sort((a,b)=>(a.kind!=='available')-(b.kind!=='available')||Number(b.score)-Number(a.score)||String(a.shop_name).localeCompare(String(b.shop_name)));
   return out({
     query:q,
-    active_item_id:active?String(active.id):null,
-    items:itemRows,
-    offers:offers.slice(0,60),
-    total_matches:itemRows.length,
-    catalogue_count:all.length,
-    seller_profile_count:profiles.length,
-    stock_cycle:null
+    active_item_id:activeLocal?String(activeLocal.offering.item_id):(activeCatalog?String(activeCatalog.id):null),
+    items:itemRows,offers:offers.slice(0,60),total_matches:itemRows.length,
+    catalogue_count:visibleAll.length,seller_profile_count:profiles.length,stock_cycle:null
   });
 }
 
@@ -1186,64 +1398,50 @@ async function itemDetail(u:URL){
   const id=String(u.searchParams.get('id')||'').trim();
   if(!id)return out({error:'missing id'},400);
 
-  const [all,classMap,mfrMap,descMap,profileRows,placeRows,observationRows]=await Promise.all([
+  const activeSources=requestedSourceCodes(u);
+  const [all,classMap,mfrMap,descMap,profileRows,placeRows,observationRows,sourceMap,books]=await Promise.all([
     catalogue(),classifications(),manufacturers(),descriptions(),
     db('vendr_stock_profiles','select=*&order=name.asc'),
     db('vendr_places','select=entity_id,parent_name,district,spatial_mode'),
-    db('vendr_stock_observations','select=entity_id,generation,state_at,snapshot,model_version&world_key=eq.public-2045')
+    db('vendr_stock_observations','select=entity_id,generation,state_at,snapshot,model_version&world_key=eq.public-2045'),
+    itemSourceMap(),sourceBooks()
   ]);
-  const profiles=profileRows.filter(isVendrVisibleProfile);
+  const profiles=profileRows.filter((p:any)=>isVendrVisibleProfile(p)&&profileAllowed(p,activeSources,books));
   const placeMap=new Map(placeRows.map((r:any)=>[String(r.entity_id),r]));
   const observationMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
 
   let localHit:any=null;
   for(const p of profiles){
-    const offering=localOfferings(p).find((x:any)=>String(x.item_id)===id);
+    const offering=localOfferings(p).find((x:any)=>String(x.item_id)===id&&offeringAllowed(x,activeSources,books));
     if(offering){localHit={profile:p,offering};break}
   }
   if(localHit){
     const p=localHit.profile, offering=localHit.offering;
     const place:any=placeMap.get(String(p.entity_id))||{};
     const related=localOfferings(p)
-      .filter((x:any)=>String(x.item_id)!==id)
-      .map((x:any)=>({
-        item_id:x.item_id,name:x.name,description:x.description,price_tier:'Local'
-      }));
+      .filter((x:any)=>String(x.item_id)!==id&&offeringAllowed(x,activeSources,books))
+      .map((x:any)=>({item_id:x.item_id,name:x.name,description:x.description,price_tier:'Local'}));
     return out({
       item:{
-        item_id:offering.item_id,
-        name:offering.name,
-        catalog_name:null,
-        context_qualifier:null,
-        description:offering.description||null,
-        primary_department:'local-speciality',
+        item_id:offering.item_id,name:offering.name,catalog_name:null,context_qualifier:null,
+        description:offering.description||null,primary_department:'local-speciality',
         relation_key:offering.relation_key,
         classification:{source_category:'Local wares',source_subcategory:'Local speciality'},
-        manufacturers:[],
-        book_price:null,
-        price_tier:'Local speciality',
-        availability_band:'local',
-        availability_label:offering.availability_label||'Available here',
-        source_index_page:null,
-        source_ref:offering.source_ref||p.source_ref||null,
-        local:true,
-        image:null
+        manufacturers:[],book_price:null,price_tier:'Local speciality',
+        availability_band:'local',availability_label:offering.availability_label||'Available here',
+        source_index_page:null,source_ref:offering.source_ref||p.source_ref||null,
+        sources:localSourceRows(offering,books),local:true,image:null
       },
       offers:[{
-        kind:'available',
-        item_id:offering.item_id,item_name:offering.name,
+        kind:'available',item_id:offering.item_id,item_name:offering.name,
         primary_department:'local-speciality',relation_key:offering.relation_key,
-        shop_entity_id:p.entity_id,shop_name:p.name,
-        district:place.district||p.district,
-        parent_name:place.parent_name||null,
-        spatial_mode:place.spatial_mode||null,
-        distance:null,score:999,stock_mode:p.stock_mode,
-        quantity:null,quantity_label:offering.quantity_label||'Available',
-        asking_price:offering.asking_price??null,price_label:offering.price_label||'Price varies',
-        book_price:null,checkout_unit_price:null,checkout_mode:null,checkout_label:null,
-        condition:null,stock_cycle:null,price_tier:'Local',
-        availability_band:'local',
-        availability_label:offering.availability_label||'Available here',
+        shop_entity_id:p.entity_id,shop_name:p.name,district:place.district||p.district,
+        parent_name:place.parent_name||null,spatial_mode:place.spatial_mode||null,
+        distance:null,score:999,stock_mode:p.stock_mode,quantity:null,
+        quantity_label:offering.quantity_label||'Available',asking_price:offering.asking_price??null,
+        price_label:offering.price_label||'Price varies',book_price:null,checkout_unit_price:null,
+        checkout_mode:null,checkout_label:null,condition:null,stock_cycle:null,price_tier:'Local',
+        availability_band:'local',availability_label:offering.availability_label||'Available here',
         availability_rank:0,is_local:true
       }],
       related
@@ -1252,12 +1450,12 @@ async function itemDetail(u:URL){
 
   const item=all.find((x:any)=>String(x.id)===id);
   if(!item)return out({error:'item not found'},404);
+  if(!itemAllowed(id,sourceMap,activeSources))return out({error:'item excluded by source selection'},404);
   const offers:any[]=[];
   for(const p of profiles){
     const obs:any=observationMap.get(String(p.entity_id));
-    const raw=obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot)
-      ?obs.snapshot
-      :initialSnapshot(p,all,classMap,mfrMap);
+    const raw=!localOnlyProfile(p)&&obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot)
+      ?obs.snapshot:initialSnapshot(p,all,classMap,mfrMap);
     const stock=visibleStock(decorateStockPrices(p,raw,all,Number(obs?.generation??0)));
     const row=stock.find((r:any)=>String(r.item_id)===id);
     const localMode=String(stockCuration(p).refresh_mode||'catalog')==='local';
@@ -1266,25 +1464,16 @@ async function itemDetail(u:URL){
     const effectiveFit=fit===null?(curatedFit??(row?.support_reason?90:70)):Math.max(fit,curatedFit??-999);
     const place=placeMap.get(String(p.entity_id))||{};
     offers.push({
-      kind:row?'available':'plausible',
-      item_id:id,item_name:displayName(item),
+      kind:row?'available':'plausible',item_id:id,item_name:displayName(item),
       primary_department:department(item,classMap),relation_key:relationKey(item,classMap),
-      shop_entity_id:p.entity_id,shop_name:p.name,
-      district:place.district||p.district,
-      parent_name:place.parent_name||null,
-      spatial_mode:place.spatial_mode||null,
-      distance:null,
-      score:effectiveFit,stock_mode:p.stock_mode,
-      quantity:row?.quantity??null,asking_price:row?.asking_price??null,
-      book_price:row?.book_price??basePrice(item),
-      checkout_unit_price:row?.checkout_unit_price??basePrice(item),
-      checkout_mode:row?.checkout_mode??null,
-      checkout_label:row?.checkout_label??null,
-      condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
-      support_reason:row?.support_reason??null,
-      support_key:row?.support_key??null,
-      compatibility_label:row?.compatibility_label??null,
-      price_tier:row?.price_tier??availabilityInfo(item).tier,
+      shop_entity_id:p.entity_id,shop_name:p.name,district:place.district||p.district,
+      parent_name:place.parent_name||null,spatial_mode:place.spatial_mode||null,distance:null,
+      score:effectiveFit,stock_mode:p.stock_mode,quantity:row?.quantity??null,
+      asking_price:row?.asking_price??null,book_price:row?.book_price??basePrice(item),
+      checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
+      checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
+      support_reason:row?.support_reason??null,support_key:row?.support_key??null,
+      compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
       availability_band:row?.availability_band??availabilityInfo(item).key,
       availability_label:row?.availability_label??availabilityInfo(item).label,
       availability_rank:row?.availability_rank??availabilityInfo(item).rank
@@ -1294,35 +1483,23 @@ async function itemDetail(u:URL){
 
   const rel=relationKey(item,classMap);
   const related=all
-    .filter((x:any)=>String(x.id)!==id&&relationKey(x,classMap)===rel)
+    .filter((x:any)=>String(x.id)!==id&&itemAllowed(x.id,sourceMap,activeSources)&&relationKey(x,classMap)===rel)
     .slice(0,12)
     .map((x:any)=>({
-      item_id:String(x.id),
-      name:displayName(x),
-      description:descMap.get(String(x.id))||null,
+      item_id:String(x.id),name:displayName(x),description:descMap.get(String(x.id))||null,
       price_tier:availabilityInfo(x).tier
     }));
   const cls=classification(item,classMap)||null;
   return out({
     item:{
-      item_id:id,
-      name:displayName(item),
-      catalog_name:item.name||null,
-      context_qualifier:item.context_qualifier||null,
-      description:descMap.get(id)||null,
-      primary_department:department(item,classMap),
-      relation_key:rel,
-      classification:cls,
-      manufacturers:mfrMap.get(id)||[],
-      book_price:basePrice(item),
-      price_tier:availabilityInfo(item).tier,
-      availability_band:availabilityInfo(item).key,
-      availability_label:availabilityInfo(item).label,
-      source_index_page:item.source_index_page??null,
-      image:null
+      item_id:id,name:displayName(item),catalog_name:item.name||null,
+      context_qualifier:item.context_qualifier||null,description:descMap.get(id)||null,
+      primary_department:department(item,classMap),relation_key:rel,classification:cls,
+      manufacturers:mfrMap.get(id)||[],book_price:basePrice(item),price_tier:availabilityInfo(item).tier,
+      availability_band:availabilityInfo(item).key,availability_label:availabilityInfo(item).label,
+      source_index_page:item.source_index_page??null,sources:sourceRowsForItem(id,sourceMap,books),image:null
     },
-    offers:offers.slice(0,80),
-    related
+    offers:offers.slice(0,80),related
   });
 }
 
@@ -1486,6 +1663,295 @@ async function stockAudit(){
     rows
   });
 }
+
+
+function cityRepeatTarget(item:any,eligible:number,classMap:Map<string,any>){
+  // Core, support and curated slots are never touched by the citywide balancer,
+  // so they already preserve staples and repeat identity stock. A regular or
+  // occasional duplicate only needs one surviving copy before its slot becomes
+  // available for catalogue coverage.
+  return 1;
+}
+
+function buildBalancedCityPulse(profiles:any[],all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,generation=0){
+  const sellers=profiles.filter((p:any)=>
+    isVendrVisibleProfile(p)&&
+    ['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||''))&&
+    !localOnlyProfile(p)&&
+    String(stockCuration(p).refresh_mode||'catalog')!=='local'
+  );
+  const itemById=new Map(all.map((i:any)=>[String(i.id),i]));
+  const eligibleCount=new Map<string,number>();
+  const scoredByShop=new Map<string,any[]>();
+
+  for(const p of sellers){
+    const scored:any[]=[];
+    for(const item of all){
+      const fit=score(p,item,classMap,mfrMap);
+      if(fit===null)continue;
+      scored.push({item,fit});
+      const id=String(item.id);
+      eligibleCount.set(id,(eligibleCount.get(id)||0)+1);
+    }
+    scoredByShop.set(String(p.entity_id),scored);
+  }
+
+  const snapshots=new Map<string,any[]>();
+  const coverage=new Map<string,number>();
+  for(const p of sellers){
+    const rows=stockFor(p,all,classMap,mfrMap,generation).map((r:any)=>({...r}));
+    snapshots.set(String(p.entity_id),rows);
+    for(const r of rows){
+      const id=String(r.item_id);
+      coverage.set(id,(coverage.get(id)||0)+1);
+    }
+  }
+
+  const shopOrder=sellers.slice().sort((a:any,b:any)=>
+    stableIndex('city-balance|'+generation+'|'+String(a.entity_id),2147483647)-
+    stableIndex('city-balance|'+generation+'|'+String(b.entity_id),2147483647)
+  );
+  let replacements=0;
+
+  // Keep core/support/curated identity stock intact. Use rotating regular and
+  // occasional slots to broaden citywide catalogue exposure.
+  for(const role of ['occasional','regular']){
+    for(const p of shopOrder){
+      const sid=String(p.entity_id);
+      const rows=snapshots.get(sid)||[];
+      const used=new Set(rows.map((r:any)=>String(r.item_id)));
+      const scored=scoredByShop.get(sid)||[];
+      const rowIndexes=rows.map((r:any,idx:number)=>({r,idx}))
+        .filter((x:any)=>
+          String(x.r.assortment_role||'regular')===role&&
+          !x.r.support_reason&&!x.r.curation_reason
+        )
+        .sort((a:any,b:any)=>{
+          const ai=String(a.r.item_id),bi=String(b.r.item_id);
+          const ac=coverage.get(ai)||0,bc=coverage.get(bi)||0;
+          return bc-ac||
+            Number(a.r.fit_score||0)-Number(b.r.fit_score||0)||
+            stableIndex('city-balance-row|'+sid+'|'+generation+'|'+ai,2147483647)-
+            stableIndex('city-balance-row|'+sid+'|'+generation+'|'+bi,2147483647);
+        });
+
+      for(const x of rowIndexes){
+        const oldId=String(x.r.item_id),oldItem=itemById.get(oldId);
+        if(!oldItem)continue;
+        const oldCount=coverage.get(oldId)||0;
+        const repeatTarget=cityRepeatTarget(oldItem,eligibleCount.get(oldId)||1,classMap);
+        if(oldCount<=repeatTarget)continue;
+
+        const oldFit=Number(x.r.fit_score||score(p,oldItem,classMap,mfrMap)||0);
+        const fitFloor=oldFit-(role==='occasional'?48:34);
+        const oldDep=String(x.r.primary_department||department(oldItem,classMap)||'');
+
+        const candidates=scored
+          .filter((c:any)=>{
+            const id=String(c.item.id);
+            return !used.has(id)&&
+              (coverage.get(id)||0)===0&&
+              String(department(c.item,classMap)||'')===oldDep&&
+              Number(c.fit)>=fitFloor;
+          })
+          .sort((a:any,b:any)=>
+            availabilityInfo(a.item).rank-availabilityInfo(b.item).rank||
+            Number(b.fit)-Number(a.fit)||
+            stableIndex('city-balance-candidate|'+sid+'|'+generation+'|'+String(a.item.id),2147483647)-
+            stableIndex('city-balance-candidate|'+sid+'|'+generation+'|'+String(b.item.id),2147483647)
+          );
+        const candidate=candidates[0];
+        if(!candidate)continue;
+
+        const replacement=stockRowFromChoice(
+          p,{item:candidate.item,fit:candidate.fit,role},classMap,generation
+        );
+        replacement.last_change='citywide assortment balance';
+        rows[x.idx]=replacement;
+        used.delete(oldId);
+        used.add(String(candidate.item.id));
+        coverage.set(oldId,oldCount-1);
+        coverage.set(String(candidate.item.id),1);
+        replacements++;
+      }
+      snapshots.set(sid,rows);
+    }
+  }
+
+  const distributed=[...coverage.values()].filter((n:number)=>n>0).length;
+  return {
+    generation,
+    replacements,
+    distributed_distinct:distributed,
+    distributed_pct:Math.round(distributed/Math.max(1,all.length)*1000)/10,
+    shops:sellers.map((p:any)=>({
+      entity_id:String(p.entity_id),
+      name:String(p.name),
+      district:String(p.district||'Night City'),
+      snapshot:snapshots.get(String(p.entity_id))||[]
+    }))
+  };
+}
+
+async function pulsePlan(){
+  const [all,classMap,mfrMap,profileRows]=await Promise.all([
+    catalogue(),classifications(),manufacturers(),
+    db('vendr_stock_profiles','select=*&order=name.asc')
+  ]);
+  const pulse=buildBalancedCityPulse(profileRows,all,classMap,mfrMap,0);
+  return out({
+    stock_model:LAZY_STOCK_VERSION,
+    catalogue_items:all.length,
+    generation:pulse.generation,
+    replacements:pulse.replacements,
+    distributed_distinct:pulse.distributed_distinct,
+    distributed_pct:pulse.distributed_pct,
+    shops:pulse.shops
+  });
+}
+
+async function distributionAudit(){
+  const [all,classMap,mfrMap,profileRows,observationRows]=await Promise.all([
+    catalogue(),classifications(),manufacturers(),
+    db('vendr_stock_profiles','select=*&order=name.asc'),
+    db('vendr_stock_observations','select=entity_id,generation,state_at,snapshot,model_version&world_key=eq.public-2045')
+  ]);
+  const profiles=profileRows.filter((p:any)=>
+    isVendrVisibleProfile(p)&&
+    ['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||''))
+  );
+  const observationMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
+  const byId=new Map<string,any>();
+  for(const item of all){
+    byId.set(String(item.id),{
+      item_id:String(item.id),
+      name:displayName(item),
+      department:department(item,classMap)||'other',
+      subcategory:sourceSubcategory(item,classMap)||null,
+      price_tier:availabilityInfo(item).tier,
+      seller_count:0,
+      tracked_units:0,
+      untracked_seller_count:0,
+      placements:0,
+      sellers:[]
+    });
+  }
+
+  let observedProfiles=0, initialProfiles=0, totalPlacements=0, trackedUnits=0, untrackedPlacements=0;
+  for(const p of profiles){
+    if(localOnlyProfile(p)||String(stockCuration(p).refresh_mode||'catalog')==='local') continue;
+    const obs:any=observationMap.get(String(p.entity_id));
+    const useObserved=Boolean(obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot));
+    if(useObserved) observedProfiles++; else initialProfiles++;
+    const raw=useObserved?obs.snapshot:initialSnapshot(p,all,classMap,mfrMap);
+    const stock=visibleStock(raw);
+    for(const row of stock){
+      const id=String(row.item_id||'');
+      const a=byId.get(id); if(!a)continue;
+      const qty=row.quantity;
+      a.seller_count++;
+      a.placements++;
+      totalPlacements++;
+      if(qty==null){
+        a.untracked_seller_count++;
+        untrackedPlacements++;
+      }else{
+        const n=Math.max(0,Number(qty)||0);
+        a.tracked_units+=n;
+        trackedUnits+=n;
+      }
+      a.sellers.push({
+        entity_id:String(p.entity_id),
+        shop_name:String(p.name),
+        district:String(p.district||'Night City'),
+        quantity:qty==null?null:Number(qty),
+        condition:row.condition??null,
+        assortment_role:row.assortment_role??null
+      });
+    }
+  }
+
+  // Count semantically legitimate seller channels independently of whether
+  // an item happened to win a shelf slot in this pulse.
+  for(const r of byId.values()){
+    const item=all.find((x:any)=>String(x.id)===String(r.item_id));
+    if(!item){r.eligible_seller_count=0;continue}
+    let eligible=0;
+    for(const p of profiles){
+      if(localOnlyProfile(p)||String(stockCuration(p).refresh_mode||'catalog')==='local')continue;
+      if(score(p,item,classMap,mfrMap)!==null||curationFit(p,item,classMap,mfrMap,'refresh')!==null)eligible++;
+    }
+    r.eligible_seller_count=eligible;
+  }
+
+  const rows=[...byId.values()];
+  const distributed=rows.filter((r:any)=>r.seller_count>0);
+  const undistributed=rows.filter((r:any)=>r.seller_count===0);
+  function median(nums:number[]){
+    if(!nums.length)return 0;
+    const a=nums.slice().sort((x,y)=>x-y),m=Math.floor(a.length/2);
+    return a.length%2?a[m]:(a[m-1]+a[m])/2;
+  }
+  const bins:any={'1':0,'2':0,'3-5':0,'6-10':0,'11+':0};
+  for(const r of distributed){
+    const n=Number(r.seller_count||0);
+    if(n===1)bins['1']++;
+    else if(n===2)bins['2']++;
+    else if(n<=5)bins['3-5']++;
+    else if(n<=10)bins['6-10']++;
+    else bins['11+']++;
+  }
+  const depMap=new Map<string,any>();
+  for(const r of rows){
+    const d=String(r.department||'other');
+    const x=depMap.get(d)||{department:d,catalogue_items:0,distributed_items:0,placements:0,tracked_units:0,untracked_placements:0};
+    x.catalogue_items++;
+    if(r.seller_count>0)x.distributed_items++;
+    x.placements+=Number(r.placements||0);
+    x.tracked_units+=Number(r.tracked_units||0);
+    x.untracked_placements+=Number(r.untracked_seller_count||0);
+    depMap.set(d,x);
+  }
+  const departments=[...depMap.values()].map((x:any)=>({
+    ...x,coverage_pct:x.catalogue_items?Math.round(x.distributed_items/x.catalogue_items*1000)/10:0
+  })).sort((a:any,b:any)=>b.catalogue_items-a.catalogue_items||a.department.localeCompare(b.department));
+
+  const topBySellers=distributed.slice().sort((a:any,b:any)=>
+    b.seller_count-a.seller_count||b.tracked_units-a.tracked_units||a.name.localeCompare(b.name)
+  ).slice(0,40);
+  const topByUnits=distributed.filter((r:any)=>r.tracked_units>0).slice().sort((a:any,b:any)=>
+    b.tracked_units-a.tracked_units||b.seller_count-a.seller_count||a.name.localeCompare(b.name)
+  ).slice(0,40);
+
+  return out({
+    stock_model:LAZY_STOCK_VERSION,
+    catalogue_items:all.length,
+    seller_profiles:profiles.length,
+    state_basis:{
+      observed_profiles:observedProfiles,
+      deterministic_initial_profiles:initialProfiles,
+      local_only_or_local_refresh_profiles:profiles.length-observedProfiles-initialProfiles
+    },
+    coverage:{
+      distributed_distinct:distributed.length,
+      undistributed_distinct:undistributed.length,
+      distributed_pct:Math.round(distributed.length/Math.max(1,all.length)*1000)/10,
+      total_catalogue_placements:totalPlacements,
+      tracked_units:trackedUnits,
+      untracked_placements:untrackedPlacements,
+      median_sellers_per_distributed_item:median(distributed.map((r:any)=>Number(r.seller_count||0))),
+      mean_sellers_per_distributed_item:distributed.length?Math.round(totalPlacements/distributed.length*100)/100:0,
+      undistributed_but_eligible:undistributed.filter((r:any)=>Number(r.eligible_seller_count||0)>0).length,
+      undistributed_without_channel:undistributed.filter((r:any)=>Number(r.eligible_seller_count||0)===0).length,
+      seller_count_bins:bins
+    },
+    departments,
+    top_by_sellers:topBySellers,
+    top_by_tracked_units:topByUnits,
+    items:rows
+  });
+}
+
 function planFor(p:any){
   const mode=String(p.stock_mode||'');
   const owns=['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(mode);
@@ -1511,7 +1977,7 @@ function isVendrVisibleProfile(p:any){
   const visibility=String(p?.data?.vendr_visibility||'').toLowerCase();
   if(visibility==='hidden'||visibility==='exclude')return false;
   const mode=String(p.stock_mode||'');
-  if(mode==='SERVICE_ONLY'||mode==='REFERENCE_ONLY'||mode==='CHANNEL_TEMPLATE')return false;
+  if(mode==='SERVICE_ONLY'||mode==='REFERENCE_ONLY'||mode==='CHANNEL_TEMPLATE'||mode==='CHAIN_TEMPLATE')return false;
   if(isHospitalityProfile(p))return false;
   return true;
 }
@@ -1552,15 +2018,20 @@ function listingFromPlace(p:any){
     materialized:false,event_id:null
   };
 }
-async function shops(){
-  const [placeRows,profileRows]=await Promise.all([
+async function shops(u:URL){
+  const activeSources=requestedSourceCodes(u);
+  const [placeRows,profileRows,books]=await Promise.all([
     db('vendr_places','select=*&order=district.asc,display_name.asc'),
-    db('vendr_stock_profiles','select=*&order=district.asc,name.asc')
+    db('vendr_stock_profiles','select=*&order=district.asc,name.asc'),
+    sourceBooks()
   ]);
   const placeById=new Map(placeRows.map((p:any)=>[String(p.entity_id),p]));
   const rows=profileRows
-    .filter(isVendrVisibleProfile)
-    .map((profile:any)=>listingFromProfile(profile,placeById.get(String(profile.entity_id))||null));
+    .filter((p:any)=>isVendrVisibleProfile(p)&&profileAllowed(p,activeSources,books))
+    .map((profile:any)=>{
+      const row=listingFromProfile(profile,placeById.get(String(profile.entity_id))||null);
+      return {...row,source_code:sourceCodeFromRef(row.source_ref,books)};
+    });
   rows.sort((a:any,b:any)=>String(a.district||'').localeCompare(String(b.district||''))||String(a.name||'').localeCompare(String(b.name||'')));
   return out({shops:rows});
 }
@@ -1573,15 +2044,17 @@ function stableIndex(value:string,count:number){
 async function shop(u:URL){
   const requestedId=u.searchParams.get('id'); if(!requestedId) return out({error:'missing id'},400);
   const id=canonicalEntityId(requestedId);
-  const [profileRows,placeRows,edges,visualRows]=await Promise.all([
+  const activeSources=requestedSourceCodes(u);
+  const [profileRows,placeRows,edges,visualRows,books,sourceMap]=await Promise.all([
     db('vendr_stock_profiles','select=*&entity_id=eq.'+encodeURIComponent(id)),
     db('vendr_places','select=*&entity_id=eq.'+encodeURIComponent(id)),
     db('vendr_parent_child_edges','select=child_entity_id,child_name,relation_type&parent_entity_id=eq.'+encodeURIComponent(id)),
-    db('vendr_visual_profiles','select=*&entity_id=eq.'+encodeURIComponent(id))
+    db('vendr_visual_profiles','select=*&entity_id=eq.'+encodeURIComponent(id)),
+    sourceBooks(),itemSourceMap()
   ]);
   const profile=profileRows[0]||null;
   const place=placeRows[0]||null;
-  if(!profile||!isVendrVisibleProfile(profile)) return out({error:'not listed on Vend-R'},404);
+  if(!profile||!isVendrVisibleProfile(profile)||!profileAllowed(profile,activeSources,books)) return out({error:'not listed in active Vend-R sources'},404);
 
   // Vend-R is retail-only: container pages expose only child profiles that
   // themselves qualify for Vend-R. Service/hospitality/place-only children
@@ -1591,7 +2064,9 @@ async function shop(u:URL){
       'select=*&entity_id=in.('+edges.map((e:any)=>String(e.child_entity_id)).join(',')+')')
     :[];
   const visibleChildIds=new Set(
-    childProfileRows.filter(isVendrVisibleProfile).map((p:any)=>String(p.entity_id))
+    childProfileRows
+      .filter((p:any)=>isVendrVisibleProfile(p)&&profileAllowed(p,activeSources,books))
+      .map((p:any)=>String(p.entity_id))
   );
   const vendrEdges=edges.filter((edge:any)=>visibleChildIds.has(String(edge.child_entity_id)));
 
@@ -1625,7 +2100,7 @@ async function shop(u:URL){
     ]);
     eventRows=events;
     resolved=await resolveObservedStock(profile,all,classMap,mfrMap,'public-2045');
-    stock=resolved.visible;
+    stock=resolved.visible.filter((row:any)=>itemAllowed(row.item_id,sourceMap,activeSources));
   }
 
   const base=profile||{stock_mode:'PLACE_ONLY'};
@@ -1642,6 +2117,7 @@ async function shop(u:URL){
     parent_id:place?.parent_id||profile?.data?.parent_id||null,
     parent_name:place?.parent_name||profile?.data?.parent_name||null,
     book_page:profile?.book_page??place?.book_page??null,source_ref:profile?.source_ref||place?.source_ref||null,
+    source_code:sourceCodeFromRef(profile?.source_ref||place?.source_ref,books),
     entity_level:place?.entity_level||profile?.entity_level||null,commercial_role:place?.commercial_role||null,
     stock_profile_present:Boolean(profile),stock_mode:profile?.stock_mode||'PLACE_ONLY',plan:planFor(base),
     type,tags,
@@ -1656,7 +2132,7 @@ async function shop(u:URL){
     source_child_count:edges.length,vendr_child_count:vendrEdges.length,
     unnamed_retail:profile?.data?.unnamed_retail||null,
     event_id:null,materialized:false,stock,
-    local_offerings:profile?localOfferings(profile):[],
+    local_offerings:profile?localOfferings(profile).filter((x:any)=>offeringAllowed(x,activeSources,books)):[],
     state:resolved?.snapshot?.length?{
       stock_cycle:resolved.generation,generation:resolved.generation,state_at:resolved.state_at,
       first_observation:resolved.first_observation,catchup_mutations:resolved.mutations,
@@ -1667,7 +2143,11 @@ async function shop(u:URL){
     source_contract:null,events:eventRows,visual_profile:visual,image,
     stock_snapshot:resolved?.snapshot?.length?('observed_'+resolved.generation):null,
     catalog_match:profile?.data?.catalog_match||null,
-    trusted_stock_note:profile?.data?.catalog_match?.strategy==='tiered'?'Additional stock may be available to trusted customers.':null
+    service_note:profile?.data?.service_note||null,
+    source_note:profile?.data?.source_note||null,
+    access_note:profile?.data?.access_note||null,
+    trusted_stock_note:profile?.data?.trusted_stock_note||
+      (profile?.data?.catalog_match?.strategy==='tiered'?'Additional stock may be available to trusted customers.':null)
   });
 }
 
@@ -1681,7 +2161,10 @@ Deno.serve(async(req:Request)=>{
     const u=new URL(req.url), a=u.searchParams.get('api');
     if(a==='health') return await health();
     if(a==='stock_audit') return await stockAudit();
-    if(a==='shops') return await shops();
+    if(a==='distribution_audit') return await distributionAudit();
+    if(a==='pulse_plan') return await pulsePlan();
+    if(a==='sources') return await sourcesApi(u);
+    if(a==='shops') return await shops(u);
     if(a==='search') return await search(u);
     if(a==='item') return await itemDetail(u);
     if(a==='shop') return await shop(u);
