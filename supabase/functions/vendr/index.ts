@@ -21,12 +21,14 @@ const SOURCE_PARTS=[
   'data/catalog/item-sources.v1.24.part02.json.gz'
 ];
 const SOURCES_PATH='data/catalog/sources.json';
+const NC2045_SUPP_PATH='data/catalog/nc2045-supplement.json';
 let cache: Promise<any[]> | null = null;
 let classCache: Promise<Map<string,any>> | null = null;
 let mfrCache: Promise<Map<string,string[]>> | null = null;
 let descCache: Promise<Map<string,string>> | null = null;
 let itemSourceCache: Promise<Map<string,any[]>> | null = null;
 let sourceBookCache: Promise<any[]> | null = null;
+let nc2045SuppCache: Promise<any> | null = null;
 
 async function gunzipJson(url:string){
   const r=await fetch(url,{headers:{'user-agent':'Vend-R/0.1'}});
@@ -34,17 +36,31 @@ async function gunzipJson(url:string){
   const ds=new DecompressionStream('gzip');
   return JSON.parse(await new Response(r.body!.pipeThrough(ds)).text());
 }
+function nc2045Supplement(){
+  if(!nc2045SuppCache) nc2045SuppCache=fetch(ROOT+NC2045_SUPP_PATH,{headers:{'user-agent':'Vend-R/0.1'}})
+    .then(async r=>{if(!r.ok)throw new Error('NC2045 supplement fetch failed: '+r.status);return await r.json()});
+  return nc2045SuppCache;
+}
 function catalogue(){
-  if(!cache) cache=Promise.all(PARTS.map(p=>gunzipJson(ROOT+p))).then(x=>x.flat());
+  if(!cache) cache=Promise.all([
+    Promise.all(PARTS.map(p=>gunzipJson(ROOT+p))).then(x=>x.flat()),
+    nc2045Supplement()
+  ]).then(([base,supp])=>base.concat(Array.isArray(supp?.items)?supp.items:[]));
   return cache;
 }
 function classifications(){
-  if(!classCache) classCache=Promise.all(CLASS_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>{
+  if(!classCache) classCache=Promise.all([
+    Promise.all(CLASS_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>parts.flat()),
+    nc2045Supplement()
+  ]).then(([rows,supp])=>{
     const map=new Map<string,any>();
-    for(const row of parts.flat()){
+    for(const row of rows){
       const id=String(row.item_id);
       const current=map.get(id);
       if(!current||row.is_primary) map.set(id,row);
+    }
+    for(const item of (Array.isArray(supp?.items)?supp.items:[])){
+      if(item?.classification) map.set(String(item.id),{item_id:String(item.id),...item.classification});
     }
     return map;
   });
@@ -70,9 +86,14 @@ function displayName(i:any){
   return String(i?.display_name||i?.name||i?.id||'Catalogue item');
 }
 function descriptions(){
-  if(!descCache) descCache=fetch(ROOT+DESC_PATH,{headers:{'user-agent':'Vend-R/0.1'}})
-    .then(async r=>{if(!r.ok)throw new Error('description fetch failed: '+r.status);return await r.json()})
-    .then((data:any)=>new Map(Object.entries(data?.items||{}).map(([id,value])=>[String(id),String(value)])));
+  if(!descCache) descCache=Promise.all([
+    fetch(ROOT+DESC_PATH,{headers:{'user-agent':'Vend-R/0.1'}}).then(async r=>{if(!r.ok)throw new Error('description fetch failed: '+r.status);return await r.json()}),
+    nc2045Supplement()
+  ]).then(([data,supp])=>{
+    const map=new Map(Object.entries(data?.items||{}).map(([id,value])=>[String(id),String(value)]));
+    for(const item of (Array.isArray(supp?.items)?supp.items:[])) if(item?.description) map.set(String(item.id),String(item.description));
+    return map;
+  });
   return descCache;
 }
 function sourceBooks(){
@@ -82,9 +103,12 @@ function sourceBooks(){
   return sourceBookCache;
 }
 function itemSourceMap(){
-  if(!itemSourceCache) itemSourceCache=Promise.all(SOURCE_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>{
+  if(!itemSourceCache) itemSourceCache=Promise.all([
+    Promise.all(SOURCE_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>parts.flat()),
+    nc2045Supplement()
+  ]).then(([rows,supp])=>{
     const map=new Map<string,any[]>();
-    for(const row of parts.flat()){
+    for(const row of rows){
       const id=String(row.item_id||'');
       if(!id)continue;
       const list=map.get(id)||[];
@@ -93,6 +117,15 @@ function itemSourceMap(){
         page:row.page==null?null:String(row.page),
         raw_reference:row.raw_reference==null?null:String(row.raw_reference)
       });
+      map.set(id,list);
+    }
+    for(const item of (Array.isArray(supp?.items)?supp.items:[])){
+      const src=item?.source;
+      if(!src)continue;
+      const id=String(item.id||'');
+      if(!id)continue;
+      const list=map.get(id)||[];
+      list.push({code:String(src.code||'NC2045'),page:src.page==null?null:String(src.page),raw_reference:src.raw_reference==null?null:String(src.raw_reference)});
       map.set(id,list);
     }
     return map;
