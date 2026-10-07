@@ -1723,6 +1723,88 @@ button,input,select{font:inherit}
   .place-row .place-arrow{grid-column:2;grid-row:1/3}
 }
 
+/* -------- SOURCE CHANNELS -------- */
+.source-link{
+  display:inline-flex;align-items:center;gap:7px;max-width:100%;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:6px 8px;text-align:left;cursor:pointer;
+  font:900 9px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.source-link:after{content:"→";color:var(--front-1);font-weight:1000}
+.source-link:hover{background:var(--rear-4)}
+.sources-top-readout{
+  min-height:46px;border:3px solid var(--ink);background:rgba(255,250,240,.95);
+  display:flex;align-items:center;padding:0 14px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-hero{padding:24px 26px 26px}
+.sources-hero .hero-title{margin-bottom:12px}
+.sources-hero-copy{max-width:760px;margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.sources-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sources-toolbar button{
+  min-height:42px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:0 13px;cursor:pointer;
+  font:1000 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-toolbar button:hover{background:var(--rear-4)}
+.sources-readout{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  margin-top:18px;padding-top:14px;border-top:3px solid var(--ink);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-readout strong{font-size:20px}
+.source-family{margin-bottom:18px}
+.source-family-head{
+  display:flex;justify-content:space-between;gap:15px;align-items:end;
+  padding:14px 17px 12px;border-bottom:3px solid var(--ink);
+}
+.source-family-head h2{margin:0;font-size:clamp(25px,3.2vw,38px);line-height:.9;text-transform:uppercase}
+.source-family-head span{
+  color:var(--muted);text-align:right;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-rack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.source-channel{
+  position:relative;width:100%;min-height:94px;border:0;border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.40);color:var(--ink);cursor:pointer;
+  display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:14px 16px;text-align:left;
+}
+.source-channel:nth-child(odd){border-right:1px solid var(--rule)}
+.source-channel:hover{background:rgba(244,210,70,.16)}
+.source-channel.on{background:rgba(244,210,70,.24)}
+.source-channel.focused{outline:4px solid var(--front-1);outline-offset:-4px}
+.source-lamp{
+  width:14px;height:54px;border:2px solid var(--ink);background:#4d4943;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.12);
+}
+.source-channel.on .source-lamp{
+  background:var(--front-1);
+  box-shadow:0 0 12px rgba(240,91,19,.42),inset 0 0 0 2px rgba(255,255,255,.16);
+}
+.source-channel-copy strong{display:block;font-size:17px;line-height:1;text-transform:uppercase}
+.source-channel-copy small{
+  display:block;margin-top:6px;color:var(--muted);
+  font:800 8px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-channel-state{
+  min-width:80px;border:2px solid var(--ink);background:#d7d0c4;padding:7px 8px;text-align:center;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-channel.on .source-channel-state{background:var(--rear-4)}
+@media(max-width:720px){
+  .source-rack{grid-template-columns:1fr}
+  .source-channel:nth-child(odd){border-right:0}
+  .sources-top-readout{display:none}
+  .source-channel{min-height:86px}
+}
+@media(max-width:520px){
+  .source-channel{grid-template-columns:15px minmax(0,1fr)}
+  .source-channel-state{grid-column:2;justify-self:start;min-width:0}
+  .source-lamp{grid-row:1/3;height:62px}
+}
+
 </style>
 </head>
 <body>
@@ -1747,6 +1829,7 @@ button,input,select{font:inherit}
         </label>
         <div class="topbar-actions">
           <button class="action-btn" id="marketBrowseButton">Browse</button>
+          <button class="action-btn" id="sourceManagerButton">Sources</button>
           <button class="action-btn" id="spatialMockButton">Location</button>
         </div>
       </header>
@@ -1958,6 +2041,40 @@ button,input,select{font:inherit}
     </div>
   </section>
 
+  <!-- ========== SOURCES PAGE ========== -->
+  <section class="view" id="sourcesView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Data channels</small></div>
+        <div class="sources-top-readout" id="sourcesTopReadout">Loading source channels…</div>
+        <button class="action-btn" id="sourcesBack">← Back</button>
+      </header>
+
+      <section class="hero sources-hero">
+        <div class="kicker">Catalogue routing</div>
+        <h1 class="hero-title">Sources</h1>
+        <p class="sources-hero-copy">Choose which books, DLCs and Vend-R-created material are connected to this market view. Your selection stays on this device.</p>
+        <div class="sources-toolbar" id="sourcesToolbar">
+          <button type="button" data-source-preset="all">Connect all</button>
+          <button type="button" data-source-preset="none">Disconnect all</button>
+          <button type="button" data-source-preset="official">Official only</button>
+        </div>
+        <div class="sources-readout">
+          <strong id="sourceActiveCount">—</strong>
+          <span>channels connected</span>
+          <span id="sourceVisibleCount">Checking catalogue…</span>
+        </div>
+      </section>
+
+      <div id="sourceFamilies"></div>
+
+      <footer class="footer">
+        <span>Vend-R source routing</span>
+        <span>Persistent on this device · non-destructive view filter</span>
+      </footer>
+    </div>
+  </section>
+
   <!-- ========== ITEM PAGE ========== -->
   <section class="view" id="itemView">
     <div class="shell">
@@ -1985,7 +2102,7 @@ button,input,select{font:inherit}
               <div class="item-stat"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
               <div class="item-stat"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
               <div class="item-stat"><dt>Category</dt><dd id="itemCategory">—</dd></div>
-              <div class="item-stat"><dt>Index</dt><dd id="itemSource">—</dd></div>
+              <div class="item-stat"><dt>Source</dt><dd><button class="source-link" id="itemSource" type="button">—</button></dd></div>
               <div class="item-stat"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
             </dl>
           </div>
@@ -2068,7 +2185,7 @@ button,input,select{font:inherit}
                 <dt>Proprietor</dt>
                 <dd><span id="vendorOwnerLabel">Vend-R listing</span><span class="vendor-owner-sub" id="vendorOwnerSub">Night City market record</span></dd>
               </div>
-              <div class="vendor-stat"><dt>Source</dt><dd id="factSource">—</dd></div>
+              <div class="vendor-stat"><dt>Source</dt><dd><button class="source-link" id="factSource" type="button">—</button></dd></div>
               <div class="vendor-stat availability"><dt>Availability</dt><dd id="factWorldState">Checking…</dd></div>
               <div class="vendor-stat" id="parentStat">
                 <dt>Contained in</dt>
@@ -2235,9 +2352,10 @@ requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 /* -------- VIEW STATE -------- */
 const homeView = document.getElementById('homeView');
 const searchView = document.getElementById('searchView');
+const sourcesView = document.getElementById('sourcesView');
 const vendorView = document.getElementById('vendorView');
 const itemView = document.getElementById('itemView');
-const allViews = {home:homeView,search:searchView,item:itemView,vendor:vendorView};
+const allViews = {home:homeView,search:searchView,sources:sourcesView,item:itemView,vendor:vendorView};
 const stingerLayer = document.getElementById('stingerLayer');
 
 let currentView = 'home';
@@ -2380,6 +2498,11 @@ let currentFocusOffer=null;
 let currentItemId=null;
 let currentItemData=null;
 let currentItemOfferShop=null;
+
+const SOURCE_DISABLED_KEY='vendr.disabledSources.v1';
+let sourceCatalog=[];
+let sourceSummary=null;
+let disabledSourceCodes=new Set();
 
 const ITEM_IMAGE_ASSIGNMENTS_URL='data/curation/item-images.json';
 const ITEM_IMAGE_POOL_URL='data/curation/item-image-pool.json';
@@ -2551,9 +2674,32 @@ let stockBrowserState={
 function esc(v){
   return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 }
+function loadSourcePreferences(){
+  try{
+    const stored=JSON.parse(localStorage.getItem(SOURCE_DISABLED_KEY)||'[]');
+    disabledSourceCodes=new Set(Array.isArray(stored)?stored.map(String):[]);
+  }catch(e){disabledSourceCodes=new Set()}
+}
+function saveSourcePreferences(){
+  localStorage.setItem(SOURCE_DISABLED_KEY,JSON.stringify([...disabledSourceCodes]));
+}
+function activeSourceCodes(){
+  return sourceCatalog.map(x=>String(x.code)).filter(code=>!disabledSourceCodes.has(code));
+}
+function sourceSelectionParam(){
+  if(!sourceCatalog.length)return null;
+  const active=activeSourceCodes();
+  if(active.length===sourceCatalog.length)return null;
+  return active.length?active.join(','):'-';
+}
+function sourceIsOn(code){return !disabledSourceCodes.has(String(code))}
 async function api(params){
   const url=new URL(API_BASE);
   Object.entries(params).forEach(([k,v])=>{if(v!==null&&v!==undefined&&v!=='')url.searchParams.set(k,String(v))});
+  if(!Object.prototype.hasOwnProperty.call(params,'sources')&&sourceCatalog.length&&!['health','sources'].includes(String(params.api||''))){
+    const selected=sourceSelectionParam();
+    if(selected!==null)url.searchParams.set('sources',selected);
+  }
   const r=await fetch(url);
   const j=await r.json().catch(()=>({}));
   if(!r.ok)throw new Error(j.error||r.statusText);
@@ -2968,12 +3114,109 @@ function vendorUrl(id,offerItemId=null){
   if(offerItemId)url.searchParams.set('offer',offerItemId);
   return url.pathname+url.search;
 }
+function sourcesUrl(focusCode=null){
+  const url=new URL(location.href);
+  url.search='';
+  url.searchParams.set('view','sources');
+  if(focusCode)url.searchParams.set('focus',focusCode);
+  return url.pathname+url.search;
+}
 function searchUrl(q,itemId=null){
   const url=new URL(location.href);
   url.search='';
   if(q)url.searchParams.set('q',q);
   if(itemId)url.searchParams.set('item',itemId);
   return url.pathname+url.search;
+}
+
+function sourceCodeFromRefClient(ref){
+  const text=String(ref||'').trim();
+  if(!text)return 'VENDR';
+  if(/\bvend-?r\b/i.test(text))return 'VENDR';
+  const lower=text.toLowerCase();
+  const rows=sourceCatalog.slice().sort((a,b)=>String(b.title||'').length-String(a.title||'').length);
+  const match=rows.find(row=>String(row.title||'')&&lower.startsWith(String(row.title).toLowerCase()));
+  return match?String(match.code):null;
+}
+function sourceButtonLabel(source,page=null,extra=0){
+  if(!source)return 'Source unavailable';
+  const bits=[source.title||source.code];
+  if(page)bits.push('p. '+page);
+  if(extra>0)bits.push('+'+extra);
+  return bits.join(' · ');
+}
+function renderSourcesPage(focusCode=null){
+  const families=document.getElementById('sourceFamilies');
+  const groups=[
+    {key:'vendr',title:'Vend-R',note:'Original and inferred material',test:s=>s.family==='vendr'},
+    {key:'official',title:'Books & kits',note:'Official published datasets',test:s=>s.family==='official'&&s.source_type!=='official-dlc'},
+    {key:'dlc',title:'DLC',note:'Official downloadable additions',test:s=>s.family==='official'&&s.source_type==='official-dlc'}
+  ];
+  families.innerHTML=groups.map(group=>{
+    const rows=sourceCatalog.filter(group.test);
+    if(!rows.length)return '';
+    const connected=rows.filter(row=>sourceIsOn(row.code)).length;
+    return '<section class="panel source-family">'+
+      '<div class="source-family-head"><h2>'+esc(group.title)+'</h2><span>'+esc(group.note)+'<br>'+connected+' / '+rows.length+' connected</span></div>'+
+      '<div class="source-rack">'+rows.map(row=>{
+        const on=sourceIsOn(row.code);
+        const focused=focusCode&&String(row.code)===String(focusCode);
+        const counts=[
+          Number(row.item_count||0)+' entr'+(Number(row.item_count||0)===1?'y':'ies'),
+          Number(row.profile_count||0)?Number(row.profile_count)+' seller profile'+(Number(row.profile_count)===1?'':'s'):null,
+          row.publisher
+        ].filter(Boolean).join(' · ');
+        return '<button type="button" class="source-channel '+(on?'on ':'')+(focused?'focused':'')+'" data-source-code="'+esc(row.code)+'" aria-pressed="'+(on?'true':'false')+'">'+
+          '<span class="source-lamp" aria-hidden="true"></span>'+
+          '<span class="source-channel-copy"><strong>'+esc(row.title)+'</strong><small>'+esc(row.code+' · '+counts)+'</small></span>'+
+          '<span class="source-channel-state">'+(on?'Connected':'Offline')+'</span></button>';
+      }).join('')+'</div></section>';
+  }).join('');
+  const active=activeSourceCodes();
+  document.getElementById('sourceActiveCount').textContent=active.length+' / '+sourceCatalog.length;
+  document.getElementById('sourcesTopReadout').textContent=active.length+' source channels connected';
+  const visible=Number(sourceSummary?.visible_item_count??0);
+  const sellersVisible=Number(sourceSummary?.visible_profile_count??sellers.length);
+  document.getElementById('sourceVisibleCount').textContent=visible.toLocaleString()+' visible catalogue entries · '+sellersVisible+' seller profiles';
+  if(focusCode)requestAnimationFrame(()=>document.querySelector('.source-channel.focused')?.scrollIntoView({block:'center',behavior:'smooth'}));
+}
+async function refreshSourceSelection(focusCode=null){
+  saveSourcePreferences();
+  const selected=sourceSelectionParam();
+  const [summary,shopData]=await Promise.all([
+    api({api:'sources',sources:selected}),
+    api({api:'shops',sources:selected})
+  ]);
+  sourceSummary=summary;
+  sourceCatalog=summary.sources||sourceCatalog;
+  sellers=shopData.shops||[];
+  buildMockSpatialAnchors();
+  if(currentView==='home')renderHomeDefault();
+  drawSpaciel();
+  renderSourcesPage(focusCode);
+  const pulse=document.getElementById('marketPulse');
+  if(pulse)pulse.textContent=sellers.length+' Vend-R places · '+Number(sourceSummary.visible_item_count||0).toLocaleString()+' visible catalogue entries';
+}
+async function setSourcePreset(mode){
+  if(mode==='all')disabledSourceCodes=new Set();
+  else if(mode==='none')disabledSourceCodes=new Set(sourceCatalog.map(x=>String(x.code)));
+  else if(mode==='official')disabledSourceCodes=new Set(sourceCatalog.filter(x=>x.family!=='official').map(x=>String(x.code)));
+  await refreshSourceSelection();
+}
+async function toggleSource(code){
+  code=String(code||'');
+  if(!code)return;
+  if(disabledSourceCodes.has(code))disabledSourceCodes.delete(code); else disabledSourceCodes.add(code);
+  await refreshSourceSelection(code);
+}
+function openSources(focusCode=null,options={}){
+  if(options.push!==false)pushVendrState('sources',sourcesUrl(focusCode),{focusCode:focusCode||null});
+  renderSourcesPage(focusCode);
+  if(options.animate===false){
+    Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name==='sources'));
+    currentView='sources';window.scrollTo(0,0);
+  }else if(currentView!=='sources')switchTo('sources');
+  else window.scrollTo({top:0,behavior:'smooth'});
 }
 
 let fullscreenSearchAttempted=false;
@@ -3327,7 +3570,13 @@ function renderItemPage(data,selectedShopId=null){
   document.getElementById('itemManufacturer').textContent=item.local?'Local / shop-specific':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
   document.getElementById('itemBookPrice').textContent=item.local?'Not catalogued':moneyEb(item.book_price);
   document.getElementById('itemCategory').textContent=itemTypeText(item);
-  document.getElementById('itemSource').textContent=item.source_ref||(item.source_index_page==null?'Night Market Index':('Night Market Index · p. '+item.source_index_page));
+  const itemSourceButton=document.getElementById('itemSource');
+  const itemSources=Array.isArray(item.sources)?item.sources:[];
+  const primarySource=itemSources[0]||null;
+  itemSourceButton.textContent=primarySource
+    ?sourceButtonLabel(primarySource,primarySource.page,itemSources.length-1)
+    :(item.source_ref||(item.source_index_page==null?'Source unavailable':('Index · p. '+item.source_index_page)));
+  itemSourceButton.dataset.sourceCode=primarySource?.code||sourceCodeFromRefClient(item.source_ref)||'';
   document.getElementById('itemCatalogueId').textContent=item.item_id||'—';
   document.getElementById('itemFooterLeft').textContent=(item.name||'Catalogue item')+' · '+(item.item_id||'');
   document.getElementById('itemSearchInput').value='';
@@ -3532,7 +3781,9 @@ function renderVendor(s,offers){
   document.getElementById('factStockModeLabel').textContent='Listing';
   document.getElementById('factStockMode').textContent=localOnly?'Speciality shop':(menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s)));
   document.getElementById('factArchetype').textContent=s.type||'—';
-  document.getElementById('factSource').textContent=s.source_ref||'Night City 2045';
+  const factSource=document.getElementById('factSource');
+  factSource.textContent=s.source_ref||'Vend-R original';
+  factSource.dataset.sourceCode=s.source_code||sourceCodeFromRefClient(s.source_ref)||'VENDR';
   document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':(unnamedRetail?'Retailers not individually named':'No retail inventory');
   if(children.length){
     document.getElementById('contextKicker').textContent='At this location';
@@ -3734,23 +3985,37 @@ document.getElementById('resultsSort').addEventListener('click',e=>{
 
 async function boot(){
   try{
-    const [h,s]=await Promise.all([api({api:'health'}),api({api:'shops'})]);
+    const [h,initialSources]=await Promise.all([api({api:'health'}),api({api:'sources'})]);
+    sourceCatalog=initialSources.sources||[];
+    sourceSummary=initialSources;
+    loadSourcePreferences();
+    const selected=sourceSelectionParam();
+    if(selected!==null){
+      sourceSummary=await api({api:'sources',sources:selected});
+      sourceCatalog=sourceSummary.sources||sourceCatalog;
+    }
+    const s=await api({api:'shops'});
     sellers=s.shops||[];
     buildMockSpatialAnchors();
     spatialSnapshot=await RadianSpatial.snapshot();
     applySpatialLabels();
-    document.getElementById('marketPulse').textContent=(h.profiles||sellers.length)+' Vend-R places · '+(h.places||650)+' mapped places · '+(h.catalog_items||1275)+' catalogue items';
+    document.getElementById('marketPulse').textContent=sellers.length+' Vend-R places · '+(h.places||650)+' mapped places · '+Number(sourceSummary.visible_item_count||h.catalog_items||1275).toLocaleString()+' visible catalogue entries';
     renderHomeDefault();
     drawSpaciel();
     requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
     const params=new URLSearchParams(location.search);
+    const view=params.get('view');
+    const focus=params.get('focus');
     const q=params.get('q');
     const item=params.get('item');
     const shop=params.get('shop');
     const vendor=params.get('vendor');
     const offer=params.get('offer');
-    if(item){
+    if(view==='sources'){
+      replaceVendrState('sources',sourcesUrl(focus),{focusCode:focus||null});
+      openSources(focus,{push:false,animate:false});
+    }else if(item){
       replaceVendrState('item',itemUrl(item,shop),{itemId:item,shopId:shop||null});
       await openItem(item,{offerShop:shop,push:false,animate:false});
     }else if(vendor){
@@ -3763,6 +4028,7 @@ async function boot(){
       replaceVendrState('home',location.pathname);
     }
   }catch(e){
+    console.error(e);
     document.getElementById('marketPulse').textContent='Market data unavailable';
   }
 }
@@ -3787,6 +4053,19 @@ document.getElementById('marketBrowseButton').addEventListener('click',()=>{
   hideSuggestions();
   window.scrollTo({top:document.querySelector('#homeView .grid-2').offsetTop-20,behavior:'smooth'});
 });
+document.getElementById('sourceManagerButton').addEventListener('click',()=>openSources());
+document.getElementById('sourcesBack').addEventListener('click',()=>appBack('home'));
+document.getElementById('sourcesToolbar').addEventListener('click',e=>{
+  const button=e.target.closest('[data-source-preset]');
+  if(button)setSourcePreset(button.dataset.sourcePreset).catch(console.error);
+});
+document.getElementById('sourceFamilies').addEventListener('click',e=>{
+  const button=e.target.closest('[data-source-code]');
+  if(button)toggleSource(button.dataset.sourceCode).catch(console.error);
+});
+['itemSource','factSource'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{
+  openSources(e.currentTarget.dataset.sourceCode||null);
+}));
 
 const spatialOverlay=document.getElementById('spatialOverlay');
 const spatialSelect=document.getElementById('spatialDistrictSelect');
@@ -3867,12 +4146,16 @@ document.getElementById('shopSearch').addEventListener('input',e=>filterShopStoc
 
 window.addEventListener('popstate',()=>{
   const params=new URLSearchParams(location.search);
+  const view=params.get('view');
+  const focus=params.get('focus');
   const q=params.get('q');
   const item=params.get('item');
   const shop=params.get('shop');
   const vendor=params.get('vendor');
   const offer=params.get('offer');
-  if(item){
+  if(view==='sources'){
+    openSources(focus,{push:false});
+  }else if(item){
     openItem(item,{offerShop:shop,push:false});
   }else if(vendor){
     openVendor(vendor,null,{offerItemId:offer,pushHistory:false});
