@@ -1,0 +1,32 @@
+{
+  "key": "red-chrome-catalog",
+  "title": "The RED Chrome Catalog",
+  "author": "Dusk#1352 (/u/mitsayantan)",
+  "source_type": "homebrew",
+  "official": false,
+  "family": "unofficial",
+  "status": "release-candidate",
+  "pack_version": "0.2.0",
+  "id_namespace": "RCC",
+  "basis": "User-supplied RTF extraction",
+  "source_url": "https://www.reddit.com/r/cyberpunkred/comments/11l2ses/",
+  "catalogue_policy": "This pack contains normalized catalogue/reference data only. It does not reproduce the source's rules text or stat-block prose.",
+  "distribution": {
+    "status": "permission-pending",
+    "creator_permission_recorded": false,
+    "required_before_public_redistribution": true,
+    "free_access_required": true,
+    "rtg_homebrew_policy_url": "https://rtalsoriangames.com/homebrew-content-policy/",
+    "redistribution_scope": "normalized metadata only",
+    "exclude_original_document": true
+  },
+  "counts": {
+    "staged_items": 84,
+    "main_entries": 73,
+    "embedded_entries": 11,
+    "relationships": 15,
+    "priced_items": 84,
+    "unpriced_items": 0
+  },
+  "provenance_note": "Unofficial/homebrew material attributed to Dusk#1352 (/u/mitsayantan). Vend-R must record creator permission before publicly redistributing this normalized pack."
+}
