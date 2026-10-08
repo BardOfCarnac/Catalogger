@@ -1764,6 +1764,22 @@ button,input,select{font:inherit}
   color:var(--muted);text-align:right;
   font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
 }
+.source-family-meta{display:flex;gap:10px;align-items:flex-end;justify-content:flex-end;flex-wrap:wrap}
+.source-family-actions{display:flex;gap:5px}
+.source-family-actions button{
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:5px 7px;cursor:pointer;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-family-actions button:hover{background:var(--rear-4)}
+.source-subfamily{border-top:1px solid var(--rule)}
+.source-subfamily:first-child{border-top:0}
+.source-subfamily-head{
+  display:flex;justify-content:space-between;gap:12px;padding:10px 16px 8px;
+  background:rgba(23,17,12,.055);border-bottom:1px solid var(--rule);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-subfamily-head strong{font-size:11px}
+.source-subfamily-head span{color:var(--muted);text-align:right}
 .source-rack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .source-channel{
   position:relative;width:100%;min-height:94px;border:0;border-bottom:1px solid var(--rule);
@@ -2053,7 +2069,7 @@ button,input,select{font:inherit}
       <section class="hero sources-hero">
         <div class="kicker">Catalogue routing</div>
         <h1 class="hero-title">Sources</h1>
-        <p class="sources-hero-copy">Choose which books, DLCs and Vend-R-created material are connected to this market view. Your selection stays on this device.</p>
+        <p class="sources-hero-copy">Choose which official and unofficial datasets are connected to this market view. Books and DLCs stay individually selectable; Vend-R's own additions are treated as one source. Your selection stays on this device.</p>
         <div class="sources-toolbar" id="sourcesToolbar">
           <button type="button" data-source-preset="all">Connect all</button>
           <button type="button" data-source-preset="none">Disconnect all</button>
@@ -3147,30 +3163,68 @@ function sourceButtonLabel(source,page=null,extra=0){
 }
 function renderSourcesPage(focusCode=null){
   const families=document.getElementById('sourceFamilies');
+  const isOfficial=s=>s.family==='official';
+  const isVendr=s=>s.family==='vendr'||String(s.code||'').toUpperCase()==='VENDR';
   const groups=[
-    {key:'vendr',title:'Vend-R',note:'Original and inferred material',test:s=>s.family==='vendr'},
-    {key:'official',title:'Books & kits',note:'Official published datasets',test:s=>s.family==='official'&&s.source_type!=='official-dlc'},
-    {key:'dlc',title:'DLC',note:'Official downloadable additions',test:s=>s.family==='official'&&s.source_type==='official-dlc'}
+    {
+      key:'official',
+      title:'Official',
+      note:'Published Cyberpunk RED datasets',
+      test:isOfficial,
+      subgroups:[
+        {title:'Books & kits',note:'Core books, sourcebooks and boxed or kit material',test:s=>isOfficial(s)&&s.source_type!=='official-dlc'},
+        {title:'DLCs & supplements',note:'Official downloadable additions',test:s=>isOfficial(s)&&s.source_type==='official-dlc'}
+      ]
+    },
+    {
+      key:'unofficial',
+      title:'Unofficial',
+      note:'Vend-R and community-created datasets',
+      test:s=>!isOfficial(s),
+      subgroups:[
+        {title:'Vend-R Original',note:'Locations, vendors, stock and other Vend-R-created material',test:isVendr},
+        {title:'Community sources',note:'Third-party and fan-made datasets',test:s=>!isOfficial(s)&&!isVendr(s)}
+      ]
+    }
   ];
+  const renderRows=rows=>'<div class="source-rack">'+rows.map(row=>{
+    const on=sourceIsOn(row.code);
+    const focused=focusCode&&String(row.code)===String(focusCode);
+    const counts=[
+      Number(row.item_count||0)+' entr'+(Number(row.item_count||0)===1?'y':'ies'),
+      Number(row.profile_count||0)?Number(row.profile_count)+' seller profile'+(Number(row.profile_count)===1?'':'s'):null,
+      row.publisher
+    ].filter(Boolean).join(' · ');
+    return '<button type="button" class="source-channel '+(on?'on ':'')+(focused?'focused':'')+'" data-source-code="'+esc(row.code)+'" aria-pressed="'+(on?'true':'false')+'">'+
+      '<span class="source-lamp" aria-hidden="true"></span>'+
+      '<span class="source-channel-copy"><strong>'+esc(isVendr(row)?'Vend-R Original':(row.title||row.code))+'</strong><small>'+esc(row.code+' · '+counts)+'</small></span>'+
+      '<span class="source-channel-state">'+(on?'Connected':'Offline')+'</span></button>';
+  }).join('')+'</div>';
+
   families.innerHTML=groups.map(group=>{
     const rows=sourceCatalog.filter(group.test);
     if(!rows.length)return '';
     const connected=rows.filter(row=>sourceIsOn(row.code)).length;
+    const sections=group.subgroups.map(subgroup=>{
+      const subrows=sourceCatalog.filter(subgroup.test);
+      if(!subrows.length)return '';
+      const subConnected=subrows.filter(row=>sourceIsOn(row.code)).length;
+      return '<div class="source-subfamily">'+
+        '<div class="source-subfamily-head"><strong>'+esc(subgroup.title)+'</strong><span>'+esc(subgroup.note)+' · '+subConnected+' / '+subrows.length+' connected</span></div>'+
+        renderRows(subrows)+
+      '</div>';
+    }).join('');
     return '<section class="panel source-family">'+
-      '<div class="source-family-head"><h2>'+esc(group.title)+'</h2><span>'+esc(group.note)+'<br>'+connected+' / '+rows.length+' connected</span></div>'+
-      '<div class="source-rack">'+rows.map(row=>{
-        const on=sourceIsOn(row.code);
-        const focused=focusCode&&String(row.code)===String(focusCode);
-        const counts=[
-          Number(row.item_count||0)+' entr'+(Number(row.item_count||0)===1?'y':'ies'),
-          Number(row.profile_count||0)?Number(row.profile_count)+' seller profile'+(Number(row.profile_count)===1?'':'s'):null,
-          row.publisher
-        ].filter(Boolean).join(' · ');
-        return '<button type="button" class="source-channel '+(on?'on ':'')+(focused?'focused':'')+'" data-source-code="'+esc(row.code)+'" aria-pressed="'+(on?'true':'false')+'">'+
-          '<span class="source-lamp" aria-hidden="true"></span>'+
-          '<span class="source-channel-copy"><strong>'+esc(row.title)+'</strong><small>'+esc(row.code+' · '+counts)+'</small></span>'+
-          '<span class="source-channel-state">'+(on?'Connected':'Offline')+'</span></button>';
-      }).join('')+'</div></section>';
+      '<div class="source-family-head"><h2>'+esc(group.title)+'</h2>'+
+        '<div class="source-family-meta"><span>'+esc(group.note)+'<br>'+connected+' / '+rows.length+' connected</span>'+
+          '<div class="source-family-actions">'+
+            '<button type="button" data-source-family="'+esc(group.key)+'" data-source-family-mode="all">All</button>'+
+            '<button type="button" data-source-family="'+esc(group.key)+'" data-source-family-mode="none">None</button>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      sections+
+    '</section>';
   }).join('');
   const active=activeSourceCodes();
   document.getElementById('sourceActiveCount').textContent=active.length+' / '+sourceCatalog.length;
@@ -3201,6 +3255,15 @@ async function setSourcePreset(mode){
   if(mode==='all')disabledSourceCodes=new Set();
   else if(mode==='none')disabledSourceCodes=new Set(sourceCatalog.map(x=>String(x.code)));
   else if(mode==='official')disabledSourceCodes=new Set(sourceCatalog.filter(x=>x.family!=='official').map(x=>String(x.code)));
+  await refreshSourceSelection();
+}
+async function setSourceFamilyPreset(family,mode){
+  const rows=sourceCatalog.filter(row=>family==='official'?row.family==='official':row.family!=='official');
+  rows.forEach(row=>{
+    const code=String(row.code);
+    if(mode==='all')disabledSourceCodes.delete(code);
+    else if(mode==='none')disabledSourceCodes.add(code);
+  });
   await refreshSourceSelection();
 }
 async function toggleSource(code){
@@ -4060,6 +4123,11 @@ document.getElementById('sourcesToolbar').addEventListener('click',e=>{
   if(button)setSourcePreset(button.dataset.sourcePreset).catch(console.error);
 });
 document.getElementById('sourceFamilies').addEventListener('click',e=>{
+  const familyButton=e.target.closest('[data-source-family][data-source-family-mode]');
+  if(familyButton){
+    setSourceFamilyPreset(familyButton.dataset.sourceFamily,familyButton.dataset.sourceFamilyMode).catch(console.error);
+    return;
+  }
   const button=e.target.closest('[data-source-code]');
   if(button)toggleSource(button.dataset.sourceCode).catch(console.error);
 });
