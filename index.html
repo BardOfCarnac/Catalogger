@@ -3179,11 +3179,11 @@ function renderSourcesPage(focusCode=null){
     {
       key:'unofficial',
       title:'Unofficial',
-      note:'Vend-R and community-created datasets',
+      note:'Homebrew, community and Vend-R datasets',
       test:s=>!isOfficial(s),
       subgroups:[
         {title:'Vend-R Original',note:'Locations, vendors, stock and other Vend-R-created material',test:isVendr},
-        {title:'Community sources',note:'Third-party and fan-made datasets',test:s=>!isOfficial(s)&&!isVendr(s)}
+        {title:'Third-party sources',note:'Unofficial books, homebrew packs and community datasets',test:s=>!isOfficial(s)&&!isVendr(s)}
       ]
     }
   ];
