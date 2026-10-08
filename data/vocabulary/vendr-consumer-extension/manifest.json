@@ -23,5 +23,28 @@
     "concepts.json",
     "brand-affinities.json",
     "provenance.json"
-  ]
+  ],
+  "pricing": {
+    "scheme": "Cyberpunk RED economy tiers",
+    "origin": "Vend-R editorial assignment",
+    "tier_values_eb": {
+      "Cheap": 10,
+      "Everyday": 20,
+      "Costly": 50,
+      "Premium": 100,
+      "Expensive": 500,
+      "Very Expensive": 1000,
+      "Luxury": 5000,
+      "Super Luxury": 10000
+    },
+    "assigned": 52,
+    "unresolved": 0,
+    "tier_counts": {
+      "Cheap": 1,
+      "Everyday": 17,
+      "Costly": 22,
+      "Premium": 11,
+      "Expensive": 1
+    }
+  }
 }
