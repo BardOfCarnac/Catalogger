@@ -24,7 +24,9 @@
     "staged_items": 84,
     "main_entries": 73,
     "embedded_entries": 11,
-    "relationships": 15
+    "relationships": 15,
+    "priced_items": 84,
+    "unpriced_items": 0
   },
   "provenance_note": "Unofficial/homebrew material attributed to Dusk#1352 (/u/mitsayantan). Vend-R must record creator permission before publicly redistributing this normalized pack."
 }
