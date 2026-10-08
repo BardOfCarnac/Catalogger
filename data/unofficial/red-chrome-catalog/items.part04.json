@@ -173,27 +173,29 @@
     "name": "Malorian Heavy Flechette Armor-Piercing Ammunition",
     "category": "Ammunition",
     "subcategory": "Proprietary Ammunition",
-    "price_eb": null,
-    "price_band": null,
+    "price_eb": 100,
+    "price_band": "Premium",
     "price_basis": "same as typical Armor-Piercing Ammunition",
     "identity": "branded",
     "manufacturer_id": null,
     "manufacturer_name": null,
     "entry_kind": "embedded",
-    "notes": "Display name is Catalogger-qualified; source calls it the weapon’s unique Armor-Piercing Ammunition."
+    "notes": "Display name is Catalogger-qualified; source calls it the weapon’s unique Armor-Piercing Ammunition.",
+    "pricing_origin": "resolved-from-referenced-official-ammunition-tier"
   },
   {
     "id": "RCC-0078",
     "name": "Militech Armor-Piercing Shotgun Shells",
     "category": "Ammunition",
     "subcategory": "Shotgun Shells",
-    "price_eb": null,
-    "price_band": null,
+    "price_eb": 100,
+    "price_band": "Premium",
     "price_basis": "same as typical Armor-Piercing Ammunition",
     "identity": "branded",
     "manufacturer_id": "MFR-0058",
     "manufacturer_name": "Militech",
-    "entry_kind": "embedded"
+    "entry_kind": "embedded",
+    "pricing_origin": "resolved-from-referenced-official-ammunition-tier"
   },
   {
     "id": "RCC-0079",
@@ -265,12 +267,13 @@
     "name": "Pepper Spray Ammunition",
     "category": "Ammunition",
     "subcategory": "Proprietary Ammunition",
-    "price_eb": null,
-    "price_band": null,
+    "price_eb": 10,
+    "price_band": "Cheap",
     "price_basis": "same as Basic Shotgun Shells",
     "identity": "generic",
     "manufacturer_id": null,
     "manufacturer_name": null,
-    "entry_kind": "embedded"
+    "entry_kind": "embedded",
+    "pricing_origin": "resolved-from-referenced-official-ammunition-tier"
   }
 ]
