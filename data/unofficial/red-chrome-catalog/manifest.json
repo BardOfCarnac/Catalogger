@@ -23,7 +23,7 @@
       {
         "path": "items.part04.json",
         "rows": 21,
-        "sha256": "9d76d272cc3dab8c7231e258f234995a8894ee895e1ecf5a8206ec37c4be8b1d"
+        "sha256": "2b70a95379e8cf94e315cabfefda5406f1c718b3082041396e9f8f9f2bf4d24f"
       }
     ]
   },
@@ -39,5 +39,12 @@
   },
   "distribution": {
     "path": "DISTRIBUTION.md"
+  },
+  "pricing": {
+    "scheme": "Cyberpunk RED economy tiers",
+    "status": "complete",
+    "priced_items": 84,
+    "unresolved_items": 0,
+    "note": "Three source-relative ammunition prices are resolved from their referenced standard ammunition tiers."
   }
 }
