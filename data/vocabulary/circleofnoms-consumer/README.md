@@ -16,7 +16,7 @@ Dataterm states that it hosts CircleofNoms' material with permission. That estab
 
 ## Contents
 
-- `concepts.json` — 127 normalized consumer product concepts.
+- `concepts.json` — 127 normalized consumer product concepts. Vend-R assigns economy tiers to 124 of them; three highly value-dependent curiosities remain deliberately unresolved.
 - `official-links.json` — 15 source outcomes that should resolve to existing official Catalogger products rather than create duplicates.
 - `descriptors.json` — 23 style/form/material/condition cues suitable for merchandising variants.
 - `brand-profiles.json` — conservative consumer-brand profiles and affinities against the source-derived concepts.
@@ -28,3 +28,7 @@ Dataterm states that it hosts CircleofNoms' material with permission. That estab
 The source tables themselves are **not reproduced** here. The pack stores normalized Vend-R vocabulary and attribution only.
 
 Additional concepts created by Vend-R to fill gaps identified during this audit remain in the sibling `data/vocabulary/vendr-consumer-extension/` package so they are not misattributed to CircleofNoms.
+
+## Vend-R pricing layer
+
+Price tiers in `concepts.json` are **Vend-R editorial metadata**, not values supplied by CircleofNoms. They use the standard RED economy ladder and assume a typical retail unit. Signed celebrity memorabilia, a personal photo collection, and jewelry/gemstones remain unresolved because a single default tier would be misleading.
