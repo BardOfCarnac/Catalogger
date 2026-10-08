@@ -2,8 +2,11 @@
   "pack_id": "vendr-consumer-extension",
   "source_type": "vendr-editorial-synthesis",
   "official": false,
+  "family": "unofficial",
   "rules_content": false,
   "creator": "Vend-R editorial layer",
+  "status": "release-ready",
+  "pack_version": "0.2.0",
   "basis": [
     "Gap analysis of the CircleofNoms consumer vocabulary",
     "Existing consumer-relevant brand profiles already staged in Catalogger"
@@ -12,5 +15,12 @@
     "data/vocabulary/circleofnoms-consumer/concepts.json",
     "data/vocabulary/circleofnoms-consumer/brand-profiles.json"
   ],
+  "distribution": {
+    "status": "release-ready",
+    "creator_permission_required": false,
+    "free_access_required": true,
+    "rtg_homebrew_policy_url": "https://rtalsoriangames.com/homebrew-content-policy/",
+    "note": "Vend-R-created vocabulary may be distributed independently. Cross-pack brand-affinity references are identifiers only and should degrade gracefully when the CircleofNoms pack is absent."
+  },
   "policy": "These concepts fill mundane-commerce gaps for generation. They are not claims that named products canonically exist in Cyberpunk RED. Brand affinities are conservative merchandising inferences and default to avoid when unlisted."
 }
