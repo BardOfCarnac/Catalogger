@@ -33,8 +33,12 @@ Three concepts — vacuum/cleaning appliances, cookware, and crockery/dishes —
 
 ## Files
 
-- `concepts.json` — 52 editorial consumer concepts.
+- `concepts.json` — 52 editorial consumer concepts, each assigned a Vend-R RED economy tier for a typical retail unit.
 - `brand-affinities.json` — optional brand mappings for the new concepts.
 - `provenance.json` — editorial origin, dependency and release metadata.
 - `manifest.json` — package counts and file inventory.
 - `DISTRIBUTION.md` — release notes and packaging boundary.
+
+## Pricing
+
+All 52 concepts carry a Vend-R-assigned RED economy tier and its corresponding baseline eb value. These are generation defaults, not claims of published canon pricing.
