@@ -134,13 +134,16 @@ function itemSourceMap(){
 }
 function sourceMeta(row:any){
   const code=String(row?.code||'');
-  const sourceType=code.startsWith('DL:')?'official-dlc':(code==='CPCW'?'official-promo':'official-book');
+  const inferredType=code.startsWith('DL:')?'official-dlc':(code==='CPCW'?'official-promo':'official-book');
+  const declaredFamily=String(row?.family||'').trim().toLowerCase();
+  const family=declaredFamily||(row?.official===false?'unofficial':'official');
   return {
     code,
     title:String(row?.title||code),
-    publisher:'R. Talsorian Games',
-    source_type:sourceType,
-    family:'official'
+    publisher:String(row?.publisher||(family==='official'?'R. Talsorian Games':row?.creator||row?.author||row?.host||'Unofficial source')),
+    source_type:String(row?.source_type||inferredType),
+    family,
+    description:row?.description==null?null:String(row.description)
   };
 }
 const VENDR_SOURCE={
@@ -171,14 +174,19 @@ function sourceCodeFromRef(ref:any,books:any[]){
   return null;
 }
 function sourceRowsForItem(id:any,sourceMap:Map<string,any[]>,books:any[]){
-  const names=new Map(books.map((row:any)=>[String(row.code),String(row.title)]));
-  return (sourceMap.get(String(id))||[]).map((row:any)=>({
-    code:String(row.code),
-    title:names.get(String(row.code))||String(row.code),
-    page:row.page??null,
-    raw_reference:row.raw_reference??null,
-    family:'official'
-  }));
+  const meta=new Map(books.map((row:any)=>[String(row.code),sourceMeta(row)]));
+  return (sourceMap.get(String(id))||[]).map((row:any)=>{
+    const source=meta.get(String(row.code));
+    return {
+      code:String(row.code),
+      title:source?.title||String(row.code),
+      page:row.page??null,
+      raw_reference:row.raw_reference??null,
+      family:source?.family||'official',
+      source_type:source?.source_type||null,
+      publisher:source?.publisher||null
+    };
+  });
 }
 function itemAllowed(id:any,sourceMap:Map<string,any[]>,active:Set<string>|null){
   if(active===null)return true;
