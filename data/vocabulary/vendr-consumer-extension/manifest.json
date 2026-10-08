@@ -1,6 +1,7 @@
 {
-  "pack_version": "0.1.0",
+  "pack_version": "0.2.0",
   "pack_id": "vendr-consumer-extension",
+  "distribution_status": "release-ready",
   "counts": {
     "concepts": 52,
     "brand_profiles_referenced": 17,
@@ -18,6 +19,7 @@
   },
   "files": [
     "README.md",
+    "DISTRIBUTION.md",
     "concepts.json",
     "brand-affinities.json",
     "provenance.json"
