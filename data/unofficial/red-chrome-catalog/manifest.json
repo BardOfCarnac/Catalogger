@@ -1,6 +1,7 @@
 {
-  "pack_version": "0.1.0",
+  "pack_version": "0.2.0",
   "format_version": "0.1.0",
+  "distribution_status": "permission-pending",
   "items": {
     "rows": 84,
     "parts": [
@@ -35,5 +36,8 @@
   },
   "source": {
     "path": "source.json"
+  },
+  "distribution": {
+    "path": "DISTRIBUTION.md"
   }
 }
