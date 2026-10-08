@@ -4,16 +4,27 @@
   "author": "Dusk#1352 (/u/mitsayantan)",
   "source_type": "homebrew",
   "official": false,
-  "status": "staged-unofficial",
-  "pack_version": "0.1.0",
+  "family": "unofficial",
+  "status": "release-candidate",
+  "pack_version": "0.2.0",
   "id_namespace": "RCC",
   "basis": "User-supplied RTF extraction",
-  "catalogue_policy": "This source pack is kept outside the canonical RTG v1.24 shards. It stores indexing/reference data and does not reproduce item rules text.",
+  "source_url": "https://www.reddit.com/r/cyberpunkred/comments/11l2ses/",
+  "catalogue_policy": "This pack contains normalized catalogue/reference data only. It does not reproduce the source's rules text or stat-block prose.",
+  "distribution": {
+    "status": "permission-pending",
+    "creator_permission_recorded": false,
+    "required_before_public_redistribution": true,
+    "free_access_required": true,
+    "rtg_homebrew_policy_url": "https://rtalsoriangames.com/homebrew-content-policy/",
+    "redistribution_scope": "normalized metadata only",
+    "exclude_original_document": true
+  },
   "counts": {
     "staged_items": 84,
     "main_entries": 73,
     "embedded_entries": 11,
     "relationships": 15
   },
-  "provenance_note": "The source identifies itself as unofficial content under R. Talsorian Games’ Homebrew Content Policy and as not approved or endorsed by RTG."
+  "provenance_note": "Unofficial/homebrew material attributed to Dusk#1352 (/u/mitsayantan). Vend-R must record creator permission before publicly redistributing this normalized pack."
 }
