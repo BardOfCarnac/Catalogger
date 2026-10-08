@@ -1,6 +1,7 @@
 {
-  "pack_version": "0.1.0",
+  "pack_version": "0.2.0",
   "pack_id": "circleofnoms-consumer",
+  "distribution_status": "permission-pending",
   "counts": {
     "concepts": 127,
     "official_links": 15,
@@ -11,6 +12,7 @@
   },
   "files": [
     "README.md",
+    "DISTRIBUTION.md",
     "source.json",
     "concepts.json",
     "official-links.json",
