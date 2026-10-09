@@ -2738,8 +2738,17 @@ async function loadItemImageManifest(){
   });
   return itemImageManifestPromise;
 }
-function curatedItemImage(itemId){
-  const assignment=itemImageAssignments?.items?.[itemId];
+function normaliseItemImageName(name){
+  return String(name||'')
+    .normalize('NFKC')
+    .replace(/[®™©]/g,'')
+    .replace(/\s+/g,' ')
+    .trim()
+    .toLowerCase();
+}
+function curatedItemImage(itemId,itemName=null){
+  const assignment=itemImageAssignments?.items?.[itemId]
+    ||itemImageAssignments?.names?.[normaliseItemImageName(itemName)];
   if(!assignment?.image_id)return null;
   const image=itemImagePool?.images?.[assignment.image_id];
   if(!image)return null;
@@ -3531,7 +3540,7 @@ function setItemImage(item){
   label.removeAttribute('href');
   label.removeAttribute('title');
 
-  const image=curatedItemImage(item?.item_id)||item?.image;
+  const image=curatedItemImage(item?.item_id,item?.name)||item?.image;
   if(image?.image_url){
     box.classList.add('has-image');
     box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
