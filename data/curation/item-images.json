@@ -1,9 +1,9 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "dataset_version": "1.24",
   "taxonomy_version": "0.2.0",
-  "image_pool_version": "1.1.0",
-  "generated_from": "Vend-R approved Unsplash image pool after abstract/detail expansion and item-by-item visual audit",
+  "image_pool_version": "1.2.0",
+  "generated_from": "Vend-R approved Unsplash image pool after abstract/detail expansion, item-by-item visual audit, and Cyberpet image curation",
   "assignment_policy": {
     "summary": "Item-by-item audited visual assignment. Each canonical item is validated against its concise object description, semantic visual family and approved image pool; close-ups, objects, workbenches and related scenes are preferred over literal catalogue photography.",
     "notes": [
@@ -22,7 +22,9 @@
     "general_fallback_count": 100,
     "audited_item_changes": 394,
     "audited_family_corrections": 61,
-    "invalid_assignments_after_audit": 0
+    "invalid_assignments_after_audit": 0,
+    "name_assignment_count": 8,
+    "cyberpet_name_assignments": 8
   },
   "items": {
     "VENDR-0001": {
@@ -11499,6 +11501,120 @@
       ],
       "assignment_tier": "audited-semantic",
       "fit_score": 125
+    }
+  },
+  "names": {
+    "datarabbit": {
+      "image_id": "hEfKRDn6ILM",
+      "alternate_image_ids": [
+        "BISocsjbs_c",
+        "BJrwC4ryArE"
+      ],
+      "primary_visual_family": "Cyberpets / Datarabbit",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Datarabbit"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "forever turtle": {
+      "image_id": "Gfb4mk87rsk",
+      "alternate_image_ids": [
+        "GBpLLf3bWQI",
+        "1CC133LVfS8",
+        "MWXD27qPbDk"
+      ],
+      "primary_visual_family": "Cyberpets / Forever Turtle",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Forever Turtle"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "neon newt": {
+      "image_id": "FwDjBQ2n5IM",
+      "alternate_image_ids": [
+        "D09iFCRKSsg",
+        "Yk86YjrMLes",
+        "_3lhEB3Ln0E"
+      ],
+      "primary_visual_family": "Cyberpets / Neon Newt",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Neon Newt"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "obsidian ocelot": {
+      "image_id": "uaAe0y4YTlI",
+      "alternate_image_ids": [
+        "vYfIp-dnNwM",
+        "7DIaDtoEcA8"
+      ],
+      "primary_visual_family": "Cyberpets / Obsidian Ocelot",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Obsidian Ocelot"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "cyberbear": {
+      "image_id": "UrrN3XckQJ0",
+      "alternate_image_ids": [],
+      "primary_visual_family": "Cyberpets / Cyberbear",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Cyberbear"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "cyberboa": {
+      "image_id": "_4aGCFj1Am0",
+      "alternate_image_ids": [
+        "HG8WwAE42eE",
+        "BJbnTo55tnA",
+        "JxtGLEQ-p-Q"
+      ],
+      "primary_visual_family": "Cyberpets / Cyberboa",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Cyberboa"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "cyberrat": {
+      "image_id": "6psIlD5l0fM",
+      "alternate_image_ids": [
+        "Jqe0g5Vj2TU",
+        "FRDB09PqVz4",
+        "NmWvVf3eef4"
+      ],
+      "primary_visual_family": "Cyberpets / Cyberrat",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Cyberrat"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
+    },
+    "cyberwolf": {
+      "image_id": "8YLfK3cs0UQ",
+      "alternate_image_ids": [
+        "i6yrDhfZ-XQ"
+      ],
+      "primary_visual_family": "Cyberpets / Cyberwolf",
+      "matched_visual_families": [
+        "Cyberpets",
+        "Cyberwolf"
+      ],
+      "assignment_tier": "audited-name",
+      "fit_score": 120
     }
   }
 }
