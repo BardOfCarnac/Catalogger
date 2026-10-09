@@ -15,6 +15,7 @@ The initial catalogue is derived from **R. Talsorian Games' Night Market Index v
 - **113 normalized manufacturers**
 - **16 canonical RED-era food/drink commercial identities** (corporations, product lines, retail chains, and food brands)
 - **6 canonical branded food/drink products** and **30 named official variants**
+- **45 source-backed place-specific offerings across 43 Night City locations**, retained outside the global catalogue
 - **1,316 retained raw index listings** for audit/provenance
 - **7 retired IDs** redirected to canonical items
 
@@ -38,6 +39,8 @@ data/
     product-identity.json       generic/branded/bespoke/unique decisions
     item-tags.json              hand-maintained semantic affinities
     item-overrides.json         deliberate per-item exceptions
+  places/
+    nc2045-place-offerings.json source-backed local drinks, merchandise + services
   shops/
     archetypes.json             shop-generator template seeds
   stocking/
@@ -47,6 +50,7 @@ data/
     *.json.gz                   retained source-index/audit data
     id-redirects.json           retired ID -> canonical ID
 docs/
+  place-offerings.md            cross-service place-offering contract + surface policy
   stocking-lifecycle.md         saved-bundle contract, events and conditions
 schema/
   catalog.sql                   relational catalogue + commercial profile schema
