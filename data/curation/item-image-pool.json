@@ -1,9 +1,9 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "source_pool_version": "1.4",
   "provider": "unsplash",
-  "note": "Vend-R image pool with explicit user curation states; denied images are blocked at render time and pending images remain unresolved until re-reviewed.",
-  "image_count": 185,
+  "note": "Vend-R image pool with explicit user curation states; Cyberpet black-background/dark observational source set added from the approved October 2026 review.",
+  "image_count": 210,
   "images": {
     "rtSDJpHpWW8": {
       "id": "rtSDJpHpWW8",
@@ -3104,6 +3104,406 @@
         "Fashion Styles",
         "Specific Fashions",
         "Lifestyle"
+      ],
+      "curation_status": "approved"
+    },
+    "hEfKRDn6ILM": {
+      "id": "hEfKRDn6ILM",
+      "title": "Rabbit on black",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-rabbit-on-a-black-background-hEfKRDn6ILM",
+      "image_url": "https://unsplash.com/photos/hEfKRDn6ILM/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Datarabbit"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "BISocsjbs_c": {
+      "id": "BISocsjbs_c",
+      "title": "Small rabbit on black",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-small-rabbit-on-a-black-background-BISocsjbs_c",
+      "image_url": "https://unsplash.com/photos/BISocsjbs_c/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Datarabbit"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "BJrwC4ryArE": {
+      "id": "BJrwC4ryArE",
+      "title": "Rabbit portrait on black",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-rabbit-on-a-black-background-BJrwC4ryArE",
+      "image_url": "https://unsplash.com/photos/BJrwC4ryArE/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Datarabbit"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "Gfb4mk87rsk": {
+      "id": "Gfb4mk87rsk",
+      "title": "Gray turtle",
+      "by": "Shaun Low",
+      "source": "https://unsplash.com/photos/gray-turtle-Gfb4mk87rsk",
+      "image_url": "https://unsplash.com/photos/Gfb4mk87rsk/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Forever Turtle"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "GBpLLf3bWQI": {
+      "id": "GBpLLf3bWQI",
+      "title": "Turtle in dark water",
+      "by": "Brooke Balentine",
+      "source": "https://unsplash.com/photos/a-turtle-swims-in-dark-water-GBpLLf3bWQI",
+      "image_url": "https://unsplash.com/photos/GBpLLf3bWQI/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Forever Turtle"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "1CC133LVfS8": {
+      "id": "1CC133LVfS8",
+      "title": "Turtle in dark pool",
+      "by": "Etienne Pauthenet",
+      "source": "https://unsplash.com/photos/a-turtle-swimming-in-a-dark-pool-of-water-1CC133LVfS8",
+      "image_url": "https://unsplash.com/photos/1CC133LVfS8/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Forever Turtle"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "MWXD27qPbDk": {
+      "id": "MWXD27qPbDk",
+      "title": "Brown-black turtle in water",
+      "by": "Timothy Dachraoui",
+      "source": "https://unsplash.com/photos/brown-and-black-turtle-in-water-MWXD27qPbDk",
+      "image_url": "https://unsplash.com/photos/MWXD27qPbDk/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Forever Turtle"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "FwDjBQ2n5IM": {
+      "id": "FwDjBQ2n5IM",
+      "title": "Black and yellow salamander",
+      "by": "Justin Chavanelle",
+      "source": "https://unsplash.com/photos/selective-focus-photo-of-black-and-yellow-salamander-crawling-on-stones-FwDjBQ2n5IM",
+      "image_url": "https://unsplash.com/photos/FwDjBQ2n5IM/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Neon Newt"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "D09iFCRKSsg": {
+      "id": "D09iFCRKSsg",
+      "title": "Spotted salamander on log",
+      "by": "Péter Sebestyén",
+      "source": "https://unsplash.com/photos/a-black-and-yellow-spotted-salamander-sits-on-a-log-D09iFCRKSsg",
+      "image_url": "https://unsplash.com/photos/D09iFCRKSsg/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Neon Newt"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "Yk86YjrMLes": {
+      "id": "Yk86YjrMLes",
+      "title": "Spotted salamander in water",
+      "by": "Péter Sebestyén",
+      "source": "https://unsplash.com/photos/a-spotted-salamander-swims-in-shallow-water-Yk86YjrMLes",
+      "image_url": "https://unsplash.com/photos/Yk86YjrMLes/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Neon Newt"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "_3lhEB3Ln0E": {
+      "id": "_3lhEB3Ln0E",
+      "title": "Black-yellow salamander portrait",
+      "by": "Daniel Rubin",
+      "source": "https://unsplash.com/photos/a-black-salamander-with-yellow-spots-on-sand-_3lhEB3Ln0E",
+      "image_url": "https://unsplash.com/photos/_3lhEB3Ln0E/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Neon Newt"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "uaAe0y4YTlI": {
+      "id": "uaAe0y4YTlI",
+      "title": "Ocelot ready to pounce",
+      "by": "Daley van de Sande",
+      "source": "https://unsplash.com/photos/uaAe0y4YTlI",
+      "image_url": "https://unsplash.com/photos/uaAe0y4YTlI/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Obsidian Ocelot"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "vYfIp-dnNwM": {
+      "id": "vYfIp-dnNwM",
+      "title": "Ocelot head and body study",
+      "by": "Hasibul Hasan",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-spotted-ocelots-head-and-body-vYfIp-dnNwM",
+      "image_url": "https://unsplash.com/photos/vYfIp-dnNwM/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Obsidian Ocelot"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "7DIaDtoEcA8": {
+      "id": "7DIaDtoEcA8",
+      "title": "Ocelot behind dark fence",
+      "by": "Chris Hardy",
+      "source": "https://unsplash.com/photos/a-leopard-walks-cautiously-behind-a-fence-7DIaDtoEcA8",
+      "image_url": "https://unsplash.com/photos/7DIaDtoEcA8/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Obsidian Ocelot"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "UrrN3XckQJ0": {
+      "id": "UrrN3XckQJ0",
+      "title": "Black bear portrait",
+      "by": "Simon Infanger",
+      "source": "https://unsplash.com/photos/black-bear-UrrN3XckQJ0",
+      "image_url": "https://unsplash.com/photos/UrrN3XckQJ0/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberbear"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "_4aGCFj1Am0": {
+      "id": "_4aGCFj1Am0",
+      "title": "Wet boa on black",
+      "by": "David Clode",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-snake-on-a-black-background-_4aGCFj1Am0",
+      "image_url": "https://unsplash.com/photos/_4aGCFj1Am0/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberboa"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "HG8WwAE42eE": {
+      "id": "HG8WwAE42eE",
+      "title": "Snake close-up on black",
+      "by": "Joran Quinten",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-snake-on-a-black-background-HG8WwAE42eE",
+      "image_url": "https://unsplash.com/photos/HG8WwAE42eE/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberboa"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "BJbnTo55tnA": {
+      "id": "BJbnTo55tnA",
+      "title": "Boa constrictor close-up",
+      "by": "David Clode",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-snake-on-a-black-background-BJbnTo55tnA",
+      "image_url": "https://unsplash.com/photos/BJbnTo55tnA/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberboa"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "JxtGLEQ-p-Q": {
+      "id": "JxtGLEQ-p-Q",
+      "title": "Snake against black",
+      "by": "COPPERTIST WU",
+      "source": "https://unsplash.com/photos/a-snake-with-a-black-background-JxtGLEQ-p-Q",
+      "image_url": "https://unsplash.com/photos/JxtGLEQ-p-Q/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberboa"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "6psIlD5l0fM": {
+      "id": "6psIlD5l0fM",
+      "title": "Rat on black surface",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-close-up-of-a-rat-on-a-black-surface-6psIlD5l0fM",
+      "image_url": "https://unsplash.com/photos/6psIlD5l0fM/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberrat"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "Jqe0g5Vj2TU": {
+      "id": "Jqe0g5Vj2TU",
+      "title": "Small rat on black surface",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-small-rat-sitting-on-top-of-a-black-surface-Jqe0g5Vj2TU",
+      "image_url": "https://unsplash.com/photos/Jqe0g5Vj2TU/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberrat"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "FRDB09PqVz4": {
+      "id": "FRDB09PqVz4",
+      "title": "White rat on black",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-white-rat-sitting-on-top-of-a-black-surface-FRDB09PqVz4",
+      "image_url": "https://unsplash.com/photos/FRDB09PqVz4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberrat"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "NmWvVf3eef4": {
+      "id": "NmWvVf3eef4",
+      "title": "Rat standing upright",
+      "by": "Nikolett Emmert",
+      "source": "https://unsplash.com/photos/a-rat-standing-on-its-hind-legs-looking-up-NmWvVf3eef4",
+      "image_url": "https://unsplash.com/photos/NmWvVf3eef4/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberrat"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "8YLfK3cs0UQ": {
+      "id": "8YLfK3cs0UQ",
+      "title": "Wolf in the dark",
+      "by": "Fabian Lauer",
+      "source": "https://unsplash.com/photos/a-black-and-white-photo-of-a-wolf-in-the-dark-8YLfK3cs0UQ",
+      "image_url": "https://unsplash.com/photos/8YLfK3cs0UQ/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberwolf"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
+      ],
+      "curation_status": "approved"
+    },
+    "i6yrDhfZ-XQ": {
+      "id": "i6yrDhfZ-XQ",
+      "title": "Moody wolf face",
+      "by": "Chris Ensminger",
+      "source": "https://unsplash.com/photos/brown-and-black-wolf-in-close-up-photography-i6yrDhfZ-XQ",
+      "image_url": "https://unsplash.com/photos/i6yrDhfZ-XQ/download?force=true&w=1400",
+      "focal_x": 0.5,
+      "focal_y": 0.5,
+      "contexts": [
+        "Cyberpets / Cyberwolf"
+      ],
+      "source_subcategories": [
+        "Cyberpets"
       ],
       "curation_status": "approved"
     }
