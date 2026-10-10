@@ -104,7 +104,13 @@
           "page": null
         }
       ],
-      "creative_taxonomy_note": "Flavor families are design scaffolding only; shops do not sort or specialize Crumb stock by family."
+      "creative_taxonomy_note": "Flavor families are design scaffolding only; shops do not sort or specialize Crumb stock by family.",
+      "mechanical_price_basis": {
+        "type": "catalog_item",
+        "catalog_item_name": "Kibble Pack",
+        "relationship": "same_price"
+      },
+      "note": "Vend-R-original luxury-presented ration; mechanically priced exactly as Kibble Pack."
     }
   ],
   "variants": [
