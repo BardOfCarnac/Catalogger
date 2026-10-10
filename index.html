@@ -2558,6 +2558,24 @@ function preloadDecodedImage(url){
   decodedImageCache.set(url,pending);
   return pending;
 }
+function firstFrameAssetUrls(route,payload){
+  route=normalizeRoute(route);
+  const urls=[];
+  if(route.view==='vendor'){
+    const url=payload?.image?.image_url;
+    if(url)urls.push(String(url));
+  }else if(route.view==='item'){
+    const item=payload?.item||{};
+    const image=curatedItemImage(item?.item_id,item?.name)||item?.image;
+    if(image?.image_url)urls.push(String(image.image_url));
+  }
+  return [...new Set(urls.filter(Boolean))];
+}
+async function preloadFirstFrameAssets(route,payload){
+  const urls=firstFrameAssetUrls(route,payload);
+  if(!urls.length)return;
+  await Promise.all(urls.map(preloadDecodedImage));
+}
 let sellers=[];
 let lastSearch=null;
 let currentSellerId=null;
@@ -3252,22 +3270,24 @@ function searchUrl(q,itemId=null){
 
 async function prepareRoute(route){
   route=normalizeRoute(route);
+  let payload=null;
+
   if(route.view==='search'){
     if(!route.q)return {route:{view:'home'},payload:null};
-    return {route,payload:await api({api:'search',q:route.q,item_id:route.itemId||null})};
-  }
-  if(route.view==='item'){
+    payload=await api({api:'search',q:route.q,item_id:route.itemId||null});
+  }else if(route.view==='item'){
     if(!route.itemId)return {route:{view:'home'},payload:null};
-    const [data]=await Promise.all([api({api:'item',id:route.itemId}),loadItemImageManifest()]);
-    return {route,payload:data};
-  }
-  if(route.view==='vendor'){
+    [payload]=await Promise.all([
+      api({api:'item',id:route.itemId}),
+      loadItemImageManifest()
+    ]);
+  }else if(route.view==='vendor'){
     if(!route.vendorId)return {route:{view:'home'},payload:null};
-    const payload=await api({api:'shop',id:route.vendorId});
-    await preloadDecodedImage(payload?.image?.image_url);
-    return {route,payload};
+    payload=await api({api:'shop',id:route.vendorId});
   }
-  return {route,payload:null};
+
+  await preloadFirstFrameAssets(route,payload);
+  return {route,payload};
 }
 function commitRoute(route,payload){
   route=normalizeRoute(route);
