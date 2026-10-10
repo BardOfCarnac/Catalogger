@@ -134,7 +134,7 @@ The lifecycle event stream records meaningful transitions such as `supplier_fail
 
 ### Named consumer variants
 
-Crumb is the first Vend-R-original consumer product in this layer. Its 43 flavours are intentionally extravagant dessert, patisserie, confectionery, cream/floral and liqueur profiles. Those flavour-family labels are creative design scaffolding only; shop stocking does not specialize by flavour family. Crumb is not yet bound to a mechanical catalogue item, so no price or rules identity has been invented for it.
+Crumb is the first Vend-R-original consumer product in this layer. Its 43 flavours are intentionally extravagant dessert, patisserie, confectionery, cream/floral and liqueur profiles. Those flavour-family labels are creative design scaffolding only; shop stocking does not specialize by flavour family. Crumb uses Kibble Pack as its mechanical price basis, so its luxury positioning is presentation and flavour rather than a higher rules price.
 
 Vend-R keeps mechanically identical consumer variants beneath the canonical catalogue item instead of duplicating rules entries. `data/catalog/brand-products.json` currently binds the published Kibble and Triti-Fizz variant lists to `Kibble Pack` and `Triti-Fizz`. A stock row can therefore expose several named flavors/formulas/formats while price, rules identity, quantity and assortment remain attached to the base item.
 
