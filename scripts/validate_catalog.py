@@ -35,6 +35,8 @@ brand_doc = load("catalog/brands.json")
 brands = brand_doc["brands"]
 brand_products_doc = load("catalog/brand-products.json")
 brand_products = brand_products_doc["products"]
+vendr_originals_doc = load("catalog/vendr-originals-supplement.json")
+vendr_original_items = vendr_originals_doc["items"]
 brand_variants = brand_products_doc["variants"]
 stock_variant_policies = brand_products_doc["stock_variant_policies"]
 taxonomy = load("catalog/taxonomy.json")
@@ -153,6 +155,20 @@ for r in redirects:
 
 # Controlled commercial vocabulary.
 dept_ids = {r["id"] for r in taxonomy["departments"]}
+for r in vendr_original_items:
+    assert r["id"] not in item_ids, f"Vend-R original collides with canonical item ID: {r['id']}"
+    assert r.get("name") and r.get("display_name"), r
+    assert r.get("brand_product_id") in brand_product_ids, r
+    basis_name = r.get("price_basis_item_name")
+    assert len(item_names.get(basis_name, [])) == 1, (
+        f"Vend-R original price basis must resolve exactly once: {basis_name!r}"
+    )
+    src = r.get("source") or {}
+    assert src.get("code") in source_codes, r
+    cls = r.get("classification") or {}
+    assert cls.get("vendr_department") in dept_ids, r
+    assert cls.get("source_category") and cls.get("source_subcategory"), r
+
 for r in brands:
     assert r.get("departments"), r
     assert all(v in dept_ids for v in r["departments"]), r
@@ -261,7 +277,8 @@ for r in identity_rules["branded_source_buckets"]:
 assert len(items) == 1275
 mixed = sum(1 for r in default_rows if r["requires_item_curation"])
 print(
-    f"OK: {len(items)} items, {len(manufacturers)} manufacturers, {len(brands)} brands, "
+    f"OK: {len(items)} canonical items + {len(vendr_original_items)} Vend-R originals, "
+    f"{len(manufacturers)} manufacturers, {len(brands)} brands, "
     f"{len(brand_products)} brand products, {len(brand_variants)} brand variants, "
     f"{len(item_sources)} item-source links, {len(default_rows)} commercial defaults, "
     f"{len(identity_rules['exact'])} exact identity decisions, {len(seen_buckets)} branded identity buckets "
