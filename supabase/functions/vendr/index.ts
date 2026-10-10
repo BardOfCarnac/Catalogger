@@ -1097,7 +1097,7 @@ function refreshCandidatePool(p:any,all:any[],classMap:Map<string,any>,mfrMap:Ma
   }
   return [...byId.values()];
 }
-const LAZY_STOCK_VERSION='lazy-1.6.2-explicit-staples';
+const LAZY_STOCK_VERSION='lazy-1.6.3-vendr-originals';
 const ENTITY_REDIRECTS=new Map<string,string>([
   ['NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION','NC2045-OUT-OUTSKIRTS-296-FUEL-STATION']
 ]);
@@ -1822,7 +1822,8 @@ async function search(u:URL){
         checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
         checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
         support_reason:row?.support_reason??null,support_key:row?.support_key??null,
-        compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
+        compatibility_label:row?.compatibility_label??null,variants:row?.variants??[],
+        price_tier:row?.price_tier??availabilityInfo(item).tier,
         availability_band:row?.availability_band??availabilityInfo(item).key,
         availability_label:row?.availability_label??availabilityInfo(item).label,
         availability_rank:row?.availability_rank??availabilityInfo(item).rank
@@ -1917,7 +1918,8 @@ async function itemDetail(u:URL){
       checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
       checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
       support_reason:row?.support_reason??null,support_key:row?.support_key??null,
-      compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
+      compatibility_label:row?.compatibility_label??null,variants:row?.variants??[],
+      price_tier:row?.price_tier??availabilityInfo(item).tier,
       availability_band:row?.availability_band??availabilityInfo(item).key,
       availability_label:row?.availability_label??availabilityInfo(item).label,
       availability_rank:row?.availability_rank??availabilityInfo(item).rank
@@ -1940,6 +1942,7 @@ async function itemDetail(u:URL){
       context_qualifier:item.context_qualifier||null,description:descMap.get(id)||null,
       primary_department:department(item,classMap),relation_key:rel,classification:cls,
       manufacturers:mfrMap.get(id)||[],book_price:basePrice(item),price_tier:availabilityInfo(item).tier,
+      variants:Array.isArray(item.variants)?item.variants:[],
       availability_band:availabilityInfo(item).key,availability_label:availabilityInfo(item).label,
       source_index_page:item.source_index_page??null,sources:sourceRowsForItem(id,sourceMap,books),image:null
     },
