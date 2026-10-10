@@ -13,8 +13,8 @@ The initial catalogue is derived from **R. Talsorian Games' Night Market Index v
 - **1,709 item/source-page links**
 - **482 item/manufacturer links**
 - **113 normalized manufacturers**
-- **16 canonical RED-era food/drink commercial identities** (corporations, product lines, retail chains, and food brands)
-- **6 canonical branded food/drink products** and **30 named official variants**
+- **16 canonical RED-era food/drink commercial identities** plus **Crumb**, the first Vend-R-original food brand
+- **7 branded food/drink products** and **73 named variants** across official and Vend-R-original sources
 - **45 source-backed place-specific offerings across 43 Night City locations**, retained outside the global catalogue
 - **1,316 retained raw index listings** for audit/provenance
 - **7 retired IDs** redirected to canonical items
@@ -133,6 +133,8 @@ The current controlled temporary conditions are `shortage`, `surplus`, `disrupte
 The lifecycle event stream records meaningful transitions such as `supplier_failed`, `backorder_placed`, `delivery_received`, `replenished`, `restocked`, `special_arrival` and `special_departed`. This gives later services an explainable world-state history instead of silent rerolls.
 
 ### Named consumer variants
+
+Crumb is the first Vend-R-original consumer product in this layer. Its 43 flavours are intentionally extravagant dessert, patisserie, confectionery, cream/floral and liqueur profiles. Those flavour-family labels are creative design scaffolding only; shop stocking does not specialize by flavour family. Crumb is not yet bound to a mechanical catalogue item, so no price or rules identity has been invented for it.
 
 Vend-R keeps mechanically identical consumer variants beneath the canonical catalogue item instead of duplicating rules entries. `data/catalog/brand-products.json` currently binds the published Kibble and Triti-Fizz variant lists to `Kibble Pack` and `Triti-Fizz`. A stock row can therefore expose several named flavors/formulas/formats while price, rules identity, quantity and assortment remain attached to the base item.
 
