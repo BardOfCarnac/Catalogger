@@ -4057,6 +4057,10 @@ document.getElementById('resultsSort').addEventListener('click',e=>{
 
 async function boot(){
   try{
+    // Publish an already-prepared stock generation if the 24h rollover is due.
+    // This call is intentionally tiny: generation of tomorrow's market runs
+    // behind the response, so users never wait for the stock calculation.
+    await api({api:'bootstrap'});
     const [h,initialSources]=await Promise.all([api({api:'health'}),api({api:'sources'})]);
     sourceCatalog=initialSources.sources||[];
     sourceSummary=initialSources;
