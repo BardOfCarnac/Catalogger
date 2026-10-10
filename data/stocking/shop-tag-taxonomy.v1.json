@@ -1,0 +1,459 @@
+{
+  "version": "1.0.0",
+  "catalogue_reference": "Catalogger v1.24 source_subcategory",
+  "policy": {
+    "original_tags_unchanged": true,
+    "dataterm_included": false,
+    "unknown_tags": "review",
+    "known_for_is_preference_not_gate": true,
+    "trade_tags_not_merchandise": true
+  },
+  "type_rules": [
+    {
+      "id": "bodega",
+      "aliases": [
+        "Bodega",
+        "Corner store",
+        "Convenience store",
+        "Campus bodega",
+        "Upscale bodega"
+      ],
+      "allow": [
+        "Foodstuffs",
+        "General Gear"
+      ],
+      "max_price_eb": 100
+    },
+    {
+      "id": "general_store",
+      "aliases": [
+        "General retailer",
+        "Big-box store",
+        "Post Exchange"
+      ],
+      "allow": [
+        "Foodstuffs",
+        "General Gear",
+        "Agents",
+        "Apps and Software",
+        "Specific Fashions"
+      ],
+      "max_price_eb": null
+    },
+    {
+      "id": "food_retail",
+      "aliases": [
+        "Speciality grocer",
+        "Food importer"
+      ],
+      "allow": [
+        "Foodstuffs"
+      ],
+      "max_price_eb": null
+    },
+    {
+      "id": "armour_retail",
+      "aliases": [
+        "Armour outlet",
+        "Fashion outlet"
+      ],
+      "allow": [
+        "Armor",
+        "Specific Fashions"
+      ],
+      "max_price_eb": null
+    },
+    {
+      "id": "tools_scrap",
+      "aliases": [
+        "Tool & scrap stall"
+      ],
+      "allow": [],
+      "review": "General Gear is too broad to safely infer tool-only stock"
+    },
+    {
+      "id": "bookshop",
+      "aliases": [
+        "Used bookshop",
+        "Bookshop"
+      ],
+      "allow": [],
+      "review": "No dedicated printed-media items in current catalogue taxonomy"
+    },
+    {
+      "id": "software_stall",
+      "aliases": [
+        "Software stall"
+      ],
+      "allow": [
+        "Apps and Software"
+      ],
+      "max_price_eb": null
+    },
+    {
+      "id": "clothing",
+      "aliases": [
+        "Clothing consignment"
+      ],
+      "allow": [
+        "Specific Fashions",
+        "Fashion Styles"
+      ],
+      "max_price_eb": null
+    }
+  ],
+  "known_for_rules": [
+    {
+      "id": "foodstuffs",
+      "aliases": [
+        "Food",
+        "Foodstuffs",
+        "Food & consumables",
+        "Groceries",
+        "Dry goods",
+        "Food & drinks",
+        "Everyday food",
+        "Kibble",
+        "Kibble & SCOP",
+        "SCOP noodles",
+        "Street food",
+        "Fresh fruit",
+        "Fresh vegetables",
+        "Fresh produce",
+        "Vegetables",
+        "Fresh fish",
+        "Seafood",
+        "Baked goods",
+        "Crullers",
+        "Experimental meat",
+        "Unusual meat cuts",
+        "Japanese foods",
+        "Japanese foodstuffs",
+        "Japanese ingredients",
+        "Chinese foodstuffs",
+        "Chinese ingredients",
+        "Korean foodstuffs",
+        "Shroomer mushrooms & lichen",
+        "Dried herbs"
+      ],
+      "prefer": [
+        "Foodstuffs"
+      ]
+    },
+    {
+      "id": "drinks",
+      "aliases": [
+        "Drinks",
+        "Tea",
+        "Coffee",
+        "Triti-Fizz"
+      ],
+      "prefer": [
+        "Drinks (and similar substances served in bars and pubs)"
+      ],
+      "review": "Includes served drinks; merchandise/venue context needed"
+    },
+    {
+      "id": "general_gear",
+      "aliases": [
+        "General gear",
+        "Everyday supplies",
+        "Everyday gear",
+        "Everyday goods",
+        "Daily supplies",
+        "Daily-life supplies",
+        "Practical gear",
+        "Cheap supplies",
+        "Resupply"
+      ],
+      "prefer": [
+        "General Gear"
+      ],
+      "review": "Subcategory includes unusual technical items; cannot itself grant stock"
+    },
+    {
+      "id": "tools_scrap",
+      "aliases": [
+        "Tools",
+        "Tools & parts",
+        "Replacement tools",
+        "Scrap"
+      ],
+      "prefer": [],
+      "review": "No dedicated tool-only SKU subcategory"
+    },
+    {
+      "id": "clothing",
+      "aliases": [
+        "Clothing",
+        "Used clothing",
+        "Student wardrobes",
+        "Workwear",
+        "Vintage qipao",
+        "Clothing & personal goods"
+      ],
+      "prefer": [
+        "Specific Fashions",
+        "Fashion Styles"
+      ]
+    },
+    {
+      "id": "armour",
+      "aliases": [
+        "Armour",
+        "Basic armour",
+        "Light armour",
+        "Shock Armor",
+        "Tactical Smart Armor",
+        "Discreet armour",
+        "Stain-proof armour"
+      ],
+      "prefer": [
+        "Armor"
+      ]
+    },
+    {
+      "id": "firearms",
+      "aliases": [
+        "Firearms",
+        "Guns",
+        "Weapons",
+        "Pistols",
+        "Reproduction firearms",
+        "Third-hand firearms",
+        "Unique firearms",
+        "Midnight Arms firearms",
+        "Faisal weapons",
+        "Sanroo weapons"
+      ],
+      "prefer": [
+        "Medium Pistols",
+        "Heavy Pistols",
+        "Very Heavy Pistols",
+        "SMG",
+        "Heavy SMG",
+        "Shotguns",
+        "Assault Rifles",
+        "Sniper Rifles"
+      ]
+    },
+    {
+      "id": "ammunition",
+      "aliases": [
+        "Ammunition"
+      ],
+      "prefer": [
+        "Ammunition"
+      ]
+    },
+    {
+      "id": "weapon_parts",
+      "aliases": [
+        "Weapon attachments"
+      ],
+      "prefer": [
+        "Weapon Attachments"
+      ]
+    },
+    {
+      "id": "netrunning",
+      "aliases": [
+        "Cyberdecks",
+        "Cyberdeck hardware",
+        "Cyberdeck programs",
+        "NET programs",
+        "NET accessories",
+        "NET gear"
+      ],
+      "prefer": [
+        "Cyberdecks",
+        "Cyberdeck Hardware",
+        "Attacker Programs",
+        "Defender Programs",
+        "Booster Programs",
+        "Netrunning Accessories"
+      ]
+    },
+    {
+      "id": "software",
+      "aliases": [
+        "Software",
+        "Productivity software",
+        "Cheap games"
+      ],
+      "prefer": [
+        "Apps and Software"
+      ],
+      "review": "Cheap games may not have a corresponding SKU"
+    },
+    {
+      "id": "electronics",
+      "aliases": [
+        "Electronics",
+        "Consumer electronics",
+        "Electronics & comms",
+        "Everyday electronics",
+        "Used electronics"
+      ],
+      "prefer": [
+        "Agents",
+        "Apps and Software"
+      ],
+      "review": "More precise consumer electronics subcategories are needed"
+    },
+    {
+      "id": "cyberware",
+      "aliases": [
+        "Cyberlimbs",
+        "Cybernetic replacements",
+        "Salvaged cyberware"
+      ],
+      "prefer": [
+        "Cyberlimbs",
+        "Internal Body Cyberware",
+        "External Body Cyberware"
+      ]
+    },
+    {
+      "id": "fashionware",
+      "aliases": [
+        "Fashionware",
+        "Fingertip fashionware"
+      ],
+      "prefer": [
+        "Fashionware"
+      ]
+    },
+    {
+      "id": "books",
+      "aliases": [
+        "Books",
+        "Heavily used books",
+        "Recovered books",
+        "Rare books",
+        "Comics",
+        "Graphic novels",
+        "Fax-print magazines"
+      ],
+      "prefer": [],
+      "review": "Printed-media items not represented by a dedicated catalogue subcategory"
+    },
+    {
+      "id": "used_goods",
+      "aliases": [
+        "Used goods",
+        "Mixed used goods",
+        "Pawned goods",
+        "General junk",
+        "Cheap junk"
+      ],
+      "prefer": [],
+      "review": "Used is an item condition, not a merchandise family"
+    }
+  ],
+  "trade_rules": [
+    {
+      "id": "steady_supply",
+      "aliases": [
+        "Steady supply",
+        "Well supplied"
+      ],
+      "facet": "availability",
+      "value": "steady"
+    },
+    {
+      "id": "irregular_stock",
+      "aliases": [
+        "Irregular stock"
+      ],
+      "facet": "availability",
+      "value": "irregular"
+    },
+    {
+      "id": "fair_pricing",
+      "aliases": [
+        "Fair pricing"
+      ],
+      "facet": "price",
+      "value": "fair"
+    },
+    {
+      "id": "bargain",
+      "aliases": [
+        "Bargain-friendly"
+      ],
+      "facet": "price",
+      "value": "bargain"
+    },
+    {
+      "id": "premium",
+      "aliases": [
+        "Premium pricing"
+      ],
+      "facet": "price",
+      "value": "premium"
+    },
+    {
+      "id": "grey_market",
+      "aliases": [
+        "Grey market"
+      ],
+      "facet": "channel",
+      "value": "grey"
+    },
+    {
+      "id": "specialist",
+      "aliases": [
+        "Specialist",
+        "Specialist food"
+      ],
+      "facet": "specialism",
+      "value": "focused"
+    },
+    {
+      "id": "corporate",
+      "aliases": [
+        "Corporate",
+        "Corporate supply",
+        "Corporate retail"
+      ],
+      "facet": "channel",
+      "value": "corporate"
+    },
+    {
+      "id": "nomad",
+      "aliases": [
+        "Nomad supply"
+      ],
+      "facet": "channel",
+      "value": "nomad"
+    },
+    {
+      "id": "service_only",
+      "aliases": [
+        "Service only"
+      ],
+      "facet": "service",
+      "value": "only"
+    },
+    {
+      "id": "second_hand",
+      "aliases": [
+        "Salvage",
+        "Knock-offs",
+        "Gently used"
+      ],
+      "facet": "condition",
+      "value": "used"
+    },
+    {
+      "id": "local_retail",
+      "aliases": [
+        "Neighbourhood retail",
+        "Local retail"
+      ],
+      "facet": "channel",
+      "value": "neighbourhood"
+    }
+  ]
+}
