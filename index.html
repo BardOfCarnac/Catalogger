@@ -2440,6 +2440,8 @@ function fgX(elapsed, spec){
   return FG_START + (FG_END - FG_START) * p;
 }
 
+const TRANSITION_SWAP_X=-108;
+
 function directionalFgX(elapsed,spec,direction){
   if(elapsed <= spec.delay) return direction==='back'?FG_END:FG_START;
   const p = Math.min(1, (elapsed - spec.delay) / spec.duration);
@@ -2447,82 +2449,143 @@ function directionalFgX(elapsed,spec,direction){
     ? FG_END + (FG_START - FG_END) * p
     : FG_START + (FG_END - FG_START) * p;
 }
+function transitionSwapElapsed(direction){
+  const spec=fgSpecs.three;
+  const from=direction==='back'?FG_END:FG_START;
+  const to=direction==='back'?FG_START:FG_END;
+  const p=Math.max(0,Math.min(1,(TRANSITION_SWAP_X-from)/(to-from)));
+  return spec.delay+(spec.duration*p);
+}
 
 function switchTo(target,options={}){
   const direction=options.direction==='back'?'back':'forward';
   const force=options.force===true;
   const onSwap=typeof options.onSwap==='function'?options.onSwap:null;
+  const readyPromise=options.readyPromise||null;
+
   if(busy)return Promise.resolve(false);
-  if(currentView===target&&!force){
+  if(currentView===target&&!force&&!readyPromise){
     if(onSwap)onSwap();
     window.scrollTo(0,0);
     return Promise.resolve(true);
   }
-  busy = true;
+  busy=true;
+
+  let ready=!readyPromise;
+  let readyValue=null;
+  let readyError=null;
+  let releaseTime=null;
+  if(readyPromise){
+    Promise.resolve(readyPromise).then(value=>{
+      readyValue=value;
+      ready=true;
+      if(releaseTime===null)releaseTime=performance.now();
+    }).catch(error=>{
+      readyError=error;
+      ready=true;
+      if(releaseTime===null)releaseTime=performance.now();
+    });
+  }
 
   const startX=direction==='back'?FG_END:FG_START;
-  const panels = {
-    one: createFg('one', 'one'),
-    two: createFg('two', 'two'),
-    three: createFg('three', 'three')
+  const panels={
+    one:createFg('one','one'),
+    two:createFg('two','two'),
+    three:createFg('three','three')
   };
   Object.values(panels).forEach(el=>{el.style.transform=`translateX(${startX}vw)`});
 
-  const start = performance.now();
+  const start=performance.now();
+  const holdAt=transitionSwapElapsed(direction);
   const delta=direction==='back'?-1:1;
-  const bgStart = BG_BASE - (bgStep * BG_PERIOD);
-  const bgEnd = BG_BASE - ((bgStep + delta) * BG_PERIOD);
-  let swapped = false;
+  const bgStart=BG_BASE-(bgStep*BG_PERIOD);
+  const bgEnd=BG_BASE-((bgStep+delta)*BG_PERIOD);
+  let holdStarted=false;
+  let holdStartTime=null;
+  let swapped=false;
+  let failed=false;
 
-  return new Promise(resolve=>{
+  return new Promise((resolve,reject)=>{
+    function finish(){
+      bgStep+=delta;
+      setBackgroundTransform(`translateX(${BG_BASE-(bgStep*BG_PERIOD)}vw)`);
+      Object.values(panels).forEach(el=>el.remove());
+      busy=false;
+      if(failed)reject(readyError||new Error('Vend-R route preparation failed'));
+      else resolve(true);
+    }
+
     function frame(now){
-      const elapsed = now - start;
+      const rawElapsed=now-start;
+      let elapsed=rawElapsed;
 
-      for (const [key, el] of Object.entries(panels)){
-        el.style.transform = `translateX(${directionalFgX(elapsed, fgSpecs[key], direction)}vw)`;
+      // The wipe gets to the fully covered swap point immediately. If the
+      // destination is still preparing, freeze there and let the load happen
+      // behind the transition rather than before the user's click receives feedback.
+      if(!holdStarted&&rawElapsed>=holdAt&&!ready){
+        holdStarted=true;
+        holdStartTime=now;
+      }
+      if(holdStarted){
+        if(!ready){
+          elapsed=holdAt;
+        }else{
+          const releasedAt=Math.max(holdStartTime||now,releaseTime||now);
+          elapsed=holdAt+Math.max(0,now-releasedAt);
+        }
       }
 
-      const bp = Math.min(1, elapsed / BG_DURATION);
-      const eased = gentleBackgroundProgress(bp);
-      const bgX = bgStart + (bgEnd - bgStart) * eased;
+      for(const [key,el] of Object.entries(panels)){
+        el.style.transform=`translateX(${directionalFgX(elapsed,fgSpecs[key],direction)}vw)`;
+      }
+
+      const bp=Math.min(1,elapsed/BG_DURATION);
+      const eased=gentleBackgroundProgress(bp);
+      const bgX=bgStart+(bgEnd-bgStart)*eased;
       setBackgroundTransform(`translateX(${bgX}vw)`);
 
-      const amberLead = directionalFgX(elapsed, fgSpecs.three, direction);
-      const reachedSwap=direction==='back'?amberLead>=-108:amberLead<=-108;
-      if (!swapped && reachedSwap){
-        swapped = true;
-        if(onSwap)onSwap();
-        Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
-        currentView = target;
-        window.scrollTo(0,0);
-        requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+      const reachedSwap=elapsed>=holdAt;
+      if(!swapped&&reachedSwap&&ready){
+        swapped=true;
+        if(readyError){
+          failed=true;
+        }else{
+          if(onSwap)onSwap(readyValue);
+          Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
+          currentView=target;
+          window.scrollTo(0,0);
+          requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+        }
       }
 
-      const doneFG = elapsed >= fgSpecs.three.delay + fgSpecs.three.duration;
-      const doneBG = elapsed >= BG_DURATION;
-
-      if (!doneFG || !doneBG){
+      const doneFG=elapsed>=fgSpecs.three.delay+fgSpecs.three.duration;
+      const doneBG=elapsed>=BG_DURATION;
+      if(!doneFG||!doneBG){
         requestAnimationFrame(frame);
         return;
       }
 
       if(!swapped){
-        if(onSwap)onSwap();
-        Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
-        currentView=target;
+        if(!ready){
+          requestAnimationFrame(frame);
+          return;
+        }
+        swapped=true;
+        if(readyError){
+          failed=true;
+        }else{
+          if(onSwap)onSwap(readyValue);
+          Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
+          currentView=target;
+          window.scrollTo(0,0);
+        }
       }
-      bgStep += delta;
-      setBackgroundTransform(`translateX(${BG_BASE - (bgStep * BG_PERIOD)}vw)`);
-
-      Object.values(panels).forEach(el => el.remove());
-      busy = false;
-      resolve(true);
+      finish();
     }
 
     requestAnimationFrame(frame);
   });
 }
-
 
 
 const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
@@ -3327,23 +3390,55 @@ async function showPreparedRoute(route,payload,{animate=true,direction='forward'
   }
   return switchTo(route.view,{direction,force:key!==currentRouteKey,onSwap:commit});
 }
+
+async function showPreparingRoute(route,preparation,{direction='forward'}={}){
+  route=normalizeRoute(route);
+  const requestedKey=routeKey(route);
+  return switchTo(route.view,{
+    direction,
+    force:requestedKey!==currentRouteKey,
+    readyPromise:preparation,
+    onSwap:prepared=>{
+      const finalRoute=normalizeRoute(prepared?.route||route);
+      if(finalRoute.view!==route.view){
+        throw new Error('Prepared route changed view during an animated transition');
+      }
+      commitRoute(finalRoute,prepared?.payload??null);
+      currentRouteKey=routeKey(finalRoute);
+    }
+  });
+}
 async function navigateRoute(route,options={}){
   if(busy)return false;
-  const prepared=await prepareRoute(route);
-  route=prepared.route;
+  route=normalizeRoute(route);
   const key=routeKey(route);
+  const preparation=prepareRoute(route);
+
   if(key===currentRouteKey&&options.replace!==true){
-    commitRoute(route,prepared.payload);
+    const prepared=await preparation;
+    commitRoute(prepared.route,prepared.payload);
+    currentRouteKey=routeKey(prepared.route);
     return true;
   }
+
   const replace=options.replace===true;
   const nextIndex=replace?currentNavIndex:currentNavIndex+1;
   const state=historyPayload(route,nextIndex,options.state||{});
   if(replace)history.replaceState(state,'',routeUrl(route));
   else history.pushState(state,'',routeUrl(route));
   currentNavIndex=nextIndex;
-  await showPreparedRoute(route,prepared.payload,{animate:options.animate!==false,direction:options.direction||'forward'});
-  return true;
+
+  if(options.animate===false){
+    const prepared=await preparation;
+    return showPreparedRoute(prepared.route,prepared.payload,{animate:false,direction:options.direction||'forward'});
+  }
+
+  try{
+    return await showPreparingRoute(route,preparation,{direction:options.direction||'forward'});
+  }catch(error){
+    console.error(error);
+    return false;
+  }
 }
 
 function sourceCodeFromRefClient(ref){
@@ -4337,14 +4432,13 @@ document.getElementById('stockNext').addEventListener('click',()=>{
 document.getElementById('shopSearch').addEventListener('input',e=>filterShopStock(e.currentTarget.value));
 
 window.addEventListener('popstate',async e=>{
-  const route=routeFromLocation();
+  const route=normalizeRoute(routeFromLocation());
   const nextIndex=(e.state&&e.state.vendr===true&&Number.isFinite(Number(e.state.navIndex)))
     ?Number(e.state.navIndex):0;
   const direction=nextIndex<currentNavIndex?'back':'forward';
   currentNavIndex=nextIndex;
   try{
-    const prepared=await prepareRoute(route);
-    await showPreparedRoute(prepared.route,prepared.payload,{animate:true,direction});
+    await showPreparingRoute(route,prepareRoute(route),{direction});
   }catch(err){
     console.error(err);
   }
