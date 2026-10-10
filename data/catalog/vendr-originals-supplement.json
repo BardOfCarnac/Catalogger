@@ -1,0 +1,39 @@
+{
+  "version": "0.1.0",
+  "source_code": "VENDR",
+  "source_title": "Vend-R Originals",
+  "note": "Original Vend-R catalogue entities kept separate from official Cyberpunk RED source data.",
+  "items": [
+    {
+      "id": "VENDR-ORIG-0001",
+      "name": "Crumb",
+      "display_name": "Crumb",
+      "context_qualifier": "aerated luxury dessert ration",
+      "brand_product_id": "BPROD-0007",
+      "primary_department": "food-consumables",
+      "price_basis_item_name": "Kibble Pack",
+      "currency": "eb",
+      "price_min": null,
+      "price_max": null,
+      "price_tier": null,
+      "price_basis": "pack",
+      "cost_kind": "inherited",
+      "cost_raw": "Same as Kibble Pack",
+      "cost_parse_note": "Price is inherited dynamically from the canonical Kibble Pack catalogue entry.",
+      "source_index_page": null,
+      "source": {
+        "code": "VENDR",
+        "page": null,
+        "raw_reference": "Vend-R Originals"
+      },
+      "classification": {
+        "source_category": "Food and Drugs",
+        "source_subcategory": "Foodstuffs",
+        "vendr_department": "food-consumables",
+        "vendr_class": "packaged ration",
+        "is_primary": true
+      },
+      "description": "Aerated crunchy confection ration marketed as mass-produced decadence, with elaborate dessert, patisserie, liqueur, cream, floral, and confectionery flavours."
+    }
+  ]
+}
