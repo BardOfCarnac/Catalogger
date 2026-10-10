@@ -2267,10 +2267,11 @@ button,input,select{font:inherit}
 
         <div class="restock-band" id="restockBand">Checking current market state…</div>
 
+        <label class="inline-search stock-local-search">
+          <input id="shopSearch" type="search" placeholder="FILTER THIS SHOP" autocomplete="off">
+        </label>
+
         <div class="stock-browser" id="stockBrowser" hidden>
-          <label class="inline-search stock-local-search">
-            <input id="shopSearch" type="search" placeholder="FILTER THIS SHOP" autocomplete="off">
-          </label>
           <div class="stock-filter-row" id="stockFilters"></div>
           <div class="stock-browser-nav">
             <span id="stockBrowserMeta">All stock</span>
@@ -2522,30 +2523,6 @@ function switchTo(target,options={}){
   });
 }
 
-function playWipe(action){
-  if(busy)return;
-  busy=true;
-  const panels={one:createFg('one','one'),two:createFg('two','two'),three:createFg('three','three')};
-  const start=performance.now();
-  let fired=false;
-  function frame(now){
-    const elapsed=now-start;
-    for(const [key,el] of Object.entries(panels))el.style.transform=`translateX(${fgX(elapsed,fgSpecs[key])}vw)`;
-    if(!fired&&fgX(elapsed,fgSpecs.three)<=-108){
-      fired=true;
-      busy=false;
-      Promise.resolve(action()).catch(console.error);
-      window.scrollTo(0,0);
-    }
-    if(elapsed<fgSpecs.three.delay+fgSpecs.three.duration){
-      requestAnimationFrame(frame);
-      return;
-    }
-    Object.values(panels).forEach(el=>el.remove());
-    busy=false;
-  }
-  requestAnimationFrame(frame);
-}
 
 
 const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
@@ -3216,15 +3193,6 @@ function routeUrl(route){
 function historyPayload(route,index=currentNavIndex,extra={}){
   route=normalizeRoute(route);
   return {vendr:true,navIndex:index,routeKey:routeKey(route),route,...extra};
-}
-function vendrState(view,extra={}){
-  return historyPayload({view,...extra},currentNavIndex,extra);
-}
-function pushVendrState(view,url,extra={}){
-  const route=routeFromUrl(url);
-  currentNavIndex+=1;
-  history.pushState(historyPayload(route,currentNavIndex,extra),'',url);
-  currentRouteKey=routeKey(route);
 }
 function replaceVendrState(view,url,extra={}){
   const route=routeFromUrl(url);
