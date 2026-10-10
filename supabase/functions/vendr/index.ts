@@ -1563,7 +1563,7 @@ async function sourcesApi(u:URL){
     profileCounts.set(code,(profileCounts.get(code)||0)+1);
   }
   const definitions=[
-    ...books.map((row:any)=>sourceMeta(row)),
+    ...books.filter((row:any)=>String(row.code)!=='VENDR').map((row:any)=>sourceMeta(row)),
     {...VENDR_SOURCE}
   ].map((row:any)=>{
     const ids=new Set<string>([...(countMap.get(String(row.code))||[]),...(localEntries.get(String(row.code))||[])]);
