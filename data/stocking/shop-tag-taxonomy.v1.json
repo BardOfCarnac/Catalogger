@@ -1,12 +1,13 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "catalogue_reference": "Catalogger v1.24 source_subcategory",
   "policy": {
     "original_tags_unchanged": true,
     "dataterm_included": false,
     "unknown_tags": "review",
     "known_for_is_preference_not_gate": true,
-    "trade_tags_not_merchandise": true
+    "trade_tags_not_merchandise": true,
+    "note": " V1.0.1 constrains broad General Gear/Apps software categories for convenience and budget stalls to observed ordinary item names; this prevents specialised equipment contamination."
   },
   "type_rules": [
     {
@@ -22,7 +23,18 @@
         "Foodstuffs",
         "General Gear"
       ],
-      "max_price_eb": 100
+      "max_price_eb": 100,
+      "allow_names_by_subcategory": {
+        "General Gear": [
+          "Duct Tape",
+          "Disposable Cellphone",
+          "Glow Stick",
+          "Shower in a Can",
+          "Rope (60m/yards)",
+          "Inflatable Bed and Sleeping Bag",
+          "MiniMag Speakers"
+        ]
+      }
     },
     {
       "id": "general_store",
@@ -88,7 +100,20 @@
       "allow": [
         "Apps and Software"
       ],
-      "max_price_eb": null
+      "max_price_eb": 50,
+      "allow_names_by_subcategory": {
+        "Apps and Software": [
+          "BabelChat",
+          "BangMe!",
+          "Elflines Online",
+          "Elflines Online Elftracker",
+          "Roach Race",
+          "Segotari Mindgames Chip",
+          "Segotari RUSH Game (Used)",
+          "WatchBox",
+          "ZPost"
+        ]
+      }
     },
     {
       "id": "clothing",
