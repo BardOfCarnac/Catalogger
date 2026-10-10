@@ -101,6 +101,14 @@ for r in brand_products:
         assert len(item_names.get(catalog_name, [])) == 1, (
             f"brand product catalog binding must resolve exactly once: {catalog_name!r}"
         )
+    price_basis = r.get("mechanical_price_basis")
+    if price_basis is not None:
+        assert price_basis.get("type") == "catalog_item", r
+        basis_name = price_basis.get("catalog_item_name")
+        assert len(item_names.get(basis_name, [])) == 1, (
+            f"mechanical price basis must resolve exactly once: {basis_name!r}"
+        )
+        assert price_basis.get("relationship") == "same_price", r
     assert r.get("source_refs"), r
     for ref in r["source_refs"]:
         assert ref["source_code"] in source_codes, r
