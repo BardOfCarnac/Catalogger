@@ -29,7 +29,9 @@
 
   --panel-border:3px solid var(--ink);
   --hero-border:4px solid var(--ink);
-  --shadow:11px 11px 0 rgba(0,0,0,.13);
+  --shadow-x:11px;
+  --shadow-y:11px;
+  --shadow:var(--shadow-x) var(--shadow-y) 0 rgba(0,0,0,.13);
   --hero-shadow:var(--shadow);
 
   --slant:95vw;
@@ -48,6 +50,7 @@ html{
   overscroll-behavior-y:none;
 }
 body{
+  position:relative;
   margin:0;
   min-height:100vh;
   background:var(--rear-4);
@@ -1569,19 +1572,17 @@ button,input,select{font:inherit}
 @media (max-width:420px){
   .item-stat-grid{grid-template-columns:1fr}
 }
-/* Card shadows render in one fixed viewport layer, with a single immobile
-   clipping edge just below the sticky header. The cards and rear field are
-   separate and never clipped. */
+/* Shadows live at their cards' document positions, so the browser scrolls
+   both together. A separate, fixed background mask covers just the shadows
+   above the header's cutoff; it never clips the cards or the rear field. */
 .hero,.panel,.offer-focus,.search-offer-section,.search-empty{
   box-shadow:none;
 }
 .scroll-shadow-layer{
-  position:fixed;
+  position:absolute;
   inset:0;
   z-index:9;
   pointer-events:none;
-  overflow:hidden;
-  clip-path:inset(var(--shadow-cutoff, 0px) 0 0 0);
 }
 .scroll-shadow-copy{
   position:absolute;
@@ -1593,8 +1594,30 @@ button,input,select{font:inherit}
   background:transparent;
   box-shadow:var(--shadow);
 }
-.scroll-shadow-copy.hero-shadow{
-  box-shadow:var(--hero-shadow);
+.scroll-shadow-mask{
+  position:fixed;
+  inset:0 0 auto;
+  height:0;
+  z-index:9;
+  pointer-events:none;
+  overflow:hidden;
+  background:var(--rear-4);
+}
+.scroll-shadow-mask .bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  height:100vh;
+  will-change:transform;
+}
+.scroll-shadow-mask:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
 }
 
 /* -------- FOOTER -------- */
@@ -1854,11 +1877,11 @@ button,input,select{font:inherit}
 }
 
 /* -------- MOBILE SHADOW SPACING -------- */
-/* Keep the existing vertical lift, but expose a little more background
-   to the right of cards on narrow displays. */
+/* Square 8px offset on mobile, for every card including hero panels. */
 @media (max-width:760px){
   :root{
-    --shadow:8px 11px 0 rgba(0,0,0,.13);
+    --shadow-x:8px;
+    --shadow-y:8px;
   }
 }
 
@@ -1885,6 +1908,9 @@ body::-webkit-scrollbar,
   <div class="bg-train" id="bgTrain"></div>
 </div>
 <div class="scroll-shadow-layer" id="scrollShadowLayer" aria-hidden="true"></div>
+<div class="scroll-shadow-mask" id="scrollShadowMask" aria-hidden="true">
+  <div class="bg-train" id="shadowMaskBgTrain"></div>
+</div>
 
 <div class="app">
   <div class="header-backdrop" id="headerBackdrop" aria-hidden="true">
@@ -2381,8 +2407,10 @@ body::-webkit-scrollbar,
 /* -------- REPEATING BACK FIELD -------- */
 const bgTrain = document.getElementById('bgTrain');
 const headerBgTrain = document.getElementById('headerBgTrain');
+const shadowMaskBgTrain = document.getElementById('shadowMaskBgTrain');
 const headerBackdrop = document.getElementById('headerBackdrop');
 const scrollShadowLayer = document.getElementById('scrollShadowLayer');
+const scrollShadowMask = document.getElementById('scrollShadowMask');
 
 function buildBackgroundTrain(train){
   for(let i=-3;i<24;i++){
@@ -2400,6 +2428,7 @@ function buildBackgroundTrain(train){
 function setBackgroundTransform(value){
   bgTrain.style.transform = value;
   headerBgTrain.style.transform = value;
+  shadowMaskBgTrain.style.transform = value;
 }
 function headerCutoff(){
   const activeTopbar = document.querySelector('.view.active .topbar');
@@ -2411,8 +2440,9 @@ function syncHeaderBackdrop(){
   if(!headerBackdrop) return;
   const cutoff = headerCutoff();
   headerBackdrop.style.height = cutoff + 'px';
-  // The shadow-only mask is fixed to the viewport, not recalculated per card.
-  scrollShadowLayer.style.setProperty('--shadow-cutoff', cutoff + 11 + 'px');
+  const shadowDepth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--shadow-y')) || 0;
+  // This covering layer alone is viewport-fixed. Shadows and boxes scroll together.
+  scrollShadowMask.style.height = (cutoff + shadowDepth) + 'px';
 }
 const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty';
 const shadowCopies = new Map();
@@ -2420,11 +2450,11 @@ let headerShadowRaf = 0;
 function syncHeaderShadows(){
   headerShadowRaf = 0;
   const current = new Set();
+  // Coordinates are document-relative, never viewport-relative. In particular,
+  // don't reposition shadow copies on scroll: compositor scrolling stays in sync.
+  const layerRect = scrollShadowLayer.getBoundingClientRect();
   document.querySelectorAll(`.view.active :is(${headerShadowSelector})`).forEach(el=>{
     if(!el.getClientRects().length) return;
-    const rect = el.getBoundingClientRect();
-    // Nothing to paint when the whole card is outside the viewport.
-    if(rect.bottom < -20 || rect.top > window.innerHeight) return;
     current.add(el);
     let copy = shadowCopies.get(el);
     if(!copy){
@@ -2432,14 +2462,16 @@ function syncHeaderShadows(){
       copy.className = 'scroll-shadow-copy';
       scrollShadowLayer.appendChild(copy);
       shadowCopies.set(el,copy);
+      shadowSizeObserver.observe(el);
     }
-    copy.classList.toggle('hero-shadow',el.classList.contains('hero'));
+    const rect = el.getBoundingClientRect();
     copy.style.width = rect.width + 'px';
     copy.style.height = rect.height + 'px';
-    copy.style.transform = `translate3d(${rect.left}px,${rect.top}px,0)`;
+    copy.style.transform = `translate3d(${rect.left-layerRect.left}px,${rect.top-layerRect.top}px,0)`;
   });
   for(const [el,copy] of shadowCopies){
     if(!current.has(el)){
+      shadowSizeObserver.unobserve(el);
       copy.remove();
       shadowCopies.delete(el);
     }
@@ -2449,14 +2481,16 @@ function queueHeaderShadowSync(){
   if(headerShadowRaf) return;
   headerShadowRaf = requestAnimationFrame(syncHeaderShadows);
 }
-window.addEventListener('scroll', queueHeaderShadowSync, {passive:true});
-// Newly populated result lists can change card geometry without scrolling.
+// Refresh geometry when layouts or card dimensions change, not as we scroll.
+const shadowSizeObserver = new ResizeObserver(queueHeaderShadowSync);
+shadowSizeObserver.observe(document.querySelector('.app'));
 new MutationObserver(queueHeaderShadowSync).observe(document.querySelector('.app'),{
-  childList:true,subtree:true
+  childList:true,subtree:true,attributes:true,attributeFilter:['class','hidden']
 });
 
 buildBackgroundTrain(bgTrain);
 buildBackgroundTrain(headerBgTrain);
+buildBackgroundTrain(shadowMaskBgTrain);
 setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
 requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
 
