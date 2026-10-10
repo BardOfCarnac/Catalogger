@@ -43,11 +43,15 @@
   --bg-base:-99.5vw;
 }
 *{box-sizing:border-box}
-html{background:var(--rear-4)}
+html{
+  background:var(--rear-4);
+  overscroll-behavior-y:none;
+}
 body{
   margin:0;
   min-height:100vh;
   background:var(--rear-4);
+  overscroll-behavior-y:none;
   color:var(--ink);
   font-family:Arial,Helvetica,sans-serif;
 }
@@ -375,11 +379,9 @@ button,input,select{font:inherit}
   padding:26px;
   margin-bottom:18px;
 }
-.header-shadowless{
-  box-shadow:none !important;
-}
-.home-hero{padding:0;overflow:hidden}
+.home-hero{padding:0}
 .home-hero-grid{
+  overflow:hidden;
   display:grid;
   grid-template-columns:minmax(0,1fr) clamp(414px,40vw,494px);
   min-height:438px;
@@ -903,8 +905,9 @@ button,input,select{font:inherit}
 
 
 /* -------- NEARBY SEARCH PAGE -------- */
-.search-nearby-hero{padding:0;overflow:hidden}
+.search-nearby-hero{padding:0}
 .search-nearby-grid{
+  overflow:hidden;
   display:grid;
   grid-template-columns:minmax(0,1.2fr) clamp(370px,38vw,470px);
   min-height:430px;
@@ -1420,8 +1423,8 @@ button,input,select{font:inherit}
 }
 
 /* -------- ITEM PAGE -------- */
-.item-hero{padding:0;overflow:hidden}
-.item-hero-grid{display:block}
+.item-hero{padding:0}
+.item-hero-grid{display:block;overflow:hidden}
 .item-image{
   height:190px;
   min-height:190px;
@@ -1566,6 +1569,26 @@ button,input,select{font:inherit}
 @media (max-width:420px){
   .item-stat-grid{grid-template-columns:1fr}
 }
+/* Each card paints its shadow on a separate layer. The sticky-header cutoff
+   clips that layer without affecting the card or the continuous background. */
+.hero,.panel,.offer-focus,.search-offer-section,.search-empty{
+  position:relative;
+  isolation:isolate;
+  box-shadow:none;
+}
+.hero::before,.panel::before,.offer-focus::before,
+.search-offer-section::before,.search-empty::before{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  z-index:-1;
+  pointer-events:none;
+  box-shadow:var(--shadow);
+  clip-path:inset(var(--shadow-clip-top,-20px) -20px -20px -20px);
+}
+.hero::before{box-shadow:var(--hero-shadow)}
+.panel::before{inset:-3px}
+
 /* -------- FOOTER -------- */
 .footer{
   margin-top:18px;
@@ -2360,12 +2383,16 @@ function syncHeaderShadows(){
   headerShadowRaf = 0;
   const cutoff = headerCutoff();
   if(!cutoff) return;
-  document.querySelectorAll('.view.active ' + headerShadowSelector).forEach(el=>{
-    const rect = el.getBoundingClientRect();
-    const remaining = rect.bottom - cutoff;
-    // Only suppress the shadow for the final shadow-depth of the box's exit.
-    // The masking boundary itself never changes while scrolling.
-    el.classList.toggle('header-shadowless', remaining <= 24);
+  document.querySelectorAll(`.view.active :is(${headerShadowSelector})`).forEach(el=>{
+    if(!el.getClientRects().length) return;
+    // Clip only the shadow, one shadow-depth below the sticky header.
+    // It shrinks continuously on scroll; the card and background remain intact.
+    const depth = el.classList.contains('hero') ? 15 : 11;
+    const clipTop = Math.max(-20, Math.ceil(cutoff + depth - el.getBoundingClientRect().top));
+    const value = clipTop + 'px';
+    if(el.style.getPropertyValue('--shadow-clip-top') !== value){
+      el.style.setProperty('--shadow-clip-top', value);
+    }
   });
 }
 function queueHeaderShadowSync(){
