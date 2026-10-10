@@ -22,6 +22,8 @@ const SOURCE_PARTS=[
 ];
 const SOURCES_PATH='data/catalog/sources.json';
 const NC2045_SUPP_PATH='data/catalog/nc2045-supplement.json';
+const VENDR_ORIGINALS_PATH='data/catalog/vendr-originals-supplement.json';
+const BRAND_PRODUCTS_PATH='data/catalog/brand-products.json';
 let cache: Promise<any[]> | null = null;
 let classCache: Promise<Map<string,any>> | null = null;
 let mfrCache: Promise<Map<string,string[]>> | null = null;
@@ -29,6 +31,8 @@ let descCache: Promise<Map<string,string>> | null = null;
 let itemSourceCache: Promise<Map<string,any[]>> | null = null;
 let sourceBookCache: Promise<any[]> | null = null;
 let nc2045SuppCache: Promise<any> | null = null;
+let vendrOriginalsCache: Promise<any> | null = null;
+let brandProductsCache: Promise<any> | null = null;
 
 async function gunzipJson(url:string){
   const r=await fetch(url,{headers:{'user-agent':'Vend-R/0.1'}});
@@ -41,18 +45,55 @@ function nc2045Supplement(){
     .then(async r=>{if(!r.ok)throw new Error('NC2045 supplement fetch failed: '+r.status);return await r.json()});
   return nc2045SuppCache;
 }
+function vendrOriginals(){
+  if(!vendrOriginalsCache) vendrOriginalsCache=fetch(ROOT+VENDR_ORIGINALS_PATH,{headers:{'user-agent':'Vend-R/0.1'}})
+    .then(async r=>{if(!r.ok)throw new Error('Vend-R originals fetch failed: '+r.status);return await r.json()});
+  return vendrOriginalsCache;
+}
+function brandProducts(){
+  if(!brandProductsCache) brandProductsCache=fetch(ROOT+BRAND_PRODUCTS_PATH,{headers:{'user-agent':'Vend-R/0.1'}})
+    .then(async r=>{if(!r.ok)throw new Error('brand products fetch failed: '+r.status);return await r.json()});
+  return brandProductsCache;
+}
 function catalogue(){
   if(!cache) cache=Promise.all([
     Promise.all(PARTS.map(p=>gunzipJson(ROOT+p))).then(x=>x.flat()),
-    nc2045Supplement()
-  ]).then(([base,supp])=>base.concat(Array.isArray(supp?.items)?supp.items:[]));
+    nc2045Supplement(),
+    vendrOriginals(),
+    brandProducts()
+  ]).then(([base,ncSupp,vendrSupp,brands])=>{
+    const official=base.concat(Array.isArray(ncSupp?.items)?ncSupp.items:[]);
+    const byName=new Map(official.map((item:any)=>[String(item.name||item.display_name||''),item]));
+    const variantsByProduct=new Map<string,any[]>();
+    for(const variant of (Array.isArray(brands?.variants)?brands.variants:[])){
+      const list=variantsByProduct.get(String(variant.product_id))||[];
+      list.push(variant); variantsByProduct.set(String(variant.product_id),list);
+    }
+    const originals=(Array.isArray(vendrSupp?.items)?vendrSupp.items:[]).map((item:any)=>{
+      const copy={...item};
+      const basis=byName.get(String(copy.price_basis_item_name||''));
+      if(basis){
+        for(const key of ['price_min','price_max','price','price_tier','price_basis','cost_value','cost','cost_kind']){
+          if(basis[key]!==undefined&&basis[key]!==null) copy[key]=basis[key];
+        }
+      }
+      if(copy.brand_product_id){
+        copy.variants=(variantsByProduct.get(String(copy.brand_product_id))||[]).map((v:any)=>({
+          id:String(v.id),name:String(v.name)
+        }));
+      }
+      return copy;
+    });
+    return official.concat(originals);
+  });
   return cache;
 }
 function classifications(){
   if(!classCache) classCache=Promise.all([
     Promise.all(CLASS_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>parts.flat()),
-    nc2045Supplement()
-  ]).then(([rows,supp])=>{
+    nc2045Supplement(),
+    vendrOriginals()
+  ]).then(([rows,supp,vendrSupp])=>{
     const map=new Map<string,any>();
     for(const row of rows){
       const id=String(row.item_id);
@@ -60,6 +101,9 @@ function classifications(){
       if(!current||row.is_primary) map.set(id,row);
     }
     for(const item of (Array.isArray(supp?.items)?supp.items:[])){
+      if(item?.classification) map.set(String(item.id),{item_id:String(item.id),...item.classification});
+    }
+    for(const item of (Array.isArray(vendrSupp?.items)?vendrSupp.items:[])){
       if(item?.classification) map.set(String(item.id),{item_id:String(item.id),...item.classification});
     }
     return map;
@@ -88,10 +132,12 @@ function displayName(i:any){
 function descriptions(){
   if(!descCache) descCache=Promise.all([
     fetch(ROOT+DESC_PATH,{headers:{'user-agent':'Vend-R/0.1'}}).then(async r=>{if(!r.ok)throw new Error('description fetch failed: '+r.status);return await r.json()}),
-    nc2045Supplement()
-  ]).then(([data,supp])=>{
+    nc2045Supplement(),
+    vendrOriginals()
+  ]).then(([data,supp,vendrSupp])=>{
     const map=new Map(Object.entries(data?.items||{}).map(([id,value])=>[String(id),String(value)]));
     for(const item of (Array.isArray(supp?.items)?supp.items:[])) if(item?.description) map.set(String(item.id),String(item.description));
+    for(const item of (Array.isArray(vendrSupp?.items)?vendrSupp.items:[])) if(item?.description) map.set(String(item.id),String(item.description));
     return map;
   });
   return descCache;
@@ -105,8 +151,9 @@ function sourceBooks(){
 function itemSourceMap(){
   if(!itemSourceCache) itemSourceCache=Promise.all([
     Promise.all(SOURCE_PARTS.map(p=>gunzipJson(ROOT+p))).then(parts=>parts.flat()),
-    nc2045Supplement()
-  ]).then(([rows,supp])=>{
+    nc2045Supplement(),
+    vendrOriginals()
+  ]).then(([rows,supp,vendrSupp])=>{
     const map=new Map<string,any[]>();
     for(const row of rows){
       const id=String(row.item_id||'');
@@ -126,6 +173,15 @@ function itemSourceMap(){
       if(!id)continue;
       const list=map.get(id)||[];
       list.push({code:String(src.code||'NC2045'),page:src.page==null?null:String(src.page),raw_reference:src.raw_reference==null?null:String(src.raw_reference)});
+      map.set(id,list);
+    }
+    for(const item of (Array.isArray(vendrSupp?.items)?vendrSupp.items:[])){
+      const src=item?.source;
+      if(!src)continue;
+      const id=String(item.id||'');
+      if(!id)continue;
+      const list=map.get(id)||[];
+      list.push({code:String(src.code||'VENDR'),page:src.page==null?null:String(src.page),raw_reference:src.raw_reference==null?null:String(src.raw_reference)});
       map.set(id,list);
     }
     return map;
@@ -964,8 +1020,23 @@ function curatedBoostAssortment(p:any,chosen:any[],all:any[],classMap:Map<string
   }
   return out;
 }
+function stockVariants(p:any,item:any,generation:number){
+  const variants=Array.isArray(item?.variants)?item.variants:[];
+  if(!variants.length)return [];
+  const depth=String(p?.depth_profile||'normal').toLowerCase();
+  const wanted=Math.min(variants.length,depth==='warehouse'?10:depth==='deep'?7:depth==='shallow'?3:5);
+  return variants
+    .slice()
+    .sort((a:any,b:any)=>
+      stableIndex('variant|'+generation+'|'+p.entity_id+'|'+item.id+'|'+a.id,2147483647)-
+      stableIndex('variant|'+generation+'|'+p.entity_id+'|'+item.id+'|'+b.id,2147483647)
+    )
+    .slice(0,wanted)
+    .map((v:any)=>({variant_id:String(v.id),name:String(v.name)}));
+}
 function stockRowFromChoice(p:any,x:any,classMap:Map<string,any>,generation:number){
   const qty=cycleQuantity(p,x.item,classMap,x.role,generation);
+  const variants=stockVariants(p,x.item,generation);
   return {
     item_id:String(x.item.id),name:displayName(x.item),
     quantity:qty,target_quantity:qty,quantity_profile:quantityClass(x.item,classMap),
@@ -978,6 +1049,7 @@ function stockRowFromChoice(p:any,x:any,classMap:Map<string,any>,generation:numb
     support_reason:x.support_reason||null,support_key:x.support_key||null,
     compatibility_label:x.compatibility_label||null,
     curation_reason:x.curation_reason||null,curation_source:x.curation_source||null,
+    variants,
     stock_cycle:generation,observation_generation:generation,last_change:null
   };
 }
@@ -1025,7 +1097,7 @@ function refreshCandidatePool(p:any,all:any[],classMap:Map<string,any>,mfrMap:Ma
   }
   return [...byId.values()];
 }
-const LAZY_STOCK_VERSION='lazy-1.6.2-explicit-staples';
+const LAZY_STOCK_VERSION='lazy-1.6.3-vendr-originals';
 const ENTITY_REDIRECTS=new Map<string,string>([
   ['NC2045-OUT-RANCHO-CORONADO-290-FUEL-STATION','NC2045-OUT-OUTSKIRTS-296-FUEL-STATION']
 ]);
@@ -1750,7 +1822,8 @@ async function search(u:URL){
         checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
         checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
         support_reason:row?.support_reason??null,support_key:row?.support_key??null,
-        compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
+        compatibility_label:row?.compatibility_label??null,variants:row?.variants??[],
+        price_tier:row?.price_tier??availabilityInfo(item).tier,
         availability_band:row?.availability_band??availabilityInfo(item).key,
         availability_label:row?.availability_label??availabilityInfo(item).label,
         availability_rank:row?.availability_rank??availabilityInfo(item).rank
@@ -1845,7 +1918,8 @@ async function itemDetail(u:URL){
       checkout_unit_price:row?.checkout_unit_price??basePrice(item),checkout_mode:row?.checkout_mode??null,
       checkout_label:row?.checkout_label??null,condition:row?.condition??null,stock_cycle:row?.stock_cycle??null,
       support_reason:row?.support_reason??null,support_key:row?.support_key??null,
-      compatibility_label:row?.compatibility_label??null,price_tier:row?.price_tier??availabilityInfo(item).tier,
+      compatibility_label:row?.compatibility_label??null,variants:row?.variants??[],
+      price_tier:row?.price_tier??availabilityInfo(item).tier,
       availability_band:row?.availability_band??availabilityInfo(item).key,
       availability_label:row?.availability_label??availabilityInfo(item).label,
       availability_rank:row?.availability_rank??availabilityInfo(item).rank
@@ -1868,6 +1942,7 @@ async function itemDetail(u:URL){
       context_qualifier:item.context_qualifier||null,description:descMap.get(id)||null,
       primary_department:department(item,classMap),relation_key:rel,classification:cls,
       manufacturers:mfrMap.get(id)||[],book_price:basePrice(item),price_tier:availabilityInfo(item).tier,
+      variants:Array.isArray(item.variants)?item.variants:[],
       availability_band:availabilityInfo(item).key,availability_label:availabilityInfo(item).label,
       source_index_page:item.source_index_page??null,sources:sourceRowsForItem(id,sourceMap,books),image:null
     },

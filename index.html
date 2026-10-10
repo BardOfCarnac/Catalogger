@@ -3833,7 +3833,8 @@ function stockSearchText(row){
   return [
     row?.name,row?.description,row?.primary_department,row?.relation_key,row?.assortment_role,
     row?.condition,row?.last_change,row?.availability_label,row?.price_tier,
-    row?.quantity_label,row?.price_label,row?.support_reason,row?.compatibility_label
+    row?.quantity_label,row?.price_label,row?.support_reason,row?.compatibility_label,
+    ...(Array.isArray(row?.variants)?row.variants.map(v=>v?.name):[])
   ].filter(Boolean).join(' ').toLowerCase();
 }
 function isFoodDrinkVenue(){
@@ -3851,9 +3852,12 @@ function stockRowHtml(s,row,focusId){
       '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
   }
   const flowLabel=row.last_change||null;
+  const flavourText=Array.isArray(row.variants)&&row.variants.length
+    ?('flavours · '+row.variants.map(v=>v.name).join(' / '))
+    :null;
   const sub=row.is_local
     ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
-    :[row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+    :[flavourText,row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
   return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
     '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
@@ -3971,6 +3975,7 @@ function renderItemOfferList(selectedShopId=null){
         offerDistanceLabel(o),
         o.condition,
         o.compatibility_label,
+        Array.isArray(o.variants)&&o.variants.length?('flavours · '+o.variants.map(v=>v.name).join(' / ')):null,
         o.quantity_label||(o.quantity==null?'on demand':String(o.quantity)+' available')
       ].filter(Boolean).join(' · '))+'</span></div>'+
       '<span class="item-offer-price">'+esc(priceText(o.asking_price,o.price_label))+'</span>'+
@@ -3994,7 +3999,11 @@ function showSelectedItemOffer(shopId,{updateUrl=false}={}){
   document.getElementById('itemOfferShop').textContent=offer.shop_name||'Seller';
   document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?priceText(offer.asking_price,offer.price_label):'NO CURRENT OFFER';
   document.getElementById('itemOfferMeta').textContent=offer.kind==='available'
-    ?[offer.condition,offer.quantity_label||(offer.quantity==null?'on demand':String(offer.quantity)+' available')].filter(Boolean).join(' · ')
+    ?[
+      offer.condition,
+      Array.isArray(offer.variants)&&offer.variants.length?('flavours · '+offer.variants.map(v=>v.name).join(' / ')):null,
+      offer.quantity_label||(offer.quantity==null?'on demand':String(offer.quantity)+' available')
+    ].filter(Boolean).join(' · ')
     :'Likely seller · not in current stock';
   document.getElementById('itemOfferSub').textContent=[
     offer.parent_name?('inside '+offer.parent_name):null,
