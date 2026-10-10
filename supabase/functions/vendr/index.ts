@@ -237,6 +237,25 @@ async function dbUpsert(table:string,row:any,onConflict:string){
   if(!r.ok) throw new Error(table+': '+r.status+' '+await r.text());
   return await r.json();
 }
+
+async function dbBatchUpsert(table:string,rows:any[],onConflict:string){
+  if(!rows.length)return [];
+  const url=SB_URL+'/rest/v1/'+table+'?on_conflict='+encodeURIComponent(onConflict);
+  const r=await fetch(url,{
+    method:'POST',
+    headers:{...serviceHeaders,Prefer:'resolution=merge-duplicates,return=representation'},
+    body:JSON.stringify(rows)
+  });
+  if(!r.ok) throw new Error(table+': '+r.status+' '+await r.text());
+  return await r.json();
+}
+async function dbDelete(table:string,query=''){
+  const r=await fetch(SB_URL+'/rest/v1/'+table+(query?'?'+query:''),{
+    method:'DELETE',
+    headers:{...serviceHeaders,Prefer:'return=minimal'}
+  });
+  if(!r.ok) throw new Error(table+': '+r.status+' '+await r.text());
+}
 async function rpc(name:string,args:any){
   const r=await fetch(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:serviceHeaders,body:JSON.stringify(args)});
   if(!r.ok){
@@ -1201,6 +1220,318 @@ async function resolveObservedStock(p:any,all:any[],classMap:Map<string,any>,mfr
   return {...result,snapshot:priced,visible:visibleStock(priced),first_observation:false};
 }
 
+async function readObservedStock(p:any,all:any[],classMap:Map<string,any>,mfrMap:Map<string,string[]>,worldKey='public-2045'){
+  if(localOnlyProfile(p)){
+    return {
+      snapshot:[],visible:[],generation:0,state_at:null,
+      first_observation:false,model_migrated:false,changed:false,
+      mutations:0,elapsed_days:0
+    };
+  }
+  const obsRows=await observationForShop(String(p.entity_id),worldKey);
+  const obs=obsRows[0]||null;
+  if(!obs||String(obs.model_version||'')!==LAZY_STOCK_VERSION){
+    const snapshot=initialSnapshot(p,all,classMap,mfrMap);
+    const stateAt=new Date().toISOString();
+    await saveObservation(worldKey,p,0,stateAt,snapshot);
+    const priced=decorateStockPrices(p,snapshot,all,0);
+    return {
+      snapshot:priced,visible:visibleStock(priced),generation:0,state_at:stateAt,
+      first_observation:!obs,model_migrated:Boolean(obs),changed:false,
+      mutations:0,elapsed_days:0
+    };
+  }
+  const raw=Array.isArray(obs.snapshot)?obs.snapshot:[];
+  const generation=Number(obs.generation||0);
+  const priced=decorateStockPrices(p,raw,all,generation);
+  return {
+    snapshot:priced,
+    visible:visibleStock(priced),
+    generation,
+    state_at:String(obs.state_at||obs.updated_at||''),
+    first_observation:false,
+    model_migrated:false,
+    changed:false,
+    mutations:0,
+    elapsed_days:0
+  };
+}
+
+function rolloverSellerProfiles(profileRows:any[]){
+  return profileRows.filter((p:any)=>
+    isVendrVisibleProfile(p)&&
+    ['DIRECT_SELLER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(String(p.stock_mode||''))&&
+    !localOnlyProfile(p)&&
+    String(stockCuration(p).refresh_mode||'catalog')!=='local'
+  );
+}
+function rowIsAvailable(row:any){
+  return row?.quantity==null||Number(row.quantity)>0;
+}
+function repairStagedCoverage(
+  sellers:any[],
+  snapshots:Map<string,any[]>,
+  all:any[],
+  classMap:Map<string,any>,
+  mfrMap:Map<string,string[]>,
+  cityGeneration:number
+){
+  const itemById=new Map(all.map((i:any)=>[String(i.id),i]));
+  const scoredByShop=new Map<string,any[]>();
+  const candidatesByItem=new Map<string,any[]>();
+  for(const p of sellers){
+    const sid=String(p.entity_id);
+    const scored:any[]=[];
+    for(const item of all){
+      const normal=score(p,item,classMap,mfrMap);
+      const curated=curationFit(p,item,classMap,mfrMap,'refresh');
+      if(normal===null&&curated===null)continue;
+      const fit=Math.max(normal===null?-999:normal,curated===null?-999:curated);
+      const rec={p,sid,item,fit};
+      scored.push(rec);
+      const id=String(item.id);
+      const arr=candidatesByItem.get(id)||[];
+      arr.push(rec);candidatesByItem.set(id,arr);
+    }
+    scoredByShop.set(sid,scored);
+  }
+
+  const coverage=new Map<string,number>();
+  for(const rows of snapshots.values()){
+    for(const row of rows){
+      if(!rowIsAvailable(row))continue;
+      const id=String(row.item_id);
+      coverage.set(id,(coverage.get(id)||0)+1);
+    }
+  }
+
+  const missing=all
+    .filter((item:any)=>(coverage.get(String(item.id))||0)===0&&(candidatesByItem.get(String(item.id))||[]).length>0)
+    .sort((a:any,b:any)=>
+      availabilityInfo(b).rank-availabilityInfo(a).rank||
+      stableIndex('rollover-missing|'+cityGeneration+'|'+String(a.id),2147483647)-
+      stableIndex('rollover-missing|'+cityGeneration+'|'+String(b.id),2147483647)
+    );
+
+  let revived=0,reused=0,appended=0;
+  for(const item of missing){
+    const id=String(item.id);
+    const candidates=(candidatesByItem.get(id)||[]).slice();
+    if(!candidates.length)continue;
+
+    // Prefer reviving a historical/sold-out instance at a legitimate seller.
+    const revival=candidates
+      .map((c:any)=>{
+        const rows=snapshots.get(c.sid)||[];
+        const idx=rows.findIndex((r:any)=>String(r.item_id)===id&&!rowIsAvailable(r));
+        return idx>=0?{...c,idx,load:rows.length}:null;
+      })
+      .filter(Boolean)
+      .sort((a:any,b:any)=>
+        b.fit-a.fit||
+        a.load-b.load||
+        stableIndex('rollover-revive|'+cityGeneration+'|'+id+'|'+a.sid,2147483647)-
+        stableIndex('rollover-revive|'+cityGeneration+'|'+id+'|'+b.sid,2147483647)
+      )[0];
+
+    if(revival){
+      const rows=snapshots.get(revival.sid)||[];
+      const old=rows[revival.idx];
+      const qty=old.target_quantity==null
+        ?cycleQuantity(revival.p,item,classMap,'coverage',cityGeneration)
+        :old.target_quantity;
+      rows[revival.idx]={
+        ...old,
+        quantity:qty,
+        target_quantity:qty,
+        status:'in_stock',
+        visibility:'public',
+        assortment_role:old.assortment_role||'coverage',
+        curation_reason:old.curation_reason||'citywide catalogue availability',
+        curation_source:'Vend-R city rollover',
+        last_change:'citywide availability restock',
+        stock_cycle:cityGeneration,
+        observation_generation:cityGeneration
+      };
+      snapshots.set(revival.sid,rows);
+      coverage.set(id,1);
+      revived++;
+      continue;
+    }
+
+    const bestFit=Math.max(...candidates.map((c:any)=>Number(c.fit)));
+    const near=candidates
+      .map((c:any)=>({...c,load:(snapshots.get(c.sid)||[]).length}))
+      .filter((c:any)=>Number(c.fit)>=bestFit-15)
+      .sort((a:any,b:any)=>
+        a.load-b.load||
+        Number(b.fit)-Number(a.fit)||
+        stableIndex('rollover-shop|'+cityGeneration+'|'+id+'|'+a.sid,2147483647)-
+        stableIndex('rollover-shop|'+cityGeneration+'|'+id+'|'+b.sid,2147483647)
+      );
+    const chosen=near[0]; if(!chosen)continue;
+    const rows=snapshots.get(chosen.sid)||[];
+    const newRow=stockRowFromChoice(
+      chosen.p,{item:itemById.get(id)||item,fit:chosen.fit,role:'coverage'},classMap,cityGeneration
+    );
+    newRow.curation_reason='citywide catalogue availability';
+    newRow.curation_source='Vend-R city rollover';
+    newRow.last_change='citywide availability arrival';
+
+    // A sold-out row is already absent from citywide availability, so it is a
+    // safe slot to reuse without making the shop larger.
+    const soldIndexes=rows.map((r:any,idx:number)=>({r,idx}))
+      .filter((x:any)=>!rowIsAvailable(x.r));
+    if(soldIndexes.length){
+      soldIndexes.sort((a:any,b:any)=>
+        stableIndex('rollover-slot|'+cityGeneration+'|'+chosen.sid+'|'+String(a.r.item_id),2147483647)-
+        stableIndex('rollover-slot|'+cityGeneration+'|'+chosen.sid+'|'+String(b.r.item_id),2147483647)
+      );
+      rows[soldIndexes[0].idx]=newRow;
+      reused++;
+    }else{
+      rows.push(newRow);
+      appended++;
+    }
+    snapshots.set(chosen.sid,rows);
+    coverage.set(id,1);
+  }
+
+  const distributed=[...coverage.values()].filter((n:number)=>n>0).length;
+  return {
+    missing_before:missing.length,
+    missing_after:all.filter((item:any)=>
+      (coverage.get(String(item.id))||0)===0&&(candidatesByItem.get(String(item.id))||[]).length>0
+    ).length,
+    revived,
+    reused_sold_slots:reused,
+    appended,
+    distributed_distinct:distributed
+  };
+}
+
+async function buildClaimedNextGeneration(claim:any){
+  const worldKey=String(claim.world_key||'public-2045');
+  const nextWorldKey=String(claim.next_world_key||worldKey+'-next');
+  const cityGeneration=Number(claim.next_generation||1);
+  const targetIso=String(claim.next_effective_at||new Date(Date.now()+86400000).toISOString());
+  const targetMs=Date.parse(targetIso);
+  try{
+    const [all,classMap,mfrMap,profileRows,observationRows]=await Promise.all([
+      catalogue(),classifications(),manufacturers(),
+      db('vendr_stock_profiles','select=*&order=name.asc'),
+      db('vendr_stock_observations','select=world_key,entity_id,generation,state_at,snapshot,model_version,updated_at&world_key=eq.'+encodeURIComponent(worldKey))
+    ]);
+    const sellers=rolloverSellerProfiles(profileRows);
+    const obsMap=new Map(observationRows.map((r:any)=>[String(r.entity_id),r]));
+    const snapshots=new Map<string,any[]>();
+    const stateByShop=new Map<string,any>();
+
+    for(const p of sellers){
+      const sid=String(p.entity_id);
+      const obs:any=obsMap.get(sid);
+      let snapshot=obs&&String(obs.model_version||'')===LAZY_STOCK_VERSION&&Array.isArray(obs.snapshot)
+        ?obs.snapshot.map((r:any)=>({...r}))
+        :initialSnapshot(p,all,classMap,mfrMap);
+      let generation=Number(obs?.generation||0);
+      let stateAt=String(obs?.state_at||claim.current_effective_at||new Date().toISOString());
+      const cadenceHours=Number(lifecycle(p)?.cadence_hours);
+      const stateMs=Date.parse(stateAt);
+      const due=Number.isFinite(cadenceHours)&&cadenceHours>0&&Number.isFinite(stateMs)
+        ?stateMs+(cadenceHours*3600000)<=targetMs
+        :false;
+
+      if(due){
+        const moved=transitionObservedStock(p,snapshot,all,classMap,mfrMap,generation,stateAt,targetMs);
+        snapshot=moved.snapshot.map((r:any)=>({...r}));
+        generation=Number(moved.generation||generation);
+        // A due check that produces no mutations is still a completed cadence.
+        stateAt=moved.changed?String(moved.state_at):targetIso;
+      }
+
+      snapshots.set(sid,snapshot);
+      stateByShop.set(sid,{generation,state_at:stateAt});
+    }
+
+    const coverage=repairStagedCoverage(sellers,snapshots,all,classMap,mfrMap,cityGeneration);
+    const rows=sellers.map((p:any)=>{
+      const sid=String(p.entity_id);
+      const state=stateByShop.get(sid)||{generation:0,state_at:targetIso};
+      return {
+        world_key:nextWorldKey,
+        entity_id:sid,
+        generation:Number(state.generation||0),
+        state_at:String(state.state_at||targetIso),
+        snapshot:snapshots.get(sid)||[],
+        model_version:LAZY_STOCK_VERSION,
+        updated_at:new Date().toISOString()
+      };
+    });
+
+    await dbDelete('vendr_stock_observations','world_key=eq.'+encodeURIComponent(nextWorldKey));
+    await dbBatchUpsert('vendr_stock_observations',rows,'world_key,entity_id');
+
+    const metrics={
+      stock_model:LAZY_STOCK_VERSION,
+      city_generation:cityGeneration,
+      effective_at:targetIso,
+      seller_count:rows.length,
+      placements:rows.reduce((n:number,r:any)=>n+(Array.isArray(r.snapshot)?r.snapshot.length:0),0),
+      ...coverage
+    };
+    await rpc('vendr_finish_next_build',{
+      p_world_key:worldKey,
+      p_generation:cityGeneration,
+      p_shop_count:rows.length,
+      p_metrics:metrics
+    });
+    return metrics;
+  }catch(e){
+    const message=e instanceof Error?e.message:String(e);
+    try{
+      await rpc('vendr_fail_next_build',{
+        p_world_key:worldKey,
+        p_generation:cityGeneration,
+        p_error:message
+      });
+    }catch(_){}
+    throw e;
+  }
+}
+
+async function maybeStartNextBuild(worldKey='public-2045'){
+  const claim:any=await rpc('vendr_claim_next_build',{p_world_key:worldKey});
+  if(!claim?.claimed)return {started:false,claim};
+  const task=buildClaimedNextGeneration(claim).catch((e:any)=>console.error('Vend-R staged stock build failed',e));
+  const runtime:any=(globalThis as any).EdgeRuntime;
+  if(runtime?.waitUntil)runtime.waitUntil(task);
+  else void task;
+  return {started:true,claim};
+}
+
+async function bootstrapStock(){
+  const worldKey='public-2045';
+  const state:any=await rpc('vendr_rollover_bootstrap',{p_world_key:worldKey,p_interval_hours:24});
+  let buildStarted=false;
+  if(state?.needs_build){
+    const build=await maybeStartNextBuild(worldKey);
+    buildStarted=Boolean(build?.started);
+  }
+  return out({
+    ...state,
+    build_started:buildStarted,
+    mode:'precomputed-rollover',
+    publication:'instant-ready-snapshot',
+    next_generation_background:true
+  });
+}
+
+async function rolloverStatus(){
+  const state:any=await rpc('vendr_rollover_status',{p_world_key:'public-2045'});
+  return out(state||{});
+}
+
+
 async function sourcesApi(u:URL){
   const active=requestedSourceCodes(u);
   const [all,sourceMap,books,profileRows]=await Promise.all([
@@ -1728,8 +2059,10 @@ function buildBalancedCityPulse(profiles:any[],all:any[],classMap:Map<string,any
   for(const p of sellers){
     const scored:any[]=[];
     for(const item of all){
-      const fit=score(p,item,classMap,mfrMap);
-      if(fit===null)continue;
+      const normal=score(p,item,classMap,mfrMap);
+      const curated=curationFit(p,item,classMap,mfrMap,'refresh');
+      if(normal===null&&curated===null)continue;
+      const fit=Math.max(normal===null?-999:normal,curated===null?-999:curated);
       scored.push({item,fit});
       const id=String(item.id);
       eligibleCount.set(id,(eligibleCount.get(id)||0)+1);
@@ -1754,8 +2087,6 @@ function buildBalancedCityPulse(profiles:any[],all:any[],classMap:Map<string,any
   );
   let replacements=0;
 
-  // Keep core/support/curated identity stock intact. Use rotating regular and
-  // occasional slots to broaden citywide catalogue exposure.
   for(const role of ['occasional','regular']){
     for(const p of shopOrder){
       const sid=String(p.entity_id);
@@ -1819,10 +2150,59 @@ function buildBalancedCityPulse(profiles:any[],all:any[],classMap:Map<string,any
     }
   }
 
+  // Catalogue means obtainable: every genuine retail item with at least one
+  // semantically legitimate seller is guaranteed a current Night City shelf.
+  // This is additive rather than a hard capacity cap; large shops may gain
+  // extra pages rather than displacing identity stock.
+  let coverageAdditions=0;
+  const missing=all
+    .filter((item:any)=>(coverage.get(String(item.id))||0)===0&&(eligibleCount.get(String(item.id))||0)>0)
+    .sort((a:any,b:any)=>
+      availabilityInfo(b).rank-availabilityInfo(a).rank||
+      stableIndex('citywide-missing|'+generation+'|'+String(a.id),2147483647)-
+      stableIndex('citywide-missing|'+generation+'|'+String(b.id),2147483647)
+    );
+
+  for(const item of missing){
+    const id=String(item.id);
+    const candidates:any[]=[];
+    for(const p of sellers){
+      const sid=String(p.entity_id);
+      const scored=(scoredByShop.get(sid)||[]).find((x:any)=>String(x.item.id)===id);
+      if(!scored)continue;
+      const rows=snapshots.get(sid)||[];
+      if(rows.some((r:any)=>String(r.item_id)===id))continue;
+      candidates.push({p,sid,fit:Number(scored.fit),load:rows.length});
+    }
+    if(!candidates.length)continue;
+    const bestFit=Math.max(...candidates.map((c:any)=>c.fit));
+    const near=candidates.filter((c:any)=>c.fit>=bestFit-15);
+    near.sort((a:any,b:any)=>
+      a.load-b.load||
+      b.fit-a.fit||
+      stableIndex('citywide-coverage-shop|'+generation+'|'+id+'|'+a.sid,2147483647)-
+      stableIndex('citywide-coverage-shop|'+generation+'|'+id+'|'+b.sid,2147483647)
+    );
+    const chosen=near[0];
+    if(!chosen)continue;
+    const rows=snapshots.get(chosen.sid)||[];
+    const row=stockRowFromChoice(
+      chosen.p,{item,fit:chosen.fit,role:'coverage'},classMap,generation
+    );
+    row.curation_reason='citywide catalogue availability';
+    row.curation_source='Vend-R city pulse';
+    row.last_change='citywide catalogue coverage';
+    rows.push(row);
+    snapshots.set(chosen.sid,rows);
+    coverage.set(id,1);
+    coverageAdditions++;
+  }
+
   const distributed=[...coverage.values()].filter((n:number)=>n>0).length;
   return {
     generation,
     replacements,
+    coverage_additions:coverageAdditions,
     distributed_distinct:distributed,
     distributed_pct:Math.round(distributed/Math.max(1,all.length)*1000)/10,
     shops:sellers.map((p:any)=>({
@@ -1845,6 +2225,7 @@ async function pulsePlan(){
     catalogue_items:all.length,
     generation:pulse.generation,
     replacements:pulse.replacements,
+    coverage_additions:pulse.coverage_additions,
     distributed_distinct:pulse.distributed_distinct,
     distributed_pct:pulse.distributed_pct,
     shops:pulse.shops
@@ -2140,7 +2521,7 @@ async function shop(u:URL){
         '&order=occurred_at.desc&limit=8')
     ]);
     eventRows=events;
-    resolved=await resolveObservedStock(profile,all,classMap,mfrMap,'public-2045');
+    resolved=await readObservedStock(profile,all,classMap,mfrMap,'public-2045');
     stock=resolved.visible.filter((row:any)=>itemAllowed(row.item_id,sourceMap,activeSources));
   }
 
@@ -2201,6 +2582,8 @@ Deno.serve(async(req:Request)=>{
   try{
     const u=new URL(req.url), a=u.searchParams.get('api');
     if(a==='health') return await health();
+    if(a==='bootstrap') return await bootstrapStock();
+    if(a==='rollover_status') return await rolloverStatus();
     if(a==='stock_audit') return await stockAudit();
     if(a==='distribution_audit') return await distributionAudit();
     if(a==='pulse_plan') return await pulsePlan();
