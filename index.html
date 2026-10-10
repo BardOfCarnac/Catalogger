@@ -2526,6 +2526,38 @@ function switchTo(target,options={}){
 
 
 const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
+const decodedImageCache=new Map();
+function preloadDecodedImage(url){
+  url=String(url||'').trim();
+  if(!url)return Promise.resolve(false);
+  if(decodedImageCache.has(url))return decodedImageCache.get(url);
+  const pending=new Promise(resolve=>{
+    const img=new Image();
+    let settled=false;
+    const finish=value=>{
+      if(settled)return;
+      settled=true;
+      resolve(value);
+    };
+    img.decoding='async';
+    img.fetchPriority='high';
+    img.onload=async()=>{
+      try{
+        if(typeof img.decode==='function')await img.decode();
+      }catch(_){}
+      finish(true);
+    };
+    img.onerror=()=>finish(false);
+    img.src=url;
+    if(img.complete&&img.naturalWidth>0){
+      Promise.resolve(typeof img.decode==='function'?img.decode():null)
+        .catch(()=>null)
+        .then(()=>finish(true));
+    }
+  });
+  decodedImageCache.set(url,pending);
+  return pending;
+}
 let sellers=[];
 let lastSearch=null;
 let currentSellerId=null;
@@ -3231,7 +3263,9 @@ async function prepareRoute(route){
   }
   if(route.view==='vendor'){
     if(!route.vendorId)return {route:{view:'home'},payload:null};
-    return {route,payload:await api({api:'shop',id:route.vendorId})};
+    const payload=await api({api:'shop',id:route.vendorId});
+    await preloadDecodedImage(payload?.image?.image_url);
+    return {route,payload};
   }
   return {route,payload:null};
 }
