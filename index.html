@@ -1979,6 +1979,15 @@ body::-webkit-scrollbar,
 }
 @media (prefers-reduced-motion:reduce){.shop-photo-card{transition:none}}
 
+
+/* Keep photographs visible under legacy row hover styles. */
+.home-nearby-row.shop-photo-card:hover,
+.shop-photo-panel .list-row.shop-photo-card:hover,
+.mini-card.shop-photo-card[data-shop]:hover{
+  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
+}
+.hero.vendor-hero{padding:0}
+
 </style>
 </head>
 <body>
