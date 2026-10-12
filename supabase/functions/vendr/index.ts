@@ -2517,17 +2517,44 @@ function listingFromPlace(p:any){
 }
 async function shops(u:URL){
   const activeSources=requestedSourceCodes(u);
-  const [placeRows,profileRows,books]=await Promise.all([
+  // Listing cards need the same photography as the detail page, without
+  // requesting a full inventory/stock snapshot for each visible shop.
+  const [placeRows,profileRows,books,visualRows,imageRows]=await Promise.all([
     db('vendr_places','select=*&order=district.asc,display_name.asc'),
     db('vendr_stock_profiles','select=*&order=district.asc,name.asc'),
-    sourceBooks()
+    sourceBooks(),
+    db('vendr_visual_profiles','select=entity_id,image_policy,visual_family,image_pool_key,image_override'),
+    db('vendr_image_pool','select=unsplash_id,photographer,source_url,image_url,attribution_url,focal_x,focal_y,visual_family,sort_order&enabled=eq.true&order=sort_order.asc')
   ]);
   const placeById=new Map(placeRows.map((p:any)=>[String(p.entity_id),p]));
+  const visualById=new Map(visualRows.map((v:any)=>[String(v.entity_id),v]));
+  const imagesByFamily=new Map<string,any[]>();
+  for(const image of imageRows){
+    const family=String(image.visual_family||'');
+    if(!imagesByFamily.has(family))imagesByFamily.set(family,[]);
+    imagesByFamily.get(family)!.push(image);
+  }
   const rows=profileRows
     .filter((p:any)=>isVendrVisibleProfile(p)&&profileAllowed(p,activeSources,books))
     .map((profile:any)=>{
       const row=listingFromProfile(profile,placeById.get(String(profile.entity_id))||null);
-      return {...row,source_code:sourceCodeFromRef(row.source_ref,books)};
+      const visual:any=visualById.get(String(profile.entity_id))||null;
+      let image=null;
+      if(visual?.image_policy==='pool'&&visual.visual_family){
+        const poolKey=visual.image_pool_key||visual.visual_family;
+        const pool=imagesByFamily.get(String(poolKey))||[];
+        if(pool.length){
+          const chosen=(visual.image_override&&pool.find((p:any)=>String(p.unsplash_id)===String(visual.image_override)))
+            ||pool[stableIndex(String(profile.entity_id)+'|'+poolKey,pool.length)];
+          image={
+            unsplash_id:chosen.unsplash_id,photographer:chosen.photographer,
+            source_url:chosen.source_url,image_url:chosen.image_url,
+            attribution_url:chosen.attribution_url,
+            focal_x:Number(chosen.focal_x??0.5),focal_y:Number(chosen.focal_y??0.5)
+          };
+        }
+      }
+      return {...row,source_code:sourceCodeFromRef(row.source_ref,books),image};
     });
   rows.sort((a:any,b:any)=>String(a.district||'').localeCompare(String(b.district||''))||String(a.name||'').localeCompare(String(b.name||'')));
   return out({shops:rows});

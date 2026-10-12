@@ -1900,6 +1900,94 @@ body::-webkit-scrollbar,
 }
 .search-suggest{scrollbar-gutter:auto}
 
+
+/* Shop-design pass: places have edge-to-edge photographs; items keep cream cards. */
+.shop-photo-card{
+  --shop-image:linear-gradient(135deg,#5a4a39,#17110c);
+  --shop-image-position:50% 50%;
+  position:relative;isolation:isolate;overflow:hidden;color:var(--cream);
+  background-color:#302921;
+  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
+  background-size:cover;background-position:center,var(--shop-image-position);
+  transition:filter .18s ease;
+}
+.shop-photo-card:hover{filter:brightness(1.08)}
+.shop-photo-card:focus-visible{outline:3px solid var(--rear-4);outline-offset:-4px}
+.home-nearby-list{display:grid;align-content:start;gap:8px}
+.home-nearby-row.shop-photo-card{min-height:78px;border:0;padding:11px 13px;grid-template-columns:minmax(0,1fr) auto;align-items:end}
+.home-nearby-row.shop-photo-card:hover{background-color:#302921}
+.home-nearby-row.shop-photo-card .home-nearby-name{
+  color:var(--cream);font-size:clamp(16px,1.8vw,22px);line-height:.98;text-shadow:0 1px 5px rgba(0,0,0,.65)
+}
+.home-nearby-row.shop-photo-card .home-nearby-meta{color:rgba(255,246,223,.86);text-shadow:0 1px 4px #000}
+.home-nearby-row.shop-photo-card .home-nearby-distance{
+  min-width:0;border:1px solid rgba(255,246,223,.5);background:rgba(12,9,7,.55);color:#f6d448;padding:6px 8px
+}
+.shop-photo-panel .list-row.shop-photo-card{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+  min-height:142px;width:calc(100% - 18px);padding:16px 17px;margin:9px;border:0
+}
+.shop-photo-panel .list-row.shop-photo-card:last-child{margin-bottom:9px}
+.shop-photo-panel .list-row.shop-photo-card .row-title{
+  color:var(--cream);font-size:clamp(21px,2.25vw,31px);line-height:.93;text-shadow:0 2px 5px rgba(0,0,0,.55)
+}
+.shop-photo-panel .list-row.shop-photo-card .row-sub{
+  color:rgba(255,246,223,.88);font-size:10px;line-height:1.4;text-shadow:0 1px 4px #000
+}
+.shop-photo-panel .list-row.shop-photo-card .row-status{
+  flex:none;min-width:0;max-width:35%;border:1px solid rgba(255,246,223,.55);
+  background:rgba(13,10,8,.68);color:var(--rear-4);padding:7px
+}
+.shop-photo-panel .cards-3{gap:10px;padding:10px}
+.mini-card.shop-photo-card{
+  min-height:230px;border:0;padding:20px 16px 16px;display:flex;
+  flex-direction:column;justify-content:flex-end;cursor:pointer
+}
+.mini-card.shop-photo-card .mini-time{color:#f6d448;text-shadow:0 1px 3px #000}
+.mini-card.shop-photo-card h3{
+  color:var(--cream);font-size:clamp(22px,2.5vw,31px);text-shadow:0 2px 5px #000;overflow-wrap:anywhere
+}
+.mini-card.shop-photo-card p{
+  color:rgba(255,246,223,.9);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;text-shadow:0 1px 3px #000
+}
+.mini-card.shop-photo-card .mini-dist{border-color:rgba(255,246,223,.6);color:#f6d448}
+.vendor-hero{border:0;background:transparent;overflow:visible}
+.vendor-photo-strip{min-height:clamp(340px,43vw,530px);padding:30px 28px 25px}
+.vendor-photo-strip:after{background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.12))}
+.vendor-photo-strip .hero-title.vendor{
+  font-size:clamp(44px,5.8vw,88px);line-height:.9;max-width:20ch;margin:7px 0 0;overflow-wrap:anywhere
+}
+.vendor-info-body{background:var(--cream);border:var(--panel-border);border-top:0}
+.vendor-photo-credit{color:#f6d448}
+@media (max-width:760px){
+  .hero.home-hero{background:transparent;border:0;box-shadow:none;padding:0}
+  .home-hero-copy{padding:0}
+  .home-nearby-head{padding:8px 0 13px}
+  .home-nearby-row.shop-photo-card{min-height:102px}
+  .home-nearby-row.shop-photo-card .home-nearby-name{font-size:21px}
+  .home-hero .spaciel-aperture{margin:16px 0 0;width:100%}
+  .shop-photo-panel{background:transparent;border:0;box-shadow:none}
+  .shop-photo-panel>.section-head{border:0;padding:10px 1px 14px}
+  .shop-photo-panel .list-row.shop-photo-card{min-height:162px;width:100%;margin:0 0 10px}
+  .shop-photo-panel .list-row.shop-photo-card:last-child{margin-bottom:0}
+  .shop-photo-panel .cards-3{gap:10px;padding:0}
+  .mini-card.shop-photo-card{min-height:210px}
+  .vendor-photo-strip{min-height:clamp(350px,67vh,530px);padding:22px 18px 26px}
+  .vendor-photo-strip .hero-title.vendor{font-size:clamp(44px,11vw,68px)}
+  .vendor-info-body{margin-top:12px;padding:18px;border:var(--panel-border)}
+}
+@media (prefers-reduced-motion:reduce){.shop-photo-card{transition:none}}
+
+
+/* Keep photographs visible under legacy row hover styles. */
+.home-nearby-row.shop-photo-card:hover,
+.shop-photo-panel .list-row.shop-photo-card:hover,
+.mini-card.shop-photo-card[data-shop]:hover{
+  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
+}
+.hero.vendor-hero{padding:0}
+
 </style>
 </head>
 <body>
@@ -1978,7 +2066,7 @@ body::-webkit-scrollbar,
       </section>
 
       <div class="grid-2">
-        <section class="panel" id="primarySellerPanel">
+        <section class="panel shop-photo-panel" id="primarySellerPanel">
           <div class="section-head">
             <h2 id="primarySellerTitle">Known sellers</h2>
             <span id="primarySellerMeta">Canonical commercial<br>profiles</span>
@@ -2009,7 +2097,7 @@ body::-webkit-scrollbar,
           </button>
         </section>
 
-        <section class="panel" id="secondarySellerPanel">
+        <section class="panel shop-photo-panel" id="secondarySellerPanel">
           <div class="section-head">
             <h2 id="secondarySellerTitle">Direct sellers</h2>
             <span id="secondarySellerMeta">Likely stocked<br>places</span>
@@ -2040,7 +2128,7 @@ body::-webkit-scrollbar,
           </button>
         </section>
 
-        <section class="panel grid-wide" id="marketPanel">
+        <section class="panel shop-photo-panel grid-wide" id="marketPanel">
           <div class="section-head">
             <h2 id="marketPanelTitle">Markets</h2>
             <span id="marketPanelMeta">Containers / events<br>from the city graph</span>
@@ -3124,6 +3212,20 @@ function nearestHomeSellers(limit=5){
     .sort((a,b)=>a.score-b.score||String(a.seller.name).localeCompare(String(b.seller.name)))
     .slice(0,limit);
 }
+function shopPhotoStyle(shop){
+  // The shop name is real text; its background photograph is decorative.
+  const raw=String(shop?.image?.image_url||'').trim();
+  if(!raw)return '';
+  let imageUrl;
+  try{
+    const parsed=new URL(raw,location.href);
+    if(!['http:','https:'].includes(parsed.protocol))return '';
+    imageUrl=parsed.href.replace(/["'()\\\r\n]/g,c=>encodeURIComponent(c));
+  }catch(_){return ''}
+  const pct=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):.5))*100;
+  const x=pct(shop.image.focal_x).toFixed(1),y=pct(shop.image.focal_y).toFixed(1);
+  return ' style="--shop-image:url(&quot;'+esc(imageUrl)+'&quot;);--shop-image-position:'+x+'% '+y+'%"';
+}
 function renderHomeNearby(){
   const list=document.getElementById('homeNearbyList');
   if(!list)return;
@@ -3133,7 +3235,7 @@ function renderHomeNearby(){
     return;
   }
   list.innerHTML=rows.map(({seller,label})=>
-    '<button class="home-nearby-row" type="button" data-shop="'+esc(seller.entity_id)+'">'+
+    '<button class="home-nearby-row shop-photo-card" type="button"'+shopPhotoStyle(seller)+' data-shop="'+esc(seller.entity_id)+'">'+
       '<div><div class="home-nearby-name">'+esc(seller.name)+'</div>'+
       '<div class="home-nearby-meta">'+esc([seller.type,seller.district].filter(Boolean).join(' · '))+'</div></div>'+
       '<div class="home-nearby-distance">'+esc(label)+'</div>'+
@@ -3142,7 +3244,7 @@ function renderHomeNearby(){
   bindSellerClicks(list);
 }
 function sellerRow(s,sub,status){
-  return '<button class="list-row" data-shop="'+esc(s.entity_id)+'"><div>'+
+  return '<button class="list-row shop-photo-card"'+shopPhotoStyle(s)+' data-shop="'+esc(s.entity_id)+'"><div>'+
     '<div class="row-title">'+esc(s.name)+'</div>'+
     '<div class="row-sub">'+esc(sub||[s.type,s.district].filter(Boolean).join(' · '))+'</div></div>'+
     '<div class="row-status">'+esc(status||modeLabel(s.stock_mode))+'</div></button>';
@@ -3153,6 +3255,9 @@ function bindSellerClicks(root,offerMap=null){
     const offers=offerMap?.get(id)||[];
     const focus=offers.find(o=>o.kind==='available')||offers[0]||null;
     openVendor(id,focus);
+    if(el.tagName!=='BUTTON')el.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();el.click()}
+    });
   }));
 }
 function renderSellerPanel(panel,slice,subFn,statusFn,offerMap=null){
@@ -3164,7 +3269,7 @@ function renderSellerPanel(panel,slice,subFn,statusFn,offerMap=null){
 function renderMarkets(rows){
   const cards=document.getElementById('marketCards');
   cards.innerHTML=rows.slice(0,3).map(s=>
-    '<article class="mini-card" data-shop="'+esc(s.entity_id)+'" tabindex="0">'+
+    '<article class="mini-card shop-photo-card"'+shopPhotoStyle(s)+' data-shop="'+esc(s.entity_id)+'" role="button" tabindex="0" aria-label="View '+esc(s.name)+'">'+
     '<div class="mini-time">'+esc(modeLabel(s.stock_mode))+'</div>'+
     '<h3>'+esc(s.name)+'</h3>'+
     '<p>'+esc(s.copy||'Canonical market or multi-vendor place in the Night City commercial graph.')+'</p>'+
@@ -4206,8 +4311,8 @@ function renderVendor(s,offers){
   if(s.image&&s.image.image_url){
     const fx=Math.max(0,Math.min(1,Number(s.image.focal_x??0.5)))*100;
     const fy=Math.max(0,Math.min(1,Number(s.image.focal_y??0.5)))*100;
-    photoStrip.style.backgroundImage='linear-gradient(90deg,rgba(23,17,12,.48) 0%,rgba(23,17,12,.22) 46%,rgba(23,17,12,.04) 100%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
-    photoStrip.style.backgroundPosition='50% 50%';
+    photoStrip.style.backgroundImage='linear-gradient(0deg,rgba(12,9,8,.88) 0%,rgba(12,9,8,.40) 37%,rgba(12,9,8,.02) 78%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
+    photoStrip.style.backgroundPosition=(fx*100)+'% '+(fy*100)+'%';
     photoCredit.innerHTML='PHOTO · <a href="'+esc(s.image.source_url)+'" target="_blank" rel="noopener">'+esc(s.image.photographer)+'</a> / <a href="'+esc(s.image.attribution_url)+'" target="_blank" rel="noopener">UNSPLASH</a>';
   }else{
     photoStrip.style.backgroundImage='linear-gradient(135deg,#3c3329,#17110c)';

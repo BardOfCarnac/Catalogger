@@ -1,0 +1,4738 @@
+<!doctype html>
+<!-- LIVE VEND-R FRONTEND NOTE:
+     Canonical browser UI and source: main/index.html
+     This is the Supabase-connected Vend-R frontend.
+     GitHub Pages publishes this file directly. Do not maintain a second frontend copy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vend-R · Night City Market</title>
+<style>
+:root{
+  /* -------- LOCKED THEME -------- */
+  --rear-1:#df4a0f;   /* deepest orange */
+  --rear-2:#f57b0c;   /* tangerine */
+  --rear-3:#eea81a;   /* amber */
+  --rear-4:#f4d246;   /* yellow field */
+
+  --front-1:#f05b13;
+  --front-2:#f47b10;
+  --front-3:#eda315;
+
+  --cream:#fff6df;
+  --paper:#fffaf0;
+  --ink:#17110c;
+  --muted:#6d625a;
+  --rule:rgba(23,17,12,.32);
+
+  --panel-border:3px solid var(--ink);
+  --hero-border:4px solid var(--ink);
+  --shadow-x:11px;
+  --shadow-y:11px;
+  --shadow:var(--shadow-x) var(--shadow-y) 0 rgba(0,0,0,.13);
+  --hero-shadow:var(--shadow);
+
+  --slant:95vw;
+  --band-step:38vw;
+  --band-period:204vw;
+  --bg-band-width:133vw;
+  --bg-yellow-width:185vw;
+
+  --fg-start:135vw;
+  --fg-end:-360vw;
+  --bg-base:-99.5vw;
+}
+*{box-sizing:border-box}
+html{
+  background:var(--rear-4);
+  overscroll-behavior-y:none;
+}
+body{
+  position:relative;
+  margin:0;
+  min-height:100vh;
+  background:var(--rear-4);
+  overscroll-behavior-y:none;
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+}
+button,input,select{font:inherit}
+
+/* -------- MOCK SPATIAL CONTROL -------- */
+.topbar-actions{display:flex;gap:8px;align-items:center}
+.spatial-source-token{background:var(--front-1);color:#fff}
+.spatial-overlay[hidden]{display:none}
+.spatial-overlay{
+  position:fixed;inset:0;z-index:9000;display:grid;place-items:center;
+  padding:18px;background:rgba(23,17,12,.58)
+}
+.spatial-dialog{
+  width:min(620px,100%);border:4px solid var(--ink);background:var(--cream);
+  box-shadow:18px 18px 0 rgba(0,0,0,.23)
+}
+.spatial-dialog-head{
+  display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
+  padding:18px;border-bottom:3px solid var(--ink)
+}
+.spatial-dialog-head h2{
+  margin:5px 0 0;font-size:clamp(28px,5vw,42px);line-height:.9;
+  letter-spacing:-.04em;text-transform:uppercase
+}
+.spatial-dialog-head p{
+  max-width:500px;margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.45
+}
+.spatial-close{
+  flex:0 0 38px;width:38px;height:38px;border:2px solid var(--ink);
+  background:var(--paper);font-weight:1000;cursor:pointer
+}
+.spatial-dialog-body{display:grid;gap:14px;padding:18px}
+.spatial-dialog-body label{
+  display:grid;gap:7px;font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase
+}
+.spatial-dialog-body select{
+  width:100%;min-height:48px;border:3px solid var(--ink);background:var(--paper);
+  color:var(--ink);padding:0 12px;font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace
+}
+.spatial-readout{
+  border:2px solid var(--ink);background:var(--paper);padding:12px;
+  font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.65;text-transform:uppercase
+}
+.spatial-actions{display:flex;justify-content:flex-end;gap:9px}
+.spatial-actions button{
+  min-height:44px;border:3px solid var(--ink);background:var(--rear-4);color:var(--ink);
+  padding:0 14px;font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;cursor:pointer
+}
+.spatial-actions .primary{background:var(--front-1);color:#fff}
+@media(max-width:620px){
+  .topbar-actions{gap:5px}
+  .topbar-actions .action-btn{padding:0 9px}
+  .spatial-dialog{box-shadow:10px 10px 0 rgba(0,0,0,.23)}
+}
+
+/* -------- BACKGROUND FIELD -------- */
+.background{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:var(--rear-4);
+}
+.bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  will-change:transform;
+}
+.bg-period{
+  position:absolute;
+  top:0;
+  width:var(--band-period);
+  height:100%;
+}
+.bg-band{
+  position:absolute;
+  top:-16vh;
+  height:132vh;
+  width:var(--bg-band-width);
+  clip-path:polygon(var(--slant) 0,100% 0,var(--band-step) 100%,0 100%);
+}
+.bg-band.one{left:0;background:var(--rear-1)}
+.bg-band.two{left:38vw;background:var(--rear-2)}
+.bg-band.three{left:76vw;background:var(--rear-3)}
+.bg-band.four{
+  left:114vw;
+  width:var(--bg-yellow-width);
+  clip-path:polygon(var(--slant) 0,100% 0,90vw 100%,0 100%);
+  background:var(--rear-4);
+}
+.background:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
+}
+
+/* -------- GLOBAL APP FRAME -------- */
+.app{position:relative;z-index:10}
+.view{display:none}
+.view.active{display:block}
+.shell{
+  width:min(1180px, calc(100% - 28px));
+  margin:0 auto;
+  padding:18px 0 46px;
+}
+.topbar{
+  position:sticky;
+  top:18px;
+  z-index:400;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+.header-backdrop{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:0;
+  z-index:300;
+  overflow:hidden;
+  pointer-events:none;
+  background:var(--rear-4);
+}
+.header-backdrop .bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  height:100vh;
+  will-change:transform;
+}
+.header-backdrop:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
+}
+.brand{
+  font-weight:1000;
+  font-size:clamp(28px,4vw,44px);
+  letter-spacing:-.07em;
+  line-height:.8;
+}
+.brand small{
+  display:block;
+  margin-top:7px;
+  font:9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.inline-search{
+  position:relative;
+  height:46px;
+  border:3px solid var(--ink);
+  background:rgba(255,250,240,.95);
+  display:flex;
+  align-items:center;
+}
+.search-suggest{
+  position:absolute;
+  z-index:300;
+  top:calc(100% + 7px);
+  left:-3px;
+  right:-3px;
+  border:3px solid var(--ink);
+  background:var(--paper);
+  max-height:min(62vh,520px);
+  overflow-y:scroll;
+  overflow-x:hidden;
+  scrollbar-width:auto;
+  scrollbar-color:var(--front-1) var(--cream);
+}
+.search-suggest::-webkit-scrollbar{width:13px}
+.search-suggest::-webkit-scrollbar-track{
+  background:var(--cream);
+  border-left:2px solid var(--ink);
+}
+.search-suggest::-webkit-scrollbar-thumb{
+  background:var(--front-1);
+  border:2px solid var(--ink);
+}
+.search-suggest[hidden]{display:none}
+.suggest-head{
+  padding:8px 11px;
+  border-bottom:2px solid var(--ink);
+  background:var(--cream);
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.suggest-row{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  padding:10px 11px;
+  text-align:left;
+  cursor:pointer;
+}
+.suggest-row:last-child{border-bottom:0}
+.suggest-row:hover,.suggest-row.active{background:rgba(244,210,70,.22)}
+.suggest-row strong{
+  display:block;
+  font-size:14px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.suggest-row span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.suggest-row.search-all{
+  background:var(--rear-4);
+  border-top:2px solid var(--ink);
+}
+.search-page-hero{
+  padding:22px 24px 24px;
+}
+.search-page-hero .hero-title{
+  margin-bottom:12px;
+  font-size:clamp(42px,7.5vw,88px);
+}
+.search-page-copy{
+  max-width:760px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+.search-page-form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  margin-top:18px;
+  border:4px solid var(--ink);
+  background:var(--paper);
+}
+.search-page-form input{
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:0 16px;
+  min-height:58px;
+  color:var(--ink);
+  font:900 17px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.search-page-form button{
+  border:0;
+  border-left:4px solid var(--ink);
+  padding:0 18px;
+  background:var(--front-1);
+  color:#fff;
+  font:1000 11px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.search-empty{
+  margin-top:18px;
+  border:4px solid var(--ink);
+  background:var(--cream);
+  box-shadow:var(--shadow);
+  padding:22px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+@media(max-width:520px){
+  .search-page-form{grid-template-columns:1fr}
+  .search-page-form button{min-height:44px;border-left:0;border-top:4px solid var(--ink)}
+  .search-suggest{
+    max-height:195px;
+    scrollbar-gutter:stable;
+  }
+  .suggest-head{min-height:27px}
+  .suggest-row{
+    min-height:56px;
+    padding-top:9px;
+    padding-bottom:9px;
+  }
+}
+.stock-local-search{margin:0 0 10px}
+.inline-search input{
+  width:100%;
+  height:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:0 14px;
+  color:var(--ink);
+  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.action-btn{
+  height:46px;
+  border:3px solid var(--ink);
+  background:var(--cream);
+  padding:0 14px;
+  color:var(--ink);
+  font:900 11px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.hero{
+  background:var(--cream);
+  border:var(--hero-border);
+  box-shadow:var(--hero-shadow);
+  padding:26px;
+  margin-bottom:18px;
+}
+.home-hero{padding:0}
+.home-hero-grid{
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(414px,40vw,494px);
+  min-height:438px;
+  align-items:stretch;
+}
+.home-hero-copy{
+  min-width:0;
+  padding:24px 26px 22px 28px;
+  display:flex;
+  flex-direction:column;
+}
+.home-nearby-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  padding-bottom:12px;
+  border-bottom:3px solid var(--ink);
+}
+.home-nearby-head h1{
+  margin:4px 0 0;
+  font-size:clamp(34px,4.4vw,58px);
+  line-height:.86;
+  letter-spacing:-.055em;
+  text-transform:uppercase;
+}
+.home-nearby-head span{
+  flex:0 0 auto;
+  text-align:right;
+  color:var(--muted);
+  font:900 9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.home-nearby-list{
+  flex:1;
+  min-height:0;
+}
+.home-nearby-row{
+  width:100%;
+  min-height:56px;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:10px 0;
+  text-align:left;
+  cursor:pointer;
+}
+.home-nearby-row:hover{background:rgba(244,210,70,.12)}
+.home-nearby-name{
+  font-size:18px;
+  font-weight:1000;
+  line-height:1;
+  text-transform:uppercase;
+}
+.home-nearby-meta{
+  margin-top:4px;
+  color:var(--muted);
+  font:9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.home-nearby-distance{
+  min-width:66px;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:7px 8px;
+  text-align:center;
+  font:1000 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.hero-location-line{
+  margin-top:12px;
+  padding-top:0;
+}
+
+/* Spaciel sits inside an equal cream surround. The bevel is one simple sloped frame. */
+.spaciel-aperture{
+  position:relative;
+  align-self:center;
+  justify-self:center;
+  width:calc(100% - 48px);
+  max-width:422px;
+  aspect-ratio:1/1;
+  margin:24px;
+  padding:12px;
+  background:#fff4dc;
+}
+.spaciel-cutin{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  border:10px solid;
+  border-color:
+    #e7dcc2
+    #fff9e9
+    #fff9e9
+    #e7dcc2;
+  background:
+    radial-gradient(circle at 58% 44%,rgba(244,210,70,.09),transparent 28%),
+    linear-gradient(145deg,#172126,#0d1215 64%,#090d0f);
+  color:#f5f0df;
+  isolation:isolate;
+}
+.spaciel-cutin:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  box-shadow:inset 0 0 55px rgba(0,0,0,.62);
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:24px 24px;
+  mix-blend-mode:screen;
+}
+#spacielCanvas,
+#searchSpacielCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  display:block;
+}
+.spaciel-hud{
+  position:absolute;
+  z-index:3;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-shadow:0 1px 2px #000;
+}
+.spaciel-topline{
+  top:22px;left:22px;right:22px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:9px;border-bottom:1px solid rgba(255,246,223,.35);
+}
+.spaciel-topline strong{font-size:12px;letter-spacing:.16em}
+.spaciel-topline span{color:#f4d246}
+.spaciel-place{top:60px;left:22px;color:#c9d2cf;line-height:1.25}
+.spaciel-place strong{color:#fff6df;font-size:14px}
+.spaciel-readout{
+  left:22px;bottom:22px;
+  color:#f4d246;
+}
+.spaciel-powered{
+  right:22px;bottom:22px;color:#aab6b2;text-align:right;
+}
+.spaciel-powered strong{color:#fff6df}
+
+.kicker{
+  font:10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#a73c20;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+.hero-title{
+  margin:8px 0 18px;
+  font-size:clamp(48px,8vw,100px);
+  line-height:.8;
+  letter-spacing:-.07em;
+  text-transform:uppercase;
+}
+.hero-title.vendor{
+  font-size:clamp(43px,7.6vw,88px);
+  line-height:.82;
+}
+.hero-copy{
+  max-width:760px;
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.48;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:14px 0 18px;
+}
+.tag{
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:7px 9px 6px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.tag.yellow{background:var(--rear-4)}
+.tag.orange{background:var(--front-1); color:#fff}
+.hero-search{
+  border:4px solid var(--ink);
+  background:var(--paper);
+  min-height:68px;
+  display:grid;
+  grid-template-columns:1fr auto;
+}
+.hero-search input{
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--ink);
+  padding:0 18px;
+  font:900 clamp(15px,2.2vw,23px) ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.hero-search button{
+  border:0;
+  border-left:4px solid var(--ink);
+  background:var(--front-1);
+  color:#fff;
+  padding:0 22px;
+  font:1000 12px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.nearby-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  align-items:center;
+  margin-top:13px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.token{
+  border:2px solid var(--ink);
+  background:var(--rear-4);
+  padding:7px 9px;
+}
+.muted{color:var(--muted)}
+
+/* -------- PANELS -------- */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.grid-wide{grid-column:1/-1}
+.vendor-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.75fr) minmax(280px,.72fr);
+  gap:18px;
+}
+.side-stack{
+  display:grid;
+  gap:18px;
+}
+.panel{
+  background:var(--cream);
+  border:var(--panel-border);
+  box-shadow:var(--shadow);
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+  padding:15px 17px 12px;
+  border-bottom:3px solid var(--ink);
+}
+.section-head h2{
+  margin:0;
+  font-size:clamp(24px,3vw,36px);
+  line-height:.9;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.section-head span{
+  color:var(--muted);
+  text-align:right;
+  font:9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.list-row{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.42);
+  color:var(--ink);
+  text-align:left;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:15px 17px;
+  cursor:pointer;
+}
+.list-row:last-child{border-bottom:0}
+.list-row:hover{background:rgba(255,255,255,.38)}
+.row-title{
+  font-weight:1000;
+  font-size:18px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.row-sub{
+  margin-top:5px;
+  color:var(--muted);
+  font:10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.35;
+  text-transform:uppercase;
+}
+.row-status{
+  min-width:92px;
+  border:2px solid var(--ink);
+  background:var(--rear-4);
+  padding:8px 9px;
+  text-align:center;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.row-status.orange{background:var(--front-1); color:#fff}
+.row-status.amber{background:var(--rear-3)}
+
+.cards-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.mini-card{
+  padding:17px;
+  min-height:148px;
+  background:rgba(255,250,240,.38);
+  border-right:1px solid var(--rule);
+}
+.mini-card:last-child{border-right:0}
+.mini-time{
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#a73c20;
+  text-transform:uppercase;
+}
+.mini-card h3{
+  margin:6px 0 8px;
+  font-size:22px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.mini-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.4;
+}
+.mini-dist{
+  margin-top:12px;
+  padding-top:9px;
+  border-top:2px solid var(--ink);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+
+
+/* -------- ITEM-SEARCH ARRIVAL -------- */
+.offer-focus{
+  margin-bottom:18px;
+  border:4px solid var(--ink);
+  background:var(--cream);
+  box-shadow:var(--shadow);
+  padding:16px 18px 17px;
+}
+.offer-focus[hidden]{display:none}
+.offer-focus-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:end;
+}
+.offer-focus h1{
+  margin:5px 0 0;
+  font-size:clamp(34px,6.6vw,72px);
+  line-height:.86;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.offer-readout{
+  min-width:132px;
+  text-align:right;
+}
+.offer-readout strong{
+  display:block;
+  font:1000 clamp(20px,3.5vw,34px) ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.offer-readout span,
+.offer-sub{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.stock-row{padding:10px 16px}
+.stock-row.menu-row{grid-template-columns:minmax(0,1fr) auto}
+.stock-name{
+  font-size:23px;
+  line-height:.98;
+  letter-spacing:-.012em;
+}
+.stock-sub{font-size:11px;line-height:1.25;margin-top:4px}
+.stock-meta{font-size:11px;line-height:1.28}
+.stock-meta strong{font-size:14px}
+.stock-name.related{
+  color:var(--front-2);
+  -webkit-text-stroke:1.9px var(--ink);
+  paint-order:stroke fill;
+  text-shadow:.8px .8px 0 var(--ink);
+}
+.stock-name.exact{
+  color:var(--rear-2);
+  -webkit-text-stroke:2.1px var(--ink);
+  paint-order:stroke fill;
+  text-shadow:1px 1px 0 var(--ink);
+  animation:vendrFocus 2.5s cubic-bezier(.22,.72,.18,1);
+}
+@keyframes vendrFocus{
+  0%,100%{color:var(--rear-2)}
+  40%,68%{color:var(--rear-4)}
+}
+.stock-row.exact-row{background:rgba(244,210,70,.14)}
+.stock-row.related-row{background:rgba(244,123,16,.06)}
+@media (max-width:760px){
+  .offer-focus-row{grid-template-columns:1fr}
+  .offer-readout{text-align:left}
+}
+
+
+/* -------- SEARCH RESULT OFFERS -------- */
+.search-offer-section{
+  margin-top:18px;
+  border:4px solid var(--ink);
+  background:var(--cream);
+  box-shadow:var(--shadow);
+}
+.search-offer-head{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:end;
+  padding:12px 14px 10px;
+  border-bottom:3px solid var(--ink);
+}
+.search-offer-head h2{
+  margin:0;
+  font-size:24px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.search-offer-head span{
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  text-align:right;
+}
+.search-offer-list{display:grid}
+.search-offer{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.56);
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:11px 14px;
+  text-align:left;
+  cursor:pointer;
+}
+.search-offer:last-child{border-bottom:0}
+.search-offer:hover{background:rgba(244,210,70,.14)}
+.search-offer .item-name,
+.search-offer .seller-name{
+  display:block;
+  font-size:20px;
+  line-height:1;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+.search-offer .seller-name{font-size:17px}
+.search-offer .item-meta,
+.search-offer .place-meta,
+.search-offer .price-meta{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.search-offer .price-block{
+  min-width:104px;
+  text-align:right;
+}
+.search-offer .price{
+  display:block;
+  font:1000 20px ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.search-offer.plausible .price{
+  font-size:11px;
+  color:var(--muted);
+}
+.search-offer.exact-mode{
+  grid-template-columns:minmax(0,1fr) auto;
+}
+.search-offer.exact-mode .item-col{display:none}
+@media(max-width:700px){
+  .search-offer{
+    grid-template-columns:minmax(0,1fr) auto;
+  }
+  .search-offer .seller-col{grid-column:1}
+  .search-offer .price-block{grid-column:2;grid-row:1 / span 2}
+  .search-offer.exact-mode{grid-template-columns:minmax(0,1fr) auto}
+}
+
+
+/* -------- NEARBY SEARCH PAGE -------- */
+.search-nearby-hero{padding:0}
+.search-nearby-grid{
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) clamp(370px,38vw,470px);
+  min-height:430px;
+  align-items:stretch;
+}
+.search-nearby-copy{
+  padding:27px 25px 24px 29px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.search-nearby-copy .hero-title{
+  margin:5px 0 7px;
+  font-size:clamp(42px,6.5vw,78px);
+}
+.search-query-line{
+  color:var(--muted);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:13px;
+}
+.nearby-offer-list{
+  border-top:3px solid var(--ink);
+  margin-top:auto;
+}
+.nearby-offer{
+  width:100%;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:10px 0;
+  text-align:left;
+  cursor:pointer;
+}
+.nearby-offer:last-child{border-bottom:0}
+.nearby-offer:hover{background:rgba(244,210,70,.12)}
+.nearby-offer strong{
+  display:block;
+  font-size:16px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.nearby-offer span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.nearby-offer .nearby-price{
+  margin:0;
+  min-width:82px;
+  text-align:right;
+  color:var(--ink);
+  font-size:15px;
+}
+.search-location-card{
+  position:relative;
+  align-self:center;
+  justify-self:center;
+  width:calc(100% - 48px);
+  max-width:410px;
+  aspect-ratio:1/1;
+  margin:24px;
+  padding:12px;
+  background:#fff4dc;
+}
+.search-location-card .spaciel-cutin{height:100%}
+.search-location-label{
+  position:absolute;
+  z-index:4;
+  left:22px;
+  right:22px;
+  bottom:54px;
+  border:2px solid rgba(255,246,223,.72);
+  background:rgba(12,17,20,.78);
+  padding:9px 10px;
+  color:#fff6df;
+}
+.search-location-label span{
+  display:block;
+  color:#c9d2cf;
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.search-location-label strong{
+  display:block;
+  margin-top:3px;
+  font-size:16px;
+  text-transform:uppercase;
+}
+.search-location-label small{
+  display:block;
+  margin-top:3px;
+  color:#f4d246;
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.results-sort{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:10px 14px;
+  border-bottom:2px solid var(--ink);
+  background:rgba(255,250,240,.45);
+}
+.results-sort button{
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:6px 8px;
+  color:var(--ink);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.results-sort button.on{background:var(--rear-4)}
+.related-items{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.related-item{
+  border:0;
+  border-right:1px solid var(--rule);
+  background:rgba(255,250,240,.42);
+  padding:15px;
+  text-align:left;
+  color:var(--ink);
+  cursor:pointer;
+}
+.related-item:last-child{border-right:0}
+.related-item:hover{background:rgba(244,210,70,.14)}
+.related-item strong{
+  display:block;
+  font-size:17px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.related-item span{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+@media(max-width:760px){
+  .search-nearby-hero{padding:0}
+  .search-nearby-grid{
+    display:block;
+    min-height:0;
+    width:100%;
+  }
+  .search-nearby-copy{
+    padding:20px 18px 17px;
+    min-height:0;
+  }
+  .search-nearby-copy .hero-title{
+    font-size:clamp(42px,14vw,58px);
+    line-height:.82;
+  }
+  .search-location-card{
+    box-sizing:border-box;
+    width:calc(100% - 28px);
+    max-width:none;
+    margin:0 14px 14px;
+    padding:8px;
+    aspect-ratio:4/3;
+  }
+  .search-location-card .spaciel-cutin{width:100%;height:100%}
+  .related-items{grid-template-columns:1fr}
+  .related-item{border-right:0;border-bottom:1px solid var(--rule)}
+  .related-item:last-child{border-bottom:0}
+}
+
+/* -------- VENDOR PAGE -------- */
+.vendor-hero{
+  padding:0;
+  overflow:hidden;
+}
+.vendor-photo-strip{
+  position:relative;
+  min-height:220px;
+  padding:25px 27px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(23,17,12,.48) 0%,rgba(23,17,12,.22) 46%,rgba(23,17,12,.04) 100%),
+    linear-gradient(135deg,#7b6b58,#d5c8ae);
+  background-size:cover;
+  background-position:50% 50%;
+  color:var(--cream);
+}
+.vendor-photo-strip:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.015),rgba(0,0,0,.07));
+}
+.vendor-photo-content{
+  position:relative;
+  z-index:1;
+  max-width:930px;
+}
+.vendor-photo-strip .kicker{
+  color:#ffd86a;
+  text-shadow:0 1px 2px rgba(0,0,0,.7);
+}
+.vendor-photo-strip .hero-title.vendor{
+  color:var(--cream);
+  margin-bottom:17px;
+  text-shadow:0 2px 3px rgba(0,0,0,.72),0 0 10px rgba(0,0,0,.24);
+}
+.vendor-photo-strip .hero-meta{margin-bottom:0}
+.vendor-photo-strip .tag{
+  color:var(--ink);
+  text-shadow:none;
+}
+.vendor-photo-credit{
+  position:absolute;
+  right:13px;
+  bottom:10px;
+  z-index:2;
+  max-width:58%;
+  text-align:right;
+  color:var(--front-1);
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
+}
+.vendor-photo-credit a{
+  color:inherit;
+  text-decoration:none;
+}
+.vendor-photo-credit a:hover{color:var(--rear-4)}
+.vendor-info-body{padding:22px 27px 25px}
+.hero-columns{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);
+  gap:22px;
+  align-items:end;
+}
+.owner{
+  border-left:4px solid var(--ink);
+  padding-left:13px;
+}
+.owner strong{
+  display:block;
+  text-transform:uppercase;
+  font-size:17px;
+}
+.owner span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font:11px ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.35;
+  text-transform:uppercase;
+}
+.vendor-summary{
+  margin-top:18px;
+}
+.vendor-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+}
+.vendor-stat{
+  min-width:0;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:9px 10px 10px;
+}
+.vendor-stat dt{
+  margin:0 0 4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.vendor-stat dd{
+  margin:0;
+  overflow-wrap:anywhere;
+  font-size:12px;
+  font-weight:1000;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.vendor-stat.status{background:var(--rear-4)}
+.vendor-stat.availability{background:rgba(240,91,19,.10)}
+.vendor-stat .vendor-owner-sub{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font:800 8px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.vendor-stat .parent-location-link{
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.vendor-stat .parent-location-link:hover{background:transparent;color:var(--front-1)}
+.vendor-stat .parent-location-link small{margin-top:3px}
+.vendor-context-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);
+  gap:18px;
+  margin-top:18px;
+  padding-top:17px;
+  border-top:3px solid var(--ink);
+}
+.vendor-context-copy .kicker{margin-bottom:5px}
+.vendor-context-copy h3{
+  margin:0 0 7px;
+  font-size:22px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.vendor-context-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.42;
+}
+.vendor-context-copy .market-line{margin-top:11px}
+.vendor-known .section-head{
+  padding:0 0 9px;
+  border-bottom:2px solid var(--ink);
+}
+.vendor-hero .known-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  padding:11px 0 0;
+}
+.vendor-stock-panel{margin-bottom:18px}
+@media (max-width:760px){
+  .vendor-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vendor-context-grid{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .vendor-stat-grid{grid-template-columns:1fr}
+}
+.restock-band{
+  background:var(--rear-4);
+  border-bottom:3px solid var(--ink);
+  padding:10px 18px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.stock-row{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(130px,.6fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:15px 18px;
+  border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.42);
+}
+.stock-row:last-child{border-bottom:0}
+.stock-name{
+  font-size:19px;
+  font-weight:1000;
+  line-height:1;
+  text-transform:uppercase;
+}
+.stock-sub{
+  margin-top:5px;
+  color:var(--muted);
+  font:10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.35;
+  text-transform:uppercase;
+}
+.stock-meta{
+  font:10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  line-height:1.4;
+}
+.stock-meta strong{font-size:12px}
+.price{
+  min-width:88px;
+  text-align:center;
+  border:2px solid var(--ink);
+  padding:10px 9px;
+  background:var(--front-1);
+  color:#fff;
+  font:1000 16px ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.price.alt{background:var(--front-2)}
+.price.amber{background:var(--rear-3); color:var(--ink)}
+
+.stock-browser{
+  border-bottom:3px solid var(--ink);
+  background:rgba(255,250,240,.72);
+}
+.stock-filter-row{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding:10px 12px 9px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--front-1) var(--cream);
+}
+.stock-filter-row::-webkit-scrollbar{height:9px}
+.stock-filter-row::-webkit-scrollbar-track{background:var(--cream);border-top:1px solid var(--ink)}
+.stock-filter-row::-webkit-scrollbar-thumb{background:var(--front-1);border:1px solid var(--ink)}
+.stock-filter{
+  flex:0 0 auto;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  color:var(--ink);
+  padding:6px 8px;
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.stock-filter.on{background:var(--rear-4)}
+.stock-browser-nav{
+  min-height:38px;
+  border-top:1px solid var(--rule);
+  padding:7px 10px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.stock-pager{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:var(--ink);
+}
+.stock-pager button{
+  min-width:34px;
+  min-height:27px;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  color:var(--ink);
+  font:1000 11px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;
+}
+.stock-pager button:disabled{opacity:.32;cursor:default}
+.stock-page-status{min-width:54px;text-align:center}
+.stock-empty{
+  padding:22px 18px;
+  color:var(--muted);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+
+.fact-list{padding:3px 16px}
+.fact{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid var(--rule);
+}
+.fact:last-child{border-bottom:0}
+.fact dt{
+  margin:0;
+  color:var(--muted);
+  font:9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.fact dd{
+  margin:0;
+  font-size:14px;
+  font-weight:800;
+}
+.market-card-side{padding:17px 18px 18px}
+.market-card-side h3{
+  margin:5px 0 8px;
+  font-size:25px;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.market-card-side p{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+.market-line{
+  border-top:2px solid var(--ink);
+  padding-top:10px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.known-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  padding:15px 16px 17px;
+}
+.known-grid span{
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:9px;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  text-align:center;
+}
+
+/* -------- ITEM PAGE -------- */
+.item-hero{padding:0}
+.item-hero-grid{display:block;overflow:hidden}
+.item-image{
+  height:190px;
+  min-height:190px;
+  border-bottom:4px solid var(--ink);
+  background:
+    linear-gradient(135deg,rgba(240,91,19,.16),rgba(244,210,70,.28)),
+    repeating-linear-gradient(135deg,transparent 0 18px,rgba(23,17,12,.04) 18px 20px);
+  position:relative;
+  overflow:hidden;
+  background-size:cover;
+  background-position:50% 50%;
+}
+.item-image.has-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.34),transparent 52%);
+}
+.item-image-label{
+  position:absolute;
+  right:14px;
+  bottom:10px;
+  z-index:2;
+  max-width:70%;
+  color:var(--front-1);
+  text-decoration:none;
+  text-align:right;
+  padding:0;
+  border:0;
+  background:none;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
+}
+.item-image.has-image .item-image-label:hover{color:var(--rear-4)}
+.item-copy{padding:25px 28px 27px}
+.item-copy .hero-title{margin:8px 0 12px}
+.item-description{
+  margin:0;
+  max-width:920px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.42;
+}
+.item-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin-top:20px;
+}
+.item-stat{
+  min-width:0;
+  border:2px solid var(--ink);
+  background:var(--paper);
+  padding:9px 10px 10px;
+}
+.item-stat dt{
+  margin:0 0 4px;
+  color:var(--muted);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.item-stat dd{
+  margin:0;
+  overflow-wrap:anywhere;
+  font-size:12px;
+  font-weight:1000;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.item-stat.price{background:var(--rear-4);color:var(--ink);text-align:left;min-width:0}
+.item-stat.availability{background:rgba(240,91,19,.10)}
+.item-shop-detail{margin-bottom:18px}
+.item-shop-detail-body{padding:17px 18px 18px}
+.item-shop-detail-copy{
+  margin:0;
+  max-width:850px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.item-shop-detail-line{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:2px solid var(--ink);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.item-selected-actions{display:flex;justify-content:flex-end;margin-top:12px}
+.item-selected-actions button{
+  border:2px solid var(--ink);
+  background:var(--rear-4);
+  padding:8px 12px;
+  font-weight:900;
+  text-transform:uppercase;
+  cursor:pointer
+}
+.item-offers-panel,.item-related-panel{margin-bottom:18px}
+.item-offer{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  border:0;
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  text-align:left;
+  padding:15px 16px;
+  cursor:pointer;
+}
+.item-offer:last-child{border-bottom:0}
+.item-offer:hover{background:rgba(244,210,70,.19)}
+.item-offer strong{display:block;font-size:18px;text-transform:uppercase}
+.item-offer span{display:block;margin-top:4px;color:var(--muted);font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.item-offer-price{text-align:right;font-size:22px!important;color:var(--ink)!important;margin:0!important}
+.item-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.item-related button{
+  border:0;border-right:1px solid var(--rule);background:transparent;text-align:left;
+  padding:13px 14px;cursor:pointer;color:var(--ink)
+}
+.item-related button:last-child{border-right:0}
+.item-related strong{display:block;text-transform:uppercase}
+.item-related span{display:block;color:var(--muted);font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:3px;text-transform:uppercase}
+.offer-item-link{
+  margin-top:10px;border:2px solid var(--ink);background:var(--rear-4);padding:8px 11px;
+  font-weight:900;text-transform:uppercase;cursor:pointer
+}
+@media (max-width:760px){
+  .item-image{height:145px;min-height:145px}
+  .item-copy{padding:20px 18px}
+  .item-description{font-size:15px}
+  .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .item-related{grid-template-columns:1fr}
+  .item-related button{border-right:0;border-bottom:1px solid var(--rule)}
+  .item-related button:last-child{border-bottom:0}
+}
+@media (max-width:420px){
+  .item-stat-grid{grid-template-columns:1fr}
+}
+/* Shadows live at their cards' document positions, so the browser scrolls
+   both together. A separate, fixed background mask covers just the shadows
+   above the header's cutoff; it never clips the cards or the rear field. */
+.hero,.panel,.offer-focus,.search-offer-section,.search-empty{
+  box-shadow:none;
+}
+.scroll-shadow-layer{
+  position:absolute;
+  inset:0;
+  z-index:9;
+  pointer-events:none;
+}
+.scroll-shadow-copy{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  pointer-events:none;
+  background:transparent;
+  box-shadow:var(--shadow);
+}
+.scroll-shadow-mask{
+  position:fixed;
+  inset:0 0 auto;
+  height:0;
+  z-index:9;
+  pointer-events:none;
+  overflow:hidden;
+  background:var(--rear-4);
+}
+.scroll-shadow-mask .bg-train{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5000vw;
+  height:100vh;
+  will-change:transform;
+}
+.scroll-shadow-mask:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(255,255,255,.09), transparent 18%);
+}
+
+/* -------- FOOTER -------- */
+.footer{
+  margin-top:18px;
+  border:var(--panel-border);
+  background:rgba(255,246,223,.94);
+  padding:11px 14px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font:9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.footer span:last-child{text-align:right}
+
+/* -------- STINGER TRANSITION -------- */
+.stinger-layer{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  overflow:hidden;
+  pointer-events:none;
+}
+.fg-page{
+  position:absolute;
+  top:-16vh;
+  width:320vw;
+  height:132vh;
+  clip-path:polygon(var(--slant) 0,100% 0,225vw 100%,0 100%);
+  will-change:transform;
+}
+.fg-page.one{background:var(--front-1);z-index:1}
+.fg-page.two{background:var(--front-2);z-index:2}
+.fg-page.three{background:var(--front-3);z-index:3}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width:920px) and (min-width:761px){
+  .home-hero-grid{grid-template-columns:minmax(0,1fr) 390px}
+  .home-hero-copy{padding:24px}
+  .home-hero .hero-title{font-size:clamp(42px,5.6vw,64px)}
+  .spaciel-aperture{width:calc(100% - 40px);margin:20px;padding:10px}
+}
+@media (max-width:760px){
+  .shell{width:min(100% - 22px,680px);padding-top:11px}
+  .topbar{top:11px}
+  .topbar{grid-template-columns:1fr auto}
+  .inline-search{grid-column:1/-1;grid-row:2}
+  .grid-2,.vendor-layout{grid-template-columns:1fr}
+  .home-hero-grid{grid-template-columns:1fr}
+  .spaciel-aperture{
+    width:calc(100% - 36px);
+    margin:0 18px 18px;
+    padding:10px;
+    aspect-ratio:1/1;
+  }
+  .grid-wide{grid-column:auto}
+  .cards-3{grid-template-columns:1fr}
+  .mini-card{border-right:0;border-bottom:1px solid var(--rule)}
+  .mini-card:last-child{border-bottom:0}
+  .hero{padding:18px}
+  .search-nearby-hero{padding:0}
+  .hero-columns{grid-template-columns:1fr}
+  .vendor-photo-strip{min-height:205px;padding:20px 18px 18px}
+  .vendor-info-body{padding:18px}
+  .vendor-photo-credit{right:9px;bottom:8px;max-width:65%;font-size:7px}
+  .side-stack{grid-template-columns:1fr 1fr}
+  .side-stack .panel:first-child{grid-column:1/-1}
+  .stock-row{
+    grid-template-columns:1fr auto;
+    gap:10px;
+  }
+  .stock-meta{grid-column:1}
+  .price{grid-column:2;grid-row:1 / span 2}
+}
+@media (max-width:520px){
+  .hero-title{font-size:48px}
+  .home-hero-copy{padding:18px}
+  .home-nearby-head{align-items:start}
+  .home-nearby-head h1{font-size:42px}
+  .home-nearby-row{min-height:54px}
+  .home-nearby-name{font-size:16px}
+  .hero-search{grid-template-columns:1fr}
+  .hero-search input{min-height:60px}
+  .hero-search button{
+    border-left:0;
+    border-top:4px solid var(--ink);
+    min-height:46px;
+  }
+  .section-head{align-items:start;flex-direction:column}
+  .section-head span{text-align:left}
+  .side-stack{grid-template-columns:1fr}
+  .side-stack .panel:first-child{grid-column:auto}
+  .footer{display:grid}
+  .footer span:last-child{text-align:left}
+}
+
+.mini-card[data-shop]{cursor:pointer}
+.mini-card[data-shop]:hover{background:rgba(255,255,255,.48)}
+.action-btn[disabled]{opacity:.65;cursor:default}
+
+/* Place hierarchy: containers render child businesses in the main list. */
+.parent-location-link{
+  display:block;width:100%;margin-top:14px;padding:11px 12px;border:2px solid var(--ink);
+  background:var(--paper);color:var(--ink);text-align:left;cursor:pointer;
+}
+.parent-location-link:hover{background:var(--rear-4)}
+.parent-location-link>span,.parent-location-link>small{
+  display:block;font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+}
+.parent-location-link>strong{display:block;margin:4px 0;font-size:14px;text-transform:uppercase}
+.place-row{
+  width:100%;border:0;border-bottom:1px solid var(--rule);background:rgba(255,250,240,.42);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.42fr) auto;
+  gap:14px;align-items:center;padding:15px 18px;text-align:left;color:var(--ink);cursor:pointer;
+}
+.place-row:hover{background:rgba(255,255,255,.55)}
+.place-row:last-child{border-bottom:0}
+.place-row .place-name{font-size:19px;font-weight:1000;line-height:1;text-transform:uppercase}
+.place-row .place-desc{margin-top:6px;color:var(--muted);font-size:11px;line-height:1.4}
+.place-row .place-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.place-row .place-tag{
+  border:1px solid var(--ink);padding:4px 6px;background:var(--paper);
+  font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.place-row .place-meta{
+  text-align:right;font:9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;color:var(--muted);
+}
+.place-row .place-meta strong{display:block;color:var(--ink)}
+.place-row .place-arrow{font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.stock-subsection-title{
+  padding:12px 18px;border-bottom:3px solid var(--ink);background:var(--rear-4);
+  font:1000 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.07em;
+}
+.nonstock-profile{
+  padding:20px 18px 22px;
+  background:rgba(255,250,240,.42);
+}
+.nonstock-profile strong{
+  display:block;
+  margin-bottom:6px;
+  font-size:20px;
+  line-height:1;
+  text-transform:uppercase;
+}
+.nonstock-profile span{
+  display:block;
+  max-width:680px;
+  color:var(--muted);
+  font:10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+@media(max-width:760px){
+  .place-row{grid-template-columns:minmax(0,1fr) auto}
+  .place-row .place-meta{grid-column:1;text-align:left}
+  .place-row .place-arrow{grid-column:2;grid-row:1/3}
+}
+
+/* -------- SOURCE CHANNELS -------- */
+.source-link{
+  display:inline-flex;align-items:center;gap:7px;max-width:100%;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:6px 8px;text-align:left;cursor:pointer;
+  font:900 9px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+}
+.source-link:after{content:"→";color:var(--front-1);font-weight:1000}
+.source-link:hover{background:var(--rear-4)}
+.sources-top-readout{
+  min-height:46px;border:3px solid var(--ink);background:rgba(255,250,240,.95);
+  display:flex;align-items:center;padding:0 14px;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-hero{padding:24px 26px 26px}
+.sources-hero .hero-title{margin-bottom:12px}
+.sources-hero-copy{max-width:760px;margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.sources-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sources-toolbar button{
+  min-height:42px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:0 13px;cursor:pointer;
+  font:1000 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-toolbar button:hover{background:var(--rear-4)}
+.sources-readout{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  margin-top:18px;padding-top:14px;border-top:3px solid var(--ink);
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.sources-readout strong{font-size:20px}
+.source-family{margin-bottom:18px}
+.source-family-head{
+  display:flex;justify-content:space-between;gap:15px;align-items:end;
+  padding:14px 17px 12px;border-bottom:3px solid var(--ink);
+}
+.source-family-head h2{margin:0;font-size:clamp(25px,3.2vw,38px);line-height:.9;text-transform:uppercase}
+.source-family-head span{
+  color:var(--muted);text-align:right;
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-family-meta{display:flex;gap:10px;align-items:flex-end;justify-content:flex-end;flex-wrap:wrap}
+.source-family-actions{display:flex;gap:5px}
+.source-family-actions button{
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:5px 7px;cursor:pointer;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-family-actions button:hover{background:var(--rear-4)}
+.source-subfamily{border-top:1px solid var(--rule)}
+.source-subfamily:first-child{border-top:0}
+.source-subfamily-head{
+  display:flex;justify-content:space-between;gap:12px;padding:10px 16px 8px;
+  background:rgba(23,17,12,.055);border-bottom:1px solid var(--rule);
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-subfamily-head strong{font-size:11px}
+.source-subfamily-head span{color:var(--muted);text-align:right}
+.source-rack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.source-channel{
+  position:relative;width:100%;min-height:94px;border:0;border-bottom:1px solid var(--rule);
+  background:rgba(255,250,240,.40);color:var(--ink);cursor:pointer;
+  display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:14px 16px;text-align:left;
+}
+.source-channel:nth-child(odd){border-right:1px solid var(--rule)}
+.source-channel:hover{background:rgba(244,210,70,.16)}
+.source-channel.on{background:rgba(244,210,70,.24)}
+.source-channel.focused{outline:4px solid var(--front-1);outline-offset:-4px}
+.source-lamp{
+  width:14px;height:54px;border:2px solid var(--ink);background:#4d4943;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.12);
+}
+.source-channel.on .source-lamp{
+  background:var(--front-1);
+  box-shadow:0 0 12px rgba(240,91,19,.42),inset 0 0 0 2px rgba(255,255,255,.16);
+}
+.source-channel-copy strong{display:block;font-size:17px;line-height:1;text-transform:uppercase}
+.source-channel-copy small{
+  display:block;margin-top:6px;color:var(--muted);
+  font:800 8px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-channel-state{
+  min-width:80px;border:2px solid var(--ink);background:#d7d0c4;padding:7px 8px;text-align:center;
+  font:1000 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;
+}
+.source-channel.on .source-channel-state{background:var(--rear-4)}
+@media(max-width:720px){
+  .source-rack{grid-template-columns:1fr}
+  .source-channel:nth-child(odd){border-right:0}
+  .sources-top-readout{display:none}
+  .source-channel{min-height:86px}
+}
+@media(max-width:520px){
+  .source-channel{grid-template-columns:15px minmax(0,1fr)}
+  .source-channel-state{grid-column:2;justify-self:start;min-width:0}
+  .source-lamp{grid-row:1/3;height:62px}
+}
+
+/* -------- MOBILE SHADOW SPACING -------- */
+/* Square 8px offset on mobile, for every card including hero panels. */
+@media (max-width:760px){
+  :root{
+    --shadow-x:8px;
+    --shadow-y:8px;
+  }
+}
+
+/* -------- INVISIBLE SCROLLBARS -------- */
+/* Hide scroll indicators without disabling vertical or horizontal scrolling. */
+html,body,.search-suggest,.stock-filter-row{
+  scrollbar-width:none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.search-suggest::-webkit-scrollbar,
+.stock-filter-row::-webkit-scrollbar{
+  display:none;
+  width:0;
+  height:0;
+}
+.search-suggest{scrollbar-gutter:auto}
+
+
+/* Shop-design pass: places have edge-to-edge photographs; items keep cream cards. */
+.shop-photo-card{
+  --shop-image:linear-gradient(135deg,#5a4a39,#17110c);
+  --shop-image-position:50% 50%;
+  position:relative;isolation:isolate;overflow:hidden;color:var(--cream);
+  background-color:#302921;
+  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
+  background-size:cover;background-position:center,var(--shop-image-position);
+  transition:filter .18s ease;
+}
+.shop-photo-card:hover{filter:brightness(1.08)}
+.shop-photo-card:focus-visible{outline:3px solid var(--rear-4);outline-offset:-4px}
+.home-nearby-list{display:grid;align-content:start;gap:8px}
+.home-nearby-row.shop-photo-card{min-height:78px;border:0;padding:11px 13px;grid-template-columns:minmax(0,1fr) auto;align-items:end}
+.home-nearby-row.shop-photo-card:hover{background-color:#302921}
+.home-nearby-row.shop-photo-card .home-nearby-name{
+  color:var(--cream);font-size:clamp(16px,1.8vw,22px);line-height:.98;text-shadow:0 1px 5px rgba(0,0,0,.65)
+}
+.home-nearby-row.shop-photo-card .home-nearby-meta{color:rgba(255,246,223,.86);text-shadow:0 1px 4px #000}
+.home-nearby-row.shop-photo-card .home-nearby-distance{
+  min-width:0;border:1px solid rgba(255,246,223,.5);background:rgba(12,9,7,.55);color:#f6d448;padding:6px 8px
+}
+.shop-photo-panel .list-row.shop-photo-card{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+  min-height:142px;width:calc(100% - 18px);padding:16px 17px;margin:9px;border:0
+}
+.shop-photo-panel .list-row.shop-photo-card:last-child{margin-bottom:9px}
+.shop-photo-panel .list-row.shop-photo-card .row-title{
+  color:var(--cream);font-size:clamp(21px,2.25vw,31px);line-height:.93;text-shadow:0 2px 5px rgba(0,0,0,.55)
+}
+.shop-photo-panel .list-row.shop-photo-card .row-sub{
+  color:rgba(255,246,223,.88);font-size:10px;line-height:1.4;text-shadow:0 1px 4px #000
+}
+.shop-photo-panel .list-row.shop-photo-card .row-status{
+  flex:none;min-width:0;max-width:35%;border:1px solid rgba(255,246,223,.55);
+  background:rgba(13,10,8,.68);color:var(--rear-4);padding:7px
+}
+.shop-photo-panel .cards-3{gap:10px;padding:10px}
+.mini-card.shop-photo-card{
+  min-height:230px;border:0;padding:20px 16px 16px;display:flex;
+  flex-direction:column;justify-content:flex-end;cursor:pointer
+}
+.mini-card.shop-photo-card .mini-time{color:#f6d448;text-shadow:0 1px 3px #000}
+.mini-card.shop-photo-card h3{
+  color:var(--cream);font-size:clamp(22px,2.5vw,31px);text-shadow:0 2px 5px #000;overflow-wrap:anywhere
+}
+.mini-card.shop-photo-card p{
+  color:rgba(255,246,223,.9);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;text-shadow:0 1px 3px #000
+}
+.mini-card.shop-photo-card .mini-dist{border-color:rgba(255,246,223,.6);color:#f6d448}
+.vendor-hero{border:0;background:transparent;overflow:visible}
+.vendor-photo-strip{min-height:clamp(340px,43vw,530px);padding:30px 28px 25px}
+.vendor-photo-strip:after{background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.12))}
+.vendor-photo-strip .hero-title.vendor{
+  font-size:clamp(44px,5.8vw,88px);line-height:.9;max-width:20ch;margin:7px 0 0;overflow-wrap:anywhere
+}
+.vendor-info-body{background:var(--cream);border:var(--panel-border);border-top:0}
+.vendor-photo-credit{color:#f6d448}
+@media (max-width:760px){
+  .hero.home-hero{background:transparent;border:0;box-shadow:none;padding:0}
+  .home-hero-copy{padding:0}
+  .home-nearby-head{padding:8px 0 13px}
+  .home-nearby-row.shop-photo-card{min-height:102px}
+  .home-nearby-row.shop-photo-card .home-nearby-name{font-size:21px}
+  .home-hero .spaciel-aperture{margin:16px 0 0;width:100%}
+  .shop-photo-panel{background:transparent;border:0;box-shadow:none}
+  .shop-photo-panel>.section-head{border:0;padding:10px 1px 14px}
+  .shop-photo-panel .list-row.shop-photo-card{min-height:162px;width:100%;margin:0 0 10px}
+  .shop-photo-panel .list-row.shop-photo-card:last-child{margin-bottom:0}
+  .shop-photo-panel .cards-3{gap:10px;padding:0}
+  .mini-card.shop-photo-card{min-height:210px}
+  .vendor-photo-strip{min-height:clamp(350px,67vh,530px);padding:22px 18px 26px}
+  .vendor-photo-strip .hero-title.vendor{font-size:clamp(44px,11vw,68px)}
+  .vendor-info-body{margin-top:12px;padding:18px;border:var(--panel-border)}
+}
+@media (prefers-reduced-motion:reduce){.shop-photo-card{transition:none}}
+
+
+/* Keep photographs visible under legacy row hover styles. */
+.home-nearby-row.shop-photo-card:hover,
+.shop-photo-panel .list-row.shop-photo-card:hover,
+.mini-card.shop-photo-card[data-shop]:hover{
+  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
+}
+.hero.vendor-hero{padding:0}
+
+</style>
+</head>
+<body>
+
+<div class="background">
+  <div class="bg-train" id="bgTrain"></div>
+</div>
+<div class="scroll-shadow-layer" id="scrollShadowLayer" aria-hidden="true"></div>
+<div class="scroll-shadow-mask" id="scrollShadowMask" aria-hidden="true">
+  <div class="bg-train" id="shadowMaskBgTrain"></div>
+</div>
+
+<div class="app">
+  <div class="header-backdrop" id="headerBackdrop" aria-hidden="true">
+    <div class="bg-train" id="headerBgTrain"></div>
+  </div>
+
+  <!-- ========== HOME TEMPLATE ========== -->
+  <section class="view active" id="homeView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Night City Market</small></div>
+        <label class="inline-search global-search">
+          <input class="global-search-input" id="marketSearchTop" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
+          <div class="search-suggest" id="marketSuggest" hidden></div>
+        </label>
+        <div class="topbar-actions">
+          <button class="action-btn" id="marketBrowseButton">Browse</button>
+          <button class="action-btn" id="sourceManagerButton">Sources</button>
+          <button class="action-btn" id="spatialMockButton">Location</button>
+        </div>
+      </header>
+
+      <section class="hero home-hero">
+        <div class="home-hero-grid">
+          <div class="home-hero-copy">
+            <div class="home-nearby-head">
+              <div>
+                <div class="kicker">Vend-R local market</div>
+                <h1>Shops near you</h1>
+              </div>
+              <span id="homeNearbyArea">Finding your area…</span>
+            </div>
+
+            <div class="home-nearby-list" id="homeNearbyList" aria-live="polite">
+              <div class="home-nearby-row">
+                <div>
+                  <div class="home-nearby-name">Locating nearby shops…</div>
+                  <div class="home-nearby-meta">Waiting for Spaciel position</div>
+                </div>
+                <div class="home-nearby-distance">—</div>
+              </div>
+            </div>
+
+            <div class="nearby-line hero-location-line">
+              <span class="token" id="selectedAreaToken">Night City</span>
+              <span class="token spatial-source-token" id="spatialSourceToken">Mock Spaciel</span>
+              <span class="muted" id="marketPulse">Connecting to Night City market data…</span>
+            </div>
+          </div>
+
+          <div class="spaciel-aperture">
+            <div class="spaciel-cutin" aria-label="Spaciel nearby shops and current location">
+              <canvas id="spacielCanvas"></canvas>
+              <div class="spaciel-hud spaciel-topline">
+                <strong>SPACIEL</strong><span>MARKET LAYER</span>
+              </div>
+              <div class="spaciel-hud spaciel-place">
+                <span id="spacielAreaLabel">NIGHT CITY</span><br><strong id="spacielAreaMode">MOCK POSITION</strong>
+              </div>
+              <div class="spaciel-hud spaciel-readout" id="spacielReadout">CONNECTING…</div>
+              <div class="spaciel-hud spaciel-powered">POWERED BY <strong>SPACIEL</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="panel shop-photo-panel" id="primarySellerPanel">
+          <div class="section-head">
+            <h2 id="primarySellerTitle">Known sellers</h2>
+            <span id="primarySellerMeta">Canonical commercial<br>profiles</span>
+          </div>
+
+          <button class="list-row js-open-vendor">
+            <div>
+              <div class="row-title">Kabuki Armature &amp; Surplus</div>
+              <div class="row-sub">Tech / surplus · Kabuki · 0.8 km</div>
+            </div>
+            <div class="row-status">Open<br>to 01:00</div>
+          </button>
+
+          <button class="list-row">
+            <div>
+              <div class="row-title">Hollowpoint Hardware</div>
+              <div class="row-sub">Tools / security · Little China · 1.4 km</div>
+            </div>
+            <div class="row-status">Open<br>to 23:00</div>
+          </button>
+
+          <button class="list-row">
+            <div>
+              <div class="row-title">Mara's Second Life</div>
+              <div class="row-sub">Clothing / salvage · Kabuki · 1.7 km</div>
+            </div>
+            <div class="row-status">Open<br>late</div>
+          </button>
+        </section>
+
+        <section class="panel shop-photo-panel" id="secondarySellerPanel">
+          <div class="section-head">
+            <h2 id="secondarySellerTitle">Direct sellers</h2>
+            <span id="secondarySellerMeta">Likely stocked<br>places</span>
+          </div>
+
+          <button class="list-row js-open-vendor">
+            <div>
+              <div class="row-title">Kabuki Armature &amp; Surplus</div>
+              <div class="row-sub">Basic techtools · power cells · odd optics</div>
+            </div>
+            <div class="row-status orange">38 min<br>ago</div>
+          </button>
+
+          <button class="list-row">
+            <div>
+              <div class="row-title">Lucky Strike Autos</div>
+              <div class="row-sub">Vehicle parts · tyres · roadside kits</div>
+            </div>
+            <div class="row-status orange">51 min<br>ago</div>
+          </button>
+
+          <button class="list-row">
+            <div>
+              <div class="row-title">Neon Medic</div>
+              <div class="row-sub">Medical consumables · clinic surplus</div>
+            </div>
+            <div class="row-status orange">1 hr<br>ago</div>
+          </button>
+        </section>
+
+        <section class="panel shop-photo-panel grid-wide" id="marketPanel">
+          <div class="section-head">
+            <h2 id="marketPanelTitle">Markets</h2>
+            <span id="marketPanelMeta">Containers / events<br>from the city graph</span>
+          </div>
+
+          <div class="cards-3" id="marketCards">
+            <div class="stock-empty">Loading markets…</div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>Local market pulse · Watson / Kabuki</span>
+        <span>Seller supplied · availability may move</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ========== SEARCH RESULTS ========== -->
+  <section class="view" id="searchView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Night City Market</small></div>
+        <form class="inline-search global-search" id="searchPageForm">
+          <input class="global-search-input" id="searchPageInput" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
+          <div class="search-suggest" id="searchPageSuggest" hidden></div>
+        </form>
+        <button class="action-btn" id="searchBackHome">← Market</button>
+      </header>
+
+      <section class="hero search-nearby-hero">
+        <div class="search-nearby-grid">
+          <div class="search-nearby-copy">
+            <div class="kicker" id="searchModeLabel">Broad search</div>
+            <h1 class="hero-title">Results nearby</h1>
+            <div class="search-query-line" id="searchQueryLine">Searching Night City…</div>
+            <div class="nearby-offer-list" id="nearbyOffersList"></div>
+          </div>
+
+          <div class="search-location-card">
+            <div class="spaciel-cutin" aria-label="Spaciel search area preview">
+              <canvas id="searchSpacielCanvas"></canvas>
+              <div class="spaciel-hud spaciel-topline">
+                <strong>SPACIEL</strong><span>SEARCH AREA</span>
+              </div>
+              <div class="spaciel-hud spaciel-place">
+                RESULTS<br><strong id="searchMapQuery">NEARBY</strong>
+              </div>
+              <div class="spaciel-hud spaciel-readout" id="searchSpacielReadout">CONNECTING…</div>
+              <div class="search-location-label">
+                <span>Nearby to</span>
+                <strong id="searchLocationName">Night City</strong>
+                <small id="searchLocationMode">City-wide · changeable later</small>
+              </div>
+              <div class="spaciel-hud spaciel-powered">POWERED BY <strong>SPACIEL</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-offer-section" id="availableOffersSection" hidden>
+        <div class="search-offer-head">
+          <h2>More results</h2>
+          <span id="availableOffersMeta">Current stock</span>
+        </div>
+        <div class="results-sort" id="resultsSort">
+          <button type="button" data-sort="location" class="on">Location</button>
+          <button type="button" data-sort="price">Lowest price</button>
+          <button type="button" data-sort="condition">Condition</button>
+          <button type="button" data-sort="availability">Availability</button>
+          <button type="button" data-sort="stock">Stock level</button>
+        </div>
+        <div class="search-offer-list" id="availableOffersList"></div>
+      </section>
+
+      <section class="search-offer-section" id="plausibleOffersSection" hidden>
+        <div class="search-offer-head">
+          <h2>Other likely sellers</h2>
+          <span>Profile fit · not in current stock</span>
+        </div>
+        <div class="search-offer-list" id="plausibleOffersList"></div>
+      </section>
+
+      <section class="search-offer-section" id="relatedItemsSection" hidden>
+        <div class="search-offer-head">
+          <h2>Related items</h2>
+          <span>Same catalogue family · compatibility links later</span>
+        </div>
+        <div class="related-items" id="relatedItemsList"></div>
+      </section>
+
+      <div class="search-empty" id="searchEmpty" hidden>No current Vend-R matches.</div>
+
+      <footer class="footer">
+        <span id="searchFooterLeft">Night City market search</span>
+        <span>Current stock · live seller profiles</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ========== SOURCES PAGE ========== -->
+  <section class="view" id="sourcesView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Data channels</small></div>
+        <form class="inline-search global-search" id="sourcesSearchForm">
+          <input class="global-search-input" id="sourcesSearchInput" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
+          <div class="search-suggest" id="sourcesSearchSuggest" hidden></div>
+        </form>
+        <button class="action-btn" id="sourcesBack">← Back</button>
+      </header>
+
+      <section class="hero sources-hero">
+        <div class="sources-top-readout" id="sourcesTopReadout">Loading source channels…</div>
+        <div class="kicker">Catalogue routing</div>
+        <h1 class="hero-title">Sources</h1>
+        <p class="sources-hero-copy">Choose which official and unofficial datasets are connected to this market view. Books and DLCs stay individually selectable; Vend-R's own additions are treated as one source. Your selection stays on this device.</p>
+        <div class="sources-toolbar" id="sourcesToolbar">
+          <button type="button" data-source-preset="all">Connect all</button>
+          <button type="button" data-source-preset="none">Disconnect all</button>
+          <button type="button" data-source-preset="official">Official only</button>
+        </div>
+        <div class="sources-readout">
+          <strong id="sourceActiveCount">—</strong>
+          <span>channels connected</span>
+          <span id="sourceVisibleCount">Checking catalogue…</span>
+        </div>
+      </section>
+
+      <div id="sourceFamilies"></div>
+
+      <footer class="footer">
+        <span>Vend-R source routing</span>
+        <span>Persistent on this device · non-destructive view filter</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ========== ITEM PAGE ========== -->
+  <section class="view" id="itemView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Catalogue item</small></div>
+        <form class="inline-search global-search" id="itemSearchForm">
+          <input class="global-search-input" id="itemSearchInput" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
+          <div class="search-suggest" id="itemSearchSuggest" hidden></div>
+        </form>
+        <button class="action-btn" id="itemBack">← Back</button>
+      </header>
+
+      <section class="hero item-hero">
+        <div class="item-hero-grid">
+          <div class="item-image" id="itemImage">
+            <a class="item-image-label" id="itemImageLabel" target="_blank" rel="noopener">Catalogue image pending</a>
+          </div>
+          <div class="item-copy">
+            <div class="kicker" id="itemKicker">Catalogue item</div>
+            <h1 class="hero-title" id="itemName">Item</h1>
+            <p class="item-description" id="itemDescription">Loading catalogue description…</p>
+
+            <dl class="item-stat-grid">
+              <div class="item-stat price"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
+              <div class="item-stat availability"><dt>Availability</dt><dd id="itemAvailability">—</dd></div>
+              <div class="item-stat"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
+              <div class="item-stat"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
+              <div class="item-stat"><dt>Category</dt><dd id="itemCategory">—</dd></div>
+              <div class="item-stat"><dt>Source</dt><dd><button class="source-link" id="itemSource" type="button">—</button></dd></div>
+              <div class="item-stat"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-focus" id="itemSelectedOffer" hidden>
+        <div class="kicker">Offer from</div>
+        <div class="offer-focus-row">
+          <h1 id="itemOfferShop">Seller</h1>
+          <div class="offer-readout">
+            <strong id="itemOfferPrice">—</strong>
+            <span id="itemOfferMeta">—</span>
+          </div>
+        </div>
+        <div class="offer-sub" id="itemOfferSub">Current offer context.</div>
+      </section>
+
+      <section class="panel item-shop-detail" id="itemShopDetail" hidden>
+        <div class="section-head">
+          <h2 id="itemShopDetailTitle">Shop detail</h2>
+          <span id="itemShopDetailMeta">Seller profile</span>
+        </div>
+        <div class="item-shop-detail-body">
+          <p class="item-shop-detail-copy" id="itemShopDetailCopy">Seller information.</p>
+          <div class="item-shop-detail-line" id="itemShopDetailLocation">Night City</div>
+          <div class="item-selected-actions"><button type="button" id="itemSelectedSeller">View seller →</button></div>
+        </div>
+      </section>
+
+      <section class="panel item-offers-panel">
+        <div class="section-head">
+          <h2 id="itemOfferHeading">Shops selling it</h2>
+          <span id="itemOfferCount">Checking Night City</span>
+        </div>
+        <div id="itemOfferList"></div>
+        <div class="stock-empty" id="itemOfferEmpty" hidden>No other current offers found.</div>
+      </section>
+
+      <section class="panel item-related-panel">
+        <div class="section-head"><h2>Related</h2><span>Same catalogue family</span></div>
+        <div class="item-related" id="itemRelated"></div>
+      </section>
+
+      <footer class="footer">
+        <span id="itemFooterLeft">Vend-R catalogue</span>
+        <span>Catalogue identity · live market availability</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ========== VENDOR TEMPLATE ========== -->
+  <section class="view" id="vendorView">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VEND-R<small>Night City Market</small></div>
+        <form class="inline-search global-search" id="vendorSearchForm">
+          <input class="global-search-input" id="vendorSearchInput" type="search" placeholder="SEARCH THE MARKET" autocomplete="off">
+          <div class="search-suggest" id="vendorSearchSuggest" hidden></div>
+        </form>
+        <button class="action-btn" id="backToMarket">← Back</button>
+      </header>
+
+      <section class="hero vendor-hero">
+        <div class="vendor-photo-strip" id="vendorPhotoStrip">
+          <div class="vendor-photo-content">
+            <div class="kicker" id="vendorKicker">Night City / seller profile</div>
+            <h1 class="hero-title vendor" id="vendorName">Seller</h1>
+          </div>
+          <div class="vendor-photo-credit" id="vendorPhotoCredit"></div>
+        </div>
+
+        <div class="vendor-info-body">
+          <p class="hero-copy" id="vendorCopy">Loading seller profile…</p>
+
+          <div class="vendor-summary">
+            <dl class="vendor-stat-grid">
+              <div class="vendor-stat status"><dt>Status</dt><dd id="factStatus">Loading…</dd></div>
+              <div class="vendor-stat"><dt>District</dt><dd id="factDistrict">Night City</dd></div>
+              <div class="vendor-stat"><dt>Category</dt><dd id="factArchetype">—</dd></div>
+              <div class="vendor-stat"><dt id="factStockModeLabel">Listing</dt><dd id="factStockMode">—</dd></div>
+              <div class="vendor-stat">
+                <dt>Proprietor</dt>
+                <dd><span id="vendorOwnerLabel">Vend-R listing</span><span class="vendor-owner-sub" id="vendorOwnerSub">Night City market record</span></dd>
+              </div>
+              <div class="vendor-stat"><dt>Source</dt><dd><button class="source-link" id="factSource" type="button">—</button></dd></div>
+              <div class="vendor-stat availability"><dt>Availability</dt><dd id="factWorldState">Checking…</dd></div>
+              <div class="vendor-stat" id="parentStat">
+                <dt>Contained in</dt>
+                <dd>
+                  <button class="parent-location-link" id="parentLocationLink" type="button" hidden>
+                    <strong id="parentLocationName">Containing location</strong>
+                    <small>View containing location →</small>
+                  </button>
+                  <span id="standaloneLocation">Standalone location</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="vendor-context-grid">
+            <div class="vendor-context-copy">
+              <div class="kicker" id="contextKicker">Commercial context</div>
+              <h3 id="contextTitle">Night City</h3>
+              <p id="contextCopy">Loading local market context…</p>
+              <div class="market-line" id="contextLine">Night City market feed</div>
+            </div>
+            <div class="vendor-known">
+              <div class="section-head">
+                <h2>Known for</h2>
+                <span>Local pattern</span>
+              </div>
+              <div class="known-grid" id="knownGrid">
+                <span>Loading seller profile…</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-focus" id="offerFocus" hidden>
+        <div class="kicker" id="offerKicker">Current offer</div>
+        <div class="offer-focus-row">
+          <h1 id="offerItemName">Selected item</h1>
+          <div class="offer-readout">
+            <strong id="offerPrice">—</strong>
+            <span id="offerQuantity">—</span>
+          </div>
+        </div>
+        <div class="offer-sub" id="offerSub"></div>
+        <button class="offer-item-link" id="offerItemLink" type="button">View item →</button>
+      </section>
+
+      <section class="panel vendor-stock-panel">
+        <div class="section-head">
+          <h2 id="stockPanelTitle">Stock</h2>
+          <span id="stockSummary">Loading listing<br>Checking current stock</span>
+        </div>
+
+        <div class="restock-band" id="restockBand">Checking current market state…</div>
+
+        <label class="inline-search stock-local-search">
+          <input id="shopSearch" type="search" placeholder="FILTER THIS SHOP" autocomplete="off">
+        </label>
+
+        <div class="stock-browser" id="stockBrowser" hidden>
+          <div class="stock-filter-row" id="stockFilters"></div>
+          <div class="stock-browser-nav">
+            <span id="stockBrowserMeta">All stock</span>
+            <div class="stock-pager">
+              <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
+              <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
+              <button type="button" id="stockNext" aria-label="Next stock page">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="stockList">
+          <div class="stock-empty">Loading current stock…</div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Vend-R vendor record</span>
+        <span>Night City / local market feed / seller supplied</span>
+      </footer>
+    </div>
+  </section>
+</div>
+
+<div class="spatial-overlay" id="spatialOverlay" hidden>
+  <section class="spatial-dialog" role="dialog" aria-modal="true" aria-labelledby="spatialDialogTitle">
+    <div class="spatial-dialog-head">
+      <div>
+        <div class="kicker">Developer location source</div>
+        <h2 id="spatialDialogTitle">Spoof Spaciel signal</h2>
+        <p>Choose a district test point. VEND-R receives a normalised Night City position through the Radian Spatial interface; the mock resolver turns that position into local context.</p>
+      </div>
+      <button class="spatial-close" id="spatialClose" aria-label="Close">×</button>
+    </div>
+    <div class="spatial-dialog-body">
+      <label>Test district
+        <select id="spatialDistrictSelect"></select>
+      </label>
+      <div class="spatial-readout" id="spatialReadout">Preparing mock signal…</div>
+      <div class="spatial-actions">
+        <button id="spatialReset" type="button">Default</button>
+        <button class="primary" id="spatialApply" type="button">Send spoof signal</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="stinger-layer" id="stingerLayer"></div>
+
+<script>
+/* -------- REPEATING BACK FIELD -------- */
+const bgTrain = document.getElementById('bgTrain');
+const headerBgTrain = document.getElementById('headerBgTrain');
+const shadowMaskBgTrain = document.getElementById('shadowMaskBgTrain');
+const headerBackdrop = document.getElementById('headerBackdrop');
+const scrollShadowLayer = document.getElementById('scrollShadowLayer');
+const scrollShadowMask = document.getElementById('scrollShadowMask');
+
+function buildBackgroundTrain(train){
+  for(let i=-3;i<24;i++){
+    const p = document.createElement('div');
+    p.className = 'bg-period';
+    p.style.left = `${i * 204}vw`;
+    p.innerHTML = `
+      <div class="bg-band one"></div>
+      <div class="bg-band two"></div>
+      <div class="bg-band three"></div>
+      <div class="bg-band four"></div>`;
+    train.appendChild(p);
+  }
+}
+function setBackgroundTransform(value){
+  bgTrain.style.transform = value;
+  headerBgTrain.style.transform = value;
+  shadowMaskBgTrain.style.transform = value;
+}
+function headerCutoff(){
+  const activeTopbar = document.querySelector('.view.active .topbar');
+  if(!activeTopbar) return 0;
+  const stickyTop = parseFloat(getComputedStyle(activeTopbar).top) || 0;
+  return Math.ceil(stickyTop + activeTopbar.offsetHeight + 14);
+}
+function syncHeaderBackdrop(){
+  if(!headerBackdrop) return;
+  const cutoff = headerCutoff();
+  headerBackdrop.style.height = cutoff + 'px';
+  const shadowDepth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--shadow-y')) || 0;
+  // This covering layer alone is viewport-fixed. Shadows and boxes scroll together.
+  scrollShadowMask.style.height = (cutoff + shadowDepth) + 'px';
+}
+const headerShadowSelector = '.hero,.panel,.offer-focus,.search-offer-section,.search-empty';
+const shadowCopies = new Map();
+let headerShadowRaf = 0;
+function syncHeaderShadows(){
+  headerShadowRaf = 0;
+  const current = new Set();
+  // Coordinates are document-relative, never viewport-relative. In particular,
+  // don't reposition shadow copies on scroll: compositor scrolling stays in sync.
+  const layerRect = scrollShadowLayer.getBoundingClientRect();
+  document.querySelectorAll(`.view.active :is(${headerShadowSelector})`).forEach(el=>{
+    if(!el.getClientRects().length) return;
+    current.add(el);
+    let copy = shadowCopies.get(el);
+    if(!copy){
+      copy = document.createElement('div');
+      copy.className = 'scroll-shadow-copy';
+      scrollShadowLayer.appendChild(copy);
+      shadowCopies.set(el,copy);
+      shadowSizeObserver.observe(el);
+    }
+    const rect = el.getBoundingClientRect();
+    copy.style.width = rect.width + 'px';
+    copy.style.height = rect.height + 'px';
+    copy.style.transform = `translate3d(${rect.left-layerRect.left}px,${rect.top-layerRect.top}px,0)`;
+  });
+  for(const [el,copy] of shadowCopies){
+    if(!current.has(el)){
+      shadowSizeObserver.unobserve(el);
+      copy.remove();
+      shadowCopies.delete(el);
+    }
+  }
+}
+function queueHeaderShadowSync(){
+  if(headerShadowRaf) return;
+  headerShadowRaf = requestAnimationFrame(syncHeaderShadows);
+}
+// Refresh geometry when layouts or card dimensions change, not as we scroll.
+const shadowSizeObserver = new ResizeObserver(queueHeaderShadowSync);
+shadowSizeObserver.observe(document.querySelector('.app'));
+new MutationObserver(queueHeaderShadowSync).observe(document.querySelector('.app'),{
+  childList:true,subtree:true,attributes:true,attributeFilter:['class','hidden']
+});
+
+buildBackgroundTrain(bgTrain);
+buildBackgroundTrain(headerBgTrain);
+buildBackgroundTrain(shadowMaskBgTrain);
+setBackgroundTransform(`translateX(${getComputedStyle(document.documentElement).getPropertyValue('--bg-base')})`);
+requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+
+/* -------- VIEW STATE -------- */
+const homeView = document.getElementById('homeView');
+const searchView = document.getElementById('searchView');
+const sourcesView = document.getElementById('sourcesView');
+const vendorView = document.getElementById('vendorView');
+const itemView = document.getElementById('itemView');
+const allViews = {home:homeView,search:searchView,sources:sourcesView,item:itemView,vendor:vendorView};
+const stingerLayer = document.getElementById('stingerLayer');
+
+let currentView = 'home';
+let busy = false;
+let bgStep = 0;
+
+const BG_BASE = -99.5;
+const BG_PERIOD = 204;
+const BG_DURATION = 1620;
+
+const FG_START = 135;
+const FG_END = -360;
+const fgSpecs = {
+  one:   {delay:0,   duration:690},
+  two:   {delay:72,  duration:960},
+  three: {delay:150, duration:1240}
+};
+
+function gentleBackgroundProgress(p){
+  const join = .36;
+  if(p <= join) return p;
+
+  const s = (p - join) / (1 - join);
+  const y0 = join;
+  const y1 = 1;
+  const m0 = 1 - join;
+  const m1 = 0;
+
+  const h00 =  2*s*s*s - 3*s*s + 1;
+  const h10 =      s*s*s - 2*s*s + s;
+  const h01 = -2*s*s*s + 3*s*s;
+  const h11 =      s*s*s -   s*s;
+
+  const hermite = h00*y0 + h10*m0 + h01*y1 + h11*m1;
+  const t = Math.max(0, (s - .7) / .3);
+  const cushion = 1 - Math.pow(1 - t, 3);
+
+  return hermite + (1 - hermite) * .06 * cushion;
+}
+
+function createFg(which, className){
+  const el = document.createElement('div');
+  el.className = `fg-page ${className}`;
+  el.style.transform = `translateX(${FG_START}vw)`;
+  stingerLayer.appendChild(el);
+  return el;
+}
+
+function fgX(elapsed, spec){
+  if(elapsed <= spec.delay) return FG_START;
+  const p = Math.min(1, (elapsed - spec.delay) / spec.duration);
+  return FG_START + (FG_END - FG_START) * p;
+}
+
+const TRANSITION_SWAP_X=-108;
+
+function directionalFgX(elapsed,spec,direction){
+  if(elapsed <= spec.delay) return direction==='back'?FG_END:FG_START;
+  const p = Math.min(1, (elapsed - spec.delay) / spec.duration);
+  return direction==='back'
+    ? FG_END + (FG_START - FG_END) * p
+    : FG_START + (FG_END - FG_START) * p;
+}
+function transitionSwapElapsed(direction){
+  const spec=fgSpecs.three;
+  const from=direction==='back'?FG_END:FG_START;
+  const to=direction==='back'?FG_START:FG_END;
+  const p=Math.max(0,Math.min(1,(TRANSITION_SWAP_X-from)/(to-from)));
+  return spec.delay+(spec.duration*p);
+}
+
+function switchTo(target,options={}){
+  const direction=options.direction==='back'?'back':'forward';
+  const force=options.force===true;
+  const onSwap=typeof options.onSwap==='function'?options.onSwap:null;
+  const readyPromise=options.readyPromise||null;
+
+  if(busy)return Promise.resolve(false);
+  if(currentView===target&&!force&&!readyPromise){
+    if(onSwap)onSwap();
+    window.scrollTo(0,0);
+    return Promise.resolve(true);
+  }
+  busy=true;
+
+  let ready=!readyPromise;
+  let readyValue=null;
+  let readyError=null;
+  let releaseTime=null;
+  if(readyPromise){
+    Promise.resolve(readyPromise).then(value=>{
+      readyValue=value;
+      ready=true;
+      if(releaseTime===null)releaseTime=performance.now();
+    }).catch(error=>{
+      readyError=error;
+      ready=true;
+      if(releaseTime===null)releaseTime=performance.now();
+    });
+  }
+
+  const startX=direction==='back'?FG_END:FG_START;
+  const panels={
+    one:createFg('one','one'),
+    two:createFg('two','two'),
+    three:createFg('three','three')
+  };
+  Object.values(panels).forEach(el=>{el.style.transform=`translateX(${startX}vw)`});
+
+  const start=performance.now();
+  const holdAt=transitionSwapElapsed(direction);
+  const delta=direction==='back'?-1:1;
+  const bgStart=BG_BASE-(bgStep*BG_PERIOD);
+  const bgEnd=BG_BASE-((bgStep+delta)*BG_PERIOD);
+  let holdStarted=false;
+  let holdStartTime=null;
+  let swapped=false;
+  let failed=false;
+
+  return new Promise((resolve,reject)=>{
+    function finish(){
+      bgStep+=delta;
+      setBackgroundTransform(`translateX(${BG_BASE-(bgStep*BG_PERIOD)}vw)`);
+      Object.values(panels).forEach(el=>el.remove());
+      busy=false;
+      if(failed)reject(readyError||new Error('Vend-R route preparation failed'));
+      else resolve(true);
+    }
+
+    function frame(now){
+      const rawElapsed=now-start;
+      let elapsed=rawElapsed;
+
+      // The wipe gets to the fully covered swap point immediately. If the
+      // destination is still preparing, freeze there and let the load happen
+      // behind the transition rather than before the user's click receives feedback.
+      if(!holdStarted&&rawElapsed>=holdAt&&!ready){
+        holdStarted=true;
+        holdStartTime=now;
+      }
+      if(holdStarted){
+        if(!ready){
+          elapsed=holdAt;
+        }else{
+          const releasedAt=Math.max(holdStartTime||now,releaseTime||now);
+          elapsed=holdAt+Math.max(0,now-releasedAt);
+        }
+      }
+
+      for(const [key,el] of Object.entries(panels)){
+        el.style.transform=`translateX(${directionalFgX(elapsed,fgSpecs[key],direction)}vw)`;
+      }
+
+      const bp=Math.min(1,elapsed/BG_DURATION);
+      const eased=gentleBackgroundProgress(bp);
+      const bgX=bgStart+(bgEnd-bgStart)*eased;
+      setBackgroundTransform(`translateX(${bgX}vw)`);
+
+      const reachedSwap=elapsed>=holdAt;
+      if(!swapped&&reachedSwap&&ready){
+        swapped=true;
+        if(readyError){
+          failed=true;
+        }else{
+          if(onSwap)onSwap(readyValue);
+          Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
+          currentView=target;
+          window.scrollTo(0,0);
+          requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+        }
+      }
+
+      const doneFG=elapsed>=fgSpecs.three.delay+fgSpecs.three.duration;
+      const doneBG=elapsed>=BG_DURATION;
+      if(!doneFG||!doneBG){
+        requestAnimationFrame(frame);
+        return;
+      }
+
+      if(!swapped){
+        if(!ready){
+          requestAnimationFrame(frame);
+          return;
+        }
+        swapped=true;
+        if(readyError){
+          failed=true;
+        }else{
+          if(onSwap)onSwap(readyValue);
+          Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===target));
+          currentView=target;
+          window.scrollTo(0,0);
+        }
+      }
+      finish();
+    }
+
+    requestAnimationFrame(frame);
+  });
+}
+
+
+const API_BASE='https://nqomqcmiecxmbiukdqhh.supabase.co/functions/v1/vendr';
+const decodedImageCache=new Map();
+function preloadDecodedImage(url){
+  url=String(url||'').trim();
+  if(!url)return Promise.resolve(false);
+  if(decodedImageCache.has(url))return decodedImageCache.get(url);
+  const pending=new Promise(resolve=>{
+    const img=new Image();
+    let settled=false;
+    const finish=value=>{
+      if(settled)return;
+      settled=true;
+      resolve(value);
+    };
+    img.decoding='async';
+    img.fetchPriority='high';
+    img.onload=async()=>{
+      try{
+        if(typeof img.decode==='function')await img.decode();
+      }catch(_){}
+      finish(true);
+    };
+    img.onerror=()=>finish(false);
+    img.src=url;
+    if(img.complete&&img.naturalWidth>0){
+      Promise.resolve(typeof img.decode==='function'?img.decode():null)
+        .catch(()=>null)
+        .then(()=>finish(true));
+    }
+  });
+  decodedImageCache.set(url,pending);
+  return pending;
+}
+function firstFrameAssetUrls(route,payload){
+  route=normalizeRoute(route);
+  const urls=[];
+  if(route.view==='vendor'){
+    const url=payload?.image?.image_url;
+    if(url)urls.push(String(url));
+  }else if(route.view==='item'){
+    const item=payload?.item||{};
+    const image=curatedItemImage(item?.item_id,item?.name)||item?.image;
+    if(image?.image_url)urls.push(String(image.image_url));
+  }
+  return [...new Set(urls.filter(Boolean))];
+}
+async function preloadFirstFrameAssets(route,payload){
+  const urls=firstFrameAssetUrls(route,payload);
+  if(!urls.length)return;
+  await Promise.all(urls.map(preloadDecodedImage));
+}
+let sellers=[];
+let lastSearch=null;
+let currentSellerId=null;
+let currentFocusOffer=null;
+let currentItemId=null;
+let currentItemData=null;
+let currentItemOfferShop=null;
+
+const SOURCE_DISABLED_KEY='vendr.disabledSources.v1';
+let sourceCatalog=[];
+let sourceSummary=null;
+let disabledSourceCodes=new Set();
+
+const ITEM_IMAGE_ASSIGNMENTS_URL='data/curation/item-images.json';
+const ITEM_IMAGE_POOL_URL='data/curation/item-image-pool.json';
+let itemImageAssignments=null;
+let itemImagePool=null;
+let itemImageManifestPromise=null;
+
+/* -------- RADIAN SPATIAL ADAPTER -------- */
+let mockSpatialAnchors={};
+let spatialSnapshot=null;
+
+const MockSpacielProvider={
+  _listeners:new Set(),
+  _position:null,
+  _storageKey:'radian.mockSpatial.district',
+  async getPosition(){
+    return this._position?{...this._position,timestamp:Date.now()}:null;
+  },
+  setTestDistrict(district,{persist=true,emit=true}={}){
+    const anchor=mockSpatialAnchors[district];
+    if(!anchor)return false;
+    if(persist){try{localStorage.setItem(this._storageKey,district)}catch(_){}}
+    this._position={
+      map:'night-city-2045',
+      x:anchor.x,
+      y:anchor.y,
+      heading:0,
+      accuracy:null,
+      timestamp:Date.now(),
+      source:'mock-spaciel'
+    };
+    if(emit){
+      const packet={...this._position};
+      this._listeners.forEach(fn=>fn(packet));
+    }
+    return true;
+  },
+  subscribe(fn){
+    this._listeners.add(fn);
+    return ()=>this._listeners.delete(fn);
+  }
+};
+
+const MockSpatialResolver={
+  id:'mock-district-grid-v1',
+  async resolve(position){
+    if(!position)return {district:null,area:null,confidence:null,source:'mock-resolver',resolver:this.id};
+    let best=null;
+    for(const [district,a] of Object.entries(mockSpatialAnchors)){
+      const dx=Number(position.x)-a.x;
+      const dy=Number(position.y)-a.y;
+      const d=(dx*dx)+(dy*dy);
+      if(!best||d<best.d)best={district,d};
+    }
+    return {
+      district:best?.district||null,
+      area:null,
+      confidence:best?1:null,
+      source:'mock-resolver',
+      resolver:this.id
+    };
+  }
+};
+
+const RadianSpatial={
+  provider:MockSpacielProvider,
+  resolver:MockSpatialResolver,
+  _listeners:new Set(),
+  _unsubscribe:null,
+  async snapshot(){
+    const position=await this.provider.getPosition();
+    const context=await this.resolver.resolve(position);
+    return {position,context};
+  },
+  useProvider(provider,resolver=this.resolver){
+    if(this._unsubscribe)this._unsubscribe();
+    this.provider=provider;
+    this.resolver=resolver;
+    this._unsubscribe=provider?.subscribe?provider.subscribe(()=>this._emit()):null;
+  },
+  subscribe(fn){
+    this._listeners.add(fn);
+    return ()=>this._listeners.delete(fn);
+  },
+  async _emit(){
+    const snap=await this.snapshot();
+    this._listeners.forEach(fn=>fn(snap));
+    window.dispatchEvent(new CustomEvent('radian:spatial-update',{detail:snap}));
+  }
+};
+window.RadianSpatial=RadianSpatial;
+RadianSpatial.useProvider(MockSpacielProvider,MockSpatialResolver);
+
+function buildMockSpatialAnchors(){
+  const districts=[...new Set(sellers.map(s=>String(s.district||'').trim()).filter(d=>d&&d!=='Citywide'))].sort((a,b)=>a.localeCompare(b));
+  const cols=6;
+  const rows=Math.max(1,Math.ceil(districts.length/cols));
+  mockSpatialAnchors={};
+  districts.forEach((district,i)=>{
+    const row=Math.floor(i/cols),col=i%cols;
+    mockSpatialAnchors[district]={
+      x:Number((.08+col*(.84/Math.max(1,cols-1))).toFixed(4)),
+      y:Number((.08+row*(.84/Math.max(1,rows-1))).toFixed(4))
+    };
+  });
+  let saved=null;
+  try{saved=localStorage.getItem(MockSpacielProvider._storageKey)}catch(_){}
+  const fallback=mockSpatialAnchors['Little Europe']?'Little Europe':districts[0];
+  MockSpacielProvider.setTestDistrict(mockSpatialAnchors[saved]?saved:fallback,{persist:false,emit:false});
+}
+
+function activeSpatialDistrict(){
+  return spatialSnapshot?.context?.district||null;
+}
+function sellerInSpatialDistrict(s,district=activeSpatialDistrict()){
+  return !district||String(s?.district||'')===String(district);
+}
+function offerInSpatialDistrict(o,district=activeSpatialDistrict()){
+  if(!district)return true;
+  if(String(o?.district||'')===String(district))return true;
+  return sellerInSpatialDistrict(sellerById(o?.shop_entity_id),district);
+}
+function updateSpatialReadout(district){
+  const a=mockSpatialAnchors[district];
+  const el=document.getElementById('spatialReadout');
+  if(!el)return;
+  el.textContent=a
+    ?'MAP night-city-2045 · X '+a.x.toFixed(4)+' · Y '+a.y.toFixed(4)+' · SOURCE mock-spaciel · RESOLVER '+MockSpatialResolver.id
+    :'No test anchor';
+}
+function applySpatialLabels(){
+  const district=activeSpatialDistrict()||'Night City';
+  const selected=document.getElementById('selectedAreaToken');
+  if(selected)selected.textContent=district;
+  const source=document.getElementById('spatialSourceToken');
+  if(source)source.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'Mock Spaciel':(spatialSnapshot?.position?.source||'Spatial');
+  const homeArea=document.getElementById('spacielAreaLabel');
+  if(homeArea)homeArea.textContent=district.toUpperCase();
+  const homeMode=document.getElementById('spacielAreaMode');
+  if(homeMode)homeMode.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'MOCK POSITION':'LIVE POSITION';
+  const nearbyArea=document.getElementById('homeNearbyArea');
+  if(nearbyArea)nearbyArea.innerHTML=esc(district)+'<br>nearest first';
+  const searchName=document.getElementById('searchLocationName');
+  if(searchName)searchName.textContent=district;
+  const searchMode=document.getElementById('searchLocationMode');
+  if(searchMode)searchMode.textContent=spatialSnapshot?.position?.source==='mock-spaciel'?'Spoof signal · district resolver':'Spaciel position';
+}
+async function acceptSpatialSnapshot(snap){
+  spatialSnapshot=snap;
+  applySpatialLabels();
+  if(currentView==='home')renderHomeDefault();
+  if(currentView==='search'&&lastSearch)renderOfferSections(lastSearch.data,lastSearch.q);
+  drawSpaciel();
+  drawSearchSpaciel();
+}
+RadianSpatial.subscribe(acceptSpatialSnapshot);
+
+const STOCK_PAGE_SIZE=8;
+let stockBrowserState={
+  shop:null,
+  rows:[],
+  focusId:null,
+  category:'all',
+  query:'',
+  page:0,
+  pageSize:STOCK_PAGE_SIZE
+};
+
+function esc(v){
+  return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
+function loadSourcePreferences(){
+  try{
+    const stored=JSON.parse(localStorage.getItem(SOURCE_DISABLED_KEY)||'[]');
+    disabledSourceCodes=new Set(Array.isArray(stored)?stored.map(String):[]);
+  }catch(e){disabledSourceCodes=new Set()}
+}
+function saveSourcePreferences(){
+  localStorage.setItem(SOURCE_DISABLED_KEY,JSON.stringify([...disabledSourceCodes]));
+}
+function activeSourceCodes(){
+  return sourceCatalog.map(x=>String(x.code)).filter(code=>!disabledSourceCodes.has(code));
+}
+function sourceSelectionParam(){
+  if(!sourceCatalog.length)return null;
+  const active=activeSourceCodes();
+  if(active.length===sourceCatalog.length)return null;
+  return active.length?active.join(','):'-';
+}
+function sourceIsOn(code){return !disabledSourceCodes.has(String(code))}
+async function api(params){
+  const url=new URL(API_BASE);
+  Object.entries(params).forEach(([k,v])=>{if(v!==null&&v!==undefined&&v!=='')url.searchParams.set(k,String(v))});
+  if(!Object.prototype.hasOwnProperty.call(params,'sources')&&sourceCatalog.length&&!['health','sources'].includes(String(params.api||''))){
+    const selected=sourceSelectionParam();
+    if(selected!==null)url.searchParams.set('sources',selected);
+  }
+  const r=await fetch(url);
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(j.error||r.statusText);
+  return j;
+}
+async function loadItemImageManifest(){
+  if(itemImageManifestPromise)return itemImageManifestPromise;
+  itemImageManifestPromise=Promise.all([
+    fetch(ITEM_IMAGE_ASSIGNMENTS_URL,{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(new Error('Item image assignments '+r.status))),
+    fetch(ITEM_IMAGE_POOL_URL,{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(new Error('Item image pool '+r.status)))
+  ]).then(([assignments,pool])=>{
+    itemImageAssignments=assignments;
+    itemImagePool=pool;
+    return {assignments,pool};
+  }).catch(error=>{
+    console.warn('Vend-R curated item images unavailable; falling back to API images.',error);
+    itemImageAssignments=null;
+    itemImagePool=null;
+    return null;
+  });
+  return itemImageManifestPromise;
+}
+function normaliseItemImageName(name){
+  return String(name||'')
+    .normalize('NFKC')
+    .replace(/[®™©]/g,'')
+    .replace(/\s+/g,' ')
+    .trim()
+    .toLowerCase();
+}
+function curatedItemImage(itemId,itemName=null){
+  const assignment=itemImageAssignments?.items?.[itemId]
+    ||itemImageAssignments?.names?.[normaliseItemImageName(itemName)];
+  if(!assignment?.image_id)return null;
+  const image=itemImagePool?.images?.[assignment.image_id];
+  if(!image)return null;
+  if(String(image.curation_status||'approved').toLowerCase()==='denied')return null;
+  return {...image,assignment};
+}
+function sellerById(id){return sellers.find(s=>s.entity_id===id)}
+function childSellers(s){
+  const raw=(Array.isArray(s.child_places)&&s.child_places.length)?s.child_places:(Array.isArray(s.children)?s.children:[]);
+  return raw.map(ref=>{
+    const obj=(ref&&typeof ref==='object')?ref:{};
+    const id=typeof ref==='string'?ref:(obj.child_entity_id||obj.entity_id||obj.child_id||obj.id||null);
+    const listed=id?sellerById(id):null;
+    return {
+      ...(listed||{}),
+      ...obj,
+      entity_id:id||listed?.entity_id||null,
+      name:obj.child_name||obj.name||listed?.name||id,
+      type:obj.child_type||obj.type||listed?.type||'Shop',
+      copy:obj.child_copy||obj.copy||listed?.copy||'Independent business at this location.',
+      tags:obj.child_tags||obj.tags||listed?.tags||'',
+      stock_mode:obj.child_stock_mode||obj.stock_mode||listed?.stock_mode||''
+    };
+  }).filter(x=>x.entity_id&&x.name&&String(x.entity_id)!==String(s?.entity_id));
+}
+function parentSeller(s){
+  const selfId=String(s?.entity_id||'');
+  const selfName=String(s?.name||'').trim().toLowerCase();
+  const explicit=s.parent_id||s.parent_entity_id||s.parent?.entity_id||null;
+  const parent=explicit?sellerById(explicit):null;
+  if(!parent)return null;
+  if(String(parent.entity_id||'')===selfId)return null;
+  if(selfName&&String(parent.name||'').trim().toLowerCase()===selfName)return null;
+  return parent;
+}
+function stockPolicyValue(s,key){
+  return s?.[key]??s?.data?.[key]??null;
+}
+function ownsRetailStock(s){
+  const mode=String(s?.stock_mode||'').toUpperCase();
+  const policy=String(stockPolicyValue(s,'parent_stock_policy')||'').toUpperCase();
+  const rule=String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase();
+  const persistent=stockPolicyValue(s,'persistent_inventory');
+  if(policy==='CHILDREN_ONLY'||policy==='NO_STOCK')return false;
+  if(rule==='DELEGATE_TO_CHILDREN'||rule==='NO_STATIC_INVENTORY')return false;
+  if(mode==='SERVICE_ONLY')return false;
+  if(persistent===false&&mode!=='EVENT_MARKET'&&mode!=='HYBRID_DIRECT_EVENT')return false;
+  return true;
+}
+function nonStockLabel(s){
+  const mode=String(s?.stock_mode||'').toUpperCase();
+  const policy=String(stockPolicyValue(s,'parent_stock_policy')||'').toUpperCase();
+  const rule=String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase();
+  if(mode==='SERVICE_ONLY'||rule==='NO_STATIC_INVENTORY')return 'Services';
+  if(policy==='CHILDREN_ONLY'||rule==='DELEGATE_TO_CHILDREN'||mode==='AGGREGATE_CONTAINER')return 'Shopping location';
+  return 'Listing';
+}
+function modeLabel(v){
+  const labels={
+    DIRECT_SELLER:'Shop',
+    EVENT_MARKET:'Night market',
+    HYBRID_DIRECT_EVENT:'Shop / market',
+    AGGREGATE_CONTAINER:'Shopping location',
+    PLACE_ONLY:'Place',
+    SERVICE_ONLY:'Services',
+    REFERENCE_ONLY:'Reference',
+    CHANNEL_TEMPLATE:'Network'
+  };
+  const key=String(v||'').toUpperCase();
+  return labels[key]||String(v||'').replaceAll('_',' ').toLowerCase().replace(/^./,m=>m.toUpperCase());
+}
+function clampMap(v){return Math.max(.025,Math.min(.975,Number(v)))}
+function sellerSpatialPoint(s){
+  if(!s)return null;
+  const explicit=[
+    [s.map_x,s.map_y],
+    [s.spatial_x,s.spatial_y],
+    [s.position?.x,s.position?.y],
+    [s.spatial?.x,s.spatial?.y]
+  ].find(([x,y])=>Number.isFinite(Number(x))&&Number.isFinite(Number(y)));
+  if(explicit)return {x:clampMap(explicit[0]),y:clampMap(explicit[1]),synthetic:false};
+  const anchor=mockSpatialAnchors[String(s.district||'')];
+  if(!anchor)return null;
+  const key=s.entity_id||s.name||s.district||'seller';
+  const angle=hash01(key,173)*Math.PI*2;
+  const radius=.008+Math.sqrt(hash01(key,257))*.034;
+  return {
+    x:clampMap(anchor.x+Math.cos(angle)*radius),
+    y:clampMap(anchor.y+Math.sin(angle)*radius),
+    synthetic:true
+  };
+}
+function signalSpatialPoint(row){
+  const seller=sellerById(row?.shop_entity_id||row?.entity_id)||row;
+  return sellerSpatialPoint(seller);
+}
+function spatialDistanceForSeller(s){
+  const user=spatialSnapshot?.position;
+  const point=sellerSpatialPoint(s);
+  if(!user||!point||!Number.isFinite(Number(user.x))||!Number.isFinite(Number(user.y))){
+    return {score:Infinity,label:'Nearby',point};
+  }
+  const score=Math.hypot(Number(user.x)-point.x,Number(user.y)-point.y);
+  const km=score*11.5;
+  let label;
+  if(km<.1)label='<100 m';
+  else label=(Math.round(km*10)/10).toFixed(1)+' km';
+  return {score,label,point};
+}
+function spatialDistanceForOffer(o){
+  const seller=sellerById(o?.shop_entity_id);
+  return spatialDistanceForSeller(seller||o);
+}
+function offerDistanceLabel(o){
+  return spatialDistanceForOffer(o).label;
+}
+function nearbyShopPool(){
+  return sellers.filter(s=>
+    (s.stock_profile_present||s.stock_mode!=='PLACE_ONLY')&&
+    ['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode)
+  );
+}
+function nearestHomeSellers(limit=5){
+  const district=activeSpatialDistrict();
+  return nearbyShopPool().map(s=>({seller:s,...spatialDistanceForSeller(s)}))
+    .sort((a,b)=>a.score-b.score||String(a.seller.name).localeCompare(String(b.seller.name)))
+    .slice(0,limit);
+}
+function shopPhotoStyle(shop){
+  // The shop name is real text; its background photograph is decorative.
+  const raw=String(shop?.image?.image_url||'').trim();
+  if(!raw)return '';
+  let imageUrl;
+  try{
+    const parsed=new URL(raw,location.href);
+    if(!['http:','https:'].includes(parsed.protocol))return '';
+    imageUrl=parsed.href.replace(/["'()\\\r\n]/g,c=>encodeURIComponent(c));
+  }catch(_){return ''}
+  const pct=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):.5))*100;
+  const x=pct(shop.image.focal_x).toFixed(1),y=pct(shop.image.focal_y).toFixed(1);
+  return ' style="--shop-image:url(&quot;'+esc(imageUrl)+'&quot;);--shop-image-position:'+x+'% '+y+'%"';
+}
+function renderHomeNearby(){
+  const list=document.getElementById('homeNearbyList');
+  if(!list)return;
+  const rows=nearestHomeSellers(5);
+  if(!rows.length){
+    list.innerHTML='<div class="home-nearby-row"><div><div class="home-nearby-name">No nearby shops resolved</div><div class="home-nearby-meta">Try another location signal</div></div><div class="home-nearby-distance">—</div></div>';
+    return;
+  }
+  list.innerHTML=rows.map(({seller,label})=>
+    '<button class="home-nearby-row shop-photo-card" type="button"'+shopPhotoStyle(seller)+' data-shop="'+esc(seller.entity_id)+'">'+
+      '<div><div class="home-nearby-name">'+esc(seller.name)+'</div>'+
+      '<div class="home-nearby-meta">'+esc([seller.type,seller.district].filter(Boolean).join(' · '))+'</div></div>'+
+      '<div class="home-nearby-distance">'+esc(label)+'</div>'+
+    '</button>'
+  ).join('');
+  bindSellerClicks(list);
+}
+function sellerRow(s,sub,status){
+  return '<button class="list-row shop-photo-card"'+shopPhotoStyle(s)+' data-shop="'+esc(s.entity_id)+'"><div>'+
+    '<div class="row-title">'+esc(s.name)+'</div>'+
+    '<div class="row-sub">'+esc(sub||[s.type,s.district].filter(Boolean).join(' · '))+'</div></div>'+
+    '<div class="row-status">'+esc(status||modeLabel(s.stock_mode))+'</div></button>';
+}
+function bindSellerClicks(root,offerMap=null){
+  root.querySelectorAll('[data-shop]').forEach(el=>el.addEventListener('click',()=>{
+    const id=el.dataset.shop;
+    const offers=offerMap?.get(id)||[];
+    const focus=offers.find(o=>o.kind==='available')||offers[0]||null;
+    openVendor(id,focus);
+    if(el.tagName!=='BUTTON')el.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();el.click()}
+    });
+  }));
+}
+function renderSellerPanel(panel,slice,subFn,statusFn,offerMap=null){
+  panel.querySelectorAll('.list-row').forEach(x=>x.remove());
+  slice.forEach(s=>panel.insertAdjacentHTML('beforeend',sellerRow(s,subFn?.(s),statusFn?.(s))));
+  if(!slice.length)panel.insertAdjacentHTML('beforeend','<div class="list-row"><div><div class="row-title">No matching sellers</div><div class="row-sub">Try a broader search term.</div></div><div class="row-status amber">None</div></div>');
+  bindSellerClicks(panel,offerMap);
+}
+function renderMarkets(rows){
+  const cards=document.getElementById('marketCards');
+  cards.innerHTML=rows.slice(0,3).map(s=>
+    '<article class="mini-card shop-photo-card"'+shopPhotoStyle(s)+' data-shop="'+esc(s.entity_id)+'" role="button" tabindex="0" aria-label="View '+esc(s.name)+'">'+
+    '<div class="mini-time">'+esc(modeLabel(s.stock_mode))+'</div>'+
+    '<h3>'+esc(s.name)+'</h3>'+
+    '<p>'+esc(s.copy||'Canonical market or multi-vendor place in the Night City commercial graph.')+'</p>'+
+    '<div class="mini-dist">'+esc(s.district||'Night City')+' · '+esc(s.type||'commercial place')+'</div></article>'
+  ).join('');
+  bindSellerClicks(cards);
+}
+function renderHomeDefault(){
+  const district=activeSpatialDistrict();
+  renderHomeNearby();
+  const heroIds=new Set(nearestHomeSellers(5).map(x=>x.seller.entity_id));
+  const profiled=sellers.filter(s=>s.stock_profile_present||s.stock_mode!=='PLACE_ONLY');
+  const browseable=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT','EVENT_MARKET','AGGREGATE_CONTAINER'].includes(s.stock_mode));
+  const direct=profiled.filter(s=>['DIRECT_SELLER','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
+  const markets=profiled.filter(s=>['AGGREGATE_CONTAINER','EVENT_MARKET','HYBRID_DIRECT_EVENT'].includes(s.stock_mode));
+  const localBrowseable=browseable.filter(s=>sellerInSpatialDistrict(s,district));
+  const localDirect=direct.filter(s=>sellerInSpatialDistrict(s,district));
+  const localMarkets=markets.filter(s=>sellerInSpatialDistrict(s,district));
+  document.getElementById('primarySellerTitle').textContent=district?'More nearby':'Known sellers';
+  document.getElementById('primarySellerMeta').innerHTML=district?esc(district)+'<br>beyond the nearest five':'Canonical commercial<br>profiles';
+  document.getElementById('secondarySellerTitle').textContent=district?'Local direct sellers':'Direct sellers';
+  document.getElementById('secondarySellerMeta').innerHTML=district?'Stock-capable<br>in selected area':'Likely stocked<br>places';
+  document.getElementById('marketPanelTitle').textContent=district?'Markets nearby':'Markets';
+  document.getElementById('marketPanelMeta').innerHTML=district?esc(district)+'<br>containers / events':'Containers / events<br>from the city graph';
+  const primaryBase=district?localBrowseable:browseable;
+  const primaryBeyond=primaryBase.filter(s=>!heroIds.has(s.entity_id));
+  renderSellerPanel(document.getElementById('primarySellerPanel'),(primaryBeyond.length?primaryBeyond:primaryBase).slice(0,3),s=>[s.type,s.district].filter(Boolean).join(' · '),s=>modeLabel(s.stock_mode));
+  renderSellerPanel(document.getElementById('secondarySellerPanel'),(district?localDirect:direct).slice(0,3),s=>[s.tags,s.district].filter(Boolean).join(' · '),()=> 'SELLER');
+  renderMarkets(district?localMarkets:markets);
+}
+function groupSearchOffers(data){
+  const map=new Map();
+  for(const o of data.offers||[]){
+    if(!map.has(o.shop_entity_id))map.set(o.shop_entity_id,{entity_id:o.shop_entity_id,name:o.shop_name,district:o.district,stock_mode:o.stock_mode,type:'seller match',offers:[]});
+    map.get(o.shop_entity_id).offers.push(o);
+  }
+  return map;
+}
+
+function itemTypeLabel(o){
+  return stockDepartmentLabel(o?.primary_department||'other');
+}
+function placeLabel(o){
+  const parts=[];
+  if(o.parent_name)parts.push(o.parent_name);
+  if(o.district&&!parts.includes(o.district))parts.push(o.district);
+  if(o.distance!==null&&o.distance!==undefined)parts.push(String(o.distance));
+  return parts.join(' · ')||'Night City';
+}
+function moneyEb(v){
+  if(v===null||v===undefined)return '—';
+  return Number(v).toLocaleString()+'eb';
+}
+function priceText(v,label=null){
+  return label||moneyEb(v);
+}
+function quantityText(row,short=false){
+  if(row?.quantity_label)return short?String(row.quantity_label).toUpperCase():String(row.quantity_label);
+  if(row?.quantity==null){
+    return row?.quantity_profile==='continuous'?(short?'ON DEMAND':'On demand'):(short?'AVAILABLE':'Available');
+  }
+  return short?String(row.quantity):(String(row.quantity)+' here');
+}
+function nextRefreshText(state){
+  if(!state?.next_restock_at)return state?.cadence_label||'Current stock';
+  const d=new Date(state.next_restock_at);
+  if(Number.isNaN(d.getTime()))return state?.cadence_label||'Current stock';
+  const when=new Intl.DateTimeFormat(undefined,{weekday:'short',hour:'2-digit',minute:'2-digit'}).format(d);
+  return (state?.cadence_label||'Refresh')+' · next '+when;
+}
+let resultSortMode='location';
+
+function conditionRank(v){
+  const ranks={new:0,refurbished:1,used:2,salvaged:3,damaged:4,not_applicable:5};
+  return ranks[String(v||'').toLowerCase()]??9;
+}
+function availabilityRank(v){
+  const ranks={common:0,restricted:1,scarce:2,rare_market:3,exceptional:4};
+  return ranks[String(v||'common')]??9;
+}
+function sortOffers(rows,mode){
+  const arr=rows.slice();
+  if(mode==='price')return arr.sort((a,b)=>(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='condition')return arr.sort((a,b)=>conditionRank(a.condition)-conditionRank(b.condition)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='availability')return arr.sort((a,b)=>availabilityRank(a.availability_band)-availabilityRank(b.availability_band)||(a.asking_price??Infinity)-(b.asking_price??Infinity)||String(a.shop_name).localeCompare(String(b.shop_name)));
+  if(mode==='stock')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
+  return arr.sort((a,b)=>spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score||String(a.shop_name).localeCompare(String(b.shop_name)));
+}
+function offerRow(o,exact=false){
+  return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+    '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
+    '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
+    '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
+    '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
+    '<div class="price-block"><span class="price">'+esc(moneyEb(o.asking_price))+'</span>'+
+    '<span class="price-meta">'+esc(o.condition||'')+(o.quantity!=null?' · '+esc(String(o.quantity))+' here':'')+'</span></div>'+
+  '</button>';
+}
+function bindOfferRows(root,data){
+  root.querySelectorAll('[data-offer-shop]').forEach(el=>el.addEventListener('click',()=>{
+    const shopId=el.dataset.offerShop;
+    const itemId=el.dataset.offerItem;
+    openItem(itemId,{offerShop:shopId});
+  }));
+}
+function renderNearbyOffers(data){
+  const available=(data.offers||[]).filter(o=>o.kind==='available');
+  const exact=Boolean(data.active_item_id);
+  const list=document.getElementById('nearbyOffersList');
+  const top=available.slice().sort((a,b)=>
+    spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score||
+    String(a.shop_name).localeCompare(String(b.shop_name))
+  ).slice(0,4);
+  if(!top.length){
+    list.innerHTML='<div class="row-sub" style="padding:12px 0">No current stock reports found in Night City.</div>';
+    return;
+  }
+  list.innerHTML=top.map(o=>{
+    const where=[o.district,offerDistanceLabel(o)].filter(Boolean).join(' · ');
+    return '<button class="nearby-offer" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      '<div><strong>'+esc(exact?o.shop_name:o.item_name)+'</strong>'+
+      '<span>'+esc(exact?where:(o.shop_name+' · '+where))+'</span></div>'+
+      '<strong class="nearby-price">'+esc(moneyEb(o.asking_price))+'</strong>'+
+    '</button>';
+  }).join('');
+  bindOfferRows(list,data);
+}
+function renderAvailableOffers(data){
+  const section=document.getElementById('availableOffersSection');
+  const list=document.getElementById('availableOffersList');
+  const available=(data.offers||[]).filter(o=>o.kind==='available');
+  const exact=Boolean(data.active_item_id);
+  document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · citywide · distance-aware';
+  section.hidden=!available.length;
+  list.innerHTML=sortOffers(available,resultSortMode).map(o=>offerRow(o,exact)).join('');
+  bindOfferRows(list,data);
+}
+function renderLikelySellers(data){
+  const section=document.getElementById('plausibleOffersSection');
+  const list=document.getElementById('plausibleOffersList');
+  const exact=Boolean(data.active_item_id);
+  const plausible=(data.offers||[]).filter(o=>o.kind!=='available');
+  section.hidden=!plausible.length;
+  list.innerHTML=plausible.map(o=>
+    '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
+      '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · not in current stock</span></div>'+
+      '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
+      '<span class="place-meta">'+esc(placeLabel(o))+'</span></div>'+
+      '<div class="price-block"><span class="price">LIKELY SELLER</span>'+
+      '<span class="price-meta">no current offer</span></div>'+
+    '</button>'
+  ).join('');
+  bindOfferRows(list,data);
+}
+function renderRelatedItems(data,q){
+  const section=document.getElementById('relatedItemsSection');
+  const list=document.getElementById('relatedItemsList');
+  if(!data.active_item_id){section.hidden=true;list.innerHTML='';return}
+  const active=(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id));
+  if(!active){section.hidden=true;return}
+  const related=(data.items||[]).filter(x=>String(x.item_id)!==String(active.item_id)&&x.relation_key===active.relation_key).slice(0,6);
+  section.hidden=!related.length;
+  list.innerHTML=related.map(x=>
+    '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
+      '<strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+' · same family →</span></button>'
+  ).join('');
+  list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>openItem(el.dataset.relatedItem)));
+}
+function renderOfferSections(data,q){
+  renderNearbyOffers(data);
+  renderAvailableOffers(data);
+  renderLikelySellers(data);
+  renderRelatedItems(data,q);
+}
+function renderSearchPage(data,q){
+  lastSearch={data,q};
+  const exact=Boolean(data.active_item_id);
+  const active=exact?(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id)):null;
+  const label=(active?.name||q||'SEARCH').toUpperCase();
+  const district=activeSpatialDistrict();
+  document.getElementById('searchModeLabel').textContent=exact?'Exact item':'Broad search';
+  document.getElementById('searchQueryLine').textContent=label+' · '+(exact?'exact item':'broad item search')+' · nearest offers from '+(district||'Night City')+' · citywide results below';
+  document.getElementById('searchMapQuery').textContent=label;
+  applySpatialLabels();
+  document.getElementById('searchPageInput').value=q;
+  document.getElementById('searchFooterLeft').textContent=exact?(active?.name||q)+' · exact item':q+' · broad item search';
+  renderOfferSections(data,q);
+  document.getElementById('searchEmpty').hidden=(data.offers||[]).length>0;
+  drawSearchSpaciel(data);
+}
+let currentNavIndex=0;
+let currentRouteKey='home';
+
+function normalizeRoute(route){
+  route=route||{};
+  const view=['home','search','sources','item','vendor'].includes(route.view)?route.view:'home';
+  if(view==='search')return {view,q:String(route.q||'').trim(),itemId:route.itemId?String(route.itemId):null};
+  if(view==='sources')return {view,focusCode:route.focusCode?String(route.focusCode):null};
+  if(view==='item')return {view,itemId:String(route.itemId||''),shopId:route.shopId?String(route.shopId):null};
+  if(view==='vendor')return {view,vendorId:String(route.vendorId||''),offerItemId:route.offerItemId?String(route.offerItemId):null};
+  return {view:'home'};
+}
+function routeFromParams(params){
+  const explicit=params.get('view');
+  if(explicit==='sources')return normalizeRoute({view:'sources',focusCode:params.get('focus')});
+  if(explicit==='search')return normalizeRoute({view:'search',q:params.get('q'),itemId:params.get('match')});
+  if(explicit==='item')return normalizeRoute({view:'item',itemId:params.get('item'),shopId:params.get('shop')});
+  if(explicit==='vendor')return normalizeRoute({view:'vendor',vendorId:params.get('vendor'),offerItemId:params.get('offer')});
+
+  // Backward compatibility with pre-router Vend-R links.
+  if(params.get('vendor'))return normalizeRoute({view:'vendor',vendorId:params.get('vendor'),offerItemId:params.get('offer')});
+  if(params.get('item')&&!params.get('q'))return normalizeRoute({view:'item',itemId:params.get('item'),shopId:params.get('shop')});
+  if(params.get('q'))return normalizeRoute({view:'search',q:params.get('q'),itemId:params.get('item')});
+  return {view:'home'};
+}
+function routeFromLocation(){
+  return routeFromParams(new URLSearchParams(location.search));
+}
+function routeFromUrl(url){
+  const parsed=new URL(url,location.href);
+  return routeFromParams(parsed.searchParams);
+}
+function routeKey(route){
+  route=normalizeRoute(route);
+  if(route.view==='search')return 'search:'+route.q+':'+(route.itemId||'');
+  if(route.view==='sources')return 'sources:'+(route.focusCode||'');
+  if(route.view==='item')return 'item:'+route.itemId;
+  if(route.view==='vendor')return 'vendor:'+route.vendorId;
+  return 'home';
+}
+function routeUrl(route){
+  route=normalizeRoute(route);
+  const url=new URL(location.href);
+  url.search='';
+  if(route.view==='search'){
+    url.searchParams.set('view','search');
+    if(route.q)url.searchParams.set('q',route.q);
+    if(route.itemId)url.searchParams.set('match',route.itemId);
+  }else if(route.view==='sources'){
+    url.searchParams.set('view','sources');
+    if(route.focusCode)url.searchParams.set('focus',route.focusCode);
+  }else if(route.view==='item'){
+    url.searchParams.set('view','item');
+    if(route.itemId)url.searchParams.set('item',route.itemId);
+    if(route.shopId)url.searchParams.set('shop',route.shopId);
+  }else if(route.view==='vendor'){
+    url.searchParams.set('view','vendor');
+    if(route.vendorId)url.searchParams.set('vendor',route.vendorId);
+    if(route.offerItemId)url.searchParams.set('offer',route.offerItemId);
+  }
+  return url.pathname+url.search;
+}
+function historyPayload(route,index=currentNavIndex,extra={}){
+  route=normalizeRoute(route);
+  return {vendr:true,navIndex:index,routeKey:routeKey(route),route,...extra};
+}
+function replaceVendrState(view,url,extra={}){
+  const route=routeFromUrl(url);
+  history.replaceState(historyPayload(route,currentNavIndex,extra),'',url);
+  currentRouteKey=routeKey(route);
+}
+function appBack(fallback='home'){
+  if(currentNavIndex>0){
+    history.back();
+    return;
+  }
+  if(fallback==='home'&&currentRouteKey!=='home'){
+    navigateRoute({view:'home'},{replace:true,direction:'back'}).catch(console.error);
+  }
+}
+function vendorUrl(id,offerItemId=null){
+  return routeUrl({view:'vendor',vendorId:id,offerItemId});
+}
+function sourcesUrl(focusCode=null){
+  return routeUrl({view:'sources',focusCode});
+}
+function searchUrl(q,itemId=null){
+  return routeUrl({view:'search',q,itemId});
+}
+
+async function prepareRoute(route){
+  route=normalizeRoute(route);
+  let payload=null;
+
+  if(route.view==='search'){
+    if(!route.q)return {route:{view:'home'},payload:null};
+    payload=await api({api:'search',q:route.q,item_id:route.itemId||null});
+  }else if(route.view==='item'){
+    if(!route.itemId)return {route:{view:'home'},payload:null};
+    [payload]=await Promise.all([
+      api({api:'item',id:route.itemId}),
+      loadItemImageManifest()
+    ]);
+  }else if(route.view==='vendor'){
+    if(!route.vendorId)return {route:{view:'home'},payload:null};
+    payload=await api({api:'shop',id:route.vendorId});
+  }
+
+  await preloadFirstFrameAssets(route,payload);
+  return {route,payload};
+}
+function commitRoute(route,payload){
+  route=normalizeRoute(route);
+  if(route.view==='search'){
+    hideSuggestions();
+    document.getElementById('marketSearchTop').value=route.q;
+    renderSearchPage(payload,route.q);
+  }else if(route.view==='sources'){
+    renderSourcesPage(route.focusCode);
+  }else if(route.view==='item'){
+    renderItemPage(payload,route.shopId);
+  }else if(route.view==='vendor'){
+    const focus=route.offerItemId?{item_id:route.offerItemId}:null;
+    renderVendor(payload,focus);
+  }else{
+    currentSellerId=null;
+    currentItemId=null;
+    currentItemData=null;
+    currentItemOfferShop=null;
+    renderHomeDefault();
+  }
+}
+async function showPreparedRoute(route,payload,{animate=true,direction='forward'}={}){
+  route=normalizeRoute(route);
+  const key=routeKey(route);
+  const commit=()=>{
+    commitRoute(route,payload);
+    currentRouteKey=key;
+  };
+  if(!animate){
+    commit();
+    Object.entries(allViews).forEach(([name,view])=>view.classList.toggle('active',name===route.view));
+    currentView=route.view;
+    window.scrollTo(0,0);
+    requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+    return true;
+  }
+  return switchTo(route.view,{direction,force:key!==currentRouteKey,onSwap:commit});
+}
+
+async function showPreparingRoute(route,preparation,{direction='forward'}={}){
+  route=normalizeRoute(route);
+  const requestedKey=routeKey(route);
+  return switchTo(route.view,{
+    direction,
+    force:requestedKey!==currentRouteKey,
+    readyPromise:preparation,
+    onSwap:prepared=>{
+      const finalRoute=normalizeRoute(prepared?.route||route);
+      if(finalRoute.view!==route.view){
+        throw new Error('Prepared route changed view during an animated transition');
+      }
+      commitRoute(finalRoute,prepared?.payload??null);
+      currentRouteKey=routeKey(finalRoute);
+    }
+  });
+}
+async function navigateRoute(route,options={}){
+  if(busy)return false;
+  route=normalizeRoute(route);
+  const key=routeKey(route);
+  const preparation=prepareRoute(route);
+
+  if(key===currentRouteKey&&options.replace!==true){
+    const prepared=await preparation;
+    commitRoute(prepared.route,prepared.payload);
+    currentRouteKey=routeKey(prepared.route);
+    return true;
+  }
+
+  const replace=options.replace===true;
+  const nextIndex=replace?currentNavIndex:currentNavIndex+1;
+  const state=historyPayload(route,nextIndex,options.state||{});
+  if(replace)history.replaceState(state,'',routeUrl(route));
+  else history.pushState(state,'',routeUrl(route));
+  currentNavIndex=nextIndex;
+
+  if(options.animate===false){
+    const prepared=await preparation;
+    return showPreparedRoute(prepared.route,prepared.payload,{animate:false,direction:options.direction||'forward'});
+  }
+
+  try{
+    return await showPreparingRoute(route,preparation,{direction:options.direction||'forward'});
+  }catch(error){
+    console.error(error);
+    return false;
+  }
+}
+
+function sourceCodeFromRefClient(ref){
+  const text=String(ref||'').trim();
+  if(!text)return 'VENDR';
+  if(/\bvend-?r\b/i.test(text))return 'VENDR';
+  const lower=text.toLowerCase();
+  const rows=sourceCatalog.slice().sort((a,b)=>String(b.title||'').length-String(a.title||'').length);
+  const match=rows.find(row=>String(row.title||'')&&lower.startsWith(String(row.title).toLowerCase()));
+  return match?String(match.code):null;
+}
+function sourceButtonLabel(source,page=null,extra=0){
+  if(!source)return 'Source unavailable';
+  const bits=[source.title||source.code];
+  if(page)bits.push('p. '+page);
+  if(extra>0)bits.push('+'+extra);
+  return bits.join(' · ');
+}
+function renderSourcesPage(focusCode=null){
+  const families=document.getElementById('sourceFamilies');
+  const isOfficial=s=>s.family==='official';
+  const isVendr=s=>s.family==='vendr'||String(s.code||'').toUpperCase()==='VENDR';
+  const groups=[
+    {
+      key:'official',
+      title:'Official',
+      note:'Published Cyberpunk RED datasets',
+      test:isOfficial,
+      subgroups:[
+        {title:'Books & kits',note:'Core books, sourcebooks and boxed or kit material',test:s=>isOfficial(s)&&s.source_type!=='official-dlc'},
+        {title:'DLCs & supplements',note:'Official downloadable additions',test:s=>isOfficial(s)&&s.source_type==='official-dlc'}
+      ]
+    },
+    {
+      key:'unofficial',
+      title:'Unofficial',
+      note:'Homebrew, community and Vend-R datasets',
+      test:s=>!isOfficial(s),
+      subgroups:[
+        {title:'Vend-R Original',note:'Locations, vendors, stock and other Vend-R-created material',test:isVendr},
+        {title:'Third-party sources',note:'Unofficial books, homebrew packs and community datasets',test:s=>!isOfficial(s)&&!isVendr(s)}
+      ]
+    }
+  ];
+  const renderRows=rows=>'<div class="source-rack">'+rows.map(row=>{
+    const on=sourceIsOn(row.code);
+    const focused=focusCode&&String(row.code)===String(focusCode);
+    const counts=[
+      Number(row.item_count||0)+' entr'+(Number(row.item_count||0)===1?'y':'ies'),
+      Number(row.profile_count||0)?Number(row.profile_count)+' seller profile'+(Number(row.profile_count)===1?'':'s'):null,
+      row.publisher
+    ].filter(Boolean).join(' · ');
+    return '<button type="button" class="source-channel '+(on?'on ':'')+(focused?'focused':'')+'" data-source-code="'+esc(row.code)+'" aria-pressed="'+(on?'true':'false')+'">'+
+      '<span class="source-lamp" aria-hidden="true"></span>'+
+      '<span class="source-channel-copy"><strong>'+esc(isVendr(row)?'Vend-R Original':(row.title||row.code))+'</strong><small>'+esc(row.code+' · '+counts)+'</small></span>'+
+      '<span class="source-channel-state">'+(on?'Connected':'Offline')+'</span></button>';
+  }).join('')+'</div>';
+
+  families.innerHTML=groups.map(group=>{
+    const rows=sourceCatalog.filter(group.test);
+    if(!rows.length)return '';
+    const connected=rows.filter(row=>sourceIsOn(row.code)).length;
+    const sections=group.subgroups.map(subgroup=>{
+      const subrows=sourceCatalog.filter(subgroup.test);
+      if(!subrows.length)return '';
+      const subConnected=subrows.filter(row=>sourceIsOn(row.code)).length;
+      return '<div class="source-subfamily">'+
+        '<div class="source-subfamily-head"><strong>'+esc(subgroup.title)+'</strong><span>'+esc(subgroup.note)+' · '+subConnected+' / '+subrows.length+' connected</span></div>'+
+        renderRows(subrows)+
+      '</div>';
+    }).join('');
+    return '<section class="panel source-family">'+
+      '<div class="source-family-head"><h2>'+esc(group.title)+'</h2>'+
+        '<div class="source-family-meta"><span>'+esc(group.note)+'<br>'+connected+' / '+rows.length+' connected</span>'+
+          '<div class="source-family-actions">'+
+            '<button type="button" data-source-family="'+esc(group.key)+'" data-source-family-mode="all">All</button>'+
+            '<button type="button" data-source-family="'+esc(group.key)+'" data-source-family-mode="none">None</button>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      sections+
+    '</section>';
+  }).join('');
+  const active=activeSourceCodes();
+  document.getElementById('sourceActiveCount').textContent=active.length+' / '+sourceCatalog.length;
+  document.getElementById('sourcesTopReadout').textContent=active.length+' source channels connected';
+  const visible=Number(sourceSummary?.visible_item_count??0);
+  const sellersVisible=Number(sourceSummary?.visible_profile_count??sellers.length);
+  document.getElementById('sourceVisibleCount').textContent=visible.toLocaleString()+' visible catalogue entries · '+sellersVisible+' seller profiles';
+  if(focusCode)requestAnimationFrame(()=>document.querySelector('.source-channel.focused')?.scrollIntoView({block:'center',behavior:'smooth'}));
+}
+async function refreshSourceSelection(focusCode=null){
+  saveSourcePreferences();
+  const selected=sourceSelectionParam();
+  const [summary,shopData]=await Promise.all([
+    api({api:'sources',sources:selected}),
+    api({api:'shops',sources:selected})
+  ]);
+  sourceSummary=summary;
+  sourceCatalog=summary.sources||sourceCatalog;
+  sellers=shopData.shops||[];
+  buildMockSpatialAnchors();
+  if(currentView==='home')renderHomeDefault();
+  drawSpaciel();
+  renderSourcesPage(focusCode);
+  const pulse=document.getElementById('marketPulse');
+  if(pulse)pulse.textContent=sellers.length+' Vend-R places · '+Number(sourceSummary.visible_item_count||0).toLocaleString()+' visible catalogue entries';
+}
+async function setSourcePreset(mode){
+  if(mode==='all')disabledSourceCodes=new Set();
+  else if(mode==='none')disabledSourceCodes=new Set(sourceCatalog.map(x=>String(x.code)));
+  else if(mode==='official')disabledSourceCodes=new Set(sourceCatalog.filter(x=>x.family!=='official').map(x=>String(x.code)));
+  await refreshSourceSelection();
+}
+async function setSourceFamilyPreset(family,mode){
+  const rows=sourceCatalog.filter(row=>family==='official'?row.family==='official':row.family!=='official');
+  rows.forEach(row=>{
+    const code=String(row.code);
+    if(mode==='all')disabledSourceCodes.delete(code);
+    else if(mode==='none')disabledSourceCodes.add(code);
+  });
+  await refreshSourceSelection();
+}
+async function toggleSource(code){
+  code=String(code||'');
+  if(!code)return;
+  if(disabledSourceCodes.has(code))disabledSourceCodes.delete(code); else disabledSourceCodes.add(code);
+  await refreshSourceSelection(code);
+}
+function openSources(focusCode=null,options={}){
+  return navigateRoute(
+    {view:'sources',focusCode},
+    {replace:options.replace===true,direction:options.direction||'forward',animate:options.animate!==false}
+  );
+}
+
+let fullscreenSearchAttempted=false;
+async function requestSearchFullscreenOnce(){
+  if(fullscreenSearchAttempted||document.fullscreenElement||document.webkitFullscreenElement)return;
+  fullscreenSearchAttempted=true;
+  const target=document.documentElement;
+  const request=target.requestFullscreen||target.webkitRequestFullscreen;
+  if(typeof request!=='function')return;
+  try{
+    const pending=request.call(target);
+    if(pending&&typeof pending.then==='function')await pending;
+  }catch(e){
+    console.debug('Vend-R fullscreen request was not granted.',e);
+  }
+}
+async function startSearchFromGesture(raw,itemId=null){
+  await requestSearchFullscreenOnce();
+  return runSearchPage(raw,itemId);
+}
+
+async function runSearchPage(raw,itemId=null,options={}){
+  const q=String(raw||'').trim();
+  if(!q)return navigateRoute({view:'home'},{replace:options.replace===true,direction:options.direction||'forward'});
+  hideSuggestions();
+  return navigateRoute(
+    {view:'search',q,itemId},
+    {replace:options.replace===true,direction:options.direction||'forward',animate:options.animate!==false}
+  );
+}
+
+let suggestTimer=null;
+let suggestToken=0;
+function suggestionBoxFor(input){
+  return input?.closest('.global-search')?.querySelector('.search-suggest')||document.getElementById('marketSuggest');
+}
+function hideSuggestions(box=null){
+  const boxes=box?[box]:Array.from(document.querySelectorAll('.global-search .search-suggest'));
+  boxes.forEach(node=>{
+    if(!node)return;
+    node.hidden=true;
+    node.innerHTML='';
+  });
+}
+function renderSuggestions(data,q,box){
+  if(!box)return;
+  const items=data.items||[];
+  const total=Number(data.total_matches??items.length);
+  const needle=String(q||'').trim().toLowerCase();
+  const placeMatches=needle?sellers.filter(s=>[
+    s.name,s.type,s.copy,s.blurb,s.tags
+  ].filter(Boolean).join(' ').toLowerCase().includes(needle)).slice(0,6):[];
+  if(!q){hideSuggestions(box);return}
+  box.innerHTML=
+    '<div class="suggest-head">Places & catalogue</div>'+
+    placeMatches.map(place=>
+      '<button class="suggest-row" type="button" data-suggest-place="'+esc(place.entity_id)+'">'+
+      '<strong>'+esc(place.name)+'</strong>'+
+      '<span>'+esc([place.type,place.district,place.stock_mode==='PLACE_ONLY'?'place profile':modeLabel(place.stock_mode)].filter(Boolean).join(' · '))+'</span></button>'
+    ).join('')+
+    items.map(item=>
+      '<button class="suggest-row" type="button" data-suggest-item="'+esc(item.item_id)+'">'+
+      '<strong>'+esc(item.name)+'</strong>'+
+      '<span>'+esc(itemTypeLabel(item))+' · '+esc(item.is_local?'local speciality':'exact catalogue item')+'</span></button>'
+    ).join('')+
+    '<button class="suggest-row search-all" type="button" data-search-all="1">'+
+    '<strong>Search items for “'+esc(q)+'”</strong>'+
+    '<span>'+esc(String(total))+' related item'+(total===1?'':'s')+' →</span></button>';
+  box.hidden=false;
+  box.querySelectorAll('[data-suggest-place]').forEach(button=>button.addEventListener('click',()=>{
+    hideSuggestions();
+    openVendor(button.dataset.suggestPlace);
+  }));
+  box.querySelectorAll('[data-suggest-item]').forEach(button=>button.addEventListener('click',()=>{
+    hideSuggestions();
+    openItem(button.dataset.suggestItem);
+  }));
+  box.querySelector('[data-search-all]')?.addEventListener('click',()=>startSearchFromGesture(q,null));
+}
+function queueSuggestions(raw,input){
+  const q=String(raw||'').trim();
+  const box=suggestionBoxFor(input);
+  clearTimeout(suggestTimer);
+  if(q.length<2){hideSuggestions(box);return}
+  const token=++suggestToken;
+  suggestTimer=setTimeout(async()=>{
+    try{
+      const data=await api({api:'search',q,suggest:1});
+      if(token!==suggestToken)return;
+      renderSuggestions(data,q,box);
+    }catch(_){
+      if(token===suggestToken)hideSuggestions(box);
+    }
+  },170);
+}
+function bindGlobalSearch(input){
+  if(!input)return;
+  const form=input.closest('form');
+  input.addEventListener('input',e=>queueSuggestions(e.currentTarget.value,e.currentTarget));
+  input.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){
+      e.preventDefault();
+      startSearchFromGesture(e.currentTarget.value,null);
+    }else if(e.key==='Escape'){
+      hideSuggestions(suggestionBoxFor(e.currentTarget));
+    }
+  });
+  input.addEventListener('focus',e=>{
+    if(String(e.currentTarget.value||'').trim().length>=2)queueSuggestions(e.currentTarget.value,e.currentTarget);
+  });
+  if(form)form.addEventListener('submit',e=>{
+    e.preventDefault();
+    startSearchFromGesture(input.value,null);
+  });
+}
+
+function stockDepartmentKey(row){
+  return String(row?.primary_department||'other');
+}
+function stockDepartmentLabel(key){
+  const labels={
+    'weapons':'Weapons',
+    'ammunition-ordnance':'Ammo',
+    'weapon-parts':'Attachments & parts',
+    'armor-protection':'Armor',
+    'cyberware':'Cyberware',
+    'electronics-comms':'Tech & comms',
+    'general-equipment':'Gear',
+    'food-consumables':'Food & drink',
+    'medical-chemical':'Medical & chemical',
+    'fashion-personal':'Fashion',
+    'vehicles-mobility':'Vehicles',
+    'netrunning':'Netrunning',
+    'virtual-goods-games':'Software & games',
+    'services-entertainment':'Services',
+    'housing-property':'Property',
+    'local-speciality':'Local speciality',
+    'other':'Other'
+  };
+  return labels[key]||String(key||'Other').replaceAll('-',' ');
+}
+function stockSearchText(row){
+  return [
+    row?.name,row?.description,row?.primary_department,row?.relation_key,row?.assortment_role,
+    row?.condition,row?.last_change,row?.availability_label,row?.price_tier,
+    row?.quantity_label,row?.price_label,row?.support_reason,row?.compatibility_label,
+    ...(Array.isArray(row?.variants)?row.variants.map(v=>v?.name):[])
+  ].filter(Boolean).join(' ').toLowerCase();
+}
+function isFoodDrinkVenue(){
+  // Hospitality venues are excluded by the Vend-R API.
+  // Food retailers remain ordinary stock-bearing retailers.
+  return false;
+}
+function stockRowHtml(s,row,focusId){
+  const exactHit=focusId&&String(row.item_id)===String(focusId);
+  const rowClass=exactHit?' exact-row':'';
+  const nameClass=exactHit?' exact':'';
+  if(isFoodDrinkVenue(s)){
+    return '<article class="stock-row menu-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
+      '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div></div>'+
+      '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
+  }
+  const flowLabel=row.last_change||null;
+  const flavourText=Array.isArray(row.variants)&&row.variants.length
+    ?('flavours · '+row.variants.map(v=>v.name).join(' / '))
+    :null;
+  const sub=row.is_local
+    ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
+    :[flavourText,row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
+  return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
+    '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
+    '<div class="stock-sub">'+esc(sub)+'</div></div>'+
+    '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+(row.is_local?'shop speciality':'current stock')+'</div>'+
+    '<div class="price">'+esc(priceText(row.asking_price,row.price_label))+'</div></article>';
+}
+function filteredStockRows(){
+  const st=stockBrowserState;
+  let rows=st.rows.slice();
+  if(st.category!=='all')rows=rows.filter(r=>stockDepartmentKey(r)===st.category);
+  if(st.query){
+    const q=st.query.toLowerCase();
+    rows=rows.filter(r=>stockSearchText(r).includes(q));
+  }
+  return rows;
+}
+function renderStockBrowserPage(){
+  const st=stockBrowserState;
+  if(!st.shop)return;
+  const browser=document.getElementById('stockBrowser');
+  const list=document.getElementById('stockList');
+  const rows=filteredStockRows();
+  const menuMode=isFoodDrinkVenue(st.shop,st.rows);
+  const pageCount=Math.max(1,Math.ceil(rows.length/st.pageSize));
+  st.page=Math.max(0,Math.min(st.page,pageCount-1));
+  const start=st.page*st.pageSize;
+  const pageRows=rows.slice(start,start+st.pageSize);
+  list.innerHTML=pageRows.length
+    ?pageRows.map(r=>stockRowHtml(st.shop,r,st.focusId)).join('')
+    :'<div class="stock-empty">'+(menuMode?'No menu items match this filter.':'No stock matches these filters.')+'</div>';
+  document.getElementById('stockBrowserMeta').textContent=
+    rows.length+(menuMode?' menu item':' item')+(rows.length===1?'':'s')+
+    (menuMode?'':(st.category==='all'?'':' · '+stockDepartmentLabel(st.category)))+
+    (st.query?' · filtered':'');
+  document.getElementById('stockPageStatus').textContent=(st.page+1)+' / '+pageCount;
+  document.getElementById('stockPrev').disabled=st.page<=0;
+  document.getElementById('stockNext').disabled=st.page>=pageCount-1;
+  browser.hidden=false;
+  document.querySelectorAll('#stockFilters [data-stock-category]').forEach(btn=>{
+    btn.classList.toggle('on',btn.dataset.stockCategory===st.category);
+  });
+}
+function buildStockFilters(rows,menuMode=false){
+  const filters=document.getElementById('stockFilters');
+  filters.hidden=menuMode;
+  if(menuMode){filters.innerHTML='';return;}
+  const seen=[];
+  for(const row of rows){
+    const key=stockDepartmentKey(row);
+    if(!seen.includes(key))seen.push(key);
+  }
+  filters.innerHTML=
+    '<button class="stock-filter on" type="button" data-stock-category="all">All</button>'+
+    seen.map(key=>'<button class="stock-filter" type="button" data-stock-category="'+esc(key)+'">'+esc(stockDepartmentLabel(key))+'</button>').join('');
+}
+function openStockAtFocus(rows,focusId){
+  stockBrowserState.category='all';
+  stockBrowserState.query='';
+  stockBrowserState.page=0;
+  if(!focusId)return;
+  const index=rows.findIndex(r=>String(r.item_id)===String(focusId));
+  if(index>=0)stockBrowserState.page=Math.floor(index/stockBrowserState.pageSize);
+}
+function itemUrl(itemId,shopId=null){
+  return routeUrl({view:'item',itemId,shopId});
+}
+function itemTypeText(item){
+  const cls=item?.classification||{};
+  return cls.source_subcategory||stockDepartmentLabel(item?.primary_department)||'Catalogue item';
+}
+function setItemImage(item){
+  const box=document.getElementById('itemImage');
+  const label=document.getElementById('itemImageLabel');
+  box.classList.remove('has-image');
+  box.style.backgroundImage='';
+  label.removeAttribute('href');
+  label.removeAttribute('title');
+
+  const image=curatedItemImage(item?.item_id,item?.name)||item?.image;
+  if(image?.image_url){
+    box.classList.add('has-image');
+    box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
+    box.style.backgroundPosition='50% 50%';
+    const credit=image.by||image.photographer||image.credit||null;
+    label.textContent=credit?('Photo · '+credit+' ↗'):'Catalogue image';
+    if(image.source){
+      label.href=image.source;
+      label.title=image.title?String(image.title):'Open image source';
+    }
+  }else{
+    label.textContent=(stockDepartmentLabel(item?.primary_department)||'Catalogue')+' · image pending';
+  }
+}
+function selectedItemOffer(shopId){
+  return (currentItemData?.offers||[]).find(o=>String(o.shop_entity_id)===String(shopId))||null;
+}
+function renderItemOfferList(selectedShopId=null){
+  const all=(currentItemData?.offers||[]).filter(o=>o.kind==='available');
+  const rows=sortOffers(
+    selectedShopId?all.filter(o=>String(o.shop_entity_id)!==String(selectedShopId)):all,
+    'location'
+  );
+  const list=document.getElementById('itemOfferList');
+  document.getElementById('itemOfferHeading').textContent=selectedShopId?'Other shops selling it':'Shops selling it';
+  document.getElementById('itemOfferCount').textContent=selectedShopId
+    ?(rows.length+' other current offer'+(rows.length===1?'':'s'))
+    :(rows.length+' current offer'+(rows.length===1?'':'s')+' · Night City');
+  document.getElementById('itemOfferEmpty').hidden=rows.length>0;
+  list.innerHTML=rows.map(o=>
+    '<button class="item-offer" type="button" data-item-offer-shop="'+esc(o.shop_entity_id)+'">'+
+      '<div><strong>'+esc(o.shop_name)+'</strong>'+
+      '<span>'+esc([
+        o.parent_name?('inside '+o.parent_name):null,
+        o.district,
+        offerDistanceLabel(o),
+        o.condition,
+        o.compatibility_label,
+        Array.isArray(o.variants)&&o.variants.length?('flavours · '+o.variants.map(v=>v.name).join(' / ')):null,
+        o.quantity_label||(o.quantity==null?'on demand':String(o.quantity)+' available')
+      ].filter(Boolean).join(' · '))+'</span></div>'+
+      '<span class="item-offer-price">'+esc(priceText(o.asking_price,o.price_label))+'</span>'+
+    '</button>'
+  ).join('');
+  list.querySelectorAll('[data-item-offer-shop]').forEach(button=>button.addEventListener('click',()=>showSelectedItemOffer(button.dataset.itemOfferShop,{updateUrl:true})));
+}
+function showSelectedItemOffer(shopId,{updateUrl=false}={}){
+  currentItemOfferShop=shopId||null;
+  const section=document.getElementById('itemSelectedOffer');
+  const detail=document.getElementById('itemShopDetail');
+  const offer=shopId?selectedItemOffer(shopId):null;
+  if(!offer){
+    section.hidden=true;
+    detail.hidden=true;
+    renderItemOfferList(null);
+    return;
+  }
+
+  section.hidden=false;
+  document.getElementById('itemOfferShop').textContent=offer.shop_name||'Seller';
+  document.getElementById('itemOfferPrice').textContent=offer.kind==='available'?priceText(offer.asking_price,offer.price_label):'NO CURRENT OFFER';
+  document.getElementById('itemOfferMeta').textContent=offer.kind==='available'
+    ?[
+      offer.condition,
+      Array.isArray(offer.variants)&&offer.variants.length?('flavours · '+offer.variants.map(v=>v.name).join(' / ')):null,
+      offer.quantity_label||(offer.quantity==null?'on demand':String(offer.quantity)+' available')
+    ].filter(Boolean).join(' · ')
+    :'Likely seller · not in current stock';
+  document.getElementById('itemOfferSub').textContent=[
+    offer.parent_name?('inside '+offer.parent_name):null,
+    offer.district,
+    offerDistanceLabel(offer),
+    offer.availability_label
+  ].filter(Boolean).join(' · ');
+
+  const seller=sellerById(offer.shop_entity_id);
+  detail.hidden=false;
+  document.getElementById('itemShopDetailTitle').textContent=seller?.name||offer.shop_name||'Seller';
+  document.getElementById('itemShopDetailMeta').textContent=[seller?.type||'Seller',seller?.district||offer.district].filter(Boolean).join(' · ');
+  document.getElementById('itemShopDetailCopy').textContent=
+    seller?.blurb||seller?.copy||seller?.short_description||seller?.modelling_note||
+    'Vend-R seller profile. Open the seller page for its full listing and commercial context.';
+  document.getElementById('itemShopDetailLocation').textContent=[
+    offer.parent_name?('Inside '+offer.parent_name):null,
+    seller?.district||offer.district||'Night City',
+    offerDistanceLabel(offer)
+  ].filter(Boolean).join(' · ');
+  document.getElementById('itemSelectedSeller').dataset.shop=offer.shop_entity_id;
+
+  renderItemOfferList(shopId);
+  if(updateUrl&&currentItemId){
+    replaceVendrState('item',itemUrl(currentItemId,shopId),{itemId:currentItemId,shopId});
+  }
+}
+function renderItemPage(data,selectedShopId=null){
+  currentItemData=data;
+  const item=data.item||{};
+  currentItemId=item.item_id||null;
+  document.getElementById('itemName').textContent=item.name||'Catalogue item';
+  document.getElementById('itemDescription').textContent=item.description||'No catalogue description has been added yet.';
+  document.getElementById('itemKicker').textContent=itemTypeText(item);
+  document.getElementById('itemPriceTier').textContent=item.price_tier||'Price unknown';
+  document.getElementById('itemAvailability').textContent=item.availability_label||'Availability unknown';
+  document.getElementById('itemManufacturer').textContent=item.local?'Local / shop-specific':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
+  document.getElementById('itemBookPrice').textContent=item.local?'Not catalogued':moneyEb(item.book_price);
+  document.getElementById('itemCategory').textContent=itemTypeText(item);
+  const itemSourceButton=document.getElementById('itemSource');
+  const itemSources=Array.isArray(item.sources)?item.sources:[];
+  const primarySource=itemSources[0]||null;
+  itemSourceButton.textContent=primarySource
+    ?sourceButtonLabel(primarySource,primarySource.page,itemSources.length-1)
+    :(item.source_ref||(item.source_index_page==null?'Source unavailable':('Index · p. '+item.source_index_page)));
+  itemSourceButton.dataset.sourceCode=primarySource?.code||sourceCodeFromRefClient(item.source_ref)||'';
+  document.getElementById('itemCatalogueId').textContent=item.item_id||'—';
+  document.getElementById('itemFooterLeft').textContent=(item.name||'Catalogue item')+' · '+(item.item_id||'');
+  document.getElementById('itemSearchInput').value='';
+  setItemImage(item);
+
+  const related=document.getElementById('itemRelated');
+  related.innerHTML=(data.related||[]).map(x=>
+    '<button type="button" data-item-related="'+esc(x.item_id)+'"><strong>'+esc(x.name)+'</strong>'+
+    '<span>'+esc(x.price_tier||'Same family')+' · view item →</span></button>'
+  ).join('')||'<div class="stock-empty">No related items.</div>';
+  related.querySelectorAll('[data-item-related]').forEach(button=>button.addEventListener('click',()=>openItem(button.dataset.itemRelated)));
+
+  showSelectedItemOffer(selectedShopId,{updateUrl:false});
+}
+async function openItem(itemId,options={}){
+  if(!itemId)return false;
+  return navigateRoute(
+    {view:'item',itemId,shopId:options.offerShop||null},
+    {replace:options.replace===true,direction:options.direction||'forward',animate:options.animate!==false}
+  );
+}
+
+function goBackFromItem(){
+  appBack('home');
+}
+
+function renderVendorStock(s,focus){
+  const list=document.getElementById('stockList');
+  const canOwnStock=ownsRetailStock(s);
+  const localRows=Array.isArray(s.local_offerings)?s.local_offerings.slice():[];
+  const canonicalRows=canOwnStock&&Array.isArray(s.stock)?s.stock.slice():[];
+  const sourceRows=[...localRows,...canonicalRows];
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only'&&canonicalRows.length===0;
+  const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
+  const children=childSellers(s);
+  const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s,sourceRows);
+  const stockTitle=document.getElementById('stockPanelTitle');
+  const search=document.getElementById('shopSearch');
+  const browser=document.getElementById('stockBrowser');
+  search.value='';
+
+  stockBrowserState={shop:null,rows:[],focusId:null,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
+  browser.hidden=true;
+
+  if(children.length){
+    stockTitle.textContent='Shops here';
+    search.placeholder='SEARCH SHOPS HERE';
+    const placeHtml=children.map(child=>{
+      const tags=String(child.tags||'').split('|').map(x=>x.trim()).filter(Boolean).slice(0,3);
+      const hay=[child.name,child.copy,child.type,...tags].filter(Boolean).join(' ').toLowerCase();
+      return '<button class="place-row" type="button" data-child-shop="'+esc(child.entity_id)+'" data-search="'+esc(hay)+'">'+
+        '<div><div class="place-name">'+esc(child.name)+'</div>'+
+        '<div class="place-desc">'+esc(child.copy||child.type||'Independent business at this location.')+'</div>'+
+        (tags.length?'<div class="place-tags">'+tags.map(tag=>'<span class="place-tag">'+esc(tag)+'</span>').join('')+'</div>':'')+
+        '</div><div class="place-meta"><strong>'+esc(child.type||'Shop')+'</strong>'+esc(modeLabel(child.stock_mode)||'')+'</div>'+
+        '<div class="place-arrow">View →</div></button>';
+    }).join('');
+    const sourceRetailNote=unnamedRetail
+      ?'<div class="nonstock-profile"><strong>'+esc(unnamedRetail.label||'Other shops')+'</strong><span>'+esc(unnamedRetail.note||'Additional retail is present here, but the source does not name the individual businesses.')+'</span></div>'
+      :'';
+    const ownStock=sourceRows.length?'<div class="stock-subsection-title">Stock sold directly by '+esc(s.name||'this location')+'</div>'+sourceRows.map(r=>stockRowHtml(s,r,focus?.item_id||null)).join(''):'';
+    list.innerHTML=placeHtml+sourceRetailNote+ownStock;
+    list.querySelectorAll('[data-child-shop]').forEach(el=>el.addEventListener('click',()=>{
+      const id=el.dataset.childShop;
+      openVendor(id);
+    }));
+    document.getElementById('stockSummary').innerHTML=children.length+' shop'+(children.length===1?'':'s')+' listed'+(unnamedRetail?'<br>Other source-described retail present':'')+(sourceRows.length?'<br>'+sourceRows.length+' direct stock line'+(sourceRows.length===1?'':'s'):'');
+    document.getElementById('restockBand').textContent='Browse the businesses at '+(s.name||'this location');
+    return;
+  }
+
+  if(unnamedRetail){
+    stockTitle.textContent='Shops here';
+    search.placeholder='SHOP LIST';
+    list.innerHTML='<div class="nonstock-profile"><strong>'+esc(unnamedRetail.label||'Retail here')+'</strong><span>'+esc(unnamedRetail.note||'The source confirms retail at this location but does not name the individual shops.')+'</span></div>';
+    document.getElementById('stockSummary').innerHTML='Retail present<br>Individual shops not named';
+    document.getElementById('restockBand').textContent=unnamedRetail.source_ref||s.source_ref||'Source-described retail';
+    return;
+  }
+
+  if(!canOwnStock){
+    const service=String(s.stock_mode||'').toUpperCase()==='SERVICE_ONLY'||
+      String(stockPolicyValue(s,'catalog_rule')||'').toUpperCase()==='NO_STATIC_INVENTORY';
+    stockTitle.textContent=service?'Services':'Place profile';
+    search.placeholder=service?'SERVICE PROFILE':'PLACE PROFILE';
+    const note=stockPolicyValue(s,'operational_stock_note')||
+      s.short_description||s.copy||s.blurb||
+      (service?'This place offers services rather than retail stock.':'This location does not hold retail stock.');
+    list.innerHTML='<div class="nonstock-profile"><strong>'+esc(nonStockLabel(s))+'</strong><span>'+esc(note)+'</span></div>';
+    document.getElementById('stockSummary').innerHTML=esc(nonStockLabel(s))+'<br>No retail inventory';
+    document.getElementById('restockBand').textContent=service?'Services · no shelf stock':'No retail stock at this record';
+    return;
+  }
+
+  stockTitle.textContent=localOnly?'Specialities':(menuMode?'Menu':'Stock');
+  search.placeholder=localOnly?'FILTER SPECIALITIES':(menuMode?'FILTER THIS MENU':'FILTER THIS SHOP');
+  if(!sourceRows.length){
+    if(menuMode){
+      list.innerHTML='<article class="stock-row menu-row" data-search=""><div><div class="stock-name">No menu listed</div></div><div class="price amber">—</div></article>';
+      document.getElementById('stockSummary').innerHTML='No menu items<br>Food & drink';
+      document.getElementById('restockBand').textContent='Menu';
+    }else{
+      list.innerHTML='<article class="stock-row" data-search=""><div><div class="stock-name">No shelf stock</div><div class="stock-sub">This place does not currently list physical stock.</div></div><div class="stock-meta"><strong>—</strong><br>no count</div><div class="price amber">—</div></article>';
+      document.getElementById('stockSummary').innerHTML='No shelf stock<br>'+esc(modeLabel(s.stock_mode));
+      document.getElementById('restockBand').textContent=s.stock_mode==='SERVICE_ONLY'?'Services only':'No current shelf inventory';
+    }
+    return;
+  }
+
+  const focusId=focus?.item_id?String(focus.item_id):null;
+  stockBrowserState={shop:s,rows:sourceRows,focusId,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
+  buildStockFilters(sourceRows,menuMode);
+  openStockAtFocus(sourceRows,focusId);
+  renderStockBrowserPage();
+  if(localOnly){
+    document.getElementById('stockSummary').innerHTML=sourceRows.length+' local specialit'+(sourceRows.length===1?'y':'ies')+'<br>Source-backed shop wares';
+    document.getElementById('restockBand').textContent='Local specialities · not quantity-tracked';
+  }else if(menuMode){
+    document.getElementById('stockSummary').innerHTML=sourceRows.length+' menu item'+(sourceRows.length===1?'':'s')+'<br>Food & drink';
+    document.getElementById('restockBand').textContent='Current menu';
+  }else{
+    document.getElementById('stockSummary').innerHTML=sourceRows.length+' item'+(sourceRows.length===1?'':'s')+' listed<br>'+esc(s.state?.cadence_label||'Current stock');
+    document.getElementById('restockBand').textContent=nextRefreshText(s.state);
+  }
+}
+function renderVendor(s,offers){
+  currentSellerId=s.entity_id;
+  const children=childSellers(s);
+  const canOwnStock=ownsRetailStock(s);
+  const menuMode=!children.length&&canOwnStock&&isFoodDrinkVenue(s);
+  const shopSearch=document.getElementById('shopSearch');
+  const shopSearchWrap=shopSearch.closest('.inline-search');
+  if(shopSearchWrap)shopSearchWrap.hidden=!children.length&&!canOwnStock;
+  const parent=parentSeller(s);
+  const parentLink=document.getElementById('parentLocationLink');
+  const parentStat=document.getElementById('parentStat');
+  const standaloneLocation=document.getElementById('standaloneLocation');
+  if(parent){
+    if(parentStat)parentStat.hidden=false;
+    document.getElementById('parentLocationName').textContent=parent.name;
+    parentLink.hidden=false;
+    if(standaloneLocation)standaloneLocation.hidden=true;
+    parentLink.dataset.parentShop=parent.entity_id;
+    parentLink.setAttribute('aria-label','View '+parent.name);
+  }else{
+    if(parentStat)parentStat.hidden=true;
+    parentLink.hidden=true;
+    if(standaloneLocation)standaloneLocation.hidden=true;
+    parentLink.removeAttribute('data-parent-shop');
+    parentLink.removeAttribute('aria-label');
+  }
+  const photoStrip=document.getElementById('vendorPhotoStrip');
+  const photoCredit=document.getElementById('vendorPhotoCredit');
+  if(s.image&&s.image.image_url){
+    const fx=Math.max(0,Math.min(1,Number(s.image.focal_x??0.5)))*100;
+    const fy=Math.max(0,Math.min(1,Number(s.image.focal_y??0.5)))*100;
+    photoStrip.style.backgroundImage='linear-gradient(0deg,rgba(12,9,8,.88) 0%,rgba(12,9,8,.40) 37%,rgba(12,9,8,.02) 78%), url("'+String(s.image.image_url).replace(/"/g,'%22')+'")';
+    photoStrip.style.backgroundPosition=(fx*100)+'% '+(fy*100)+'%';
+    photoCredit.innerHTML='PHOTO · <a href="'+esc(s.image.source_url)+'" target="_blank" rel="noopener">'+esc(s.image.photographer)+'</a> / <a href="'+esc(s.image.attribution_url)+'" target="_blank" rel="noopener">UNSPLASH</a>';
+  }else{
+    photoStrip.style.backgroundImage='linear-gradient(135deg,#3c3329,#17110c)';
+    photoStrip.style.backgroundPosition='50% 50%';
+    photoCredit.textContent='';
+  }
+  document.getElementById('vendorName').textContent=s.name||'Seller';
+  document.getElementById('vendorKicker').textContent=parent?((parent.name||'Containing location')+' / '+(s.type||'vendor')):'Night City / '+(s.type||'seller profile');
+  const localRows=Array.isArray(s.local_offerings)?s.local_offerings:[];
+  const canonicalRows=canOwnStock?(s.stock||[]):[];
+  const visibleStock=[...localRows,...canonicalRows];
+  const localOnly=String(s?.catalog_match?.strategy||'').toLowerCase()==='local_only'&&canonicalRows.length===0;
+  const unnamedRetail=s?.unnamed_retail?.present?s.unnamed_retail:null;
+  document.getElementById('vendorCopy').textContent=s.blurb||s.copy||s.short_description||s.modelling_note||'';
+  if(s.owner&&s.owner.name){
+    document.getElementById('vendorOwnerLabel').textContent=s.owner.name;
+    document.getElementById('vendorOwnerSub').textContent=[s.owner.role,s.owner.note].filter(Boolean).join(' · ');
+  }else{
+    document.getElementById('vendorOwnerLabel').textContent=parent?'Located in':'Vend-R listing';
+    document.getElementById('vendorOwnerSub').textContent=parent?parent.name:(s.source_ref||'Night City 2045');
+  }
+  document.getElementById('restockBand').textContent=menuMode?'Loading menu…':(canOwnStock?'Loading stock snapshot…':'No retail inventory');
+  document.getElementById('factStatus').textContent=children.length
+    ?(children.length+' shop'+(children.length===1?'':'s')+' listed')
+    :(unnamedRetail?'Retail present':(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s)));
+  document.getElementById('factDistrict').textContent=s.district||'Night City';
+  document.getElementById('factStockModeLabel').textContent='Listing';
+  document.getElementById('factStockMode').textContent=localOnly?'Speciality shop':(menuMode?'Menu':(modeLabel(s.stock_mode)||nonStockLabel(s)));
+  document.getElementById('factArchetype').textContent=s.type||'—';
+  const factSource=document.getElementById('factSource');
+  factSource.textContent=s.source_ref||'Vend-R original';
+  factSource.dataset.sourceCode=s.source_code||sourceCodeFromRefClient(s.source_ref)||'VENDR';
+  document.getElementById('factWorldState').textContent=canOwnStock?'Checking current stock…':(unnamedRetail?'Retailers not individually named':'No retail inventory');
+  if(children.length){
+    document.getElementById('contextKicker').textContent='At this location';
+    document.getElementById('contextTitle').textContent=children.length+' shop'+(children.length===1?'':'s')+' listed';
+    document.getElementById('contextCopy').textContent=unnamedRetail
+      ?'Named Vend-R retailers are shown below. The source also confirms additional retail here without naming the individual businesses.'
+      :'Each business below has its own profile, details and stock.';
+    document.getElementById('contextLine').textContent=(s.district||'Night City')+' · browse inside';
+  }else if(unnamedRetail){
+    document.getElementById('contextKicker').textContent='Retail at this location';
+    document.getElementById('contextTitle').textContent=unnamedRetail.label||'Other shops';
+    document.getElementById('contextCopy').textContent=unnamedRetail.note||'The source confirms retail here but does not name the individual shops.';
+    document.getElementById('contextLine').textContent=unnamedRetail.source_ref||s.source_ref||'Source-described retail';
+  }else if(parent){
+    document.getElementById('contextKicker').textContent='Inside';
+    document.getElementById('contextTitle').textContent=parent.name;
+    document.getElementById('contextCopy').textContent=parent.copy||('Part of '+parent.name+'.');
+    document.getElementById('contextLine').textContent='View containing location';
+  }else{
+    document.getElementById('contextKicker').textContent='Commercial context';
+    document.getElementById('contextTitle').textContent=s.district||'Night City';
+    document.getElementById('contextCopy').textContent=s.other||s.short_description||s.copy||s.modelling_note||'';
+    document.getElementById('contextLine').textContent=(menuMode?'MENU':modeLabel(s.stock_mode))+' · '+(s.type||'seller');
+  }
+  const display=s.display_tags||{};
+  const known=[...new Set([
+    s.shop_scale?('SIZE · '+String(s.shop_scale).toUpperCase()):null,
+    ...(display.known_for||[]),
+    ...(display.trade||[]),
+    ...String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean)
+  ].filter(Boolean))].slice(0,6);
+  document.getElementById('knownGrid').innerHTML=(known.length?known:[s.type].filter(Boolean)).map(x=>'<span>'+esc(x)+'</span>').join('');
+  const focus=offers||null;
+  currentFocusOffer=focus;
+  const exact=focus?(s.stock||[]).find(r=>String(r.item_id)===String(focus.item_id)):null;
+  const offer=document.getElementById('offerFocus');
+  if(focus){
+    offer.hidden=false;
+    document.getElementById('offerItemLink').dataset.itemId=String(focus.item_id||exact?.item_id||'');
+    document.getElementById('offerItemName').textContent=focus.item_name||exact?.name||'Selected item';
+    if(exact){
+      document.getElementById('offerKicker').textContent=menuMode?'Menu item':'Current offer';
+      document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
+      document.getElementById('offerQuantity').textContent=menuMode?'MENU ITEM':((exact.quantity==null?'On demand':String(exact.quantity)+' available')+' · '+(exact.condition||'stock item'));
+      document.getElementById('offerSub').textContent=menuMode?'This menu item brought you to '+(s.name||'this venue')+'.':[exact.availability_label,exact.price_tier,'This is the item that brought you to '+(s.name||'this seller')+'.'].filter(Boolean).join(' · ');
+    }else{
+      document.getElementById('offerKicker').textContent='You were looking for';
+      document.getElementById('offerPrice').textContent=menuMode?'NOT ON MENU':'NO CURRENT OFFER';
+      document.getElementById('offerQuantity').textContent=menuMode?'menu item unavailable':'no current shelf stock';
+      document.getElementById('offerSub').textContent=menuMode?(s.name||'This venue')+' is a plausible match, but the item is not on its current menu.':(s.name||'This seller')+' is a plausible seller for this catalogue item, but its current resolved stock does not contain it.';
+    }
+  }else{
+    offer.hidden=true;
+    document.getElementById('offerItemLink').removeAttribute('data-item-id');
+  }
+  document.getElementById('factStatus').textContent=children.length
+    ?(children.length+' shop'+(children.length===1?'':'s')+' listed')
+    :(unnamedRetail?'Retail present':(visibleStock.length?((localOnly?'Specialities':'Stock')+' · '+String(visibleStock.length)+' item'+(visibleStock.length===1?'':'s')):nonStockLabel(s)));
+  document.getElementById('factWorldState').textContent=menuMode
+    ?(visibleStock.length?'Current menu':'No menu listed')
+    :(visibleStock.length?nextRefreshText(s.state):(canOwnStock?'No shelf inventory':(unnamedRetail?'Retailers not individually named':'No retail inventory')));
+  renderVendorStock(s,focus);
+}
+async function openVendor(id,focus=null,options={}){
+  if(!id)return false;
+  const offerItemId=String(focus?.item_id||options.offerItemId||'').trim()||null;
+  return navigateRoute(
+    {view:'vendor',vendorId:id,offerItemId},
+    {replace:options.replace===true,direction:options.direction||'forward',animate:options.animate!==false}
+  );
+}
+
+function goBackFromVendor(){
+  appBack('home');
+}
+function filterShopStock(q){
+  q=String(q||'').trim().toLowerCase();
+  if(stockBrowserState.shop){
+    stockBrowserState.query=q;
+    stockBrowserState.page=0;
+    renderStockBrowserPage();
+    return;
+  }
+  document.querySelectorAll('#stockList .stock-row, #stockList .place-row').forEach(row=>{
+    const hay=(row.textContent+' '+(row.dataset.search||'')).toLowerCase();
+    row.style.display=(!q||hay.includes(q))?'':'none';
+  });
+}
+
+function hash01(value,salt=0){
+  let h=2166136261 ^ salt;
+  const s=String(value||'');
+  for(let i=0;i<s.length;i++){
+    h^=s.charCodeAt(i);
+    h=Math.imul(h,16777619);
+  }
+  return ((h>>>0)%10000)/10000;
+}
+function paintSpaciel(canvas,readoutId,signalRows,{userPosition=null}={}){
+  if(!canvas)return;
+  const rect=canvas.getBoundingClientRect();
+  if(rect.width<2||rect.height<2)return;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=Math.round(rect.width*dpr);
+  canvas.height=Math.round(rect.height*dpr);
+  const ctx=canvas.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const w=rect.width,h=rect.height;
+  ctx.clearRect(0,0,w,h);
+  const roadSets=[
+    [[.02,.77],[.18,.69],[.33,.63],[.49,.54],[.68,.49],[.97,.34]],
+    [[.00,.33],[.17,.39],[.30,.43],[.46,.46],[.61,.55],[.79,.69],[1,.78]],
+    [[.13,.02],[.20,.21],[.27,.36],[.33,.56],[.40,.74],[.49,.99]],
+    [[.65,.00],[.61,.18],[.58,.35],[.59,.51],[.68,.68],[.82,.89]],
+    [[.00,.58],[.22,.55],[.40,.56],[.59,.62],[.80,.60],[1,.51]],
+    [[.33,.00],[.36,.19],[.44,.34],[.58,.44],[.78,.46],[1,.43]],
+    [[.04,.91],[.23,.82],[.41,.78],[.57,.75],[.73,.78],[.94,.95]]
+  ];
+  ctx.lineCap='round';
+  roadSets.forEach((road,idx)=>{
+    ctx.beginPath();
+    road.forEach((p,i)=>{const x=p[0]*w,y=p[1]*h;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});
+    ctx.strokeStyle=idx===0?'rgba(244,210,70,.72)':'rgba(202,221,216,.24)';
+    ctx.lineWidth=idx===0?2.2:1.15;ctx.stroke();
+  });
+  for(let i=0;i<18;i++){
+    const y=(.07+i*.051)*h,wobble=(i%3)*.012*w;
+    ctx.beginPath();ctx.moveTo(-.02*w,y);ctx.lineTo(.22*w+wobble,y-.035*h);ctx.lineTo(.48*w-wobble,y+.012*h);ctx.lineTo(.72*w+wobble,y-.02*h);ctx.lineTo(1.02*w,y+.018*h);
+    ctx.strokeStyle='rgba(130,164,160,.08)';ctx.lineWidth=.7;ctx.stroke();
+  }
+  const live=(signalRows||[]).slice(0,18);
+  live.forEach((s,i)=>{
+    const point=signalSpatialPoint(s);
+    if(!point)return;
+    const x=point.x*w,y=point.y*h;
+    ctx.beginPath();ctx.arc(x,y,3.3,0,Math.PI*2);ctx.fillStyle=i<5?'#f4d246':'#fff6df';ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,i<5?7:5.7,0,Math.PI*2);ctx.strokeStyle=i<5?'rgba(244,210,70,.42)':'rgba(255,246,223,.22)';ctx.lineWidth=1;ctx.stroke();
+  });
+  if(userPosition&&Number.isFinite(Number(userPosition.x))&&Number.isFinite(Number(userPosition.y))){
+    const ux=clampMap(userPosition.x)*w,uy=clampMap(userPosition.y)*h;
+    ctx.beginPath();ctx.arc(ux,uy,8.5,0,Math.PI*2);ctx.fillStyle='rgba(240,91,19,.18)';ctx.fill();
+    ctx.beginPath();ctx.arc(ux,uy,5.5,0,Math.PI*2);ctx.strokeStyle='#f05b13';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(ux,uy-11);ctx.lineTo(ux,uy+11);ctx.moveTo(ux-11,uy);ctx.lineTo(ux+11,uy);ctx.strokeStyle='#fff6df';ctx.lineWidth=1.4;ctx.stroke();
+    ctx.beginPath();ctx.arc(ux,uy,2.2,0,Math.PI*2);ctx.fillStyle='#f4d246';ctx.fill();
+  }
+  const readout=document.getElementById(readoutId);
+  if(readout)readout.textContent=live.length+' VEND-R SIGNAL'+(live.length===1?'':'S')+' · NIGHT CITY';
+}
+function drawSpaciel(){
+  const district=activeSpatialDistrict();
+  const live=nearestHomeSellers(18).map(x=>x.seller);
+  paintSpaciel(
+    document.getElementById('spacielCanvas'),
+    'spacielReadout',
+    live,
+    {userPosition:spatialSnapshot?.position||null}
+  );
+  const readout=document.getElementById('spacielReadout');
+  if(readout)readout.textContent=live.length+' NEARBY PLACE'+(live.length===1?'':'S')+' · '+(district||'NIGHT CITY').toUpperCase();
+}
+function drawSearchSpaciel(data=lastSearch?.data){
+  const district=activeSpatialDistrict();
+  const live=(data?.offers||[]).filter(o=>o.kind==='available').slice().sort((a,b)=>
+    spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score
+  ).slice(0,18);
+  paintSpaciel(
+    document.getElementById('searchSpacielCanvas'),
+    'searchSpacielReadout',
+    live,
+    {userPosition:spatialSnapshot?.position||null}
+  );
+  const readout=document.getElementById('searchSpacielReadout');
+  if(readout)readout.textContent=live.length+' NEAREST OFFER'+(live.length===1?'':'S')+' · FROM '+(district||'NIGHT CITY').toUpperCase();
+}
+window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
+
+document.getElementById('resultsSort').addEventListener('click',e=>{
+  const button=e.target.closest('[data-sort]');
+  if(!button||!lastSearch)return;
+  resultSortMode=button.dataset.sort;
+  document.querySelectorAll('#resultsSort [data-sort]').forEach(x=>x.classList.toggle('on',x===button));
+  renderAvailableOffers(lastSearch.data);
+});
+
+async function boot(){
+  try{
+    const [h,initialSources]=await Promise.all([api({api:'health'}),api({api:'sources'})]);
+    sourceCatalog=initialSources.sources||[];
+    sourceSummary=initialSources;
+    loadSourcePreferences();
+    const selected=sourceSelectionParam();
+    if(selected!==null){
+      sourceSummary=await api({api:'sources',sources:selected});
+      sourceCatalog=sourceSummary.sources||sourceCatalog;
+    }
+    const s=await api({api:'shops'});
+    sellers=s.shops||[];
+    buildMockSpatialAnchors();
+    spatialSnapshot=await RadianSpatial.snapshot();
+    applySpatialLabels();
+    document.getElementById('marketPulse').textContent=sellers.length+' Vend-R places · '+(h.places||650)+' mapped places · '+Number(sourceSummary.visible_item_count||h.catalog_items||1275).toLocaleString()+' visible catalogue entries';
+    renderHomeDefault();
+    drawSpaciel();
+    requestAnimationFrame(()=>{syncHeaderBackdrop();syncHeaderShadows()});
+
+    const route=routeFromLocation();
+    currentNavIndex=(history.state&&history.state.vendr===true&&Number.isFinite(Number(history.state.navIndex)))
+      ?Number(history.state.navIndex):0;
+    history.replaceState(historyPayload(route,currentNavIndex),'',routeUrl(route));
+    const prepared=await prepareRoute(route);
+    await showPreparedRoute(prepared.route,prepared.payload,{animate:false,direction:'forward'});
+  }catch(e){
+    console.error(e);
+    document.getElementById('marketPulse').textContent='Market data unavailable';
+  }
+}
+
+const marketInput=document.getElementById('marketSearchTop');
+document.querySelectorAll('.global-search-input').forEach(bindGlobalSearch);
+document.addEventListener('click',e=>{
+  document.querySelectorAll('.global-search').forEach(search=>{
+    if(!search.contains(e.target))hideSuggestions(search.querySelector('.search-suggest'));
+  });
+});
+
+document.getElementById('marketBrowseButton').addEventListener('click',()=>{
+  hideSuggestions();
+  window.scrollTo({top:document.querySelector('#homeView .grid-2').offsetTop-20,behavior:'smooth'});
+});
+document.getElementById('sourceManagerButton').addEventListener('click',()=>openSources());
+document.getElementById('sourcesBack').addEventListener('click',()=>appBack('home'));
+document.getElementById('sourcesToolbar').addEventListener('click',e=>{
+  const button=e.target.closest('[data-source-preset]');
+  if(button)setSourcePreset(button.dataset.sourcePreset).catch(console.error);
+});
+document.getElementById('sourceFamilies').addEventListener('click',e=>{
+  const familyButton=e.target.closest('[data-source-family][data-source-family-mode]');
+  if(familyButton){
+    setSourceFamilyPreset(familyButton.dataset.sourceFamily,familyButton.dataset.sourceFamilyMode).catch(console.error);
+    return;
+  }
+  const button=e.target.closest('[data-source-code]');
+  if(button)toggleSource(button.dataset.sourceCode).catch(console.error);
+});
+['itemSource','factSource'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{
+  openSources(e.currentTarget.dataset.sourceCode||null);
+}));
+
+const spatialOverlay=document.getElementById('spatialOverlay');
+const spatialSelect=document.getElementById('spatialDistrictSelect');
+function openSpatialDialog(){
+  const districts=Object.keys(mockSpatialAnchors);
+  spatialSelect.innerHTML=districts.map(d=>'<option value="'+esc(d)+'">'+esc(d)+'</option>').join('');
+  const district=activeSpatialDistrict()||districts[0]||'';
+  spatialSelect.value=district;
+  updateSpatialReadout(district);
+  spatialOverlay.hidden=false;
+}
+function closeSpatialDialog(){spatialOverlay.hidden=true}
+document.getElementById('spatialMockButton').addEventListener('click',openSpatialDialog);
+document.getElementById('spatialClose').addEventListener('click',closeSpatialDialog);
+spatialOverlay.addEventListener('click',e=>{if(e.target===spatialOverlay)closeSpatialDialog()});
+spatialSelect.addEventListener('change',e=>updateSpatialReadout(e.currentTarget.value));
+document.getElementById('spatialReset').addEventListener('click',()=>{
+  const fallback=mockSpatialAnchors['Little Europe']?'Little Europe':Object.keys(mockSpatialAnchors)[0];
+  if(fallback){spatialSelect.value=fallback;updateSpatialReadout(fallback)}
+});
+document.getElementById('spatialApply').addEventListener('click',()=>{
+  if(MockSpacielProvider.setTestDistrict(spatialSelect.value))closeSpatialDialog();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!spatialOverlay.hidden)closeSpatialDialog()});
+document.getElementById('searchBackHome').addEventListener('click',()=>appBack('home'));
+document.getElementById('backToMarket').addEventListener('click',goBackFromVendor);
+document.getElementById('itemBack').addEventListener('click',goBackFromItem);
+document.getElementById('itemSelectedSeller').addEventListener('click',e=>{
+  const shopId=e.currentTarget.dataset.shop;
+  const offer=shopId?selectedItemOffer(shopId):null;
+  if(shopId)openVendor(shopId,offer,{pushHistory:true});
+});
+document.getElementById('offerItemLink').addEventListener('click',e=>{
+  const itemId=e.currentTarget.dataset.itemId;
+  if(itemId)openItem(itemId,{offerShop:currentSellerId});
+});
+document.getElementById('stockList').addEventListener('click',e=>{
+  const row=e.target.closest('[data-stock-item]');
+  if(row)openItem(row.dataset.stockItem,{offerShop:currentSellerId});
+});
+document.getElementById('stockList').addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  const row=e.target.closest('[data-stock-item]');
+  if(row){e.preventDefault();openItem(row.dataset.stockItem,{offerShop:currentSellerId})}
+});
+document.getElementById('parentLocationLink').addEventListener('click',e=>{
+  const id=e.currentTarget.dataset.parentShop;
+  if(id)openVendor(id);
+});
+document.getElementById('stockFilters').addEventListener('click',e=>{
+  const button=e.target.closest('[data-stock-category]');
+  if(!button||!stockBrowserState.shop)return;
+  stockBrowserState.category=button.dataset.stockCategory||'all';
+  stockBrowserState.page=0;
+  renderStockBrowserPage();
+});
+document.getElementById('stockPrev').addEventListener('click',()=>{
+  if(!stockBrowserState.shop)return;
+  stockBrowserState.page=Math.max(0,stockBrowserState.page-1);
+  renderStockBrowserPage();
+});
+document.getElementById('stockNext').addEventListener('click',()=>{
+  if(!stockBrowserState.shop)return;
+  stockBrowserState.page+=1;
+  renderStockBrowserPage();
+});
+document.getElementById('shopSearch').addEventListener('input',e=>filterShopStock(e.currentTarget.value));
+
+window.addEventListener('popstate',async e=>{
+  const route=normalizeRoute(routeFromLocation());
+  const nextIndex=(e.state&&e.state.vendr===true&&Number.isFinite(Number(e.state.navIndex)))
+    ?Number(e.state.navIndex):0;
+  const direction=nextIndex<currentNavIndex?'back':'forward';
+  currentNavIndex=nextIndex;
+  try{
+    await showPreparingRoute(route,prepareRoute(route),{direction});
+  }catch(err){
+    console.error(err);
+  }
+});
+
+boot();
+</script>
+
+<style>
+#vendrReviewRibbon{position:fixed;right:12px;bottom:12px;z-index:9999;
+background:#17110c;color:#f4d246;border:2px solid #f4d246;box-shadow:5px 5px 0 #17110c55;
+padding:7px 9px;font:800 9px/1.4 ui-monospace,monospace;letter-spacing:.07em;pointer-events:none}
+</style>
+<div id="vendrReviewRibbon" aria-label="Design review, not the live website">DESIGN PREVIEW · NOT LIVE</div>
+<script>
+/* Preview-only bridge: production still uses the /shops photo fields from the
+   proposed API update. Fetch only visible shop details here so the unfinished
+   API deployment does not block visual review of the photo cards. */
+(function(){
+ const loaded=new Map();
+ const requested=new WeakSet();
+ let active=0;
+ const waiting=[];
+ let observed=0;
+ function applyPhoto(card,image){
+   if(!card.isConnected||!image||!image.image_url)return;
+   let u;
+   try{u=new URL(image.image_url,location.href);if(!/^https?:$/.test(u.protocol))return}catch(_){return}
+   card.style.setProperty('--shop-image','url('+JSON.stringify(u.href)+')');
+   const norm=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):.5));
+   card.style.setProperty('--shop-image-position',(norm(image.focal_x)*100)+'% '+(norm(image.focal_y)*100)+'%');
+ }
+ async function worker(){
+   if(active>=3||!waiting.length)return;
+   const job=waiting.shift();active++;
+   try{
+     let promise=loaded.get(job.id);
+     if(!promise){
+       promise=api({api:'shop',id:job.id}).then(shop=>shop.image||null).catch(()=>null);
+       loaded.set(job.id,promise);
+     }
+     applyPhoto(job.card,await promise);
+   }finally{active--;worker()}
+ }
+ const observer=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
+   for(const entry of entries){
+     if(!entry.isIntersecting)continue;
+     observer.unobserve(entry.target);
+     const id=entry.target.dataset.shop;
+     if(id){waiting.push({id,card:entry.target});worker()}
+   }
+ },{rootMargin:'280px 0px'}):null;
+ function scan(){
+   for(const card of document.querySelectorAll('.shop-photo-card[data-shop]')){
+     if(requested.has(card))continue;
+     requested.add(card);
+     if(card.style.getPropertyValue('--shop-image'))continue;
+     if(observer)observer.observe(card);
+     else{waiting.push({id:card.dataset.shop,card});worker()}
+   }
+ }
+ const mutation=new MutationObserver(scan);
+ mutation.observe(document.body,{subtree:true,childList:true});
+ scan();
+})();
+</script>
+</body>
+</html>
