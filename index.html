@@ -4301,7 +4301,7 @@ function renderVendor(s,offers){
   let extraNode=document.getElementById('vendorAdditionalCopy');
   const copyNode=document.getElementById('vendorCopy');
   if(!extraNode){extraNode=document.createElement('p');extraNode.id='vendorAdditionalCopy';extraNode.className='vendor-additional-copy';copyNode.insertAdjacentElement('afterend',extraNode);}
-  extraNode.hidden=!extraCopy||baseCopy.includes(extraCopy);
+  extraNode.hidden=!extraCopy||baseCopy.includes(extraCopy)||(!children.length&&!unnamedRetail&&!parent);
   extraNode.textContent=extraNode.hidden?'':extraCopy;
   const focus=offers||null;
   currentFocusOffer=focus;
