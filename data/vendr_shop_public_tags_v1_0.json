@@ -1,0 +1,2713 @@
+{
+  "project": "Vend-R / Night City 2045",
+  "version": "public-taxonomy-v1.0",
+  "scope": "152 live stock profiles",
+  "definitions": {
+    "type": "Reusable establishment types",
+    "known_for": "Reusable merchandise families",
+    "services": "Services offered",
+    "trade": "Trading and supply characteristics"
+  },
+  "rules": [
+    "Unique shop information belongs in blurb / other, not new tags",
+    "Do not use public_display_tags for stock generation; keep original display_tags for legacy stock heuristics",
+    "Context-only places retain commercial_role separately"
+  ],
+  "notes": [
+    "149 reviewed records align with v1.3 source; 3 newer live records mapped conservatively",
+    "The source-v1.3 Rancho Coronado fuel station ID does not exist on the current live stock profile table; the current Outskirts entry is mapped independently"
+  ],
+  "profiles": [
+    {
+      "entity_id": "NC2045-EVT-SANTO-DOMINGO-270-WOODCHIPPER-NIGHT-MARKET",
+      "name": "Woodchipper’s Night Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock",
+          "Nomad trade",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-IMP-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven district branches",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-IMP-MIDNIGHT-MARKETS",
+      "name": "Midnight Markets",
+      "display_tags": {
+        "type": [
+          "Market stall"
+        ],
+        "known_for": [
+          "Luxury goods"
+        ],
+        "services": [],
+        "trade": [
+          "Rare stock",
+          "Irregular stock",
+          "Premium pricing",
+          "Grey market"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-IMP-NIGHT-MARKETS",
+      "name": "Local Night Markets",
+      "display_tags": {
+        "type": [
+          "Market stall"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock",
+          "Grey market",
+          "Premium pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-IMP-OASIS",
+      "name": "Oasis district branches",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-IMP-VENDITS",
+      "name": "Vendits",
+      "display_tags": {
+        "type": [
+          "Distribution channel"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "name": "Bella Vista Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [
+          "Food & drink",
+          "Art & collectibles"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "name": "Europa Meatworks",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA",
+      "name": "Goosetopia",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Art & collectibles"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "name": "Guns & Dolls",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Tools & parts"
+        ],
+        "services": [],
+        "trade": [
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "name": "Moleharty’s Books & Antiques",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Books & print",
+          "Art & collectibles"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "name": "Munch Munch Munch",
+      "display_tags": {
+        "type": [
+          "Nightlife venue"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [
+          "Entertainment"
+        ],
+        "trade": [
+          "Restricted access"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "Luxury goods",
+          "General goods",
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "name": "Animelocaris",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Media & entertainment",
+          "Clothing & accessories",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-CYBORG-STATION",
+      "name": "Cyborg Station",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Made to order",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
+      "name": "Kabuki Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS",
+      "name": "Matsura Food Products",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "name": "Murakami Suiun Imports",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Vehicles",
+          "Electronics & communications",
+          "Weapons",
+          "Armour"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
+      "name": "Nakagawa Garage Tower",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "name": "Oasis (Kabuki)",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "name": "Sanroo Neuro-land",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Ammunition",
+          "Weapon parts"
+        ],
+        "services": [],
+        "trade": [
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
+      "name": "Yum Seng",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [
+          "Seafood",
+          "Food & drink"
+        ],
+        "services": [
+          "Entertainment"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+      "name": "The Hong Kong Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "name": "Ling Husan’s New China Pharmacy",
+      "display_tags": {
+        "type": [
+          "Pharmacy"
+        ],
+        "known_for": [
+          "Medical supplies",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
+      "name": "Prosperity Garden Tenements",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [
+          "Custom work"
+        ],
+        "trade": []
+      },
+      "description_detail_added": "Crullers are among the offerings"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
+      "name": "The Seep",
+      "display_tags": {
+        "type": [
+          "Non-retail site"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "name": "Continental Brands Vertical Neighborhood",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "name": "Everything and More",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+      "name": "Kaito Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [
+          "Weapons",
+          "Food & drink",
+          "Software"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": "A mix of independent vendors operates here"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "name": "Torrell and Chiang’s",
+      "display_tags": {
+        "type": [
+          "Market stall"
+        ],
+        "known_for": [
+          "Armour",
+          "Clothing & accessories",
+          "Luxury goods"
+        ],
+        "services": [
+          "Custom work"
+        ],
+        "trade": [
+          "Made to order",
+          "Premium pricing",
+          "Direct order"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA",
+      "name": "Denya Jinja",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Art & collectibles",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "name": "Holliday Market",
+      "display_tags": {
+        "type": [
+          "Market stall",
+          "Pawn shop"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "name": "Post Exchange (PX)",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "Weapons",
+          "Clothing & accessories",
+          "Electronics & communications",
+          "Military surplus"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "name": "Byte & Switch",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Electronics & communications"
+        ],
+        "services": [
+          "Repairs",
+          "Custom work"
+        ],
+        "trade": [
+          "Grey market",
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "name": "Nana Meow’s Nursery",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Home & garden"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "name": "Sleepeasy Home Solutions",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Home & garden",
+          "Electronics & communications",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-NORTH-HEYWOOD-252-WOODLAND-PARK",
+      "name": "Woodland Park",
+      "display_tags": {
+        "type": [
+          "Non-retail site"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER",
+      "name": "Flasher’s Corner",
+      "display_tags": {
+        "type": [
+          "Second-hand shop"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "name": "Kibble Kirkle",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "name": "The Warren",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT",
+      "name": "The Basement",
+      "display_tags": {
+        "type": [
+          "Second-hand shop"
+        ],
+        "known_for": [
+          "Art & collectibles"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Rare stock",
+          "Restricted access"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
+      "name": "Honest Hiro’s Used Cars",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Vehicles"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "name": "Mrs. Suzuki’s Bodega",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS",
+      "name": "Neo Galaxy Cards and Comics",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Books & print",
+          "Medical supplies"
+        ],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": "It hosts a trading-card-game community"
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "name": "White Side",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "General goods",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS",
+      "name": "Bits’n’Bolts",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "Electronics & communications"
+        ],
+        "services": [
+          "Repairs"
+        ],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
+      "name": "Jodes Camp",
+      "display_tags": {
+        "type": [
+          "Nomad camp"
+        ],
+        "known_for": [],
+        "services": [
+          "Logistics & resupply"
+        ],
+        "trade": [
+          "Nomad trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "name": "Pursuit Security Inc Showroom",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Ammunition",
+          "Weapon parts",
+          "Armour"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "name": "Smile Another Day",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "General goods",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "name": "Stop. Shop. Stitch.",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods",
+          "Cyberware"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "name": "Grand Junction Gift Shop",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Art & collectibles"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "display_tags": {
+        "type": [
+          "Market stall",
+          "Pawn shop"
+        ],
+        "known_for": [
+          "General goods",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY",
+      "name": "Maritime Supply",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "Clothing & accessories",
+          "General goods"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+      "name": "Minimallism",
+      "display_tags": {
+        "type": [
+          "Retail complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "name": "Earl’s Second Hand Shop",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Weapons",
+          "General goods",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "name": "Reclamation Zone Station",
+      "display_tags": {
+        "type": [
+          "Institutional site",
+          "Market"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "name": "Aldecaldo Camp",
+      "display_tags": {
+        "type": [
+          "Nomad camp"
+        ],
+        "known_for": [],
+        "services": [
+          "Logistics & resupply"
+        ],
+        "trade": [
+          "Nomad trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
+      "name": "Northern Light Supplies",
+      "display_tags": {
+        "type": [
+          "Distribution channel"
+        ],
+        "known_for": [],
+        "services": [
+          "Logistics & resupply"
+        ],
+        "trade": []
+      },
+      "description_detail_added": "Black-market routing is associated with the operation"
+    },
+    {
+      "entity_id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+      "name": "Woodchipper’s Garage",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "name": "Container Mart",
+      "display_tags": {
+        "type": [
+          "Retail complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": "The site includes container units"
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "name": "Club Atlantis",
+      "display_tags": {
+        "type": [
+          "Nightlife venue"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "name": "Kasim’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "name": "Worthy Housing",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "display_tags": {
+        "type": [
+          "Nightlife venue"
+        ],
+        "known_for": [
+          "Drugs"
+        ],
+        "services": [],
+        "trade": [
+          "Grey market"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "name": "Carriage Street Books/Afterwords Café",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Books & print",
+          "Media & entertainment",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+      "name": "Night City University",
+      "display_tags": {
+        "type": [
+          "Institutional site"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "name": "Retail Resale",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "name": "Bay Bridge Residences",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": "Combat Concierge operates within this location"
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "name": "Crystal Park Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [
+          "NET equipment",
+          "Cyberware",
+          "Electronics & communications",
+          "Media & entertainment"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "name": "GraffitiX",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Art & collectibles",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "name": "The Forge",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-GREAT-RIVER-STOREHOUSE",
+      "name": "Great River Storehouse",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Electronics & communications",
+          "Clothing & accessories",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "name": "Metal Heaven",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Media & entertainment"
+        ],
+        "services": [
+          "Custom work"
+        ],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "name": "Midnight Arms Regional Office",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Ammunition",
+          "Weapon parts"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "name": "Ziggurat Headquarters",
+      "display_tags": {
+        "type": [
+          "Institutional site"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": "Repair teams work from the headquarters"
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "name": "Faisal’s Customs",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Weapon parts"
+        ],
+        "services": [
+          "Custom work"
+        ],
+        "trade": [
+          "Made to order",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "name": "Gibson Battlegear Outlet",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Armour",
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "name": "Megabuilding H10",
+      "display_tags": {
+        "type": [
+          "Residential complex"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MORGAN-S",
+      "name": "Morgan’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Armour"
+        ],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "name": "Snack & Shack",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "name": "Turbo Neon Motors",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Vehicles",
+          "Tools & parts",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
+      "name": "Oasis Megamart",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-DOCKS-243-PICCOLO",
+      "name": "Piccolo",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-HEYWOOD-INDUSTRIAL-ZONE-259-THE-FURNACE",
+      "name": "The Furnace",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+      "name": "Armory Pawn Shop",
+      "display_tags": {
+        "type": [
+          "Second-hand shop"
+        ],
+        "known_for": [
+          "Military surplus",
+          "Weapons",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA",
+      "name": "Burning Bright Bodega",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-EVERSMILE",
+      "name": "EverSmilE",
+      "display_tags": {
+        "type": [
+          "Clinic"
+        ],
+        "known_for": [],
+        "services": [
+          "Body modification"
+        ],
+        "trade": [
+          "Restricted access"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-ROOTS-OF-THE-FOREST",
+      "name": "Roots of the Forest",
+      "display_tags": {
+        "type": [
+          "Retail complex"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [
+          "Entertainment"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-SYKOSTYLES",
+      "name": "SykoStyles",
+      "display_tags": {
+        "type": [
+          "Clinic"
+        ],
+        "known_for": [],
+        "services": [
+          "Body modification"
+        ],
+        "trade": [
+          "Restricted access"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-MEN-UPPER-MARINA-068-COMBAT-CONCIERGE",
+      "name": "Combat Concierge",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Ammunition",
+          "Armour",
+          "Weapons"
+        ],
+        "services": [
+          "Repairs"
+        ],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-DIGG-S",
+      "name": "Digg’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-FADE-FOREVER",
+      "name": "Fade Forever",
+      "display_tags": {
+        "type": [
+          "Salon / barber"
+        ],
+        "known_for": [],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-RAINBOW-ART-SUPPLY",
+      "name": "Rainbow Art Supply",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Medical supplies",
+          "Art & collectibles",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-REFROSH-WASH",
+      "name": "Refrosh Wash",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-KABUKI-203-SHOU-AN",
+      "name": "Shou-an",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-JAYARAMAN-S",
+      "name": "Jayaraman’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Seafood",
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-BONESETTER",
+      "name": "The Bonesetter",
+      "display_tags": {
+        "type": [
+          "Clinic"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "Medical supplies"
+        ],
+        "services": [
+          "Medical treatment"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-LITTLE-RED-BOOK",
+      "name": "The Little Red Book",
+      "display_tags": {
+        "type": [
+          "Nightlife venue"
+        ],
+        "known_for": [
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
+      "name": "Yuenyang Tea Shop",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-CHINA-101-PROSPERITY-GARDEN-DRY-GOODS-BODEGA",
+      "name": "Dry Goods Store / Bodega",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "General goods"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APOCALYPSE-ZONE-TATTOO",
+      "name": "Apocalypse Zone Tattoo",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Clothing & accessories"
+        ],
+        "services": [
+          "Body modification"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-APP-SHACK",
+      "name": "App Shack",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Software",
+          "Media & entertainment",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Grey market",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-CHEEK-TURN",
+      "name": "Cheek Turn",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Ammunition",
+          "Weapons",
+          "Armour"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-FIFTY-FARMS",
+      "name": "Fifty Farms",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-GREG-S",
+      "name": "Greg’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-IMPORTED-GOODS-4-CHEAP",
+      "name": "Imported Goods 4 Cheap",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Electronics & communications",
+          "Clothing & accessories",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Budget pricing",
+          "Irregular stock",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-MADAME-ZORINA",
+      "name": "Madame Zorina",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Discreet trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-SAGAR-HAIR-SALOON",
+      "name": "Sagar Hair Saloon",
+      "display_tags": {
+        "type": [
+          "Salon / barber"
+        ],
+        "known_for": [],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-STONE-MILL",
+      "name": "Stone Mill",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Budget pricing",
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": "Baked goods are offered"
+    },
+    {
+      "entity_id": "NC2045-OUT-LITTLE-EUROPE-060-TACO-TACO",
+      "name": "Taco Taco",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-251-TRUVY-S-SALON",
+      "name": "Truvy’s Salon",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Clothing & accessories"
+        ],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": [
+          "Steady supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "name": "B. Breeze",
+      "display_tags": {
+        "type": [
+          "Pharmacy"
+        ],
+        "known_for": [
+          "Medical supplies"
+        ],
+        "services": [],
+        "trade": [
+          "Discreet trade",
+          "Premium pricing",
+          "Street trade",
+          "Grey market"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "name": "B. Baskin Books",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Books & print",
+          "Media & entertainment"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "name": "E. Smithery",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Weapon parts"
+        ],
+        "services": [
+          "Custom work"
+        ],
+        "trade": [
+          "Made to order",
+          "Premium pricing",
+          "Direct order"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
+      "name": "F. Uncle Anne’s",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM",
+      "name": "B. Ingalls Farm",
+      "display_tags": {
+        "type": [
+          "Non-retail site"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-OUTSKIRTS-296-FUEL-STATION",
+      "name": "Fuel Station",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods",
+          "Vehicles"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-DOC-MILES",
+      "name": "Doc Miles",
+      "display_tags": {
+        "type": [
+          "Clinic"
+        ],
+        "known_for": [],
+        "services": [
+          "Body modification",
+          "Medical treatment"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-PACIFICA-PLAYGROUND-279-THE-NOMAD-S-MARKET",
+      "name": "The Nomad’s Market",
+      "display_tags": {
+        "type": [
+          "Market stall"
+        ],
+        "known_for": [
+          "Weapons",
+          "Clothing & accessories",
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Nomad trade",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-6TH-STREET-STATION",
+      "name": "6th Street Station",
+      "display_tags": {
+        "type": [
+          "Institutional site"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-RC-NIGHT-MARKET",
+      "name": "RC Night Market",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-THE-SAMARITAN",
+      "name": "The Samaritan",
+      "display_tags": {
+        "type": [
+          "Clinic"
+        ],
+        "known_for": [],
+        "services": [
+          "Medical treatment",
+          "Custom work"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RANCHO-CORONADO-290-XOOX",
+      "name": "XOOX",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Nomad trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+      "name": "Carmen’s Cosmetics",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-EGGHEADZ",
+      "name": "Eggheadz",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "NET equipment",
+          "Software",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+      "name": "Forever Beautiful",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Home & garden",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+      "name": "Forgotten Treasures",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "Clothing & accessories",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+      "name": "Underground Bodega",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "name": "B. Bazaar El Saber",
+      "display_tags": {
+        "type": [
+          "Market"
+        ],
+        "known_for": [],
+        "services": [],
+        "trade": [
+          "Irregular stock"
+        ]
+      },
+      "description_detail_added": "The participating sellers rotate"
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "name": "C. Caitlin Market",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Food & drink",
+          "Ammunition",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Nomad trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-266-SKINNY-JAMES-LOT",
+      "name": "Skinny James’ Lot",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [
+          "Vehicles"
+        ],
+        "services": [],
+        "trade": [
+          "Nomad trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SANTO-DOMINGO-269-YOBRO",
+      "name": "YoBro!",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Weapons",
+          "Ammunition",
+          "Weapon parts"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-ANCESTRAL-THREADS",
+      "name": "Ancestral Threads",
+      "display_tags": {
+        "type": [
+          "Salon / barber"
+        ],
+        "known_for": [],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CHOPPER-S",
+      "name": "Chopper’s",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware"
+        ],
+        "services": [
+          "Medical treatment"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-CONTAINER-BODEGA",
+      "name": "Container Bodega",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-GETAWAY-TOURS",
+      "name": "Getaway Tours",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Media & entertainment",
+          "Luxury goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-OLD-LADY-STUFF",
+      "name": "Old Lady Stuff",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Armour",
+          "Clothing & accessories",
+          "General goods"
+        ],
+        "services": [
+          "Repairs"
+        ],
+        "trade": [
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-PANIK",
+      "name": "Panik",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Clothing & accessories"
+        ],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": [
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-141-SLUSHSLURP",
+      "name": "SlushSlurp",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "Drugs"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "name": "I. Lombardy Groceries",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-069-CORPORATE-COOL",
+      "name": "Corporate Cool",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply",
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-BILL-S",
+      "name": "Bill’s",
+      "display_tags": {
+        "type": [
+          "Salon / barber"
+        ],
+        "known_for": [],
+        "services": [
+          "Hair & beauty"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-CYBERSHACK",
+      "name": "Cybershack",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "NET equipment",
+          "Electronics & communications",
+          "Media & entertainment"
+        ],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-MAXWELL-S",
+      "name": "Maxwell’s",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [],
+        "services": [
+          "Repairs",
+          "Custom work"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-OTHER-LIVES",
+      "name": "Other Lives",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Media & entertainment",
+          "Medical supplies"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-PIZZA-TO-GO",
+      "name": "Pizza to Go",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "Food & drink"
+        ],
+        "services": [],
+        "trade": [
+          "Corporate supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-SKINLIGHT",
+      "name": "Skinlight",
+      "display_tags": {
+        "type": [
+          "Cyberware studio"
+        ],
+        "known_for": [
+          "Cyberware",
+          "Clothing & accessories"
+        ],
+        "services": [],
+        "trade": [
+          "Premium pricing"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TECH-TIME",
+      "name": "Tech Time",
+      "display_tags": {
+        "type": [
+          "Pawn shop"
+        ],
+        "known_for": [
+          "Tools & parts",
+          "General goods",
+          "Electronics & communications"
+        ],
+        "services": [],
+        "trade": [
+          "Second-hand",
+          "Irregular stock",
+          "Budget pricing",
+          "Street trade"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-UPPER-MARINA-070-TORCH-S-TOTAL-REPAIRS",
+      "name": "Torch’s Total Repairs",
+      "display_tags": {
+        "type": [
+          "Service venue"
+        ],
+        "known_for": [],
+        "services": [
+          "Repairs"
+        ],
+        "trade": []
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
+      "name": "Data Inc",
+      "display_tags": {
+        "type": [
+          "Retailer"
+        ],
+        "known_for": [
+          "NET equipment",
+          "Electronics & communications",
+          "Media & entertainment",
+          "General goods"
+        ],
+        "services": [],
+        "trade": [
+          "Steady supply"
+        ]
+      },
+      "description_detail_added": null
+    },
+    {
+      "entity_id": "NC2045-REF-011-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "display_tags": {
+        "type": [],
+        "known_for": [],
+        "services": [],
+        "trade": []
+      },
+      "description_detail_added": null
+    }
+  ]
+}
