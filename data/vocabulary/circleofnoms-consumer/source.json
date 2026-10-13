@@ -1,0 +1,43 @@
+{
+  "id": "circleofnoms-consumer",
+  "title": "CircleofNoms Consumer Vocabulary",
+  "creator": "u/CircleofNoms",
+  "host": "Dataterm",
+  "game": "Cyberpunk RED",
+  "source_type": "homebrew-random-tables",
+  "official": false,
+  "family": "unofficial",
+  "status": "release-candidate",
+  "pack_version": "0.2.0",
+  "retrieved": "2026-08-19",
+  "source_index_url": "https://montreal.dataterm.ca/en/random-tables/",
+  "pages": [
+    {
+      "key": "whats-in-this-vendit",
+      "title": "What's in this Vendit?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-this-vendit/"
+    },
+    {
+      "key": "whats-in-the-box",
+      "title": "What's in the Box?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-the-box/"
+    },
+    {
+      "key": "whats-in-their-pockets",
+      "title": "What's in Their Pockets?",
+      "url": "https://montreal.dataterm.ca/en/random-tables/whats-in-their-pockets/"
+    }
+  ],
+  "note": "The source pages identify the tables as homebrew by u/CircleofNoms. Dataterm is recorded as host, not creator, and states that it hosts the original material with permission.",
+  "redistribution_note": "This pack stores Vend-R normalized concepts, classifications, links and attribution rather than reproducing the source tables.",
+  "distribution": {
+    "status": "permission-pending",
+    "creator_permission_recorded": false,
+    "dataterm_hosting_permission_is_not_vendr_permission": true,
+    "required_before_public_redistribution": true,
+    "free_access_required": true,
+    "rtg_homebrew_policy_url": "https://rtalsoriangames.com/homebrew-content-policy/",
+    "redistribution_scope": "normalized vocabulary only",
+    "exclude_original_tables": true
+  }
+}

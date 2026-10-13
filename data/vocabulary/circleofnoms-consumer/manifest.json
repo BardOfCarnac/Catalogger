@@ -1,0 +1,51 @@
+{
+  "pack_version": "0.2.0",
+  "pack_id": "circleofnoms-consumer",
+  "distribution_status": "permission-pending",
+  "counts": {
+    "concepts": 127,
+    "official_links": 15,
+    "descriptors": 23,
+    "brand_profiles": 27,
+    "brand_affinity_edges": 200,
+    "raw_source_outcomes_reviewed": 300
+  },
+  "files": [
+    "README.md",
+    "DISTRIBUTION.md",
+    "source.json",
+    "concepts.json",
+    "official-links.json",
+    "descriptors.json",
+    "brand-profiles.json",
+    "filtering.json"
+  ],
+  "pricing": {
+    "scheme": "Cyberpunk RED economy tiers",
+    "origin": "Vend-R editorial assignment",
+    "tier_values_eb": {
+      "Cheap": 10,
+      "Everyday": 20,
+      "Costly": 50,
+      "Premium": 100,
+      "Expensive": 500,
+      "Very Expensive": 1000,
+      "Luxury": 5000,
+      "Super Luxury": 10000
+    },
+    "assigned": 124,
+    "unresolved": 3,
+    "tier_counts": {
+      "Cheap": 27,
+      "Everyday": 52,
+      "Costly": 34,
+      "Premium": 9,
+      "Expensive": 2
+    },
+    "unresolved_ids": [
+      "VOC-CN-0071",
+      "VOC-CN-0090",
+      "VOC-CN-0113"
+    ]
+  }
+}
