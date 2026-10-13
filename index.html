@@ -1900,6 +1900,27 @@ body::-webkit-scrollbar,
 }
 .search-suggest{scrollbar-gutter:auto}
 
+
+/* Vend-R shop taxonomy v1.0 */
+.vendor-hero .known-grid.standard-taxonomy{display:flex;flex-direction:column;gap:13px;padding:14px 0 1px;grid-template-columns:none}
+.known-group-heading{font:900 10px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.12em;margin-bottom:7px;color:var(--ink)}
+.known-tag-list{display:flex;flex-wrap:wrap;gap:7px}
+.known-tag{background:#fff7df;border:2px solid var(--ink);padding:8px 10px;text-align:left;font:850 11px/1.25 ui-monospace,Menlo,monospace;text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.known-tag:hover,.known-tag:focus-visible{background:#f5d446}
+.no-tags{color:var(--muted);font:11px/1.4 ui-monospace,Menlo,monospace}
+.vendor-additional-copy{margin-top:10px!important}
+.taxonomy-dialog{border:3px solid var(--ink);background:#fff6dd;color:var(--ink);box-shadow:9px 9px 0 #17110c70;padding:0;width:min(92vw,580px);max-height:82dvh;overflow:auto}
+.taxonomy-dialog::backdrop{background:rgba(12,10,8,.74)}
+.taxonomy-dialog-head{position:sticky;top:0;background:#f5d446;padding:15px 17px;border-bottom:3px solid var(--ink);display:flex;gap:12px;align-items:center;justify-content:space-between}
+.taxonomy-dialog-head h2{font:1000 23px/1 Impact,'Arial Narrow',Arial,sans-serif;text-transform:uppercase;margin:4px 0 0}
+.taxonomy-dialog-head small{font:800 10px ui-monospace,Menlo,monospace;letter-spacing:.08em}
+.taxonomy-dialog-close{background:#fff9e9;border:2px solid var(--ink);font-weight:900;font-size:20px;width:38px;height:38px;cursor:pointer}
+.taxonomy-dialog-summary{padding:13px 17px;font-size:12px;line-height:1.4}
+.taxonomy-results{padding:0 16px 17px}
+.taxonomy-result{display:block;width:100%;text-align:left;background:#fffaf1;border:2px solid var(--ink);padding:13px;margin:0 0 8px;cursor:pointer}
+.taxonomy-result:hover{background:#ffdf73}
+.taxonomy-result strong{display:block;text-transform:uppercase;font:900 16px Impact,'Arial Narrow',Arial,sans-serif}
+.taxonomy-result small{display:block;margin-top:4px;font:10px ui-monospace,Menlo,monospace}
 </style>
 </head>
 <body>
@@ -2310,15 +2331,15 @@ body::-webkit-scrollbar,
 
           <div class="vendor-context-grid">
             <div class="vendor-context-copy">
-              <div class="kicker" id="contextKicker">Commercial context</div>
+              <div class="kicker" id="contextKicker">Location context</div>
               <h3 id="contextTitle">Night City</h3>
               <p id="contextCopy">Loading local market context…</p>
               <div class="market-line" id="contextLine">Night City market feed</div>
             </div>
             <div class="vendor-known">
               <div class="section-head">
-                <h2>Known for</h2>
-                <span>Local pattern</span>
+                <h2>Shop tags</h2>
+                <span>Controlled categories</span>
               </div>
               <div class="known-grid" id="knownGrid">
                 <span>Loading seller profile…</span>
@@ -4259,19 +4280,29 @@ function renderVendor(s,offers){
     document.getElementById('contextCopy').textContent=parent.copy||('Part of '+parent.name+'.');
     document.getElementById('contextLine').textContent='View containing location';
   }else{
-    document.getElementById('contextKicker').textContent='Commercial context';
+    document.getElementById('contextKicker').textContent='Location context';
     document.getElementById('contextTitle').textContent=s.district||'Night City';
     document.getElementById('contextCopy').textContent=s.other||s.short_description||s.copy||s.modelling_note||'';
     document.getElementById('contextLine').textContent=(menuMode?'MENU':modeLabel(s.stock_mode))+' · '+(s.type||'seller');
   }
-  const display=s.display_tags||{};
-  const known=[...new Set([
-    s.shop_scale?('SIZE · '+String(s.shop_scale).toUpperCase()):null,
-    ...(display.known_for||[]),
-    ...(display.trade||[]),
-    ...String(s.tags||'').split('|').map(x=>x.trim()).filter(Boolean)
-  ].filter(Boolean))].slice(0,6);
-  document.getElementById('knownGrid').innerHTML=(known.length?known:[s.type].filter(Boolean)).map(x=>'<span>'+esc(x)+'</span>').join('');
+  // Public tags classify shops; unique shop details belong in descriptive copy.
+  const display=s.stock_profile_present===false?{}:(s.display_tags||{});
+  const tagGroups=[['type','TYPE'],['known_for','KNOWN FOR'],['services','SERVICES'],['trade','TRADE']];
+  const markup=tagGroups.map(([key,label])=>{
+    const tags=[...new Set(Array.isArray(display[key])?display[key].filter(x=>typeof x==='string'&&x.trim()):[])];
+    if(!tags.length)return '';
+    return '<section class="known-group"><div class="known-group-heading">'+label+'</div><div class="known-tag-list">'+tags.map(x=>'<button type="button" class="known-tag" data-taxonomy-key="'+esc(key)+'" data-taxonomy-value="'+esc(x)+'" title="Find shops tagged '+esc(x)+'">'+esc(x)+'</button>').join('')+'</div></section>';
+  }).join('');
+  const knownNode=document.getElementById('knownGrid');
+  knownNode.classList.add('standard-taxonomy');
+  knownNode.innerHTML=markup||'<span class="no-tags">No classified shop tags for this location.</span>';
+  const extraCopy=String(s.other||'').trim();
+  const baseCopy=String(s.blurb||s.copy||s.short_description||'').trim();
+  let extraNode=document.getElementById('vendorAdditionalCopy');
+  const copyNode=document.getElementById('vendorCopy');
+  if(!extraNode){extraNode=document.createElement('p');extraNode.id='vendorAdditionalCopy';extraNode.className='vendor-additional-copy';copyNode.insertAdjacentElement('afterend',extraNode);}
+  extraNode.hidden=!extraCopy||baseCopy.includes(extraCopy);
+  extraNode.textContent=extraNode.hidden?'':extraCopy;
   const focus=offers||null;
   currentFocusOffer=focus;
   const exact=focus?(s.stock||[]).find(r=>String(r.item_id)===String(focus.item_id)):null;
@@ -4566,6 +4597,33 @@ window.addEventListener('popstate',async e=>{
   }catch(err){
     console.error(err);
   }
+});
+
+
+// Tag discovery matches sellers from the user's currently enabled sources.
+const taxonomyDialog=document.createElement('dialog');
+taxonomyDialog.className='taxonomy-dialog';
+taxonomyDialog.id='vendrTaxonomyDialog';
+taxonomyDialog.innerHTML='<div class="taxonomy-dialog-head"><div><small>VEND-R / SHOP CLASSIFICATION</small><h2 id="taxonomyDialogTitle">Browse a tag</h2></div><button type="button" class="taxonomy-dialog-close" aria-label="Close">×</button></div><div class="taxonomy-dialog-summary" id="taxonomyDialogSummary"></div><div class="taxonomy-results" id="taxonomyDialogResults"></div>';
+document.body.appendChild(taxonomyDialog);
+taxonomyDialog.querySelector('.taxonomy-dialog-close').addEventListener('click',()=>taxonomyDialog.close());
+taxonomyDialog.addEventListener('click',event=>{
+ if(event.target===taxonomyDialog){taxonomyDialog.close();return}
+ const option=event.target.closest('button[data-tax-shop]');
+ if(option){taxonomyDialog.close();openVendor(option.dataset.taxShop)}
+});
+document.getElementById('knownGrid').addEventListener('click',event=>{
+ const tag=event.target.closest('button[data-taxonomy-key]');
+ if(!tag)return;
+ const key=tag.dataset.taxonomyKey,value=tag.dataset.taxonomyValue;
+ const matches=sellers.filter(x=>x.stock_profile_present!==false&&Array.isArray(x.display_tags?.[key])&&x.display_tags[key].includes(value))
+   .sort((a,b)=>String(a.name||'').localeCompare(String(b.name||'')));
+ document.getElementById('taxonomyDialogTitle').textContent=value;
+ document.getElementById('taxonomyDialogSummary').textContent=matches.length+' matching location'+(matches.length===1?'':'s')+' among your currently enabled sources. Tags group establishments; unique shop details remain in descriptions.';
+ document.getElementById('taxonomyDialogResults').innerHTML=matches.length?matches.map(x=>
+  '<button type="button" class="taxonomy-result" data-tax-shop="'+esc(x.entity_id)+'"><strong>'+esc(x.name||'Unnamed location')+'</strong><small>'+esc((x.district||'Night City')+' · '+((x.display_tags?.type||[])[0]||'Commercial location'))+'</small></button>'
+ ).join(''):'<p>No other currently enabled listings have this tag.</p>';
+ taxonomyDialog.showModal();
 });
 
 boot();
