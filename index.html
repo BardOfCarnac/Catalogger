@@ -1983,6 +1983,184 @@ body::-webkit-scrollbar,
 /* Shop photographs never change their source on hover, press or focus. */
 .hero.vendor-hero{padding:0}
 
+
+/* =====================================================
+   ITEM CATALOGUE COMPONENTS — three 4:3 image formats
+   Full item: 4:3 image / copy; search & stock: thumb row;
+   browse: square-ish card with information and price below.
+   Images belong to items, never full-bleed shop backgrounds.
+   ===================================================== */
+.item-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  align-items:start;
+}
+.item-image{
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:4/3;
+  border-right:4px solid var(--ink);
+  border-bottom:0;
+  background-size:cover;
+  background-position:50% 50%;
+}
+.item-copy{min-width:0}
+.item-hero .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.item-hero .item-stat.price{background:var(--rear-4);grid-column:1/-1}
+.item-hero .item-stat.price dd{font-size:clamp(25px,3vw,38px);line-height:1}
+.item-hero .item-identity{
+  font:900 11px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin:-2px 0 13px;
+}
+.item-hero .item-copy .hero-title{font-size:clamp(32px,4vw,60px);line-height:.94;overflow-wrap:anywhere}
+.catalogue-thumb{
+  --catalogue-image:linear-gradient(135deg,#d6c9aa,#f6efd9);
+  --catalogue-position:50% 50%;
+  display:block;
+  aspect-ratio:4/3;
+  width:100%;
+  min-width:0;
+  background-color:#e7deca;
+  background-image:var(--catalogue-image);
+  background-size:cover;
+  background-position:var(--catalogue-position);
+  background-repeat:no-repeat;
+  border:1px solid rgba(23,17,12,.2);
+  flex:none;
+  overflow:hidden;
+}
+.catalogue-thumb:not(.has-photo)::after{
+  content:"ITEM";display:grid;place-items:center;width:100%;height:100%;
+  font:900 9px ui-monospace,monospace;letter-spacing:.13em;color:#8a7962
+}
+/* Dense stock rows: photograph is beside details, never behind them. */
+#stockList .stock-row.catalogue-list-row{
+  grid-template-columns:102px minmax(0,1.1fr) minmax(95px,.48fr) auto;
+  gap:13px;
+}
+#stockList .catalogue-list-row .stock-name{font-size:clamp(16px,1.8vw,22px)}
+#stockList .catalogue-list-row .catalogue-thumb{width:102px}
+#stockList.stock-tile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+  gap:11px;
+  padding:13px;
+}
+#stockList.stock-tile-grid .stock-row.catalogue-tile{
+  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  border:2px solid var(--ink);background:var(--paper);padding:7px;min-width:0;
+  cursor:pointer;
+}
+#stockList.stock-tile-grid .catalogue-tile .catalogue-thumb{width:100%}
+#stockList.stock-tile-grid .catalogue-tile .stock-text{flex:1;padding:10px 5px 4px}
+#stockList.stock-tile-grid .catalogue-tile .stock-name{font-size:18px;line-height:.98}
+#stockList.stock-tile-grid .catalogue-tile .stock-sub{font-size:9px}
+#stockList.stock-tile-grid .catalogue-tile .stock-meta{
+  width:100%;padding:6px 5px 8px;font-size:10px
+}
+#stockList.stock-tile-grid .catalogue-tile .price{
+  width:calc(100% + 14px);margin:0 -7px -7px;
+  text-align:left;background:var(--rear-4);padding:10px 12px;
+  border-top:2px solid var(--ink);font-size:21px
+}
+.item-display-switch{
+  display:inline-flex;align-items:center;gap:0;flex:none;
+  border:2px solid var(--ink);background:var(--paper);
+}
+.item-display-switch button{
+  padding:7px 9px;border:0;background:transparent;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;color:var(--ink);cursor:pointer
+}
+.item-display-switch button+button{border-left:2px solid var(--ink)}
+.item-display-switch button[aria-pressed="true"]{background:var(--rear-4)}
+.stock-browser-nav .item-display-switch{margin-left:auto}
+.results-sort .item-display-switch{margin-left:auto}
+.search-offer:not(.catalogue-tile){
+  grid-template-columns:92px minmax(0,1.2fr) minmax(0,.85fr) auto;
+}
+.search-offer:not(.catalogue-tile) .catalogue-thumb{width:92px}
+.search-offer.exact-mode:not(.catalogue-tile) .item-col{display:block}
+.search-offer-list.catalogue-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;padding:12px;background:var(--cream)
+}
+.search-offer-list.catalogue-grid .search-offer.catalogue-tile{
+  display:flex;flex-direction:column;gap:0;align-items:stretch;
+  min-width:0;padding:7px;border:2px solid var(--ink);
+  background:var(--paper);text-align:left;overflow:hidden
+}
+.search-offer-list.catalogue-grid .catalogue-tile .catalogue-thumb{width:100%}
+.search-offer-list.catalogue-grid .catalogue-tile .item-col{display:block;flex:1;padding:10px 5px 7px}
+.search-offer-list.catalogue-grid .catalogue-tile .item-name{font-size:19px}
+.search-offer-list.catalogue-grid .catalogue-tile .seller-col{padding:0 5px 9px}
+.search-offer-list.catalogue-grid .catalogue-tile .seller-name{font-size:12px}
+.search-offer-list.catalogue-grid .catalogue-tile .price-block{
+  width:calc(100% + 14px);min-width:0;margin:0 -7px -7px;
+  padding:9px 12px;background:var(--rear-4);border-top:2px solid var(--ink);
+  text-align:left
+}
+.search-offer-list.catalogue-grid .catalogue-tile .price{font-size:23px}
+.item-related,.related-items{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;padding:10px
+}
+.item-related .catalogue-related,.related-items .catalogue-related{
+  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  min-width:0;border:2px solid var(--ink);background:var(--paper);
+  padding:6px;text-align:left;cursor:pointer
+}
+.item-related .catalogue-related .catalogue-thumb,
+.related-items .catalogue-related .catalogue-thumb{width:100%;margin-bottom:10px}
+.item-related .catalogue-related .related-copy,
+.related-items .catalogue-related .related-copy{display:block;flex:1;padding:0 5px 9px;min-width:0}
+.item-related .catalogue-related strong,
+.related-items .catalogue-related strong{font-size:16px;line-height:1.03}
+.item-related .catalogue-related .related-action,
+.related-items .catalogue-related .related-action{
+  display:block;background:var(--rear-4);color:var(--ink);
+  font:900 10px ui-monospace,monospace;text-transform:uppercase;
+  padding:9px;margin:0 -6px -6px;border-top:2px solid var(--ink)
+}
+@media (max-width:760px){
+  .item-hero-grid{grid-template-columns:1fr}
+  .item-image{
+    width:100%;height:auto;min-height:0;aspect-ratio:4/3;
+    border-right:0;border-bottom:4px solid var(--ink)
+  }
+  .item-hero .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #stockList .stock-row.catalogue-list-row{
+    grid-template-columns:76px minmax(0,1fr) auto;gap:10px;padding:10px 12px
+  }
+  #stockList .catalogue-list-row .catalogue-thumb{width:76px;grid-row:1/span 2}
+  #stockList .catalogue-list-row .stock-text{grid-column:2;grid-row:1}
+  #stockList .catalogue-list-row .stock-meta{grid-column:2;grid-row:2;font-size:9px}
+  #stockList .catalogue-list-row .stock-meta strong{font-size:11px}
+  #stockList .catalogue-list-row .price{grid-column:3;grid-row:1/span 2;font-size:15px}
+  .search-offer:not(.catalogue-tile){
+    grid-template-columns:76px minmax(0,1fr) auto;gap:10px;padding:10px
+  }
+  .search-offer:not(.catalogue-tile) .catalogue-thumb{width:76px;grid-column:1;grid-row:1/span 2}
+  .search-offer:not(.catalogue-tile) .item-col{grid-column:2;grid-row:1}
+  .search-offer:not(.catalogue-tile) .seller-col{grid-column:2;grid-row:2}
+  .search-offer:not(.catalogue-tile) .price-block{grid-column:3;grid-row:1/span 2;min-width:0}
+  .search-offer:not(.catalogue-tile) .item-name{font-size:16px}
+  .search-offer:not(.catalogue-tile) .seller-name{font-size:12px}
+  .search-offer:not(.catalogue-tile) .price{font-size:15px}
+  .search-offer-list.catalogue-grid,
+  #stockList.stock-tile-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px}
+  .item-related,.related-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px}
+}
+@media (max-width:375px){
+  .item-display-switch button{padding:6px 7px}
+  .search-offer:not(.catalogue-tile){grid-template-columns:65px minmax(0,1fr) auto;gap:7px}
+  .search-offer:not(.catalogue-tile) .catalogue-thumb{width:65px}
+  .search-offer:not(.catalogue-tile) .price{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -2195,6 +2373,10 @@ body::-webkit-scrollbar,
           <button type="button" data-sort="condition">Condition</button>
           <button type="button" data-sort="availability">Availability</button>
           <button type="button" data-sort="stock">Stock level</button>
+          <div class="item-display-switch" aria-label="Search item display">
+            <button type="button" data-item-view="list" aria-pressed="true">☷ List</button>
+            <button type="button" data-item-view="grid" aria-pressed="false">▦ Grid</button>
+          </div>
         </div>
         <div class="search-offer-list" id="availableOffersList"></div>
       </section>
@@ -2282,13 +2464,14 @@ body::-webkit-scrollbar,
           <div class="item-copy">
             <div class="kicker" id="itemKicker">Catalogue item</div>
             <h1 class="hero-title" id="itemName">Item</h1>
+            <div class="item-identity" id="itemByline">Catalogue identity</div>
             <p class="item-description" id="itemDescription">Loading catalogue description…</p>
 
             <dl class="item-stat-grid">
-              <div class="item-stat price"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
+              <div class="item-stat price"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
+              <div class="item-stat"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
               <div class="item-stat availability"><dt>Availability</dt><dd id="itemAvailability">—</dd></div>
               <div class="item-stat"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
-              <div class="item-stat"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
               <div class="item-stat"><dt>Category</dt><dd id="itemCategory">—</dd></div>
               <div class="item-stat"><dt>Source</dt><dd><button class="source-link" id="itemSource" type="button">—</button></dd></div>
               <div class="item-stat"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
@@ -2440,6 +2623,10 @@ body::-webkit-scrollbar,
           <div class="stock-filter-row" id="stockFilters"></div>
           <div class="stock-browser-nav">
             <span id="stockBrowserMeta">All stock</span>
+            <div class="item-display-switch" aria-label="Stock item display">
+              <button type="button" data-stock-view="list" aria-pressed="true">☷ List</button>
+              <button type="button" data-stock-view="grid" aria-pressed="false">▦ Grid</button>
+            </div>
             <div class="stock-pager">
               <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
               <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
