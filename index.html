@@ -2161,6 +2161,24 @@ body::-webkit-scrollbar,
   .search-offer:not(.catalogue-tile) .price{font-size:13px}
 }
 
+
+/* Compact map-side search offers and small mobile view switches. */
+.nearby-offer.catalogue-nearby{
+  grid-template-columns:66px minmax(0,1fr) auto;gap:10px
+}
+.nearby-offer.catalogue-nearby .catalogue-thumb{width:66px}
+.nearby-offer.catalogue-nearby strong{font-size:14px}
+#stockBrowser .stock-browser-nav{flex-wrap:wrap;justify-content:flex-start}
+#stockBrowser #stockBrowserMeta{flex:1 1 100px}
+.item-related .catalogue-related span,
+.related-items .catalogue-related span{margin-top:0}
+.item-related .catalogue-related .related-action,
+.related-items .catalogue-related .related-action{margin-top:auto}
+@media(max-width:375px){
+  .nearby-offer.catalogue-nearby{grid-template-columns:54px minmax(0,1fr) auto;gap:7px}
+  .nearby-offer.catalogue-nearby .catalogue-thumb{width:54px}
+}
+
 </style>
 </head>
 <body>
@@ -4193,7 +4211,7 @@ function stockRowHtml(s,row,focusId){
   const sub=row.is_local
     ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
     :[flavourText,row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
-  const mode=stockDisplayMode==='grid'?'catalogue-tile':'catalogue-list-row';
+  const mode=stockBrowserState.shop&&stockDisplayMode==='grid'?'catalogue-tile':'catalogue-list-row';
   return '<article class="stock-row '+mode+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'">'+
     catalogueImageMarkup(row.item_id,row.name,row.image)+
     '<div class="stock-text"><div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
