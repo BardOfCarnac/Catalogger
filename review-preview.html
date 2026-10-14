@@ -437,7 +437,7 @@ button,input,select{font:inherit}
   text-align:left;
   cursor:pointer;
 }
-.home-nearby-row:hover{background:rgba(244,210,70,.12)}
+.home-nearby-row:not(.shop-photo-card):hover{background:rgba(244,210,70,.12)}
 .home-nearby-name{
   font-size:18px;
   font-weight:1000;
@@ -681,7 +681,7 @@ button,input,select{font:inherit}
   cursor:pointer;
 }
 .list-row:last-child{border-bottom:0}
-.list-row:hover{background:rgba(255,255,255,.38)}
+.list-row:not(.shop-photo-card):hover{background:rgba(255,255,255,.38)}
 .row-title{
   font-weight:1000;
   font-size:18px;
@@ -1716,7 +1716,7 @@ button,input,select{font:inherit}
 }
 
 .mini-card[data-shop]{cursor:pointer}
-.mini-card[data-shop]:hover{background:rgba(255,255,255,.48)}
+.mini-card[data-shop]:not(.shop-photo-card):hover{background:rgba(255,255,255,.48)}
 .action-btn[disabled]{opacity:.65;cursor:default}
 
 /* Place hierarchy: containers render child businesses in the main list. */
@@ -1911,7 +1911,7 @@ body::-webkit-scrollbar,
   background-size:cover;background-position:center,var(--shop-image-position);
   transition:filter .18s ease;
 }
-.shop-photo-card:hover{filter:brightness(1.08)}
+.shop-photo-card:hover{filter:none}
 .shop-photo-card:focus-visible{outline:3px solid var(--rear-4);outline-offset:-4px}
 .home-nearby-list{display:grid;align-content:start;gap:8px}
 .home-nearby-row.shop-photo-card{min-height:78px;border:0;padding:11px 13px;grid-template-columns:minmax(0,1fr) auto;align-items:end}
@@ -1953,7 +1953,7 @@ body::-webkit-scrollbar,
 }
 .mini-card.shop-photo-card .mini-dist{border-color:rgba(255,246,223,.6);color:#f6d448}
 .vendor-hero{border:0;background:transparent;overflow:visible}
-.vendor-photo-strip{min-height:clamp(340px,43vw,530px);padding:30px 28px 25px}
+.vendor-photo-strip{min-height:0;aspect-ratio:16/9;max-height:520px;padding:26px 28px 25px;background-repeat:no-repeat;background-size:cover;background-position:center;isolation:isolate}
 .vendor-photo-strip:after{background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.12))}
 .vendor-photo-strip .hero-title.vendor{
   font-size:clamp(44px,5.8vw,88px);line-height:.9;max-width:20ch;margin:7px 0 0;overflow-wrap:anywhere
@@ -1973,19 +1973,14 @@ body::-webkit-scrollbar,
   .shop-photo-panel .list-row.shop-photo-card:last-child{margin-bottom:0}
   .shop-photo-panel .cards-3{gap:10px;padding:0}
   .mini-card.shop-photo-card{min-height:210px}
-  .vendor-photo-strip{min-height:clamp(350px,67vh,530px);padding:22px 18px 26px}
-  .vendor-photo-strip .hero-title.vendor{font-size:clamp(44px,11vw,68px)}
+  .vendor-photo-strip{min-height:0;aspect-ratio:16/9;max-height:none;padding:18px 18px 22px}
+  .vendor-photo-strip .hero-title.vendor{font-size:clamp(32px,9.1vw,54px);line-height:.91;margin:5px 0 0}
   .vendor-info-body{margin-top:12px;padding:18px;border:var(--panel-border)}
 }
 @media (prefers-reduced-motion:reduce){.shop-photo-card{transition:none}}
 
 
-/* Keep photographs visible under legacy row hover styles. */
-.home-nearby-row.shop-photo-card:hover,
-.shop-photo-panel .list-row.shop-photo-card:hover,
-.mini-card.shop-photo-card[data-shop]:hover{
-  background-image:linear-gradient(180deg,rgba(14,10,8,.04) 18%,rgba(14,10,8,.32) 55%,rgba(14,10,8,.89) 100%),var(--shop-image);
-}
+/* Shop photographs never change their source on hover, press or focus. */
 .hero.vendor-hero{padding:0}
 
 </style>
@@ -2543,6 +2538,11 @@ function syncHeaderShadows(){
   const layerRect = scrollShadowLayer.getBoundingClientRect();
   document.querySelectorAll(`.view.active :is(${headerShadowSelector})`).forEach(el=>{
     if(!el.getClientRects().length) return;
+    // Borderless photographic sections on mobile have no parent box:
+    // their former shadow-copy was casting a shadow over empty background.
+    if(el.matches('.vendor-hero'))return;
+    if(window.matchMedia('(max-width:760px)').matches &&
+       el.matches('.home-hero,.shop-photo-panel'))return;
     current.add(el);
     let copy = shadowCopies.get(el);
     if(!copy){
@@ -4675,23 +4675,21 @@ window.addEventListener('popstate',async e=>{
 
 boot();
 </script>
-
 <style>
-#vendrReviewRibbon{position:fixed;right:12px;bottom:12px;z-index:9999;
+#vendrReviewRibbon{position:fixed;right:9px;bottom:9px;z-index:9999;opacity:.8;
 background:#17110c;color:#f4d246;border:2px solid #f4d246;box-shadow:5px 5px 0 #17110c55;
-padding:7px 9px;font:800 9px/1.4 ui-monospace,monospace;letter-spacing:.07em;pointer-events:none}
+padding:4px 5px;font:800 8px/1.4 ui-monospace,monospace;letter-spacing:.07em;pointer-events:none}
 </style>
 <div id="vendrReviewRibbon" aria-label="Design review, not the live website">DESIGN PREVIEW · NOT LIVE</div>
 <script>
-/* Preview-only bridge: production still uses the /shops photo fields from the
-   proposed API update. Fetch only visible shop details here so the unfinished
-   API deployment does not block visual review of the photo cards. */
+/* Review-only photo bridge. Load shop imagery when cards appear, without
+   tying loading or re-selection to hover, touch, click, or scroll position.
+   The future /shops image fields replace this adapter in production. */
 (function(){
  const loaded=new Map();
  const requested=new WeakSet();
  let active=0;
  const waiting=[];
- let observed=0;
  function applyPhoto(card,image){
    if(!card.isConnected||!image||!image.image_url)return;
    let u;
@@ -4712,22 +4710,15 @@ padding:7px 9px;font:800 9px/1.4 ui-monospace,monospace;letter-spacing:.07em;poi
      applyPhoto(job.card,await promise);
    }finally{active--;worker()}
  }
- const observer=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
-   for(const entry of entries){
-     if(!entry.isIntersecting)continue;
-     observer.unobserve(entry.target);
-     const id=entry.target.dataset.shop;
-     if(id){waiting.push({id,card:entry.target});worker()}
-   }
- },{rootMargin:'280px 0px'}):null;
  function scan(){
    for(const card of document.querySelectorAll('.shop-photo-card[data-shop]')){
      if(requested.has(card))continue;
      requested.add(card);
      if(card.style.getPropertyValue('--shop-image'))continue;
-     if(observer)observer.observe(card);
-     else{waiting.push({id:card.dataset.shop,card});worker()}
+     const id=card.dataset.shop;
+     if(id)waiting.push({id,card});
    }
+   worker();worker();worker();
  }
  const mutation=new MutationObserver(scan);
  mutation.observe(document.body,{subtree:true,childList:true});
