@@ -1983,6 +1983,202 @@ body::-webkit-scrollbar,
 /* Shop photographs never change their source on hover, press or focus. */
 .hero.vendor-hero{padding:0}
 
+
+/* =====================================================
+   ITEM CATALOGUE COMPONENTS — three 4:3 image formats
+   Full item: 4:3 image / copy; search & stock: thumb row;
+   browse: square-ish card with information and price below.
+   Images belong to items, never full-bleed shop backgrounds.
+   ===================================================== */
+.item-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  align-items:start;
+}
+.item-image{
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:4/3;
+  border-right:4px solid var(--ink);
+  border-bottom:0;
+  background-size:cover;
+  background-position:50% 50%;
+}
+.item-copy{min-width:0}
+.item-hero .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.item-hero .item-stat.price{background:var(--rear-4);grid-column:1/-1}
+.item-hero .item-stat.price dd{font-size:clamp(25px,3vw,38px);line-height:1}
+.item-hero .item-identity{
+  font:900 11px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin:-2px 0 13px;
+}
+.item-hero .item-copy .hero-title{font-size:clamp(32px,4vw,60px);line-height:.94;overflow-wrap:anywhere}
+.catalogue-thumb{
+  --catalogue-image:linear-gradient(135deg,#d6c9aa,#f6efd9);
+  --catalogue-position:50% 50%;
+  display:block;
+  aspect-ratio:4/3;
+  width:100%;
+  min-width:0;
+  background-color:#e7deca;
+  background-image:var(--catalogue-image);
+  background-size:cover;
+  background-position:var(--catalogue-position);
+  background-repeat:no-repeat;
+  border:1px solid rgba(23,17,12,.2);
+  flex:none;
+  overflow:hidden;
+}
+.catalogue-thumb:not(.has-photo)::after{
+  content:"ITEM";display:grid;place-items:center;width:100%;height:100%;
+  font:900 9px ui-monospace,monospace;letter-spacing:.13em;color:#8a7962
+}
+/* Dense stock rows: photograph is beside details, never behind them. */
+#stockList .stock-row.catalogue-list-row{
+  grid-template-columns:102px minmax(0,1.1fr) minmax(95px,.48fr) auto;
+  gap:13px;
+}
+#stockList .catalogue-list-row .stock-name{font-size:clamp(16px,1.8vw,22px)}
+#stockList .catalogue-list-row .catalogue-thumb{width:102px}
+#stockList.stock-tile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+  gap:11px;
+  padding:13px;
+}
+#stockList.stock-tile-grid .stock-row.catalogue-tile{
+  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  border:2px solid var(--ink);background:var(--paper);padding:7px;min-width:0;
+  cursor:pointer;
+}
+#stockList.stock-tile-grid .catalogue-tile .catalogue-thumb{width:100%}
+#stockList.stock-tile-grid .catalogue-tile .stock-text{flex:1;padding:10px 5px 4px}
+#stockList.stock-tile-grid .catalogue-tile .stock-name{font-size:18px;line-height:.98}
+#stockList.stock-tile-grid .catalogue-tile .stock-sub{font-size:9px}
+#stockList.stock-tile-grid .catalogue-tile .stock-meta{
+  width:100%;padding:6px 5px 8px;font-size:10px
+}
+#stockList.stock-tile-grid .catalogue-tile .price{
+  width:calc(100% + 14px);margin:0 -7px -7px;
+  text-align:left;background:var(--rear-4);padding:10px 12px;
+  border-top:2px solid var(--ink);font-size:21px
+}
+.item-display-switch{
+  display:inline-flex;align-items:center;gap:0;flex:none;
+  border:2px solid var(--ink);background:var(--paper);
+}
+.item-display-switch button{
+  padding:7px 9px;border:0;background:transparent;
+  font:900 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;color:var(--ink);cursor:pointer
+}
+.item-display-switch button+button{border-left:2px solid var(--ink)}
+.item-display-switch button[aria-pressed="true"]{background:var(--rear-4)}
+.stock-browser-nav .item-display-switch{margin-left:auto}
+.results-sort .item-display-switch{margin-left:auto}
+.search-offer:not(.catalogue-tile){
+  grid-template-columns:92px minmax(0,1.2fr) minmax(0,.85fr) auto;
+}
+.search-offer:not(.catalogue-tile) .catalogue-thumb{width:92px}
+.search-offer.exact-mode:not(.catalogue-tile) .item-col{display:block}
+.search-offer-list.catalogue-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;padding:12px;background:var(--cream)
+}
+.search-offer-list.catalogue-grid .search-offer.catalogue-tile{
+  display:flex;flex-direction:column;gap:0;align-items:stretch;
+  min-width:0;padding:7px;border:2px solid var(--ink);
+  background:var(--paper);text-align:left;overflow:hidden
+}
+.search-offer-list.catalogue-grid .catalogue-tile .catalogue-thumb{width:100%}
+.search-offer-list.catalogue-grid .catalogue-tile .item-col{display:block;flex:1;padding:10px 5px 7px}
+.search-offer-list.catalogue-grid .catalogue-tile .item-name{font-size:19px}
+.search-offer-list.catalogue-grid .catalogue-tile .seller-col{padding:0 5px 9px}
+.search-offer-list.catalogue-grid .catalogue-tile .seller-name{font-size:12px}
+.search-offer-list.catalogue-grid .catalogue-tile .price-block{
+  width:calc(100% + 14px);min-width:0;margin:0 -7px -7px;
+  padding:9px 12px;background:var(--rear-4);border-top:2px solid var(--ink);
+  text-align:left
+}
+.search-offer-list.catalogue-grid .catalogue-tile .price{font-size:23px}
+.item-related,.related-items{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;padding:10px
+}
+.item-related .catalogue-related,.related-items .catalogue-related{
+  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  min-width:0;border:2px solid var(--ink);background:var(--paper);
+  padding:6px;text-align:left;cursor:pointer
+}
+.item-related .catalogue-related .catalogue-thumb,
+.related-items .catalogue-related .catalogue-thumb{width:100%;margin-bottom:10px}
+.item-related .catalogue-related .related-copy,
+.related-items .catalogue-related .related-copy{display:block;flex:1;padding:0 5px 9px;min-width:0}
+.item-related .catalogue-related strong,
+.related-items .catalogue-related strong{font-size:16px;line-height:1.03}
+.item-related .catalogue-related .related-action,
+.related-items .catalogue-related .related-action{
+  display:block;background:var(--rear-4);color:var(--ink);
+  font:900 10px ui-monospace,monospace;text-transform:uppercase;
+  padding:9px;margin:0 -6px -6px;border-top:2px solid var(--ink)
+}
+@media (max-width:760px){
+  .item-hero-grid{grid-template-columns:1fr}
+  .item-image{
+    width:100%;height:auto;min-height:0;aspect-ratio:4/3;
+    border-right:0;border-bottom:4px solid var(--ink)
+  }
+  .item-hero .item-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #stockList .stock-row.catalogue-list-row{
+    grid-template-columns:76px minmax(0,1fr) auto;gap:10px;padding:10px 12px
+  }
+  #stockList .catalogue-list-row .catalogue-thumb{width:76px;grid-row:1/span 2}
+  #stockList .catalogue-list-row .stock-text{grid-column:2;grid-row:1}
+  #stockList .catalogue-list-row .stock-meta{grid-column:2;grid-row:2;font-size:9px}
+  #stockList .catalogue-list-row .stock-meta strong{font-size:11px}
+  #stockList .catalogue-list-row .price{grid-column:3;grid-row:1/span 2;font-size:15px}
+  .search-offer:not(.catalogue-tile){
+    grid-template-columns:76px minmax(0,1fr) auto;gap:10px;padding:10px
+  }
+  .search-offer:not(.catalogue-tile) .catalogue-thumb{width:76px;grid-column:1;grid-row:1/span 2}
+  .search-offer:not(.catalogue-tile) .item-col{grid-column:2;grid-row:1}
+  .search-offer:not(.catalogue-tile) .seller-col{grid-column:2;grid-row:2}
+  .search-offer:not(.catalogue-tile) .price-block{grid-column:3;grid-row:1/span 2;min-width:0}
+  .search-offer:not(.catalogue-tile) .item-name{font-size:16px}
+  .search-offer:not(.catalogue-tile) .seller-name{font-size:12px}
+  .search-offer:not(.catalogue-tile) .price{font-size:15px}
+  .search-offer-list.catalogue-grid,
+  #stockList.stock-tile-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px}
+  .item-related,.related-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px}
+}
+@media (max-width:375px){
+  .item-display-switch button{padding:6px 7px}
+  .search-offer:not(.catalogue-tile){grid-template-columns:65px minmax(0,1fr) auto;gap:7px}
+  .search-offer:not(.catalogue-tile) .catalogue-thumb{width:65px}
+  .search-offer:not(.catalogue-tile) .price{font-size:13px}
+}
+
+
+/* Compact map-side search offers and small mobile view switches. */
+.nearby-offer.catalogue-nearby{
+  grid-template-columns:66px minmax(0,1fr) auto;gap:10px
+}
+.nearby-offer.catalogue-nearby .catalogue-thumb{width:66px}
+.nearby-offer.catalogue-nearby strong{font-size:14px}
+#stockBrowser .stock-browser-nav{flex-wrap:wrap;justify-content:flex-start}
+#stockBrowser #stockBrowserMeta{flex:1 1 100px}
+.item-related .catalogue-related span,
+.related-items .catalogue-related span{margin-top:0}
+.item-related .catalogue-related .related-action,
+.related-items .catalogue-related .related-action{margin-top:auto}
+@media(max-width:375px){
+  .nearby-offer.catalogue-nearby{grid-template-columns:54px minmax(0,1fr) auto;gap:7px}
+  .nearby-offer.catalogue-nearby .catalogue-thumb{width:54px}
+}
+
 </style>
 </head>
 <body>
@@ -2195,6 +2391,10 @@ body::-webkit-scrollbar,
           <button type="button" data-sort="condition">Condition</button>
           <button type="button" data-sort="availability">Availability</button>
           <button type="button" data-sort="stock">Stock level</button>
+          <div class="item-display-switch" aria-label="Search item display">
+            <button type="button" data-item-view="list" aria-pressed="true">☷ List</button>
+            <button type="button" data-item-view="grid" aria-pressed="false">▦ Grid</button>
+          </div>
         </div>
         <div class="search-offer-list" id="availableOffersList"></div>
       </section>
@@ -2282,13 +2482,14 @@ body::-webkit-scrollbar,
           <div class="item-copy">
             <div class="kicker" id="itemKicker">Catalogue item</div>
             <h1 class="hero-title" id="itemName">Item</h1>
+            <div class="item-identity" id="itemByline">Catalogue identity</div>
             <p class="item-description" id="itemDescription">Loading catalogue description…</p>
 
             <dl class="item-stat-grid">
-              <div class="item-stat price"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
+              <div class="item-stat price"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
+              <div class="item-stat"><dt>Price tier</dt><dd id="itemPriceTier">—</dd></div>
               <div class="item-stat availability"><dt>Availability</dt><dd id="itemAvailability">—</dd></div>
               <div class="item-stat"><dt>Manufacturer</dt><dd id="itemManufacturer">—</dd></div>
-              <div class="item-stat"><dt>Book price</dt><dd id="itemBookPrice">—</dd></div>
               <div class="item-stat"><dt>Category</dt><dd id="itemCategory">—</dd></div>
               <div class="item-stat"><dt>Source</dt><dd><button class="source-link" id="itemSource" type="button">—</button></dd></div>
               <div class="item-stat"><dt>Catalogue ID</dt><dd id="itemCatalogueId">—</dd></div>
@@ -2440,6 +2641,10 @@ body::-webkit-scrollbar,
           <div class="stock-filter-row" id="stockFilters"></div>
           <div class="stock-browser-nav">
             <span id="stockBrowserMeta">All stock</span>
+            <div class="item-display-switch" aria-label="Stock item display">
+              <button type="button" data-stock-view="list" aria-pressed="true">☷ List</button>
+              <button type="button" data-stock-view="grid" aria-pressed="false">▦ Grid</button>
+            </div>
             <div class="stock-pager">
               <button type="button" id="stockPrev" aria-label="Previous stock page">←</button>
               <span class="stock-page-status" id="stockPageStatus">1 / 1</span>
@@ -3358,8 +3563,39 @@ function sortOffers(rows,mode){
   if(mode==='stock')return arr.sort((a,b)=>(b.quantity==null?999999:Number(b.quantity||0))-(a.quantity==null?999999:Number(a.quantity||0))||String(a.shop_name).localeCompare(String(b.shop_name)));
   return arr.sort((a,b)=>spatialDistanceForOffer(a).score-spatialDistanceForOffer(b).score||String(a.shop_name).localeCompare(String(b.shop_name)));
 }
+
+/* The same curated item image supplies profile, stock row and catalogue card.
+   Photo frame is always 4:3; its enclosing component is free to vary. */
+function catalogueImageMarkup(itemId,itemName,apiImage=null){
+  const image=curatedItemImage(itemId,itemName)||apiImage;
+  let attributes='';
+  const raw=String(image?.image_url||'').trim();
+  if(raw){
+    try{
+      const u=new URL(raw,location.href);
+      if(u.protocol==='https:'||u.protocol==='http:'){
+        const safe=u.href.replace(/["'()\\\r\n]/g,c=>encodeURIComponent(c));
+        const focal=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):.5));
+        const x=(focal(image.focal_x)*100).toFixed(1);
+        const y=(focal(image.focal_y)*100).toFixed(1);
+        attributes=' style="--catalogue-image:url(&quot;'+esc(safe)+'&quot;);--catalogue-position:'+x+'% '+y+'%"';
+      }
+    }catch(_){}
+  }
+  return '<span class="catalogue-thumb'+(attributes?' has-photo':'')+'"'+attributes+' aria-hidden="true"></span>';
+}
+let itemDisplayMode='list';
+let stockDisplayMode='list';
+function updateDisplayButtons(selector,value){
+  document.querySelectorAll(selector).forEach(button=>{
+    button.setAttribute('aria-pressed',String(button.dataset.itemView===value||button.dataset.stockView===value));
+  });
+}
+
 function offerRow(o,exact=false){
-  return '<button class="search-offer '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+  const tile=itemDisplayMode==='grid';
+  return '<button class="search-offer '+(exact?'exact-mode ':'')+(tile?'catalogue-tile':'catalogue-list-row')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+    catalogueImageMarkup(o.item_id,o.item_name,o.image)+
     '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
     '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · '+esc(o.condition||'stock item')+' · '+esc(o.quantity==null?'on demand':String(o.quantity)+' available')+'</span></div>'+
     '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
@@ -3389,7 +3625,8 @@ function renderNearbyOffers(data){
   }
   list.innerHTML=top.map(o=>{
     const where=[o.district,offerDistanceLabel(o)].filter(Boolean).join(' · ');
-    return '<button class="nearby-offer" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+    return '<button class="nearby-offer catalogue-nearby" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      catalogueImageMarkup(o.item_id,o.item_name,o.image)+
       '<div><strong>'+esc(exact?o.shop_name:o.item_name)+'</strong>'+
       '<span>'+esc(exact?where:(o.shop_name+' · '+where))+'</span></div>'+
       '<strong class="nearby-price">'+esc(moneyEb(o.asking_price))+'</strong>'+
@@ -3404,6 +3641,8 @@ function renderAvailableOffers(data){
   const exact=Boolean(data.active_item_id);
   document.getElementById('availableOffersMeta').textContent=available.length+' current offer'+(available.length===1?'':'s')+' · citywide · distance-aware';
   section.hidden=!available.length;
+  list.classList.toggle('catalogue-grid',itemDisplayMode==='grid');
+  updateDisplayButtons('#resultsSort [data-item-view]',itemDisplayMode);
   list.innerHTML=sortOffers(available,resultSortMode).map(o=>offerRow(o,exact)).join('');
   bindOfferRows(list,data);
 }
@@ -3415,6 +3654,7 @@ function renderLikelySellers(data){
   section.hidden=!plausible.length;
   list.innerHTML=plausible.map(o=>
     '<button class="search-offer plausible '+(exact?'exact-mode':'')+'" data-offer-shop="'+esc(o.shop_entity_id)+'" data-offer-item="'+esc(o.item_id)+'">'+
+      catalogueImageMarkup(o.item_id,o.item_name,o.image)+
       '<div class="item-col"><span class="item-name">'+esc(o.item_name)+'</span>'+
       '<span class="item-meta">'+esc(itemTypeLabel(o))+' · '+esc(o.availability_label||'Availability unknown')+' · not in current stock</span></div>'+
       '<div class="seller-col"><span class="seller-name">'+esc(o.shop_name)+'</span>'+
@@ -3434,8 +3674,10 @@ function renderRelatedItems(data,q){
   const related=(data.items||[]).filter(x=>String(x.item_id)!==String(active.item_id)&&x.relation_key===active.relation_key).slice(0,6);
   section.hidden=!related.length;
   list.innerHTML=related.map(x=>
-    '<button class="related-item" type="button" data-related-item="'+esc(x.item_id)+'">'+
-      '<strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+' · same family →</span></button>'
+    '<button class="related-item catalogue-related" type="button" data-related-item="'+esc(x.item_id)+'">'+
+      catalogueImageMarkup(x.item_id,x.name,x.image)+
+      '<span class="related-copy"><strong>'+esc(x.name)+'</strong><span>'+esc(x.availability_label||'Same catalogue family')+'</span></span>'+
+      '<span class="related-action">'+esc(x.book_price==null?'View item →':moneyEb(x.book_price)+' →')+'</span></button>'
   ).join('');
   list.querySelectorAll('[data-related-item]').forEach(el=>el.addEventListener('click',()=>openItem(el.dataset.relatedItem)));
 }
@@ -3557,7 +3799,10 @@ async function prepareRoute(route){
 
   if(route.view==='search'){
     if(!route.q)return {route:{view:'home'},payload:null};
-    payload=await api({api:'search',q:route.q,item_id:route.itemId||null});
+    [payload]=await Promise.all([
+      api({api:'search',q:route.q,item_id:route.itemId||null}),
+      loadItemImageManifest()
+    ]);
   }else if(route.view==='item'){
     if(!route.itemId)return {route:{view:'home'},payload:null};
     [payload]=await Promise.all([
@@ -3566,7 +3811,10 @@ async function prepareRoute(route){
     ]);
   }else if(route.view==='vendor'){
     if(!route.vendorId)return {route:{view:'home'},payload:null};
-    payload=await api({api:'shop',id:route.vendorId});
+    [payload]=await Promise.all([
+      api({api:'shop',id:route.vendorId}),
+      loadItemImageManifest()
+    ]);
   }
 
   await preloadFirstFrameAssets(route,payload);
@@ -3963,8 +4211,10 @@ function stockRowHtml(s,row,focusId){
   const sub=row.is_local
     ?[row.description,row.availability_label,exactHit?'selected item':null].filter(Boolean).join(' · ')
     :[flavourText,row.price_tier,row.availability_label,row.compatibility_label,row.curation_reason?('house staple · '+(row.curation_source||'Vend-R inferred')):(row.support_reason?'support stock':row.assortment_role),row.condition,flowLabel,exactHit?'selected item':null].filter(Boolean).join(' · ');
-  return '<article class="stock-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
-    '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
+  const mode=stockBrowserState.shop&&stockDisplayMode==='grid'?'catalogue-tile':'catalogue-list-row';
+  return '<article class="stock-row '+mode+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'">'+
+    catalogueImageMarkup(row.item_id,row.name,row.image)+
+    '<div class="stock-text"><div class="stock-name'+nameClass+'">'+esc(row.name)+'</div>'+
     '<div class="stock-sub">'+esc(sub)+'</div></div>'+
     '<div class="stock-meta"><strong>'+esc(quantityText(row))+'</strong><br>'+(row.is_local?'shop speciality':'current stock')+'</div>'+
     '<div class="price">'+esc(priceText(row.asking_price,row.price_label))+'</div></article>';
@@ -3990,6 +4240,8 @@ function renderStockBrowserPage(){
   st.page=Math.max(0,Math.min(st.page,pageCount-1));
   const start=st.page*st.pageSize;
   const pageRows=rows.slice(start,start+st.pageSize);
+  list.classList.toggle('stock-tile-grid',!menuMode&&stockDisplayMode==='grid');
+  updateDisplayButtons('#stockBrowser [data-stock-view]',stockDisplayMode);
   list.innerHTML=pageRows.length
     ?pageRows.map(r=>stockRowHtml(st.shop,r,st.focusId)).join('')
     :'<div class="stock-empty">'+(menuMode?'No menu items match this filter.':'No stock matches these filters.')+'</div>';
@@ -4045,7 +4297,8 @@ function setItemImage(item){
   if(image?.image_url){
     box.classList.add('has-image');
     box.style.backgroundImage='url("'+String(image.image_url).replace(/"/g,'%22')+'")';
-    box.style.backgroundPosition='50% 50%';
+    const norm=v=>Math.max(0,Math.min(1,Number.isFinite(Number(v))?Number(v):.5));
+    box.style.backgroundPosition=(norm(image.focal_x)*100)+'% '+(norm(image.focal_y)*100)+'%';
     const credit=image.by||image.photographer||image.credit||null;
     label.textContent=credit?('Photo · '+credit+' ↗'):'Catalogue image';
     if(image.source){
@@ -4143,6 +4396,7 @@ function renderItemPage(data,selectedShopId=null){
   document.getElementById('itemName').textContent=item.name||'Catalogue item';
   document.getElementById('itemDescription').textContent=item.description||'No catalogue description has been added yet.';
   document.getElementById('itemKicker').textContent=itemTypeText(item);
+  document.getElementById('itemByline').textContent=item.local?'Shop-specific item':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
   document.getElementById('itemPriceTier').textContent=item.price_tier||'Price unknown';
   document.getElementById('itemAvailability').textContent=item.availability_label||'Availability unknown';
   document.getElementById('itemManufacturer').textContent=item.local?'Local / shop-specific':((item.manufacturers||[]).join(' · ')||'Unbranded / unspecified');
@@ -4162,8 +4416,10 @@ function renderItemPage(data,selectedShopId=null){
 
   const related=document.getElementById('itemRelated');
   related.innerHTML=(data.related||[]).map(x=>
-    '<button type="button" data-item-related="'+esc(x.item_id)+'"><strong>'+esc(x.name)+'</strong>'+
-    '<span>'+esc(x.price_tier||'Same family')+' · view item →</span></button>'
+    '<button type="button" class="catalogue-related" data-item-related="'+esc(x.item_id)+'">'+
+    catalogueImageMarkup(x.item_id,x.name,x.image)+
+    '<span class="related-copy"><strong>'+esc(x.name)+'</strong><span>'+esc(x.price_tier||'Same family')+'</span></span>'+
+    '<span class="related-action">'+esc(x.book_price==null?'View item →':moneyEb(x.book_price)+' →')+'</span></button>'
   ).join('')||'<div class="stock-empty">No related items.</div>';
   related.querySelectorAll('[data-item-related]').forEach(button=>button.addEventListener('click',()=>openItem(button.dataset.itemRelated)));
 
@@ -4197,6 +4453,7 @@ function renderVendorStock(s,focus){
   search.value='';
 
   stockBrowserState={shop:null,rows:[],focusId:null,category:'all',query:'',page:0,pageSize:STOCK_PAGE_SIZE};
+  list.classList.remove('stock-tile-grid');
   browser.hidden=true;
 
   if(children.length){
@@ -4522,6 +4779,12 @@ function drawSearchSpaciel(data=lastSearch?.data){
 window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
 
 document.getElementById('resultsSort').addEventListener('click',e=>{
+  const view=e.target.closest('[data-item-view]');
+  if(view){
+    itemDisplayMode=view.dataset.itemView==='grid'?'grid':'list';
+    if(lastSearch)renderAvailableOffers(lastSearch.data);
+    return;
+  }
   const button=e.target.closest('[data-sort]');
   if(!button||!lastSearch)return;
   resultSortMode=button.dataset.sort;
@@ -4646,6 +4909,12 @@ document.getElementById('stockFilters').addEventListener('click',e=>{
   if(!button||!stockBrowserState.shop)return;
   stockBrowserState.category=button.dataset.stockCategory||'all';
   stockBrowserState.page=0;
+  renderStockBrowserPage();
+});
+document.getElementById('stockBrowser').addEventListener('click',e=>{
+  const view=e.target.closest('[data-stock-view]');
+  if(!view||!stockBrowserState.shop)return;
+  stockDisplayMode=view.dataset.stockView==='grid'?'grid':'list';
   renderStockBrowserPage();
 });
 document.getElementById('stockPrev').addEventListener('click',()=>{
