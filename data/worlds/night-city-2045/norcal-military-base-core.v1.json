@@ -1,0 +1,114 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-norcal-military-base-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [183],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "name": "Post Exchange (PX)",
+      "entity_type": "seller",
+      "district": "NorCal Military Base",
+      "map_no": 14,
+      "book_page": 183,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 183",
+      "source_summary": "The base's sole general goods store, explicitly well supplied with groceries, firearms, clothing, consumer electronics and media.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "access_model": "military_base_access",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:norcal-military-base:px:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "weapons", "fashion-personal", "electronics-comms"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "corporate",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"institutional": 10, "retail": 8, "corporate": 6},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["Weapons"],
+            ["Fashion & Personal"],
+            ["Electronics & Communications"]
+          ],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 2]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "media-selection", "label": "Media selection"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_WITH_EXPLICIT_CATEGORY_GATE",
+        "note": "The audit's armor/ammunition/general-equipment expansion is not promoted simply because the store serves a military audience. Generated stock follows categories explicitly named by the source; media stays local because the catalogue does not cleanly distinguish ordinary media from entertainment services."
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-HOT-DINGO",
+      "name": "Hot Dingo",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "district": "NorCal Military Base",
+      "map_no": 14,
+      "book_page": 183,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 183",
+      "source_summary": "Named quick-food concession at the front of the PX.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "scopdog", "label": "SCOPdog"},
+        {"offering_key": "koff-pop", "label": "Koff-Pop"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-ESTERO-BAY-BARBER-SHOP",
+      "name": "Estero Bay Barber Shop",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "district": "NorCal Military Base",
+      "map_no": 14,
+      "book_page": 183,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 183",
+      "source_summary": "Named barber shop at the front of the PX.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "regulation-haircut", "label": "Regulation haircut"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-183-COG-CREDIT-UNION",
+      "name": "COG Credit Union",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "district": "NorCal Military Base",
+      "map_no": 14,
+      "book_page": 183,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 183",
+      "source_summary": "Named banking service at the front of the PX.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "credit-union-banking", "label": "Credit union banking"}
+      ],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_CHILD"}
+    }
+  ]
+}

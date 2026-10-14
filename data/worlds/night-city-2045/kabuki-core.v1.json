@@ -1,0 +1,241 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-kabuki-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [202, 203, 204, 205, 206],
+    "note": "Commercial facts in this pass are constrained to the v0.2 audit and corroborating official Atlas/preview material available to the project. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "name": "Animelocaris",
+      "entity_type": "local_vendor",
+      "district": "Kabuki",
+      "map_no": 3,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Specialist fandom and cosplay retailer dealing in merchandise and costume/crafting materials.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "fandom-cosplay-merchandise", "label": "Fandom and cosplay merchandise"},
+        {"offering_key": "costume-crafting-materials", "label": "Costume and crafting materials"}
+      ],
+      "catalogue_note": "The current catalogue does not cleanly model ordinary fandom/cosplay merchandise, so a broad entertainment/fashion assortment would invent unsupported stock.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
+      "name": "Kabuki Market",
+      "entity_type": "container",
+      "district": "Kabuki",
+      "map_no": 9,
+      "book_page": 203,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 203",
+      "source_summary": "Named market location whose commerce belongs to individual traders rather than a single market-wide shelf inventory.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "catalogue_note": "No unnamed traders are synthesized during this pass; future named or rotating vendors should be represented as children before stock is generated.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "name": "Murakami Suiun Imports",
+      "entity_type": "hybrid",
+      "district": "Kabuki",
+      "map_no": 11,
+      "book_page": 204,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 204",
+      "source_summary": "Japanese import business with ordinary imported merchandise and a separate periodic vehicle-oriented Night Market component.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_event",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:kabuki:murakami-suiun-imports:v1",
+        "overrides": {
+          "primary_departments": ["electronics-comms", "vehicles-mobility", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "specialist",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"specialist": 7, "retail": 6, "corporate": 4, "grey_market": 3},
+          "allowed_classification_prefixes": [
+            ["Electronics & Communications"],
+            ["Vehicles & Mobility"],
+            ["General Equipment"]
+          ],
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "HYBRID_DIRECT_EVENT",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's broad weapons/armor/fashion inference is not promoted into persistent shelf stock in this pass. The vehicle-oriented event is represented separately."
+      }
+    },
+    {
+      "entity_id": "NC2045-EVENT-KABUKI-204-MURAKAMI-SUIUN-VEHICLE-NIGHT-MARKET",
+      "name": "Murakami Suiun Vehicle Night Market",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "district": "Kabuki",
+      "book_page": 204,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 204",
+      "source_summary": "Periodic Night Market component associated with Murakami Suiun Imports and focused on vehicle commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "EVENT_ONLY",
+      "schedule": {"frequency": "periodic"},
+      "event_profile": {
+        "market_channels": ["specialist", "grey_market"],
+        "known_departments": ["vehicles-mobility"]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
+      "name": "Nakagawa Garage Tower",
+      "entity_type": "service",
+      "district": "Kabuki",
+      "map_no": 13,
+      "book_page": 204,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 204",
+      "source_summary": "Secure storage facility for vehicles and AVs rather than a vehicle retailer.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "secure-vehicle-storage", "label": "Secure vehicle storage"},
+        {"service_key": "secure-av-storage", "label": "Secure AV storage"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_SERVICE_ONLY"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "name": "Oasis (Kabuki)",
+      "entity_type": "seller",
+      "district": "Kabuki",
+      "map_no": 16,
+      "book_page": 205,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 205",
+      "source_summary": "Convenience-scale Oasis branch carrying ordinary food/consumables and general goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:kabuki:oasis:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "compact",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The audit's secondary electronics/fashion inference is not promoted into this branch's persistent assortment."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "name": "Sanroo Neuro-land",
+      "entity_type": "seller",
+      "district": "Kabuki",
+      "map_no": 18,
+      "book_page": 205,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 205",
+      "source_summary": "Sanroo-branded specialist showroom represented here with a hard manufacturer gate instead of merely preferring Sanroo products.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:kabuki:sanroo-neuro-land:v1",
+        "overrides": {
+          "primary_departments": ["weapons", "ammunition-ordnance", "weapon-parts"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "normal",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "premium",
+          "channel_weights": {"retail": 6, "specialist": 8, "corporate": 5},
+          "brand_affinities": {"Sanroo": 20},
+          "allowed_item_ids": [
+            "VENDR-0196", "VENDR-0240", "VENDR-0020", "VENDR-0215", "VENDR-0035",
+            "VENDR-0006", "VENDR-0589", "VENDR-0097", "VENDR-0653", "VENDR-0201",
+            "VENDR-0784", "VENDR-0269", "VENDR-0008", "VENDR-0272", "VENDR-0273",
+            "VENDR-0274", "VENDR-0275", "VENDR-0276", "VENDR-0405", "VENDR-0082",
+            "VENDR-0083", "VENDR-0149", "VENDR-0051"
+          ],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_WITH_HARD_BRAND_GATE",
+        "note": "A manufacturer affinity alone could leak unrelated brands; the realized seller is restricted to catalogue entries linked to Sanroo."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-206-YUM-SENG",
+      "name": "Yum Seng",
+      "entity_type": "hybrid",
+      "district": "Kabuki",
+      "map_no": 24,
+      "book_page": 206,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 206",
+      "source_summary": "Host and hostess bar known for seafood and private soundproof karaoke boxes.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "seafood", "label": "Seafood and bar food"}
+      ],
+      "services": [
+        {"service_key": "host-hostess-bar", "label": "Host and hostess bar service"},
+        {"service_key": "karaoke-box", "label": "Soundproof karaoke box"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_NO_CATALOG_STOCK"
+      }
+    }
+  ]
+}

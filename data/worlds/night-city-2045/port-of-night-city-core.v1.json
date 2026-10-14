@@ -1,0 +1,64 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-port-of-night-city-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [152],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "entity_type": "hybrid",
+      "district": "Port of Night City",
+      "map_no": 2,
+      "book_page": 152,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 152",
+      "source_summary": "Fixer-run storefront built around repackaging unwanted dockside salvage, with an occasional Night Market at the same location.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_event",
+      "proprietor": {
+        "name": "William ‘Mr. AMAAAZE!’ Maze",
+        "role": "Fixer",
+        "rank": 8
+      },
+      "local_offerings": [
+        {"offering_key": "repackaged-dock-salvage", "label": "Repackaged and remarketed dockside salvage"}
+      ],
+      "catalogue_note": "The source establishes deliberately miscellaneous salvage but not stable product categories. The audit's general/electronics/weapons/fashion departments are therefore not converted into a persistent catalogue assortment.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "HYBRID_DIRECT_EVENT",
+        "decision": "LOCALIZE_STOREFRONT_AND_SPLIT_EVENT",
+        "note": "The storefront remains commerce, but its source-defined dross/salvage identity is preserved without inventing exact shelf items. The occasional Night Market is represented separately."
+      }
+    },
+    {
+      "entity_id": "NC2045-EVT-PORT-OF-NIGHT-CITY-152-DOCK-13-NIGHT-MARKET",
+      "name": "Dock 13 Night Market",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "district": "Port of Night City",
+      "map_no": 2,
+      "book_page": 152,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 152",
+      "source_summary": "Occasional Night Market hosted at Dock 13.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "event_market",
+      "stock_policy": "EVENT_ONLY",
+      "schedule": {"frequency": "occasional"},
+      "market_profile": {
+        "archetype_id": "night-market-stall",
+        "channels": ["pawn", "street", "grey_market", "nomad"],
+        "vendor_rotation": "high"
+      },
+      "audit": {"source_profile_version": "0.2", "decision": "SPLIT_SOURCE_EXPLICIT_EVENT"}
+    }
+  ]
+}

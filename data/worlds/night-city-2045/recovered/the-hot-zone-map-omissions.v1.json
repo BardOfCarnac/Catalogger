@@ -1,0 +1,67 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-hot-zone-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [92, 93],
+    "note": "Map reconciliation against the Hot Zone source map. Nine of the eleven numbered locations already existed in reviewed fixtures; this file recovers Crisis Center and Graceland Medical using only source-supported 2045 status and services."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER",
+      "name": "Crisis Center",
+      "entity_type": "context",
+      "district": "The Hot Zone",
+      "map_no": 3,
+      "book_page": 92,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 92",
+      "source_summary": "Ruined remains of the former neighboring Trauma Team and Crisis Medical facilities, collapsed together and later burned. The surviving wreckage attracts scavengers seeking old medical technology, radioactive material and abandoned drug caches; it is not an operating clinic in 2045.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_RUINED_MEDICAL_SITE_AS_CONTEXT"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL",
+      "name": "Graceland Medical",
+      "entity_type": "service",
+      "district": "The Hot Zone",
+      "map_no": 7,
+      "book_page": 93,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 93",
+      "source_summary": "Community medical service centered on Father Grace's armored mobile clinic at the former Jellical Inn. Father Grace travels to Hot Zone scavver camps to provide medical treatment and medicine without charging patients; the source leaves the clinic's funding unexplained.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "stock_policy": "NO_STOCK",
+      "access_model": "community-free-care",
+      "services": [
+        {
+          "service_key": "free-medical-treatment",
+          "label": "Free medical treatment",
+          "price_eb": 0
+        },
+        {
+          "service_key": "free-medicine-provision",
+          "label": "Free medicine provision",
+          "price_eb": 0
+        }
+      ],
+      "proprietor": {
+        "name": "Father Grace",
+        "role": "Medtech",
+        "rank": 4
+      },
+      "audit": {
+        "source_profile_version": "map-recovery-v0.1",
+        "decision": "RECOVER_FREE_COMMUNITY_MEDICAL_SERVICE"
+      }
+    }
+  ]
+}

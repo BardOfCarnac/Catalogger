@@ -1,0 +1,90 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-combat-zone-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [168, 169, 171, 172],
+    "note": "Map-visible Old Combat Zone places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-168-ALICE-S",
+      "name": "Alice’s",
+      "entity_type": "service",
+      "district": "Old Combat Zone",
+      "map_no": 1,
+      "book_page": 168,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 168",
+      "source_summary": "Iron Sights-managed brothel serving a largely affluent outside clientele and specializing in highly customized appearances and niche adult fantasies.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "adult-companionship", "label": "Adult companionship and brothel services"},
+        {"service_key": "specialized-appearance-customization", "label": "Customized bodysculpting and chrome for specialized appearances", "availability": "management arrangement"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FROM-THE-ASHES",
+      "name": "From the Ashes",
+      "entity_type": "service",
+      "district": "Old Combat Zone",
+      "map_no": 7,
+      "book_page": 169,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 169",
+      "source_summary": "Neutral community clinic run by former Trauma Team surgeon Phoenix Redwyne, treating anyone who reaches the doors and staying supplied through contacts, donations and favors.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Phoenix Redwyne", "roles": ["Medtech", "Fixer"], "ranks": [7, 6]},
+      "services": [
+        {"service_key": "neutral-community-medical-care", "label": "Neutral community medical treatment"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-ANGEL-RADIO",
+      "name": "Angel Radio",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 171,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 171",
+      "source_summary": "Broadcast room in a repurposed penthouse within the Warren, transmitting local news, information and entertainment to the Old Combat Zone.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-171-OCZ-SCHOOLHOUSE",
+      "name": "OCZ Schoolhouse",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 171,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 171-172",
+      "source_summary": "Community school inside the Warren teaching core academics, self-defense and small-arms skills to local children with volunteer instructors and dedicated protection.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-OUT-OLD-COMBAT-ZONE-172-THE-PANTHEON",
+      "name": "The Pantheon",
+      "entity_type": "context",
+      "parent_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "district": "Old Combat Zone",
+      "map_no": 16,
+      "book_page": 172,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 172",
+      "source_summary": "Non-denominational sacred space in the Warren open to many religious traditions, also maintaining an on-site collection of religious-practice braindance recordings for visitors.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    }
+  ]
+}

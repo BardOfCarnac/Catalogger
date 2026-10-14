@@ -1,0 +1,87 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-combat-zone-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [169, 171],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER",
+      "name": "Flasher’s Corner",
+      "entity_type": "local_vendor",
+      "district": "Old Combat Zone",
+      "map_no": 6,
+      "book_page": 169,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 169",
+      "source_summary": "Street-corner Fixer operation where Mal ‘Flasher’ Devincher sells an unimpressive assortment of cheap scavenged or swindled goods, occasional one-shot specials, and local information.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietor": {"name": "Mal ‘Flasher’ Devincher", "role": "Fixer", "rank": 2},
+      "local_offerings": [
+        {"offering_key": "cheap-miscellany", "label": "Assorted cheap second-hand or swindled goods"},
+        {"offering_key": "one-shot-specials", "label": "Occasional one-shot specials"}
+      ],
+      "services": [
+        {"service_key": "local-information", "label": "Old Combat Zone information brokerage"}
+      ],
+      "catalogue_note": "The source deliberately describes a poor, opportunistic assortment rather than a stable category shelf, so no generated catalogue stock is attached.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_OPPORTUNISTIC_LOCAL_VENDOR_AND_INFO_BROKER"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-169-JESSE-JAMES-KOSHER-DELI",
+      "name": "Jesse James’ Kosher Deli",
+      "entity_type": "hybrid",
+      "district": "Old Combat Zone",
+      "map_no": 9,
+      "book_page": 169,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 169-170",
+      "source_summary": "Edgerunners Inc headquarters operating more like an English pub and mixed-martial-arts space than a deli, though it does sell its famous corned-beef-on-rye sandwich.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "corned-beef-on-rye", "label": "Corned beef on rye"}
+      ],
+      "services": [
+        {"service_key": "pub-hospitality", "label": "Pub hospitality"},
+        {"service_key": "mixed-martial-arts-space", "label": "Mixed martial arts and gathering space"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_PUB_HQ_WITH_SOURCE_LOCAL_FOOD"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-UNDERGROUND",
+      "name": "The Underground",
+      "entity_type": "context",
+      "district": "Old Combat Zone",
+      "map_no": 15,
+      "book_page": 171,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 171",
+      "source_summary": "Subterranean Shroomer home village whose fungus and lichen gardens support the community and supply goods sold externally through Mrs. Suzuki’s Bodega; the source does not establish a public shop here.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "supply_relationships": [
+        {"relationship": "supplies", "target": "Mrs. Suzuki’s Bodega", "goods": "fungus and lichen products"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_PRODUCTION_CONTEXT_WITH_EXTERNAL_RETAIL_CHANNEL"
+      }
+    }
+  ]
+}

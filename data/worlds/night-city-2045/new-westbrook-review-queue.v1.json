@@ -1,0 +1,123 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-new-westbrook-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [215, 216, 217, 219, 220],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA",
+      "name": "Denya Jinja",
+      "entity_type": "hybrid",
+      "district": "New Westbrook",
+      "map_no": 6,
+      "book_page": 215,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 215",
+      "source_summary": "Active Shinto shrine and cultural site where visitors can make offerings, draw fortunes, buy charms and watch cultural performances; the source explicitly distinguishes it from a tourist gift-shop attraction.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "shrine-charms", "label": "Shrine charms"}],
+      "services": [
+        {"service_key": "religious-cultural-visit", "label": "Religious and cultural visit"},
+        {"service_key": "fortune-drawing", "label": "Fortune drawing"},
+        {"service_key": "cultural-performance", "label": "Cultural performances"}
+      ],
+      "catalogue_note": "Only source-explicit shrine charms are modeled as wares; this is not expanded into a general souvenir shop.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "NARROW_TO_SHRINE_SERVICES_AND_LOCAL_CHARMS"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-215-DILLY-S",
+      "name": "Dilly’s",
+      "entity_type": "hybrid",
+      "district": "New Westbrook",
+      "map_no": 7,
+      "book_page": 215,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 215-216",
+      "source_summary": "Privacy-focused love hotel near Network 54 Plaza, with hourly room passes and in-room vendits selling food, drink, testing, intimate supplies, clothing and souvenir shirts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "marked-up-food-drink", "label": "Marked-up food and drinks, including alcohol"},
+        {"offering_key": "intimate-supplies", "label": "Personal intimate supplies and lingerie"},
+        {"offering_key": "dillys-souvenir-shirts", "label": "Dilly’s souvenir T-shirts"}
+      ],
+      "services": [
+        {"service_key": "room-one-hour", "label": "Private room for one hour", "price_eb": 20},
+        {"service_key": "room-six-hours", "label": "Private room for six hours", "price_eb": 50},
+        {"service_key": "room-twelve-hours", "label": "Private room for twelve hours", "price_eb": 100},
+        {"service_key": "instant-health-testing", "label": "Instant in-room health testing"}
+      ],
+      "catalogue_note": "The in-room vendit stock is described generically and remains source-local rather than generating a broad retail assortment.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_LODGING_AND_VENDIT_HYBRID"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-PLAZA",
+      "name": "Network 54 Plaza",
+      "entity_type": "container",
+      "district": "New Westbrook",
+      "map_no": 15,
+      "book_page": 217,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 217",
+      "source_summary": "Fortified Network 54 corporate complex containing offices, studios, restaurants, clinic, fitness spa and exclusive housing; only reception and organized show-filming or premiere visits are explicitly public.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "services": [{"service_key": "public-studio-premiere-visits", "label": "Organized public visits to filming and premieres"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "NARROW_TO_CORPORATE_CONTAINER_WITH_PUBLIC_VISITOR_ACCESS"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-219-SILVER-PIXEL-CLOUD",
+      "name": "Silver Pixel Cloud",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 21,
+      "book_page": 219,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 219",
+      "source_summary": "Drive-in movie theater popular with nomads, showing classic and new films and hosting recurring themed screenings with live reenactments.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "drive-in-movies", "label": "Drive-in movie screenings"},
+        {"service_key": "themed-screening-events", "label": "Recurring themed screenings and live reenactments"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_DRIVE_IN_ENTERTAINMENT_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-219-VALUEMART-VILLAGE",
+      "name": "ValueMart Village",
+      "entity_type": "service",
+      "district": "New Westbrook",
+      "map_no": 22,
+      "book_page": 219,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 219",
+      "source_summary": "Former big-box store converted into dense cube-and-cargo housing with an adjacent tent settlement; rent collectors visit residents regularly.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "low-cost-housing-rental", "label": "Cube and cargo-room rental"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_FORMER_RETAIL_SITE_TO_HOUSING_RENTAL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NEW-WESTBROOK-220-WORLDSAT-COMMUNICATIONS-OFFICES",
+      "name": "WorldSat Communications Offices",
+      "entity_type": "context",
+      "district": "New Westbrook",
+      "map_no": 25,
+      "book_page": 220,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 220",
+      "source_summary": "Highly secured and mostly automated WorldSat communications facility forming Night City's principal external communications link; the source describes infrastructure, not a public outlet.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_COMMUNICATIONS_INFRASTRUCTURE_CONTEXT"}
+    }
+  ]
+}

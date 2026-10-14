@@ -1,0 +1,83 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-norcal-military-base-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [182, 183],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-OFFICES",
+      "name": "Militech Offices",
+      "entity_type": "container",
+      "district": "NorCal Military Base",
+      "map_no": 9,
+      "book_page": 182,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 182",
+      "source_summary": "Militech's Pacifica Confederation headquarters is a heavily restricted corporate complex; select visitors meet staff in an ancillary facility that also contains a client showroom for demonstrations and purchases.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "CORRECT_TO_RESTRICTED_CORPORATE_CONTAINER_AND_RECOVER_SHOWROOM"}
+    },
+    {
+      "entity_id": "NC2045-OUT-NORCAL-MILITARY-BASE-182-MILITECH-CLIENT-SHOWROOM",
+      "name": "Militech Client Showroom",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-OFFICES",
+      "district": "NorCal Military Base",
+      "map_no": 9,
+      "book_page": 182,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 182",
+      "source_summary": "Source-explicit but unnamed showroom in the visitor meeting facility where Militech gives selected clients demonstrations and sells products.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "access_model": "select-clients",
+      "local_offerings": [{"offering_key": "militech-products", "label": "Militech products offered to selected clients"}],
+      "services": [{"service_key": "product-demonstration", "label": "Militech product demonstrations"}],
+      "catalogue_note": "The source supports select-client direct sales but this pass does not generate a broad Militech shelf without a hard manufacturer allowlist and access-aware stock visibility.",
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_SOURCE_EXPLICIT_UNNAMED_RESTRICTED_SHOWROOM"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-THE-OAKS",
+      "name": "The Oaks",
+      "entity_type": "context",
+      "district": "NorCal Military Base",
+      "map_no": 11,
+      "book_page": 182,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 182-183",
+      "source_summary": "Residential neighborhood for base personnel, ranging from group barracks and officer quarters to family apartments and high-ranking officers' houses; assignment depends on status rather than public commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "DOWNGRADE_TO_BASE_HOUSING_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-THE-REC-CENTER",
+      "name": "The Rec Center",
+      "entity_type": "service",
+      "district": "NorCal Military Base",
+      "map_no": 15,
+      "book_page": 183,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 183",
+      "source_summary": "Base recreation center combining bowling, arcade, gym, mini-golf, movie theater and a reconfigurable outdoor sports field.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "bowling", "label": "Bowling"},
+        {"service_key": "arcade", "label": "Arcade"},
+        {"service_key": "gymnasium", "label": "Gymnasium"},
+        {"service_key": "mini-golf", "label": "Mini-golf"},
+        {"service_key": "movie-theater", "label": "Movie theater"},
+        {"service_key": "sports-field", "label": "Multi-sport field"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_BASE_RECREATION_SERVICE"}
+    }
+  ]
+}

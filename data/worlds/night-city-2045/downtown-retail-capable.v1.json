@@ -1,0 +1,122 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-downtown-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [84, 85],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-GILDED-PHOENIX-ARCADE",
+      "name": "Gilded Phoenix Arcade",
+      "entity_type": "service",
+      "district": "Downtown",
+      "map_no": 12,
+      "book_page": 84,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 84",
+      "source_summary": "Eastern Tigers Triad arcade and gaming venue with classic machines, gambling and private braindance rooms; the source establishes entertainment rather than merchandise retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "arcade-gaming", "label": "Arcade gaming"},
+        {"service_key": "gambling", "label": "Gambling and gaming machines"},
+        {"service_key": "private-braindance-rooms", "label": "Private braindance rooms"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_ARCADE_ENTERTAINMENT_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "name": "Guns & Dolls",
+      "entity_type": "hybrid",
+      "district": "Downtown",
+      "map_no": 14,
+      "book_page": 85,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 85",
+      "source_summary": "Combined gun store, strip club and brothel whose storefront retains the business's original weapons-selling role.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "proprietor": {"name": "Valian Violet", "role": "Medtech", "rank": 5},
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:downtown:guns-and-dolls:v1",
+        "overrides": {
+          "primary_departments": ["weapons"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "normal",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 8, "specialist": 7, "street": 3},
+          "allowed_classification_prefixes": [["Weapons"]],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "strip-club", "label": "Strip club entertainment"},
+        {"service_key": "brothel", "label": "Brothel services"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_WEAPONS_SELLER_AND_ENTERTAINMENT_HYBRID",
+        "note": "Generated stock is limited to weapons; the audit's food, parts and vehicle spillover is not promoted. Map number corrected to source marker #14 during Downtown geometry review."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA",
+      "name": "Jade Blossom Spa",
+      "entity_type": "service",
+      "district": "Downtown",
+      "map_no": 15,
+      "book_page": 85,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 85",
+      "source_summary": "Luxury spa and wellness retreat whose public-facing business is hospitality; a concealed backroom is used for counterfeit merchandise distribution.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "luxury-spa", "label": "Luxury spa and wellness services"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "SPLIT_PUBLIC_SPA_FROM_COUNTERFEIT_DISTRIBUTION"
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-DOWNTOWN-085-JADE-BLOSSOM-COUNTERFEIT-DISTRIBUTION",
+      "name": "Jade Blossom Counterfeit Distribution",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA",
+      "district": "Downtown",
+      "map_no": 15,
+      "book_page": 85,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 85",
+      "source_summary": "Source-explicit but unnamed concealed supply operation moving knockoff and counterfeit merchandise from the spa's back rooms to shops and Fixers around Night City.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {
+        "product_family": "counterfeit and knockoff merchandise",
+        "destinations": ["stores", "Fixers across Night City"]
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_EXPLICIT_COUNTERFEIT_CHANNEL"
+      }
+    }
+  ]
+}

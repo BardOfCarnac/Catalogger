@@ -1,0 +1,63 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-executive-zone-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [236],
+    "note": "Commercial facts are source-reviewed directly against the book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "entity_type": "seller",
+      "district": "Executive Zone",
+      "map_no": 9,
+      "book_page": 236,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 236",
+      "source_summary": "Executive Zone Oasis branch combining basic food staples with predominantly premium, brand-name merchandise and rapid local delivery.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares_and_service",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:executive-zone:oasis:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "food-consumables", "fashion-personal", "electronics-comms"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "corporate",
+          "price_tier_center": "Luxury",
+          "pricing_style": "premium",
+          "channel_weights": {"retail": 10, "corporate": 8, "direct_order": 5},
+          "allowed_classification_prefixes": [
+            ["General Equipment"],
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["Fashion & Personal"],
+            ["Electronics & Communications"]
+          ],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 2]
+        }
+      },
+      "local_offerings": [
+        {"offering_key": "kibble-scop-staples", "label": "Kibble and SCOP staples"},
+        {"offering_key": "fresh-cut-flowers", "label": "Fresh-cut flowers, including roses"}
+      ],
+      "services": [
+        {"service_key": "agent-ordering", "label": "Agent ordering"},
+        {"service_key": "exec-zone-drone-delivery", "label": "Rapid drone delivery within the Executive Zone"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_AND_HARD_NARROWED",
+        "note": "The audit's home/property spillover is not promoted into stock. Generated merchandise is limited to plausible premium retail categories while the source-explicit staples and flowers are preserved separately."
+      }
+    }
+  ]
+}

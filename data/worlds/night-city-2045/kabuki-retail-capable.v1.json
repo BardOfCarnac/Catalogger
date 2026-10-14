@@ -1,0 +1,98 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-kabuki-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [202, 203, 204],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-DELPHI-X",
+      "name": "Delphi X",
+      "entity_type": "service",
+      "district": "Kabuki",
+      "map_no": 5,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Tyger Claws strip club and brothel with ordinary cocktail service; its source-defined business is entertainment and sex work rather than merchandise retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "strip-club", "label": "Strip-club entertainment"},
+        {"service_key": "brothel", "label": "Brothel services"},
+        {"service_key": "bar-hospitality", "label": "Bar and cocktail hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_ENTERTAINMENT_AND_HOSPITALITY_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-HOUOU",
+      "name": "Houou",
+      "entity_type": "hybrid",
+      "district": "Kabuki",
+      "map_no": 7,
+      "book_page": 203,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 203",
+      "source_summary": "Tyger Phoenix nightclub and casino with an upstairs identity shop offering bodysculpting and false SIN cards.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "fake-sin-cards", "label": "Fake SIN cards", "availability": "second-floor identity shop"}
+      ],
+      "services": [
+        {"service_key": "casino-gambling", "label": "Pachinko, mahjong, chō-han and blackjack"},
+        {"service_key": "nightclub-hospitality", "label": "Nightclub, dancing and drinks"},
+        {"service_key": "bodysculpting", "label": "Bodysculpting", "availability": "second-floor identity shop"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PRESERVE_IDENTITY_SHOP_AS_LOCAL_WARES_AND_SERVICES"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS",
+      "name": "Matsura Food Products",
+      "entity_type": "seller",
+      "district": "Kabuki",
+      "map_no": 10,
+      "book_page": 203,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 203-204",
+      "source_summary": "Importer and seller of non-perishable Asian foodstuffs, especially products from China, Japan and Korea.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:kabuki:matsura-food-products:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "specialist",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 7, "specialist": 7},
+          "allowed_classification_prefixes": [["Food, Drink & Consumables", "Foodstuffs"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_SOURCE_EXPLICIT_FOOD_IMPORT_RETAILER"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-japantown-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [132, 134],
+    "note": "Map-visible Old Japantown places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MIYASAKA-CLINIC",
+      "name": "Miyasaka Clinic",
+      "entity_type": "service",
+      "district": "Old Japantown",
+      "map_no": 15,
+      "book_page": 132,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 132",
+      "source_summary": "Long-established family clinic serving locals who distrust Crisis Medical Center; its current head provides medical treatment and is sometimes willing to exchange care for favors.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Asahi", "role": "Medtech", "rank": 4},
+      "services": [
+        {"service_key": "community-medical-treatment", "label": "Community medical treatment"},
+        {"service_key": "favor-for-treatment", "label": "Treatment in exchange for favors", "availability": "proprietor discretion"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-134-TSUKUYOMI",
+      "name": "Tsukuyomi",
+      "entity_type": "service",
+      "district": "Old Japantown",
+      "map_no": 24,
+      "book_page": 134,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 134",
+      "source_summary": "Employee-owned brothel known for clean conditions and comparatively respectful treatment of workers and customers, managed independently while seeking outside gang protection.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Kotone Shiomi", "role": "Rockerboy/Fixer", "rank": 5},
+      "services": [
+        {"service_key": "brothel-services", "label": "Brothel and companionship services"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-executive-zone-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [234, 235, 236],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB",
+      "name": "Executive Zone Casino/Country Club",
+      "entity_type": "container",
+      "district": "Executive Zone",
+      "map_no": 2,
+      "book_page": 234,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 234-235",
+      "source_summary": "Private-membership country club and casino for Night City's wealthy, combining table gambling, sports facilities, gym, arcade, pool, golf tower, bars and a named restaurant.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "services": [
+        {"service_key": "country-club-membership", "label": "Private country-club membership"},
+        {"service_key": "casino-gambling", "label": "Casino table games"},
+        {"service_key": "sports-fitness-recreation", "label": "Squash, tennis, gym, arcade, hot tubs and pool"},
+        {"service_key": "executive-zone-links", "label": "Executive Zone Links golf course"}
+      ],
+      "schedule": {"kind": "daily_hours", "note": "Casino 19:00-03:00"},
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "PROMOTE_TO_MEMBERSHIP_ENTERTAINMENT_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-MEN-EXECUTIVE-ZONE-235-ZEST",
+      "name": "Zest!",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB",
+      "district": "Executive Zone",
+      "map_no": 2,
+      "book_page": 235,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 235",
+      "source_summary": "Country-club restaurant serving fresh Asian-fusion food.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "fresh-asian-fusion-meals", "label": "Fresh Asian-fusion meals"}],
+      "services": [{"service_key": "restaurant-hospitality", "label": "Restaurant hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_RESTAURANT_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-MEN-EXECUTIVE-ZONE-235-SEACLIFF",
+      "name": "Seacliff",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB",
+      "district": "Executive Zone",
+      "map_no": 2,
+      "book_page": 235,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 235",
+      "source_summary": "Poolside country-club bar best known for the expensive Dragon's Horn cocktail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "dragons-horn", "label": "Dragon's Horn cocktail", "price_eb": 100}],
+      "services": [{"service_key": "poolside-bar-hospitality", "label": "Poolside bar hospitality"}],
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_BAR_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-PUDDLEFORGE-GAMES",
+      "name": "Puddleforge Games",
+      "entity_type": "channel",
+      "district": "Executive Zone",
+      "map_no": 10,
+      "book_page": 236,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 236",
+      "source_summary": "Game publisher operating offices, printing press, warehouse and distribution center from an Executive Zone mansion; its latest hit is the Elflines Online Trading Card Game, but no public storefront is described.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {"product_family": "Puddleforge tabletop games and Elflines Online TCG products", "service_area": "publisher distribution"},
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "NARROW_TO_PUBLISHING_AND_DISTRIBUTION_CHANNEL"}
+    }
+  ]
+}

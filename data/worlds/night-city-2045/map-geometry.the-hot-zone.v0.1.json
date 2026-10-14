@@ -1,0 +1,105 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+  "district": "The Hot Zone",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 91,
+    "source_ref": "Night City 2045 p. 91",
+    "note": "All eleven numbered Hot Zone map pins were visually verified against the user-provided purchased source."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {
+      "map_no": 1,
+      "name": "Ashcroft Hotel",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL",
+      "x": 0.622353,
+      "y": 0.462293,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 2,
+      "name": "The Crater",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER",
+      "x": 0.359105,
+      "y": 0.505283,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 3,
+      "name": "Crisis Center",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER",
+      "x": 0.633719,
+      "y": 0.395293,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 4,
+      "name": "Dark Zone One",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE",
+      "x": 0.292281,
+      "y": 0.46853,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 5,
+      "name": "The Dump",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP",
+      "x": 0.516118,
+      "y": 0.602338,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 6,
+      "name": "Eurasiabank Plaza",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA",
+      "x": 0.544,
+      "y": 0.342086,
+      "source_ref": "Night City 2045 p. 92"
+    },
+    {
+      "map_no": 7,
+      "name": "Graceland Medical",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL",
+      "x": 0.673516,
+      "y": 0.39596,
+      "source_ref": "Night City 2045 p. 93"
+    },
+    {
+      "map_no": 8,
+      "name": "The N54",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54",
+      "x": 0.334817,
+      "y": 0.569566,
+      "source_ref": "Night City 2045 p. 93"
+    },
+    {
+      "map_no": 9,
+      "name": "Safe Child",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD",
+      "x": 0.671386,
+      "y": 0.49798,
+      "source_ref": "Night City 2045 p. 93"
+    },
+    {
+      "map_no": 10,
+      "name": "Toggle’s Temple",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE",
+      "x": 0.158248,
+      "y": 0.347965,
+      "source_ref": "Night City 2045 p. 93"
+    },
+    {
+      "map_no": 11,
+      "name": "Totentanz",
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "x": 0.350817,
+      "y": 0.259207,
+      "source_ref": "Night City 2045 p. 93"
+    }
+  ]
+}

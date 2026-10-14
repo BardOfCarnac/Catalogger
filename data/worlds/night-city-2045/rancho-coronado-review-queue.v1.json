@@ -1,0 +1,80 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-rancho-coronado-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [286, 288, 289],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-286-106-9-SANGRE-Y-ARENA",
+      "name": "106.9 Sangre y arena",
+      "entity_type": "service",
+      "district": "Rancho Coronado",
+      "map_no": 1,
+      "book_page": 286,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 286",
+      "source_summary": "Local Spanish-language radio station broadcasting Rancho Coronado survival information, hazards and neighborhood notices; references to local sales are news items rather than station retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "local-radio-broadcast", "label": "Local radio news and survival information"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_COMMUNITY_MEDIA_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-CORONADO-HEIGHTS",
+      "name": "Coronado Heights",
+      "entity_type": "context",
+      "district": "Rancho Coronado",
+      "map_no": 4,
+      "book_page": 288,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 288",
+      "source_summary": "Relatively high-quality studio-apartment building inhabited by Playland workers and gang members; the entry describes residents and utilities but no customer-facing sales or rental operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_RESIDENTIAL_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-288-THE-CULMS",
+      "name": "The Culms",
+      "entity_type": "channel",
+      "district": "Rancho Coronado",
+      "map_no": 5,
+      "book_page": 288,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 288",
+      "source_summary": "Weng Fang Tong-controlled mutant-bamboo harvesting operation whose output is sold to companies across Night City for construction scaffolding; labor is coercive and the site is not public retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {"product_family": "mutant bamboo construction material", "service_area": "Night City companies"},
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_WHOLESALE_MATERIALS_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-RANCHO-CORONADO-289-JACK-N-THE-GREEN",
+      "name": "Jack 'N' the Green",
+      "entity_type": "hybrid",
+      "district": "Rancho Coronado",
+      "map_no": 10,
+      "book_page": 289,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 286, 289",
+      "source_summary": "Large guerrilla garden and major supplier of fresh produce to high-end restaurants citywide; the local radio also reports occasional cheap sales of blemished produce to residents.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "proprietor": {"name": "Cheech", "role": "Exec", "rank": 3},
+      "local_offerings": [
+        {"offering_key": "fresh-produce", "label": "Fresh locally grown produce"},
+        {"offering_key": "blemished-produce", "label": "Discounted blemished produce", "availability": "occasional"}
+      ],
+      "distribution": {"product_family": "fresh produce", "service_area": "high-end restaurants across Night City"},
+      "catalogue_note": "Produce is site-specific agricultural output rather than a generic food-store assortment.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "PROMOTE_TO_LOCAL_PRODUCE_VENDOR_AND_RESTAURANT_SUPPLIER"}
+    }
+  ]
+}

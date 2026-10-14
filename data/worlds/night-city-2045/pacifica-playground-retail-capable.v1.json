@@ -1,0 +1,116 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-pacifica-playground-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [276, 277, 282, 283],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+      "name": "The Ascension",
+      "entity_type": "hybrid",
+      "district": "Pacifica Playground",
+      "map_no": 1,
+      "book_page": 276,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 276-278",
+      "source_summary": "Immobilized cruise liner converted into an adult tourist destination offering gambling, dining, dancing, braindance clubs, weddings, lodging and sex work.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "tropical-elation", "label": "Tropical Elation cocktail", "price_eb": 20, "availability": "Enervate lounge"}
+      ],
+      "services": [
+        {"service_key": "casino-gambling", "label": "Casino gambling"},
+        {"service_key": "lodging", "label": "Cruise-liner lodging"},
+        {"service_key": "fine-dining", "label": "Fine dining"},
+        {"service_key": "nightlife", "label": "Dancing and braindance clubs"},
+        {"service_key": "instant-weddings", "label": "Instant weddings"},
+        {"service_key": "adult-hospitality", "label": "Adult hospitality and joytoy services"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_MULTI_SERVICE_HOSPITALITY_COMPLEX"
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-PACIFICA-PLAYGROUND-278-PACIFICA-PARTIES",
+      "name": "Pacifica Parties",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+      "district": "Pacifica Playground",
+      "map_no": 1,
+      "book_page": 278,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 278",
+      "source_summary": "Piranhas-run event coordination service located on Deck Five of the Ascension.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "event-coordination", "label": "Event coordination"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_NAMED_SERVICE_CHILD"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-VOLKODAV-RACETRACK",
+      "name": "Volkodav Racetrack",
+      "entity_type": "hybrid",
+      "district": "Pacifica Playground",
+      "map_no": 20,
+      "book_page": 282,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 282",
+      "source_summary": "Voodoo Boys-run low-end robotic dog racetrack with round-the-clock betting, Smash sales and XBD rental; the gang's basement production activity is not treated as public retail stock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "schedule": {"availability": "24/7 races"},
+      "local_offerings": [
+        {"offering_key": "smash-can", "label": "Smash, can", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "dog-race-betting", "label": "Robotic dog-race betting", "minimum_price_eb": 5},
+        {"service_key": "xbd-rental", "label": "XBD rental in the Party Room"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_GAMBLING_AND_XBD_SERVICE_WITH_LOCAL_DRINK"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-THE-XX-THE-TWENTY",
+      "name": "The XX (The Twenty)",
+      "entity_type": "hybrid",
+      "district": "Pacifica Playground",
+      "map_no": 22,
+      "book_page": 282,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 282-283",
+      "source_summary": "Breakfist-owned juice-bar dive and live music venue with a named nonalcoholic house blend.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "schedule": {"opens": "15:00"},
+      "local_offerings": [
+        {"offering_key": "lean-mean-machine", "label": "Lean Mean Machine house blend", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "juice-bar", "label": "Juice-bar hospitality"},
+        {"service_key": "live-music", "label": "Live music and band performances"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_JUICE_BAR_AND_LIVE_MUSIC_SERVICE"
+      }
+    }
+  ]
+}

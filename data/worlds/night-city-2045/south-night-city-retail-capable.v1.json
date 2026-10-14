@@ -1,0 +1,141 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-south-night-city-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [140, 142, 144],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-THE-BONEYARD",
+      "name": "The Boneyard",
+      "entity_type": "container",
+      "district": "South Night City",
+      "map_no": 1,
+      "book_page": 140,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 140",
+      "source_summary": "Shanty-town community on the former cemetery grounds; commerce belongs to contained local businesses rather than to the settlement as a shop.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "CORRECT_TO_COMMUNITY_CONTAINER",
+        "note": "Direct review does not support treating the Boneyard itself as a retail operation."
+      }
+    },
+    {
+      "entity_id": "NC2045-MEN-SOUTH-NIGHT-CITY-140-THE-CRYPT",
+      "name": "The Crypt",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-THE-BONEYARD",
+      "district": "South Night City",
+      "map_no": 1,
+      "book_page": 140,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 140",
+      "source_summary": "Local bar inside the Boneyard serving a named berry-and-gin house drink to customers accepted by the community.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "monster-mash", "label": "Monster Mash house drink", "price_eb": 10, "availability": "when the locals approve"}
+      ],
+      "services": [
+        {"service_key": "local-bar-hospitality", "label": "Neighborhood bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_NAMED_COMMERCIAL_CHILD"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-GUNMART",
+      "name": "GunMart",
+      "entity_type": "seller",
+      "district": "South Night City",
+      "map_no": 5,
+      "book_page": 142,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 142",
+      "source_summary": "GunMart headquarters and megastore with public aisles displaying firearms, ammunition and weapon accessories, backed by warehouse stock for wider distribution.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "weapons-dealer",
+        "seed": "nc2045:south-night-city:gunmart:v1",
+        "overrides": {
+          "primary_departments": ["weapons", "ammunition-ordnance", "weapon-parts"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "corporate",
+          "price_tier_center": "Premium",
+          "pricing_style": "bargain",
+          "channel_weights": {"retail": 10, "corporate": 7, "specialist": 5},
+          "brand_affinities": {"GunMart": 20},
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_SOURCE_EXPLICIT_WEAPONS_MEGASTORE",
+        "note": "The old food/drink spillover is removed; the store is explicitly guns, ammunition and weapon accessories."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-MINDNUTZ-LOVER",
+      "name": "MindNutz Lover",
+      "entity_type": "service",
+      "district": "South Night City",
+      "map_no": 10,
+      "book_page": 144,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 144",
+      "source_summary": "Braindance nightclub with dance floor, bar and BD experiences; the entry supports hospitality and entertainment rather than merchandise retail.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Steve ‘Chance’ Dore", "role": "Rockerboy", "rank": 3},
+      "services": [
+        {"service_key": "braindance-club", "label": "Braindance club experiences"},
+        {"service_key": "nightclub-hospitality", "label": "Nightclub and bar hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_ENTERTAINMENT_SERVICE",
+        "note": "No physical or digital merchandise shelf is established by the source entry."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-SAVAGE-DOCS",
+      "name": "Savage Docs",
+      "entity_type": "service",
+      "district": "South Night City",
+      "map_no": 11,
+      "book_page": 144,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 144",
+      "source_summary": "Large, reputable ripperdoc clinic providing treatment and cyberware upgrades around the clock; its drugs and supplies are clinic stock, not a public retail shelf.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "schedule": {"availability": "24/7"},
+      "services": [
+        {"service_key": "medical-treatment", "label": "Medical treatment"},
+        {"service_key": "cyberware-upgrade-installation", "label": "Cyberware upgrade and installation"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_MEDICAL_SERVICE",
+        "note": "The source says the clinic is well stocked with drugs and supplies, but does not establish those supplies as customer retail inventory."
+      }
+    }
+  ]
+}

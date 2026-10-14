@@ -1,0 +1,34 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-SOUTH-NIGHT-CITY-P139",
+  "district": "South Night City",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 139,
+    "source_ref": "Night City 2045 p. 139",
+    "note": "All seventeen numbered map pins and labels were visually verified against the user-provided purchased source. Marker centres were derived from the source page's vector-text positions."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "The Boneyard", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-THE-BONEYARD", "x": 0.484804, "y": 0.256548, "source_ref": "Night City 2045 p. 140"},
+    {"map_no": 2, "name": "Combat Cabb Headquarters", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-COMBAT-CABB-HEADQUARTERS", "x": 0.431961, "y": 0.335584, "source_ref": "Night City 2045 pp. 140-141"},
+    {"map_no": 3, "name": "Container Mart", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART", "x": 0.233644, "y": 0.359051, "source_ref": "Night City 2045 p. 141"},
+    {"map_no": 4, "name": "Fort Sumter", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-FORT-SUMTER", "x": 0.233644, "y": 0.311425, "source_ref": "Night City 2045 p. 142"},
+    {"map_no": 5, "name": "GunMart", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-GUNMART", "x": 0.569510, "y": 0.522390, "source_ref": "Night City 2045 p. 142"},
+    {"map_no": 6, "name": "Haakensen Tower", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-HAAKENSEN-TOWER", "x": 0.183399, "y": 0.247540, "source_ref": "Night City 2045 pp. 142-143"},
+    {"map_no": 7, "name": "KidZ", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-KIDZ", "x": 0.392810, "y": 0.310162, "source_ref": "Night City 2045 p. 143"},
+    {"map_no": 8, "name": "Lazarus Training Center", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-LAZARUS-TRAINING-CENTER", "x": 0.303170, "y": 0.360086, "source_ref": "Night City 2045 p. 143"},
+    {"map_no": 9, "name": "MAX-TAC HQ", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-MAX-TAC-HQ", "x": 0.477614, "y": 0.376542, "source_ref": "Night City 2045 pp. 143-144"},
+    {"map_no": 10, "name": "MindNutz Lover", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-MINDNUTZ-LOVER", "x": 0.430327, "y": 0.230065, "source_ref": "Night City 2045 p. 144"},
+    {"map_no": 11, "name": "Savage Docs", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-SAVAGE-DOCS", "x": 0.466438, "y": 0.314119, "source_ref": "Night City 2045 p. 144"},
+    {"map_no": 12, "name": "Silverhand Studios", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-SILVERHAND-STUDIOS", "x": 0.545523, "y": 0.592338, "source_ref": "Night City 2045 pp. 144-145"},
+    {"map_no": 13, "name": "The Slammer", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-THE-SLAMMER", "x": 0.433595, "y": 0.636378, "source_ref": "Night City 2045 p. 145"},
+    {"map_no": 14, "name": "South Cargo Village", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-SOUTH-CARGO-VILLAGE", "x": 0.711634, "y": 0.546378, "source_ref": "Night City 2045 p. 145"},
+    {"map_no": 15, "name": "South Night City Volunteer Fire Station", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-SOUTH-NIGHT-CITY-VOLUNTEER-FIRE-STATION", "x": 0.288824, "y": 0.286890, "source_ref": "Night City 2045 p. 145"},
+    {"map_no": 16, "name": "Union Chapel Building", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-UNION-CHAPEL-BUILDING", "x": 0.384118, "y": 0.265609, "source_ref": "Night City 2045 p. 145"},
+    {"map_no": 17, "name": "University Cargo Bay", "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-146-UNIVERSITY-CARGO-BAY", "x": 0.219200, "y": 0.257132, "source_ref": "Night City 2045 p. 146"}
+  ]
+}

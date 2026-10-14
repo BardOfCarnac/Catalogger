@@ -1,0 +1,40 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-NORTH-HEYWOOD-P247",
+  "district": "North Heywood",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 247,
+    "source_ref": "Night City 2045 p. 247",
+    "note": "Source map geometry verified against the user-provided purchased source. The map draws ordinary pins #1-#17 and Woodland Park children 18a-18f; the legend names Woodland Park as #18, but there is no standalone #18 dot. Marker 18b jointly represents Breeze and Burning Bright Bodega at one printed point."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude.",
+  "points": [
+    {"map_no": 1, "name": "Acorn Towers", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-246-ACORN-TOWERS", "x": 0.501373, "y": 0.254776, "source_ref": "Night City 2045 p. 246"},
+    {"map_no": 2, "name": "AmeriCar Distribution Center", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-AMERICAR-DISTRIBUTION-CENTER", "x": 0.532418, "y": 0.595620, "source_ref": "Night City 2045 p. 248"},
+    {"map_no": 3, "name": "The Armory", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-THE-ARMORY", "x": 0.267908, "y": 0.467099, "source_ref": "Night City 2045 p. 248"},
+    {"map_no": 4, "name": "Blue Air Studio Apartments", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BLUE-AIR-STUDIO-APARTMENTS", "x": 0.764444, "y": 0.387554, "source_ref": "Night City 2045 p. 248"},
+    {"map_no": 5, "name": "Byte & Switch", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH", "x": 0.691700, "y": 0.408477, "source_ref": "Night City 2045 p. 248"},
+    {"map_no": 6, "name": "Dynalar Campus", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-DYNALAR-CAMPUS", "x": 0.406601, "y": 0.239624, "source_ref": "Night City 2045 p. 249"},
+    {"map_no": 7, "name": "Evergreen Vista Park", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-EVERGREEN-VISTA-PARK", "x": 0.429477, "y": 0.470685, "source_ref": "Night City 2045 p. 249"},
+    {"map_no": 8, "name": "The Forlorn Hope", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-THE-FORLORN-HOPE", "x": 0.431111, "y": 0.206796, "source_ref": "Night City 2045 p. 249"},
+    {"map_no": 9, "name": "Haven Spa & Recovery", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-HAVEN-SPA-RECOVERY", "x": 0.331438, "y": 0.480786, "source_ref": "Night City 2045 pp. 249-250"},
+    {"map_no": 10, "name": "Haywire Circuit Gym", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-HAYWIRE-CIRCUIT-GYM", "x": 0.416667, "y": 0.349303, "source_ref": "Night City 2045 p. 250"},
+    {"map_no": 11, "name": "Nana Meow’s Nursery", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY", "x": 0.339608, "y": 0.379776, "source_ref": "Night City 2045 p. 250"},
+    {"map_no": 12, "name": "Neon Hollow Strip", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NEON-HOLLOW-STRIP", "x": 0.584706, "y": 0.503449, "source_ref": "Night City 2045 p. 250"},
+    {"map_no": 13, "name": "The Night City Animal Shelter", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-THE-NIGHT-CITY-ANIMAL-SHELTER", "x": 0.516079, "y": 0.354523, "source_ref": "Night City 2045 p. 250"},
+    {"map_no": 14, "name": "North Heywood Civic Nexus", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NORTH-HEYWOOD-CIVIC-NEXUS", "x": 0.390262, "y": 0.437857, "source_ref": "Night City 2045 p. 250"},
+    {"map_no": 15, "name": "Perennial Heights/The Rupture", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-PERENNIAL-HEIGHTS-THE-RUPTURE", "x": 0.398432, "y": 0.527503, "source_ref": "Night City 2045 p. 251"},
+    {"map_no": 16, "name": "Sleepeasy Home Solutions", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS", "x": 0.511176, "y": 0.403766, "source_ref": "Night City 2045 p. 251"},
+    {"map_no": 17, "name": "Turbine Alley", "entity_id": "NC2045-LOC-NORTH-HEYWOOD-251-TURBINE-ALLEY", "x": 0.548856, "y": 0.470451, "source_ref": "Night City 2045 p. 251"},
+    {"map_no": 18, "map_suffix": "a", "name": "Biotechnica Palm Grove", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BIOTECHNICA-PALM-GROVE", "x": 0.469967, "y": 0.225736, "source_ref": "Night City 2045 p. 252"},
+    {"map_no": 18, "map_suffix": "b", "name": "Breeze/Burning Bright Bodega", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE", "co_located_entity_ids": ["NC2045-MEN-NORTH-HEYWOOD-252-BURNING-BRIGHT-BODEGA"], "x": 0.447958, "y": 0.218160, "source_ref": "Night City 2045 p. 252"},
+    {"map_no": 18, "map_suffix": "c", "name": "The Palms", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-PALMS", "x": 0.408235, "y": 0.199220, "source_ref": "Night City 2045 p. 252"},
+    {"map_no": 18, "map_suffix": "d", "name": "The Shark", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-SHARK", "x": 0.420360, "y": 0.218160, "source_ref": "Night City 2045 p. 252"},
+    {"map_no": 18, "map_suffix": "e", "name": "Xanadu", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-XANADU", "x": 0.462157, "y": 0.253513, "source_ref": "Night City 2045 p. 252"},
+    {"map_no": 18, "map_suffix": "f", "name": "Zolletta", "entity_id": "NC2045-OUT-NORTH-HEYWOOD-252-ZOLLETTA", "x": 0.439967, "y": 0.230786, "source_ref": "Night City 2045 p. 252"}
+  ]
+}

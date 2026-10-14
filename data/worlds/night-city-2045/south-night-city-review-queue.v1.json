@@ -1,0 +1,28 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-south-night-city-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [146],
+    "note": "Held-out v0.2 Review Queue candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-146-UNIVERSITY-CARGO-BAY",
+      "name": "University Cargo Bay",
+      "entity_type": "context",
+      "district": "South Night City",
+      "map_no": 17,
+      "book_page": 146,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 146",
+      "source_summary": "Very cheap student housing within walking distance of Night City University; the entry establishes habitation but does not identify a landlord, rental business, shop or other customer-facing operator.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "DOWNGRADE_TO_STUDENT_HOUSING_CONTEXT"}
+    }
+  ]
+}

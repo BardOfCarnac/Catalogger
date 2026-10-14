@@ -1,0 +1,105 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-old-japantown-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [130, 132, 133],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-CUTTING-EDGE",
+      "name": "The Cutting Edge",
+      "entity_type": "hybrid",
+      "district": "Old Japantown",
+      "map_no": 4,
+      "book_page": 130,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 130",
+      "source_summary": "Designer boutique paired with hair, nail and fashionware salon services, serving corporate and high-profile clients.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "proprietor": {"name": "Comme il Faut", "role": "Medtech", "rank": 4},
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:old-japantown:cutting-edge:v1",
+        "overrides": {
+          "primary_departments": ["fashion-personal"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "specialist",
+          "price_tier_center": "Expensive",
+          "pricing_style": "premium",
+          "channel_weights": {"retail": 7, "specialist": 8, "corporate": 5},
+          "allowed_classification_prefixes": [["Fashion & Personal"]],
+          "condition_weights": {"new": 10, "used": 0, "refurbished": 0, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "services": [
+        {"service_key": "hair-salon", "label": "Hair salon"},
+        {"service_key": "nail-salon", "label": "Nail salon"},
+        {"service_key": "fashionware-salon", "label": "Fashionware salon and installation"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_FASHION_BOUTIQUE_AND_SALON",
+        "note": "Generated stock is confined to ordinary Fashion & Personal goods; fashionware remains a salon service rather than an inferred cyberware shelf."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-LOVELY-DRONE-HEROES-CAFE",
+      "name": "Lovely Drone Heroes Café",
+      "entity_type": "hybrid",
+      "district": "Old Japantown",
+      "map_no": 14,
+      "book_page": 132,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 132",
+      "source_summary": "Geek-themed bar and café staffed by Agent-carrying drones with character SAAIs; customers buy drinks and digital gifts for the performers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "digital-performer-gifts", "label": "Digital gifts for café performer SAAIs"}
+      ],
+      "services": [
+        {"service_key": "cafe-bar-hospitality", "label": "Café and bar hospitality"},
+        {"service_key": "drone-character-entertainment", "label": "Interactive drone-character entertainment"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_CAFE_WITH_DIGITAL_GIFTS"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS",
+      "name": "Neo Galaxy Cards and Comics",
+      "entity_type": "local_vendor",
+      "district": "Old Japantown",
+      "map_no": 17,
+      "book_page": 133,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 133",
+      "source_summary": "Iron Sights-run cards and comics store and a major Elflines Online TCG community hub; the gang also deals drugs from a back room.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "elflines-tcg", "label": "Elflines Online TCG cards and related card-game trade"},
+        {"offering_key": "comics", "label": "Comics"},
+        {"offering_key": "backroom-drug-trade", "label": "Backroom drug trade", "availability": "clandestine"}
+      ],
+      "catalogue_note": "Catalogger contains virtual-game and Elflines material, but the source describes a focused card/comics shop; the pass keeps its merchandise local rather than admitting unrelated virtual goods.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_SOURCE_LOCAL_CARD_COMIC_VENDOR_WITH_BACKROOM_TRADE"
+      }
+    }
+  ]
+}

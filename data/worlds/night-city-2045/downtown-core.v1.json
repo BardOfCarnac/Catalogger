@@ -1,0 +1,258 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-downtown-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [82, 84, 85],
+    "note": "Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "name": "Bella Vista Market",
+      "entity_type": "container",
+      "district": "Downtown",
+      "map_no": 2,
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Day market in a former parking garage with several regular businesses; it can become a Night Market after dark.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-DIGGS",
+      "name": "Digg’s",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Tiny bodega operating as a regular Bella Vista stall.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:bella-vista:diggs:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "compact",
+          "depth_profile": "shallow",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "max_base_price": 100,
+          "specials": [0, 1]
+        }
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-REFROSH-WASH",
+      "name": "Refrosh Wash",
+      "entity_type": "hybrid",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Footbath café and bar among Bella Vista’s regular businesses.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "cafe-food-drink", "label": "Café and bar food/drink"}
+      ],
+      "services": [
+        {"service_key": "footbath", "label": "Footbath service"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-RAINBOW-ART-SUPPLY",
+      "name": "Rainbow Art Supply",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Art-supply stall dealing in paint and drugs for local artists.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "art-supplies", "label": "Paint and art supplies"},
+        {"offering_key": "artist-drugs", "label": "Drugs sold to artists"}
+      ],
+      "catalogue_note": "The source describes a mixed art-supply/drug seller more narrowly than the current catalogue taxonomy can represent cleanly, so no synthetic catalogue assortment is generated yet."
+    },
+    {
+      "entity_id": "NC2045-OUT-DOWNTOWN-082-FADE-FOREVER",
+      "name": "Fade Forever",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Single-chair barber shop operating as a regular Bella Vista business.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "barber", "label": "Barbering"}
+      ]
+    },
+    {
+      "entity_id": "NC2045-EVENT-DOWNTOWN-082-BELLA-VISTA-NIGHT-MARKET",
+      "name": "Bella Vista Night Market",
+      "entity_type": "event_market",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Occasional after-dark Night Market run by local Fixers, with braindance chips, cyberware, weapons and more unusual goods.",
+      "review_status": "source_reviewed",
+      "stock_policy": "EVENT_ONLY",
+      "schedule": {"daypart": "after_dark", "frequency": "occasional"},
+      "event_profile": {
+        "market_channels": ["street", "grey_market", "black_market"],
+        "known_departments": ["services-entertainment", "cyberware", "weapons"]
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE",
+      "name": "Continental Brands Office",
+      "entity_type": "container",
+      "district": "Downtown",
+      "map_no": 5,
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Continental Brands’ local headquarters; its public lower floors contain the Oasis Megamart and visitor attractions.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed"
+    },
+    {
+      "entity_id": "NC2045-MEN-DOWNTOWN-082-OASIS-MEGAMART",
+      "name": "Oasis Megamart",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE",
+      "district": "Downtown",
+      "book_page": 82,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 82",
+      "source_summary": "Public megamart selling cheap plastic goods plus new drink, Kibble and SCOP-prepak products.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:downtown:oasis-megamart:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables", "general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "broad",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "max_base_price": 100,
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Removed inferred fashion/electronics departments; source text supports cheap goods and food/drink products."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "name": "Europa Meatworks",
+      "entity_type": "local_vendor",
+      "district": "Downtown",
+      "map_no": 10,
+      "book_page": 84,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 84",
+      "source_summary": "Artisanal butcher specialising in unusual old-world sausages and cuts of meat, with rumours of more experimental products.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "artisan-meat", "label": "Artisanal sausages and unusual cuts"},
+        {"offering_key": "experimental-cuts", "label": "More experimental meat offerings", "visibility": "ask"}
+      ],
+      "catalogue_note": "The canonical food catalogue is too generic to represent this shop without substituting unrelated packaged food, so its wares remain world-local.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "name": "Moleharty’s Books & Antiques",
+      "entity_type": "local_vendor",
+      "district": "Downtown",
+      "map_no": 16,
+      "book_page": 85,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 85",
+      "source_summary": "Old-fashioned rare-book and antique shop whose Fixer owner also keeps a hidden cache of black-market artifacts.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "proprietor": {"name": "Hercule Moleharty", "role": "Fixer", "rank": 7},
+      "local_offerings": [
+        {"offering_key": "rare-books", "label": "Dusty and rare books from around the world"},
+        {"offering_key": "antiques", "label": "Antiques and collector pieces"},
+        {"offering_key": "black-market-artifacts", "label": "Hidden black-market artifacts", "visibility": "hidden"}
+      ],
+      "catalogue_note": "The Night Market Index does not provide a suitable ordinary book/antique catalogue. Broad pawn-shop generation would invent unsupported weapons/fashion stock, so this remains local until a matching catalogue layer exists.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES",
+        "note": "Also corrects the audit map number from 15 to the source entry’s #16."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "name": "Munch Munch Munch",
+      "entity_type": "service",
+      "district": "Downtown",
+      "map_no": 17,
+      "book_page": 85,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 85",
+      "source_summary": "Private members’ social club for exotics with lounge food/drink, rentable cube rooms and scheduled social/sex events.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "annual-membership", "label": "Annual membership", "price_eb": 500},
+        {"service_key": "cube-room", "label": "Cube room rental", "price_eb": 20, "unit": "night"},
+        {"service_key": "club-lounge", "label": "Members’ lounge access"}
+      ],
+      "local_offerings": [
+        {"offering_key": "meals-drinks", "label": "Meals and drinks from the lounge"}
+      ],
+      "schedule": {
+        "sex_show": "Saturday nights",
+        "furmeet": "second Tuesday of each month"
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "SERVICE_ONLY",
+        "decision": "CONFIRMED_SERVICE_ONLY",
+        "note": "Corrects the audit map number from 16 to the source entry’s #17."
+      }
+    }
+  ]
+}

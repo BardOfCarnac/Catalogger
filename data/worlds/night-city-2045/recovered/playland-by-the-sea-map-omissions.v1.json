@@ -1,0 +1,65 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-playland-by-the-sea-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [301, 306],
+    "note": "Map reconciliation against the Playland by the Sea souvenir map. The existing reviewed fixture layer already preserves 49 of the 52 numbered attractions; this file recovers the three map-only omissions without inventing unsupported stock or pricing."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-TICKET-GATE",
+      "name": "Ticket Gate",
+      "entity_type": "service",
+      "district": "Playland by the Sea Lands",
+      "map_no": 31,
+      "book_page": 301,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 301",
+      "source_summary": "Numbered park entrance on the souvenir map. The Playland planning text on the same page establishes paid park entry, Daily Ride Wristbands and à-la-carte ride passes.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "park-admission", "label": "Playland park admission"},
+        {"service_key": "ride-wristband-sales", "label": "Daily Ride Wristband sales"},
+        {"service_key": "ride-pass-sales", "label": "À-la-carte ride pass sales"}
+      ],
+      "audit": {"source_profile_version": "map-recovery-v0.1", "decision": "RECOVER_NUMBERED_MAP_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CHANGING-ROOMS",
+      "name": "Changing Rooms",
+      "entity_type": "service",
+      "district": "Playland by the Sea Lands",
+      "map_no": 39,
+      "book_page": 306,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 306",
+      "source_summary": "Numbered changing-room amenity on the souvenir map. The nearby Hydrosubsidium Artificial Ocean entry explicitly states that changing rooms and swimsuit rentals are located nearby.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "changing-room-amenity", "label": "Changing-room amenity"},
+        {"service_key": "swimsuit-rental", "label": "Swimsuit rental"}
+      ],
+      "audit": {"source_profile_version": "map-recovery-v0.1", "decision": "RECOVER_NUMBERED_MAP_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-VIP-PARKING-LOT",
+      "name": "VIP Parking Lot",
+      "entity_type": "context",
+      "district": "Playland by the Sea Lands",
+      "map_no": 52,
+      "book_page": 301,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 301",
+      "source_summary": "Numbered VIP parking area on the souvenir map. No separate parking price, access transaction or other customer-facing commercial terms are stated in the reviewed Playland text.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "map-recovery-v0.1", "decision": "RECOVER_MAP_CONTEXT_WITHOUT_INVENTED_COMMERCE"}
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-upper-marina-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [71, 76],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "name": "The Forge",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 13,
+      "book_page": 71,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 71",
+      "source_summary": "Maelstrom facility refurbishing salvaged chrome and technology; customers on sufficiently good terms with the gang can buy directly rather than through a middleman.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "access_model": "friendly-only",
+      "local_offerings": [
+        {"offering_key": "refurbished-salvaged-chrome", "label": "Refurbished salvaged chrome", "availability": "friendly customers"},
+        {"offering_key": "refurbished-salvaged-tech", "label": "Refurbished salvaged technology", "availability": "friendly customers"}
+      ],
+      "services": [
+        {"service_key": "chrome-tech-refurbishment", "label": "Salvaged chrome and technology refurbishment"}
+      ],
+      "catalogue_note": "The source establishes opportunistic refurbished salvage rather than a stable new-product shelf, so generated cyberware/electronics stock is withheld.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_ACCESS_CONTROLLED_LOCAL_SALVAGE_SELLER"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+      "name": "Ziggurat Corporate Terrace",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 39,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Corporate employee housing attached to Ziggurat headquarters; residents obtain groceries and goods through a separate named retail-and-delivery service.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_HOUSING_CONTEXT_AND_RECOVER_DELIVERY_CHANNEL"
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-UPPER-MARINA-076-GREAT-RIVER",
+      "name": "Great River",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+      "district": "Upper Marina",
+      "map_no": 39,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Named retail and delivery service through which Corporate Terrace residents order groceries and other goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {
+        "product_family": "groceries and general goods",
+        "service_area": "Ziggurat Corporate Terrace residents"
+      },
+      "audit": {"source_profile_version": "0.2", "decision": "RECOVER_NAMED_RETAIL_DELIVERY_CHANNEL"}
+    }
+  ]
+}

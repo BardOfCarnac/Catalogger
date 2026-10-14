@@ -1,0 +1,45 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-little-china-map-omissions-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [98, 100],
+    "note": "Map-visible Little China places omitted from the active world fixtures, recovered directly from the user-provided purchased source. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-098-CHROME-CROSS",
+      "name": "Chrome Cross",
+      "entity_type": "context",
+      "district": "Little China",
+      "map_no": 2,
+      "book_page": 98,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 98",
+      "source_summary": "Local Red Chrome Legion hangout in a neglected part of Little China; the source presents it as gang territory rather than a public commercial business.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK"
+    },
+    {
+      "entity_id": "NC2045-LOC-LITTLE-CHINA-100-MADAM-YAP-S",
+      "name": "Madam Yap’s",
+      "entity_type": "service",
+      "district": "Little China",
+      "map_no": 10,
+      "book_page": 100,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 100",
+      "source_summary": "Medical establishment in a converted small hotel, where Madam Yap works as both ripperdoc and acupuncturist and maintains private recovery rooms for paying patients.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "ripperdoc-care", "label": "Ripperdoc medical care"},
+        {"service_key": "acupuncture", "label": "Acupuncture"},
+        {"service_key": "private-recovery-room", "label": "Private recovery room"}
+      ]
+    }
+  ]
+}

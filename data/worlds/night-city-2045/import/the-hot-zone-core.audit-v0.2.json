@@ -1,0 +1,32 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "batch_id": "the-hot-zone-core-audit-v0.2",
+  "source_profile_version": "0.2",
+  "profiles": [
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "district": "The Hot Zone",
+      "book_page": 93,
+      "entity_level": "mapped_location",
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 93",
+      "stock_mode": "HYBRID_DIRECT_EVENT",
+      "primary_archetype": "night-market-stall",
+      "secondary_archetypes": "entertainment-vendor",
+      "market_channel_override": "street|grey_market|black_market",
+      "breadth_profile": "small",
+      "depth_profile": "shallow",
+      "supply_capability": "clandestine",
+      "price_tier_center": "Expensive",
+      "pricing_style": "gouging",
+      "parent_stock_policy": "OWN_AND_EVENT",
+      "audit_action": "KEEP_HYBRID",
+      "assignment_confidence": "HIGH",
+      "catalog_rule": "SCORE_EXISTING_CATALOG",
+      "candidate_rule_summary": "archetype score",
+      "modelling_note": "Irregular bargaining for tech/drugs inside a club; treat as clandestine mixed trade rather than ordinary shelves."
+    }
+  ]
+}

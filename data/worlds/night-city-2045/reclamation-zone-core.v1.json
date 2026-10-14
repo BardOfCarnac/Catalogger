@@ -1,0 +1,181 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-reclamation-zone-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [160, 162],
+    "note": "Commercial facts in this pass are constrained to the project v0.2 source-derived audit and its source-review corrections. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "name": "Earl’s Second Hand Shop",
+      "entity_type": "seller",
+      "district": "Reclamation Zone",
+      "map_no": 3,
+      "book_page": 160,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 160",
+      "source_summary": "Second-hand shop dealing in varied used and salvaged goods, with occasional weapons represented by a constrained catalogue assortment.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "pawn-shop",
+        "seed": "nc2045:reclamation-zone:earls-second-hand:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "electronics-comms"],
+          "secondary_departments": ["weapons"],
+          "breadth_profile": "broad",
+          "depth_profile": "shallow",
+          "supply_capability": "irregular",
+          "price_tier_center": "Costly",
+          "pricing_style": "bargain",
+          "channel_weights": {"pawn": 9, "street": 6, "grey_market": 5, "retail": 2},
+          "allowed_classification_prefixes": [
+            ["General Equipment"],
+            ["Electronics & Communications"],
+            ["Weapons"]
+          ],
+          "condition_weights": {"new": 1, "used": 9, "refurbished": 5, "damaged": 3, "salvaged": 6},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "The generated assortment stays within general goods, physical electronics and weapons; broader fashion/collectible signals are not promoted automatically."
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "name": "Reclamation Zone Station",
+      "entity_type": "container",
+      "district": "Reclamation Zone",
+      "map_no": 14,
+      "book_page": 162,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 162",
+      "source_summary": "Station containing several named businesses; individual outlets own the commerce rather than the station itself.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "AGGREGATE_CONTAINER",
+        "decision": "CONFIRMED_CONTAINER"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-CARMEN-S-COSMETICS",
+      "name": "Carmen’s Cosmetics",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "district": "Reclamation Zone",
+      "map_no": 14,
+      "book_page": 162,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 162",
+      "source_summary": "Cosmetics and personal-style outlet within Reclamation Zone Station.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "cosmetics-personal-style", "label": "Cosmetics and personal-style goods"}
+      ],
+      "catalogue_note": "The current catalogue does not cleanly represent ordinary cosmetics, so clothing or armor items are not substituted for them.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FOREVER-BEAUTIFUL",
+      "name": "Forever Beautiful",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "district": "Reclamation Zone",
+      "map_no": 14,
+      "book_page": 162,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 162",
+      "source_summary": "Decorative/artificial-flower outlet within Reclamation Zone Station.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "artificial-flowers-decor", "label": "Artificial flowers and decorative goods"}
+      ],
+      "catalogue_note": "Housing/furnishing catalogue entries would be too broad a substitute for this source-specific merchandise.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-FORGOTTEN-TREASURES",
+      "name": "Forgotten Treasures",
+      "entity_type": "local_vendor",
+      "parent_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "district": "Reclamation Zone",
+      "map_no": 14,
+      "book_page": 162,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 162",
+      "source_summary": "Outlet selling jewellery made from reclaimed or scrap materials.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key": "reclaimed-scrap-jewellery", "label": "Jewellery made from reclaimed and scrap materials"}
+      ],
+      "catalogue_note": "Broad fashion and General Equipment pools would invent unrelated merchandise, so the jewellery remains source-local.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CORRECT_TO_LOCAL_WARES"
+      }
+    },
+    {
+      "entity_id": "NC2045-OUT-RECLAMATION-ZONE-162-UNDERGROUND-BODEGA",
+      "name": "Underground Bodega",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "district": "Reclamation Zone",
+      "map_no": 14,
+      "book_page": 162,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 162",
+      "source_summary": "Ordinary bodega carrying foodstuffs and general goods.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:reclamation-zone:underground-bodega:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment", "food-consumables"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail": 8, "street": 3},
+          "allowed_classification_prefixes": [
+            ["Food, Drink & Consumables", "Foodstuffs"],
+            ["General Equipment"]
+          ],
+          "condition_weights": {"new": 8, "used": 2, "refurbished": 1, "damaged": 0, "salvaged": 0},
+          "specials": [0, 1]
+        }
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_stock_mode": "DIRECT_SELLER",
+        "decision": "CONFIRMED_BUT_NARROWED",
+        "note": "Inherited electronics/fashion signals are not promoted; generated stock is limited to ordinary foodstuffs and General Equipment."
+      }
+    }
+  ]
+}

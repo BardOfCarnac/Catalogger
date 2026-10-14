@@ -1,0 +1,278 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-watson-development-core-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [189, 190, 194, 195],
+    "note": "Commercial facts are constrained to direct source review of the six v0.2 core profiles, with named H10 child businesses retained as container context. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "name": "Gibson Battlegear Outlet",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 8,
+      "book_page": 189,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 189",
+      "source_summary": "Gibson Battlegear brand outlet with an affordable fashion line and occasional higher-end armor.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_wares",
+      "stocking": {
+        "archetype_id": "fashion-boutique",
+        "seed": "nc2045:watson:gibson-battlegear-outlet:v1",
+        "overrides": {
+          "primary_departments": ["fashion-personal","armor-protection"],
+          "secondary_departments": [],
+          "allowed_item_ids": ["VENDR-0343","VENDR-0347"],
+          "brand_affinities": {"Gibson Battlegear":20},
+          "breadth_profile": "compact",
+          "depth_profile": "normal",
+          "supply_capability": "corporate",
+          "price_tier_center": "Premium",
+          "pricing_style": "premium",
+          "channel_weights": {"corporate":10,"retail":8,"specialist":6},
+          "condition_weights": {"new":10,"used":0,"refurbished":0,"damaged":0,"salvaged":0},
+          "specials": [0,1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key":"gibson-affordable-fashion-line","label":"Gibson Battlegear affordable fashion line"}
+      ],
+      "catalogue_note": "The catalogue has exact Gibson-linked higher-end armor but does not cleanly represent the outlet's ordinary fashion range, so only the two exact armor products are generated and the fashion line stays local.",
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"DIRECT_SELLER","decision":"CONFIRMED_WITH_HARD_BRAND_GATE_AND_LOCAL_FASHION"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "entity_type": "seller",
+      "district": "Watson Development",
+      "map_no": 11,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Large discount branch with constantly changing low-cost stock; every sold item is capped at 100eb.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:watson:hundred-under-haven:v1",
+        "overrides": {
+          "primary_departments": ["general-equipment","food-consumables"],
+          "secondary_departments": ["electronics-comms","fashion-personal"],
+          "breadth_profile": "broad",
+          "depth_profile": "shallow",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "bargain",
+          "max_base_price": 100,
+          "channel_weights": {"retail":12,"street":4},
+          "condition_weights": {"new":7,"used":3,"refurbished":1,"damaged":0.5,"salvaged":0.5},
+          "specials": [0,2]
+        }
+      },
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"DIRECT_SELLER","decision":"CONFIRMED_WITH_PRICE_CEILING"}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "name": "Megabuilding H10",
+      "entity_type": "container",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Mixed-use arcology containing named businesses; its commercial identity comes from those children rather than a building-wide inventory.",
+      "stock_policy": "CHILDREN_ONLY",
+      "review_status": "source_reviewed",
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"AGGREGATE_CONTAINER","decision":"CONFIRMED_CONTAINER"}
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-DATA-INC",
+      "name": "Data Inc",
+      "entity_type": "seller",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Surviving electronics storefront with a strong local Netrunner clientele.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_stock",
+      "stocking": {
+        "archetype_id": "electronics-shop",
+        "seed": "nc2045:watson:data-inc:v1",
+        "overrides": {
+          "primary_departments": ["electronics-comms","netrunning"],
+          "secondary_departments": [],
+          "breadth_profile": "medium",
+          "depth_profile": "normal",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Premium",
+          "pricing_style": "fair",
+          "channel_weights": {"retail":10,"specialist":7,"corporate":3},
+          "allowed_classification_prefixes": [["Electronics & Communications"],["NET & Netrunning"]],
+          "condition_weights": {"new":7,"used":3,"refurbished":2,"damaged":0.3,"salvaged":0.2},
+          "specials": [0,2]
+        }
+      },
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"DIRECT_SELLER","decision":"CONFIRMED_BUT_NARROWED","note":"Virtual entertainment/general-equipment spillover is removed; generated stock stays in physical electronics and Netrunning merchandise."}
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-98-2-SHIV-FM",
+      "name": "98.2 Shiv FM",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Named media/radio operation inside Megabuilding H10.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"radio-media","label":"Radio and media operation"}]
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-BIG-H-CASINO",
+      "name": "Big H Casino",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Named casino and gambling venue inside Megabuilding H10.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"casino-gambling","label":"Casino gambling"}]
+    },
+    {
+      "entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-190-HAMMER-ME-NAIL-SALON",
+      "name": "Hammer Me Nail Salon",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Named nail/personal-style venue inside Megabuilding H10.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"nail-salon","label":"Nail salon services"}]
+    },
+    {
+      "entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-190-UNITED-MARTIAL-ARTS",
+      "name": "United Martial Arts",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Named martial-arts instruction business inside Megabuilding H10.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"martial-arts-instruction","label":"Martial arts instruction"}]
+    },
+    {
+      "entity_id": "NC2045-MEN-WATSON-DEVELOPMENT-190-WATSON-COMMUNITY-COLLEGE",
+      "name": "Watson Community College",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "district": "Watson Development",
+      "map_no": 13,
+      "book_page": 190,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 190",
+      "source_summary": "Education provider operating inside Megabuilding H10.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"education-courses","label":"College courses"}]
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "name": "Snack & Shack",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 29,
+      "book_page": 194,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 194",
+      "source_summary": "Mixed-use cargo-container cluster whose front containers form a bodega; the rest are non-retail residential/production spaces.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_local_context",
+      "stocking": {
+        "archetype_id": "general-store",
+        "seed": "nc2045:watson:snack-shack:v1",
+        "overrides": {
+          "primary_departments": ["food-consumables","general-equipment"],
+          "secondary_departments": [],
+          "breadth_profile": "compact",
+          "depth_profile": "deep",
+          "supply_capability": "ordinary",
+          "price_tier_center": "Everyday",
+          "pricing_style": "fair",
+          "channel_weights": {"retail":8,"street":4},
+          "allowed_classification_prefixes": [["Food, Drink & Consumables", "Foodstuffs"],["General Equipment"]],
+          "condition_weights": {"new":8,"used":2,"refurbished":1,"damaged":0,"salvaged":0},
+          "specials": [0,1]
+        }
+      },
+      "local_context": [
+        {"context_key":"monthly-container-housing","label":"Other containers are rented as housing"},
+        {"context_key":"rear-production-space","label":"Rear containers are used for private production work"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"DIRECT_SELLER","decision":"CONFIRMED_BODEGA_ONLY","note":"Vehicle/mobility and broader inferred stock are not promoted; only the explicitly supported bodega function receives generated inventory."}
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "name": "Turbo Neon Motors",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 34,
+      "book_page": 195,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 195",
+      "source_summary": "Vehicle customisation and development shop able to fabricate custom parts and build high-end rides.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "catalog_and_service",
+      "stocking": {
+        "archetype_id": "vehicle-dealer",
+        "seed": "nc2045:watson:turbo-neon-motors:v1",
+        "overrides": {
+          "primary_departments": ["vehicles-mobility"],
+          "secondary_departments": [],
+          "allowed_item_ids": ["VENDR-0926","VENDR-0929"],
+          "brand_affinities": {"Turbo Neon Motors":20},
+          "breadth_profile": "compact",
+          "depth_profile": "shallow",
+          "supply_capability": "corporate",
+          "price_tier_center": "Luxury",
+          "pricing_style": "fair",
+          "channel_weights": {"corporate":10,"specialist":9,"direct_order":8,"nomad":3},
+          "condition_weights": {"new":7,"used":2,"refurbished":1,"damaged":0,"salvaged":0},
+          "specials": [0,1]
+        }
+      },
+      "local_offerings": [
+        {"offering_key":"custom-vehicle-parts","label":"Custom-made vehicle parts"}
+      ],
+      "services": [
+        {"service_key":"custom-parts-fabrication","label":"Custom vehicle-parts fabrication"},
+        {"service_key":"vehicle-modification","label":"Vehicle modification and tuning"},
+        {"service_key":"custom-vehicle-build","label":"Custom vehicle build"}
+      ],
+      "catalogue_note": "Persistent branded catalogue stock is hard-gated to the two exact Turbo Neon Motors products currently linked in the catalogue; bespoke parts remain source-local/service state.",
+      "audit": {"source_profile_version":"0.2","previous_stock_mode":"DIRECT_SELLER","decision":"CONFIRMED_WITH_HARD_BRAND_GATE_AND_SERVICES"}
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-hot-zone-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [92],
+    "note": "Held-out v0.2 Review Queue candidate source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL",
+      "name": "Ashcroft Hotel",
+      "entity_type": "context",
+      "district": "The Hot Zone",
+      "map_no": 1,
+      "book_page": 92,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 92",
+      "source_summary": "Abandoned and structurally damaged former hotel claimed as a trapped and guarded Maelstrom scavenger headquarters; it no longer operates as accommodation or public commerce.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "DOWNGRADE_FORMER_HOTEL_TO_GANG_HQ_CONTEXT"}
+    }
+  ]
+}

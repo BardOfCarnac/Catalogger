@@ -1,0 +1,136 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-the-glen-review-queue-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [117, 118, 120, 122, 123, 124],
+    "note": "Held-out v0.2 Review Queue candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-117-ARCHER-LI",
+      "name": "Archer & Li",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 4,
+      "book_page": 117,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 117",
+      "source_summary": "Long-established architectural firm founded by Jamal Archer and Zhao Li and based beside Thurgood Towers.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietors": [
+        {"name": "Jamal Archer", "role": "Exec", "rank": 6},
+        {"name": "Zhao Li", "role": "Fixer", "rank": 6}
+      ],
+      "services": [{"service_key": "architectural-services", "label": "Architectural design services"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_PROFESSIONAL_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-118-CITY-HALL",
+      "name": "City Hall",
+      "entity_type": "context",
+      "district": "The Glen",
+      "map_no": 7,
+      "book_page": 118,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 118",
+      "source_summary": "Night City's public government building; the source describes civic administration and lobbying rather than a Vend-R customer-facing commercial operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_CIVIC_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-120-EUROBANK",
+      "name": "EuroBank",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 12,
+      "book_page": 120,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 120",
+      "source_summary": "EuroBank's Night City branch and mint; public-facing operations include retail banking, investment, acquisitions and loans while mint and most internal areas remain restricted.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "retail-banking", "label": "Retail banking"},
+        {"service_key": "investment-services", "label": "Investment services"},
+        {"service_key": "loan-services", "label": "Loan services"},
+        {"service_key": "acquisitions-services", "label": "Acquisitions services"}
+      ],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_FINANCIAL_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-122-NCPD-PRECINCT-1",
+      "name": "NCPD Precinct #1",
+      "entity_type": "hybrid",
+      "district": "The Glen",
+      "map_no": 21,
+      "book_page": 122,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 122-123",
+      "source_summary": "Major police precinct whose public ground floor includes fine payment and which raises revenue through a recurring public auction of seized goods and property.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key": "seized-goods-property", "label": "Seized goods and property sold by auction", "availability": "monthly auction"}],
+      "services": [{"service_key": "fine-payment", "label": "Fine payment"}],
+      "schedule": {"kind": "monthly", "day_of_month_rule": "third Friday"},
+      "catalogue_note": "Auction inventory is irregular and source-unspecified, so no stable catalogue assortment is generated.",
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "NARROW_TO_CIVIC_SERVICE_AND_SEIZED_GOODS_AUCTION"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-NEWS-TODAY",
+      "name": "Night City News Today",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 22,
+      "book_page": 123,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 123",
+      "source_summary": "Major screamsheet operation that pays freelancers well for first-on-the-scene reporting; it is a media buyer/employer rather than a retail shop.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "proprietor": {"name": "Fred Tallson", "role": "Exec/Media", "rank": 6},
+      "services": [{"service_key": "freelance-report-purchasing", "label": "Paid acquisition of timely freelance reporting"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_MEDIA_COMMISSIONING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-124-SEAFOAM",
+      "name": "Seafoam",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 25,
+      "book_page": 124,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 124",
+      "source_summary": "Cube hotel beside Club Atlantis with an after-hours party scene; drugs are informally available during those parties but not described as hotel stock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key": "cube-hotel-lodging", "label": "Cube-hotel lodging"}],
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "COMMERCIAL_SERVICE", "decision": "CONFIRM_LODGING_SERVICE_WITH_NONRETAIL_NIGHTLIFE_CONTEXT"}
+    },
+    {
+      "entity_id": "NC2045-LOC-THE-GLEN-124-WORLD-STOCK-EXCHANGE",
+      "name": "World Stock Exchange",
+      "entity_type": "service",
+      "district": "The Glen",
+      "map_no": 27,
+      "book_page": 124,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 124",
+      "source_summary": "Local World Stock Exchange branch with securities, stock and commodities trading floors plus multiple brokerage offices operating around the clock.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "securities-trading", "label": "Securities and stock trading"},
+        {"service_key": "commodities-trading", "label": "Commodities trading"},
+        {"service_key": "brokerage-services", "label": "Brokerage services"}
+      ],
+      "schedule": {"kind": "always_open", "note": "Active 24/7"},
+      "audit": {"source_profile_version": "0.2", "previous_relevance": "RETAIL_CAPABLE", "decision": "DOWNGRADE_TO_FINANCIAL_MARKET_SERVICE"}
+    }
+  ]
+}

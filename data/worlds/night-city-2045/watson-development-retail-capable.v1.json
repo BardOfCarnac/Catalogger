@@ -1,0 +1,139 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-watson-development-retail-capable-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [188, 192, 193, 195],
+    "note": "RETAIL_CAPABLE candidates source-reviewed directly against the user-provided purchased book. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "name": "Faisal’s Customs",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 5,
+      "book_page": 188,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 188",
+      "source_summary": "Combined weapons workshop, design business and small factory: Faisal develops unusual weapon solutions while Bobby Ballard sells production firearms based on Faisal's designs.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "proprietors": [
+        {"name": "Faisal", "role": "Tech", "rank": 8},
+        {"name": "Bobby ‘Buggy’ Ballard", "role": "Fixer", "rank": 5}
+      ],
+      "local_offerings": [
+        {"offering_key": "faisal-designed-firearms", "label": "Production firearms based on Faisal designs"},
+        {"offering_key": "faisal-custom-weapons", "label": "Unique or custom weapon solutions"}
+      ],
+      "services": [
+        {"service_key": "custom-weapon-design", "label": "Custom weapon design and problem solving"},
+        {"service_key": "weapon-fabrication", "label": "Weapon fabrication and prototyping"}
+      ],
+      "catalogue_note": "Catalogger contains Faisal-branded products, but this pass keeps the shop source-local until a hard manufacturer allowlist is attached; a soft affinity would risk leaking unrelated weapon brands.",
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "PROMOTE_TO_LOCAL_WEAPONS_WORKSHOP_AND_SELLER"
+      }
+    },
+    {
+      "entity_id": "NC2045-CHN-WATSON-DEVELOPMENT-188-FAISAL-FACTORY-OUTPUT",
+      "name": "Faisal’s Customs Factory Output",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "district": "Watson Development",
+      "map_no": 5,
+      "book_page": 188,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 188",
+      "source_summary": "Source-explicit wholesale output from the small factory supplying firearms suitable for vendits and bodegas; the distribution channel itself is not formally named in the source.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {
+        "product_family": "firearms",
+        "destinations": ["vendits", "bodegas"]
+      },
+      "audit": {
+        "source_profile_version": "0.2",
+        "decision": "RECOVER_SOURCE_EXPLICIT_DISTRIBUTION_CHANNEL"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-192-OLD-BLACK-RUM-PUB",
+      "name": "Old Black Rum Pub",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 19,
+      "book_page": 192,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 192",
+      "source_summary": "Dockworkers' pub run by a Medtech bartender, serving ordinary pub hospitality plus two source-priced specialties.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "grog", "label": "Grog, imperial pint", "price_eb": 10}
+      ],
+      "services": [
+        {"service_key": "pub-hospitality", "label": "Pub hospitality"},
+        {"service_key": "surge-injection", "label": "Surge injection administered by Doc Brutus", "price_eb": 20}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_PUB_WITH_MEDTECH_SERVICE"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-193-RED-OKTOBER",
+      "name": "Red Oktober",
+      "entity_type": "hybrid",
+      "district": "Watson Development",
+      "map_no": 24,
+      "book_page": 193,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 193",
+      "source_summary": "Soviet-submarine-themed bar and restaurant with Russian-accent roleplay and a source-priced vodka shot.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [
+        {"offering_key": "vodka-shot", "label": "Vodka shot", "price_eb": 20}
+      ],
+      "services": [
+        {"service_key": "bar-restaurant-hospitality", "label": "Bar and restaurant hospitality"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_RETAIL_TO_THEME_BAR_RESTAURANT"
+      }
+    },
+    {
+      "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-195-WHAMMER-ARENA",
+      "name": "Whammer Arena",
+      "entity_type": "service",
+      "district": "Watson Development",
+      "map_no": 38,
+      "book_page": 195,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 195",
+      "source_summary": "Large roller-derby arena and broadcast venue that is rented for concerts and stage performances between sporting events.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key": "roller-derby-venue", "label": "Roller derby events"},
+        {"service_key": "concert-stage-venue", "label": "Concert and stage-performance venue rental"}
+      ],
+      "audit": {
+        "source_profile_version": "0.2",
+        "previous_relevance": "RETAIL_CAPABLE",
+        "decision": "DOWNGRADE_TO_EVENT_VENUE_SERVICE"
+      }
+    }
+  ]
+}

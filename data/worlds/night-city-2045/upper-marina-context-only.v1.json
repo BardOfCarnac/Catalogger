@@ -1,0 +1,314 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-upper-marina-context-only-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [70, 71, 72, 73, 74, 75, 76],
+    "note": "Direct source review of all eighteen Upper Marina rows the v0.2 audit classified CONTEXT_ONLY. Factual metadata and concise paraphrases only; source prose is not reproduced. Marina FloatHomes' rental role is also corroborated by the official Night City Atlas v1.01."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-DIGITAL-DIVINITY-INCORPORATED-NC",
+      "name": "Digital Divinity Incorporated, NC",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 11,
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Night City headquarters of Digital Divinity Incorporated, functioning as a high-security corporate church and meeting point for prominent adherents; no customer-facing paid commerce is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_CORPORATE_RELIGIOUS_HQ_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-CMAX",
+      "name": "CMax",
+      "entity_type": "hybrid",
+      "district": "Upper Marina",
+      "map_no": 8,
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Former cinema used as the Prime-Time Players' headquarters and screening space; its lobby still contains themed food booths serving visitors.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares",
+      "local_offerings": [
+        {"offering_key":"themed-lobby-food","label":"Themed lobby food-booth meals and snacks"}
+      ],
+      "catalogue_note": "The source identifies prepared food booths rather than a repeatable grocery assortment.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_GANG_VENUE_WITH_LOCAL_FOOD_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-070-COURT-TOWERS",
+      "name": "Court Towers",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 9,
+      "book_page": 70,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 70",
+      "source_summary": "Former business center converted into expensive residential conapts; the source describes the housing complex but does not identify a public sales, rental, retail or service desk.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_RESIDENTIAL_CONTEXT_NO_EXPLICIT_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-FLOWERTOWN",
+      "name": "Flowertown",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 12,
+      "book_page": 71,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 71",
+      "source_summary": "Tent settlement occupying the remains of a former florist complex, organized by squatters, scavvers and the Street Queens; no source-supported customer commerce is described.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_SETTLEMENT_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-071-THE-GARDEN-OF-EARTHLY-DELIGHTS",
+      "name": "The Garden of Earthly Delights",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 14,
+      "book_page": 71,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 71",
+      "source_summary": "High-cost adult entertainment and bathhouse venue where wealthy patrons choose private experiences; meals are arranged through local restaurants and delivered to the site.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"adult-entertainment-hospitality","label":"Private adult entertainment and companionship"},
+        {"service_key":"bathhouse-hospitality","label":"Bathhouse hospitality"},
+        {"service_key":"restaurant-meal-arrangement","label":"Restaurant meal ordering and delivery arrangement"}
+      ],
+      "catalogue_note": "Food and other consumables are ancillary to a service venue and are not modeled as a stable shelf assortment.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_ADULT_HOSPITALITY_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-GREAT-RIVER-STOREHOUSE",
+      "name": "Great River Storehouse",
+      "entity_type": "channel",
+      "district": "Upper Marina",
+      "map_no": 17,
+      "book_page": 72,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 72",
+      "source_summary": "Physical fulfillment warehouse for Ziggurat's Great River shopping pilot, holding commercial goods and delivery drones for purchases placed through The Garden.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {
+        "service_name": "Great River",
+        "ordering_channel": "The Garden",
+        "fulfillment": "drone delivery",
+        "delivery_window": "within about one hour",
+        "service_area": "secure areas rated Security Code 6 or higher"
+      },
+      "catalogue_note": "The source confirms broad warehoused commercial goods but does not define a stable item list; this remains a fulfillment channel rather than generated local shelf stock.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_DIGITAL_RETAIL_FULFILLMENT_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-HYDROSUBSIDIUM-R-D",
+      "name": "Hydrosubsidium R&D",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 18,
+      "book_page": 72,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 72",
+      "source_summary": "Guarded research facility with private waterfront access and unexplained crate transfers to boats and helicopters; no public-facing sales or contracted service point is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_RESTRICTED_R_AND_D_LOGISTICS_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-JC-HOMES",
+      "name": "JC Homes",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 19,
+      "book_page": 72,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 72",
+      "source_summary": "Failed luxury-apartment project now occupied by squatters and Maelstrom; repeated attempts to auction the damaged property have produced no buyer and no active public commercial operation.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_ABANDONED_RESIDENTIAL_CONTEXT_NO_ACTIVE_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-072-LA-LUNE-BLEUE",
+      "name": "La Lune Bleue",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 21,
+      "book_page": 72,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 pp. 72-73",
+      "source_summary": "Exclusive French restaurant with strict prestige-based admission and freshly prepared meals; the source gives an average meal-for-two cost of 500eb.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"fine-dining","label":"Exclusive fine dining"},
+        {"service_key":"meal-for-two-average","label":"Average meal for two","price_eb":500}
+      ],
+      "catalogue_note": "Prepared restaurant meals are modeled as hospitality rather than grocery inventory.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_FINE_DINING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MARINA-BREEZE-APARTMENTS",
+      "name": "Marina Breeze Apartments",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 22,
+      "book_page": 73,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 73",
+      "source_summary": "Low-cost apartment complex with attached docks; the source explicitly describes rents as affordable.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"residential-rental","label":"Apartment rental housing"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_RESIDENTIAL_RENTAL_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-073-MARINA-FLOATHOMES",
+      "name": "Marina FloatHomes",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 23,
+      "book_page": 73,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 73; Night City Atlas v1.01 p. 6",
+      "source_summary": "Mixed floating-housing development ranging from purpose-built homes to cheap seasonal cubes; the official atlas identifies the houseboats as rentals.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"floating-residential-rental","label":"Floating-home and cube accommodation rental"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_FLOATING_HOUSING_RENTAL_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-074-MEGABUILDING-H8-CONSTRUCTION-SITE",
+      "name": "Megabuilding H8 Construction Site",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 26,
+      "book_page": 74,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 74",
+      "source_summary": "Active AllNations megabuilding construction site backed by Night Corp and Ziggurat; the source describes the project and workforce rather than a customer-facing outlet or service point.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_CONSTRUCTION_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-CONVENTION-CENTER",
+      "name": "Night City Convention Center",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 32,
+      "book_page": 75,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 75",
+      "source_summary": "Large convention and event complex with meeting rooms, halls, auditoriums, VIP lounges and exclusive-event spaces; it hosts recurring major conventions and private corporate functions.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"convention-event-venue","label":"Convention and large-event venue"},
+        {"service_key":"private-corporate-event-space","label":"Private and corporate event space"}
+      ],
+      "catalogue_note": "The Firearms Show and other conventions are events hosted at the venue, not permanent retail departments.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_EVENT_VENUE_SERVICE_AND_REMOVE_EVENT_STOCK_INFERENCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-OCEANSIDE-DOCKS",
+      "name": "Oceanside Docks",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 33,
+      "book_page": 75,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 75",
+      "source_summary": "Private marina used by personal and working watercraft; the source describes the occupants and vessels but does not establish a public docking, charter or sales operation at the location itself.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_PRIVATE_MARINA_CONTEXT_NO_EXPLICIT_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-075-OTTER-DOCKS-TRANSFER-STATION",
+      "name": "Otter Docks Transfer Station",
+      "entity_type": "channel",
+      "district": "Upper Marina",
+      "map_no": 34,
+      "book_page": 75,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 75",
+      "source_summary": "Material-transfer facility that sorts, packs and exports salvage and demolition output gathered from projects across Night City.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STOCK",
+      "distribution": {
+        "product_family":"demolition and salvage material",
+        "operations":["sorting","packing","export"]
+      },
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_B2B_SALVAGE_TRANSFER_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-REO-MEATWAGON",
+      "name": "REO Meatwagon",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 36,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Base for REO Meatwagon's lower-cost ambulance operation, dispatching ground emergency vehicles to citizens without Trauma Team contracts while excluding combat zones and destinations outside the city.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"emergency-ambulance-response","label":"Emergency ambulance response"}
+      ],
+      "service_constraints": ["no combat-zone response","no service outside Night City"],
+      "catalogue_note": "The bunker contains an armory and repair workshops for REO operations, but these are internal infrastructure rather than customer stock.",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_EMERGENCY_MEDICAL_TRANSPORT_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-TRAVLSTAY-CITYCENTER",
+      "name": "TravlStay CityCenter",
+      "entity_type": "service",
+      "district": "Upper Marina",
+      "map_no": 37,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Operating cube hotel near Totentanz, expanded into a neighboring tower and offering basic lodging with minimal security.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"cube-hotel-lodging","label":"Cube hotel lodging"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_HOTEL_LODGING_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-UPPER-MARINA-076-UPPER-MARINA-SUBSTATION-2",
+      "name": "Upper Marina Substation 2",
+      "entity_type": "context",
+      "district": "Upper Marina",
+      "map_no": 38,
+      "book_page": 76,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 76",
+      "source_summary": "Electrical substation surrounded by landscaped public green space used as a neighborhood park; no paid customer service or retail operation is described.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_UTILITY_AND_PUBLIC_SPACE_CONTEXT_NO_COMMERCE"}
+    }
+  ]
+}

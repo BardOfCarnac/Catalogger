@@ -1,0 +1,18 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Runtime-only concrete supply edges between reviewed world entities. Loose source-level supplier/customer labels remain on runtime entities as supply_profile rather than being promoted into invented graph nodes.",
+  "fixtures": {
+    "nc2045-old-combat-zone-retail-capable-v1": [
+      {
+        "relationship_type": "supplies",
+        "source_entity_id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-UNDERGROUND",
+        "target_entity_id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+        "external_target": true,
+        "provenance": "CANON_NAMED",
+        "source_ref": "Night City 2045 p. 171",
+        "note": "The Shroomer gardens in The Underground supply fungus and lichen products sold through Mrs. Suzuki’s Bodega. The target is external only to this fixture; it is a reviewed entity elsewhere in the same world."
+      }
+    ]
+  }
+}

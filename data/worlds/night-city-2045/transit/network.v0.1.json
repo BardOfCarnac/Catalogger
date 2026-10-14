@@ -1,0 +1,1274 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "network_id": "nc2045-transit-v0.1",
+  "source": {
+    "title": "Night City 2045",
+    "printed_page": 27,
+    "flashmap": "Railways",
+    "recovered_artifacts": [
+      "night_city_2045_transit_geometry_refined.geojson",
+      "night_city_2045_transit_graph_refined.json",
+      "night_city_2045_transit_refinement_report.csv",
+      "night_city_2045_transit_refinement_QA.html",
+      "night_city_2045_transit_refinement_preview.png"
+    ]
+  },
+  "coordinate_space": {
+    "id": "night_city_clean_master_5175x7966_px",
+    "width": 5175,
+    "height": 7966,
+    "origin": "top-left",
+    "x_axis": "+right",
+    "y_axis": "+down",
+    "registration": "direct scale from the Railways flashmap base image to the identical clean master raster; no crop, rotation, warp, or aspect-ratio change"
+  },
+  "reconciliation": {
+    "canonical_map_geometry": "26 mapped areas / 608 source-map manifestations",
+    "policy": "Transit stations remain distinct transport nodes. canonical_refs are added only where a named station can be tied to a current canonical place without inventing a place identity.",
+    "coordinate_fix": "The recovered refined GeoJSON contains the v2 station positions, while the recovered graph JSON still carried original marker-centre node coordinates. This reconciled network uses the refined GeoJSON positions for all station nodes and preserves the graph only for logical topology.",
+    "charter_hill": "Stations 14 and 39 remain separate source station IDs despite sharing the name Charter Hill Station; no transfer is assumed.",
+    "coordinate_space_note": "District source-pin geometry remains local source_page_uv. Transit geometry is already registered to the global 5175x7966 clean master raster; no direct numeric conversion between those coordinate spaces is asserted here."
+  },
+  "lines": {
+    "red": {
+      "name": "NCART Red Line",
+      "system": "NCART",
+      "color": "#ED2D24"
+    },
+    "green": {
+      "name": "NCART Green Line",
+      "system": "NCART",
+      "color": "#6BBD45"
+    },
+    "blue": {
+      "name": "NCART Blue Line",
+      "system": "NCART",
+      "color": "#62CBE6"
+    },
+    "orange": {
+      "name": "NCART Orange Line",
+      "system": "NCART",
+      "color": "#FEBB12"
+    },
+    "cargo": {
+      "name": "Cargo Rail Line",
+      "system": "Cargo Rail",
+      "color": "#FFFFFF"
+    },
+    "purple": {
+      "name": "Executive Monorail",
+      "system": "Executive Monorail",
+      "color": "#A91F64"
+    }
+  },
+  "service_sequences": {
+    "red": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "green": [
+      4,
+      12,
+      13,
+      14,
+      15,
+      16,
+      11,
+      17
+    ],
+    "blue": [
+      6,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "orange": [
+      23,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "cargo": {
+      "inner_circuit": [
+        32,
+        33,
+        34,
+        35,
+        32
+      ],
+      "outer_circuit": [
+        32,
+        33,
+        37,
+        36,
+        34,
+        35,
+        32
+      ]
+    },
+    "purple": {
+      "main_loop": [
+        39,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        39
+      ],
+      "executive_zone_spur": [
+        39,
+        38
+      ],
+      "ziggurat_spur": [
+        39,
+        40
+      ]
+    }
+  },
+  "stations": [
+    {
+      "station_id": 1,
+      "name": "Muren Street",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 1989.76,
+      "y_master_px": 2245.539,
+      "x_norm": 0.384494686,
+      "y_norm": 0.281890409,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 2,
+      "name": "Ackerman Avenue",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 2172.459,
+      "y_master_px": 2320.279,
+      "x_norm": 0.419798841,
+      "y_norm": 0.291272784,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 3,
+      "name": "Eisenhower Street",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 2318.618,
+      "y_master_px": 2210.66,
+      "x_norm": 0.448042126,
+      "y_norm": 0.277511926,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 4,
+      "name": "H10 Station",
+      "lines": [
+        "red",
+        "green"
+      ],
+      "transfer": true,
+      "x_master_px": 2536.96,
+      "y_master_px": 2576.014,
+      "x_norm": 0.490233816,
+      "y_norm": 0.323376098,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "green",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 5,
+      "name": "Francis Drake Avenue",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 2282.441,
+      "y_master_px": 2829.029,
+      "x_norm": 0.441051401,
+      "y_norm": 0.355137961,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 6,
+      "name": "Ferris Boulevard",
+      "lines": [
+        "red",
+        "blue"
+      ],
+      "transfer": true,
+      "x_master_px": 2266.71,
+      "y_master_px": 3164.251,
+      "x_norm": 0.438011594,
+      "y_norm": 0.397219558,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 7,
+      "name": "Stadium Station",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 2652.46,
+      "y_master_px": 3255.367,
+      "x_norm": 0.512552657,
+      "y_norm": 0.40865767,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "red",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-FIELD-STADIUM",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 8,
+      "name": "Pigeon Boulevard",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 3064.363,
+      "y_master_px": 3655.644,
+      "x_norm": 0.59214744,
+      "y_norm": 0.45890585,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 9,
+      "name": "Kue Street",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 3070.295,
+      "y_master_px": 3931.353,
+      "x_norm": 0.59329372,
+      "y_norm": 0.49351657,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "red",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 10,
+      "name": "Heywood Docks Station",
+      "lines": [
+        "red"
+      ],
+      "transfer": false,
+      "x_master_px": 3484.666,
+      "y_master_px": 4152.585,
+      "x_norm": 0.673365411,
+      "y_norm": 0.521288602,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "red",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 11,
+      "name": "Industrial Zone Station",
+      "lines": [
+        "red",
+        "green"
+      ],
+      "transfer": true,
+      "x_master_px": 3245.401,
+      "y_master_px": 4725.264,
+      "x_norm": 0.627130628,
+      "y_norm": 0.593179011,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "red",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-THE-INTERCHANGE",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 12,
+      "name": "Kenson Street",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 2947.292,
+      "y_master_px": 2484.169,
+      "x_norm": 0.569525024,
+      "y_norm": 0.311846473,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "green",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 13,
+      "name": "Raymon Street",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 3330.211,
+      "y_master_px": 2675.245,
+      "x_norm": 0.643519034,
+      "y_norm": 0.335832915,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "green",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 14,
+      "name": "Charter Hill Station",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 3546.394,
+      "y_master_px": 3227.685,
+      "x_norm": 0.685293527,
+      "y_norm": 0.405182651,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "green",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 15,
+      "name": "Woodland Ave",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 3562.634,
+      "y_master_px": 3610.8,
+      "x_norm": 0.688431691,
+      "y_norm": 0.453276425,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "green",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 16,
+      "name": "Pheasant Street",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 3821.734,
+      "y_master_px": 4364.849,
+      "x_norm": 0.738499324,
+      "y_norm": 0.547934848,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "green",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 17,
+      "name": "2nd Street",
+      "lines": [
+        "green"
+      ],
+      "transfer": false,
+      "x_master_px": 3062.702,
+      "y_master_px": 4956.129,
+      "x_norm": 0.591826473,
+      "y_norm": 0.622160306,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "green",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 18,
+      "name": "Smith Street",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 2040.636,
+      "y_master_px": 3453.469,
+      "x_norm": 0.394325797,
+      "y_norm": 0.433526111,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "blue",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 19,
+      "name": "Fisk Street",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 1954.444,
+      "y_master_px": 3651.413,
+      "x_norm": 0.377670338,
+      "y_norm": 0.458374718,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "blue",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 20,
+      "name": "Gold Beach Street",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 1644.292,
+      "y_master_px": 3663.948,
+      "x_norm": 0.317737585,
+      "y_norm": 0.45994828,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "blue",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 21,
+      "name": "NCU Station",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 1635.988,
+      "y_master_px": 3863.257,
+      "x_norm": 0.316132947,
+      "y_norm": 0.48496824,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "blue",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-UNIVERSITY",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 22,
+      "name": "Lake Park Station",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 1818.272,
+      "y_master_px": 3858.813,
+      "x_norm": 0.351356908,
+      "y_norm": 0.484410369,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "blue",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 23,
+      "name": "King Street",
+      "lines": [
+        "blue",
+        "orange"
+      ],
+      "transfer": true,
+      "x_master_px": 1994.37,
+      "y_master_px": 4158.381,
+      "x_norm": 0.385385507,
+      "y_norm": 0.522016194,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "blue",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 24,
+      "name": "Harlem Street",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 2253.843,
+      "y_master_px": 4177.167,
+      "x_norm": 0.435525217,
+      "y_norm": 0.524374466,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "blue",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 25,
+      "name": "City Hall Station",
+      "lines": [
+        "blue"
+      ],
+      "transfer": false,
+      "x_master_px": 2252.182,
+      "y_master_px": 4378.136,
+      "x_norm": 0.435204251,
+      "y_norm": 0.549602812,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "blue",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-THE-GLEN-118-CITY-HALL",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 26,
+      "name": "Spivey Street",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 1672.528,
+      "y_master_px": 4148.932,
+      "x_norm": 0.323193816,
+      "y_norm": 0.520830028,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "orange",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 27,
+      "name": "Port Station",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 1614.396,
+      "y_master_px": 4504.364,
+      "x_norm": 0.31196058,
+      "y_norm": 0.565448657,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "orange",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-MAIN-PORT",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 28,
+      "name": "Pacific Boulevard Station",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 1860.586,
+      "y_master_px": 4570.456,
+      "x_norm": 0.359533527,
+      "y_norm": 0.573745418,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "orange",
+        "street_name_evidence": "inferred_medium"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 29,
+      "name": "McBride Street",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 2276.859,
+      "y_master_px": 4686.115,
+      "x_norm": 0.439972754,
+      "y_norm": 0.588264499,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "orange",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 30,
+      "name": "Kovaleski Street",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 2136.929,
+      "y_master_px": 5173.534,
+      "x_norm": 0.41293314,
+      "y_norm": 0.649451921,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "named_street_rail_road_intersection",
+        "line": "orange",
+        "street_name_evidence": "confirmed_high"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 31,
+      "name": "Playland by the Sea Station",
+      "lines": [
+        "orange"
+      ],
+      "transfer": false,
+      "x_master_px": 1366.922,
+      "y_master_px": 5620.49,
+      "x_norm": 0.264139517,
+      "y_norm": 0.705559879,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "orange",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 32,
+      "name": "Port of Night City Yard",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 1669.153,
+      "y_master_px": 4443.941,
+      "x_norm": 0.322541643,
+      "y_norm": 0.557863545,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "cargo",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-MAIN-PORT",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 33,
+      "name": "Heywood Docks Rail Yard",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 3492.627,
+      "y_master_px": 4268.354,
+      "x_norm": 0.674903768,
+      "y_norm": 0.535821491,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "cargo",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-HEYWOOD-DOCKS-243-RAIL-YARD",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 34,
+      "name": "Union Railroad Station",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 4465.972,
+      "y_master_px": 4156.731,
+      "x_norm": 0.862989758,
+      "y_norm": 0.521809064,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "cargo",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 35,
+      "name": "Pol-Bud Cement Factory",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 5443.504,
+      "y_master_px": 5183.42,
+      "x_norm": 1.051884831,
+      "y_norm": 0.650692945,
+      "inside_master_raster": false,
+      "refinement": {
+        "method": "retained_off_raster_source_position",
+        "line": null,
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 36,
+      "name": "Militech Ballistics Range",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 3297.967,
+      "y_master_px": 1351.461,
+      "x_norm": 0.637288309,
+      "y_norm": 0.169653653,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "cargo",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 37,
+      "name": "Petrochem/SovOil Oil Refineries",
+      "lines": [
+        "cargo"
+      ],
+      "transfer": false,
+      "x_master_px": 2869.833,
+      "y_master_px": 1339.253,
+      "x_norm": 0.554557101,
+      "y_norm": 0.16812114,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "cargo",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-193-PETROCHEM-OIL-REFINERY",
+          "relation": "serves_named_destination"
+        },
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SOVOIL-OIL-REFINERY",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 38,
+      "name": "Executive Zone Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3645.679,
+      "y_master_px": 3147.408,
+      "x_norm": 0.704479034,
+      "y_norm": 0.395105197,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-EXECUTIVE-ZONE-236-MONORAIL-STATION",
+          "relation": "same_site"
+        }
+      ]
+    },
+    {
+      "station_id": 39,
+      "name": "Charter Hill Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3382.295,
+      "y_master_px": 3087.703,
+      "x_norm": 0.653583575,
+      "y_norm": 0.387610218,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": []
+    },
+    {
+      "station_id": 40,
+      "name": "Ziggurat Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3042.771,
+      "y_master_px": 3260.349,
+      "x_norm": 0.587975072,
+      "y_norm": 0.409283078,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+          "relation": "serves_named_destination"
+        },
+        {
+          "entity_id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 41,
+      "name": "N54 Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3273.515,
+      "y_master_px": 2576.22,
+      "x_norm": 0.632563285,
+      "y_norm": 0.323401958,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-PLAZA",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 42,
+      "name": "Petrochem/SovOil Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 2605.262,
+      "y_master_px": 2218.826,
+      "x_norm": 0.503432271,
+      "y_norm": 0.278537032,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-192-PETROCHEM-OFFICES",
+          "relation": "serves_named_destination"
+        },
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SOVOIL-OFFICES",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 43,
+      "name": "Trauma Team Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 2491.265,
+      "y_master_px": 2267.917,
+      "x_norm": 0.481403865,
+      "y_norm": 0.284699598,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-TRAUMA-TEAM-TOWER",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 44,
+      "name": "Danger Gal Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 1576.196,
+      "y_master_px": 3330.107,
+      "x_norm": 0.304578937,
+      "y_norm": 0.418040045,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-OFFICES",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 45,
+      "name": "Continental Brands Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 1686.479,
+      "y_master_px": 3465.909,
+      "x_norm": 0.325889662,
+      "y_norm": 0.435087748,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 46,
+      "name": "Biotechnica Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 2077.234,
+      "y_master_px": 3903.16,
+      "x_norm": 0.401397874,
+      "y_norm": 0.489977404,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 47,
+      "name": "MA&F Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 2257.165,
+      "y_master_px": 4273.684,
+      "x_norm": 0.43616715,
+      "y_norm": 0.536490585,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 48,
+      "name": "Sanroo Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 2997.927,
+      "y_master_px": 4080.835,
+      "x_norm": 0.579309565,
+      "y_norm": 0.512281572,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 49,
+      "name": "Dynalar Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3755.298,
+      "y_master_px": 3929.693,
+      "x_norm": 0.725661449,
+      "y_norm": 0.493308185,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-NORTH-HEYWOOD-249-DYNALAR-CAMPUS",
+          "relation": "serves_named_destination"
+        }
+      ]
+    },
+    {
+      "station_id": 50,
+      "name": "Rocklin Augmentics Station",
+      "lines": [
+        "purple"
+      ],
+      "transfer": false,
+      "x_master_px": 3671.456,
+      "y_master_px": 3740.084,
+      "x_norm": 0.709460097,
+      "y_norm": 0.4695059,
+      "inside_master_raster": true,
+      "refinement": {
+        "method": "rail_centerline_projection",
+        "line": "purple",
+        "street_name_evidence": "not_a_street_named_station"
+      },
+      "canonical_refs": [
+        {
+          "entity_id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-CAMPUS",
+          "relation": "serves_named_destination"
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "station_id": 4,
+      "name": "H10 Station",
+      "lines": [
+        "red",
+        "green"
+      ]
+    },
+    {
+      "station_id": 6,
+      "name": "Ferris Boulevard",
+      "lines": [
+        "red",
+        "blue"
+      ]
+    },
+    {
+      "station_id": 11,
+      "name": "Industrial Zone Station",
+      "lines": [
+        "red",
+        "green"
+      ]
+    },
+    {
+      "station_id": 23,
+      "name": "King Street",
+      "lines": [
+        "blue",
+        "orange"
+      ]
+    }
+  ]
+}

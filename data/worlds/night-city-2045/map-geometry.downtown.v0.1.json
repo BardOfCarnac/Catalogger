@@ -1,0 +1,40 @@
+{
+  "format_version": "0.1.0",
+  "world_id": "night-city-2045",
+  "map_id": "NC2045-MAP-DOWNTOWN-P081",
+  "district": "Downtown",
+  "source": {
+    "title": "Night City 2045",
+    "book_page": 81,
+    "source_ref": "Night City 2045 p. 81",
+    "note": "Numbered map pins and labels were visually verified against the user-provided purchased source."
+  },
+  "coordinate_space": "source_page_uv",
+  "precision": "source_pin_center",
+  "note": "Coordinates are normalized against the full source page: x=0/y=0 is the page's top-left and x=1/y=1 is the bottom-right. They are DPI-independent source geometry, not latitude/longitude. A later Spaciel calibration can transform this layer into city-map coordinates without changing world entity IDs.",
+  "points": [
+    {"map_no": 1, "name": "Acacia Way", "entity_id": "NC2045-LOC-DOWNTOWN-080-ACACIA-WAY", "x": 0.527451, "y": 0.431818, "source_ref": "Night City 2045 p. 80"},
+    {"map_no": 2, "name": "Bella Vista Market", "entity_id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET", "x": 0.348366, "y": 0.359596, "source_ref": "Night City 2045 p. 82"},
+    {"map_no": 3, "name": "Café Bouchon", "entity_id": "NC2045-LOC-DOWNTOWN-082-CAFE-BOUCHON", "x": 0.569281, "y": 0.389899, "source_ref": "Night City 2045 p. 82"},
+    {"map_no": 4, "name": "Clocktower Residences", "entity_id": "NC2045-LOC-DOWNTOWN-082-CLOCKTOWER-RESIDENCES", "x": 0.470588, "y": 0.476263, "source_ref": "Night City 2045 p. 82"},
+    {"map_no": 5, "name": "Continental Brands Office", "entity_id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE", "x": 0.541176, "y": 0.333333, "source_ref": "Night City 2045 p. 82"},
+    {"map_no": 6, "name": "Continental Plaza", "entity_id": "NC2045-LOC-DOWNTOWN-083-CONTINENTAL-PLAZA", "x": 0.573856, "y": 0.333333, "source_ref": "Night City 2045 p. 83"},
+    {"map_no": 7, "name": "Cortex Complex", "entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX", "x": 0.446405, "y": 0.429293, "source_ref": "Night City 2045 p. 83"},
+    {"map_no": 8, "name": "Delirium", "entity_id": "NC2045-LOC-DOWNTOWN-083-DELIRIUM", "x": 0.472549, "y": 0.525253, "source_ref": "Night City 2045 p. 83"},
+    {"map_no": 9, "name": "The Eldritch Mirage", "entity_id": "NC2045-LOC-DOWNTOWN-083-THE-ELDRITCH-MIRAGE", "x": 0.40915, "y": 0.479798, "source_ref": "Night City 2045 p. 83"},
+    {"map_no": 10, "name": "Europa Meatworks", "entity_id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS", "x": 0.389542, "y": 0.406566, "source_ref": "Night City 2045 p. 84"},
+    {"map_no": 11, "name": "Folio", "entity_id": "NC2045-LOC-DOWNTOWN-084-FOLIO", "x": 0.289542, "y": 0.476263, "source_ref": "Night City 2045 p. 84"},
+    {"map_no": 12, "name": "Gilded Phoenix Arcade", "entity_id": "NC2045-LOC-DOWNTOWN-084-GILDED-PHOENIX-ARCADE", "x": 0.555556, "y": 0.510606, "source_ref": "Night City 2045 p. 84"},
+    {"map_no": 13, "name": "Goosetopia", "entity_id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA", "x": 0.336601, "y": 0.463131, "source_ref": "Night City 2045 p. 84"},
+    {"map_no": 14, "name": "Guns & Dolls", "entity_id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS", "x": 0.448366, "y": 0.376768, "source_ref": "Night City 2045 p. 85"},
+    {"map_no": 15, "name": "Jade Blossom Spa", "entity_id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA", "x": 0.3, "y": 0.343939, "source_ref": "Night City 2045 p. 85"},
+    {"map_no": 16, "name": "Moleharty’s Books & Antiques", "entity_id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES", "x": 0.375163, "y": 0.463131, "source_ref": "Night City 2045 p. 85"},
+    {"map_no": 17, "name": "Munch Munch Munch", "entity_id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH", "x": 0.433333, "y": 0.406566, "source_ref": "Night City 2045 p. 85"},
+    {"map_no": 18, "name": "New Libertine Tower", "entity_id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER", "x": 0.437255, "y": 0.333333, "source_ref": "Night City 2045 p. 85"},
+    {"map_no": 19, "name": "Night City Firestation #2", "entity_id": "NC2045-LOC-DOWNTOWN-086-NIGHT-CITY-FIRESTATION-2", "x": 0.405229, "y": 0.429293, "source_ref": "Night City 2045 p. 86"},
+    {"map_no": 20, "name": "The Nightingale Theater", "entity_id": "NC2045-LOC-DOWNTOWN-086-THE-NIGHTINGALE-THEATER", "x": 0.504575, "y": 0.366667, "source_ref": "Night City 2045 p. 86"},
+    {"map_no": 21, "name": "Studio Blocks A thru D", "entity_id": "NC2045-LOC-DOWNTOWN-086-STUDIO-BLOCKS-A-THRU-D", "x": 0.554902, "y": 0.535859, "source_ref": "Night City 2045 p. 86"},
+    {"map_no": 22, "name": "West Hill Church of God", "entity_id": "NC2045-LOC-DOWNTOWN-086-WEST-HILL-CHURCH-OF-GOD", "x": 0.348366, "y": 0.406061, "source_ref": "Night City 2045 p. 86"},
+    {"map_no": 23, "name": "West Hill Park", "entity_id": "NC2045-LOC-DOWNTOWN-087-WEST-HILL-PARK", "x": 0.348366, "y": 0.381818, "source_ref": "Night City 2045 p. 87"}
+  ]
+}

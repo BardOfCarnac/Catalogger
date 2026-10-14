@@ -1,0 +1,234 @@
+{
+  "format_version": "0.3.0",
+  "world_id": "night-city-2045",
+  "note": "Source-reviewed explicit spatial containment confirmations from the strong-spatial fallback audit. These are manual review results, not automatic lexical conversions. Ambiguous candidates remain on the legacy fallback queue.",
+  "fixtures": {
+    "nc2045-downtown-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-BIOFLUGH",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Bioflugh is a named industrial tenant of the Cortex Complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-DIZCOM",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "DizCom is an industrial-design firm working from the upper floors of the Cortex Complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-083-SCREAMING-EAGLE-LAW",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+        "source_ref": "Night City 2045 p. 83",
+        "note": "Screaming Eagle Law is located on the fourth floor of the Cortex Complex."
+      }
+    ],
+    "nc2045-downtown-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-086-GHP-ARCHITECTURAL",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER",
+        "source_ref": "Night City 2045 p. 86",
+        "note": "GHP Architectural is explicitly based in New Libertine Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-086-BLUERAVEN-STUDIO",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-086-STUDIO-BLOCKS-A-THRU-D",
+        "source_ref": "Night City 2045 pp. 86-87",
+        "note": "BlueRaven is explicitly based in Block B of the Studio Blocks."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-DOWNTOWN-086-LOTOS-STUDIO",
+        "target_entity_id": "NC2045-LOC-DOWNTOWN-086-STUDIO-BLOCKS-A-THRU-D",
+        "source_ref": "Night City 2045 p. 86",
+        "note": "Lotos is explicitly based in Block B of the Studio Blocks."
+      }
+    ],
+    "nc2045-kabuki-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-KABUKI-203-SANKAI-TEI",
+        "target_entity_id": "NC2045-LOC-KABUKI-203-KABUKI-CEREMONIAL-HALL",
+        "source_ref": "Night City 2045 p. 203",
+        "note": "Sankai-tei is explicitly inside the Kabuki Ceremonial Hall."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-KABUKI-206-TYGER-CAB",
+        "target_entity_id": "NC2045-LOC-KABUKI-206-TYGER-WORKS-TOWER",
+        "source_ref": "Night City 2045 pp. 203, 206",
+        "note": "Tyger Cab explicitly operates from Tyger Works Tower."
+      }
+    ],
+    "nc2045-little-china-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-BONESETTER",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+        "source_ref": "Night City 2045 p. 99",
+        "note": "The Bonesetter operates inside the Hong Kong Market."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-CHINA-099-THE-LITTLE-RED-BOOK",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+        "source_ref": "Night City 2045 p. 99",
+        "note": "The Little Red Book is a business within the Hong Kong Market."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-LITTLE-CHINA-099-YUENYANG-TEA-SHOP",
+        "target_entity_id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+        "source_ref": "Night City 2045 p. 99",
+        "note": "Yuenyang Tea Shop operates inside the Hong Kong Market."
+      }
+    ],
+    "nc2045-little-europe-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-ORG-LITTLE-EUROPE-057-NIGHT-CITY-TOURISM",
+        "target_entity_id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+        "source_ref": "Night City 2045 p. 57",
+        "note": "Night City Tourism is an office tenant of Bristol Business Park."
+      }
+    ],
+    "nc2045-new-westbrook-core-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-NEW-WESTBROOK-214-ARMORY-PAWN-SHOP",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+        "source_ref": "Night City 2045 p. 214",
+        "note": "Armory Pawn Shop is a named Canalside Plaza tenant."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NEW-WESTBROOK-214-HARDWARE-VALUE",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+        "source_ref": "Night City 2045 p. 214",
+        "note": "Hardware Value is a named Canalside Plaza tenant."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NEW-WESTBROOK-214-RICK-SHAWS-TAXI-SERVICE",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+        "source_ref": "Night City 2045 p. 214",
+        "note": "Rick Shaw's Taxi Service is a named Canalside Plaza tenant."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NEW-WESTBROOK-214-TAKAYUKI-LAW",
+        "target_entity_id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+        "source_ref": "Night City 2045 p. 214",
+        "note": "Takayuki Law is a named Canalside Plaza tenant."
+      }
+    ],
+    "nc2045-north-heywood-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-NORTH-HEYWOOD-250-CIVIC-NEXUS-CAFETERIA",
+        "target_entity_id": "NC2045-LOC-NORTH-HEYWOOD-250-NORTH-HEYWOOD-CIVIC-NEXUS",
+        "source_ref": "Night City 2045 p. 250",
+        "note": "The source-explicit low-cost cafeteria is inside the North Heywood Civic Nexus."
+      }
+    ],
+    "nc2045-south-night-city-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-SOUTH-NIGHT-CITY-143-MAYORAL-RACE",
+        "target_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-HAAKENSEN-TOWER",
+        "source_ref": "Night City 2045 p. 143",
+        "note": "Mayoral Race is explicitly on the ground floor of Haakensen Tower."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-ORG-SOUTH-NIGHT-CITY-142-SCYTHE-SECURITY",
+        "target_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-HAAKENSEN-TOWER",
+        "source_ref": "Night City 2045 p. 142",
+        "note": "Scythe Security operates from the second floor and underground garage of Haakensen Tower."
+      }
+    ],
+    "nc2045-south-night-city-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-SOUTH-NIGHT-CITY-140-THE-CRYPT",
+        "target_entity_id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-THE-BONEYARD",
+        "source_ref": "Night City 2045 p. 140",
+        "note": "The Crypt is explicitly a local bar inside the Boneyard."
+      }
+    ],
+    "nc2045-the-glen-context-only-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-118-EEC-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 pp. 118-119",
+        "note": "The EEC Consulate is a mission within the Consulate Causeway."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-PACIFICA-CONFEDERATION-OFFICES",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "Pacifica Confederation mission offices are explicitly located within the Causeway."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-119-UNITED-STATES-CONSULATE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-118-CONSULATE-CAUSEWAY",
+        "source_ref": "Night City 2045 p. 119",
+        "note": "The United States Consulate is explicitly within the Consulate Causeway."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-123-CLEAN-SWEEP-ENTERPRISES",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "Clean Sweep Enterprises is an affiliated tenant based at the Raven Microcybernetics complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-123-DAYTON-AERONAUTICS",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "Dayton Aeronautics is an affiliated operation based at the Raven Microcybernetics complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-THE-GLEN-123-EVEREST-VENTUREWARE",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+        "source_ref": "Night City 2045 p. 124",
+        "note": "Everest VentureWare is an affiliated operation based at the Raven Microcybernetics complex."
+      }
+    ],
+    "nc2045-the-glen-retail-capable-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-MEN-THE-GLEN-122-2A",
+        "target_entity_id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+        "source_ref": "Night City 2045 p. 122",
+        "note": "2A is explicitly a named ground-floor tenant of the same tower complex."
+      }
+    ],
+    "nc2045-watson-development-review-queue-v1": [
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-192-PETROCHEM-MUSEUM-GIFT-SHOP",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-192-PETROCHEM-OFFICES",
+        "source_ref": "Night City 2045 p. 192",
+        "note": "The Petrochem Museum & Gift Shop is explicitly inside the Petrochem offices complex."
+      },
+      {
+        "relationship_type": "contained_in",
+        "source_entity_id": "NC2045-OUT-WATSON-DEVELOPMENT-194-SOVOIL-MUSEUM-GIFT-SHOP",
+        "target_entity_id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SOVOIL-OFFICES",
+        "source_ref": "Night City 2045 p. 194",
+        "note": "The SovOil Museum & Gift Shop is explicitly inside the SovOil offices complex."
+      }
+    ]
+  }
+}

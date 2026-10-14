@@ -1,0 +1,142 @@
+{
+  "format_version": "0.2.0",
+  "world_id": "night-city-2045",
+  "fixture_id": "nc2045-kabuki-context-only-v1",
+  "fixture_status": "source_reviewed",
+  "provenance": "CANON_NAMED",
+  "source": {
+    "title": "Night City 2045",
+    "pages": [202, 204, 205, 206],
+    "note": "Direct source review of all six Kabuki rows the v0.2 audit classified CONTEXT_ONLY. Factual metadata and concise paraphrases only; source prose is not reproduced."
+  },
+  "entities": [
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+      "name": "100.0 G3 Gun-Gal Station",
+      "entity_type": "container",
+      "district": "Kabuki",
+      "map_no": 1,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "G3 radio station built around anime-themed music; the source also identifies a ground-floor café and a separate digital sales channel for copies of the station's recovered music chips.",
+      "review_status": "source_reviewed",
+      "stock_policy": "CHILDREN_ONLY",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_MEDIA_CONTAINER_AND_RECOVER_COMMERCIAL_CHILDREN"}
+    },
+    {
+      "entity_id": "NC2045-OUT-KABUKI-202-THE-CABBIT",
+      "name": "The Cabbit",
+      "entity_type": "service",
+      "parent_entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+      "district": "Kabuki",
+      "map_no": 1,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Anime-fan café occupying the ground floor of the G3 Gun-Gal Station building.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [{"service_key":"cafe-hospitality","label":"Café hospitality"}],
+      "audit": {"source_profile_version":"0.2","decision":"RECOVER_NAMED_CAFE_CHILD"}
+    },
+    {
+      "entity_id": "NC2045-CHN-KABUKI-202-G3-MUSIC-CHIPS-THE-GARDEN",
+      "name": "G3 Music Chips on The Garden",
+      "entity_type": "channel",
+      "parent_entity_id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+      "district": "Kabuki",
+      "map_no": 1,
+      "book_page": 202,
+      "provenance": "CANON_IMPLIED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Source-explicit digital sales channel used by G3 to sell copies of anime-themed music chips through The Garden; the channel itself is not given a formal business name.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "distribution_channel",
+      "stock_policy": "NO_STATIC_INVENTORY",
+      "distribution": {"channel":"The Garden","product_family":"anime-themed music-chip copies"},
+      "audit": {"source_profile_version":"0.2","decision":"RECOVER_SOURCE_EXPLICIT_UNNAMED_DIGITAL_SALES_CHANNEL"}
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-202-91-9-ROYAL-BLUE",
+      "name": "91.9 Royal Blue",
+      "entity_type": "context",
+      "district": "Kabuki",
+      "map_no": 2,
+      "book_page": 202,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 202",
+      "source_summary": "Jazz-focused music studio and radio station with residential space for orphans; no customer-facing paid studio service or retail operation is stated.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_MEDIA_AND_RESIDENTIAL_CONTEXT_NO_SOURCE_SUPPORTED_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-204-NAKAGAWA-ACADEMY",
+      "name": "Nakagawa Academy",
+      "entity_type": "service",
+      "district": "Kabuki",
+      "map_no": 12,
+      "book_page": 204,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 204",
+      "source_summary": "Foundation-funded school offering daycare through high-school education to Kabuki residents for 100eb per month, with food, transport and athletic facilities charged separately.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"school-tuition","label":"Kindergarten through high-school education","price_eb":100,"billing_period":"month"},
+        {"service_key":"daycare","label":"Daycare for children under five"},
+        {"service_key":"student-addons","label":"Food, transportation and athletic-facility access","pricing":"additional charge"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_PAID_EDUCATION_AND_DAYCARE_SERVICE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-205-ROKUMEI-KAN",
+      "name": "Rokumei-kan",
+      "entity_type": "hybrid",
+      "district": "Kabuki",
+      "map_no": 17,
+      "book_page": 205,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 205",
+      "source_summary": "Maid-and-butler café styled as a traditional British tearoom, offering afternoon tea with pastry for 50eb per visit.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "local_wares_and_service",
+      "local_offerings": [{"offering_key":"afternoon-tea-pastry","label":"Afternoon tea with pastry","price_eb":50}],
+      "services": [{"service_key":"themed-cafe-hospitality","label":"Themed maid/butler café hospitality"}],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_THEMED_CAFE_HYBRID"}
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-206-TORANOKO-GAKUEN",
+      "name": "Toranoko Gakuen",
+      "entity_type": "context",
+      "district": "Kabuki",
+      "map_no": 21,
+      "book_page": 206,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 206",
+      "source_summary": "Tyger Claws-run orphanage providing vocational preparation for resident children; no paid public education service or retail operation is described.",
+      "review_status": "source_reviewed",
+      "stock_policy": "NO_STOCK",
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"CONFIRM_ORPHANAGE_AND_INTERNAL_TRAINING_CONTEXT_NO_PUBLIC_COMMERCE"}
+    },
+    {
+      "entity_id": "NC2045-LOC-KABUKI-206-TYGER-DOJO-TORA-NO-ANA",
+      "name": "Tyger Dojo/Tora-no-Ana",
+      "entity_type": "service",
+      "district": "Kabuki",
+      "map_no": 22,
+      "book_page": 206,
+      "provenance": "CANON_NAMED",
+      "source_ref": "Night City 2045 p. 206",
+      "source_summary": "Martial-arts school used by Kabuki residents, with beginner instruction through Tyger Dojo and advanced study through Tora-no-Ana.",
+      "review_status": "source_reviewed",
+      "commercial_mode": "service_only",
+      "services": [
+        {"service_key":"beginner-martial-arts-lessons","label":"Beginner Arasaka-te instruction"},
+        {"service_key":"advanced-martial-arts-training","label":"Advanced Tora-no-Ana martial-arts training"}
+      ],
+      "audit": {"source_profile_version":"0.2","previous_relevance":"CONTEXT_ONLY","decision":"PROMOTE_TO_MARTIAL_ARTS_INSTRUCTION_SERVICE"}
+    }
+  ]
+}
