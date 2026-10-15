@@ -1,0 +1,33 @@
+{
+  "local_manufacturers": [
+    {
+      "id": "RCC-MFR-001",
+      "name": "Albion Arms",
+      "status": "new-candidate",
+      "evidence": "Explicit company/product construction in “Albion Arms ‘Vanguard’ Collapsible Halberd”."
+    }
+  ],
+  "canonical_aliases": [
+    {
+      "source_name": "Raven Microcyb",
+      "canonical_id": "MFR-0079",
+      "canonical_name": "Raven MicroCybernetics"
+    },
+    {
+      "source_name": "Radline",
+      "canonical_id": "MFR-0078",
+      "canonical_name": "Radline Laboratories"
+    },
+    {
+      "source_name": "Pursuit Security",
+      "canonical_id": "MFR-0076",
+      "canonical_name": "Pursuit Security Inc."
+    },
+    {
+      "source_name": "Constitution Arms",
+      "canonical_id": "MFR-0012",
+      "canonical_name": "Constitutional Arms"
+    }
+  ],
+  "policy": "Reuse existing Catalogger manufacturer IDs when source wording clearly resolves to an existing manufacturer. Do not create manufacturers from ambiguous product prefixes or inferred publishers."
+}
