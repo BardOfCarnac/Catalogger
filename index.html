@@ -2179,6 +2179,80 @@ body::-webkit-scrollbar,
   .nearby-offer.catalogue-nearby .catalogue-thumb{width:54px}
 }
 
+
+/* Catalogue browsing is separate from offers: one card per item, its book price,
+   same 4:3 curated image as the inventory and profile components. */
+.catalogue-results-label{
+  font:900 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+  align-self:center;margin-right:auto
+}
+.catalogue-matches{
+  display:grid;gap:12px;padding:13px;background:var(--cream)
+}
+.catalogue-matches-grid{grid-template-columns:repeat(auto-fill,minmax(185px,1fr))}
+.catalogue-entry{
+  display:flex;min-width:0;width:100%;text-align:left;cursor:pointer;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:7px
+}
+.catalogue-entry:hover,.catalogue-entry:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.catalogue-entry-grid{flex-direction:column}
+.catalogue-entry .catalogue-thumb{width:100%}
+.catalogue-entry-info{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1;padding:11px 5px 9px}
+.catalogue-entry-info strong{
+  font-size:clamp(16px,1.8vw,21px);line-height:1.03;text-transform:uppercase;
+  font-weight:1000;overflow-wrap:anywhere
+}
+.catalogue-entry-info small{
+  font:800 9px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--muted);text-transform:uppercase;overflow-wrap:anywhere
+}
+.catalogue-entry-price{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;justify-content:space-between;
+  width:calc(100% + 14px);margin:0 -7px -7px;padding:9px 11px;
+  border-top:2px solid var(--ink);background:var(--rear-4)
+}
+.catalogue-entry-price small{width:100%;font:900 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.catalogue-entry-price b{font:1000 19px ui-monospace,SFMono-Regular,Menlo,monospace}
+.catalogue-entry-price .catalogue-arrow{font-size:24px;line-height:1}
+.catalogue-matches-list{grid-template-columns:1fr;gap:0;padding:0}
+.catalogue-matches-list .catalogue-entry{
+  display:grid;grid-template-columns:96px minmax(0,1fr) auto;
+  align-items:center;gap:12px;border:0;border-bottom:1px solid var(--rule);
+  padding:12px 14px;background:var(--cream)
+}
+.catalogue-matches-list .catalogue-entry:last-child{border-bottom:0}
+.catalogue-matches-list .catalogue-thumb{width:96px}
+.catalogue-matches-list .catalogue-entry-info{padding:0}
+.catalogue-matches-list .catalogue-entry-price{
+  display:flex;align-items:center;flex-direction:column;justify-content:center;
+  border:0;width:auto;margin:0;padding:8px 10px;min-width:104px
+}
+.catalogue-matches-list .catalogue-entry-price small{width:auto}
+.catalogue-more{
+  width:100%;border:0;border-top:2px solid var(--ink);padding:15px;background:var(--rear-4);
+  color:var(--ink);font:900 12px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;text-transform:uppercase
+}
+@media(max-width:760px){
+ .catalogue-matches-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:9px}
+ .catalogue-entry-info strong{font-size:16px}
+ .catalogue-entry-price b{font-size:16px}
+ .catalogue-matches-list .catalogue-entry{grid-template-columns:76px minmax(0,1fr) auto;gap:8px;padding:9px}
+ .catalogue-matches-list .catalogue-thumb{width:76px}
+ .catalogue-matches-list .catalogue-entry-price{min-width:73px;padding:6px}
+ .catalogue-matches-list .catalogue-entry-price .catalogue-arrow{display:none}
+ .catalogue-results-label{font-size:8px}
+}
+@media(max-width:360px){
+ .catalogue-matches-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:7px}
+ .catalogue-entry-info{padding:8px 3px}
+ .catalogue-entry-price{padding:7px}
+ .catalogue-matches-list .catalogue-entry{grid-template-columns:62px minmax(0,1fr);gap:8px}
+ .catalogue-matches-list .catalogue-thumb{width:62px}
+ .catalogue-matches-list .catalogue-entry-price{grid-column:2;flex-direction:row;justify-content:flex-start}
+}
+
 </style>
 </head>
 <body>
@@ -2378,6 +2452,22 @@ body::-webkit-scrollbar,
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="search-offer-section" id="catalogueResultsSection" hidden>
+        <div class="search-offer-head">
+          <h2>Catalogue items</h2>
+          <span id="catalogueResultsMeta">Matching equipment</span>
+        </div>
+        <div class="results-sort">
+          <span class="catalogue-results-label">Each item appears once · canonical book price</span>
+          <div class="item-display-switch" id="catalogueViewSwitch" aria-label="Catalogue item layout">
+            <button type="button" data-catalogue-view="grid" aria-pressed="true">▦ Cards</button>
+            <button type="button" data-catalogue-view="list" aria-pressed="false">☷ List</button>
+          </div>
+        </div>
+        <div class="catalogue-matches catalogue-matches-grid" id="catalogueMatches"></div>
+        <button id="catalogueShowMore" class="catalogue-more" type="button" hidden>Show more items ↓</button>
       </section>
 
       <section class="search-offer-section" id="availableOffersSection" hidden>
@@ -3687,8 +3777,48 @@ function renderOfferSections(data,q){
   renderLikelySellers(data);
   renderRelatedItems(data,q);
 }
+
+let catalogueDisplayMode='grid';
+let catalogueShown=12;
+function renderCatalogueMatches(data){
+  const section=document.getElementById('catalogueResultsSection');
+  const list=document.getElementById('catalogueMatches');
+  const items=(data.items||[]);
+  const exact=Boolean(data.active_item_id);
+  // Broad searches show the item catalogue, while exact item matches retain
+  // the currently selected seller/offer flow.
+  section.hidden=exact||items.length===0;
+  if(section.hidden){list.replaceChildren();return}
+  const count=Number(data.total_matches??items.length);
+  document.getElementById('catalogueResultsMeta').textContent=
+    count.toLocaleString()+' matching item'+(count===1?'':'s');
+  const grid=catalogueDisplayMode==='grid';
+  list.classList.toggle('catalogue-matches-grid',grid);
+  list.classList.toggle('catalogue-matches-list',!grid);
+  document.querySelectorAll('#catalogueViewSwitch [data-catalogue-view]').forEach(button=>{
+    button.setAttribute('aria-pressed',String(button.dataset.catalogueView===catalogueDisplayMode));
+  });
+  list.innerHTML=items.slice(0,catalogueShown).map(item=>
+    '<button type="button" class="catalogue-entry '+(grid?'catalogue-entry-grid':'catalogue-entry-list')+'" data-catalogue-item="'+esc(item.item_id)+'">'+
+    catalogueImageMarkup(item.item_id,item.name,item.image)+
+    '<span class="catalogue-entry-info"><strong>'+esc(item.name)+'</strong>'+
+    '<small>'+esc(stockDepartmentLabel(item.primary_department))+' · '+esc(item.availability_label||'Catalogue item')+'</small></span>'+
+    '<span class="catalogue-entry-price"><small>Book price</small>'+
+    '<b>'+esc(item.book_price==null?'Not listed':moneyEb(item.book_price))+'</b>'+
+    '<span class="catalogue-arrow" aria-hidden="true">→</span></span></button>'
+  ).join('');
+  list.querySelectorAll('[data-catalogue-item]').forEach(card=>
+    card.addEventListener('click',()=>openItem(card.dataset.catalogueItem))
+  );
+  const more=document.getElementById('catalogueShowMore');
+  more.hidden=items.length<=catalogueShown;
+  if(!more.hidden)more.textContent='Show more items · '+(items.length-catalogueShown)+' remaining ↓';
+}
+
 function renderSearchPage(data,q){
+  if(!lastSearch||lastSearch.q!==q)catalogueShown=12;
   lastSearch={data,q};
+  renderCatalogueMatches(data);
   const exact=Boolean(data.active_item_id);
   const active=exact?(data.items||[]).find(x=>String(x.item_id)===String(data.active_item_id)):null;
   const label=(active?.name||q||'SEARCH').toUpperCase();
@@ -4778,6 +4908,17 @@ function drawSearchSpaciel(data=lastSearch?.data){
 }
 window.addEventListener('resize',()=>{drawSpaciel();drawSearchSpaciel();syncHeaderBackdrop();syncHeaderShadows()});
 
+document.getElementById('catalogueViewSwitch').addEventListener('click',e=>{
+  const b=e.target.closest('[data-catalogue-view]');
+  if(!b||!lastSearch)return;
+  catalogueDisplayMode=b.dataset.catalogueView==='list'?'list':'grid';
+  renderCatalogueMatches(lastSearch.data);
+});
+document.getElementById('catalogueShowMore').addEventListener('click',()=>{
+  if(!lastSearch)return;
+  catalogueShown+=12;
+  renderCatalogueMatches(lastSearch.data);
+});
 document.getElementById('resultsSort').addEventListener('click',e=>{
   const view=e.target.closest('[data-item-view]');
   if(view){
