@@ -2253,6 +2253,66 @@ body::-webkit-scrollbar,
  .catalogue-matches-list .catalogue-entry-price{grid-column:2;flex-direction:row;justify-content:flex-start}
 }
 
+
+/* 02B ORIGINAL MATTING — the card has ONE cream surface.
+   Image is inset on that surface; name lives on it; yellow footer is full width.
+   Deliberately scoped to catalogue grids, not compact list rows or shop images. */
+.catalogue-matches-grid .catalogue-entry-grid,
+.search-offer-list.catalogue-grid .search-offer.catalogue-tile,
+#stockList.stock-tile-grid .stock-row.catalogue-tile,
+.item-related .catalogue-related,
+.related-items .catalogue-related {
+  border:1px solid #b7ad9c;
+  padding:0;
+  background:var(--cream);
+  box-shadow:none;
+}
+.catalogue-matches-grid .catalogue-entry-grid .catalogue-thumb,
+.search-offer-list.catalogue-grid .catalogue-tile .catalogue-thumb,
+#stockList.stock-tile-grid .catalogue-tile .catalogue-thumb,
+.item-related .catalogue-related .catalogue-thumb,
+.related-items .catalogue-related .catalogue-thumb {
+  width:calc(100% - 14px);
+  margin:7px 7px 0;
+  border:0;
+  background-color:var(--cream);
+}
+.catalogue-matches-grid .catalogue-entry-grid .catalogue-entry-info {
+  padding:12px 13px 13px;
+  gap:4px;
+}
+.catalogue-matches-grid .catalogue-entry-grid .catalogue-entry-price,
+.search-offer-list.catalogue-grid .catalogue-tile .price-block,
+#stockList.stock-tile-grid .catalogue-tile .price,
+.item-related .catalogue-related .related-action,
+.related-items .catalogue-related .related-action{
+  width:100%;
+  margin:0;
+  border-top:1px solid #d0bc76;
+  background:var(--rear-4);
+  padding:11px 13px;
+}
+.search-offer-list.catalogue-grid .catalogue-tile .item-col {
+  padding:12px 13px 7px;
+}
+.search-offer-list.catalogue-grid .catalogue-tile .seller-col {
+  padding:0 13px 12px;
+}
+#stockList.stock-tile-grid .catalogue-tile .stock-text {
+  padding:12px 13px 6px;
+}
+#stockList.stock-tile-grid .catalogue-tile .stock-meta {
+  padding:0 13px 13px;
+}
+.item-related .catalogue-related .related-copy,
+.related-items .catalogue-related .related-copy {
+  padding:12px 13px;
+}
+@media(max-width:760px){
+  .catalogue-matches-grid .catalogue-entry-grid .catalogue-entry-info {padding:10px 10px 12px}
+  .catalogue-matches-grid .catalogue-entry-grid .catalogue-entry-price{padding:9px 10px}
+}
+
 </style>
 </head>
 <body>
