@@ -78,7 +78,7 @@ h1{font:900 clamp(32px,5vw,63px)/.91 var(--fixed);letter-spacing:-.02em;margin:0
 .item-kind{font:650 calc(11px * var(--scale))/1.3 var(--mono);color:#746a5b;text-transform:uppercase;margin-top:5px}
 .item-footer{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:11px 13px;min-height:68px;background:var(--yellow);color:var(--ink)}
 .item-price-label{font:750 calc(9px * var(--scale))/1.15 var(--mono);text-transform:uppercase}
-.item-price{font:900 calc(23px * var(--scale))/1.1 var(--mono);margin-top:4px;letter-spacing:-.035em;white-space:nowrap}
+.item-price{font:900 calc(23px * var(--scale))/1.1 var(--display);margin-top:4px;letter-spacing:-.035em;white-space:nowrap}
 .price-arrow{font:400 31px/.9 Arial,sans-serif}
 .item-row-section{margin:0 12px 12px;border:1px solid #b7ad9a;background:#fff7e7}
 .list-label{font:900 calc(12px * var(--scale)) var(--display);text-transform:uppercase;letter-spacing:.02em;padding:11px 13px 9px;border-bottom:1px solid #d0c4af}
@@ -88,7 +88,7 @@ h1{font:900 clamp(32px,5vw,63px)/.91 var(--fixed);letter-spacing:-.02em;margin:0
 .row-info small{display:block;margin-top:6px;font:650 calc(10px * var(--scale))/1.35 var(--mono);text-transform:uppercase;color:#766959}
 .row-price{align-self:stretch;display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:115px;padding:8px 12px;background:#f8db54}
 .row-price small{font:750 calc(9px * var(--scale)) var(--mono);text-transform:uppercase}
-.row-price b{font:900 calc(20px * var(--scale)) var(--mono);white-space:nowrap}
+.row-price b{font:900 calc(20px * var(--scale)) var(--display);white-space:nowrap}
 .role-spec{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid #d4c6b3;background:#fff9ea;padding:13px 15px}
 .role-spec .role-head{font:800 calc(9px * var(--scale)) var(--mono);color:#9a6b3a;letter-spacing:.06em;text-transform:uppercase}
 .role-spec .role-main{font:900 calc(27px * var(--scale))/.95 var(--display);text-transform:uppercase;margin-top:7px;overflow-wrap:anywhere}
@@ -117,6 +117,15 @@ h1{font:900 clamp(32px,5vw,63px)/.91 var(--fixed);letter-spacing:-.02em;margin:0
 @media(max-width:680px){.lab-top{padding:17px 15px}.logo{font-size:36px}.header-stamp{font-size:9px}.header-stamp small{font-size:8px}.main{width:calc(100% - 14px);padding:12px;box-shadow:3px 3px 0 #20130f1b}.toolbar{gap:13px}.field{min-width:0;flex:1 1 150px}.field input[type=range]{width:100%}.toolbar .grow{display:none}.pill-controls{width:100%}.pill-controls button{flex:1;padding:11px 8px;font-size:10px}.study-id h3{font-size:20px}.study-head{padding:9px 10px;gap:9px}.study-actions{width:100%;justify-content:flex-end}.study-caption{padding:8px 10px 10px}.test-nav{padding:8px;gap:5px}.mini-brand{font-size:19px}.nav-button{padding:6px 8px}.shop-and-item{grid-template-columns:1fr;padding:8px;gap:8px}.shop-feature{min-height:220px;padding:14px}.shop-title{font-size:calc(41px * var(--scale))}.shop-description{font-size:calc(12px * var(--scale))}.item-card{width:min(100%,255px)}.item-row-section{margin:0 8px 8px}.item-row{grid-template-columns:74px minmax(0,1fr) auto;gap:8px;padding:8px}.row-photo{width:74px}.row-info strong{font-size:calc(17px * var(--scale))}.row-price{min-width:75px;padding:6px}.row-price small{font-size:calc(8px * var(--scale))}.row-price b{font-size:calc(16px * var(--scale))}.role-spec{grid-template-columns:1fr;padding:11px;gap:15px}.study-notes{padding:10px;display:grid}.study-notes input{width:100%}}
 @media(max-width:375px){.item-row{grid-template-columns:62px minmax(0,1fr) 65px;gap:6px}.row-photo{width:62px}.row-info strong{font-size:calc(15px * var(--scale))}.row-price{min-width:0;padding:4px}.row-price b{font-size:calc(14px * var(--scale))}.shop-title{font-size:calc(36px * var(--scale))}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.currency-compare{padding:19px 0 23px;border-bottom:1px solid var(--line)}
+.currency-compare h2{font:900 29px/1 var(--fixed);text-transform:uppercase;margin:0 0 7px}
+.currency-compare p{font:13px/1.45 Arial,sans-serif;color:#665a48;margin:0;max-width:680px}
+.currency-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:15px}
+.currency-examples>div{background:#fff9eb;border:1px solid #bcb19c;min-width:0}
+.currency-examples strong{font:900 23px/1 Arial,Helvetica,sans-serif;background:#f6d644;padding:16px 10px;display:block;white-space:nowrap}
+.currency-examples small{font:800 10px/1.3 var(--local-mono);text-transform:uppercase;color:#665949;padding:10px;display:block}
+@media(max-width:700px){.currency-examples{grid-template-columns:repeat(2,minmax(0,1fr))}.currency-examples strong{font-size:21px}}
 </style>
 </head><body>
 <header class="lab-top"><div><div class="logo">VEND-R</div><div class="logo-sub">NIGHT CITY SHOPPING</div></div><div class="header-stamp">TYPOGRAPHY / WORKSHOP 02<small>COMPONENT STUDY · NOT LIVE</small></div></header>
@@ -129,6 +138,19 @@ h1{font:900 clamp(32px,5vw,63px)/.91 var(--fixed);letter-spacing:-.02em;margin:0
 <div class="grow"></div><div class="field-caption" id="fontStatus">Checking web font access…</div>
 <div class="pill-controls" role="group" aria-label="Study presentation"><button type="button" data-view="all" aria-pressed="true">All studies</button><button type="button" data-view="focus" aria-pressed="false">Focus</button><button type="button" data-view="compare" aria-pressed="false">Compare 2</button></div>
 </section>
+
+<section class="currency-compare" id="currencyCompare" aria-labelledby="currency-heading">
+  <div class="eyebrow">VEND-R / CURRENCY MARK STUDY</div>
+  <h2 id="currency-heading">Eurodollar notation</h2>
+  <p>Same bold current typeface, five alternative notations. These are design specimens, not a change to the item data.</p>
+  <div class="currency-examples">
+   <div><strong>€$ 720</strong><small>Euro + dollar / modern</small></div>
+   <div><strong>€$720</strong><small>Tightly set pair</small></div>
+   <div><strong>720eb</strong><small>Cyberpunk RED / eurobucks</small></div>
+   <div><strong>§720</strong><small>Cyberpunk 2020 / historical</small></div>
+   <div><strong>₠720</strong><small>Unicode ECU / not Cyberpunk canon</small></div>
+  </div>
+ </section>
 <div class="summary"><h2 id="studyHeading">Five typographic treatments</h2><span id="selectionSummary">Choose two for a direct comparison</span></div>
 <section class="compare-panel" id="comparisonPanel" hidden><h2>Side-by-side comparison</h2><div class="compare-panes" id="comparePanes"></div></section>
 <div class="study-stack" id="studyStack"></div>
