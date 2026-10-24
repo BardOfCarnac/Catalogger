@@ -2313,6 +2313,25 @@ body::-webkit-scrollbar,
   .catalogue-matches-grid .catalogue-entry-grid .catalogue-entry-price{padding:9px 10px}
 }
 
+
+/* TYPOGRAPHY DECISION / 00 CURRENT VEND-R
+   Price amounts share the same bold Arial/Helvetica as product names.
+   Small category, source, availability and price labels retain monospace.
+   This changes presentation only, not eb values or formatting. */
+.search-offer .price,
+.stock-row > .price,
+.offer-readout strong,
+.catalogue-entry-price b,
+.item-hero .item-stat.price dd,
+.item-offer-price,
+.nearby-price,
+#stockList.stock-tile-grid .catalogue-tile .price,
+.item-price-value {
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  font-variant-numeric:tabular-nums;
+}
+
 </style>
 </head>
 <body>
