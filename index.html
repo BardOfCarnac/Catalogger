@@ -1921,6 +1921,24 @@ body::-webkit-scrollbar,
 .taxonomy-result:hover{background:#ffdf73}
 .taxonomy-result strong{display:block;text-transform:uppercase;font:900 16px Impact,'Arial Narrow',Arial,sans-serif}
 .taxonomy-result small{display:block;margin-top:4px;font:10px ui-monospace,Menlo,monospace}
+
+/* APPROVED VEND-R PRICE TYPOGRAPHY
+   Product and shop price figures use the same current Arial/Helvetica
+   family as product names. Small labels remain in the original mono. */
+.search-offer .price,
+.stock-row > .price,
+.offer-readout strong,
+.item-stat.price dd,
+.item-offer-price,
+.nearby-price,
+#itemOfferPrice,
+#itemBookPrice,
+#offerPrice {
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  font-variant-numeric:tabular-nums;
+}
+
 </style>
 </head>
 <body>
@@ -3235,12 +3253,22 @@ function placeLabel(o){
   if(o.distance!==null&&o.distance!==undefined)parts.push(String(o.distance));
   return parts.join(' · ')||'Night City';
 }
+// Vend-R storefront prices are numeric eurobucks with a single display mark.
+// The § sign is purely presentational; inventory and catalogue values stay numeric.
 function moneyEb(v){
-  if(v===null||v===undefined)return '—';
-  return Number(v).toLocaleString()+'eb';
+  if(v===null||v===undefined||v==='')return '—';
+  const amount=Number(v);
+  return Number.isFinite(amount)?'§'+amount.toLocaleString():'—';
+}
+function eurobuckPriceLabel(label){
+  if(label===null||label===undefined||String(label).trim()==='')return null;
+  // Seller-specific prose must remain intact, but legacy currency amounts
+  // embedded in that prose are presented using our chosen § convention.
+  return String(label).replace(/(?:€\$|§)\s*([0-9][0-9,]*(?:\.[0-9]+)?)|([0-9][0-9,]*(?:\.[0-9]+)?)\s*eb\b|\beb\s*([0-9][0-9,]*(?:\.[0-9]+)?)/gi,
+    (_,before,after,prefixed)=>moneyEb(Number(String(before||after||prefixed).replace(/,/g,''))));
 }
 function priceText(v,label=null){
-  return label||moneyEb(v);
+  return eurobuckPriceLabel(label)??moneyEb(v);
 }
 function quantityText(row,short=false){
   if(row?.quantity_label)return short?String(row.quantity_label).toUpperCase():String(row.quantity_label);
@@ -3870,7 +3898,7 @@ function stockRowHtml(s,row,focusId){
   if(isFoodDrinkVenue(s)){
     return '<article class="stock-row menu-row'+rowClass+'" role="button" tabindex="0" data-stock-item="'+esc(row.item_id)+'" data-category="'+esc(stockDepartmentKey(row))+'" data-search="'+esc(stockSearchText(row))+'"><div>'+
       '<div class="stock-name'+nameClass+'">'+esc(row.name)+'</div></div>'+
-      '<div class="price">'+esc(row.asking_price==null?'—':Number(row.asking_price).toLocaleString()+'eb')+'</div></article>';
+      '<div class="price">'+esc(moneyEb(row.asking_price))+'</div></article>';
   }
   const flowLabel=row.last_change||null;
   const flavourText=Array.isArray(row.variants)&&row.variants.length
@@ -4313,7 +4341,7 @@ function renderVendor(s,offers){
     document.getElementById('offerItemName').textContent=focus.item_name||exact?.name||'Selected item';
     if(exact){
       document.getElementById('offerKicker').textContent=menuMode?'Menu item':'Current offer';
-      document.getElementById('offerPrice').textContent=exact.asking_price==null?'—':Number(exact.asking_price).toLocaleString()+'eb';
+      document.getElementById('offerPrice').textContent=moneyEb(exact.asking_price);
       document.getElementById('offerQuantity').textContent=menuMode?'MENU ITEM':((exact.quantity==null?'On demand':String(exact.quantity)+' available')+' · '+(exact.condition||'stock item'));
       document.getElementById('offerSub').textContent=menuMode?'This menu item brought you to '+(s.name||'this venue')+'.':[exact.availability_label,exact.price_tier,'This is the item that brought you to '+(s.name||'this seller')+'.'].filter(Boolean).join(' · ');
     }else{
