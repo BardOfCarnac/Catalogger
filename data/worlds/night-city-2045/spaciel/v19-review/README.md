@@ -1,3 +1,22 @@
+# Latest: 31 sourcebook locations staged (31 October 2026)
+
+**Progress:** The 525 visually accepted V19 locations remain untouched. Each of them has now been linked to an original book-map manifestation, including all three markers for *The Cells*. An additional **11 Hot Zone + 20 Outskirts** sourcebook markers have been recovered and independently checked against the book's PDF image-placement calibration (worst roundoff error <0.001 source-master pixel). This validates their *book* positions, **not** their final V19 on-screen placement.
+
+**New files:**
+- [Combined 556 locations](./spaciel_v19_approved525_plus_book31_review556.geojson): 525 unchanged, visible by default; 31 additional candidates, hidden by default.
+- [31-marker GeoJSON](./spaciel_v19_hot_zone_outskirts_31_review.geojson): per-marker source reference, exact master coordinate, provisional V19 prediction, alternate uniform-frame prediction, uncertainty metadata.
+- [31-marker QA report](./spaciel_v19_hot_zone_outskirts_31_qa.json): full verification and position diagnostic list.
+- [Approved 525, all identities reconciled](./spaciel_v19_approved_525_fully_reconciled.geojson).
+- [23 district calibration transforms](./spaciel_v19_district_calibration_affines.json).
+
+**Important limitation:** The 31 new positions on V19 were predicted using spatial interpolation of corrections from nearby approved locations. The Hot Zone is bracketed by several districts; the Outskirts are often well outside existing anchor coverage and their V19 coordinates are *not* precise enough to publish as approved. The four sourcebook marker coordinates for Ingalls Farm, NorCal Marshal Station, Pol-Bud Cement Factory and Sunshine Motel lie beyond the master raster edge yet remain valid book-map registrations. Original position fields are retained.
+
+**Remaining sourcebook group:** 52 Playland attractions, intentionally excluded from this pass.
+
+Nothing has been written to Supabase or the main branch.
+
+---
+
 # Spaciel V19 — POI registration staging (31 October 2026)
 
 **Status: isolated review branch. No changes to Supabase, the main branch, or the working Spaciel viewer.**
