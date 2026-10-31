@@ -1,0 +1,6147 @@
+{
+  "name": "Spaciel V19 location reconciliation",
+  "date": "2026-10-31",
+  "status": "draft review - no Supabase/main changes",
+  "summary": {
+    "approved_525_count": 525,
+    "source_manifestations": 608,
+    "exact_original_count": 556,
+    "approx_original_count": 52,
+    "matched_to_approved": 522,
+    "unpaired_recovered": 86,
+    "unpaired_approved": 3,
+    "identity_joins": {
+      "id_and_marker": 459,
+      "district_unique_name": 49,
+      "unique_id": 10,
+      "district_marker_name": 4
+    },
+    "atlas_difference_px": {
+      "median": 208,
+      "p90": 361.5,
+      "max": 536.5
+    },
+    "approved_positions_moved": 0,
+    "icons_verified": 0
+  },
+  "policy": "1:1 marker match; exact identity and marker, unique ID, district marker name, unique district name. Do not collapse multi-marker entities.",
+  "approved_file": "spaciel_v19_approved_525_unchanged.geojson",
+  "candidate_file": "spaciel_v19_source_608_candidate_compact.geojson",
+  "matched": [
+    {
+      "i": 0,
+      "id": "NC2045-LOC-LITTLE-EUROPE-056-101-1-KILLZONE",
+      "name": "101.1 Killzone",
+      "district": "Little Europe",
+      "marker": 1,
+      "legacy_index": 130,
+      "match_method": "id_and_marker",
+      "difference_px": 232.6
+    },
+    {
+      "i": 1,
+      "id": "NC2045-LOC-LITTLE-EUROPE-056-BIOTECHNICA-REFERENCE-FOREST-RF-14",
+      "name": "Biotechnica Reference Forest RF-14",
+      "district": "Little Europe",
+      "marker": 2,
+      "legacy_index": 131,
+      "match_method": "id_and_marker",
+      "difference_px": 261.6
+    },
+    {
+      "i": 2,
+      "id": "NC2045-LOC-LITTLE-EUROPE-056-BRISTOL-BUSINESS-PARK",
+      "name": "Bristol Business Park",
+      "district": "Little Europe",
+      "marker": 3,
+      "legacy_index": 132,
+      "match_method": "id_and_marker",
+      "difference_px": 261
+    },
+    {
+      "i": 3,
+      "id": "NC2045-LOC-LITTLE-EUROPE-057-CAMDEN-COURT",
+      "name": "Camden Court",
+      "district": "Little Europe",
+      "marker": 4,
+      "legacy_index": 133,
+      "match_method": "id_and_marker",
+      "difference_px": 236.2
+    },
+    {
+      "i": 4,
+      "id": "NC2045-LOC-LITTLE-EUROPE-057-CHOPPER-S",
+      "name": "Chopper’s",
+      "district": "Little Europe",
+      "marker": 5,
+      "legacy_index": 134,
+      "match_method": "id_and_marker",
+      "difference_px": 176.4
+    },
+    {
+      "i": 5,
+      "id": "NC2045-LOC-LITTLE-EUROPE-058-CONTINENTAL-BRANDS-VERTICAL-NEIGHBORHOOD",
+      "name": "Continental Brands Vertical Neighborhood",
+      "district": "Little Europe",
+      "marker": 6,
+      "legacy_index": 135,
+      "match_method": "id_and_marker",
+      "difference_px": 214.4
+    },
+    {
+      "i": 6,
+      "id": "NC2045-LOC-LITTLE-EUROPE-058-CUBE-A-RAMA",
+      "name": "Cube-A-Rama",
+      "district": "Little Europe",
+      "marker": 7,
+      "legacy_index": 136,
+      "match_method": "id_and_marker",
+      "difference_px": 185.1
+    },
+    {
+      "i": 7,
+      "id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-HOUSING-FACILITY",
+      "name": "Danger Gal Housing Facility",
+      "district": "Little Europe",
+      "marker": 8,
+      "legacy_index": 137,
+      "match_method": "id_and_marker",
+      "difference_px": 278.5
+    },
+    {
+      "i": 8,
+      "id": "NC2045-LOC-LITTLE-EUROPE-058-DANGER-GAL-OFFICES",
+      "name": "Danger Gal Offices",
+      "district": "Little Europe",
+      "marker": 9,
+      "legacy_index": 138,
+      "match_method": "id_and_marker",
+      "difference_px": 268.9
+    },
+    {
+      "i": 9,
+      "id": "NC2045-LOC-LITTLE-EUROPE-059-EVERYTHING-AND-MORE",
+      "name": "Everything and More",
+      "district": "Little Europe",
+      "marker": 10,
+      "legacy_index": 139,
+      "match_method": "id_and_marker",
+      "difference_px": 227.7
+    },
+    {
+      "i": 10,
+      "id": "NC2045-LOC-LITTLE-EUROPE-059-FIDDLER-S-GREEN",
+      "name": "Fiddler’s Green",
+      "district": "Little Europe",
+      "marker": 11,
+      "legacy_index": 140,
+      "match_method": "id_and_marker",
+      "difference_px": 228.8
+    },
+    {
+      "i": 11,
+      "id": "NC2045-LOC-LITTLE-EUROPE-059-GRETA-S",
+      "name": "Greta’s",
+      "district": "Little Europe",
+      "marker": 12,
+      "legacy_index": 141,
+      "match_method": "id_and_marker",
+      "difference_px": 183.8
+    },
+    {
+      "i": 12,
+      "id": "NC2045-LOC-LITTLE-EUROPE-059-HOLY-ANGELS-CHURCH",
+      "name": "Holy Angels Church",
+      "district": "Little Europe",
+      "marker": 13,
+      "legacy_index": 142,
+      "match_method": "id_and_marker",
+      "difference_px": 249.3
+    },
+    {
+      "i": 13,
+      "id": "NC2045-LOC-LITTLE-EUROPE-060-KAITO-MARKET",
+      "name": "Kaito Market",
+      "district": "Little Europe",
+      "marker": 14,
+      "legacy_index": 143,
+      "match_method": "id_and_marker",
+      "difference_px": 202.3
+    },
+    {
+      "i": 14,
+      "id": "NC2045-LOC-LITTLE-EUROPE-060-NIGHT-CORP-HQ",
+      "name": "Night Corp HQ",
+      "district": "Little Europe",
+      "marker": 15,
+      "legacy_index": 144,
+      "match_method": "id_and_marker",
+      "difference_px": 180.6
+    },
+    {
+      "i": 15,
+      "id": "NC2045-LOC-LITTLE-EUROPE-061-OLD-SAINT-CHRISTOPHER-CENTER",
+      "name": "Old Saint Christopher Center",
+      "district": "Little Europe",
+      "marker": 16,
+      "legacy_index": 145,
+      "match_method": "id_and_marker",
+      "difference_px": 269.8
+    },
+    {
+      "i": 16,
+      "id": "NC2045-LOC-LITTLE-EUROPE-061-PARADISO-TERRESTRE",
+      "name": "Paradiso Terrestre",
+      "district": "Little Europe",
+      "marker": 17,
+      "legacy_index": 146,
+      "match_method": "id_and_marker",
+      "difference_px": 200.7
+    },
+    {
+      "i": 17,
+      "id": "NC2045-LOC-LITTLE-EUROPE-061-RED-CAB-COMPANY",
+      "name": "Red Cab Company",
+      "district": "Little Europe",
+      "marker": 18,
+      "legacy_index": 147,
+      "match_method": "id_and_marker",
+      "difference_px": 140
+    },
+    {
+      "i": 18,
+      "id": "NC2045-LOC-LITTLE-EUROPE-062-REVERE-COURIER-SERVICES",
+      "name": "Revere Courier Services",
+      "district": "Little Europe",
+      "marker": 19,
+      "legacy_index": 148,
+      "match_method": "id_and_marker",
+      "difference_px": 170
+    },
+    {
+      "i": 19,
+      "id": "NC2045-LOC-LITTLE-EUROPE-062-SHADY-OAKS-ELEMENTARY",
+      "name": "Shady Oaks Elementary",
+      "district": "Little Europe",
+      "marker": 20,
+      "legacy_index": 149,
+      "match_method": "id_and_marker",
+      "difference_px": 200.5
+    },
+    {
+      "i": 20,
+      "id": "NC2045-LOC-LITTLE-EUROPE-062-SHORT-CIRCUIT",
+      "name": "Short Circuit",
+      "district": "Little Europe",
+      "marker": 21,
+      "legacy_index": 150,
+      "match_method": "id_and_marker",
+      "difference_px": 156.9
+    },
+    {
+      "i": 21,
+      "id": "NC2045-LOC-LITTLE-EUROPE-062-SOPRANO-S",
+      "name": "Soprano’s",
+      "district": "Little Europe",
+      "marker": 22,
+      "legacy_index": 151,
+      "match_method": "id_and_marker",
+      "difference_px": 196.6
+    },
+    {
+      "i": 22,
+      "id": "NC2045-LOC-LITTLE-EUROPE-063-TORRELL-AND-CHIANG-S",
+      "name": "Torrell and Chiang’s",
+      "district": "Little Europe",
+      "marker": 23,
+      "legacy_index": 152,
+      "match_method": "id_and_marker",
+      "difference_px": 173.6
+    },
+    {
+      "i": 23,
+      "id": "NC2045-LOC-UPPER-MARINA-068-THE-AFTERLIFE",
+      "name": "The Afterlife",
+      "district": "Upper Marina",
+      "marker": 1,
+      "legacy_index": 439,
+      "match_method": "id_and_marker",
+      "difference_px": 104
+    },
+    {
+      "i": 24,
+      "id": "NC2045-LOC-UPPER-MARINA-068-BAY-BRIDGE-RESIDENCES",
+      "name": "Bay Bridge Residences",
+      "district": "Upper Marina",
+      "marker": 2,
+      "legacy_index": 440,
+      "match_method": "id_and_marker",
+      "difference_px": 157.1
+    },
+    {
+      "i": 25,
+      "id": "NC2045-LOC-UPPER-MARINA-068-BLESS-YOUR-HEART",
+      "name": "Bless Your Heart",
+      "district": "Upper Marina",
+      "marker": 3,
+      "legacy_index": 441,
+      "match_method": "id_and_marker",
+      "difference_px": 124.3
+    },
+    {
+      "i": 26,
+      "id": "NC2045-LOC-UPPER-MARINA-068-BRIGHT-FOREST-CASINO",
+      "name": "Bright Forest Casino",
+      "district": "Upper Marina",
+      "marker": 4,
+      "legacy_index": 442,
+      "match_method": "id_and_marker",
+      "difference_px": 132.4
+    },
+    {
+      "i": 27,
+      "id": "NC2045-LOC-UPPER-MARINA-069-BROWNSTONE-WATERFRONT",
+      "name": "Brownstone Waterfront",
+      "district": "Upper Marina",
+      "marker": 5,
+      "legacy_index": 443,
+      "match_method": "id_and_marker",
+      "difference_px": 156.2
+    },
+    {
+      "i": 28,
+      "id": "NC2045-LOC-UPPER-MARINA-069-BUFFALO-S",
+      "name": "Buffalo’s",
+      "district": "Upper Marina",
+      "marker": 6,
+      "legacy_index": 444,
+      "match_method": "id_and_marker",
+      "difference_px": 140.4
+    },
+    {
+      "i": 29,
+      "id": "NC2045-LOC-UPPER-MARINA-069-CITY-MEDICAL-CENTER",
+      "name": "City Medical Center",
+      "district": "Upper Marina",
+      "marker": 7,
+      "legacy_index": 445,
+      "match_method": "id_and_marker",
+      "difference_px": 116.9
+    },
+    {
+      "i": 30,
+      "id": "NC2045-LOC-UPPER-MARINA-070-CMAX",
+      "name": "CMax",
+      "district": "Upper Marina",
+      "marker": 8,
+      "legacy_index": 446,
+      "match_method": "id_and_marker",
+      "difference_px": 127.2
+    },
+    {
+      "i": 31,
+      "id": "NC2045-LOC-UPPER-MARINA-070-COURT-TOWERS",
+      "name": "Court Towers",
+      "district": "Upper Marina",
+      "marker": 9,
+      "legacy_index": 447,
+      "match_method": "id_and_marker",
+      "difference_px": 132.1
+    },
+    {
+      "i": 32,
+      "id": "NC2045-LOC-UPPER-MARINA-070-CRYSTAL-PARK-MARKET",
+      "name": "Crystal Park Market",
+      "district": "Upper Marina",
+      "marker": 10,
+      "legacy_index": 448,
+      "match_method": "id_and_marker",
+      "difference_px": 170.9
+    },
+    {
+      "i": 33,
+      "id": "NC2045-LOC-UPPER-MARINA-070-DIGITAL-DIVINITY-INCORPORATED-NC",
+      "name": "Digital Divinity Incorporated, NC",
+      "district": "Upper Marina",
+      "marker": 11,
+      "legacy_index": 449,
+      "match_method": "id_and_marker",
+      "difference_px": 177.2
+    },
+    {
+      "i": 34,
+      "id": "NC2045-LOC-UPPER-MARINA-071-FLOWERTOWN",
+      "name": "Flowertown",
+      "district": "Upper Marina",
+      "marker": 12,
+      "legacy_index": 450,
+      "match_method": "id_and_marker",
+      "difference_px": 102.5
+    },
+    {
+      "i": 35,
+      "id": "NC2045-LOC-UPPER-MARINA-071-THE-FORGE",
+      "name": "The Forge",
+      "district": "Upper Marina",
+      "marker": 13,
+      "legacy_index": 451,
+      "match_method": "id_and_marker",
+      "difference_px": 145.2
+    },
+    {
+      "i": 36,
+      "id": "NC2045-LOC-UPPER-MARINA-071-THE-GARDEN-OF-EARTHLY-DELIGHTS",
+      "name": "The Garden of Earthly Delights",
+      "district": "Upper Marina",
+      "marker": 14,
+      "legacy_index": 452,
+      "match_method": "id_and_marker",
+      "difference_px": 185.5
+    },
+    {
+      "i": 37,
+      "id": "NC2045-LOC-UPPER-MARINA-071-GRAFFITIX",
+      "name": "GraffitiX",
+      "district": "Upper Marina",
+      "marker": 15,
+      "legacy_index": 453,
+      "match_method": "id_and_marker",
+      "difference_px": 129.1
+    },
+    {
+      "i": 38,
+      "id": "NC2045-LOC-UPPER-MARINA-071-THE-GRAND-ILLUSION",
+      "name": "The Grand Illusion",
+      "district": "Upper Marina",
+      "marker": 16,
+      "legacy_index": 454,
+      "match_method": "id_and_marker",
+      "difference_px": 100.6
+    },
+    {
+      "i": 39,
+      "id": "NC2045-LOC-UPPER-MARINA-072-GREAT-RIVER-STOREHOUSE",
+      "name": "Great River Storehouse",
+      "district": "Upper Marina",
+      "marker": 17,
+      "legacy_index": 455,
+      "match_method": "id_and_marker",
+      "difference_px": 168.6
+    },
+    {
+      "i": 40,
+      "id": "NC2045-LOC-UPPER-MARINA-072-HYDROSUBSIDIUM-R-D",
+      "name": "Hydrosubsidium R&D",
+      "district": "Upper Marina",
+      "marker": 18,
+      "legacy_index": 456,
+      "match_method": "id_and_marker",
+      "difference_px": 140.3
+    },
+    {
+      "i": 41,
+      "id": "NC2045-LOC-UPPER-MARINA-072-JC-HOMES",
+      "name": "JC Homes",
+      "district": "Upper Marina",
+      "marker": 19,
+      "legacy_index": 457,
+      "match_method": "id_and_marker",
+      "difference_px": 158.9
+    },
+    {
+      "i": 42,
+      "id": "NC2045-LOC-UPPER-MARINA-072-KRAKEN-LINE-WATER-TAXIS",
+      "name": "Kraken Line Water Taxis",
+      "district": "Upper Marina",
+      "marker": 20,
+      "legacy_index": 458,
+      "match_method": "id_and_marker",
+      "difference_px": 129.3
+    },
+    {
+      "i": 43,
+      "id": "NC2045-LOC-UPPER-MARINA-072-LA-LUNE-BLEUE",
+      "name": "La Lune Bleue",
+      "district": "Upper Marina",
+      "marker": 21,
+      "legacy_index": 459,
+      "match_method": "id_and_marker",
+      "difference_px": 140.2
+    },
+    {
+      "i": 44,
+      "id": "NC2045-LOC-UPPER-MARINA-073-MARINA-BREEZE-APARTMENTS",
+      "name": "Marina Breeze Apartments",
+      "district": "Upper Marina",
+      "marker": 22,
+      "legacy_index": 460,
+      "match_method": "id_and_marker",
+      "difference_px": 160
+    },
+    {
+      "i": 45,
+      "id": "NC2045-LOC-UPPER-MARINA-073-MARINA-FLOATHOMES",
+      "name": "Marina FloatHomes",
+      "district": "Upper Marina",
+      "marker": 23,
+      "legacy_index": 461,
+      "match_method": "id_and_marker",
+      "difference_px": 145.4
+    },
+    {
+      "i": 46,
+      "id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-CUBES",
+      "name": "McCartney Cubes",
+      "district": "Upper Marina",
+      "marker": 24,
+      "legacy_index": 462,
+      "match_method": "id_and_marker",
+      "difference_px": 122.6
+    },
+    {
+      "i": 47,
+      "id": "NC2045-LOC-UPPER-MARINA-073-MCCARTNEY-FIELD-STADIUM",
+      "name": "McCartney Field Stadium",
+      "district": "Upper Marina",
+      "marker": 25,
+      "legacy_index": 463,
+      "match_method": "id_and_marker",
+      "difference_px": 123.3
+    },
+    {
+      "i": 48,
+      "id": "NC2045-LOC-UPPER-MARINA-074-MEGABUILDING-H8-CONSTRUCTION-SITE",
+      "name": "Megabuilding H8 Construction Site",
+      "district": "Upper Marina",
+      "marker": 26,
+      "legacy_index": 464,
+      "match_method": "id_and_marker",
+      "difference_px": 171.8
+    },
+    {
+      "i": 49,
+      "id": "NC2045-LOC-UPPER-MARINA-074-METAL-HEAVEN",
+      "name": "Metal Heaven",
+      "district": "Upper Marina",
+      "marker": 27,
+      "legacy_index": 465,
+      "match_method": "id_and_marker",
+      "difference_px": 112.1
+    },
+    {
+      "i": 50,
+      "id": "NC2045-LOC-UPPER-MARINA-074-MIDNIGHT-ARMS-REGIONAL-OFFICE",
+      "name": "Midnight Arms Regional Office",
+      "district": "Upper Marina",
+      "marker": 28,
+      "legacy_index": 466,
+      "match_method": "id_and_marker",
+      "difference_px": 118.8
+    },
+    {
+      "i": 51,
+      "id": "NC2045-LOC-UPPER-MARINA-074-MORRO-STRAND-YACHT-CLUB",
+      "name": "Morro Strand Yacht Club",
+      "district": "Upper Marina",
+      "marker": 29,
+      "legacy_index": 467,
+      "match_method": "id_and_marker",
+      "difference_px": 171.5
+    },
+    {
+      "i": 52,
+      "id": "NC2045-LOC-UPPER-MARINA-075-THE-NEON-JOHNSON",
+      "name": "The Neon Johnson",
+      "district": "Upper Marina",
+      "marker": 30,
+      "legacy_index": 468,
+      "match_method": "id_and_marker",
+      "difference_px": 113.4
+    },
+    {
+      "i": 53,
+      "id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-BUBBLES",
+      "name": "Night City Bubbles",
+      "district": "Upper Marina",
+      "marker": 31,
+      "legacy_index": 469,
+      "match_method": "id_and_marker",
+      "difference_px": 121
+    },
+    {
+      "i": 54,
+      "id": "NC2045-LOC-UPPER-MARINA-075-NIGHT-CITY-CONVENTION-CENTER",
+      "name": "Night City Convention Center",
+      "district": "Upper Marina",
+      "marker": 32,
+      "legacy_index": 470,
+      "match_method": "id_and_marker",
+      "difference_px": 178.2
+    },
+    {
+      "i": 55,
+      "id": "NC2045-LOC-UPPER-MARINA-075-OCEANSIDE-DOCKS",
+      "name": "Oceanside Docks",
+      "district": "Upper Marina",
+      "marker": 33,
+      "legacy_index": 471,
+      "match_method": "id_and_marker",
+      "difference_px": 167.4
+    },
+    {
+      "i": 56,
+      "id": "NC2045-LOC-UPPER-MARINA-075-OTTER-DOCKS-TRANSFER-STATION",
+      "name": "Otter Docks Transfer Station",
+      "district": "Upper Marina",
+      "marker": 34,
+      "legacy_index": 472,
+      "match_method": "id_and_marker",
+      "difference_px": 131
+    },
+    {
+      "i": 57,
+      "id": "NC2045-LOC-UPPER-MARINA-076-QUARANTINE",
+      "name": "Quarantine",
+      "district": "Upper Marina",
+      "marker": 35,
+      "legacy_index": 473,
+      "match_method": "id_and_marker",
+      "difference_px": 126.8
+    },
+    {
+      "i": 58,
+      "id": "NC2045-LOC-UPPER-MARINA-076-REO-MEATWAGON",
+      "name": "REO Meatwagon",
+      "district": "Upper Marina",
+      "marker": 36,
+      "legacy_index": 474,
+      "match_method": "id_and_marker",
+      "difference_px": 161.4
+    },
+    {
+      "i": 59,
+      "id": "NC2045-LOC-UPPER-MARINA-076-TRAVLSTAY-CITYCENTER",
+      "name": "TravlStay CityCenter",
+      "district": "Upper Marina",
+      "marker": 37,
+      "legacy_index": 475,
+      "match_method": "id_and_marker",
+      "difference_px": 147.8
+    },
+    {
+      "i": 60,
+      "id": "NC2045-LOC-UPPER-MARINA-076-UPPER-MARINA-SUBSTATION-2",
+      "name": "Upper Marina Substation 2",
+      "district": "Upper Marina",
+      "marker": 38,
+      "legacy_index": 476,
+      "match_method": "id_and_marker",
+      "difference_px": 139.1
+    },
+    {
+      "i": 61,
+      "id": "NC2045-LOC-UPPER-MARINA-076-ZIGGURAT-CORPORATE-TERRACE",
+      "name": "Ziggurat Corporate Terrace",
+      "district": "Upper Marina",
+      "marker": 39,
+      "legacy_index": 477,
+      "match_method": "id_and_marker",
+      "difference_px": 151.5
+    },
+    {
+      "i": 62,
+      "id": "NC2045-LOC-UPPER-MARINA-077-ZIGGURAT-HEADQUARTERS",
+      "name": "Ziggurat Headquarters",
+      "district": "Upper Marina",
+      "marker": 40,
+      "legacy_index": 478,
+      "match_method": "id_and_marker",
+      "difference_px": 153.8
+    },
+    {
+      "i": 63,
+      "id": "NC2045-LOC-DOWNTOWN-080-ACACIA-WAY",
+      "name": "Acacia Way",
+      "district": "Downtown",
+      "marker": 1,
+      "legacy_index": 18,
+      "match_method": "id_and_marker",
+      "difference_px": 268.2
+    },
+    {
+      "i": 64,
+      "id": "NC2045-LOC-DOWNTOWN-082-BELLA-VISTA-MARKET",
+      "name": "Bella Vista Market",
+      "district": "Downtown",
+      "marker": 2,
+      "legacy_index": 19,
+      "match_method": "id_and_marker",
+      "difference_px": 313.4
+    },
+    {
+      "i": 65,
+      "id": "NC2045-LOC-DOWNTOWN-082-CAFE-BOUCHON",
+      "name": "Café Bouchon",
+      "district": "Downtown",
+      "marker": 3,
+      "legacy_index": 20,
+      "match_method": "id_and_marker",
+      "difference_px": 260.5
+    },
+    {
+      "i": 66,
+      "id": "NC2045-LOC-DOWNTOWN-082-CLOCKTOWER-RESIDENCES",
+      "name": "Clocktower Residences",
+      "district": "Downtown",
+      "marker": 4,
+      "legacy_index": 21,
+      "match_method": "id_and_marker",
+      "difference_px": 279.7
+    },
+    {
+      "i": 67,
+      "id": "NC2045-LOC-DOWNTOWN-082-CONTINENTAL-BRANDS-OFFICE",
+      "name": "Continental Brands Office",
+      "district": "Downtown",
+      "marker": 5,
+      "legacy_index": 22,
+      "match_method": "id_and_marker",
+      "difference_px": 269.6
+    },
+    {
+      "i": 68,
+      "id": "NC2045-LOC-DOWNTOWN-083-CONTINENTAL-PLAZA",
+      "name": "Continental Plaza",
+      "district": "Downtown",
+      "marker": 6,
+      "legacy_index": 23,
+      "match_method": "id_and_marker",
+      "difference_px": 262.2
+    },
+    {
+      "i": 69,
+      "id": "NC2045-LOC-DOWNTOWN-083-CORTEX-COMPLEX",
+      "name": "Cortex Complex",
+      "district": "Downtown",
+      "marker": 7,
+      "legacy_index": 24,
+      "match_method": "id_and_marker",
+      "difference_px": 287.3
+    },
+    {
+      "i": 70,
+      "id": "NC2045-LOC-DOWNTOWN-083-DELIRIUM",
+      "name": "Delirium",
+      "district": "Downtown",
+      "marker": 8,
+      "legacy_index": 25,
+      "match_method": "id_and_marker",
+      "difference_px": 277.2
+    },
+    {
+      "i": 71,
+      "id": "NC2045-LOC-DOWNTOWN-083-THE-ELDRITCH-MIRAGE",
+      "name": "The Eldritch Mirage",
+      "district": "Downtown",
+      "marker": 9,
+      "legacy_index": 26,
+      "match_method": "id_and_marker",
+      "difference_px": 294.2
+    },
+    {
+      "i": 72,
+      "id": "NC2045-LOC-DOWNTOWN-084-EUROPA-MEATWORKS",
+      "name": "Europa Meatworks",
+      "district": "Downtown",
+      "marker": 10,
+      "legacy_index": 27,
+      "match_method": "id_and_marker",
+      "difference_px": 301.7
+    },
+    {
+      "i": 73,
+      "id": "NC2045-LOC-DOWNTOWN-084-FOLIO",
+      "name": "Folio",
+      "district": "Downtown",
+      "marker": 11,
+      "legacy_index": 28,
+      "match_method": "id_and_marker",
+      "difference_px": 323.1
+    },
+    {
+      "i": 74,
+      "id": "NC2045-LOC-DOWNTOWN-084-GILDED-PHOENIX-ARCADE",
+      "name": "Gilded Phoenix Arcade",
+      "district": "Downtown",
+      "marker": 12,
+      "legacy_index": 29,
+      "match_method": "id_and_marker",
+      "difference_px": 258.3
+    },
+    {
+      "i": 75,
+      "id": "NC2045-LOC-DOWNTOWN-084-GOOSETOPIA",
+      "name": "Goosetopia",
+      "district": "Downtown",
+      "marker": 13,
+      "legacy_index": 30,
+      "match_method": "id_and_marker",
+      "difference_px": 312.2
+    },
+    {
+      "i": 76,
+      "id": "NC2045-LOC-DOWNTOWN-085-GUNS-DOLLS",
+      "name": "Guns & Dolls",
+      "district": "Downtown",
+      "marker": 14,
+      "legacy_index": 31,
+      "match_method": "id_and_marker",
+      "difference_px": 289.1
+    },
+    {
+      "i": 77,
+      "id": "NC2045-LOC-DOWNTOWN-085-JADE-BLOSSOM-SPA",
+      "name": "Jade Blossom Spa",
+      "district": "Downtown",
+      "marker": 15,
+      "legacy_index": 32,
+      "match_method": "id_and_marker",
+      "difference_px": 325.5
+    },
+    {
+      "i": 78,
+      "id": "NC2045-LOC-DOWNTOWN-085-MOLEHARTY-S-BOOKS-ANTIQUES",
+      "name": "Moleharty’s Books & Antiques",
+      "district": "Downtown",
+      "marker": 16,
+      "legacy_index": 33,
+      "match_method": "id_and_marker",
+      "difference_px": 303
+    },
+    {
+      "i": 79,
+      "id": "NC2045-LOC-DOWNTOWN-085-MUNCH-MUNCH-MUNCH",
+      "name": "Munch Munch Munch",
+      "district": "Downtown",
+      "marker": 17,
+      "legacy_index": 34,
+      "match_method": "id_and_marker",
+      "difference_px": 291.3
+    },
+    {
+      "i": 80,
+      "id": "NC2045-LOC-DOWNTOWN-085-NEW-LIBERTINE-TOWER",
+      "name": "New Libertine Tower",
+      "district": "Downtown",
+      "marker": 18,
+      "legacy_index": 35,
+      "match_method": "id_and_marker",
+      "difference_px": 293.6
+    },
+    {
+      "i": 81,
+      "id": "NC2045-LOC-DOWNTOWN-086-NIGHT-CITY-FIRESTATION-2",
+      "name": "Night City Firestation #2",
+      "district": "Downtown",
+      "marker": 19,
+      "legacy_index": 36,
+      "match_method": "id_and_marker",
+      "difference_px": 297.1
+    },
+    {
+      "i": 82,
+      "id": "NC2045-LOC-DOWNTOWN-086-THE-NIGHTINGALE-THEATER",
+      "name": "The Nightingale Theater",
+      "district": "Downtown",
+      "marker": 20,
+      "legacy_index": 37,
+      "match_method": "id_and_marker",
+      "difference_px": 276.4
+    },
+    {
+      "i": 83,
+      "id": "NC2045-LOC-DOWNTOWN-086-STUDIO-BLOCKS-A-THRU-D",
+      "name": "Studio Blocks A thru D",
+      "district": "Downtown",
+      "marker": 21,
+      "legacy_index": 38,
+      "match_method": "id_and_marker",
+      "difference_px": 257.3
+    },
+    {
+      "i": 84,
+      "id": "NC2045-LOC-DOWNTOWN-086-WEST-HILL-CHURCH-OF-GOD",
+      "name": "West Hill Church of God",
+      "district": "Downtown",
+      "marker": 22,
+      "legacy_index": 39,
+      "match_method": "id_and_marker",
+      "difference_px": 311.6
+    },
+    {
+      "i": 85,
+      "id": "NC2045-LOC-DOWNTOWN-087-WEST-HILL-PARK",
+      "name": "West Hill Park",
+      "district": "Downtown",
+      "marker": 23,
+      "legacy_index": 40,
+      "match_method": "id_and_marker",
+      "difference_px": 312.5
+    },
+    {
+      "i": 97,
+      "id": "NC2045-LOC-LITTLE-CHINA-098-BRIDGETOWN",
+      "name": "Bridgetown",
+      "district": "Little China",
+      "marker": 1,
+      "legacy_index": 115,
+      "match_method": "id_and_marker",
+      "difference_px": 238.6
+    },
+    {
+      "i": 98,
+      "id": "NC2045-LOC-LITTLE-CHINA-098-CHROME-CROSS",
+      "name": "Chrome Cross",
+      "district": "Little China",
+      "marker": 2,
+      "legacy_index": 116,
+      "match_method": "id_and_marker",
+      "difference_px": 152.4
+    },
+    {
+      "i": 99,
+      "id": "NC2045-LOC-LITTLE-CHINA-098-THE-FORLORN-HOPE-WRECKAGE",
+      "name": "The Forlorn Hope Wreckage",
+      "district": "Little China",
+      "marker": 3,
+      "legacy_index": 117,
+      "match_method": "id_and_marker",
+      "difference_px": 155.1
+    },
+    {
+      "i": 100,
+      "id": "NC2045-LOC-LITTLE-CHINA-098-GUANGBO-TOWER",
+      "name": "Guăngbō Tower",
+      "district": "Little China",
+      "marker": 4,
+      "legacy_index": 118,
+      "match_method": "id_and_marker",
+      "difference_px": 210.2
+    },
+    {
+      "i": 101,
+      "id": "NC2045-LOC-LITTLE-CHINA-099-GUANYIN-TEMPLE",
+      "name": "Guānyīn Temple",
+      "district": "Little China",
+      "marker": 5,
+      "legacy_index": 119,
+      "match_method": "id_and_marker",
+      "difference_px": 220.1
+    },
+    {
+      "i": 102,
+      "id": "NC2045-LOC-LITTLE-CHINA-099-THE-HONG-KONG-MARKET",
+      "name": "The Hong Kong Market",
+      "district": "Little China",
+      "marker": 6,
+      "legacy_index": 120,
+      "match_method": "id_and_marker",
+      "difference_px": 174.9
+    },
+    {
+      "i": 103,
+      "id": "NC2045-LOC-LITTLE-CHINA-100-HYDROSUBSIDIUM",
+      "name": "Hydrosubsidium",
+      "district": "Little China",
+      "marker": 7,
+      "legacy_index": 121,
+      "match_method": "id_and_marker",
+      "difference_px": 191
+    },
+    {
+      "i": 104,
+      "id": "NC2045-LOC-LITTLE-CHINA-100-LING-HUSAN-S-NEW-CHINA-PHARMACY",
+      "name": "Ling Husan’s New China Pharmacy",
+      "district": "Little China",
+      "marker": 8,
+      "legacy_index": 122,
+      "match_method": "id_and_marker",
+      "difference_px": 166.6
+    },
+    {
+      "i": 105,
+      "id": "NC2045-LOC-LITTLE-CHINA-100-LING-PO-IMPORTS-WRECKAGE",
+      "name": "Ling Po Imports Wreckage",
+      "district": "Little China",
+      "marker": 9,
+      "legacy_index": 123,
+      "match_method": "id_and_marker",
+      "difference_px": 174.3
+    },
+    {
+      "i": 106,
+      "id": "NC2045-LOC-LITTLE-CHINA-100-MADAM-YAP-S",
+      "name": "Madam Yap’s",
+      "district": "Little China",
+      "marker": 10,
+      "legacy_index": 124,
+      "match_method": "id_and_marker",
+      "difference_px": 184.6
+    },
+    {
+      "i": 107,
+      "id": "NC2045-LOC-LITTLE-CHINA-100-MADAME-LIN-S-MASSAGE-PARLOR",
+      "name": "Madame Lin’s Massage Parlor",
+      "district": "Little China",
+      "marker": 11,
+      "legacy_index": 125,
+      "match_method": "id_and_marker",
+      "difference_px": 189.1
+    },
+    {
+      "i": 108,
+      "id": "NC2045-LOC-LITTLE-CHINA-101-THE-PARISIAN",
+      "name": "The Parisian",
+      "district": "Little China",
+      "marker": 12,
+      "legacy_index": 126,
+      "match_method": "id_and_marker",
+      "difference_px": 142.7
+    },
+    {
+      "i": 109,
+      "id": "NC2045-LOC-LITTLE-CHINA-101-PROSPERITY-GARDEN-TENEMENTS",
+      "name": "Prosperity Garden Tenements",
+      "district": "Little China",
+      "marker": 13,
+      "legacy_index": 127,
+      "match_method": "id_and_marker",
+      "difference_px": 168.3
+    },
+    {
+      "i": 110,
+      "id": "NC2045-LOC-LITTLE-CHINA-101-RICHARD-NIGHT-AQUARIUM",
+      "name": "Richard Night Aquarium",
+      "district": "Little China",
+      "marker": 14,
+      "legacy_index": 128,
+      "match_method": "id_and_marker",
+      "difference_px": 206.4
+    },
+    {
+      "i": 111,
+      "id": "NC2045-LOC-LITTLE-CHINA-101-THE-SEEP",
+      "name": "The Seep",
+      "district": "Little China",
+      "marker": 15,
+      "legacy_index": 129,
+      "match_method": "id_and_marker",
+      "difference_px": 147.9
+    },
+    {
+      "i": 112,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-94-4-NCU-RADIO",
+      "name": "94.4 NCU Radio",
+      "district": "University District",
+      "marker": 1,
+      "legacy_index": 406,
+      "match_method": "id_and_marker",
+      "difference_px": 273.2
+    },
+    {
+      "i": 113,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOGRAPH-THEATER",
+      "name": "Biograph Theater",
+      "district": "University District",
+      "marker": 2,
+      "legacy_index": 407,
+      "match_method": "id_and_marker",
+      "difference_px": 281
+    },
+    {
+      "i": 114,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-CAMPUS",
+      "name": "Biotechnica Campus",
+      "district": "University District",
+      "marker": 3,
+      "legacy_index": 408,
+      "match_method": "id_and_marker",
+      "difference_px": 195.9
+    },
+    {
+      "i": 115,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-106-BIOTECHNICA-HABITATION-SPHERE-ALPHA",
+      "name": "Biotechnica Habitation Sphere Alpha",
+      "district": "University District",
+      "marker": 4,
+      "legacy_index": 409,
+      "match_method": "id_and_marker",
+      "difference_px": 231.3
+    },
+    {
+      "i": 116,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CAMPUS-CHAPEL",
+      "name": "Campus Chapel",
+      "district": "University District",
+      "marker": 5,
+      "legacy_index": 410,
+      "match_method": "id_and_marker",
+      "difference_px": 258
+    },
+    {
+      "i": 117,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-CARRIAGE-STREET-BOOKS-AFTERWORDS-CAFE",
+      "name": "Carriage Street Books/Afterwords Café",
+      "district": "University District",
+      "marker": 6,
+      "legacy_index": 411,
+      "match_method": "id_and_marker",
+      "difference_px": 268.4
+    },
+    {
+      "i": 118,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FASHION-CUTS",
+      "name": "Fashion Cuts",
+      "district": "University District",
+      "marker": 7,
+      "legacy_index": 412,
+      "match_method": "id_and_marker",
+      "difference_px": 294.3
+    },
+    {
+      "i": 119,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-FOOD-TRUCK-PLAZA",
+      "name": "Food Truck Plaza",
+      "district": "University District",
+      "marker": 8,
+      "legacy_index": 413,
+      "match_method": "id_and_marker",
+      "difference_px": 276.8
+    },
+    {
+      "i": 120,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-107-KOSMOS-HOSPITAL",
+      "name": "Kosmos Hospital",
+      "district": "University District",
+      "marker": 9,
+      "legacy_index": 414,
+      "match_method": "id_and_marker",
+      "difference_px": 304
+    },
+    {
+      "i": 121,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-NIGHT-CITY-SYMPHONY-HALL",
+      "name": "Night City Symphony Hall",
+      "district": "University District",
+      "marker": 10,
+      "legacy_index": 415,
+      "match_method": "id_and_marker",
+      "difference_px": 230.7
+    },
+    {
+      "i": 122,
+      "id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-ADMINISTRATION-BUILDING",
+      "name": "Administrative Building",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 416,
+      "match_method": "district_unique_name",
+      "difference_px": 244.8
+    },
+    {
+      "i": 123,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BLAINE-BUILDING",
+      "name": "Blaine Building",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 417,
+      "match_method": "district_unique_name",
+      "difference_px": 274.4
+    },
+    {
+      "i": 124,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-BROOKS-LIBRARY",
+      "name": "Brooks Library",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 418,
+      "match_method": "district_unique_name",
+      "difference_px": 261.2
+    },
+    {
+      "i": 128,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-HOWARD-WONG-BUILDING",
+      "name": "Howard Wong Building",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 422,
+      "match_method": "district_unique_name",
+      "difference_px": 267.6
+    },
+    {
+      "i": 129,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-MICHAELS-HALL",
+      "name": "Michaels Hall",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 423,
+      "match_method": "district_unique_name",
+      "difference_px": 282
+    },
+    {
+      "i": 130,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-KNUTE-HALL",
+      "name": "Knute Hall",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 424,
+      "match_method": "district_unique_name",
+      "difference_px": 255.8
+    },
+    {
+      "i": 131,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-LOGGAGIA-SCIENCE-LABS",
+      "name": "Loggagia Science Labs",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 425,
+      "match_method": "district_unique_name",
+      "difference_px": 264.8
+    },
+    {
+      "i": 132,
+      "id": "NC2045-OUT-UNIVERSITY-DISTRICT-108-LOMBARDY-GROCERIES",
+      "name": "Lombardy Groceries",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 426,
+      "match_method": "unique_id",
+      "difference_px": 292.3
+    },
+    {
+      "i": 133,
+      "id": "NC2045-OUT-UNIVERSITY-DISTRICT-109-NCU-CLINIC",
+      "name": "NCU Clinic",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 427,
+      "match_method": "district_unique_name",
+      "difference_px": 286.8
+    },
+    {
+      "i": 134,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCHUMACHER-HALL",
+      "name": "Schumacher Hall",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 428,
+      "match_method": "district_unique_name",
+      "difference_px": 275.5
+    },
+    {
+      "i": 135,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-SCIENCE-TOWER",
+      "name": "Science Tower",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 429,
+      "match_method": "district_unique_name",
+      "difference_px": 253.8
+    },
+    {
+      "i": 136,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-THOMPSON-HALL",
+      "name": "Thompson Hall",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": 430,
+      "match_method": "district_unique_name",
+      "difference_px": 247.7
+    },
+    {
+      "i": 137,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PARKSIDE-LIVING",
+      "name": "Parkside Living",
+      "district": "University District",
+      "marker": 12,
+      "legacy_index": 431,
+      "match_method": "id_and_marker",
+      "difference_px": 160.2
+    },
+    {
+      "i": 138,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-109-PRINCESSLAND",
+      "name": "Princessland",
+      "district": "University District",
+      "marker": 13,
+      "legacy_index": 432,
+      "match_method": "id_and_marker",
+      "difference_px": 225.5
+    },
+    {
+      "i": 139,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-RETAIL-RESALE",
+      "name": "Retail Resale",
+      "district": "University District",
+      "marker": 14,
+      "legacy_index": 433,
+      "match_method": "id_and_marker",
+      "difference_px": 188.6
+    },
+    {
+      "i": 140,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-STEMS-SEEDS",
+      "name": "Stems & Seeds",
+      "district": "University District",
+      "marker": 15,
+      "legacy_index": 434,
+      "match_method": "id_and_marker",
+      "difference_px": 283.6
+    },
+    {
+      "i": 141,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-TUMBLE-AND-DRY",
+      "name": "Tumble and Dry",
+      "district": "University District",
+      "marker": 16,
+      "legacy_index": 435,
+      "match_method": "id_and_marker",
+      "difference_px": 265.2
+    },
+    {
+      "i": 142,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CRECHE",
+      "name": "University Crèche",
+      "district": "University District",
+      "marker": 17,
+      "legacy_index": 436,
+      "match_method": "id_and_marker",
+      "difference_px": 233.3
+    },
+    {
+      "i": 143,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-110-UNIVERSITY-CUBES",
+      "name": "University Cubes",
+      "district": "University District",
+      "marker": 18,
+      "legacy_index": 437,
+      "match_method": "id_and_marker",
+      "difference_px": 313.8
+    },
+    {
+      "i": 144,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-111-YEWTREE",
+      "name": "Yewtree",
+      "district": "University District",
+      "marker": 19,
+      "legacy_index": 438,
+      "match_method": "id_and_marker",
+      "difference_px": 201.8
+    },
+    {
+      "i": 145,
+      "id": "NC2045-LOC-THE-GLEN-116-1ST-NIGHT-CITY-BANK",
+      "name": "1st Night City Bank",
+      "district": "The Glen",
+      "marker": 1,
+      "legacy_index": 373,
+      "match_method": "id_and_marker",
+      "difference_px": 111.8
+    },
+    {
+      "i": 146,
+      "id": "NC2045-LOC-THE-GLEN-116-96-1-FEVER-DREAM",
+      "name": "96.1 Fever Dream",
+      "district": "The Glen",
+      "marker": 2,
+      "legacy_index": 374,
+      "match_method": "id_and_marker",
+      "difference_px": 58.1
+    },
+    {
+      "i": 147,
+      "id": "NC2045-LOC-THE-GLEN-116-AIR",
+      "name": "Air",
+      "district": "The Glen",
+      "marker": 3,
+      "legacy_index": 375,
+      "match_method": "id_and_marker",
+      "difference_px": 83.4
+    },
+    {
+      "i": 148,
+      "id": "NC2045-LOC-THE-GLEN-117-ARCHER-LI",
+      "name": "Archer & Li",
+      "district": "The Glen",
+      "marker": 4,
+      "legacy_index": 376,
+      "match_method": "id_and_marker",
+      "difference_px": 136.8
+    },
+    {
+      "i": 149,
+      "id": "NC2045-LOC-THE-GLEN-117-BEAR-S",
+      "name": "Bear’s",
+      "district": "The Glen",
+      "marker": 5,
+      "legacy_index": 377,
+      "match_method": "id_and_marker",
+      "difference_px": 152.2
+    },
+    {
+      "i": 150,
+      "id": "NC2045-LOC-THE-GLEN-117-BETH-EL-CONGREGATION",
+      "name": "Beth El Congregation",
+      "district": "The Glen",
+      "marker": 6,
+      "legacy_index": 378,
+      "match_method": "id_and_marker",
+      "difference_px": 103.5
+    },
+    {
+      "i": 151,
+      "id": "NC2045-LOC-THE-GLEN-118-CITY-HALL",
+      "name": "City Hall",
+      "district": "The Glen",
+      "marker": 7,
+      "legacy_index": 379,
+      "match_method": "id_and_marker",
+      "difference_px": 96.3
+    },
+    {
+      "i": 152,
+      "id": "NC2045-LOC-THE-GLEN-118-CLUB-ATLANTIS",
+      "name": "Club Atlantis",
+      "district": "The Glen",
+      "marker": 8,
+      "legacy_index": 380,
+      "match_method": "id_and_marker",
+      "difference_px": 82.4
+    },
+    {
+      "i": 153,
+      "id": "NC2045-OUT-THE-GLEN-118-EEC-CONSULATE",
+      "name": "EEC Consulate",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 381,
+      "match_method": "district_unique_name",
+      "difference_px": 73.8
+    },
+    {
+      "i": 154,
+      "id": "NC2045-OUT-THE-GLEN-118-JAPANESE-CONSULATE",
+      "name": "Japanese Consulate",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 382,
+      "match_method": "district_unique_name",
+      "difference_px": 66.3
+    },
+    {
+      "i": 155,
+      "id": "NC2045-OUT-THE-GLEN-119-MEXICAN-CONSULATE",
+      "name": "Mexican Consulate",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 383,
+      "match_method": "district_unique_name",
+      "difference_px": 77.6
+    },
+    {
+      "i": 156,
+      "id": "NC2045-OUT-THE-GLEN-119-PACIFICA-CONFEDERATION-OFFICES",
+      "name": "Pacifica Confederation Offices",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 384,
+      "match_method": "district_unique_name",
+      "difference_px": 71.1
+    },
+    {
+      "i": 157,
+      "id": "NC2045-OUT-THE-GLEN-119-OAS-MISSION",
+      "name": "Organization of American States Mission",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 385,
+      "match_method": "district_unique_name",
+      "difference_px": 83.6
+    },
+    {
+      "i": 158,
+      "id": "NC2045-OUT-THE-GLEN-119-UNITED-STATES-CONSULATE",
+      "name": "United States Consulate",
+      "district": "The Glen",
+      "marker": 9,
+      "legacy_index": 386,
+      "match_method": "district_unique_name",
+      "difference_px": 75.1
+    },
+    {
+      "i": 159,
+      "id": "NC2045-LOC-THE-GLEN-119-DIPLOMATIC-IMMUNITY",
+      "name": "Diplomatic Immunity",
+      "district": "The Glen",
+      "marker": 10,
+      "legacy_index": 387,
+      "match_method": "id_and_marker",
+      "difference_px": 83.6
+    },
+    {
+      "i": 160,
+      "id": "NC2045-LOC-THE-GLEN-120-DMV",
+      "name": "DMV",
+      "district": "The Glen",
+      "marker": 11,
+      "legacy_index": 388,
+      "match_method": "id_and_marker",
+      "difference_px": 114.7
+    },
+    {
+      "i": 161,
+      "id": "NC2045-LOC-THE-GLEN-120-EUROBANK",
+      "name": "EuroBank",
+      "district": "The Glen",
+      "marker": 12,
+      "legacy_index": 389,
+      "match_method": "id_and_marker",
+      "difference_px": 55.7
+    },
+    {
+      "i": 162,
+      "id": "NC2045-LOC-THE-GLEN-120-FIRST-BAPTIST-CHURCH-OF-NIGHT-CITY",
+      "name": "First Baptist Church of Night City",
+      "district": "The Glen",
+      "marker": 13,
+      "legacy_index": 390,
+      "match_method": "id_and_marker",
+      "difference_px": 162.9
+    },
+    {
+      "i": 163,
+      "id": "NC2045-LOC-THE-GLEN-120-GLENLIFE-PERFECTED",
+      "name": "Glenlife Perfected",
+      "district": "The Glen",
+      "marker": 14,
+      "legacy_index": 391,
+      "match_method": "id_and_marker",
+      "difference_px": 150.8
+    },
+    {
+      "i": 164,
+      "id": "NC2045-LOC-THE-GLEN-121-HALL-OF-JUSTICE",
+      "name": "Hall of Justice",
+      "district": "The Glen",
+      "marker": 15,
+      "legacy_index": 392,
+      "match_method": "id_and_marker",
+      "difference_px": 62.7
+    },
+    {
+      "i": 165,
+      "id": "NC2045-LOC-THE-GLEN-121-KASIM-S",
+      "name": "Kasim’s",
+      "district": "The Glen",
+      "marker": 16,
+      "legacy_index": 393,
+      "match_method": "id_and_marker",
+      "difference_px": 124.9
+    },
+    {
+      "i": 166,
+      "id": "NC2045-LOC-THE-GLEN-121-LAZARUS-REGIONAL-HQ",
+      "name": "Lazarus Regional HQ",
+      "district": "The Glen",
+      "marker": 17,
+      "legacy_index": 394,
+      "match_method": "id_and_marker",
+      "difference_px": 145.9
+    },
+    {
+      "i": 167,
+      "id": "NC2045-LOC-THE-GLEN-122-LE-JARDIN",
+      "name": "Le Jardin",
+      "district": "The Glen",
+      "marker": 18,
+      "legacy_index": 395,
+      "match_method": "id_and_marker",
+      "difference_px": 63
+    },
+    {
+      "i": 168,
+      "id": "NC2045-LOC-THE-GLEN-122-MERRILL-ASUKAGA-FINCH-OFFICES",
+      "name": "Merrill, Asukaga & Finch Offices",
+      "district": "The Glen",
+      "marker": 19,
+      "legacy_index": 396,
+      "match_method": "id_and_marker",
+      "difference_px": 74.2
+    },
+    {
+      "i": 169,
+      "id": "NC2045-LOC-THE-GLEN-122-THE-MOLLY-MAY",
+      "name": "The Molly May",
+      "district": "The Glen",
+      "marker": 20,
+      "legacy_index": 397,
+      "match_method": "id_and_marker",
+      "difference_px": 160.5
+    },
+    {
+      "i": 170,
+      "id": "NC2045-LOC-THE-GLEN-122-NCPD-PRECINCT-1",
+      "name": "NCPD Precinct #1",
+      "district": "The Glen",
+      "marker": 21,
+      "legacy_index": 398,
+      "match_method": "id_and_marker",
+      "difference_px": 32.6
+    },
+    {
+      "i": 171,
+      "id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-NEWS-TODAY",
+      "name": "Night City News Today",
+      "district": "The Glen",
+      "marker": 22,
+      "legacy_index": 399,
+      "match_method": "id_and_marker",
+      "difference_px": 172.7
+    },
+    {
+      "i": 172,
+      "id": "NC2045-LOC-THE-GLEN-123-NIGHT-CITY-PLAZA",
+      "name": "Night City Plaza",
+      "district": "The Glen",
+      "marker": 23,
+      "legacy_index": 400,
+      "match_method": "id_and_marker",
+      "difference_px": 140.6
+    },
+    {
+      "i": 173,
+      "id": "NC2045-LOC-THE-GLEN-123-RAVEN-MICROCYBERNETICS",
+      "name": "Raven Microcybernetics",
+      "district": "The Glen",
+      "marker": 24,
+      "legacy_index": 401,
+      "match_method": "id_and_marker",
+      "difference_px": 129.3
+    },
+    {
+      "i": 174,
+      "id": "NC2045-LOC-THE-GLEN-124-SEAFOAM",
+      "name": "Seafoam",
+      "district": "The Glen",
+      "marker": 25,
+      "legacy_index": 402,
+      "match_method": "id_and_marker",
+      "difference_px": 102
+    },
+    {
+      "i": 175,
+      "id": "NC2045-LOC-THE-GLEN-124-SOULS-RESPITE",
+      "name": "Souls Respite",
+      "district": "The Glen",
+      "marker": 26,
+      "legacy_index": 403,
+      "match_method": "id_and_marker",
+      "difference_px": 69.7
+    },
+    {
+      "i": 176,
+      "id": "NC2045-LOC-THE-GLEN-124-WORLD-STOCK-EXCHANGE",
+      "name": "World Stock Exchange",
+      "district": "The Glen",
+      "marker": 27,
+      "legacy_index": 404,
+      "match_method": "id_and_marker",
+      "difference_px": 92.7
+    },
+    {
+      "i": 177,
+      "id": "NC2045-LOC-THE-GLEN-124-WORTHY-HOUSING",
+      "name": "Worthy Housing",
+      "district": "The Glen",
+      "marker": 28,
+      "legacy_index": 405,
+      "match_method": "id_and_marker",
+      "difference_px": 58.7
+    },
+    {
+      "i": 178,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-128-THE-BASEMENT",
+      "name": "The Basement",
+      "district": "Old Japantown",
+      "marker": 1,
+      "legacy_index": 240,
+      "match_method": "id_and_marker",
+      "difference_px": 60.7
+    },
+    {
+      "i": 179,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-BODUKKAN",
+      "name": "The Bodukkan",
+      "district": "Old Japantown",
+      "marker": 2,
+      "legacy_index": 241,
+      "match_method": "id_and_marker",
+      "difference_px": 59.1
+    },
+    {
+      "i": 180,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-CRISIS-MEDICAL-CENTER",
+      "name": "Crisis Medical Center",
+      "district": "Old Japantown",
+      "marker": 3,
+      "legacy_index": 242,
+      "match_method": "id_and_marker",
+      "difference_px": 67.7
+    },
+    {
+      "i": 181,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-CUTTING-EDGE",
+      "name": "The Cutting Edge",
+      "district": "Old Japantown",
+      "marker": 4,
+      "legacy_index": 243,
+      "match_method": "id_and_marker",
+      "difference_px": 61
+    },
+    {
+      "i": 182,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-DINE-N-DASH",
+      "name": "Dine ‘n Dash",
+      "district": "Old Japantown",
+      "marker": 5,
+      "legacy_index": 244,
+      "match_method": "id_and_marker",
+      "difference_px": 63.1
+    },
+    {
+      "i": 183,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-GAZEBO-PARK",
+      "name": "Gazebo Park",
+      "district": "Old Japantown",
+      "marker": 6,
+      "legacy_index": 245,
+      "match_method": "id_and_marker",
+      "difference_px": 65
+    },
+    {
+      "i": 184,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-130-THE-GRATEFUL-CRANE",
+      "name": "The Grateful Crane",
+      "district": "Old Japantown",
+      "marker": 7,
+      "legacy_index": 246,
+      "match_method": "id_and_marker",
+      "difference_px": 84.8
+    },
+    {
+      "i": 185,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-131-HIGHCOURT-PLAZA-HOTEL",
+      "name": "Highcourt Plaza Hotel",
+      "district": "Old Japantown",
+      "marker": 8,
+      "legacy_index": 247,
+      "match_method": "id_and_marker",
+      "difference_px": 75.5
+    },
+    {
+      "i": 186,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-131-HONEST-HIRO-S-USED-CARS",
+      "name": "Honest Hiro’s Used Cars",
+      "district": "Old Japantown",
+      "marker": 9,
+      "legacy_index": 248,
+      "match_method": "id_and_marker",
+      "difference_px": 73
+    },
+    {
+      "i": 187,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-131-IMPERIAL-BANK",
+      "name": "Imperial Bank",
+      "district": "Old Japantown",
+      "marker": 10,
+      "legacy_index": 249,
+      "match_method": "id_and_marker",
+      "difference_px": 63.5
+    },
+    {
+      "i": 188,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-131-KAIFU-CORNER",
+      "name": "Kaifū Corner",
+      "district": "Old Japantown",
+      "marker": 11,
+      "legacy_index": 250,
+      "match_method": "id_and_marker",
+      "difference_px": 66.3
+    },
+    {
+      "i": 189,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-132-KID-KAMP",
+      "name": "Kid Kamp",
+      "district": "Old Japantown",
+      "marker": 12,
+      "legacy_index": 251,
+      "match_method": "id_and_marker",
+      "difference_px": 80.7
+    },
+    {
+      "i": 190,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-132-KAKOI-CHO",
+      "name": "Kakoi-chō",
+      "district": "Old Japantown",
+      "marker": 13,
+      "legacy_index": 252,
+      "match_method": "id_and_marker",
+      "difference_px": 51
+    },
+    {
+      "i": 191,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-132-LOVELY-DRONE-HEROES-CAFE",
+      "name": "Lovely Drone Heroes Café",
+      "district": "Old Japantown",
+      "marker": 14,
+      "legacy_index": 253,
+      "match_method": "id_and_marker",
+      "difference_px": 96.8
+    },
+    {
+      "i": 192,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-132-MIYASAKA-CLINIC",
+      "name": "Miyasaka Clinic",
+      "district": "Old Japantown",
+      "marker": 15,
+      "legacy_index": 254,
+      "match_method": "id_and_marker",
+      "difference_px": 73.7
+    },
+    {
+      "i": 193,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-132-MRS-SUZUKI-S-BODEGA",
+      "name": "Mrs. Suzuki’s Bodega",
+      "district": "Old Japantown",
+      "marker": 16,
+      "legacy_index": 255,
+      "match_method": "id_and_marker",
+      "difference_px": 78
+    },
+    {
+      "i": 194,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-133-NEO-GALAXY-CARDS-AND-COMICS",
+      "name": "Neo Galaxy Cards and Comics",
+      "district": "Old Japantown",
+      "marker": 17,
+      "legacy_index": 256,
+      "match_method": "id_and_marker",
+      "difference_px": 49.7
+    },
+    {
+      "i": 195,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-133-ONI-YAMA-JAIL",
+      "name": "Oni-Yama Jail",
+      "district": "Old Japantown",
+      "marker": 18,
+      "legacy_index": 257,
+      "match_method": "id_and_marker",
+      "difference_px": 61
+    },
+    {
+      "i": 196,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-133-THE-PRECIPICE",
+      "name": "The Precipice",
+      "district": "Old Japantown",
+      "marker": 19,
+      "legacy_index": 258,
+      "match_method": "id_and_marker",
+      "difference_px": 71.9
+    },
+    {
+      "i": 197,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-133-SANROO-COMPLEX",
+      "name": "Sanroo Complex",
+      "district": "Old Japantown",
+      "marker": 20,
+      "legacy_index": 259,
+      "match_method": "id_and_marker",
+      "difference_px": 100.8
+    },
+    {
+      "i": 198,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-SEGOTARI-FACTORY",
+      "name": "Segotari Factory",
+      "district": "Old Japantown",
+      "marker": 21,
+      "legacy_index": 260,
+      "match_method": "id_and_marker",
+      "difference_px": 80.4
+    },
+    {
+      "i": 199,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-SEGOTARI-STATION-JAPANTOWN",
+      "name": "Segotari Station Japantown",
+      "district": "Old Japantown",
+      "marker": 22,
+      "legacy_index": 261,
+      "match_method": "id_and_marker",
+      "difference_px": 89.5
+    },
+    {
+      "i": 200,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-TARTARUS",
+      "name": "Tartarus",
+      "district": "Old Japantown",
+      "marker": 23,
+      "legacy_index": 262,
+      "match_method": "id_and_marker",
+      "difference_px": 56.4
+    },
+    {
+      "i": 201,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-TSUKUYOMI",
+      "name": "Tsukuyomi",
+      "district": "Old Japantown",
+      "marker": 24,
+      "legacy_index": 263,
+      "match_method": "id_and_marker",
+      "difference_px": 69.9
+    },
+    {
+      "i": 202,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-UNNAMED-CUBE-HOTEL",
+      "name": "Unnamed Cube Hotel",
+      "district": "Old Japantown",
+      "marker": 25,
+      "legacy_index": 264,
+      "match_method": "id_and_marker",
+      "difference_px": 78.7
+    },
+    {
+      "i": 203,
+      "id": "NC2045-LOC-OLD-JAPANTOWN-134-WHITE-SIDE",
+      "name": "White Side",
+      "district": "Old Japantown",
+      "marker": 26,
+      "legacy_index": 265,
+      "match_method": "id_and_marker",
+      "difference_px": 69.1
+    },
+    {
+      "i": 204,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-THE-BONEYARD",
+      "name": "The Boneyard",
+      "district": "South Night City",
+      "marker": 1,
+      "legacy_index": 356,
+      "match_method": "id_and_marker",
+      "difference_px": 179.5
+    },
+    {
+      "i": 205,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-140-COMBAT-CABB-HEADQUARTERS",
+      "name": "Combat Cabb Headquarters",
+      "district": "South Night City",
+      "marker": 2,
+      "legacy_index": 357,
+      "match_method": "id_and_marker",
+      "difference_px": 188.6
+    },
+    {
+      "i": 206,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-141-CONTAINER-MART",
+      "name": "Container Mart",
+      "district": "South Night City",
+      "marker": 3,
+      "legacy_index": 358,
+      "match_method": "id_and_marker",
+      "difference_px": 238.4
+    },
+    {
+      "i": 207,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-FORT-SUMTER",
+      "name": "Fort Sumter",
+      "district": "South Night City",
+      "marker": 4,
+      "legacy_index": 359,
+      "match_method": "id_and_marker",
+      "difference_px": 240.1
+    },
+    {
+      "i": 208,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-GUNMART",
+      "name": "GunMart",
+      "district": "South Night City",
+      "marker": 5,
+      "legacy_index": 360,
+      "match_method": "id_and_marker",
+      "difference_px": 146.6
+    },
+    {
+      "i": 209,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-142-HAAKENSEN-TOWER",
+      "name": "Haakensen Tower",
+      "district": "South Night City",
+      "marker": 6,
+      "legacy_index": 361,
+      "match_method": "id_and_marker",
+      "difference_px": 255.5
+    },
+    {
+      "i": 210,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-KIDZ",
+      "name": "KidZ",
+      "district": "South Night City",
+      "marker": 7,
+      "legacy_index": 362,
+      "match_method": "id_and_marker",
+      "difference_px": 199.6
+    },
+    {
+      "i": 211,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-LAZARUS-TRAINING-CENTER",
+      "name": "Lazarus Training Center",
+      "district": "South Night City",
+      "marker": 8,
+      "legacy_index": 363,
+      "match_method": "id_and_marker",
+      "difference_px": 220.5
+    },
+    {
+      "i": 212,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-143-MAX-TAC-HQ",
+      "name": "MAX-TAC HQ",
+      "district": "South Night City",
+      "marker": 9,
+      "legacy_index": 364,
+      "match_method": "id_and_marker",
+      "difference_px": 175.3
+    },
+    {
+      "i": 213,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-MINDNUTZ-LOVER",
+      "name": "MindNutz Lover",
+      "district": "South Night City",
+      "marker": 10,
+      "legacy_index": 365,
+      "match_method": "id_and_marker",
+      "difference_px": 194.4
+    },
+    {
+      "i": 214,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-SAVAGE-DOCS",
+      "name": "Savage Docs",
+      "district": "South Night City",
+      "marker": 11,
+      "legacy_index": 366,
+      "match_method": "id_and_marker",
+      "difference_px": 180.9
+    },
+    {
+      "i": 215,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-144-SILVERHAND-STUDIOS",
+      "name": "Silverhand Studios",
+      "district": "South Night City",
+      "marker": 12,
+      "legacy_index": 367,
+      "match_method": "id_and_marker",
+      "difference_px": 151.6
+    },
+    {
+      "i": 216,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-THE-SLAMMER",
+      "name": "The Slammer",
+      "district": "South Night City",
+      "marker": 13,
+      "legacy_index": 368,
+      "match_method": "id_and_marker",
+      "difference_px": 180.7
+    },
+    {
+      "i": 217,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-SOUTH-CARGO-VILLAGE",
+      "name": "South Cargo Village",
+      "district": "South Night City",
+      "marker": 14,
+      "legacy_index": 369,
+      "match_method": "id_and_marker",
+      "difference_px": 109
+    },
+    {
+      "i": 218,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-SOUTH-NIGHT-CITY-VOLUNTEER-FIRE-STATION",
+      "name": "South Night City Volunteer Fire Station",
+      "district": "South Night City",
+      "marker": 15,
+      "legacy_index": 370,
+      "match_method": "id_and_marker",
+      "difference_px": 227
+    },
+    {
+      "i": 219,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-145-UNION-CHAPEL-BUILDING",
+      "name": "Union Chapel Building",
+      "district": "South Night City",
+      "marker": 16,
+      "legacy_index": 371,
+      "match_method": "id_and_marker",
+      "difference_px": 204
+    },
+    {
+      "i": 220,
+      "id": "NC2045-LOC-SOUTH-NIGHT-CITY-146-UNIVERSITY-CARGO-BAY",
+      "name": "University Cargo Bay",
+      "district": "South Night City",
+      "marker": 17,
+      "legacy_index": 372,
+      "match_method": "id_and_marker",
+      "difference_px": 246
+    },
+    {
+      "i": 221,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-150-THE-AMBER-ROOM",
+      "name": "The Amber Room",
+      "district": "Port of Night City",
+      "marker": 1,
+      "legacy_index": 288,
+      "match_method": "id_and_marker",
+      "difference_px": 262.9
+    },
+    {
+      "i": 222,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-13",
+      "name": "Dock 13",
+      "district": "Port of Night City",
+      "marker": 2,
+      "legacy_index": 289,
+      "match_method": "id_and_marker",
+      "difference_px": 319.9
+    },
+    {
+      "i": 223,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-14-STUDIO-APARTMENTS",
+      "name": "Dock 14 Studio Apartments",
+      "district": "Port of Night City",
+      "marker": 3,
+      "legacy_index": 290,
+      "match_method": "id_and_marker",
+      "difference_px": 313
+    },
+    {
+      "i": 224,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-DOCK-CARGO-COMMUNITY",
+      "name": "Dock Cargo Community",
+      "district": "Port of Night City",
+      "marker": 4,
+      "legacy_index": 291,
+      "match_method": "id_and_marker",
+      "difference_px": 310.4
+    },
+    {
+      "i": 225,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-152-FLOTSAM",
+      "name": "Flotsam",
+      "district": "Port of Night City",
+      "marker": 5,
+      "legacy_index": 292,
+      "match_method": "id_and_marker",
+      "difference_px": 434.7
+    },
+    {
+      "i": 226,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-HARBOR-PATROL-HQ",
+      "name": "Harbor Patrol HQ",
+      "district": "Port of Night City",
+      "marker": 6,
+      "legacy_index": 293,
+      "match_method": "id_and_marker",
+      "difference_px": 320.9
+    },
+    {
+      "i": 227,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-153-MAIN-PORT",
+      "name": "Main Port",
+      "district": "Port of Night City",
+      "marker": 7,
+      "legacy_index": 294,
+      "match_method": "id_and_marker",
+      "difference_px": 368.7
+    },
+    {
+      "i": 228,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MARITIME-SUPPLY",
+      "name": "Maritime Supply",
+      "district": "Port of Night City",
+      "marker": 8,
+      "legacy_index": 295,
+      "match_method": "id_and_marker",
+      "difference_px": 289.6
+    },
+    {
+      "i": 229,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MEDICAL-TECHNOLOGIES",
+      "name": "Medical Technologies",
+      "district": "Port of Night City",
+      "marker": 9,
+      "legacy_index": 296,
+      "match_method": "id_and_marker",
+      "difference_px": 340.4
+    },
+    {
+      "i": 230,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-MESTNYY-BANK",
+      "name": "Mestnyy Bank",
+      "district": "Port of Night City",
+      "marker": 10,
+      "legacy_index": 297,
+      "match_method": "id_and_marker",
+      "difference_px": 301.3
+    },
+    {
+      "i": 231,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-NAIAD-S-EMBRACE",
+      "name": "Naiad’s Embrace",
+      "district": "Port of Night City",
+      "marker": 11,
+      "legacy_index": 298,
+      "match_method": "id_and_marker",
+      "difference_px": 291.6
+    },
+    {
+      "i": 232,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-RECLAIMED-STUDIOS",
+      "name": "Reclaimed Studios",
+      "district": "Port of Night City",
+      "marker": 12,
+      "legacy_index": 299,
+      "match_method": "id_and_marker",
+      "difference_px": 344.1
+    },
+    {
+      "i": 233,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-154-THE-RECLAMATION-PLANT",
+      "name": "The Reclamation Plant",
+      "district": "Port of Night City",
+      "marker": 13,
+      "legacy_index": 300,
+      "match_method": "id_and_marker",
+      "difference_px": 300.6
+    },
+    {
+      "i": 234,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-RUSTY-S-DIVE-SHACK",
+      "name": "Rusty’s Dive Shack",
+      "district": "Port of Night City",
+      "marker": 14,
+      "legacy_index": 301,
+      "match_method": "id_and_marker",
+      "difference_px": 317.6
+    },
+    {
+      "i": 235,
+      "id": "NC2045-LOC-PORT-OF-NIGHT-CITY-155-THE-YARD",
+      "name": "The Yard",
+      "district": "Port of Night City",
+      "marker": 15,
+      "legacy_index": 302,
+      "match_method": "id_and_marker",
+      "difference_px": 280.6
+    },
+    {
+      "i": 236,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-158-BOOSTER-BISTRO",
+      "name": "Booster Bistro",
+      "district": "Reclamation Zone",
+      "marker": 1,
+      "legacy_index": 314,
+      "match_method": "id_and_marker",
+      "difference_px": 176.5
+    },
+    {
+      "i": 237,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-160-COUNTRY-CARS",
+      "name": "Country Cars",
+      "district": "Reclamation Zone",
+      "marker": 2,
+      "legacy_index": 315,
+      "match_method": "id_and_marker",
+      "difference_px": 186.5
+    },
+    {
+      "i": 238,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-160-EARL-S-SECOND-HAND-SHOP",
+      "name": "Earl’s Second Hand Shop",
+      "district": "Reclamation Zone",
+      "marker": 3,
+      "legacy_index": 316,
+      "match_method": "id_and_marker",
+      "difference_px": 178.3
+    },
+    {
+      "i": 239,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-160-FLASHBACK",
+      "name": "Flashback",
+      "district": "Reclamation Zone",
+      "marker": 4,
+      "legacy_index": 317,
+      "match_method": "id_and_marker",
+      "difference_px": 183.6
+    },
+    {
+      "i": 240,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-160-FOUNDRY-TECH-SCHOOL",
+      "name": "Foundry Tech School",
+      "district": "Reclamation Zone",
+      "marker": 5,
+      "legacy_index": 318,
+      "match_method": "id_and_marker",
+      "difference_px": 180.2
+    },
+    {
+      "i": 241,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-FREDDIE-DOUGLAS-SCHOOL",
+      "name": "Freddie Douglas School",
+      "district": "Reclamation Zone",
+      "marker": 6,
+      "legacy_index": 319,
+      "match_method": "id_and_marker",
+      "difference_px": 168.8
+    },
+    {
+      "i": 242,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-GORDON-S-GARAGE",
+      "name": "Gordon’s Garage",
+      "district": "Reclamation Zone",
+      "marker": 7,
+      "legacy_index": 320,
+      "match_method": "id_and_marker",
+      "difference_px": 180.9
+    },
+    {
+      "i": 243,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-MCGEE-SPEEDWAY",
+      "name": "McGee Speedway",
+      "district": "Reclamation Zone",
+      "marker": 8,
+      "legacy_index": 321,
+      "match_method": "id_and_marker",
+      "difference_px": 178.6
+    },
+    {
+      "i": 244,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-HERSCHEL-S-CREMATORIUM",
+      "name": "Herschel’s Crematorium",
+      "district": "Reclamation Zone",
+      "marker": 9,
+      "legacy_index": 322,
+      "match_method": "id_and_marker",
+      "difference_px": 171.1
+    },
+    {
+      "i": 245,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-LA-PERRERA",
+      "name": "La Perrera",
+      "district": "Reclamation Zone",
+      "marker": 10,
+      "legacy_index": 323,
+      "match_method": "id_and_marker",
+      "difference_px": 185.5
+    },
+    {
+      "i": 246,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-161-METAL-MOUNTAIN",
+      "name": "Metal Mountain",
+      "district": "Reclamation Zone",
+      "marker": 11,
+      "legacy_index": 324,
+      "match_method": "id_and_marker",
+      "difference_px": 187.8
+    },
+    {
+      "i": 247,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-162-MOBILE-MOSQUE-PRAYER-CENTER",
+      "name": "Mobile Mosque Prayer Center",
+      "district": "Reclamation Zone",
+      "marker": 12,
+      "legacy_index": 325,
+      "match_method": "id_and_marker",
+      "difference_px": 172.6
+    },
+    {
+      "i": 248,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-162-NCART-YARDS",
+      "name": "NCART Yards",
+      "district": "Reclamation Zone",
+      "marker": 13,
+      "legacy_index": 326,
+      "match_method": "id_and_marker",
+      "difference_px": 197.6
+    },
+    {
+      "i": 249,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-162-RECLAMATION-ZONE-STATION",
+      "name": "Reclamation Zone Station",
+      "district": "Reclamation Zone",
+      "marker": 14,
+      "legacy_index": 327,
+      "match_method": "id_and_marker",
+      "difference_px": 181.8
+    },
+    {
+      "i": 250,
+      "id": "NC2045-LOC-RECLAMATION-ZONE-162-SECOND-CITY-SOLOS-FIRING-RANGE",
+      "name": "Second City Solos Firing Range",
+      "district": "Reclamation Zone",
+      "marker": 15,
+      "legacy_index": 328,
+      "match_method": "id_and_marker",
+      "difference_px": 179.8
+    },
+    {
+      "i": 251,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-168-ALICE-S",
+      "name": "Alice’s",
+      "district": "Old Combat Zone",
+      "marker": 1,
+      "legacy_index": 218,
+      "match_method": "id_and_marker",
+      "difference_px": 74.5
+    },
+    {
+      "i": 252,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-168-ALWAYS-HOT",
+      "name": "Always Hot",
+      "district": "Old Combat Zone",
+      "marker": 2,
+      "legacy_index": 219,
+      "match_method": "id_and_marker",
+      "difference_px": 30.6
+    },
+    {
+      "i": 253,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-168-THE-ARENA",
+      "name": "The Arena",
+      "district": "Old Combat Zone",
+      "marker": 3,
+      "legacy_index": 220,
+      "match_method": "id_and_marker",
+      "difference_px": 26.5
+    },
+    {
+      "i": 254,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-168-BLADEWARE",
+      "name": "Bladeware",
+      "district": "Old Combat Zone",
+      "marker": 4,
+      "legacy_index": 221,
+      "match_method": "id_and_marker",
+      "difference_px": 68.5
+    },
+    {
+      "i": 255,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-169-THE-FARNSWORTH-BUILDING",
+      "name": "The Farnsworth Building",
+      "district": "Old Combat Zone",
+      "marker": 5,
+      "legacy_index": 222,
+      "match_method": "id_and_marker",
+      "difference_px": 61.3
+    },
+    {
+      "i": 256,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FLASHER-S-CORNER",
+      "name": "Flasher’s Corner",
+      "district": "Old Combat Zone",
+      "marker": 6,
+      "legacy_index": 223,
+      "match_method": "id_and_marker",
+      "difference_px": 53.7
+    },
+    {
+      "i": 257,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-169-FROM-THE-ASHES",
+      "name": "From the Ashes",
+      "district": "Old Combat Zone",
+      "marker": 7,
+      "legacy_index": 224,
+      "match_method": "id_and_marker",
+      "difference_px": 71
+    },
+    {
+      "i": 258,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-169-IONIC-SEMICONDUCTOR-BUILDING",
+      "name": "Ionic Semiconductor Building",
+      "district": "Old Combat Zone",
+      "marker": 8,
+      "legacy_index": 225,
+      "match_method": "id_and_marker",
+      "difference_px": 90
+    },
+    {
+      "i": 259,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-169-JESSE-JAMES-KOSHER-DELI",
+      "name": "Jesse James’ Kosher Deli",
+      "district": "Old Combat Zone",
+      "marker": 9,
+      "legacy_index": 226,
+      "match_method": "id_and_marker",
+      "difference_px": 19.2
+    },
+    {
+      "i": 260,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-170-KIBBLE-KIRKLE",
+      "name": "Kibble Kirkle",
+      "district": "Old Combat Zone",
+      "marker": 10,
+      "legacy_index": 227,
+      "match_method": "id_and_marker",
+      "difference_px": 60.3
+    },
+    {
+      "i": 261,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-LAYDOWN",
+      "name": "The Laydown",
+      "district": "Old Combat Zone",
+      "marker": 11,
+      "legacy_index": 228,
+      "match_method": "id_and_marker",
+      "difference_px": 49
+    },
+    {
+      "i": 262,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-LODGE",
+      "name": "The Lodge",
+      "district": "Old Combat Zone",
+      "marker": 12,
+      "legacy_index": 229,
+      "match_method": "id_and_marker",
+      "difference_px": 36.6
+    },
+    {
+      "i": 263,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-170-SUBSTATION-12",
+      "name": "Substation 12",
+      "district": "Old Combat Zone",
+      "marker": 13,
+      "legacy_index": 230,
+      "match_method": "id_and_marker",
+      "difference_px": 12.6
+    },
+    {
+      "i": 264,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-170-THE-TERRACE",
+      "name": "The Terrace",
+      "district": "Old Combat Zone",
+      "marker": 14,
+      "legacy_index": 231,
+      "match_method": "id_and_marker",
+      "difference_px": 17.9
+    },
+    {
+      "i": 265,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-UNDERGROUND",
+      "name": "The Underground",
+      "district": "Old Combat Zone",
+      "marker": 15,
+      "legacy_index": 232,
+      "match_method": "id_and_marker",
+      "difference_px": 83.1
+    },
+    {
+      "i": 266,
+      "id": "NC2045-LOC-OLD-COMBAT-ZONE-171-THE-WARREN",
+      "name": "The Warren",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 233,
+      "match_method": "id_and_marker",
+      "difference_px": 67.4
+    },
+    {
+      "i": 267,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-171-ANGEL-RADIO",
+      "name": "Angel Radio",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 234,
+      "match_method": "district_unique_name",
+      "difference_px": 49.6
+    },
+    {
+      "i": 268,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-171-BASKIN-BOOKS",
+      "name": "Baskin Books",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 235,
+      "match_method": "unique_id",
+      "difference_px": 72.2
+    },
+    {
+      "i": 269,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-171-OCZ-SCHOOLHOUSE",
+      "name": "OCZ Schoolhouse",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 236,
+      "match_method": "district_unique_name",
+      "difference_px": 44.5
+    },
+    {
+      "i": 270,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-172-THE-PANTHEON",
+      "name": "The Pantheon",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 237,
+      "match_method": "district_unique_name",
+      "difference_px": 76.7
+    },
+    {
+      "i": 271,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-171-SMITHERY",
+      "name": "Smithery",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 238,
+      "match_method": "unique_id",
+      "difference_px": 86.4
+    },
+    {
+      "i": 272,
+      "id": "NC2045-OUT-OLD-COMBAT-ZONE-171-UNCLE-ANNE-S",
+      "name": "Uncle Anne’s",
+      "district": "Old Combat Zone",
+      "marker": 16,
+      "legacy_index": 239,
+      "match_method": "unique_id",
+      "difference_px": 82.5
+    },
+    {
+      "i": 273,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-180-157TH-TACTICAL-AIR-SQUADRON-AIRFIELD",
+      "name": "157th Tactical Air Squadron Airfield",
+      "district": "NorCal Military Base",
+      "marker": 1,
+      "legacy_index": 178,
+      "match_method": "id_and_marker",
+      "difference_px": 282.7
+    },
+    {
+      "i": 274,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-COG-TREATMENT-FACILITY-CTF",
+      "name": "COG Treatment Facility (CTF)",
+      "district": "NorCal Military Base",
+      "marker": 2,
+      "legacy_index": 179,
+      "match_method": "id_and_marker",
+      "difference_px": 338.8
+    },
+    {
+      "i": 275,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-ESTERO-BAY-MILITARY-COG-ACADEMY",
+      "name": "Estero Bay Military COG Academy",
+      "district": "NorCal Military Base",
+      "marker": 3,
+      "legacy_index": 180,
+      "match_method": "id_and_marker",
+      "difference_px": 332.8
+    },
+    {
+      "i": 276,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-FIRE-EMERGENCY-RESPONSE-CENTER",
+      "name": "Fire & Emergency Response Center",
+      "district": "NorCal Military Base",
+      "marker": 4,
+      "legacy_index": 181,
+      "match_method": "id_and_marker",
+      "difference_px": 319.9
+    },
+    {
+      "i": 277,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MAIN-GATE",
+      "name": "Main Gate",
+      "district": "NorCal Military Base",
+      "marker": 5,
+      "legacy_index": 182,
+      "match_method": "id_and_marker",
+      "difference_px": 183.4
+    },
+    {
+      "i": 278,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MESS-HALL",
+      "name": "Mess Hall",
+      "district": "NorCal Military Base",
+      "marker": 6,
+      "legacy_index": 183,
+      "match_method": "id_and_marker",
+      "difference_px": 299.2
+    },
+    {
+      "i": 279,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-181-MILITARY-POLICE-HEADQUARTERS",
+      "name": "Military Police Headquarters",
+      "district": "NorCal Military Base",
+      "marker": 7,
+      "legacy_index": 184,
+      "match_method": "id_and_marker",
+      "difference_px": 205.6
+    },
+    {
+      "i": 280,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-CORPORATE-HOUSING",
+      "name": "Militech Corporate Housing",
+      "district": "NorCal Military Base",
+      "marker": 8,
+      "legacy_index": 185,
+      "match_method": "id_and_marker",
+      "difference_px": 197.2
+    },
+    {
+      "i": 281,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MILITECH-OFFICES",
+      "name": "Militech Offices",
+      "district": "NorCal Military Base",
+      "marker": 9,
+      "legacy_index": 186,
+      "match_method": "id_and_marker",
+      "difference_px": 220.6
+    },
+    {
+      "i": 282,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-MOTOR-POOL",
+      "name": "Motor Pool",
+      "district": "NorCal Military Base",
+      "marker": 10,
+      "legacy_index": 187,
+      "match_method": "id_and_marker",
+      "difference_px": 223.4
+    },
+    {
+      "i": 283,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-182-THE-OAKS",
+      "name": "The Oaks",
+      "district": "NorCal Military Base",
+      "marker": 11,
+      "legacy_index": 188,
+      "match_method": "id_and_marker",
+      "difference_px": 239.7
+    },
+    {
+      "i": 284,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-PARADE-GROUND",
+      "name": "Parade Ground",
+      "district": "NorCal Military Base",
+      "marker": 12,
+      "legacy_index": 189,
+      "match_method": "id_and_marker",
+      "difference_px": 272.8
+    },
+    {
+      "i": 285,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-THE-POTENTILLA",
+      "name": "The Potentilla",
+      "district": "NorCal Military Base",
+      "marker": 13,
+      "legacy_index": 190,
+      "match_method": "id_and_marker",
+      "difference_px": 244.6
+    },
+    {
+      "i": 286,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-POST-EXCHANGE-PX",
+      "name": "Post Exchange (PX)",
+      "district": "NorCal Military Base",
+      "marker": 14,
+      "legacy_index": 191,
+      "match_method": "id_and_marker",
+      "difference_px": 275
+    },
+    {
+      "i": 287,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-THE-REC-CENTER",
+      "name": "The Rec Center",
+      "district": "NorCal Military Base",
+      "marker": 15,
+      "legacy_index": 192,
+      "match_method": "id_and_marker",
+      "difference_px": 307.3
+    },
+    {
+      "i": 288,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-183-TASK-FORCE-384-DOCKS",
+      "name": "Task Force 384 Docks",
+      "district": "NorCal Military Base",
+      "marker": 16,
+      "legacy_index": 193,
+      "match_method": "id_and_marker",
+      "difference_px": 346.8
+    },
+    {
+      "i": 289,
+      "id": "NC2045-LOC-NORCAL-MILITARY-BASE-184-USO-HALL",
+      "name": "USO Hall",
+      "district": "NorCal Military Base",
+      "marker": 17,
+      "legacy_index": 194,
+      "match_method": "id_and_marker",
+      "difference_px": 257.4
+    },
+    {
+      "i": 290,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-186-AKAGI-RYU-KARATE",
+      "name": "Akagi-ryu Karate",
+      "district": "Watson Development",
+      "marker": 1,
+      "legacy_index": 479,
+      "match_method": "id_and_marker",
+      "difference_px": 143.8
+    },
+    {
+      "i": 291,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-188-CANADIAN-CONSULATE",
+      "name": "Canadian Consulate",
+      "district": "Watson Development",
+      "marker": 2,
+      "legacy_index": 480,
+      "match_method": "id_and_marker",
+      "difference_px": 121.6
+    },
+    {
+      "i": 292,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-188-CITY-TOT-DAYCARE",
+      "name": "City Tot Daycare",
+      "district": "Watson Development",
+      "marker": 3,
+      "legacy_index": 481,
+      "match_method": "id_and_marker",
+      "difference_px": 142.6
+    },
+    {
+      "i": 293,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-188-EBUNIKE-DOCKS",
+      "name": "Ebunike Docks",
+      "district": "Watson Development",
+      "marker": 4,
+      "legacy_index": 482,
+      "match_method": "id_and_marker",
+      "difference_px": 153.9
+    },
+    {
+      "i": 294,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-188-FAISAL-S-CUSTOMS",
+      "name": "Faisal’s Customs",
+      "district": "Watson Development",
+      "marker": 5,
+      "legacy_index": 483,
+      "match_method": "id_and_marker",
+      "difference_px": 201.1
+    },
+    {
+      "i": 295,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-BODYWEIGHT-LIFE-PRESERVATION-SYSTEMS",
+      "name": "Bodyweight Life Preservation Systems",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 484,
+      "match_method": "district_unique_name",
+      "difference_px": 267.7
+    },
+    {
+      "i": 296,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-CACTUS-WATER",
+      "name": "Cactus Water",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 485,
+      "match_method": "district_unique_name",
+      "difference_px": 273.4
+    },
+    {
+      "i": 297,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR",
+      "name": "Gibson Battlegear",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 486,
+      "match_method": "district_unique_name",
+      "difference_px": 287.5
+    },
+    {
+      "i": 298,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-HAMMERED-INDUSTRIES",
+      "name": "Hammered Industries",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 487,
+      "match_method": "district_unique_name",
+      "difference_px": 257.6
+    },
+    {
+      "i": 299,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-KENDACHI",
+      "name": "Kendachi",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 488,
+      "match_method": "district_unique_name",
+      "difference_px": 298
+    },
+    {
+      "i": 300,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-KIROSHI",
+      "name": "Kiroshi",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 489,
+      "match_method": "district_unique_name",
+      "difference_px": 242.4
+    },
+    {
+      "i": 301,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-MAKIGAI-AUTOMOTIVE",
+      "name": "Makigai Automotive",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 490,
+      "match_method": "district_unique_name",
+      "difference_px": 271.6
+    },
+    {
+      "i": 302,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-SEGOTARI",
+      "name": "Segotari",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 491,
+      "match_method": "district_unique_name",
+      "difference_px": 262.7
+    },
+    {
+      "i": 303,
+      "id": "NC2045-OUT-WATSON-DEVELOPMENT-189-TOWA-MANUFACTURING",
+      "name": "Towa Manufacturing",
+      "district": "Watson Development",
+      "marker": 6,
+      "legacy_index": 492,
+      "match_method": "district_unique_name",
+      "difference_px": 277.5
+    },
+    {
+      "i": 304,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-189-FUDHOUSE",
+      "name": "FūdHouse",
+      "district": "Watson Development",
+      "marker": 7,
+      "legacy_index": 493,
+      "match_method": "id_and_marker",
+      "difference_px": 189.9
+    },
+    {
+      "i": 305,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-189-GIBSON-BATTLEGEAR-OUTLET",
+      "name": "Gibson Battlegear Outlet",
+      "district": "Watson Development",
+      "marker": 8,
+      "legacy_index": 494,
+      "match_method": "id_and_marker",
+      "difference_px": 198
+    },
+    {
+      "i": 306,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-189-HAMMERED-UP-LIQUOR",
+      "name": "Hammered Up Liquor",
+      "district": "Watson Development",
+      "marker": 9,
+      "legacy_index": 495,
+      "match_method": "id_and_marker",
+      "difference_px": 175.2
+    },
+    {
+      "i": 307,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-189-HTOWN",
+      "name": "HTown",
+      "district": "Watson Development",
+      "marker": 10,
+      "legacy_index": 496,
+      "match_method": "id_and_marker",
+      "difference_px": 128.4
+    },
+    {
+      "i": 308,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-190-HUNDRED-UNDER-HAVEN",
+      "name": "Hundred Under Haven",
+      "district": "Watson Development",
+      "marker": 11,
+      "legacy_index": 497,
+      "match_method": "id_and_marker",
+      "difference_px": 161.8
+    },
+    {
+      "i": 309,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-190-JOINT-TEMPORARY-HOUSING-SOLUTION",
+      "name": "Joint Temporary Housing Solution",
+      "district": "Watson Development",
+      "marker": 12,
+      "legacy_index": 498,
+      "match_method": "id_and_marker",
+      "difference_px": 130.8
+    },
+    {
+      "i": 310,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-190-MEGABUILDING-H10",
+      "name": "Megabuilding H10",
+      "district": "Watson Development",
+      "marker": 13,
+      "legacy_index": 499,
+      "match_method": "id_and_marker",
+      "difference_px": 151.7
+    },
+    {
+      "i": 311,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MEGABUILDING-H11",
+      "name": "Megabuilding H11",
+      "district": "Watson Development",
+      "marker": 14,
+      "legacy_index": 500,
+      "match_method": "id_and_marker",
+      "difference_px": 155.3
+    },
+    {
+      "i": 312,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-191-MORGAN-S",
+      "name": "Morgan’s",
+      "district": "Watson Development",
+      "marker": 15,
+      "legacy_index": 501,
+      "match_method": "id_and_marker",
+      "difference_px": 216.9
+    },
+    {
+      "i": 313,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-191-NCPD-PRECINCT-3",
+      "name": "NCPD Precinct #3",
+      "district": "Watson Development",
+      "marker": 16,
+      "legacy_index": 502,
+      "match_method": "id_and_marker",
+      "difference_px": 208.9
+    },
+    {
+      "i": 314,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-192-NEOSOVIET-CONSULATE",
+      "name": "NeoSoviet Consulate",
+      "district": "Watson Development",
+      "marker": 17,
+      "legacy_index": 503,
+      "match_method": "id_and_marker",
+      "difference_px": 142.1
+    },
+    {
+      "i": 315,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-192-THE-OBITUARY",
+      "name": "The Obituary",
+      "district": "Watson Development",
+      "marker": 18,
+      "legacy_index": 504,
+      "match_method": "id_and_marker",
+      "difference_px": 246.5
+    },
+    {
+      "i": 316,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-192-OLD-BLACK-RUM-PUB",
+      "name": "Old Black Rum Pub",
+      "district": "Watson Development",
+      "marker": 19,
+      "legacy_index": 505,
+      "match_method": "id_and_marker",
+      "difference_px": 131.8
+    },
+    {
+      "i": 317,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-192-OUMEI-JI-TEMPLE",
+      "name": "Oumei-ji Temple",
+      "district": "Watson Development",
+      "marker": 20,
+      "legacy_index": 506,
+      "match_method": "id_and_marker",
+      "difference_px": 189
+    },
+    {
+      "i": 318,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-192-PETROCHEM-OFFICES",
+      "name": "Petrochem Offices",
+      "district": "Watson Development",
+      "marker": 21,
+      "legacy_index": 507,
+      "match_method": "id_and_marker",
+      "difference_px": 131.8
+    },
+    {
+      "i": 319,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-193-PETROCHEM-OIL-REFINERY",
+      "name": "Petrochem Oil Refinery",
+      "district": "Watson Development",
+      "marker": 22,
+      "legacy_index": 508,
+      "match_method": "id_and_marker",
+      "difference_px": 113.5
+    },
+    {
+      "i": 320,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-193-THE-POCHINKO-CARNIVAL",
+      "name": "The Pochinko Carnival",
+      "district": "Watson Development",
+      "marker": 23,
+      "legacy_index": 509,
+      "match_method": "id_and_marker",
+      "difference_px": 203.2
+    },
+    {
+      "i": 321,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-193-RED-OKTOBER",
+      "name": "Red Oktober",
+      "district": "Watson Development",
+      "marker": 24,
+      "legacy_index": 510,
+      "match_method": "id_and_marker",
+      "difference_px": 175.2
+    },
+    {
+      "i": 322,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-193-REDLINE",
+      "name": "Redline",
+      "district": "Watson Development",
+      "marker": 25,
+      "legacy_index": 511,
+      "match_method": "id_and_marker",
+      "difference_px": 161.3
+    },
+    {
+      "i": 323,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-193-SAKURA-S",
+      "name": "Sakura’s",
+      "district": "Watson Development",
+      "marker": 26,
+      "legacy_index": 512,
+      "match_method": "id_and_marker",
+      "difference_px": 148.6
+    },
+    {
+      "i": 324,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SKIDROW-LIMITED",
+      "name": "SkidRow Limited",
+      "district": "Watson Development",
+      "marker": 27,
+      "legacy_index": 513,
+      "match_method": "id_and_marker",
+      "difference_px": 210.7
+    },
+    {
+      "i": 325,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SMASH-CUT",
+      "name": "Smash/Cut",
+      "district": "Watson Development",
+      "marker": 28,
+      "legacy_index": 514,
+      "match_method": "id_and_marker",
+      "difference_px": 130.2
+    },
+    {
+      "i": 326,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SNACK-SHACK",
+      "name": "Snack & Shack",
+      "district": "Watson Development",
+      "marker": 29,
+      "legacy_index": 515,
+      "match_method": "id_and_marker",
+      "difference_px": 158.2
+    },
+    {
+      "i": 327,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SOVOIL-OFFICES",
+      "name": "SovOil Offices",
+      "district": "Watson Development",
+      "marker": 30,
+      "legacy_index": 516,
+      "match_method": "id_and_marker",
+      "difference_px": 135.2
+    },
+    {
+      "i": 328,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-SOVOIL-OIL-REFINERY",
+      "name": "SovOil Oil Refinery",
+      "district": "Watson Development",
+      "marker": 31,
+      "legacy_index": 517,
+      "match_method": "id_and_marker",
+      "difference_px": 113.1
+    },
+    {
+      "i": 329,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-194-TRAUMA-TEAM-TOWER",
+      "name": "Trauma Team Tower",
+      "district": "Watson Development",
+      "marker": 32,
+      "legacy_index": 518,
+      "match_method": "id_and_marker",
+      "difference_px": 144.5
+    },
+    {
+      "i": 330,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TRAUMA-TEAM-CORPORATE-LIVING-CENTER",
+      "name": "Trauma Team Corporate Living Center",
+      "district": "Watson Development",
+      "marker": 33,
+      "legacy_index": 519,
+      "match_method": "id_and_marker",
+      "difference_px": 155.2
+    },
+    {
+      "i": 331,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-TURBO-NEON-MOTORS",
+      "name": "Turbo Neon Motors",
+      "district": "Watson Development",
+      "marker": 34,
+      "legacy_index": 520,
+      "match_method": "id_and_marker",
+      "difference_px": 181
+    },
+    {
+      "i": 332,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-UNOMAS-MEXICAN-BAR-GRILL",
+      "name": "UnoMas Mexican Bar & Grill",
+      "district": "Watson Development",
+      "marker": 35,
+      "legacy_index": 521,
+      "match_method": "id_and_marker",
+      "difference_px": 142.5
+    },
+    {
+      "i": 333,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-VARGTIMMEN",
+      "name": "Vargtimmen",
+      "district": "Watson Development",
+      "marker": 36,
+      "legacy_index": 522,
+      "match_method": "id_and_marker",
+      "difference_px": 227.7
+    },
+    {
+      "i": 334,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-WATSON-CENTRAL-CUBELIFE",
+      "name": "Watson Central Cubelife",
+      "district": "Watson Development",
+      "marker": 37,
+      "legacy_index": 523,
+      "match_method": "id_and_marker",
+      "difference_px": 153.9
+    },
+    {
+      "i": 335,
+      "id": "NC2045-LOC-WATSON-DEVELOPMENT-195-WHAMMER-ARENA",
+      "name": "Whammer Arena",
+      "district": "Watson Development",
+      "marker": 38,
+      "legacy_index": 524,
+      "match_method": "id_and_marker",
+      "difference_px": 125.7
+    },
+    {
+      "i": 336,
+      "id": "NC2045-LOC-KABUKI-202-100-0-G3-GUN-GAL-STATION",
+      "name": "100.0 G3 Gun-Gal Station",
+      "district": "Kabuki",
+      "marker": 1,
+      "legacy_index": 91,
+      "match_method": "id_and_marker",
+      "difference_px": 169.4
+    },
+    {
+      "i": 337,
+      "id": "NC2045-LOC-KABUKI-202-91-9-ROYAL-BLUE",
+      "name": "91.9 Royal Blue",
+      "district": "Kabuki",
+      "marker": 2,
+      "legacy_index": 92,
+      "match_method": "id_and_marker",
+      "difference_px": 217.4
+    },
+    {
+      "i": 338,
+      "id": "NC2045-LOC-KABUKI-202-ANIMELOCARIS",
+      "name": "Animelocaris",
+      "district": "Kabuki",
+      "marker": 3,
+      "legacy_index": 93,
+      "match_method": "id_and_marker",
+      "difference_px": 172.4
+    },
+    {
+      "i": 339,
+      "id": "NC2045-LOC-KABUKI-202-CYBORG-STATION",
+      "name": "Cyborg Station",
+      "district": "Kabuki",
+      "marker": 4,
+      "legacy_index": 94,
+      "match_method": "id_and_marker",
+      "difference_px": 206.9
+    },
+    {
+      "i": 340,
+      "id": "NC2045-LOC-KABUKI-202-DELPHI-X",
+      "name": "Delphi X",
+      "district": "Kabuki",
+      "marker": 5,
+      "legacy_index": 95,
+      "match_method": "id_and_marker",
+      "difference_px": 196
+    },
+    {
+      "i": 341,
+      "id": "NC2045-LOC-KABUKI-202-HIROTO-MIYAMOTO-MEMORIAL-CLINIC",
+      "name": "Hiroto Miyamoto Memorial Clinic",
+      "district": "Kabuki",
+      "marker": 6,
+      "legacy_index": 96,
+      "match_method": "id_and_marker",
+      "difference_px": 195.8
+    },
+    {
+      "i": 342,
+      "id": "NC2045-LOC-KABUKI-203-HOUOU",
+      "name": "Houou",
+      "district": "Kabuki",
+      "marker": 7,
+      "legacy_index": 97,
+      "match_method": "id_and_marker",
+      "difference_px": 203.1
+    },
+    {
+      "i": 343,
+      "id": "NC2045-LOC-KABUKI-203-KABUKI-CEREMONIAL-HALL",
+      "name": "Kabuki Ceremonial Hall",
+      "district": "Kabuki",
+      "marker": 8,
+      "legacy_index": 98,
+      "match_method": "id_and_marker",
+      "difference_px": 214.5
+    },
+    {
+      "i": 344,
+      "id": "NC2045-LOC-KABUKI-203-KABUKI-MARKET",
+      "name": "Kabuki Market",
+      "district": "Kabuki",
+      "marker": 9,
+      "legacy_index": 99,
+      "match_method": "id_and_marker",
+      "difference_px": 210.2
+    },
+    {
+      "i": 345,
+      "id": "NC2045-LOC-KABUKI-203-MATSURA-FOOD-PRODUCTS",
+      "name": "Matsura Food Products",
+      "district": "Kabuki",
+      "marker": 10,
+      "legacy_index": 100,
+      "match_method": "id_and_marker",
+      "difference_px": 203.5
+    },
+    {
+      "i": 346,
+      "id": "NC2045-LOC-KABUKI-204-MURAKAMI-SUIUN-IMPORTS",
+      "name": "Murakami Suiun Imports",
+      "district": "Kabuki",
+      "marker": 11,
+      "legacy_index": 101,
+      "match_method": "id_and_marker",
+      "difference_px": 199.6
+    },
+    {
+      "i": 347,
+      "id": "NC2045-LOC-KABUKI-204-NAKAGAWA-ACADEMY",
+      "name": "Nakagawa Academy",
+      "district": "Kabuki",
+      "marker": 12,
+      "legacy_index": 102,
+      "match_method": "id_and_marker",
+      "difference_px": 191.2
+    },
+    {
+      "i": 348,
+      "id": "NC2045-LOC-KABUKI-204-NAKAGAWA-GARAGE-TOWER",
+      "name": "Nakagawa Garage Tower",
+      "district": "Kabuki",
+      "marker": 13,
+      "legacy_index": 103,
+      "match_method": "id_and_marker",
+      "difference_px": 179.1
+    },
+    {
+      "i": 349,
+      "id": "NC2045-LOC-KABUKI-204-NAKAGAWA-KABUKI-THEATER",
+      "name": "Nakagawa Kabuki Theater",
+      "district": "Kabuki",
+      "marker": 14,
+      "legacy_index": 104,
+      "match_method": "id_and_marker",
+      "difference_px": 182.5
+    },
+    {
+      "i": 350,
+      "id": "NC2045-LOC-KABUKI-205-NO-TELL-MOTEL",
+      "name": "No-Tell Motel",
+      "district": "Kabuki",
+      "marker": 15,
+      "legacy_index": 105,
+      "match_method": "id_and_marker",
+      "difference_px": 186
+    },
+    {
+      "i": 351,
+      "id": "NC2045-LOC-KABUKI-205-OASIS-KABUKI",
+      "name": "Oasis (Kabuki)",
+      "district": "Kabuki",
+      "marker": 16,
+      "legacy_index": 106,
+      "match_method": "id_and_marker",
+      "difference_px": 206
+    },
+    {
+      "i": 352,
+      "id": "NC2045-LOC-KABUKI-205-ROKUMEI-KAN",
+      "name": "Rokumei-kan",
+      "district": "Kabuki",
+      "marker": 17,
+      "legacy_index": 107,
+      "match_method": "id_and_marker",
+      "difference_px": 202.7
+    },
+    {
+      "i": 353,
+      "id": "NC2045-LOC-KABUKI-205-SANROO-NEURO-LAND",
+      "name": "Sanroo Neuro-land",
+      "district": "Kabuki",
+      "marker": 18,
+      "legacy_index": 108,
+      "match_method": "id_and_marker",
+      "difference_px": 212.3
+    },
+    {
+      "i": 354,
+      "id": "NC2045-LOC-KABUKI-205-SEGOTARI-HQ",
+      "name": "Segotari HQ/EXCEL-1",
+      "district": "Kabuki",
+      "marker": 19,
+      "legacy_index": 109,
+      "match_method": "district_marker_name",
+      "difference_px": 208
+    },
+    {
+      "i": 355,
+      "id": "NC2045-LOC-KABUKI-206-TENGEN-TOWERS",
+      "name": "Tengen Towers",
+      "district": "Kabuki",
+      "marker": 20,
+      "legacy_index": 110,
+      "match_method": "id_and_marker",
+      "difference_px": 183.8
+    },
+    {
+      "i": 356,
+      "id": "NC2045-LOC-KABUKI-206-TORANOKO-GAKUEN",
+      "name": "Toranoko Gakuen",
+      "district": "Kabuki",
+      "marker": 21,
+      "legacy_index": 111,
+      "match_method": "id_and_marker",
+      "difference_px": 211.3
+    },
+    {
+      "i": 357,
+      "id": "NC2045-LOC-KABUKI-206-TYGER-DOJO-TORA-NO-ANA",
+      "name": "Tyger Dojo/Tora-no-Ana",
+      "district": "Kabuki",
+      "marker": 22,
+      "legacy_index": 112,
+      "match_method": "id_and_marker",
+      "difference_px": 209.2
+    },
+    {
+      "i": 358,
+      "id": "NC2045-LOC-KABUKI-206-TYGER-WORKS-TOWER",
+      "name": "Tyger Works Tower",
+      "district": "Kabuki",
+      "marker": 23,
+      "legacy_index": 113,
+      "match_method": "id_and_marker",
+      "difference_px": 186.7
+    },
+    {
+      "i": 359,
+      "id": "NC2045-LOC-KABUKI-206-YUM-SENG",
+      "name": "Yum Seng",
+      "district": "Kabuki",
+      "marker": 24,
+      "legacy_index": 114,
+      "match_method": "id_and_marker",
+      "difference_px": 198.6
+    },
+    {
+      "i": 360,
+      "id": "NC2045-LOC-NEW-WESTBROOK-214-AEROCAB",
+      "name": "Aerocab",
+      "district": "New Westbrook",
+      "marker": 1,
+      "legacy_index": 153,
+      "match_method": "id_and_marker",
+      "difference_px": 229.9
+    },
+    {
+      "i": 361,
+      "id": "NC2045-LOC-NEW-WESTBROOK-214-AUGMENTED-OPTIC",
+      "name": "Augmented Optic",
+      "district": "New Westbrook",
+      "marker": 2,
+      "legacy_index": 154,
+      "match_method": "id_and_marker",
+      "difference_px": 229
+    },
+    {
+      "i": 362,
+      "id": "NC2045-LOC-NEW-WESTBROOK-214-CANALSIDE-PLAZA",
+      "name": "Canalside Plaza",
+      "district": "New Westbrook",
+      "marker": 3,
+      "legacy_index": 155,
+      "match_method": "id_and_marker",
+      "difference_px": 289.3
+    },
+    {
+      "i": 363,
+      "id": "NC2045-LOC-NEW-WESTBROOK-214-CHATELAINE-S",
+      "name": "Chatelaine’s",
+      "district": "New Westbrook",
+      "marker": 4,
+      "legacy_index": 156,
+      "match_method": "id_and_marker",
+      "difference_px": 263.8
+    },
+    {
+      "i": 364,
+      "id": "NC2045-LOC-NEW-WESTBROOK-215-THE-COMBAT-ZONE",
+      "name": "The Combat Zone",
+      "district": "New Westbrook",
+      "marker": 5,
+      "legacy_index": 157,
+      "match_method": "id_and_marker",
+      "difference_px": 269.1
+    },
+    {
+      "i": 365,
+      "id": "NC2045-LOC-NEW-WESTBROOK-215-DENYA-JINJA",
+      "name": "Denya Jinja",
+      "district": "New Westbrook",
+      "marker": 6,
+      "legacy_index": 158,
+      "match_method": "id_and_marker",
+      "difference_px": 313.1
+    },
+    {
+      "i": 366,
+      "id": "NC2045-LOC-NEW-WESTBROOK-215-DILLY-S",
+      "name": "Dilly’s",
+      "district": "New Westbrook",
+      "marker": 7,
+      "legacy_index": 159,
+      "match_method": "id_and_marker",
+      "difference_px": 260.4
+    },
+    {
+      "i": 367,
+      "id": "NC2045-LOC-NEW-WESTBROOK-216-EVERGREEN-APARTMENTS",
+      "name": "Evergreen Apartments",
+      "district": "New Westbrook",
+      "marker": 8,
+      "legacy_index": 160,
+      "match_method": "id_and_marker",
+      "difference_px": 237.6
+    },
+    {
+      "i": 368,
+      "id": "NC2045-LOC-NEW-WESTBROOK-216-HARDGRIND",
+      "name": "HardGrind",
+      "district": "New Westbrook",
+      "marker": 9,
+      "legacy_index": 161,
+      "match_method": "id_and_marker",
+      "difference_px": 227.4
+    },
+    {
+      "i": 369,
+      "id": "NC2045-LOC-NEW-WESTBROOK-216-HOLLIDAY-MARKET",
+      "name": "Holliday Market",
+      "district": "New Westbrook",
+      "marker": 10,
+      "legacy_index": 162,
+      "match_method": "id_and_marker",
+      "difference_px": 219.5
+    },
+    {
+      "i": 370,
+      "id": "NC2045-LOC-NEW-WESTBROOK-216-LINCOLN-LOT",
+      "name": "Lincoln Lot",
+      "district": "New Westbrook",
+      "marker": 11,
+      "legacy_index": 163,
+      "match_method": "id_and_marker",
+      "difference_px": 238.1
+    },
+    {
+      "i": 371,
+      "id": "NC2045-LOC-NEW-WESTBROOK-217-MEDICAL-ERRORS",
+      "name": "Medical Errors",
+      "district": "New Westbrook",
+      "marker": 12,
+      "legacy_index": 164,
+      "match_method": "id_and_marker",
+      "difference_px": 231.2
+    },
+    {
+      "i": 372,
+      "id": "NC2045-LOC-NEW-WESTBROOK-217-MEGABUILDING-H6-CONSTRUCTION-SITE",
+      "name": "Megabuilding H6 Construction Site",
+      "district": "New Westbrook",
+      "marker": 13,
+      "legacy_index": 165,
+      "match_method": "id_and_marker",
+      "difference_px": 263
+    },
+    {
+      "i": 373,
+      "id": "NC2045-LOC-NEW-WESTBROOK-217-NET54-88-2",
+      "name": "Net54 88.2",
+      "district": "New Westbrook",
+      "marker": 14,
+      "legacy_index": 166,
+      "match_method": "id_and_marker",
+      "difference_px": 294.7
+    },
+    {
+      "i": 374,
+      "id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-PLAZA",
+      "name": "Network 54 Plaza",
+      "district": "New Westbrook",
+      "marker": 15,
+      "legacy_index": 167,
+      "match_method": "id_and_marker",
+      "difference_px": 275.7
+    },
+    {
+      "i": 375,
+      "id": "NC2045-LOC-NEW-WESTBROOK-217-NETWORK-54-WESTBROOK-PRIVATE-ACRES",
+      "name": "Network 54 Westbrook Private Acres",
+      "district": "New Westbrook",
+      "marker": 16,
+      "legacy_index": 168,
+      "match_method": "id_and_marker",
+      "difference_px": 284.6
+    },
+    {
+      "i": 376,
+      "id": "NC2045-LOC-NEW-WESTBROOK-218-NIGHT-CITY-FIRESTATION-1",
+      "name": "Night City Firestation #1",
+      "district": "New Westbrook",
+      "marker": 17,
+      "legacy_index": 169,
+      "match_method": "id_and_marker",
+      "difference_px": 293.1
+    },
+    {
+      "i": 377,
+      "id": "NC2045-LOC-NEW-WESTBROOK-218-NORTH-CARGO-VILLAGE",
+      "name": "North Cargo Village",
+      "district": "New Westbrook",
+      "marker": 18,
+      "legacy_index": 170,
+      "match_method": "id_and_marker",
+      "difference_px": 223.5
+    },
+    {
+      "i": 378,
+      "id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-CAMPUS",
+      "name": "Rocklin Augmentics Campus",
+      "district": "New Westbrook",
+      "marker": 19,
+      "legacy_index": 171,
+      "match_method": "id_and_marker",
+      "difference_px": 263.8
+    },
+    {
+      "i": 379,
+      "id": "NC2045-LOC-NEW-WESTBROOK-218-ROCKLIN-AUGMENTICS-INNOVATION-HUB",
+      "name": "Rocklin Augmentics Innovation Hub",
+      "district": "New Westbrook",
+      "marker": 20,
+      "legacy_index": 172,
+      "match_method": "id_and_marker",
+      "difference_px": 274.2
+    },
+    {
+      "i": 380,
+      "id": "NC2045-LOC-NEW-WESTBROOK-219-SILVER-PIXEL-CLOUD",
+      "name": "Silver Pixel Cloud",
+      "district": "New Westbrook",
+      "marker": 21,
+      "legacy_index": 173,
+      "match_method": "id_and_marker",
+      "difference_px": 308
+    },
+    {
+      "i": 381,
+      "id": "NC2045-LOC-NEW-WESTBROOK-219-VALUEMART-VILLAGE",
+      "name": "ValueMart Village",
+      "district": "New Westbrook",
+      "marker": 22,
+      "legacy_index": 174,
+      "match_method": "id_and_marker",
+      "difference_px": 245.6
+    },
+    {
+      "i": 382,
+      "id": "NC2045-LOC-NEW-WESTBROOK-220-VIRTUAL-VARIETY",
+      "name": "Virtual Variety",
+      "district": "New Westbrook",
+      "marker": 23,
+      "legacy_index": 175,
+      "match_method": "id_and_marker",
+      "difference_px": 267
+    },
+    {
+      "i": 383,
+      "id": "NC2045-LOC-NEW-WESTBROOK-220-WOODY-S",
+      "name": "Woody’s",
+      "district": "New Westbrook",
+      "marker": 24,
+      "legacy_index": 176,
+      "match_method": "id_and_marker",
+      "difference_px": 257.7
+    },
+    {
+      "i": 384,
+      "id": "NC2045-LOC-NEW-WESTBROOK-220-WORLDSAT-COMMUNICATIONS-OFFICES",
+      "name": "WorldSat Communications Offices",
+      "district": "New Westbrook",
+      "marker": 25,
+      "legacy_index": 177,
+      "match_method": "id_and_marker",
+      "difference_px": 296.9
+    },
+    {
+      "i": 385,
+      "id": "NC2045-LOC-CHARTER-HILL-224-92-9-NIGHT-FM",
+      "name": "92.9 Night FM",
+      "district": "Charter Hill",
+      "marker": 1,
+      "legacy_index": 0,
+      "match_method": "id_and_marker",
+      "difference_px": 341.9
+    },
+    {
+      "i": 386,
+      "id": "NC2045-LOC-CHARTER-HILL-224-ANJELIKA-S",
+      "name": "Anjelika’s",
+      "district": "Charter Hill",
+      "marker": 2,
+      "legacy_index": 1,
+      "match_method": "id_and_marker",
+      "difference_px": 303
+    },
+    {
+      "i": 387,
+      "id": "NC2045-LOC-CHARTER-HILL-226-BELLA-MIA",
+      "name": "Bella Mia",
+      "district": "Charter Hill",
+      "marker": 3,
+      "legacy_index": 2,
+      "match_method": "id_and_marker",
+      "difference_px": 313.8
+    },
+    {
+      "i": 388,
+      "id": "NC2045-LOC-CHARTER-HILL-226-CHARTER-HILL-MUSEUM-OF-ALL-ART",
+      "name": "Charter Hill Museum of All Art",
+      "district": "Charter Hill",
+      "marker": 4,
+      "legacy_index": 3,
+      "match_method": "id_and_marker",
+      "difference_px": 319.3
+    },
+    {
+      "i": 389,
+      "id": "NC2045-LOC-CHARTER-HILL-226-CHECKPOINT-LINCOLN",
+      "name": "Checkpoint Lincoln",
+      "district": "Charter Hill",
+      "marker": 5,
+      "legacy_index": 4,
+      "match_method": "id_and_marker",
+      "difference_px": 304
+    },
+    {
+      "i": 390,
+      "id": "NC2045-LOC-CHARTER-HILL-226-COLONIAL-STUDIOS",
+      "name": "Colonial Studios",
+      "district": "Charter Hill",
+      "marker": 6,
+      "legacy_index": 5,
+      "match_method": "id_and_marker",
+      "difference_px": 354.7
+    },
+    {
+      "i": 391,
+      "id": "NC2045-LOC-CHARTER-HILL-227-THE-COLUMBARIUM",
+      "name": "The Columbarium",
+      "district": "Charter Hill",
+      "marker": 7,
+      "legacy_index": 6,
+      "match_method": "id_and_marker",
+      "difference_px": 412
+    },
+    {
+      "i": 392,
+      "id": "NC2045-LOC-CHARTER-HILL-227-DRGS-247",
+      "name": "DRGS 247",
+      "district": "Charter Hill",
+      "marker": 8,
+      "legacy_index": 7,
+      "match_method": "id_and_marker",
+      "difference_px": 324.9
+    },
+    {
+      "i": 393,
+      "id": "NC2045-LOC-CHARTER-HILL-227-EYE-OF-THE-TIGER",
+      "name": "Eye of the Tiger",
+      "district": "Charter Hill",
+      "marker": 9,
+      "legacy_index": 8,
+      "match_method": "id_and_marker",
+      "difference_px": 296.3
+    },
+    {
+      "i": 394,
+      "id": "NC2045-LOC-CHARTER-HILL-227-THE-FLOW-MEGACHURCH",
+      "name": "The Flow Megachurch",
+      "district": "Charter Hill",
+      "marker": 10,
+      "legacy_index": 9,
+      "match_method": "id_and_marker",
+      "difference_px": 290.8
+    },
+    {
+      "i": 395,
+      "id": "NC2045-LOC-CHARTER-HILL-227-HILLSIDE-COUNTRY-CLUB",
+      "name": "Hillside Country Club",
+      "district": "Charter Hill",
+      "marker": 11,
+      "legacy_index": 10,
+      "match_method": "id_and_marker",
+      "difference_px": 407.9
+    },
+    {
+      "i": 396,
+      "id": "NC2045-LOC-CHARTER-HILL-228-HOTEL-MUY-CARO",
+      "name": "Hotel Muy Caro",
+      "district": "Charter Hill",
+      "marker": 12,
+      "legacy_index": 11,
+      "match_method": "district_marker_name",
+      "difference_px": 303
+    },
+    {
+      "i": 397,
+      "id": "NC2045-LOC-CHARTER-HILL-228-L-ERMITAGE",
+      "name": "L’Ermitage",
+      "district": "Charter Hill",
+      "marker": 13,
+      "legacy_index": 12,
+      "match_method": "id_and_marker",
+      "difference_px": 314.2
+    },
+    {
+      "i": 398,
+      "id": "NC2045-LOC-CHARTER-HILL-228-MANY-HANDS",
+      "name": "Many Hands",
+      "district": "Charter Hill",
+      "marker": 14,
+      "legacy_index": 13,
+      "match_method": "id_and_marker",
+      "difference_px": 299.6
+    },
+    {
+      "i": 399,
+      "id": "NC2045-LOC-CHARTER-HILL-228-SERAL-GROVE",
+      "name": "Seral Grove",
+      "district": "Charter Hill",
+      "marker": 15,
+      "legacy_index": 14,
+      "match_method": "id_and_marker",
+      "difference_px": 385.9
+    },
+    {
+      "i": 400,
+      "id": "NC2045-LOC-CHARTER-HILL-229-WARD-SECURITY",
+      "name": "Ward Security",
+      "district": "Charter Hill",
+      "marker": 16,
+      "legacy_index": 15,
+      "match_method": "id_and_marker",
+      "difference_px": 343.4
+    },
+    {
+      "i": 401,
+      "id": "NC2045-LOC-CHARTER-HILL-229-YOUR-NEIGHBORHOOD",
+      "name": "Your Neighborhood",
+      "district": "Charter Hill",
+      "marker": 17,
+      "legacy_index": 16,
+      "match_method": "id_and_marker",
+      "difference_px": 384.3
+    },
+    {
+      "i": 402,
+      "id": "NC2045-LOC-CHARTER-HILL-229-YOUR-NEXT-BIG-CRECHE",
+      "name": "Your Next Big Crèche",
+      "district": "Charter Hill",
+      "marker": 18,
+      "legacy_index": 17,
+      "match_method": "id_and_marker",
+      "difference_px": 321
+    },
+    {
+      "i": 403,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Artyom Sokolov",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 41,
+      "match_method": "district_unique_name",
+      "difference_px": 408.5
+    },
+    {
+      "i": 404,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Denny",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 42,
+      "match_method": "district_unique_name",
+      "difference_px": 392.7
+    },
+    {
+      "i": 405,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Eran Malour",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 43,
+      "match_method": "district_unique_name",
+      "difference_px": 371.2
+    },
+    {
+      "i": 406,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Kerry Eurodyne",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 44,
+      "match_method": "district_unique_name",
+      "difference_px": 375
+    },
+    {
+      "i": 407,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Franklin M’bolu",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 45,
+      "match_method": "district_unique_name",
+      "difference_px": 362.8
+    },
+    {
+      "i": 408,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Heather Stein",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 46,
+      "match_method": "district_unique_name",
+      "difference_px": 384.1
+    },
+    {
+      "i": 409,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Jami \"Sharkeater\" Tealov",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 47,
+      "match_method": "district_unique_name",
+      "difference_px": 379.5
+    },
+    {
+      "i": 410,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Karen Davies",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 48,
+      "match_method": "district_unique_name",
+      "difference_px": 382.9
+    },
+    {
+      "i": 411,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Michiko Sanderson",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 49,
+      "match_method": "district_unique_name",
+      "difference_px": 394.7
+    },
+    {
+      "i": 412,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "Mister Kernaghan",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 50,
+      "match_method": "district_unique_name",
+      "difference_px": 361.5
+    },
+    {
+      "i": 413,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "William Joseph \"Billy Joe\" Brentwood",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 51,
+      "match_method": "district_unique_name",
+      "difference_px": 393.2
+    },
+    {
+      "i": 414,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-THE-ESTATES",
+      "name": "UR",
+      "district": "Executive Zone",
+      "marker": 1,
+      "legacy_index": 52,
+      "match_method": "district_unique_name",
+      "difference_px": 349.3
+    },
+    {
+      "i": 415,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-234-EXECUTIVE-ZONE-CASINO-COUNTRY-CLUB",
+      "name": "Executive Zone Casino/Country Club",
+      "district": "Executive Zone",
+      "marker": 2,
+      "legacy_index": 53,
+      "match_method": "id_and_marker",
+      "difference_px": 387.6
+    },
+    {
+      "i": 416,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-235-FIREBIRD-TEAROOM-STEAM-BATHS",
+      "name": "Firebird Tearoom & Steam Baths",
+      "district": "Executive Zone",
+      "marker": 3,
+      "legacy_index": 54,
+      "match_method": "id_and_marker",
+      "difference_px": 343.2
+    },
+    {
+      "i": 417,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-235-GROUNDSKEEPER-SHED",
+      "name": "Groundskeeper Shed",
+      "district": "Executive Zone",
+      "marker": 4,
+      "legacy_index": 55,
+      "match_method": "id_and_marker",
+      "difference_px": 324.3
+    },
+    {
+      "i": 418,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-235-GROWING-SHOOTS-DAYCARE",
+      "name": "Growing Shoots Daycare",
+      "district": "Executive Zone",
+      "marker": 5,
+      "legacy_index": 56,
+      "match_method": "id_and_marker",
+      "difference_px": 355.2
+    },
+    {
+      "i": 419,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-235-HOA-OFFICES",
+      "name": "HOA Offices",
+      "district": "Executive Zone",
+      "marker": 6,
+      "legacy_index": 57,
+      "match_method": "id_and_marker",
+      "difference_px": 341.4
+    },
+    {
+      "i": 420,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-236-LAZARUS-BASE-OF-OPERATIONS",
+      "name": "Lazarus Base of Operations",
+      "district": "Executive Zone",
+      "marker": 7,
+      "legacy_index": 58,
+      "match_method": "id_and_marker",
+      "difference_px": 341.2
+    },
+    {
+      "i": 421,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-236-MONORAIL-STATION",
+      "name": "Monorail Station",
+      "district": "Executive Zone",
+      "marker": 8,
+      "legacy_index": 59,
+      "match_method": "id_and_marker",
+      "difference_px": 333.3
+    },
+    {
+      "i": 422,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-236-OASIS-EXEC-ZONE",
+      "name": "Oasis (Exec Zone)",
+      "district": "Executive Zone",
+      "marker": 9,
+      "legacy_index": 60,
+      "match_method": "id_and_marker",
+      "difference_px": 334.6
+    },
+    {
+      "i": 423,
+      "id": "NC2045-LOC-EXECUTIVE-ZONE-236-PUDDLEFORGE-GAMES",
+      "name": "Puddleforge Games",
+      "district": "Executive Zone",
+      "marker": 10,
+      "legacy_index": 61,
+      "match_method": "id_and_marker",
+      "difference_px": 409.6
+    },
+    {
+      "i": 424,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-242-THE-CYLINDERS",
+      "name": "The Cylinders",
+      "district": "Heywood Docks",
+      "marker": 1,
+      "legacy_index": 62,
+      "match_method": "id_and_marker",
+      "difference_px": 322.4
+    },
+    {
+      "i": 425,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-242-DECKER-TANAKA-ROGERS",
+      "name": "Decker, Tanaka & Rogers",
+      "district": "Heywood Docks",
+      "marker": 2,
+      "legacy_index": 63,
+      "match_method": "id_and_marker",
+      "difference_px": 321.1
+    },
+    {
+      "i": 426,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-242-DOCKSIDE-BILLHOOKS-TRACK",
+      "name": "Dockside Billhooks Track",
+      "district": "Heywood Docks",
+      "marker": 3,
+      "legacy_index": 64,
+      "match_method": "id_and_marker",
+      "difference_px": 256.8
+    },
+    {
+      "i": 427,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-242-GREENBOX-STORAGE-UNITS",
+      "name": "Greenbox Storage Units",
+      "district": "Heywood Docks",
+      "marker": 4,
+      "legacy_index": 65,
+      "match_method": "id_and_marker",
+      "difference_px": 260.8
+    },
+    {
+      "i": 428,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-242-HF-S-CONSTRUCTION",
+      "name": "HF&S Construction",
+      "district": "Heywood Docks",
+      "marker": 5,
+      "legacy_index": 66,
+      "match_method": "id_and_marker",
+      "difference_px": 327.3
+    },
+    {
+      "i": 429,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-243-LOADSTAR-CONTINENTAL-SHIPPING",
+      "name": "LoadStar Continental Shipping",
+      "district": "Heywood Docks",
+      "marker": 6,
+      "legacy_index": 67,
+      "match_method": "id_and_marker",
+      "difference_px": 319.4
+    },
+    {
+      "i": 430,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-243-RAIL-YARD",
+      "name": "Rail Yard",
+      "district": "Heywood Docks",
+      "marker": 7,
+      "legacy_index": 68,
+      "match_method": "id_and_marker",
+      "difference_px": 287.5
+    },
+    {
+      "i": 431,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-243-SHIPPING-YARD",
+      "name": "Shipping Yard",
+      "district": "Heywood Docks",
+      "marker": 8,
+      "legacy_index": 69,
+      "match_method": "id_and_marker",
+      "difference_px": 268.4
+    },
+    {
+      "i": 432,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-243-SK-SECURITIES",
+      "name": "SK Securities",
+      "district": "Heywood Docks",
+      "marker": 9,
+      "legacy_index": 70,
+      "match_method": "id_and_marker",
+      "difference_px": 305.9
+    },
+    {
+      "i": 433,
+      "id": "NC2045-LOC-HEYWOOD-DOCKS-243-WAREHOUSE-13",
+      "name": "Warehouse 13",
+      "district": "Heywood Docks",
+      "marker": 10,
+      "legacy_index": 71,
+      "match_method": "id_and_marker",
+      "difference_px": 324.7
+    },
+    {
+      "i": 434,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-246-ACORN-TOWERS",
+      "name": "Acorn Towers",
+      "district": "North Heywood",
+      "marker": 1,
+      "legacy_index": 195,
+      "match_method": "id_and_marker",
+      "difference_px": 423
+    },
+    {
+      "i": 435,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-248-AMERICAR-DISTRIBUTION-CENTER",
+      "name": "AmeriCar Distribution Center",
+      "district": "North Heywood",
+      "marker": 2,
+      "legacy_index": 196,
+      "match_method": "id_and_marker",
+      "difference_px": 434.3
+    },
+    {
+      "i": 436,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-248-THE-ARMORY",
+      "name": "The Armory",
+      "district": "North Heywood",
+      "marker": 3,
+      "legacy_index": 197,
+      "match_method": "id_and_marker",
+      "difference_px": 329
+    },
+    {
+      "i": 437,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-248-BLUE-AIR-STUDIO-APARTMENTS",
+      "name": "Blue Air Studio Apartments",
+      "district": "North Heywood",
+      "marker": 4,
+      "legacy_index": 198,
+      "match_method": "id_and_marker",
+      "difference_px": 518.7
+    },
+    {
+      "i": 438,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-248-BYTE-SWITCH",
+      "name": "Byte & Switch",
+      "district": "North Heywood",
+      "marker": 5,
+      "legacy_index": 199,
+      "match_method": "id_and_marker",
+      "difference_px": 490.7
+    },
+    {
+      "i": 439,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-249-DYNALAR-CAMPUS",
+      "name": "Dynalar Campus",
+      "district": "North Heywood",
+      "marker": 6,
+      "legacy_index": 200,
+      "match_method": "id_and_marker",
+      "difference_px": 388.3
+    },
+    {
+      "i": 440,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-249-EVERGREEN-VISTA-PARK",
+      "name": "Evergreen Vista Park",
+      "district": "North Heywood",
+      "marker": 7,
+      "legacy_index": 201,
+      "match_method": "id_and_marker",
+      "difference_px": 390.7
+    },
+    {
+      "i": 441,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-249-THE-FORLORN-HOPE",
+      "name": "The Forlorn Hope",
+      "district": "North Heywood",
+      "marker": 8,
+      "legacy_index": 202,
+      "match_method": "id_and_marker",
+      "difference_px": 399.8
+    },
+    {
+      "i": 442,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-249-HAVEN-SPA-RECOVERY",
+      "name": "Haven Spa & Recovery",
+      "district": "North Heywood",
+      "marker": 9,
+      "legacy_index": 203,
+      "match_method": "id_and_marker",
+      "difference_px": 353.5
+    },
+    {
+      "i": 443,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-250-HAYWIRE-CIRCUIT-GYM",
+      "name": "Haywire Circuit Gym",
+      "district": "North Heywood",
+      "marker": 10,
+      "legacy_index": 204,
+      "match_method": "id_and_marker",
+      "difference_px": 386.7
+    },
+    {
+      "i": 444,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-250-NANA-MEOW-S-NURSERY",
+      "name": "Nana Meow’s Nursery",
+      "district": "North Heywood",
+      "marker": 11,
+      "legacy_index": 205,
+      "match_method": "id_and_marker",
+      "difference_px": 356.6
+    },
+    {
+      "i": 445,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-250-NEON-HOLLOW-STRIP",
+      "name": "Neon Hollow Strip",
+      "district": "North Heywood",
+      "marker": 12,
+      "legacy_index": 206,
+      "match_method": "id_and_marker",
+      "difference_px": 450.6
+    },
+    {
+      "i": 446,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-250-THE-NIGHT-CITY-ANIMAL-SHELTER",
+      "name": "The Night City Animal Shelter",
+      "district": "North Heywood",
+      "marker": 13,
+      "legacy_index": 207,
+      "match_method": "id_and_marker",
+      "difference_px": 424.4
+    },
+    {
+      "i": 447,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-250-NORTH-HEYWOOD-CIVIC-NEXUS",
+      "name": "North Heywood Civic Nexus",
+      "district": "North Heywood",
+      "marker": 14,
+      "legacy_index": 208,
+      "match_method": "id_and_marker",
+      "difference_px": 375.4
+    },
+    {
+      "i": 448,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-251-PERENNIAL-HEIGHTS-THE-RUPTURE",
+      "name": "Perennial Heights/The Rupture",
+      "district": "North Heywood",
+      "marker": 15,
+      "legacy_index": 209,
+      "match_method": "id_and_marker",
+      "difference_px": 380.4
+    },
+    {
+      "i": 449,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-251-SLEEPEASY-HOME-SOLUTIONS",
+      "name": "Sleepeasy Home Solutions",
+      "district": "North Heywood",
+      "marker": 16,
+      "legacy_index": 210,
+      "match_method": "id_and_marker",
+      "difference_px": 421.7
+    },
+    {
+      "i": 450,
+      "id": "NC2045-LOC-NORTH-HEYWOOD-251-TURBINE-ALLEY",
+      "name": "Turbine Alley",
+      "district": "North Heywood",
+      "marker": 17,
+      "legacy_index": 211,
+      "match_method": "id_and_marker",
+      "difference_px": 436.3
+    },
+    {
+      "i": 451,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-BIOTECHNICA-PALM-GROVE",
+      "name": "Biotechnica Palm Grove",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 212,
+      "match_method": "district_unique_name",
+      "difference_px": 413
+    },
+    {
+      "i": 452,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-BREEZE",
+      "name": "Breeze/Burning Bright Bodega",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 213,
+      "match_method": "district_unique_name",
+      "difference_px": 405.2
+    },
+    {
+      "i": 453,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-PALMS",
+      "name": "The Palms",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 214,
+      "match_method": "district_unique_name",
+      "difference_px": 391.9
+    },
+    {
+      "i": 454,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-THE-SHARK",
+      "name": "The Shark",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 215,
+      "match_method": "district_unique_name",
+      "difference_px": 394.9
+    },
+    {
+      "i": 455,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-XANADU",
+      "name": "Xanadu",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 216,
+      "match_method": "unique_id",
+      "difference_px": 408.2
+    },
+    {
+      "i": 456,
+      "id": "NC2045-OUT-NORTH-HEYWOOD-252-ZOLLETTA",
+      "name": "Zolletta",
+      "district": "North Heywood",
+      "marker": 18,
+      "legacy_index": 217,
+      "match_method": "unique_id",
+      "difference_px": 401.4
+    },
+    {
+      "i": 457,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ALDECALDO-DEPOT",
+      "name": "Aldecaldo Depot",
+      "district": "Heywood Industrial Zone",
+      "marker": 1,
+      "legacy_index": 72,
+      "match_method": "id_and_marker",
+      "difference_px": 192.5
+    },
+    {
+      "i": 458,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-AGRON-S-BOXED-LUNCHES",
+      "name": "Agron’s Boxed Lunches",
+      "district": "Heywood Industrial Zone",
+      "marker": 2,
+      "legacy_index": 73,
+      "match_method": "id_and_marker",
+      "difference_px": 195.8
+    },
+    {
+      "i": 459,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-ARROYO-CONCERN-OFFICES",
+      "name": "Arroyo Concern Offices",
+      "district": "Heywood Industrial Zone",
+      "marker": 3,
+      "legacy_index": 74,
+      "match_method": "id_and_marker",
+      "difference_px": 226.9
+    },
+    {
+      "i": 460,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-CONTINENTAL-BRANDS-MANUFACTURING",
+      "name": "Continental Brands Manufacturing",
+      "district": "Heywood Industrial Zone",
+      "marker": 4,
+      "legacy_index": 75,
+      "match_method": "id_and_marker",
+      "difference_px": 196.6
+    },
+    {
+      "i": 461,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-258-D-V-RAMBLING-ROSE",
+      "name": "D.V. Rambling Rose",
+      "district": "Heywood Industrial Zone",
+      "marker": 5,
+      "legacy_index": 76,
+      "match_method": "id_and_marker",
+      "difference_px": 175.4
+    },
+    {
+      "i": 462,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-GUNMART-MANUFACTURING",
+      "name": "GunMart Manufacturing",
+      "district": "Heywood Industrial Zone",
+      "marker": 6,
+      "legacy_index": 77,
+      "match_method": "id_and_marker",
+      "difference_px": 197.9
+    },
+    {
+      "i": 463,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-THE-INTERCHANGE",
+      "name": "The Interchange",
+      "district": "Heywood Industrial Zone",
+      "marker": 7,
+      "legacy_index": 78,
+      "match_method": "id_and_marker",
+      "difference_px": 264.8
+    },
+    {
+      "i": 464,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-MILITECH-MANUFACTURING-PLANT",
+      "name": "Militech Manufacturing Plant",
+      "district": "Heywood Industrial Zone",
+      "marker": 8,
+      "legacy_index": 79,
+      "match_method": "id_and_marker",
+      "difference_px": 215.4
+    },
+    {
+      "i": 465,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-OLD-IRONWORKS-BUILDING",
+      "name": "The Old Ironworks Building",
+      "district": "Heywood Industrial Zone",
+      "marker": 9,
+      "legacy_index": 80,
+      "match_method": "district_marker_name",
+      "difference_px": 186
+    },
+    {
+      "i": 466,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-259-PETROCHEM-PLASTICS-PLANT",
+      "name": "Petrochem Plastics Plant",
+      "district": "Heywood Industrial Zone",
+      "marker": 10,
+      "legacy_index": 81,
+      "match_method": "id_and_marker",
+      "difference_px": 182.9
+    },
+    {
+      "i": 467,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-RAVEN-MICROCYBERNETICS-FACTORY",
+      "name": "Raven Microcybernetics Factory",
+      "district": "Heywood Industrial Zone",
+      "marker": 11,
+      "legacy_index": 82,
+      "match_method": "id_and_marker",
+      "difference_px": 195.1
+    },
+    {
+      "i": 468,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-ROCKLIN-AUGMENTICS-MANUFACTURING",
+      "name": "Rocklin Augmentics Manufacturing",
+      "district": "Heywood Industrial Zone",
+      "marker": 12,
+      "legacy_index": 83,
+      "match_method": "id_and_marker",
+      "difference_px": 216
+    },
+    {
+      "i": 469,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-THE-RODEO",
+      "name": "The Rodeo",
+      "district": "Heywood Industrial Zone",
+      "marker": 13,
+      "legacy_index": 84,
+      "match_method": "id_and_marker",
+      "difference_px": 171.7
+    },
+    {
+      "i": 470,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-260-SOVOIL-PLASTICS-PLANT",
+      "name": "SovOil Plastics Plant",
+      "district": "Heywood Industrial Zone",
+      "marker": 14,
+      "legacy_index": 85,
+      "match_method": "id_and_marker",
+      "difference_px": 187.5
+    },
+    {
+      "i": 471,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-TRAUMA-TEAM-PHARMACEUTICAL-PLANT",
+      "name": "Trauma Team Pharmaceutical Plant",
+      "district": "Heywood Industrial Zone",
+      "marker": 15,
+      "legacy_index": 86,
+      "match_method": "id_and_marker",
+      "difference_px": 195
+    },
+    {
+      "i": 472,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-YANG-S-WHEELS",
+      "name": "Yang’s Wheels",
+      "district": "Heywood Industrial Zone",
+      "marker": 16,
+      "legacy_index": 87,
+      "match_method": "id_and_marker",
+      "difference_px": 237.8
+    },
+    {
+      "i": 473,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-OFFICE-PARK",
+      "name": "Zhirafa Office Park",
+      "district": "Heywood Industrial Zone",
+      "marker": 17,
+      "legacy_index": 88,
+      "match_method": "id_and_marker",
+      "difference_px": 239.3
+    },
+    {
+      "i": 474,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-261-ZHIRAFA-MICROVILLAGE",
+      "name": "Zhirafa MicroVillage",
+      "district": "Heywood Industrial Zone",
+      "marker": 18,
+      "legacy_index": 89,
+      "match_method": "id_and_marker",
+      "difference_px": 253.2
+    },
+    {
+      "i": 475,
+      "id": "NC2045-LOC-HEYWOOD-INDUSTRIAL-ZONE-262-ZIGGURAT-WAREHOUSES",
+      "name": "Ziggurat Warehouses",
+      "district": "Heywood Industrial Zone",
+      "marker": 19,
+      "legacy_index": 90,
+      "match_method": "id_and_marker",
+      "difference_px": 159.1
+    },
+    {
+      "i": 476,
+      "id": "NC2045-LOC-SANTO-DOMINGO-264-88-9-NOMAD-PRESENTS-RADIO-NOPR",
+      "name": "88.9 Nomad Presents Radio (NoPR)",
+      "district": "Santo Domingo",
+      "marker": 1,
+      "legacy_index": 329,
+      "match_method": "id_and_marker",
+      "difference_px": 454
+    },
+    {
+      "i": 477,
+      "id": "NC2045-LOC-SANTO-DOMINGO-266-ALDECALDO-CAMP",
+      "name": "Aldecaldo Camp",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 330,
+      "match_method": "id_and_marker",
+      "difference_px": 405.2
+    },
+    {
+      "i": 478,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-ALLNATIONS-CONSTRUCTION",
+      "name": "AllNations Construction",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 331,
+      "match_method": "unique_id",
+      "difference_px": 381
+    },
+    {
+      "i": 479,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-BAZAAR-EL-SABER",
+      "name": "Bazaar El Saber",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 332,
+      "match_method": "unique_id",
+      "difference_px": 406.6
+    },
+    {
+      "i": 480,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-CAITLIN-MARKET",
+      "name": "Caitlin Market",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 333,
+      "match_method": "unique_id",
+      "difference_px": 379.5
+    },
+    {
+      "i": 481,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-DR-PEDRO-MARIA-GUTIERREZ-SCHOOL",
+      "name": "Dr. Pedro María Gutierrez School",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 334,
+      "match_method": "district_unique_name",
+      "difference_px": 367.1
+    },
+    {
+      "i": 482,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-RADIO-TENT",
+      "name": "Radio Tent",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 335,
+      "match_method": "district_unique_name",
+      "difference_px": 352.7
+    },
+    {
+      "i": 483,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-SKINNY-JAMES-LOT",
+      "name": "Skinny James’ Lot",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 336,
+      "match_method": "unique_id",
+      "difference_px": 352.8
+    },
+    {
+      "i": 484,
+      "id": "NC2045-OUT-SANTO-DOMINGO-266-SOL-CANELA-PARK",
+      "name": "Sol Canela Park",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 337,
+      "match_method": "district_unique_name",
+      "difference_px": 388.8
+    },
+    {
+      "i": 485,
+      "id": "NC2045-OUT-SANTO-DOMINGO-267-TEPUI",
+      "name": "Tepui",
+      "district": "Santo Domingo",
+      "marker": 2,
+      "legacy_index": 338,
+      "match_method": "district_unique_name",
+      "difference_px": 428.1
+    },
+    {
+      "i": 486,
+      "id": "NC2045-LOC-SANTO-DOMINGO-267-ALDECALDO-PEACEKEEPERS-HQ",
+      "name": "Aldecaldo Peacekeepers HQ",
+      "district": "Santo Domingo",
+      "marker": 3,
+      "legacy_index": 339,
+      "match_method": "id_and_marker",
+      "difference_px": 342.2
+    },
+    {
+      "i": 487,
+      "id": "NC2045-LOC-SANTO-DOMINGO-267-ALDECALDO-WARRIORS-TRACK",
+      "name": "Aldecaldo Warriors Track",
+      "district": "Santo Domingo",
+      "marker": 4,
+      "legacy_index": 340,
+      "match_method": "id_and_marker",
+      "difference_px": 278.8
+    },
+    {
+      "i": 488,
+      "id": "NC2045-LOC-SANTO-DOMINGO-267-ALTAR-A-NUESTRA-SENORA-DE-LA-SANTA-MUERTE",
+      "name": "Altar a Nuestra Señora de la Santa Muerte",
+      "district": "Santo Domingo",
+      "marker": 5,
+      "legacy_index": 341,
+      "match_method": "district_marker_name",
+      "difference_px": 269.1
+    },
+    {
+      "i": 489,
+      "id": "NC2045-LOC-SANTO-DOMINGO-267-CIUDAD-TECHITO",
+      "name": "Ciudad Techito",
+      "district": "Santo Domingo",
+      "marker": 6,
+      "legacy_index": 342,
+      "match_method": "id_and_marker",
+      "difference_px": 377.8
+    },
+    {
+      "i": 490,
+      "id": "NC2045-LOC-SANTO-DOMINGO-267-CORONADO-DAM",
+      "name": "Coronado Dam",
+      "district": "Santo Domingo",
+      "marker": 7,
+      "legacy_index": 343,
+      "match_method": "id_and_marker",
+      "difference_px": 432.8
+    },
+    {
+      "i": 491,
+      "id": "NC2045-LOC-SANTO-DOMINGO-268-EAST-CARGO-VILLAGE",
+      "name": "East Cargo Village",
+      "district": "Santo Domingo",
+      "marker": 8,
+      "legacy_index": 344,
+      "match_method": "id_and_marker",
+      "difference_px": 317.4
+    },
+    {
+      "i": 492,
+      "id": "NC2045-LOC-SANTO-DOMINGO-268-HEYWOOD-SUITES",
+      "name": "Heywood Suites",
+      "district": "Santo Domingo",
+      "marker": 9,
+      "legacy_index": 345,
+      "match_method": "id_and_marker",
+      "difference_px": 259.4
+    },
+    {
+      "i": 493,
+      "id": "NC2045-LOC-SANTO-DOMINGO-268-HUNGER-STREET",
+      "name": "Hunger Street",
+      "district": "Santo Domingo",
+      "marker": 10,
+      "legacy_index": 346,
+      "match_method": "id_and_marker",
+      "difference_px": 176.5
+    },
+    {
+      "i": 494,
+      "id": "NC2045-LOC-SANTO-DOMINGO-268-LIVE-WIRE-BARB-HOUSE",
+      "name": "Live Wire Barb House",
+      "district": "Santo Domingo",
+      "marker": 11,
+      "legacy_index": 347,
+      "match_method": "id_and_marker",
+      "difference_px": 392.8
+    },
+    {
+      "i": 495,
+      "id": "NC2045-LOC-SANTO-DOMINGO-268-MARIA-S",
+      "name": "María’s",
+      "district": "Santo Domingo",
+      "marker": 12,
+      "legacy_index": 348,
+      "match_method": "id_and_marker",
+      "difference_px": 268.7
+    },
+    {
+      "i": 496,
+      "id": "NC2045-LOC-SANTO-DOMINGO-269-MEGABUILDING-H4",
+      "name": "Megabuilding H4",
+      "district": "Santo Domingo",
+      "marker": 13,
+      "legacy_index": 349,
+      "match_method": "id_and_marker",
+      "difference_px": 151.2
+    },
+    {
+      "i": 497,
+      "id": "NC2045-LOC-SANTO-DOMINGO-269-METALSTORM",
+      "name": "MetalStorm",
+      "district": "Santo Domingo",
+      "marker": 14,
+      "legacy_index": 350,
+      "match_method": "id_and_marker",
+      "difference_px": 92.3
+    },
+    {
+      "i": 498,
+      "id": "NC2045-LOC-SANTO-DOMINGO-269-NCPD-PRECINCT-2",
+      "name": "NCPD Precinct #2",
+      "district": "Santo Domingo",
+      "marker": 15,
+      "legacy_index": 351,
+      "match_method": "id_and_marker",
+      "difference_px": 112.8
+    },
+    {
+      "i": 499,
+      "id": "NC2045-LOC-SANTO-DOMINGO-270-NORTHERN-LIGHT-SUPPLIES",
+      "name": "Northern Light Supplies",
+      "district": "Santo Domingo",
+      "marker": 16,
+      "legacy_index": 352,
+      "match_method": "id_and_marker",
+      "difference_px": 242.2
+    },
+    {
+      "i": 500,
+      "id": "NC2045-LOC-SANTO-DOMINGO-270-SALON-DE-VALENTINO",
+      "name": "Salón de Valentino",
+      "district": "Santo Domingo",
+      "marker": 17,
+      "legacy_index": 353,
+      "match_method": "id_and_marker",
+      "difference_px": 313.3
+    },
+    {
+      "i": 501,
+      "id": "NC2045-LOC-SANTO-DOMINGO-270-SOVOIL-PAINT-FACTORY",
+      "name": "SovOil Paint Factory",
+      "district": "Santo Domingo",
+      "marker": 18,
+      "legacy_index": 354,
+      "match_method": "id_and_marker",
+      "difference_px": 182.2
+    },
+    {
+      "i": 502,
+      "id": "NC2045-LOC-SANTO-DOMINGO-270-WOODCHIPPER-S-GARAGE",
+      "name": "Woodchipper’s Garage",
+      "district": "Santo Domingo",
+      "marker": 19,
+      "legacy_index": 355,
+      "match_method": "id_and_marker",
+      "difference_px": 328.5
+    },
+    {
+      "i": 503,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-276-THE-ASCENSION",
+      "name": "The Ascension",
+      "district": "Pacifica Playground",
+      "marker": 1,
+      "legacy_index": 266,
+      "match_method": "id_and_marker",
+      "difference_px": 261
+    },
+    {
+      "i": 504,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-BITS-N-BOLTS",
+      "name": "Bits’n’Bolts",
+      "district": "Pacifica Playground",
+      "marker": 2,
+      "legacy_index": 267,
+      "match_method": "id_and_marker",
+      "difference_px": 152.5
+    },
+    {
+      "i": 505,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-CUBELAND-BY-THE-SEA",
+      "name": "Cubeland by the Sea",
+      "district": "Pacifica Playground",
+      "marker": 3,
+      "legacy_index": 268,
+      "match_method": "id_and_marker",
+      "difference_px": 256
+    },
+    {
+      "i": 506,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-DREAM-FOREST-DEVELOPMENT",
+      "name": "Dream Forest Development",
+      "district": "Pacifica Playground",
+      "marker": 4,
+      "legacy_index": 269,
+      "match_method": "id_and_marker",
+      "difference_px": 294.6
+    },
+    {
+      "i": 507,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-278-FLAIRE",
+      "name": "Flaire",
+      "district": "Pacifica Playground",
+      "marker": 5,
+      "legacy_index": 270,
+      "match_method": "id_and_marker",
+      "difference_px": 221.9
+    },
+    {
+      "i": 508,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-JODES-CAMP",
+      "name": "Jodes Camp",
+      "district": "Pacifica Playground",
+      "marker": 6,
+      "legacy_index": 271,
+      "match_method": "id_and_marker",
+      "difference_px": 403.5
+    },
+    {
+      "i": 509,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-MISTER-RICE-GUY",
+      "name": "Mister Rice Guy",
+      "district": "Pacifica Playground",
+      "marker": 7,
+      "legacy_index": 272,
+      "match_method": "id_and_marker",
+      "difference_px": 337.1
+    },
+    {
+      "i": 510,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-279-OBSIDIAN-EQUINOX-MARINA-DOCKS",
+      "name": "Obsidian Equinox Marina & Docks",
+      "district": "Pacifica Playground",
+      "marker": 8,
+      "legacy_index": 273,
+      "match_method": "id_and_marker",
+      "difference_px": 322.8
+    },
+    {
+      "i": 511,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PACIFICA-ARCOLOGY-RUINS",
+      "name": "Pacifica Arcology Ruins",
+      "district": "Pacifica Playground",
+      "marker": 9,
+      "legacy_index": 274,
+      "match_method": "id_and_marker",
+      "difference_px": 536.5
+    },
+    {
+      "i": 512,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLAYHOUSE",
+      "name": "Playhouse",
+      "district": "Pacifica Playground",
+      "marker": 10,
+      "legacy_index": 275,
+      "match_method": "id_and_marker",
+      "difference_px": 226.8
+    },
+    {
+      "i": 513,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PLEASANT-VALLEY-APARTMENTS",
+      "name": "Pleasant Valley Apartments",
+      "district": "Pacifica Playground",
+      "marker": 11,
+      "legacy_index": 276,
+      "match_method": "id_and_marker",
+      "difference_px": 320.2
+    },
+    {
+      "i": 514,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-PURSUIT-SECURITY-INC-SHOWROOM",
+      "name": "Pursuit Security Inc Showroom",
+      "district": "Pacifica Playground",
+      "marker": 12,
+      "legacy_index": 277,
+      "match_method": "id_and_marker",
+      "difference_px": 155.6
+    },
+    {
+      "i": 515,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-QUAID-WINSTON-MEMORIAL-DE-SALINIZATION-PLANT",
+      "name": "Quaid Winston Memorial De-Salinization Plant",
+      "district": "Pacifica Playground",
+      "marker": 13,
+      "legacy_index": 278,
+      "match_method": "id_and_marker",
+      "difference_px": 345
+    },
+    {
+      "i": 516,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-280-SHELLSHOCK-CENTRAL",
+      "name": "ShellShock Central",
+      "district": "Pacifica Playground",
+      "marker": 14,
+      "legacy_index": 279,
+      "match_method": "id_and_marker",
+      "difference_px": 410.2
+    },
+    {
+      "i": 517,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SCENIC-CUBES",
+      "name": "Scenic Cubes",
+      "district": "Pacifica Playground",
+      "marker": 15,
+      "legacy_index": 280,
+      "match_method": "id_and_marker",
+      "difference_px": 376.1
+    },
+    {
+      "i": 518,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-SMILE-ANOTHER-DAY",
+      "name": "Smile Another Day",
+      "district": "Pacifica Playground",
+      "marker": 16,
+      "legacy_index": 281,
+      "match_method": "id_and_marker",
+      "difference_px": 172.1
+    },
+    {
+      "i": 519,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-STOP-SHOP-STITCH",
+      "name": "Stop. Shop. Stitch.",
+      "district": "Pacifica Playground",
+      "marker": 17,
+      "legacy_index": 282,
+      "match_method": "id_and_marker",
+      "difference_px": 311.7
+    },
+    {
+      "i": 520,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-281-TANSON-GROUP-HEADQUARTERS",
+      "name": "Tanson Group Headquarters",
+      "district": "Pacifica Playground",
+      "marker": 18,
+      "legacy_index": 283,
+      "match_method": "id_and_marker",
+      "difference_px": 250.1
+    },
+    {
+      "i": 521,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-TORTA-SIENDA",
+      "name": "Torta-sienda",
+      "district": "Pacifica Playground",
+      "marker": 19,
+      "legacy_index": 284,
+      "match_method": "id_and_marker",
+      "difference_px": 263.7
+    },
+    {
+      "i": 522,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-VOLKODAV-RACETRACK",
+      "name": "Volkodav Racetrack",
+      "district": "Pacifica Playground",
+      "marker": 20,
+      "legacy_index": 285,
+      "match_method": "id_and_marker",
+      "difference_px": 233.5
+    },
+    {
+      "i": 523,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-WNS-OFFICES",
+      "name": "WNS Offices",
+      "district": "Pacifica Playground",
+      "marker": 21,
+      "legacy_index": 286,
+      "match_method": "id_and_marker",
+      "difference_px": 201.8
+    },
+    {
+      "i": 524,
+      "id": "NC2045-LOC-PACIFICA-PLAYGROUND-282-THE-XX-THE-TWENTY",
+      "name": "The XX (The Twenty)",
+      "district": "Pacifica Playground",
+      "marker": 22,
+      "legacy_index": 287,
+      "match_method": "id_and_marker",
+      "difference_px": 141.2
+    },
+    {
+      "i": 525,
+      "id": "NC2045-LOC-RANCHO-CORONADO-286-106-9-SANGRE-Y-ARENA",
+      "name": "106.9 Sangre y arena",
+      "district": "Rancho Coronado",
+      "marker": 1,
+      "legacy_index": 303,
+      "match_method": "id_and_marker",
+      "difference_px": 72.5
+    },
+    {
+      "i": 526,
+      "id": "NC2045-LOC-RANCHO-CORONADO-288-ALBINO-ALLIGATOR-CAR-WASH",
+      "name": "Albino Alligator Car Wash",
+      "district": "Rancho Coronado",
+      "marker": 2,
+      "legacy_index": 304,
+      "match_method": "id_and_marker",
+      "difference_px": 132.5
+    },
+    {
+      "i": 527,
+      "id": "NC2045-LOC-RANCHO-CORONADO-288-BREAD-AND-ROSES",
+      "name": "Bread and Roses",
+      "district": "Rancho Coronado",
+      "marker": 3,
+      "legacy_index": 305,
+      "match_method": "id_and_marker",
+      "difference_px": 65.6
+    },
+    {
+      "i": 528,
+      "id": "NC2045-LOC-RANCHO-CORONADO-288-CORONADO-HEIGHTS",
+      "name": "Coronado Heights",
+      "district": "Rancho Coronado",
+      "marker": 4,
+      "legacy_index": 306,
+      "match_method": "id_and_marker",
+      "difference_px": 116.7
+    },
+    {
+      "i": 529,
+      "id": "NC2045-LOC-RANCHO-CORONADO-288-THE-CULMS",
+      "name": "The Culms",
+      "district": "Rancho Coronado",
+      "marker": 5,
+      "legacy_index": 307,
+      "match_method": "id_and_marker",
+      "difference_px": 133.5
+    },
+    {
+      "i": 530,
+      "id": "NC2045-LOC-RANCHO-CORONADO-289-DIGITAL-DIVINITY-RUINS",
+      "name": "Digital Divinity Ruins",
+      "district": "Rancho Coronado",
+      "marker": 6,
+      "legacy_index": 308,
+      "match_method": "id_and_marker",
+      "difference_px": 82.1
+    },
+    {
+      "i": 531,
+      "id": "NC2045-LOC-RANCHO-CORONADO-289-EAGLE-ROCK-STADIUM",
+      "name": "Eagle Rock Stadium",
+      "district": "Rancho Coronado",
+      "marker": 7,
+      "legacy_index": 309,
+      "match_method": "id_and_marker",
+      "difference_px": 6.6
+    },
+    {
+      "i": 532,
+      "id": "NC2045-LOC-RANCHO-CORONADO-289-THE-HENHOUSE",
+      "name": "The Henhouse",
+      "district": "Rancho Coronado",
+      "marker": 8,
+      "legacy_index": 310,
+      "match_method": "id_and_marker",
+      "difference_px": 96.9
+    },
+    {
+      "i": 533,
+      "id": "NC2045-LOC-RANCHO-CORONADO-289-THE-ISLAND",
+      "name": "The Island",
+      "district": "Rancho Coronado",
+      "marker": 9,
+      "legacy_index": 311,
+      "match_method": "id_and_marker",
+      "difference_px": 44.8
+    },
+    {
+      "i": 534,
+      "id": "NC2045-LOC-RANCHO-CORONADO-289-JACK-N-THE-GREEN",
+      "name": "Jack 'N' the Green",
+      "district": "Rancho Coronado",
+      "marker": 10,
+      "legacy_index": 312,
+      "match_method": "id_and_marker",
+      "difference_px": 75.5
+    },
+    {
+      "i": 535,
+      "id": "NC2045-LOC-RANCHO-CORONADO-290-MINIMALLISM",
+      "name": "Minimallism",
+      "district": "Rancho Coronado",
+      "marker": 11,
+      "legacy_index": 313,
+      "match_method": "id_and_marker",
+      "difference_px": 68.3
+    }
+  ],
+  "unpaired_recovered": [
+    {
+      "i": 86,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL",
+      "name": "Ashcroft Hotel",
+      "district": "The Hot Zone",
+      "marker": 1,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 87,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER",
+      "name": "The Crater",
+      "district": "The Hot Zone",
+      "marker": 2,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 88,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER",
+      "name": "Crisis Center",
+      "district": "The Hot Zone",
+      "marker": 3,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 89,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE",
+      "name": "Dark Zone One",
+      "district": "The Hot Zone",
+      "marker": 4,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 90,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP",
+      "name": "The Dump",
+      "district": "The Hot Zone",
+      "marker": 5,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 91,
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA",
+      "name": "Eurasiabank Plaza",
+      "district": "The Hot Zone",
+      "marker": 6,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 92,
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL",
+      "name": "Graceland Medical",
+      "district": "The Hot Zone",
+      "marker": 7,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 93,
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54",
+      "name": "The N54",
+      "district": "The Hot Zone",
+      "marker": 8,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 94,
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD",
+      "name": "Safe Child",
+      "district": "The Hot Zone",
+      "marker": 9,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 95,
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE",
+      "name": "Toggle’s Temple",
+      "district": "The Hot Zone",
+      "marker": 10,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 96,
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+      "name": "Totentanz",
+      "district": "The Hot Zone",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 125,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "name": "The Cells",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 126,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "name": "The Cells",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 127,
+      "id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS",
+      "name": "The Cells",
+      "district": "University District",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 536,
+      "id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO",
+      "name": "107.3 Morro Rock Radio",
+      "district": "Outskirts",
+      "marker": 1,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 537,
+      "id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM",
+      "name": "Edgewood Farm",
+      "district": "Outskirts",
+      "marker": 2,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 538,
+      "id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM",
+      "name": "Ingalls Farm",
+      "district": "Outskirts",
+      "marker": 2,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 539,
+      "id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM",
+      "name": "Poppy Farm",
+      "district": "Outskirts",
+      "marker": 2,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 540,
+      "id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT",
+      "name": "Jackson Plains Regional Airport",
+      "district": "Outskirts",
+      "marker": 3,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 541,
+      "id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND",
+      "name": "Laguna Bend",
+      "district": "Outskirts",
+      "marker": 4,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 542,
+      "id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL",
+      "name": "Municipal Landfill",
+      "district": "Outskirts",
+      "marker": 5,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 543,
+      "id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT",
+      "name": "Night City Spaceport",
+      "district": "Outskirts",
+      "marker": 6,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 544,
+      "id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION",
+      "name": "NorCal Marshal Station",
+      "district": "Outskirts",
+      "marker": 7,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 545,
+      "id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE",
+      "name": "Militech Ballistics & Explosives Range",
+      "district": "Outskirts",
+      "marker": 8,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 546,
+      "id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION",
+      "name": "Night Corp Solar Station",
+      "district": "Outskirts",
+      "marker": 9,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 547,
+      "id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS",
+      "name": "Northern Oil Fields",
+      "district": "Outskirts",
+      "marker": 10,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 548,
+      "id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION",
+      "name": "Petrochem CHOOH2 Station",
+      "district": "Outskirts",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 549,
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY",
+      "name": "Pol-Bud Cement Factory",
+      "district": "Outskirts",
+      "marker": 12,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 550,
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO",
+      "name": "Pol-Bud Miasto",
+      "district": "Outskirts",
+      "marker": 13,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 551,
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE",
+      "name": "Pol-Bud Mine",
+      "district": "Outskirts",
+      "marker": 14,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 552,
+      "id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION",
+      "name": "Sheriff’s Station",
+      "district": "Outskirts",
+      "marker": 15,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 553,
+      "id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION",
+      "name": "SovOil CHOOH2 Station",
+      "district": "Outskirts",
+      "marker": 16,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 554,
+      "id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL",
+      "name": "Sunshine Motel",
+      "district": "Outskirts",
+      "marker": 17,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 555,
+      "id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION",
+      "name": "Union Railroad Station",
+      "district": "Outskirts",
+      "marker": 18,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 556,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-ECO-COASTER-E",
+      "name": "Eco-Coaster (E)",
+      "district": "Playland by the Sea Lands",
+      "marker": 1,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 557,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-KIBBLE-CAKES",
+      "name": "Kibble Cakes",
+      "district": "Playland by the Sea Lands",
+      "marker": 2,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 558,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-BUMPER-PANDAMONIUM-C",
+      "name": "Bumper Pandamonium (C)",
+      "district": "Playland by the Sea Lands",
+      "marker": 3,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 559,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-MOO-MOO-BURGER-PIER",
+      "name": "Moo Moo Burger Pier",
+      "district": "Playland by the Sea Lands",
+      "marker": 4,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 560,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-THE-BIG-WHEEL-E",
+      "name": "The Big Wheel (E)",
+      "district": "Playland by the Sea Lands",
+      "marker": 5,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 561,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-HAMMERED-INDUSTRIES-BEER-GARDEN",
+      "name": "Hammered Industries Beer Garden",
+      "district": "Playland by the Sea Lands",
+      "marker": 6,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 562,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-DEPTH-CHARGE-E",
+      "name": "Depth Charge (E)",
+      "district": "Playland by the Sea Lands",
+      "marker": 7,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 563,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-311-LASER-LIGHT-ARENA-D",
+      "name": "Laser Light Arena (D)",
+      "district": "Playland by the Sea Lands",
+      "marker": 8,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 564,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GRAND-HOTEL",
+      "name": "Grand Hotel",
+      "district": "Playland by the Sea Lands",
+      "marker": 9,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 565,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-PLAYLAND-AMPHITHEATRE-REFLECTION-DECK-A",
+      "name": "Playland Amphitheatre & Reflection Deck (A)",
+      "district": "Playland by the Sea Lands",
+      "marker": 10,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 566,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MEMORIAL-ZEN-GARDEN-A",
+      "name": "Memorial Zen Garden (A)",
+      "district": "Playland by the Sea Lands",
+      "marker": 11,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 567,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-LOVERS-CAFE",
+      "name": "Lovers Café",
+      "district": "Playland by the Sea Lands",
+      "marker": 12,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 568,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-MERMAID-FOUNTAIN-A",
+      "name": "Mermaid Fountain (A)",
+      "district": "Playland by the Sea Lands",
+      "marker": 13,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 569,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CIRCLE-OF-THE-SUPERNATURAL",
+      "name": "Circle of the Supernatural",
+      "district": "Playland by the Sea Lands",
+      "marker": 14,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 570,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-CARNIVAL-OF-SCREAMS",
+      "name": "Carnival of Screams",
+      "district": "Playland by the Sea Lands",
+      "marker": 15,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 571,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-MANOR-OF-TERROR-D",
+      "name": "Manor of Terror (D)",
+      "district": "Playland by the Sea Lands",
+      "marker": 16,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 572,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-GUNMART-MUSEUM-OF-MOVIE-WEAPONS-B",
+      "name": "GunMart Museum of Movie Weapons (B)",
+      "district": "Playland by the Sea Lands",
+      "marker": 17,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 573,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HAUNTED-WOODS-WARFARE-D",
+      "name": "Haunted Woods Warfare (D)",
+      "district": "Playland by the Sea Lands",
+      "marker": 18,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 574,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-HORROR-CLASSICS-BUFFET-THEATRE",
+      "name": "Horror Classics Buffet Theatre",
+      "district": "Playland by the Sea Lands",
+      "marker": 19,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 575,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-308-FRIGHTHUNTER-SOCIETY-LODGE",
+      "name": "Frighthunter Society Lodge",
+      "district": "Playland by the Sea Lands",
+      "marker": 20,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 576,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-CLUB",
+      "name": "Wharf Club",
+      "district": "Playland by the Sea Lands",
+      "marker": 21,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 577,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-WHARF-HOTEL",
+      "name": "Wharf Hotel",
+      "district": "Playland by the Sea Lands",
+      "marker": 22,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 578,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-PARADISO-ACQUA",
+      "name": "Paradiso Acqua",
+      "district": "Playland by the Sea Lands",
+      "marker": 23,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 579,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ARTIFICIAL-BEACH",
+      "name": "Artificial Beach",
+      "district": "Playland by the Sea Lands",
+      "marker": 24,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 580,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-TROLLEY-YARD-B",
+      "name": "Grand Trolley Yard (B)",
+      "district": "Playland by the Sea Lands",
+      "marker": 25,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 581,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-MEET-GREET-PLAZA-C",
+      "name": "Meet & Greet Plaza (C)",
+      "district": "Playland by the Sea Lands",
+      "marker": 26,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 582,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LEMON-AID-RX",
+      "name": "Lemon-Aid Rx",
+      "district": "Playland by the Sea Lands",
+      "marker": 27,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 583,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SAN-FRANCISCO-SWEETS",
+      "name": "San Francisco Sweets",
+      "district": "Playland by the Sea Lands",
+      "marker": 28,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 584,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-SOURDOUGH-CENTRAL",
+      "name": "Sourdough Central",
+      "district": "Playland by the Sea Lands",
+      "marker": 29,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 585,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-GRAND-JUNCTION-GIFT-SHOP",
+      "name": "Grand Junction Gift Shop",
+      "district": "Playland by the Sea Lands",
+      "marker": 30,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 586,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-TICKET-GATE",
+      "name": "Ticket Gate",
+      "district": "Playland by the Sea Lands",
+      "marker": 31,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 587,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-307-LOST-FOUND",
+      "name": "Lost & Found",
+      "district": "Playland by the Sea Lands",
+      "marker": 32,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 588,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CLASSIQUE-CORSETS",
+      "name": "Classique Corsets",
+      "district": "Playland by the Sea Lands",
+      "marker": 33,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 589,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-GARDEN-OF-DESIRE-A",
+      "name": "Garden of Desire (A)",
+      "district": "Playland by the Sea Lands",
+      "marker": 34,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 590,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SMASH-BAR-GRILL",
+      "name": "Smash Bar & Grill",
+      "district": "Playland by the Sea Lands",
+      "marker": 35,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 591,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-305-AQUARIUM-FANTASTIQUE-E",
+      "name": "Aquarium Fantastique (E)",
+      "district": "Playland by the Sea Lands",
+      "marker": 36,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 592,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HYDROSUBSIDIUM-ARTIFICIAL-OCEAN-B",
+      "name": "Hydrosubsidium Artificial Ocean (B)",
+      "district": "Playland by the Sea Lands",
+      "marker": 37,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 593,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-THE-PLAYTOWER-D",
+      "name": "The Playtower (D)",
+      "district": "Playland by the Sea Lands",
+      "marker": 38,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 594,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-CHANGING-ROOMS",
+      "name": "Changing Rooms",
+      "district": "Playland by the Sea Lands",
+      "marker": 39,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 595,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-ISLAND-DREAMS-HOTEL",
+      "name": "Island Dreams Hotel",
+      "district": "Playland by the Sea Lands",
+      "marker": 40,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 596,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-HALL-OF-NIGHTMARES-A",
+      "name": "Hall of Nightmares (A)",
+      "district": "Playland by the Sea Lands",
+      "marker": 41,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 597,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-306-SUBMARINE-TOURS",
+      "name": "Submarine Tours",
+      "district": "Playland by the Sea Lands",
+      "marker": 42,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 598,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-CONTINENTAL-BRANDS-KIBBLE-COURT",
+      "name": "Continental Brands Kibble Court",
+      "district": "Playland by the Sea Lands",
+      "marker": 43,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 599,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-OLD-HERO-S-POINT-LARP-A-RINTH-B",
+      "name": "Old Hero’s Point LARP-A-Rinth (B)",
+      "district": "Playland by the Sea Lands",
+      "marker": 44,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 600,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-HULA-ROOM",
+      "name": "The Hula Room",
+      "district": "Playland by the Sea Lands",
+      "marker": 45,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 601,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-KLAWS",
+      "name": "Klaws",
+      "district": "Playland by the Sea Lands",
+      "marker": 46,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 602,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BIOEXOTIC-CAT-CAFE",
+      "name": "Bioexotic Cat Café",
+      "district": "Playland by the Sea Lands",
+      "marker": 47,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 603,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-BOBA-WORLD",
+      "name": "Boba World",
+      "district": "Playland by the Sea Lands",
+      "marker": 48,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 604,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-PORT-TREASURE-SHIPYARD-C",
+      "name": "Port Treasure Shipyard (C)",
+      "district": "Playland by the Sea Lands",
+      "marker": 49,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 605,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-309-AUTUMN-PALACE-HOTEL",
+      "name": "Autumn Palace Hotel",
+      "district": "Playland by the Sea Lands",
+      "marker": 50,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 606,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-310-THE-ELFLINES-ONLINE-EXPERIENCE",
+      "name": "The Elflines Online Experience",
+      "district": "Playland by the Sea Lands",
+      "marker": 51,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    },
+    {
+      "i": 607,
+      "id": "NC2045-LOC-PLAYLAND-BY-THE-SEA-LANDS-301-VIP-PARKING-LOT",
+      "name": "VIP Parking Lot",
+      "district": "Playland by the Sea Lands",
+      "marker": 52,
+      "legacy_index": null,
+      "match_method": null,
+      "difference_px": null
+    }
+  ],
+  "unpaired_approved": [
+    {
+      "i": 419,
+      "id": null,
+      "name": "The Cells",
+      "district": "University District",
+      "marker": "11d",
+      "legacy_status": "unmatched_legacy_manifestation"
+    },
+    {
+      "i": 420,
+      "id": null,
+      "name": "The Cells",
+      "district": "University District",
+      "marker": "11d",
+      "legacy_status": "unmatched_legacy_manifestation"
+    },
+    {
+      "i": 421,
+      "id": null,
+      "name": "The Cells",
+      "district": "University District",
+      "marker": "11d",
+      "legacy_status": "unmatched_legacy_manifestation"
+    }
+  ],
+  "icon_assignment": "None verified. Seven icon families and 56 subtypes exist; leave null pending explicit crosswalk.",
+  "next_steps": [
+    "Review source candidate points against user-approved 525",
+    "Reconcile unpaired names and special group manifestations",
+    "Sample terrain heights for any promoted source candidates",
+    "Map verified icon family/subtype IDs only after identity confirmed"
+  ]
+}
