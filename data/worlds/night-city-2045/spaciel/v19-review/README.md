@@ -1,3 +1,21 @@
+# LATEST — OUTSKIRTS 20 BOOK-MAP ALIGNMENT (31 October 2026)
+
+**Use these newest files for the Outskirts.** They supersede the earlier 31-marker *inverse-distance interpolation* experiment, which improperly pulled four east-of-frame book locations back inside the atlas.
+
+- **[Outskirts 20 book-map aligned GeoJSON](spaciel_v19_outskirts_20_book_aligned_review.geojson)** — 20 original markers mapped by direct image-frame resizing (5,175×7,966 book master to 3,304×5,100 V19 atlas), then inverse V19 atlas UV transform into planar world X/Z.
+- **[Combined approved 525 + aligned Outskirts 20 GeoJSON](spaciel_v19_approved525_plus_outskirts20_review545.geojson)** — 545 markers, existing 525 **unchanged**, new 20 carried as a separate layer with source and status.
+- **[Outskirts QA and coordinates](spaciel_v19_outskirts_20_book_aligned_qa.json)** — all 20 locations with book source pages, map positions, terrain positions, and boundaries.
+
+Book-to-atlas frame agreement is supported by visible matching coastline and road landmarks and the seven independently matched screenshot sourcebook dots; **a full pixel-level raster registration has not yet been run**, so review placement on the V19 image before promoting to the production database.
+
+**16 new Outskirts points lie inside the V19 atlas bitmap; 4 lie beyond its eastern edge: Ingalls Farm, NorCal Marshal Station, Pol-Bud Cement Factory, Sunshine Motel. All 20 are still inside the modelled V19 terrain-grid extent.** They must not be clamped into the bitmap.
+
+Old files `spaciel_v19_hot_zone_outskirts_31_review.geojson` and `spaciel_v19_approved525_plus_book31_review556.geojson` are **superseded for their Outskirts coordinate predictions**. The 11 Hot Zone locations remain separately staged, not included in the 545 production-candidate review. The 52 Playland attractions remain untouched.
+
+No existing approved coordinates were moved. No Supabase/main branch changes. No terrain heights have yet been sampled for the new 20.
+
+---
+
 # Latest: 31 sourcebook locations staged (31 October 2026)
 
 **Progress:** The 525 visually accepted V19 locations remain untouched. Each of them has now been linked to an original book-map manifestation, including all three markers for *The Cells*. An additional **11 Hot Zone + 20 Outskirts** sourcebook markers have been recovered and independently checked against the book's PDF image-placement calibration (worst roundoff error <0.001 source-master pixel). This validates their *book* positions, **not** their final V19 on-screen placement.
