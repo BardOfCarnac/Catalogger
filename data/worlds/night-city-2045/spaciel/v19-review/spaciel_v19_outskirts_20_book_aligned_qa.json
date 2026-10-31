@@ -1,0 +1,464 @@
+{
+  "schema": "spaciel.poi.v19.outskirts20.book_atlas_qa.v2",
+  "date": "2026-10-31",
+  "source_map_coordinates_verified": 20,
+  "conversion": "independent map frame resize, no district-envelope extrapolation",
+  "source_master_size": [
+    5175,
+    7966
+  ],
+  "v19_atlas_size": [
+    3304,
+    5100
+  ],
+  "manual_landmarks": "Book screenshot source dot coordinates for seven widely spaced markers matched the recovered PDF geometry to ~1 screenshot pixel, preceding verification; visual artwork landmarks support same-frame alignment with V19. No automated pixel-level image registration performed.",
+  "in_atlas": 16,
+  "outside_atlas_but_inside_terrain": 4,
+  "outOfFrame": [
+    {
+      "name": "Ingalls Farm",
+      "source_master_px": [
+        5184.167,
+        4897.54
+      ],
+      "v19_atlas_px": [
+        3309.853,
+        3135.508
+      ],
+      "world_m": [
+        7320.459,
+        878.641
+      ]
+    },
+    {
+      "name": "NorCal Marshal Station",
+      "source_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "v19_atlas_px": [
+        3377.663,
+        2601.732
+      ],
+      "world_m": [
+        7114.597,
+        -1360.727
+      ]
+    },
+    {
+      "name": "Pol-Bud Cement Factory",
+      "source_master_px": [
+        5223.996,
+        5242.715
+      ],
+      "v19_atlas_px": [
+        3335.282,
+        3356.496
+      ],
+      "world_m": [
+        7625.07,
+        1757.009
+      ]
+    },
+    {
+      "name": "Sunshine Motel",
+      "source_master_px": [
+        5582.444,
+        4286.839
+      ],
+      "v19_atlas_px": [
+        3564.134,
+        2744.524
+      ],
+      "world_m": [
+        8008.652,
+        -948.107
+      ]
+    }
+  ],
+  "old_extrapolation_rejected": true,
+  "road_graph_not_snapped": true,
+  "terrain_height_pending": true,
+  "locations": [
+    {
+      "name": "107.3 Morro Rock Radio",
+      "source_book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        954.407,
+        2794.612
+      ],
+      "v19_atlas_px": [
+        609.345,
+        1789.169
+      ],
+      "world_xy_m": [
+        -4973.192,
+        -2153.146
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 285.58
+    },
+    {
+      "name": "Edgewood Farm",
+      "source_book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        4708.882,
+        4488.636
+      ],
+      "v19_atlas_px": [
+        3006.405,
+        2873.719
+      ],
+      "world_xy_m": [
+        5838.878,
+        87.155
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 423.15
+    },
+    {
+      "name": "Ingalls Farm",
+      "source_book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        5184.167,
+        4897.54
+      ],
+      "v19_atlas_px": [
+        3309.853,
+        3135.508
+      ],
+      "world_xy_m": [
+        7320.459,
+        878.641
+      ],
+      "within_atlas": false,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 405.61
+    },
+    {
+      "name": "Poppy Farm",
+      "source_book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4270.768,
+        6023.343
+      ],
+      "v19_atlas_px": [
+        2726.689,
+        3856.27
+      ],
+      "world_xy_m": [
+        5582.699,
+        4350.426
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 347.66
+    },
+    {
+      "name": "Jackson Plains Regional Airport",
+      "source_book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        2741.368,
+        7027.018
+      ],
+      "v19_atlas_px": [
+        1750.238,
+        4498.844
+      ],
+      "world_xy_m": [
+        2161.425,
+        7861.597
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 79.7
+    },
+    {
+      "name": "Laguna Bend",
+      "source_book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4746.054,
+        5524.171
+      ],
+      "v19_atlas_px": [
+        3030.138,
+        3536.69
+      ],
+      "world_xy_m": [
+        6537.226,
+        2770.171
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 382.1
+    },
+    {
+      "name": "Municipal Landfill",
+      "source_book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4334.501,
+        4531.116
+      ],
+      "v19_atlas_px": [
+        2767.38,
+        2900.915
+      ],
+      "world_xy_m": [
+        4883.442,
+        415.905
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 426.13
+    },
+    {
+      "name": "Night City Spaceport",
+      "source_book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        1087.169,
+        3086.677
+      ],
+      "v19_atlas_px": [
+        694.108,
+        1976.155
+      ],
+      "world_xy_m": [
+        -4456.117,
+        -1467.558
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 288.71
+    },
+    {
+      "name": "NorCal Marshal Station",
+      "source_book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "v19_atlas_px": [
+        3377.663,
+        2601.732
+      ],
+      "world_xy_m": [
+        7114.597,
+        -1360.727
+      ],
+      "within_atlas": false,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 413.28
+    },
+    {
+      "name": "Militech Ballistics & Explosives Range",
+      "source_book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        3415.796,
+        1328.934
+      ],
+      "v19_atlas_px": [
+        2180.829,
+        850.811
+      ],
+      "world_xy_m": [
+        619.785,
+        -7413.184
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 193.69
+    },
+    {
+      "name": "Night Corp Solar Station",
+      "source_book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        3208.683,
+        6384.458
+      ],
+      "v19_atlas_px": [
+        2048.597,
+        4087.464
+      ],
+      "world_xy_m": [
+        3011.861,
+        5911.475
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 169.48
+    },
+    {
+      "name": "Northern Oil Fields",
+      "source_book_ref": "Night City 2045 pp. 297-298",
+      "book_master_px": [
+        1966.045,
+        861.611
+      ],
+      "v19_atlas_px": [
+        1255.23,
+        551.621
+      ],
+      "world_xy_m": [
+        -3446.757,
+        -7790.346
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 218.62
+    },
+    {
+      "name": "Petrochem CHOOH2 Station",
+      "source_book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4440.702,
+        4313.389
+      ],
+      "v19_atlas_px": [
+        2835.184,
+        2761.522
+      ],
+      "world_xy_m": [
+        5035.095,
+        -214.544
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 464.47
+    },
+    {
+      "name": "Pol-Bud Cement Factory",
+      "source_book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        5223.996,
+        5242.715
+      ],
+      "v19_atlas_px": [
+        3335.282,
+        3356.496
+      ],
+      "world_xy_m": [
+        7625.07,
+        1757.009
+      ],
+      "within_atlas": false,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 399.41
+    },
+    {
+      "name": "Pol-Bud Miasto",
+      "source_book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4799.158,
+        3745.178
+      ],
+      "v19_atlas_px": [
+        3064.042,
+        2397.741
+      ],
+      "world_xy_m": [
+        5643.701,
+        -1907.15
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 408.96
+    },
+    {
+      "name": "Pol-Bud Mine",
+      "source_book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4560.187,
+        3466.371
+      ],
+      "v19_atlas_px": [
+        2911.47,
+        2219.243
+      ],
+      "world_xy_m": [
+        4856.277,
+        -2496.322
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 386.64
+    },
+    {
+      "name": "Sheriff’s Station",
+      "source_book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        4443.359,
+        6426.937
+      ],
+      "v19_atlas_px": [
+        2836.881,
+        4114.66
+      ],
+      "world_xy_m": [
+        6268.775,
+        5304.138
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 334.76
+    },
+    {
+      "name": "SovOil CHOOH2 Station",
+      "source_book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        2422.74,
+        6310.109
+      ],
+      "v19_atlas_px": [
+        1546.808,
+        4039.864
+      ],
+      "world_xy_m": [
+        911.187,
+        6174.518
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 107.27
+    },
+    {
+      "name": "Sunshine Motel",
+      "source_book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        5582.444,
+        4286.839
+      ],
+      "v19_atlas_px": [
+        3564.134,
+        2744.524
+      ],
+      "world_xy_m": [
+        8008.652,
+        -948.107
+      ],
+      "within_atlas": false,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 415.52
+    },
+    {
+      "name": "Union Railroad Station",
+      "source_book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        4453.978,
+        4143.451
+      ],
+      "v19_atlas_px": [
+        2843.661,
+        2652.724
+      ],
+      "world_xy_m": [
+        4971.216,
+        -666.117
+      ],
+      "within_atlas": true,
+      "within_terrain": true,
+      "delta_from_prior_extrapolation_px": 448.64
+    }
+  ]
+}
