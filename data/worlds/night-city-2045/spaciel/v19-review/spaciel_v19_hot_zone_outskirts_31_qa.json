@@ -1,0 +1,925 @@
+{
+  "schema": "spaciel.poi.v19.sourcebook31.qa.v1",
+  "status": "book_verified_v19_candidate_only",
+  "date": "2026-10-31",
+  "summary": {
+    "book_verified": 31,
+    "book_registration_error_max_master_px": 0.000649,
+    "hot_zone_candidates": 11,
+    "outskirts_candidates": 20,
+    "outskirts_beyond_book_master_frame": [
+      "Ingalls Farm",
+      "NorCal Marshal Station",
+      "Pol-Bud Cement Factory",
+      "Sunshine Motel"
+    ],
+    "v19_positions_approved": 0,
+    "existing_approved_525_unchanged": true
+  },
+  "features": [
+    {
+      "i": 0,
+      "name": "Ashcroft Hotel",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2671.833,
+        3653.769
+      ],
+      "sourcebook_registration_error_master_px": 0.000273,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1660.245,
+        2253.284
+      ],
+      "alternative_uniform_frame_px": [
+        1705.843,
+        2339.219
+      ],
+      "difference_between_models_px": 97.28,
+      "nearest_approved_master_px": 222.33,
+      "support_districts": [
+        "Upper Marina",
+        "Old Japantown",
+        "Little China"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 1,
+      "name": "The Crater",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2373.485,
+        3716.821
+      ],
+      "sourcebook_registration_error_master_px": 0.000388,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1571.115,
+        2300.135
+      ],
+      "alternative_uniform_frame_px": [
+        1515.361,
+        2379.587
+      ],
+      "difference_between_models_px": 97.06,
+      "nearest_approved_master_px": 273.3,
+      "support_districts": [
+        "The Glen",
+        "Old Japantown",
+        "Little Europe",
+        "University District"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 2,
+      "name": "Crisis Center",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2684.714,
+        3555.503
+      ],
+      "sourcebook_registration_error_master_px": 0.000617,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1677.538,
+        2176.634
+      ],
+      "alternative_uniform_frame_px": [
+        1714.067,
+        2276.307
+      ],
+      "difference_between_models_px": 106.16,
+      "nearest_approved_master_px": 127.33,
+      "support_districts": [
+        "Upper Marina",
+        "Little China",
+        "Old Japantown"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 3,
+      "name": "Dark Zone One",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2297.751,
+        3662.917
+      ],
+      "sourcebook_registration_error_master_px": 0.00043,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1569.489,
+        2243.466
+      ],
+      "alternative_uniform_frame_px": [
+        1467.009,
+        2345.076
+      ],
+      "difference_between_models_px": 144.31,
+      "nearest_approved_master_px": 245.48,
+      "support_districts": [
+        "Little Europe",
+        "University District",
+        "The Glen",
+        "Upper Marina",
+        "Old Japantown"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 4,
+      "name": "The Dump",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2551.433,
+        3859.169
+      ],
+      "sourcebook_registration_error_master_px": 0.000528,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1620.187,
+        2408.1
+      ],
+      "alternative_uniform_frame_px": [
+        1628.973,
+        2470.721
+      ],
+      "difference_between_models_px": 63.23,
+      "nearest_approved_master_px": 84.62,
+      "support_districts": [
+        "Old Japantown",
+        "The Glen"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 5,
+      "name": "Eurasiabank Plaza",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 92",
+      "original_master_px": [
+        2583.033,
+        3477.466
+      ],
+      "sourcebook_registration_error_master_px": 0.000326,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1644.453,
+        2118.362
+      ],
+      "alternative_uniform_frame_px": [
+        1649.148,
+        2226.347
+      ],
+      "difference_between_models_px": 108.09,
+      "nearest_approved_master_px": 131.22,
+      "support_districts": [
+        "Upper Marina",
+        "Old Japantown"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 6,
+      "name": "Graceland Medical",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 93",
+      "original_master_px": [
+        2729.818,
+        3556.481
+      ],
+      "sourcebook_registration_error_master_px": 0.000284,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1698.738,
+        2177.594
+      ],
+      "alternative_uniform_frame_px": [
+        1742.864,
+        2276.934
+      ],
+      "difference_between_models_px": 108.7,
+      "nearest_approved_master_px": 109.77,
+      "support_districts": [
+        "Upper Marina",
+        "Little China",
+        "Old Japantown"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 7,
+      "name": "The N54",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 93",
+      "original_master_px": [
+        2345.959,
+        3811.103
+      ],
+      "sourcebook_registration_error_master_px": 0.000122,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1562.982,
+        2362.608
+      ],
+      "alternative_uniform_frame_px": [
+        1497.787,
+        2439.948
+      ],
+      "difference_between_models_px": 101.15,
+      "nearest_approved_master_px": 180.99,
+      "support_districts": [
+        "The Glen",
+        "University District",
+        "Old Japantown",
+        "Little Europe"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 8,
+      "name": "Safe Child",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 93",
+      "original_master_px": [
+        2727.404,
+        3706.11
+      ],
+      "sourcebook_registration_error_master_px": 0.000327,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1687.956,
+        2290.359
+      ],
+      "alternative_uniform_frame_px": [
+        1741.322,
+        2372.729
+      ],
+      "difference_between_models_px": 98.15,
+      "nearest_approved_master_px": 183.93,
+      "support_districts": [
+        "Old Japantown",
+        "Little China",
+        "Upper Marina"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 9,
+      "name": "Toggle’s Temple",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 93",
+      "original_master_px": [
+        2145.847,
+        3486.088
+      ],
+      "sourcebook_registration_error_master_px": 0.000404,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1496.679,
+        2111.306
+      ],
+      "alternative_uniform_frame_px": [
+        1370.025,
+        2231.867
+      ],
+      "difference_between_models_px": 174.86,
+      "nearest_approved_master_px": 88.8,
+      "support_districts": [
+        "Little Europe",
+        "Upper Marina",
+        "University District",
+        "Downtown"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 10,
+      "name": "Totentanz",
+      "district": "The Hot Zone",
+      "sourcebook_reference": "Night City 2045 p. 93",
+      "original_master_px": [
+        2364.092,
+        3355.91
+      ],
+      "sourcebook_registration_error_master_px": 0.00028,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1574.203,
+        2024.457
+      ],
+      "alternative_uniform_frame_px": [
+        1509.364,
+        2148.524
+      ],
+      "difference_between_models_px": 139.99,
+      "nearest_approved_master_px": 120.77,
+      "support_districts": [
+        "Upper Marina",
+        "Little Europe",
+        "Kabuki"
+      ],
+      "placement_status": "interpolated_between_calibrated_districts_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 11,
+      "name": "107.3 Morro Rock Radio",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 294",
+      "original_master_px": [
+        954.407,
+        2794.612
+      ],
+      "sourcebook_registration_error_master_px": 0.000132,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        859.446,
+        1651.301
+      ],
+      "alternative_uniform_frame_px": [
+        609.345,
+        1789.169
+      ],
+      "difference_between_models_px": 285.58,
+      "nearest_approved_master_px": 768.1,
+      "support_districts": [
+        "Little Europe",
+        "NorCal Military Base",
+        "Downtown",
+        "Watson Development"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 12,
+      "name": "Edgewood Farm",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 294",
+      "original_master_px": [
+        4708.882,
+        4488.636
+      ],
+      "sourcebook_registration_error_master_px": 0.000362,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2583.86,
+        2851.04
+      ],
+      "alternative_uniform_frame_px": [
+        3006.405,
+        2873.719
+      ],
+      "difference_between_models_px": 423.15,
+      "nearest_approved_master_px": 436.72,
+      "support_districts": [
+        "North Heywood",
+        "Santo Domingo",
+        "Heywood Docks"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 13,
+      "name": "Ingalls Farm",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 294",
+      "original_master_px": [
+        5184.167,
+        4897.54
+      ],
+      "sourcebook_registration_error_master_px": 0.000454,
+      "source_point_outside_master_frame": true,
+      "spaciel_candidate_px": [
+        2904.712,
+        3115.937
+      ],
+      "alternative_uniform_frame_px": [
+        3309.853,
+        3135.508
+      ],
+      "difference_between_models_px": 405.61,
+      "nearest_approved_master_px": 1061.23,
+      "support_districts": [
+        "North Heywood",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 14,
+      "name": "Poppy Farm",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 296",
+      "original_master_px": [
+        4270.768,
+        6023.343
+      ],
+      "sourcebook_registration_error_master_px": 0.000465,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2379.8,
+        3833.153
+      ],
+      "alternative_uniform_frame_px": [
+        2726.689,
+        3856.27
+      ],
+      "difference_between_models_px": 347.66,
+      "nearest_approved_master_px": 715.85,
+      "support_districts": [
+        "Santo Domingo",
+        "Rancho Coronado",
+        "North Heywood"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 15,
+      "name": "Jackson Plains Regional Airport",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 296",
+      "original_master_px": [
+        2741.368,
+        7027.018
+      ],
+      "sourcebook_registration_error_master_px": 0.000262,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1827.081,
+        4520.005
+      ],
+      "alternative_uniform_frame_px": [
+        1750.238,
+        4498.844
+      ],
+      "difference_between_models_px": 79.7,
+      "nearest_approved_master_px": 1250.08,
+      "support_districts": [
+        "Rancho Coronado",
+        "Pacifica Playground",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 16,
+      "name": "Laguna Bend",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 296",
+      "original_master_px": [
+        4746.054,
+        5524.171
+      ],
+      "sourcebook_registration_error_master_px": 0.000293,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2648.75,
+        3513.338
+      ],
+      "alternative_uniform_frame_px": [
+        3030.138,
+        3536.69
+      ],
+      "difference_between_models_px": 382.1,
+      "nearest_approved_master_px": 722.37,
+      "support_districts": [
+        "Santo Domingo",
+        "North Heywood"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 17,
+      "name": "Municipal Landfill",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 296",
+      "original_master_px": [
+        4334.501,
+        4531.116
+      ],
+      "sourcebook_registration_error_master_px": 0.000649,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2341.453,
+        2887.901
+      ],
+      "alternative_uniform_frame_px": [
+        2767.38,
+        2900.915
+      ],
+      "difference_between_models_px": 426.13,
+      "nearest_approved_master_px": 259.44,
+      "support_districts": [
+        "North Heywood",
+        "Santo Domingo",
+        "Heywood Docks"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 18,
+      "name": "Night City Spaceport",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 297",
+      "original_master_px": [
+        1087.169,
+        3086.677
+      ],
+      "sourcebook_registration_error_master_px": 0.000253,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        950.947,
+        1844.292
+      ],
+      "alternative_uniform_frame_px": [
+        694.108,
+        1976.155
+      ],
+      "difference_between_models_px": 288.71,
+      "nearest_approved_master_px": 495.77,
+      "support_districts": [
+        "Little Europe",
+        "Downtown"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 19,
+      "name": "NorCal Marshal Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 297",
+      "original_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "sourcebook_registration_error_master_px": 0.000356,
+      "source_point_outside_master_frame": true,
+      "spaciel_candidate_px": [
+        2966.436,
+        2560.581
+      ],
+      "alternative_uniform_frame_px": [
+        3377.663,
+        2601.732
+      ],
+      "difference_between_models_px": 413.28,
+      "nearest_approved_master_px": 967.28,
+      "support_districts": [
+        "North Heywood",
+        "Executive Zone",
+        "Santo Domingo",
+        "Heywood Docks"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 20,
+      "name": "Militech Ballistics & Explosives Range",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 297",
+      "original_master_px": [
+        3415.796,
+        1328.934
+      ],
+      "sourcebook_registration_error_master_px": 0.000136,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2124.078,
+        665.624
+      ],
+      "alternative_uniform_frame_px": [
+        2180.829,
+        850.811
+      ],
+      "difference_between_models_px": 193.69,
+      "nearest_approved_master_px": 573.18,
+      "support_districts": [
+        "New Westbrook",
+        "Watson Development",
+        "Kabuki",
+        "NorCal Military Base"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 21,
+      "name": "Night Corp Solar Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 297",
+      "original_master_px": [
+        3208.683,
+        6384.458
+      ],
+      "sourcebook_registration_error_master_px": 0.000183,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1879.814,
+        4102.771
+      ],
+      "alternative_uniform_frame_px": [
+        2048.597,
+        4087.464
+      ],
+      "difference_between_models_px": 169.48,
+      "nearest_approved_master_px": 698.75,
+      "support_districts": [
+        "Rancho Coronado",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 22,
+      "name": "Northern Oil Fields",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 pp. 297-298",
+      "original_master_px": [
+        1966.045,
+        861.611
+      ],
+      "sourcebook_registration_error_master_px": 0.000444,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1391.697,
+        380.82
+      ],
+      "alternative_uniform_frame_px": [
+        1255.23,
+        551.621
+      ],
+      "difference_between_models_px": 218.62,
+      "nearest_approved_master_px": 446.18,
+      "support_districts": [
+        "Watson Development",
+        "NorCal Military Base"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 23,
+      "name": "Petrochem CHOOH2 Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 298",
+      "original_master_px": [
+        4440.702,
+        4313.389
+      ],
+      "sourcebook_registration_error_master_px": 0.000258,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2371.038,
+        2744.203
+      ],
+      "alternative_uniform_frame_px": [
+        2835.184,
+        2761.522
+      ],
+      "difference_between_models_px": 464.47,
+      "nearest_approved_master_px": 116.39,
+      "support_districts": [
+        "North Heywood",
+        "Heywood Docks",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 24,
+      "name": "Pol-Bud Cement Factory",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 298",
+      "original_master_px": [
+        5223.996,
+        5242.715
+      ],
+      "sourcebook_registration_error_master_px": 0.000139,
+      "source_point_outside_master_frame": true,
+      "spaciel_candidate_px": [
+        2936.434,
+        3335.386
+      ],
+      "alternative_uniform_frame_px": [
+        3335.282,
+        3356.496
+      ],
+      "difference_between_models_px": 399.41,
+      "nearest_approved_master_px": 1138.22,
+      "support_districts": [
+        "Santo Domingo",
+        "North Heywood"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 25,
+      "name": "Pol-Bud Miasto",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 298",
+      "original_master_px": [
+        4799.158,
+        3745.178
+      ],
+      "sourcebook_registration_error_master_px": 0.000609,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2660.39,
+        2332.047
+      ],
+      "alternative_uniform_frame_px": [
+        3064.042,
+        2397.741
+      ],
+      "difference_between_models_px": 408.96,
+      "nearest_approved_master_px": 683,
+      "support_districts": [
+        "North Heywood",
+        "Executive Zone",
+        "Charter Hill"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 26,
+      "name": "Pol-Bud Mine",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 298",
+      "original_master_px": [
+        4560.187,
+        3466.371
+      ],
+      "sourcebook_registration_error_master_px": 0.000481,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2539.894,
+        2112.371
+      ],
+      "alternative_uniform_frame_px": [
+        2911.47,
+        2219.243
+      ],
+      "difference_between_models_px": 386.64,
+      "nearest_approved_master_px": 635.45,
+      "support_districts": [
+        "Executive Zone",
+        "Charter Hill",
+        "North Heywood"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 27,
+      "name": "Sheriff’s Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 299",
+      "original_master_px": [
+        4443.359,
+        6426.937
+      ],
+      "sourcebook_registration_error_master_px": 0.00032,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2502.807,
+        4093.276
+      ],
+      "alternative_uniform_frame_px": [
+        2836.881,
+        4114.66
+      ],
+      "difference_between_models_px": 334.76,
+      "nearest_approved_master_px": 1153.8,
+      "support_districts": [
+        "Santo Domingo",
+        "Rancho Coronado",
+        "North Heywood"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 28,
+      "name": "SovOil CHOOH2 Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 299",
+      "original_master_px": [
+        2422.74,
+        6310.109
+      ],
+      "sourcebook_registration_error_master_px": 0.000253,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        1651.764,
+        4062.011
+      ],
+      "alternative_uniform_frame_px": [
+        1546.808,
+        4039.864
+      ],
+      "difference_between_models_px": 107.27,
+      "nearest_approved_master_px": 604.16,
+      "support_districts": [
+        "Rancho Coronado",
+        "Pacifica Playground",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 29,
+      "name": "Sunshine Motel",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 299",
+      "original_master_px": [
+        5582.444,
+        4286.839
+      ],
+      "sourcebook_registration_error_master_px": 0.000501,
+      "source_point_outside_master_frame": true,
+      "spaciel_candidate_px": [
+        3149.847,
+        2712.582
+      ],
+      "alternative_uniform_frame_px": [
+        3564.134,
+        2744.524
+      ],
+      "difference_between_models_px": 415.52,
+      "nearest_approved_master_px": 1241.28,
+      "support_districts": [
+        "North Heywood",
+        "Santo Domingo"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    },
+    {
+      "i": 30,
+      "name": "Union Railroad Station",
+      "district": "Outskirts",
+      "sourcebook_reference": "Night City 2045 p. 299",
+      "original_master_px": [
+        4453.978,
+        4143.451
+      ],
+      "sourcebook_registration_error_master_px": 0.000171,
+      "source_point_outside_master_frame": false,
+      "spaciel_candidate_px": [
+        2395.603,
+        2629.778
+      ],
+      "alternative_uniform_frame_px": [
+        2843.661,
+        2652.724
+      ],
+      "difference_between_models_px": 448.64,
+      "nearest_approved_master_px": 156.41,
+      "support_districts": [
+        "North Heywood",
+        "Heywood Docks"
+      ],
+      "placement_status": "extrapolated_from_calibrated_city_points_review",
+      "requires_visual_alignment": true
+    }
+  ],
+  "validation_summary": {
+    "method": "Original source-page UV transformed using PDF page image placement matrix and image size; compared to stored master pixels",
+    "reconstructed": 31,
+    "max_pixel_error": 0.000649,
+    "image_registration": "Current V19 atlas versus the book master not yet verified by image-to-image transformation",
+    "outskirts_limitation": "Outskirts extend substantially beyond existing V19 anchor coverage; model extrapolations are for inspection, not approved final coordinates"
+  }
+}
