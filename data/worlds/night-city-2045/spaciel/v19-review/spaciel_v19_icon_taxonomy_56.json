@@ -1,0 +1,280 @@
+{
+  "schema": "spaciel.icon_taxonomy.review.v1",
+  "source": "spaciel_poi_integration_audit_2026-10-29.json, extracted from mobile icon lab",
+  "status": "taxonomy only, no location assignments",
+  "families": [
+    {
+      "family_id": 0,
+      "name": "WORK / INDUSTRY",
+      "colour": "#d54ae8",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Corporate office"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Commercial office"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Factory / production"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Warehouse / storage"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Workshop / industrial"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Construction / works"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Utilities / infrastructure"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Research / laboratory"
+        }
+      ]
+    },
+    {
+      "family_id": 1,
+      "name": "SECURITY",
+      "colour": "#08a4f5",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Police station"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Private security"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Checkpoint"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Detention / prison"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Secured compound"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Government authority"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Security facility"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Restricted area"
+        }
+      ]
+    },
+    {
+      "family_id": 2,
+      "name": "TRANSPORT",
+      "colour": "#42d7ff",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Garage / repair"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Vehicle dealer"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Fuel / charging"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Parking"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Taxi / hire"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Bus stop"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Metro / rail station"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Port / terminal"
+        }
+      ]
+    },
+    {
+      "family_id": 3,
+      "name": "RESIDENCE",
+      "colour": "#00d79d",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Private residence"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Apartment block"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Hotel"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Hostel / cheap lodging"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Corporate housing"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Temporary housing"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Shelter"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Trailer / mobile home"
+        }
+      ]
+    },
+    {
+      "family_id": 4,
+      "name": "COMMERCE",
+      "colour": "#ffeb26",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "General shop"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Market / Night Market"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Weapons shop"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Clothing / fashion"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Electronics / tech"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Supermarket"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Specialist / luxury"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Specialist service"
+        }
+      ]
+    },
+    {
+      "family_id": 5,
+      "name": "FOOD / SOCIAL",
+      "colour": "#ff8527",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Restaurant"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Bar / pub"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Café"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Club / nightclub"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Entertainment venue"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Social venue"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Street food"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Live music / event"
+        }
+      ]
+    },
+    {
+      "family_id": 6,
+      "name": "MEDICAL",
+      "colour": "#ff4237",
+      "subtypes": [
+        {
+          "subtype_id": 0,
+          "name": "Hospital"
+        },
+        {
+          "subtype_id": 1,
+          "name": "Clinic"
+        },
+        {
+          "subtype_id": 2,
+          "name": "Ripperdoc / cyberware"
+        },
+        {
+          "subtype_id": 3,
+          "name": "Pharmacy"
+        },
+        {
+          "subtype_id": 4,
+          "name": "Trauma / emergency"
+        },
+        {
+          "subtype_id": 5,
+          "name": "Specialist practice"
+        },
+        {
+          "subtype_id": 6,
+          "name": "Research / biotech"
+        },
+        {
+          "subtype_id": 7,
+          "name": "Mental health"
+        }
+      ]
+    }
+  ]
+}
