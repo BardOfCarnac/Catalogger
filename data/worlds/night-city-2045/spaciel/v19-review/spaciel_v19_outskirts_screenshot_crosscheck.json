@@ -1,0 +1,456 @@
+{
+  "schema": "spaciel.outskirts.sourcebook_screenshot_crosscheck.v1",
+  "date": "2026-10-31",
+  "status": "book_screenshot_crosscheck_only_no_V19_approval",
+  "source": "user screenshot p.295",
+  "book_master_image_px": [
+    5175,
+    7966
+  ],
+  "screenshot_affine_manually_estimated": {
+    "x": [
+      0.10230587427036929,
+      -0.00010323461477378289,
+      -36.68337622893192
+    ],
+    "y": [
+      -0.0002613421093203838,
+      0.10240944807241667,
+      342.80170092095256
+    ]
+  },
+  "landmarks": [
+    {
+      "marker": "10",
+      "name": "Northern Oil Fields",
+      "book_master_px": [
+        1966.045,
+        861.611
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        164,
+        430
+      ],
+      "calculated_screenshot_px": [
+        164.37,
+        430.52
+      ],
+      "fit_error_px": 0.64
+    },
+    {
+      "marker": "8",
+      "name": "Militech Ballistics & Explosives Range",
+      "book_master_px": [
+        3415.796,
+        1328.934
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        313,
+        478
+      ],
+      "calculated_screenshot_px": [
+        312.64,
+        478
+      ],
+      "fit_error_px": 0.365
+    },
+    {
+      "marker": "6",
+      "name": "Night City Spaceport",
+      "book_master_px": [
+        1087.169,
+        3086.677
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        74,
+        659
+      ],
+      "calculated_screenshot_px": [
+        74.22,
+        658.62
+      ],
+      "fit_error_px": 0.438
+    },
+    {
+      "marker": "1",
+      "name": "107.3 Morro Rock Radio",
+      "book_master_px": [
+        954.407,
+        2794.612
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        61,
+        629
+      ],
+      "calculated_screenshot_px": [
+        60.67,
+        628.75
+      ],
+      "fit_error_px": 0.416
+    },
+    {
+      "marker": "7",
+      "name": "NorCal Marshal Station",
+      "book_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        504,
+        758
+      ],
+      "calculated_screenshot_px": [
+        504.13,
+        757.59
+      ],
+      "fit_error_px": 0.43
+    },
+    {
+      "marker": "3",
+      "name": "Jackson Plains Regional Airport",
+      "book_master_px": [
+        2741.368,
+        7027.018
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        243,
+        1062
+      ],
+      "calculated_screenshot_px": [
+        243.05,
+        1061.72
+      ],
+      "fit_error_px": 0.286
+    },
+    {
+      "marker": "9",
+      "name": "Night Corp Solar Station",
+      "book_master_px": [
+        3208.683,
+        6384.458
+      ],
+      "screenshot_manually_estimated_dot_center_px": [
+        291,
+        995
+      ],
+      "calculated_screenshot_px": [
+        290.92,
+        995.79
+      ],
+      "fit_error_px": 0.796
+    }
+  ],
+  "manually_measured_landmark_count": 7,
+  "fit_rms_px": 0.508,
+  "leave_one_out_rms_px": 0.91,
+  "all_outskirts_source_marker_predictions": [
+    {
+      "marker_number": 1,
+      "name": "107.3 Morro Rock Radio",
+      "book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        954.407,
+        2794.612
+      ],
+      "screenshot_estimate_px": [
+        60.7,
+        628.7
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 2,
+      "name": "Edgewood Farm",
+      "book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        4708.882,
+        4488.636
+      ],
+      "screenshot_estimate_px": [
+        444.6,
+        801.2
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 2,
+      "name": "Ingalls Farm",
+      "book_ref": "Night City 2045 p. 294",
+      "book_master_px": [
+        5184.167,
+        4897.54
+      ],
+      "screenshot_estimate_px": [
+        493.2,
+        843
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": true
+    },
+    {
+      "marker_number": 2,
+      "name": "Poppy Farm",
+      "book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4270.768,
+        6023.343
+      ],
+      "screenshot_estimate_px": [
+        399.6,
+        958.5
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 3,
+      "name": "Jackson Plains Regional Airport",
+      "book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        2741.368,
+        7027.018
+      ],
+      "screenshot_estimate_px": [
+        243,
+        1061.7
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 4,
+      "name": "Laguna Bend",
+      "book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4746.054,
+        5524.171
+      ],
+      "screenshot_estimate_px": [
+        448.3,
+        907.3
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 5,
+      "name": "Municipal Landfill",
+      "book_ref": "Night City 2045 p. 296",
+      "book_master_px": [
+        4334.501,
+        4531.116
+      ],
+      "screenshot_estimate_px": [
+        406.3,
+        805.7
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 6,
+      "name": "Night City Spaceport",
+      "book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        1087.169,
+        3086.677
+      ],
+      "screenshot_estimate_px": [
+        74.2,
+        658.6
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 7,
+      "name": "NorCal Marshal Station",
+      "book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        5290.377,
+        4063.803
+      ],
+      "screenshot_estimate_px": [
+        504.1,
+        757.6
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": true
+    },
+    {
+      "marker_number": 8,
+      "name": "Militech Ballistics & Explosives Range",
+      "book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        3415.796,
+        1328.934
+      ],
+      "screenshot_estimate_px": [
+        312.6,
+        478
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 9,
+      "name": "Night Corp Solar Station",
+      "book_ref": "Night City 2045 p. 297",
+      "book_master_px": [
+        3208.683,
+        6384.458
+      ],
+      "screenshot_estimate_px": [
+        290.9,
+        995.8
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 10,
+      "name": "Northern Oil Fields",
+      "book_ref": "Night City 2045 pp. 297-298",
+      "book_master_px": [
+        1966.045,
+        861.611
+      ],
+      "screenshot_estimate_px": [
+        164.4,
+        430.5
+      ],
+      "direct_manual_dot_inspected": true,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 11,
+      "name": "Petrochem CHOOH2 Station",
+      "book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4440.702,
+        4313.389
+      ],
+      "screenshot_estimate_px": [
+        417.2,
+        783.4
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 12,
+      "name": "Pol-Bud Cement Factory",
+      "book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        5223.996,
+        5242.715
+      ],
+      "screenshot_estimate_px": [
+        497.2,
+        878.3
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": true
+    },
+    {
+      "marker_number": 13,
+      "name": "Pol-Bud Miasto",
+      "book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4799.158,
+        3745.178
+      ],
+      "screenshot_estimate_px": [
+        453.9,
+        725.1
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 14,
+      "name": "Pol-Bud Mine",
+      "book_ref": "Night City 2045 p. 298",
+      "book_master_px": [
+        4560.187,
+        3466.371
+      ],
+      "screenshot_estimate_px": [
+        429.5,
+        696.6
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 15,
+      "name": "Sheriff’s Station",
+      "book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        4443.359,
+        6426.937
+      ],
+      "screenshot_estimate_px": [
+        417.2,
+        999.8
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 16,
+      "name": "SovOil CHOOH2 Station",
+      "book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        2422.74,
+        6310.109
+      ],
+      "screenshot_estimate_px": [
+        210.5,
+        988.4
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    },
+    {
+      "marker_number": 17,
+      "name": "Sunshine Motel",
+      "book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        5582.444,
+        4286.839
+      ],
+      "screenshot_estimate_px": [
+        534,
+        780.4
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": true
+    },
+    {
+      "marker_number": 18,
+      "name": "Union Railroad Station",
+      "book_ref": "Night City 2045 p. 299",
+      "book_master_px": [
+        4453.978,
+        4143.451
+      ],
+      "screenshot_estimate_px": [
+        418.6,
+        766
+      ],
+      "direct_manual_dot_inspected": false,
+      "original_master_boundary_exceeded": false
+    }
+  ],
+  "notes": [
+    "7 manually read dot centres are approximate; pixel-scale fit assesses consistency rather than precise image registration.",
+    "All 20 records were verified previously by the PDF source map placement matrices, and 7 of these now cross-checked against an independent screenshot.",
+    "Four original book markers lie east of the width of the earlier full-city master raster; do not clamp or distort them back into that rectangle.",
+    "The #2 Independent Farms entry is a parent/group, with #2a Edgewood Farm, #2b Ingalls Farm, #2c Poppy Farm. It is not another distinct plotted position.",
+    "The original page also lists campsites not shown on the map, which must not be invented as precise points.",
+    "No V19-to-book image-registration was performed here; new V19 atlas coordinates remain provisional."
+  ]
+}
