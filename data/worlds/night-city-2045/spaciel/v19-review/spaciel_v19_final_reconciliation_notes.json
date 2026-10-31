@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-31",
+  "status": "review branch only",
+  "summary": {
+    "approved_markers": 525,
+    "matched_to_original_sourcebook": 525,
+    "source_exact_master": 556,
+    "playland_source_local_exact_global_approx": 52,
+    "source_remainder": 83,
+    "source_only_districts": {
+      "The Hot Zone": 11,
+      "Outskirts": 20,
+      "Playland by the Sea Lands": 52
+    },
+    "approved_positions_changed": 0,
+    "spaciel_icon_subtype_assignments_verified": 0
+  },
+  "findings": [
+    "The original book-map coordinates are internally consistent with their PDF image transforms for all 556 global-source exact markers (<0.001 px error).",
+    "469 exact-ID anchor locations in 23 districts establish independent per-district affine relationships between master source coordinates and approved V19 atlas locations.",
+    "All 525 approved V19 markers match book points to within 0.4 V19 atlas pixel using those transforms. Median and maximum residuals recorded in transforms file.",
+    "The last three legacy-unidentified markers were the three The Cells manifestations; exact spatial match using University District calibration.",
+    "There are 83 sourcebook manifestations not yet in the accepted 525: 11 Hot Zone, 20 Outskirts, 52 Playland attractions. They lack district-local anchor pairs, so no positions are being invented.",
+    "Original 525 location geometries and atlas pixels are unchanged. No DB writes."
+  ],
+  "cells": [
+    {
+      "legacy_id": "source-pin-0420",
+      "source_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS#125",
+      "error_px": 0.052
+    },
+    {
+      "legacy_id": "source-pin-0421",
+      "source_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS#126",
+      "error_px": 0.02
+    },
+    {
+      "legacy_id": "source-pin-0422",
+      "source_id": "NC2045-LOC-UNIVERSITY-DISTRICT-108-THE-CELLS#127",
+      "error_px": 0.1
+    }
+  ],
+  "new_dataset": "spaciel_v19_approved_525_fully_reconciled.geojson",
+  "affines": "spaciel_v19_district_calibration_affines.json",
+  "next": "Compare 31 globally registered sourcebook points with V19 official atlas directly and calibrate Playland park footprint; do not move accepted points."
+}
