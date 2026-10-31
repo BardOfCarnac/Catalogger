@@ -65,6 +65,13 @@ const resize=()=>{dpr=Math.max(1,Math.min(3,devicePixelRatio||1));let r=stage.ge
 const point=p=>{let x=p.a[0],y=p.a[1];return [(x-W/2)*Number($('sx').value)+W/2+Number($('dx').value),(y-H/2)*Number($('sy').value)+H/2+Number($('dy').value)]};
 function fit(){let w=canvas.width/dpr,h=canvas.height/dpr;scale=Math.min(w/W,h/H)*.94;tx=(w-W*scale)/2;ty=(h-H*scale)/2;draw()}
 const screenXY=p=>[tx+p[0]*scale,ty+p[1]*scale];
+const atlasToWorld=q=>{
+ const u=q[0]/3304,v=q[1]/5100;
+ const det=.0035170*.00229008-(-.00078156*.00050891);
+ const gx=(.00229008*u+.00078156*v)/det;
+ const gz=(-.00050891*u+.0035170*v)/det;
+ return [-11098.46+50*(40.094101+gx),-13918.137+50*(100.423500+gz)];
+};
 function draw(){
  let w=canvas.width/dpr,h=canvas.height/dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);ctx.fillStyle='#0a1320';ctx.fillRect(0,0,w,h);
  ctx.save();ctx.translate(tx,ty);ctx.scale(scale,scale);
@@ -99,7 +106,7 @@ $('clear').onclick=()=>{$('query').value='';$('district').value='';choose(null);
 $('reset').onclick=fit;
 $('zero').onclick=()=>{for(const k of ['dx','dy'])$(k).value=0;for(const k of ['sx','sy'])$(k).value=1;draw()};
 $('export').onclick=()=>{
- const q={type:'FeatureCollection',name:'Spaciel V19 source-registered REVIEW CANDIDATE',metadata:{status:'unverified source-master-to-atlas framing; do not publish',source:'Catalogger b6b8937 global geometry',atlas:[W,H],adjustments:Object.fromEntries(['dx','dy','sx','sy'].map(k=>[k,Number($(k).value)])),height_data:'not yet sampled; 2D atlas pixels only'},features:DATA.map(p=>({type:'Feature',id:p.id,properties:{name:p.n,district:p.d,number:p.no,source_ref:p.source,registration_status:p.s,source_master_px:p.m},geometry:{type:'Point',coordinates:point(p)}}))};
+ const q={type:'FeatureCollection',name:'Spaciel V19 source-registered REVIEW CANDIDATE',metadata:{status:'unverified source-master-to-atlas framing; do not publish',source:'Catalogger b6b8937 global geometry',atlas:[W,H],adjustments:Object.fromEntries(['dx','dy','sx','sy'].map(k=>[k,Number($(k).value)])),height_data:'not yet sampled; 2D atlas pixels only',world_frame:'V19 planar X,Z metres from atlas texture shader inverse (not latitude/longitude)'},features:DATA.map(p=>({type:'Feature',id:p.id,properties:{name:p.n,district:p.d,number:p.no,source_ref:p.source,registration_status:p.s,source_master_px:p.m,candidate_world_xz_m:atlasToWorld(point(p))},geometry:{type:'Point',coordinates:point(p)}}))};
  const b=new Blob([JSON.stringify(q,null,2)],{type:'application/geo+json'}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='spaciel_v19_608_source_candidate_REVIEW_ONLY.geojson';a.click();setTimeout(()=>URL.revokeObjectURL(url),5000)};
 window.addEventListener('resize',resize);initSelect();resize();fit();
 </script></body></html>
