@@ -1,0 +1,1526 @@
+{
+  "type": "FeatureCollection",
+  "name": "Spaciel V19 — 31 Hot Zone and Outskirts sourcebook locations — REVIEW OVERLAY ONLY",
+  "metadata": {
+    "schema": "spaciel.poi.v19.sourcebook31.review.v1",
+    "generated_date": "2026-10-31",
+    "world_coords": "[world_x_metres,world_z_metres], no elevation",
+    "sourcebook_master_image_pixels": [
+      5175,
+      7966
+    ],
+    "spaciel_atlas_pixels": [
+      3304,
+      5100
+    ],
+    "book_validation": "PDF calibration inverse verified individually for all 31 to sub-pixel rounding",
+    "v19_model": "24 nearest approved marker book-to-atlas residuals, inverse distance squared; retains book coordinates and uniform-frame alternative for comparisons",
+    "visibility_default": "off",
+    "no_changes_to_525_approved": true,
+    "warning": "No exact image-to-image registration established for the Hot Zone or Outskirts; these 31 V19 positions are provisional and must not be promoted without visual QA",
+    "summary": {
+      "book_verified": 31,
+      "book_registration_error_max_master_px": 0.000649,
+      "hot_zone_candidates": 11,
+      "outskirts_candidates": 20,
+      "outskirts_beyond_book_master_frame": [
+        "Ingalls Farm",
+        "NorCal Marshal Station",
+        "Pol-Bud Cement Factory",
+        "Sunshine Motel"
+      ],
+      "v19_positions_approved": 0,
+      "existing_approved_525_unchanged": true
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL#86",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL",
+        "name": "Ashcroft Hotel",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 1,
+        "book_master_px": [
+          2671.833,
+          3653.769
+        ],
+        "book_source_page_uv": [
+          0.622353,
+          0.462293
+        ],
+        "book_registration_error_master_px": 0.000273,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1660.245,
+          2253.284
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1705.843,
+          2339.219
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 222.33,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-ASHCROFT-HOTEL#86"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -243.353,
+          -1217.334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER#87",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER",
+        "name": "The Crater",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 2,
+        "book_master_px": [
+          2373.485,
+          3716.821
+        ],
+        "book_source_page_uv": [
+          0.359105,
+          0.505283
+        ],
+        "book_registration_error_master_px": 0.000388,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1571.115,
+          2300.135
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1515.361,
+          2379.587
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 273.3,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-CRATER#87"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -566.346,
+          -944.987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER#88",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER",
+        "name": "Crisis Center",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 3,
+        "book_master_px": [
+          2684.714,
+          3555.503
+        ],
+        "book_source_page_uv": [
+          0.633719,
+          0.395293
+        ],
+        "book_registration_error_master_px": 0.000617,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1677.538,
+          2176.634
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1714.067,
+          2276.307
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 127.33,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-CRISIS-CENTER#88"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -241.936,
+          -1545.789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE#89",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE",
+        "name": "Dark Zone One",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 4,
+        "book_master_px": [
+          2297.751,
+          3662.917
+        ],
+        "book_source_page_uv": [
+          0.292281,
+          0.46853
+        ],
+        "book_registration_error_master_px": 0.00043,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1569.489,
+          2243.466
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1467.009,
+          2345.076
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 245.48,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-DARK-ZONE-ONE#89"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -624.389,
+          -1174.689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP#90",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP",
+        "name": "The Dump",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 5,
+        "book_master_px": [
+          2551.433,
+          3859.169
+        ],
+        "book_source_page_uv": [
+          0.516118,
+          0.602338
+        ],
+        "book_registration_error_master_px": 0.000528,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1620.187,
+          2408.1
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1628.973,
+          2470.721
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 84.62,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-THE-DUMP#90"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -267.255,
+          -549.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA#91",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA",
+        "name": "Eurasiabank Plaza",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 92",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 6,
+        "book_master_px": [
+          2583.033,
+          3477.466
+        ],
+        "book_source_page_uv": [
+          0.544,
+          0.342086
+        ],
+        "book_registration_error_master_px": 0.000326,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1644.453,
+          2118.362
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1649.148,
+          2226.347
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 131.22,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-092-EURASIABANK-PLAZA#91"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -430.424,
+          -1753.371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL#92",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL",
+        "name": "Graceland Medical",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 93",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 7,
+        "book_master_px": [
+          2729.818,
+          3556.481
+        ],
+        "book_source_page_uv": [
+          0.673516,
+          0.39596
+        ],
+        "book_registration_error_master_px": 0.000284,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1698.738,
+          2177.594
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1742.864,
+          2276.934
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 109.77,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-093-GRACELAND-MEDICAL#92"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.138,
+          -1561.191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54#93",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54",
+        "name": "The N54",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 93",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 8,
+        "book_master_px": [
+          2345.959,
+          3811.103
+        ],
+        "book_source_page_uv": [
+          0.334817,
+          0.569566
+        ],
+        "book_registration_error_master_px": 0.000122,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1562.982,
+          2362.608
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1497.787,
+          2439.948
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 180.99,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-093-THE-N54#93"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -543.058,
+          -682.713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD#94",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD",
+        "name": "Safe Child",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 93",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 9,
+        "book_master_px": [
+          2727.404,
+          3706.11
+        ],
+        "book_source_page_uv": [
+          0.671386,
+          0.49798
+        ],
+        "book_registration_error_master_px": 0.000327,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1687.956,
+          2290.359
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1741.322,
+          2372.729
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 183.93,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-093-SAFE-CHILD#94"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.117,
+          -1091.333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE#95",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE",
+        "name": "Toggle’s Temple",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 93",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 10,
+        "book_master_px": [
+          2145.847,
+          3486.088
+        ],
+        "book_source_page_uv": [
+          0.158248,
+          0.347965
+        ],
+        "book_registration_error_master_px": 0.000404,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1496.679,
+          2111.306
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1370.025,
+          2231.867
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 88.8,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-093-TOGGLE-S-TEMPLE#95"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1042.749,
+          -1647.504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ#96",
+      "properties": {
+        "place_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ",
+        "name": "Totentanz",
+        "district": "The Hot Zone",
+        "source_ref": "Night City 2045 p. 93",
+        "source_map_id": "NC2045-MAP-THE-HOT-ZONE-P091",
+        "source_marker": 11,
+        "book_master_px": [
+          2364.092,
+          3355.91
+        ],
+        "book_source_page_uv": [
+          0.350817,
+          0.259207
+        ],
+        "book_registration_error_master_px": 0.00028,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1574.203,
+          2024.457
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1509.364,
+          2148.524
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 120.77,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "interpolated_between_calibrated_districts_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-THE-HOT-ZONE-093-TOTENTANZ#96"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -803.605,
+          -2072.452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO#536",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO",
+        "name": "107.3 Morro Rock Radio",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 294",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 1,
+        "book_master_px": [
+          954.407,
+          2794.612
+        ],
+        "book_source_page_uv": [
+          0.187908,
+          0.430556
+        ],
+        "book_registration_error_master_px": 0.000132,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          859.446,
+          1651.301
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          609.345,
+          1789.169
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 768.1,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-294-107-3-MORRO-ROCK-RADIO#536"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4072.671,
+          -2943.481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM#537",
+      "properties": {
+        "place_id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM",
+        "name": "Edgewood Farm",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 294",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 2,
+        "book_master_px": [
+          4708.882,
+          4488.636
+        ],
+        "book_source_page_uv": [
+          0.65,
+          0.591667
+        ],
+        "book_registration_error_master_px": 0.000362,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2583.86,
+          2851.04
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3006.405,
+          2873.719
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 436.72,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-OUT-OUTSKIRTS-294-EDGEWOOD-FARM#537"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4085.725,
+          379.658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM#538",
+      "properties": {
+        "place_id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM",
+        "name": "Ingalls Farm",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 294",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 2,
+        "book_master_px": [
+          5184.167,
+          4897.54
+        ],
+        "book_source_page_uv": [
+          0.708497,
+          0.630556
+        ],
+        "book_registration_error_master_px": 0.000454,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": true,
+        "spaciel_atlas_px": [
+          2904.712,
+          3115.937
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3309.853,
+          3135.508
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 1061.23,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-OUT-OUTSKIRTS-294-INGALLS-FARM#538"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5641.487,
+          1167.967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM#539",
+      "properties": {
+        "place_id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM",
+        "name": "Poppy Farm",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 296",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 2,
+        "book_master_px": [
+          4270.768,
+          6023.343
+        ],
+        "book_source_page_uv": [
+          0.596078,
+          0.737626
+        ],
+        "book_registration_error_master_px": 0.000465,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2379.8,
+          3833.153
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2726.689,
+          3856.27
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 715.85,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-OUT-OUTSKIRTS-296-POPPY-FARM#539"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4139.367,
+          4572.203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT#540",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT",
+        "name": "Jackson Plains Regional Airport",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 296",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 3,
+        "book_master_px": [
+          2741.368,
+          7027.018
+        ],
+        "book_source_page_uv": [
+          0.407843,
+          0.833081
+        ],
+        "book_registration_error_master_px": 0.000262,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1827.081,
+          4520.005
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1750.238,
+          4498.844
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 1250.08,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-296-JACKSON-PLAINS-REGIONAL-AIRPORT#540"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2495.694,
+          7877.906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND#541",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND",
+        "name": "Laguna Bend",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 296",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 4,
+        "book_master_px": [
+          4746.054,
+          5524.171
+        ],
+        "book_source_page_uv": [
+          0.654575,
+          0.690152
+        ],
+        "book_registration_error_master_px": 0.000293,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2648.75,
+          3513.338
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3030.138,
+          3536.69
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 722.37,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-296-LAGUNA-BEND#541"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4952.222,
+          3022.428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL#542",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL",
+        "name": "Municipal Landfill",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 296",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 5,
+        "book_master_px": [
+          4334.501,
+          4531.116
+        ],
+        "book_source_page_uv": [
+          0.603922,
+          0.595707
+        ],
+        "book_registration_error_master_px": 0.000649,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2341.453,
+          2887.901
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2767.38,
+          2900.915
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 259.44,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-296-MUNICIPAL-LANDFILL#542"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3125.185,
+          750.917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT#543",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT",
+        "name": "Night City Spaceport",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 297",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 6,
+        "book_master_px": [
+          1087.169,
+          3086.677
+        ],
+        "book_source_page_uv": [
+          0.204248,
+          0.458333
+        ],
+        "book_registration_error_master_px": 0.000253,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          950.947,
+          1844.292
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          694.108,
+          1976.155
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 495.77,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CITY-SPACEPORT#543"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3522.524,
+          -2239.536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION#544",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION",
+        "name": "NorCal Marshal Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 297",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 7,
+        "book_master_px": [
+          5290.377,
+          4063.803
+        ],
+        "book_source_page_uv": [
+          0.721569,
+          0.551263
+        ],
+        "book_registration_error_master_px": 0.000356,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": true,
+        "spaciel_atlas_px": [
+          2966.436,
+          2560.581
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3377.663,
+          2601.732
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 967.28,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-297-NORCAL-MARSHAL-STATION#544"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5391.105,
+          -1153.894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE#545",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE",
+        "name": "Militech Ballistics & Explosives Range",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 297",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 8,
+        "book_master_px": [
+          3415.796,
+          1328.934
+        ],
+        "book_source_page_uv": [
+          0.49085,
+          0.291162
+        ],
+        "book_registration_error_master_px": 0.000136,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2124.078,
+          665.624
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2180.829,
+          850.811
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 573.18,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-297-MILITECH-BALLISTICS-EXPLOSIVES-RANGE#545"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          219.196,
+          -8116.958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION#546",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION",
+        "name": "Night Corp Solar Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 297",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 9,
+        "book_master_px": [
+          3208.683,
+          6384.458
+        ],
+        "book_source_page_uv": [
+          0.465359,
+          0.77197
+        ],
+        "book_registration_error_master_px": 0.000183,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1879.814,
+          4102.771
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2048.597,
+          4087.464
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 698.75,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-297-NIGHT-CORP-SOLAR-STATION#546"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2333.667,
+          6127.718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS#547",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS",
+        "name": "Northern Oil Fields",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 pp. 297-298",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 10,
+        "book_master_px": [
+          1966.045,
+          861.611
+        ],
+        "book_source_page_uv": [
+          0.312418,
+          0.246717
+        ],
+        "book_registration_error_master_px": 0.000444,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1391.697,
+          380.82
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1255.23,
+          551.621
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 446.18,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-297-NORTHERN-OIL-FIELDS#547"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3042.035,
+          -8611.492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION#548",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION",
+        "name": "Petrochem CHOOH2 Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 298",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 11,
+        "book_master_px": [
+          4440.702,
+          4313.389
+        ],
+        "book_source_page_uv": [
+          0.616993,
+          0.575
+        ],
+        "book_registration_error_master_px": 0.000258,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2371.038,
+          2744.203
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2835.184,
+          2761.522
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 116.39,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-298-PETROCHEM-CHOOH2-STATION#548"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3116.219,
+          137.733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY#549",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY",
+        "name": "Pol-Bud Cement Factory",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 298",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 12,
+        "book_master_px": [
+          5223.996,
+          5242.715
+        ],
+        "book_source_page_uv": [
+          0.713399,
+          0.663384
+        ],
+        "book_registration_error_master_px": 0.000139,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": true,
+        "spaciel_atlas_px": [
+          2936.434,
+          3335.386
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3335.282,
+          3356.496
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 1138.22,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-CEMENT-FACTORY#549"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5970.507,
+          2034.318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO#550",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO",
+        "name": "Pol-Bud Miasto",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 298",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 13,
+        "book_master_px": [
+          4799.158,
+          3745.178
+        ],
+        "book_source_page_uv": [
+          0.661111,
+          0.52096
+        ],
+        "book_registration_error_master_px": 0.000609,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2660.39,
+          2332.047
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3064.042,
+          2397.741
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 683,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MIASTO#550"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3929.022,
+          -1807.346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE#551",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE",
+        "name": "Pol-Bud Mine",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 298",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 14,
+        "book_master_px": [
+          4560.187,
+          3466.371
+        ],
+        "book_source_page_uv": [
+          0.631699,
+          0.494444
+        ],
+        "book_registration_error_master_px": 0.000481,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2539.894,
+          2112.371
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2911.47,
+          2219.243
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 635.45,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-298-POL-BUD-MINE#551"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3235.788,
+          -2593.735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION#552",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION",
+        "name": "Sheriff’s Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 299",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 15,
+        "book_master_px": [
+          4443.359,
+          6426.937
+        ],
+        "book_source_page_uv": [
+          0.61732,
+          0.77601
+        ],
+        "book_registration_error_master_px": 0.00032,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2502.807,
+          4093.276
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2836.881,
+          4114.66
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 1153.8,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-299-SHERIFF-S-STATION#552"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4879.563,
+          5521.311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION#553",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION",
+        "name": "SovOil CHOOH2 Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 299",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 16,
+        "book_master_px": [
+          2422.74,
+          6310.109
+        ],
+        "book_source_page_uv": [
+          0.368627,
+          0.764899
+        ],
+        "book_registration_error_master_px": 0.000253,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          1651.764,
+          4062.011
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          1546.808,
+          4039.864
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 604.16,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-299-SOVOIL-CHOOH2-STATION#553"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1361.625,
+          6169.232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL#554",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL",
+        "name": "Sunshine Motel",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 299",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 17,
+        "book_master_px": [
+          5582.444,
+          4286.839
+        ],
+        "book_source_page_uv": [
+          0.757516,
+          0.572475
+        ],
+        "book_registration_error_master_px": 0.000501,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": true,
+        "spaciel_atlas_px": [
+          3149.847,
+          2712.582
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          3564.134,
+          2744.524
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 1241.28,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-299-SUNSHINE-MOTEL#554"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6280.961,
+          -700.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION#555",
+      "properties": {
+        "place_id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION",
+        "name": "Union Railroad Station",
+        "district": "Outskirts",
+        "source_ref": "Night City 2045 p. 299",
+        "source_map_id": "NC2045-MAP-OUTSKIRTS-P295",
+        "source_marker": 18,
+        "book_master_px": [
+          4453.978,
+          4143.451
+        ],
+        "book_source_page_uv": [
+          0.618627,
+          0.558838
+        ],
+        "book_registration_error_master_px": 0.000171,
+        "book_registration_status": "verified_pdf_master",
+        "source_outside_master_image": false,
+        "spaciel_atlas_px": [
+          2395.603,
+          2629.778
+        ],
+        "spaciel_uniform_frame_alternative_px": [
+          2843.661,
+          2652.724
+        ],
+        "spaciel_neighbor_anchor_distance_master_px": 156.41,
+        "spaciel_inference_method": "inverse_distance_squared_weighted_24_nearest_approved_residuals_from_uniform_frame",
+        "spaciel_placement_status": "extrapolated_from_calibrated_city_points_review",
+        "spaciel_position_approved": false,
+        "visual_review_required": true,
+        "icon_family_id": null,
+        "icon_subtype_id": null,
+        "render_default": false,
+        "terrain_height_unsampled": true,
+        "source_manifestation_id": "NC2045-LOC-OUTSKIRTS-299-UNION-RAILROAD-STATION#555"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3113.209,
+          -351.457
+        ]
+      }
+    }
+  ]
+}
