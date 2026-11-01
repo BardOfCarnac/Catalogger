@@ -1,0 +1,252 @@
+{
+  "schema": "spaciel.hotzone.sourcebook_screenshot_crosscheck.v1",
+  "date": "2026-11-01",
+  "source": "User-provided screenshot of Hot Zone book map (sourcebook page 91, PDF page 92); manual dot-centre estimates",
+  "status": "book_position_11_of_11_verified_against_screenshot; V19 image registration not yet independent",
+  "screenshot_details": {
+    "original_image_dimensions_px": [
+      684,
+      1536
+    ],
+    "map_visible_bbox_approx_px": [
+      40,
+      657,
+      630,
+      1238
+    ],
+    "map_center_pixels_manually_estimated": true
+  },
+  "model": "Affine [book master x,y,1] to screenshot displayed dot centre [x,y]",
+  "transform": {
+    "x": [
+      0.6512140791503047,
+      0.001079631294923833,
+      -1283.6691888096939
+    ],
+    "y": [
+      0.0019287681706192522,
+      0.6509155567995004,
+      -1440.8490612904322
+    ]
+  },
+  "number_of_dot_centres": 11,
+  "fit_rms_screenshot_px": 0.721,
+  "leave_one_out_rms_screenshot_px": 0.981,
+  "markers": [
+    {
+      "number": 1,
+      "name": "Ashcroft Hotel",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2671.833,
+        3653.769
+      ],
+      "manually_read_screenshot_px": [
+        461,
+        942
+      ],
+      "predicted_screenshot_px": [
+        460.211,
+        942.599
+      ],
+      "fit_error_px": 0.991,
+      "leave_one_out_error_px": 1.191
+    },
+    {
+      "number": 2,
+      "name": "The Crater",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2373.485,
+        3716.821
+      ],
+      "manually_read_screenshot_px": [
+        266,
+        983
+      ],
+      "predicted_screenshot_px": [
+        265.99,
+        983.065
+      ],
+      "fit_error_px": 0.066,
+      "leave_one_out_error_px": 0.08
+    },
+    {
+      "number": 3,
+      "name": "Crisis Center",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2684.714,
+        3555.503
+      ],
+      "manually_read_screenshot_px": [
+        468,
+        879
+      ],
+      "predicted_screenshot_px": [
+        468.493,
+        878.661
+      ],
+      "fit_error_px": 0.598,
+      "leave_one_out_error_px": 0.754
+    },
+    {
+      "number": 4,
+      "name": "Dark Zone One",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2297.751,
+        3662.917
+      ],
+      "manually_read_screenshot_px": [
+        216,
+        948
+      ],
+      "predicted_screenshot_px": [
+        216.613,
+        947.832
+      ],
+      "fit_error_px": 0.636,
+      "leave_one_out_error_px": 0.799
+    },
+    {
+      "number": 5,
+      "name": "The Dump",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2551.433,
+        3859.169
+      ],
+      "manually_read_screenshot_px": [
+        382,
+        1076
+      ],
+      "predicted_screenshot_px": [
+        382.026,
+        1076.065
+      ],
+      "fit_error_px": 0.07,
+      "leave_one_out_error_px": 0.106
+    },
+    {
+      "number": 6,
+      "name": "Eurasiabank Plaza",
+      "sourcebook": "Night City 2045 p. 92",
+      "book_master_px": [
+        2583.033,
+        3477.466
+      ],
+      "manually_read_screenshot_px": [
+        401,
+        828
+      ],
+      "predicted_screenshot_px": [
+        402.193,
+        827.67
+      ],
+      "fit_error_px": 1.238,
+      "leave_one_out_error_px": 1.566
+    },
+    {
+      "number": 7,
+      "name": "Graceland Medical",
+      "sourcebook": "Night City 2045 p. 93",
+      "book_master_px": [
+        2729.818,
+        3556.481
+      ],
+      "manually_read_screenshot_px": [
+        498,
+        880
+      ],
+      "predicted_screenshot_px": [
+        497.866,
+        879.385
+      ],
+      "fit_error_px": 0.629,
+      "leave_one_out_error_px": 0.846
+    },
+    {
+      "number": 8,
+      "name": "The N54",
+      "sourcebook": "Night City 2045 p. 93",
+      "book_master_px": [
+        2345.959,
+        3811.103
+      ],
+      "manually_read_screenshot_px": [
+        248,
+        1045
+      ],
+      "predicted_screenshot_px": [
+        248.167,
+        1044.382
+      ],
+      "fit_error_px": 0.64,
+      "leave_one_out_error_px": 0.951
+    },
+    {
+      "number": 9,
+      "name": "Safe Child",
+      "sourcebook": "Night City 2045 p. 93",
+      "book_master_px": [
+        2727.404,
+        3706.11
+      ],
+      "manually_read_screenshot_px": [
+        497,
+        976
+      ],
+      "predicted_screenshot_px": [
+        496.456,
+        976.776
+      ],
+      "fit_error_px": 0.948,
+      "leave_one_out_error_px": 1.249
+    },
+    {
+      "number": 10,
+      "name": "Toggle’s Temple",
+      "sourcebook": "Night City 2045 p. 93",
+      "book_master_px": [
+        2145.847,
+        3486.088
+      ],
+      "manually_read_screenshot_px": [
+        118,
+        832
+      ],
+      "predicted_screenshot_px": [
+        117.5,
+        832.439
+      ],
+      "fit_error_px": 0.665,
+      "leave_one_out_error_px": 1.209
+    },
+    {
+      "number": 11,
+      "name": "Totentanz",
+      "sourcebook": "Night City 2045 p. 93",
+      "book_master_px": [
+        2364.092,
+        3355.91
+      ],
+      "manually_read_screenshot_px": [
+        260,
+        748
+      ],
+      "predicted_screenshot_px": [
+        259.484,
+        748.125
+      ],
+      "fit_error_px": 0.531,
+      "leave_one_out_error_px": 0.919
+    }
+  ],
+  "notes": [
+    "All eleven recovered sourcebook markers match the screenshot's numbered dots to approximately one screenshot pixel.",
+    "The screenshot displays a Hot Zone close-up; this transformation is screenshot-to-book, not the V19 map's atlas alignment.",
+    "The recovered book-master coordinate calibration was already numerically validated separately.",
+    "Existing V19 525 locations are not moved."
+  ]
+}
