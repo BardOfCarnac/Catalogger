@@ -1,0 +1,126 @@
+{
+  "schema": "spaciel.waterfix.v19.v1",
+  "date": "2026-11-01",
+  "source": "Catalogger recovered sourcebook master + measured SIFT book-to-V19 affine",
+  "baseline_positions": 525,
+  "additions": 31,
+  "all": 556,
+  "baseline_flags_legacy_water": 65,
+  "water_after_book_registration": 20,
+  "shoreline_anchored": [
+    {
+      "name": "Agron’s Boxed Lunches",
+      "offset_m": 46.7
+    },
+    {
+      "name": "Obsidian Equinox Marina & Docks",
+      "offset_m": 60.1
+    },
+    {
+      "name": "Pacifica Arcology Ruins",
+      "offset_m": 56.9
+    },
+    {
+      "name": "Dock 13",
+      "offset_m": 63.2
+    },
+    {
+      "name": "Dock 14 Studio Apartments",
+      "offset_m": 34
+    },
+    {
+      "name": "Dock Cargo Community",
+      "offset_m": 36.3
+    },
+    {
+      "name": "Harbor Patrol HQ",
+      "offset_m": 36.4
+    },
+    {
+      "name": "Main Port",
+      "offset_m": 63.1
+    },
+    {
+      "name": "Rusty’s Dive Shack",
+      "offset_m": 32.2
+    },
+    {
+      "name": "Bay Bridge Residences",
+      "offset_m": 61.8
+    },
+    {
+      "name": "Bright Forest Casino",
+      "offset_m": 59.1
+    },
+    {
+      "name": "Kraken Line Water Taxis",
+      "offset_m": 31.2
+    },
+    {
+      "name": "Marina Breeze Apartments",
+      "offset_m": 50.6
+    },
+    {
+      "name": "Marina FloatHomes",
+      "offset_m": 32.3
+    },
+    {
+      "name": "Morro Strand Yacht Club",
+      "offset_m": 78.1
+    },
+    {
+      "name": "Ziggurat Headquarters",
+      "offset_m": 28.8
+    },
+    {
+      "name": "Ebunike Docks",
+      "offset_m": 46.6
+    }
+  ],
+  "offshore_hidden": [
+    {
+      "name": "The Ascension",
+      "nearest_safe_land_m": 159.4
+    },
+    {
+      "name": "Flotsam",
+      "nearest_safe_land_m": 776
+    },
+    {
+      "name": "107.3 Morro Rock Radio",
+      "nearest_safe_land_m": 235.8
+    }
+  ],
+  "outside_atlas_hidden": [
+    "Ingalls Farm",
+    "NorCal Marshal Station",
+    "Pol-Bud Cement Factory",
+    "Sunshine Motel"
+  ],
+  "visible_water_markers": [],
+  "book_registration_matrix": [
+    [
+      0.6401610417084892,
+      0.000007612596818972019,
+      0.15443184726199813
+    ],
+    [
+      0.000002465297654763841,
+      0.6402162082606205,
+      0.24639445589804435
+    ]
+  ],
+  "verified_terrain_grid": true,
+  "original_id_and_icon_classifications_preserved": true,
+  "legacy_world_coordinates_retained": true,
+  "notes": [
+    "Earlier 525 positions were district-rectangle fitted, resulting in many water overlaps.",
+    "Canonical sourcebook world positions are preserved separately from display positions.",
+    "Waterfront icons within 140m of stable land are displayed on nearby dry land, without changing their canonical source coordinate.",
+    "Genuinely offshore locations and four beyond the current atlas are searchable but hidden by default.",
+    "No changes to spectrum bar, buildings, terrain or road geometry."
+  ],
+  "total_visible_by_default": 549,
+  "drawn_on_water": 0,
+  "viewer_file": "Spaciel_V19_556_Sourcebook_Shoreline_Corrected.html"
+}
