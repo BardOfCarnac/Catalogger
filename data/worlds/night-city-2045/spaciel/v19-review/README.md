@@ -1,3 +1,18 @@
+# Update — Hot Zone screenshot verified and 556 combined (1 November 2026)
+
+The user-provided Hot Zone sourcebook screenshot has been cross-checked against all **11** recovered original numbered markers. Their manually estimated screenshot centres are consistent with the saved original-book master positions: RMS **0.721 screenshot pixels** (leave-one-out RMS **0.981 px**). This independently supports the original book-map marker positions.
+
+Files:
+- [Hot Zone screenshot QA, all 11 markers](./spaciel_v19_hot_zone_screenshot_crosscheck_11.json)
+- [11 Hot Zone markers, proportional V19-frame candidate](./spaciel_v19_bookregistered_hotzone11_review.geojson)
+- [Combined **556** markers: 525 existing + 20 Outskirts + 11 Hot Zone](./spaciel_v19_approved525_plus_outskirts20_hotzone11_review556.geojson)
+
+The original 525 user-approved V19 positions have not been touched. The added 31 use recovered source-map coordinates proportionally registered to V19 atlas dimensions; the **book-to-V19 pixel-perfect image registration is still pending**. All 31 remain *hidden by default and flagged as not yet accepted*. New marker terrain heights have not been sampled, and icon subtypes have not yet been mapped.
+
+No Supabase changes or main branch changes. Remaining 52 Playland markers are a separate local source map.
+
+---
+
 # LATEST — OUTSKIRTS 20 BOOK-MAP ALIGNMENT (31 October 2026)
 
 **Use these newest files for the Outskirts.** They supersede the earlier 31-marker *inverse-distance interpolation* experiment, which improperly pulled four east-of-frame book locations back inside the atlas.
