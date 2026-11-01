@@ -1,0 +1,49 @@
+{
+  "schema": "spaciel.image_registration.v19.book_master.v1",
+  "created_at": "2026-11-01",
+  "original_pdf_asset": "RTG-CPR-Night_City_2045-600dpi.pdf",
+  "pdf_image_xref": 13258,
+  "book_master_px": [
+    5175,
+    7966
+  ],
+  "atlas_png": "spaciel_v19_atlas_high_res.png",
+  "atlas_px": [
+    3304,
+    5100
+  ],
+  "affine_2x3": [
+    [
+      0.6401610417084892,
+      0.000007612596818972019,
+      0.15443184726199813
+    ],
+    [
+      0.000002465297654763841,
+      0.6402162082606205,
+      0.24639445589804435
+    ]
+  ],
+  "preview_size": [
+    1560,
+    2400
+  ],
+  "source_sift_features": 13032,
+  "target_sift_features": 9235,
+  "ratio_match_count": 3115,
+  "robust_inlier_count": 2654,
+  "inlier_rms_preview_px": 0.4819589773183902,
+  "inlier_rms_target_px": 1.0248,
+  "inlier_95_preview_px": 1.0039346836773657,
+  "method": "SIFT descriptor ratio matching and RANSAC cv2.estimateAffine2D with 3.0 preview-pixel threshold",
+  "approved_525_unchanged": true,
+  "verified_book_markers": 31,
+  "source_only_feature_status": "staging, not visually signed off",
+  "out_of_original_image": [
+    "Ingalls Farm",
+    "NorCal Marshal Station",
+    "Pol-Bud Cement Factory",
+    "Sunshine Motel"
+  ],
+  "details": "Accurate in city where features exist. Outside image is an affine extrapolation, not independently pixel-measured."
+}
