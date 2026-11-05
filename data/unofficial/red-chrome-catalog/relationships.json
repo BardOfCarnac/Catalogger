@@ -1,0 +1,100 @@
+[
+  {
+    "type": "alternate-source-version",
+    "source_product_name": "Eagletech “Scorpion” Repeating Crossbow",
+    "target_catalogue_name": "Eagletech Scorpion",
+    "target_catalogue_id": null,
+    "status": "resolve-after-official-set-stabilizes",
+    "note": "Red Chrome presents a homebrew rules/version collision with an existing official product identity; do not create another canonical item."
+  },
+  {
+    "type": "uses-existing-item",
+    "source_item_id": "RCC-0026",
+    "target_catalogue_name": "Battery Pack",
+    "target_catalogue_id": null,
+    "status": "resolve-after-official-set-stabilizes",
+    "note": "Source sells extra battery packs for 50eb but does not name a distinct proprietary product."
+  },
+  {
+    "type": "uses-existing-item",
+    "source_item_id": "RCC-0038",
+    "target_catalogue_name": "Net Launcher Net",
+    "target_catalogue_id": null,
+    "status": "resolve-after-official-set-stabilizes",
+    "note": "Replacement nets are 50eb; reuse the existing official product identity."
+  },
+  {
+    "type": "addon-price",
+    "source_item_id": "RCC-0065",
+    "addon_name": "Spare Parachute",
+    "price_eb": 50,
+    "price_band": "Costly",
+    "note": "The source prices a spare parachute as an add-on; it is not staged as a second product identity."
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0005",
+    "compatible_item_id": "RCC-0074",
+    "role": "battery"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0027",
+    "compatible_item_id": "RCC-0075",
+    "role": "battery"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0028",
+    "compatible_item_id": "RCC-0076",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0031",
+    "compatible_item_id": "RCC-0077",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0032",
+    "compatible_item_id": "RCC-0078",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0035",
+    "compatible_item_id": "RCC-0079",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0035",
+    "compatible_item_id": "RCC-0080",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0036",
+    "compatible_item_id": "RCC-0081",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0036",
+    "compatible_item_id": "RCC-0082",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0036",
+    "compatible_item_id": "RCC-0083",
+    "role": "ammunition"
+  },
+  {
+    "type": "compatible-item",
+    "source_item_id": "RCC-0039",
+    "compatible_item_id": "RCC-0084",
+    "role": "ammunition"
+  }
+]
