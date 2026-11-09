@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#19140f">
+<title>Vend-R / Supporting Typefaces Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Exo+2:wght@400;500;600&family=Tomorrow:wght@400;500;600&family=Saira:wght@400;500;600&family=Bebas+Neue&family=Antonio:wght@500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17110c;--paper:#fff7e5;--cream:#fff2d7;--yellow:#f7db45;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--orange:#e35e11}
+*{box-sizing:border-box}
+html{background:#19140f}
+body{margin:0;color:#f6e5c0;background:linear-gradient(115deg,#e85c10 -30%,#f3a218 18%,#f6d63f 33%,#252019 33.05%,#171512 100%);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+button,select,input{font:inherit}button{cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ffbb35;outline-offset:2px}
+.page{width:min(100% - 24px,1440px);margin:auto;padding-bottom:52px}
+.topbar{display:flex;justify-content:space-between;align-items:end;padding:24px 4px 19px;gap:15px}
+.logotype{font:bold italic clamp(35px,5vw,56px)/.86 Impact,'Arial Narrow',sans-serif;color:#ffe05a;letter-spacing:-.055em;text-shadow:3px 4px 0 #1a120f;-webkit-text-stroke:1px #1a120f}
+.logo-sub{font:900 10px/1.5 var(--mono);letter-spacing:.2em;margin-top:9px;color:#19120e}
+.stamp{text-align:right;font:850 10px/1.65 var(--mono);color:#f2d79c;letter-spacing:.07em;text-transform:uppercase}.stamp b{color:#ffe260;display:block}
+.hero{border:2px solid #15110e;background:#fff4da;color:var(--ink);padding:clamp(18px,3vw,32px);box-shadow:7px 8px 0 #0005}
+.kicker{font:900 10px var(--mono);color:#c25813;letter-spacing:.09em;text-transform:uppercase}
+.hero h1{font:400 clamp(26px,3.7vw,42px)/1.16 Michroma,Arial,sans-serif;letter-spacing:-.035em;margin:11px 0}
+.hero p{font:14px/1.55 Arial,sans-serif;margin:0;max-width:840px;color:#625748}
+.hero p strong{color:#252018}
+.toolbar{margin-top:15px;display:flex;align-items:end;flex-wrap:wrap;gap:10px 15px;padding:13px 15px;border:1px solid #6b5842;background:#201b16;color:#fff0cf}
+.toolbar .group{display:flex;flex-direction:column;gap:6px}
+.toolbar label{font:850 10px var(--mono);letter-spacing:.06em;color:#ebc487;text-transform:uppercase}
+.toolbar input[type=range]{width:160px;accent-color:#f7db45}
+.slider-readout{font:850 11px var(--mono)}
+.toolbar button{border:1px solid #bda16e;background:#f8db48;color:#1e140c;padding:9px 12px;min-height:39px;font:900 11px var(--mono);text-transform:uppercase}
+.toolbar button.secondary{background:#2b241b;color:#f8dfac}
+.toolbar .grow{flex:1}
+.toolbar .note{font:10px var(--mono);color:#dbc4a1}
+.presets{display:flex;gap:8px;flex-wrap:wrap;padding:16px 0 10px;align-items:center}
+.presets b{font:800 10px var(--mono);color:#eacb91;letter-spacing:.07em;margin-right:3px}
+.presets button{background:#33291f;color:#ffdf9b;border:1px solid #ad8651;padding:9px 11px;font:900 10px var(--mono);text-transform:uppercase}
+.presets button:hover{background:#725228;color:#fff}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:start}
+.demo{--body-family:Arial,Helvetica,sans-serif;--block-family:Arial,Helvetica,sans-serif;--block-weight:900;min-width:0;background:#fdf2d9;border:1px solid #9f8765;color:var(--ink);box-shadow:4px 5px 0 #0004}
+.demo[data-body=exo]{--body-family:'Exo 2',Arial,sans-serif}
+.demo[data-body=tomorrow]{--body-family:Tomorrow,Arial,sans-serif}
+.demo[data-body=saira]{--body-family:Saira,Arial,sans-serif}
+.demo[data-block=bebas]{--block-family:'Bebas Neue',Impact,sans-serif;--block-weight:400}
+.demo[data-block=antonio]{--block-family:Antonio,Impact,sans-serif;--block-weight:600}
+.demo[data-block=teko]{--block-family:Teko,Impact,sans-serif;--block-weight:600}
+.demo-head{padding:12px 15px;background:#f8dd4b;display:flex;gap:15px;justify-content:space-between;align-items:center;border-bottom:3px solid #1c150f}
+.demo-head .number{font:900 11px var(--mono)}
+.demo-head h2{font:900 19px/.95 Arial,sans-serif;letter-spacing:-.025em;margin:5px 0 0}
+.demo-head .marker{font:850 10px var(--mono);color:#51402a}
+.selects{padding:11px 13px;display:flex;gap:9px;background:#fff9eb;border-bottom:1px solid #c0ae91}
+.selects .select-group{min-width:0;flex:1;display:grid;gap:5px}
+.selects label{font:900 9px var(--mono);color:#76533a;text-transform:uppercase;letter-spacing:.06em}
+.selects select{width:100%;min-width:0;min-height:37px;padding:7px 8px;border:1px solid #98896f;border-radius:0;background:#fffef6;color:#20180f;font:850 12px Arial,sans-serif}
+.mock-nav{padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff4dc;border-bottom:2px solid #1b140d}
+.mock-logo{font:bold italic 27px/.82 Impact,'Arial Narrow',sans-serif;letter-spacing:-.04em}
+.mock-logo small{font:800 8px var(--mono);letter-spacing:.06em;display:block;margin-top:9px}
+.mock-nav nav{display:flex;flex-wrap:wrap;gap:5px}
+.mock-nav nav span{padding:8px;border:1px solid #19150f;background:#f8db4c;font:900 9px var(--mono)}
+.main-section{padding:20px 15px 18px}
+.section-kicker{font:900 9px var(--mono);color:#ae4e0e;text-transform:uppercase;letter-spacing:.055em}
+.main-section h1{font:400 clamp(21px,2.2vw,30px)/1.17 Michroma,Arial,sans-serif;letter-spacing:-.035em;margin:8px 0 11px}
+.reading{font:400 var(--reading-size,15px)/1.55 var(--body-family);color:#5c5247;margin:0;overflow-wrap:break-word}
+.reading+.reading{margin-top:9px}
+.section-label{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:2px solid #20180e;padding:12px 0 8px;margin-top:19px}
+.section-label h3{font:400 clamp(15px,1.6vw,20px)/1.15 Michroma,Arial,sans-serif;margin:0}
+.section-label small{font:750 9px var(--mono);color:#7d6c54}
+.shop-row{display:flex;justify-content:space-between;gap:12px;padding:13px 5px;border-bottom:1px solid #c3b399;align-items:center}
+.block-type{font-family:var(--block-family);font-weight:var(--block-weight);text-transform:uppercase;line-height:1.05;letter-spacing:-.015em;overflow-wrap:anywhere}
+.shop-name{font-size:clamp(20px,2.2vw,27px)}
+.shop-row small,.item-meta{display:block;color:#7a6850;font:850 10px/1.5 var(--mono);margin-top:4px}
+.shop-distance{flex:none;background:#f6db4d;border:1px solid #231a0d;padding:7px 8px;font:900 10px var(--mono);align-self:center}
+.shop-feature{background:linear-gradient(105deg,#48302b,#282e31 62%,#182029);color:#fdf1d6;padding:21px 15px 22px}
+.shop-feature>small{font:850 9px var(--mono);color:#f9d44c}
+.shop-feature h2{font:400 clamp(20px,2.15vw,29px)/1.2 Michroma,Arial,sans-serif;margin:10px 0}
+.shop-feature .reading{color:#dbccbb}
+.shop-feature .mini-brand{font:900 9px var(--mono);color:#fbd65f;margin-top:12px}
+.card-zone{padding:16px 15px 20px}
+.card-title{font:400 18px Michroma,Arial,sans-serif;letter-spacing:-.04em;margin:0 0 12px}
+.item-card{border:1px solid #a99d89;background:#fff6e6}
+.item-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 13px;min-width:0}
+.item-name{font-size:clamp(18px,1.95vw,24px)}
+.price{padding:10px 13px;background:#f8db48;white-space:nowrap;font:900 20px Arial,Helvetica,sans-serif;color:#17130f}
+.item-desc{padding:0 13px 13px}
+.technical{font:900 9px/1.5 var(--mono);letter-spacing:.04em;color:#80705c}
+.tech-readout{padding:12px 13px;border-top:1px solid #cfc0a8;font:900 10px/1.5 var(--mono);color:#77624c}
+.symbols{font:13px/1.5 var(--body-family);color:#564939;margin:7px 0 0;overflow-wrap:anywhere}
+.mock-footer{padding:12px 14px;border-top:2px solid #16110d;background:#fff8e8;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.mock-footer span{font:850 9px/1.5 var(--mono);color:#78654b}
+.mock-footer a{font:900 10px var(--mono);color:#282016;text-decoration:underline;text-underline-offset:3px}
+.mobile-mode{display:none}
+.notes{border-top:1px solid #695238;padding-top:16px;margin-top:20px;color:#e4c99e;font:12px/1.6 Arial,sans-serif;max-width:900px}
+.notes a{color:#ffdf67}
+.state-line{font:800 10px/1.5 var(--mono);color:#c8a677;padding:13px 0}
+@media(max-width:760px){
+ .page{width:calc(100% - 14px)}
+ .topbar{padding:17px 4px}
+ .stamp{font-size:8px}
+ .hero{padding:15px}
+ .toolbar{padding:11px}
+ .presets{gap:6px}
+ .presets button{font-size:9px;padding:9px}
+ .compare{grid-template-columns:1fr}
+ .mobile-mode{display:flex;gap:7px;align-items:center;padding:11px 0}
+ .mobile-mode button{font:900 11px var(--mono);padding:10px 15px;background:#342a1f;color:#e9d1a2;border:1px solid #917b57}
+ .mobile-mode button[aria-pressed=true]{background:#f8dc49;color:#1a120d}
+ .demo:not(.mobile-active){display:none}
+ .shop-name{font-size:24px}
+ .item-name{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="topbar">
+ <div><div class="logotype">VEND-R</div><div class="logo-sub">FONT SYSTEM STUDY / NIGHT CITY 2045</div></div>
+ <div class="stamp"><b>DISPLAY FONT FIXED: MICHROMA</b>SUPPORTING TYPEFACES · 02 / 03<br>WORKSHOP · NOT LIVE</div>
+</header>
+<section class="hero">
+ <div class="kicker">VEND-R DESIGN LAB / TYPOGRAPHIC ROLES</div>
+ <h1>Two fonts beneath Michroma.</h1>
+ <p>Michroma stays for major website titles. Choose a <strong>reading font</strong> for descriptions, and a <strong>tall block font</strong> for shop and item names. The yellow <strong>§ prices</strong>, logo and small technical monospace are deliberately unchanged. No stock API is needed.</p>
+</section>
+<div class="toolbar">
+ <div class="group"><label for="sizeSlider">Reading size · <span id="sizeLabel">15</span>px</label><input type="range" id="sizeSlider" min="13" max="19" step="1" value="15"></div>
+ <button type="button" id="swap">Swap A / B</button>
+ <button type="button" class="secondary" id="reset">Reset</button>
+ <div class="grow"></div><div class="note" id="fontStatus">Online fonts load from Google Fonts; system fallbacks remain available.</div>
+</div>
+<div class="presets" aria-label="Suggested combinations">
+ <b>TRY ON B:</b>
+ <button type="button" data-preset="exo,bebas">Exo 2 + Bebas Neue</button>
+ <button type="button" data-preset="tomorrow,antonio">Tomorrow + Antonio</button>
+ <button type="button" data-preset="saira,teko">Saira + Teko</button>
+</div>
+<div class="mobile-mode"><span style="font:900 10px var(--mono);color:#e7bb80">SHOW</span><button type="button" data-mobile="a" aria-pressed="false">A / Current</button><button type="button" data-mobile="b" aria-pressed="true">B / Proposed</button></div>
+<section class="compare" aria-label="Two font stack combinations">
+<!-- PANES -->
+</section>
+<div class="state-line" id="statusLine" aria-live="polite"></div>
+<div class="notes"><strong>Neuropolitical reference.</strong> The original Raymond Larabie font is an excellent aesthetic reference, but its free desktop licence does not allow live website embedding. See the <a href="https://typodermicfonts.com/neuropolitical-science/" target="_blank" rel="noopener">official Neuropolitical specimen</a> and <a href="https://typodermicfonts.com/license/" target="_blank" rel="noopener">licensing guide</a>. These alternatives are open-source and web-embeddable. No font files are hosted in this repository. The live Vend-R site remains unchanged.</div>
+</div>
+<script>
+(function(){
+ const BODY={arial:'Arial / Helvetica',exo:'Exo 2',tomorrow:'Tomorrow',saira:'Saira'};
+ const BLOCK={arial:'Arial Bold',bebas:'Bebas Neue',antonio:'Antonio',teko:'Teko'};
+ const OPTIONS_BODY=Object.keys(BODY),OPTIONS_BLOCK=Object.keys(BLOCK);
+ const $=id=>document.getElementById(id);
+ const defaults={a:{body:'arial',block:'arial'},b:{body:'exo',block:'bebas'},size:15,mobile:'b'};
+ let state=JSON.parse(JSON.stringify(defaults));
+ try{const x=JSON.parse(localStorage.getItem('vendr-supporting-font-lab-v1')||'null');
+  if(x&&OPTIONS_BODY.includes(x.a?.body)&&OPTIONS_BLOCK.includes(x.a?.block)&&OPTIONS_BODY.includes(x.b?.body)&&OPTIONS_BLOCK.includes(x.b?.block)){
+   state={a:x.a,b:x.b,size:Math.max(13,Math.min(19,Number(x.size)||15)),mobile:x.mobile==='a'?'a':'b'};
+  }}catch(_){}
+ function save(){try{localStorage.setItem('vendr-supporting-font-lab-v1',JSON.stringify(state))}catch(_){}}
+ function options(map,sel){return Object.entries(map).map(function(entry){
+  return '<option value="'+entry[0]+'"'+(entry[0]===sel?' selected':'')+'>'+entry[1]+'</option>';
+ }).join('')}
+ function paneMarkup(k){
+  const p=state[k],label=k==='a'?'A / COMPARISON':'B / PROPOSED';
+  const site=new URL('./michroma-type-preview.html',location.href);
+  site.searchParams.set('view','home');site.searchParams.set('type','michroma');
+  if(p.body!=='arial')site.searchParams.set('bodyfont',p.body);
+  if(p.block!=='arial')site.searchParams.set('blockfont',p.block);
+  return '<article class="demo'+(state.mobile===k?' mobile-active':'')+'" id="pane-'+k+'" data-body="'+p.body+'" data-block="'+p.block+'">'+
+  '<div class="demo-head"><div><div class="number">'+label+'</div><h2>'+BODY[p.body]+' / '+BLOCK[p.block]+'</h2></div><span class="marker">2 SUPPORTING ROLES</span></div>'+
+  '<div class="selects"><div class="select-group"><label for="body-'+k+'">Reading text</label><select id="body-'+k+'" data-choice="body" data-side="'+k+'">'+options(BODY,p.body)+'</select></div>'+
+  '<div class="select-group"><label for="block-'+k+'">Bold / condensed</label><select id="block-'+k+'" data-choice="block" data-side="'+k+'">'+options(BLOCK,p.block)+'</select></div></div>'+
+  '<div class="mock-nav"><div class="mock-logo">VEND-R<small>NIGHT CITY MARKET</small></div><nav><span>BROWSE</span><span>SOURCES</span><span>LOCATION</span></nav></div>'+
+  '<section class="main-section"><div class="section-kicker">VEND-R LOCAL MARKET · 2045</div><h1>SHOPS NEAR YOU</h1>'+
+  '<p class="reading">Night City is a city of neighbourhood markets, independent storefronts and specialist traders. Vend-R helps you discover what is available nearby, whether you need everyday supplies or equipment that is harder to find.</p>'+
+  '<p class="reading">Browse the market, investigate a merchant, and see their current stock before making the journey. Availability may change, and not every seller publishes a complete inventory.</p>'+
+  '<div class="section-label"><h3>KNOWN SELLERS</h3><small>IN YOUR AREA</small></div>'+
+  '<div class="shop-row"><div><div class="shop-name block-type">Kabuki Armature &amp; Surplus</div><small>TECH / SURPLUS · KABUKI</small></div><div class="shop-distance">0.8 KM</div></div>'+
+  '<div class="shop-row"><div><div class="shop-name block-type">Hollowpoint Hardware</div><small>GENERAL SUPPLIES · WATSON</small></div><div class="shop-distance">1.2 KM</div></div></section>'+
+  '<section class="shop-feature"><small>FEATURED LOCATION / NIGHT CITY</small><h2>KAITO MARKET</h2><p class="reading">Independent dealers crowd the market stalls with cyberware, weapons, clothing and repair services. The market changes character through the day as vendors arrive and depart.</p><div class="mini-brand">MULTIPLE SELLERS · STOCK UPDATES</div></section>'+
+  '<section class="card-zone"><h2 class="card-title">RECENTLY VIEWED</h2><div class="item-card"><div class="item-row"><div><div class="block-type item-name">Militech M-10AF</div><span class="item-meta">VERY HEAVY PISTOL · 12 IN STOCK</span></div><div class="price">§720</div></div><p class="reading item-desc">A reliable sidearm offered through several Night City dealers, with prices that vary by condition and seller.</p><div class="tech-readout">SOURCE / CORE RULEBOOK · REFRESH / 14:00</div></div>'+
+  '<p class="symbols">Readability test: 01Il O0 · K8B5 · € § £ — / glyphs and symbols in normal prose.</p></section>'+
+  '<footer class="mock-footer"><span>NO DATA CONNECTION REQUIRED</span><a href="'+site.href+'" target="_blank" rel="noopener noreferrer">OPEN IN ACTUAL VEND-R PREVIEW ↗</a></footer></article>';
+ }
+ function render(){
+  document.documentElement.style.setProperty('--reading-size',state.size+'px');
+  $('sizeLabel').textContent=state.size;$('sizeSlider').value=state.size;
+  document.querySelector('.compare').innerHTML=paneMarkup('a')+paneMarkup('b');
+  document.querySelectorAll('[data-mobile]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mobile===state.mobile))});
+  $('statusLine').textContent='A / '+BODY[state.a.body]+' + '+BLOCK[state.a.block]+'     ·     B / '+BODY[state.b.body]+' + '+BLOCK[state.b.block]+'     ·     '+state.size+'px reading size';
+ }
+ document.querySelector('.compare').addEventListener('change',function(e){
+  if(!e.target.matches('[data-choice]'))return;
+  const k=e.target.dataset.side,property=e.target.dataset.choice;
+  if(k!=='a'&&k!=='b')return;
+  if(property==='body'&&!OPTIONS_BODY.includes(e.target.value))return;
+  if(property==='block'&&!OPTIONS_BLOCK.includes(e.target.value))return;
+  state[k][property]=e.target.value;save();render();
+ });
+ document.querySelectorAll('[data-preset]').forEach(function(b){b.addEventListener('click',function(){
+  const a=b.dataset.preset.split(',');state.b={body:a[0],block:a[1]};state.mobile='b';save();render();
+ })});
+ document.querySelectorAll('[data-mobile]').forEach(function(b){b.addEventListener('click',function(){
+  state.mobile=b.dataset.mobile;save();render();
+ })});
+ $('sizeSlider').addEventListener('input',function(e){state.size=Number(e.target.value);save();render()});
+ $('swap').addEventListener('click',function(){const x=state.a;state.a=state.b;state.b=x;save();render()});
+ $('reset').addEventListener('click',function(){state=JSON.parse(JSON.stringify(defaults));save();render()});
+ document.fonts.ready.then(function(){
+  const tests=[['Exo 2',400],['Tomorrow',400],['Saira',400],['Bebas Neue',400],['Antonio',600],['Teko',600],['Michroma',400]];
+  const bad=tests.filter(function(t){return !document.fonts.check(t[1]+' 16px "'+t[0]+'"')});
+  $('fontStatus').textContent=bad.length?'Some web fonts may be unavailable; check your connection.':'Web font stylesheets available · compare at any size.';
+ }).catch(function(){});
+ render();
+})();
+</script>
+</body>
+</html>
