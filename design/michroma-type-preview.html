@@ -2334,130 +2334,58 @@ body::-webkit-scrollbar,
 
 </style>
 
-<!-- TYPOGRAPHY COMPARISON / REVIEW-ONLY · DO NOT MERGE INTO THE LIVE APP -->
+<!-- TYPOGRAPHY COMPARISON / REVIEW-ONLY · DISPLAY HEADINGS ONLY -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 <style>
-/* A uses exactly the existing site typography. B only changes display roles.
-   Leave the existing VEND-R logo, paragraph copy and monospace metadata alone. */
-html.vendr-try-michroma .hero-title,
+/* Michroma is intentionally restricted to WEBSITE headings and navigation.
+   The VEND-R logo, named places, item cards, item pages, stock rows,
+   numeric § prices, technical metadata and ordinary reading copy stay put. */
+html.vendr-try-michroma .home-nearby-head h1,
+html.vendr-try-michroma .search-page-hero .hero-title,
+html.vendr-try-michroma .search-nearby-hero .hero-title,
+html.vendr-try-michroma .vendor-photo-strip .hero-title.vendor,
 html.vendr-try-michroma .section-head h2,
-html.vendr-try-michroma .home-nearby-name,
-html.vendr-try-michroma .row-title,
-html.vendr-try-michroma .mini-card h3,
-html.vendr-try-michroma .catalogue-entry-info strong,
-html.vendr-try-michroma .stock-name,
-html.vendr-try-michroma .item-name,
-html.vendr-try-michroma .seller-name,
-html.vendr-try-michroma .search-offer .item-name,
-html.vendr-try-michroma .item-related strong,
-html.vendr-try-michroma .related-items .catalogue-related strong,
-html.vendr-try-michroma .item-offer strong,
-html.vendr-try-michroma .nearby-offer-name,
-html.vendr-try-michroma .topbar-actions .action-btn,
-html.vendr-try-michroma .search-page-form button,
-html.vendr-try-michroma .catalogue-more,
-html.vendr-try-michroma .item-display-switch button{
+html.vendr-try-michroma .stock-browser-head h2,
+html.vendr-try-michroma .search-offer-head h2,
+html.vendr-try-michroma .catalogue-results-head h2,
+html.vendr-try-michroma .search-page-hero h2,
+html.vendr-try-michroma .topbar-actions .action-btn {
   font-family:"Michroma",Arial,Helvetica,sans-serif!important;
   font-weight:400!important;
   font-synthesis:none;
-  letter-spacing:-.027em;
-  line-height:1.17;
+  line-height:1.16!important;
+  letter-spacing:-.032em!important;
   overflow-wrap:anywhere;
 }
-html.vendr-try-michroma .hero-title{
-  font-size:clamp(29px,4.9vw,59px)!important;
-  line-height:1.1!important;
-  letter-spacing:-.045em;
-}
-html.vendr-try-michroma .search-page-hero .hero-title{
-  font-size:clamp(32px,5.5vw,65px)!important;
-}
+html.vendr-try-michroma .home-nearby-head h1{font-size:clamp(26px,4.5vw,53px)!important}
+html.vendr-try-michroma .search-nearby-hero .hero-title,
+html.vendr-try-michroma .search-page-hero .hero-title{font-size:clamp(29px,5vw,62px)!important}
 html.vendr-try-michroma .vendor-photo-strip .hero-title.vendor{
-  font-size:clamp(30px,4.1vw,57px)!important;
-  max-width:25ch;
+ font-size:clamp(29px,4.3vw,55px)!important;max-width:25ch
 }
-html.vendr-try-michroma .item-hero .item-copy .hero-title{
-  font-size:clamp(29px,3.4vw,43px)!important;
-}
-html.vendr-try-michroma .section-head h2{
-  font-size:clamp(19px,2.25vw,28px)!important;
-  letter-spacing:-.03em;
-}
-html.vendr-try-michroma .catalogue-entry-info strong{
-  font-size:clamp(12px,1.25vw,15px)!important;
-  line-height:1.2!important;
-  letter-spacing:-.035em;
-}
-html.vendr-try-michroma .search-offer-list.catalogue-grid .catalogue-tile .item-name{
-  font-size:14px!important;
-}
-html.vendr-try-michroma .stock-name{font-size:16px!important;line-height:1.2!important}
-html.vendr-try-michroma .row-title{font-size:14px!important}
-html.vendr-try-michroma .home-nearby-name{font-size:14px!important}
-html.vendr-try-michroma .mini-card h3{font-size:17px!important}
-html.vendr-try-michroma .seller-name{font-size:15px!important}
-html.vendr-try-michroma .item-related strong,
-html.vendr-try-michroma .related-items .catalogue-related strong{font-size:13px!important}
-html.vendr-try-michroma .topbar-actions .action-btn{font-size:10px!important}
-html.vendr-try-michroma .catalogue-more{font-size:11px!important}
-
-/* Optional C test: does the § numeral strip also benefit? The default
-   Michroma treatment intentionally retains the approved Arial prices. */
-html.vendr-try-michroma.vendr-try-michroma-prices .catalogue-entry-price b,
-html.vendr-try-michroma.vendr-try-michroma-prices .search-offer .price,
-html.vendr-try-michroma.vendr-try-michroma-prices .stock-row>.price,
-html.vendr-try-michroma.vendr-try-michroma-prices .offer-readout strong,
-html.vendr-try-michroma.vendr-try-michroma-prices .item-stat.price dd,
-html.vendr-try-michroma.vendr-try-michroma-prices .item-offer-price,
-html.vendr-try-michroma.vendr-try-michroma-prices .nearby-price,
-html.vendr-try-michroma.vendr-try-michroma-prices #itemOfferPrice,
-html.vendr-try-michroma.vendr-try-michroma-prices #itemBookPrice,
-html.vendr-try-michroma.vendr-try-michroma-prices #offerPrice{
-  font-family:"Michroma",Arial,Helvetica,sans-serif!important;
-  font-weight:400!important;
-  font-synthesis:none;
-  letter-spacing:-.06em;
-  font-variant-numeric:tabular-nums;
-}
-html.vendr-try-michroma.vendr-try-michroma-prices .catalogue-entry-price b{
-  font-size:clamp(13px,1.15vw,16px)!important;
-}
+html.vendr-try-michroma .section-head h2{font-size:clamp(18px,2.4vw,28px)!important}
+html.vendr-try-michroma .topbar-actions .action-btn{font-size:10px!important;letter-spacing:-.025em!important}
 @media(max-width:760px){
-  html.vendr-try-michroma .hero-title{
-    font-size:clamp(27px,7.4vw,41px)!important;
-  }
-  html.vendr-try-michroma .vendor-photo-strip .hero-title.vendor{
-    font-size:clamp(25px,7vw,42px)!important;
-  }
-  html.vendr-try-michroma .section-head h2{font-size:19px!important}
-  html.vendr-try-michroma .catalogue-entry-info strong{
-    font-size:12px!important;
-  }
-  html.vendr-try-michroma .topbar-actions .action-btn{font-size:9px!important}
+ html.vendr-try-michroma .home-nearby-head h1{font-size:clamp(24px,7vw,38px)!important}
+ html.vendr-try-michroma .search-nearby-hero .hero-title,
+ html.vendr-try-michroma .search-page-hero .hero-title{font-size:clamp(27px,7vw,40px)!important}
+ html.vendr-try-michroma .vendor-photo-strip .hero-title.vendor{font-size:clamp(25px,6.4vw,37px)!important}
+ html.vendr-try-michroma .section-head h2{font-size:18px!important}
+ html.vendr-try-michroma .topbar-actions .action-btn{font-size:9px!important}
 }
 </style>
 <script>
-/* Apply before site boot so the styles do not flash between versions. */
 (function(){
  const p=new URLSearchParams(location.search);
  const m=p.get('type')==='michroma';
- if(m) document.documentElement.classList.add('vendr-try-michroma');
- if(m && p.get('pricefont')==='michroma')
-   document.documentElement.classList.add('vendr-try-michroma-prices');
- if(m && document.fonts){
-   document.fonts.ready.then(function(){
-     parent.postMessage({
-       channel:'vendr-type-study',
-       mode:'michroma',
-       fontAvailable:document.fonts.check('16px Michroma')
-     }, location.origin);
-   }).catch(function(){});
- }
+ if(m)document.documentElement.classList.add('vendr-try-michroma');
+ if(m&&document.fonts)document.fonts.ready.then(function(){
+  parent.postMessage({channel:'vendr-type-study',mode:'michroma',fontAvailable:document.fonts.check('16px Michroma')},location.origin);
+ }).catch(function(){});
 })();
 </script>
-
 </head>
 <body>
 
