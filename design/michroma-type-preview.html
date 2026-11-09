@@ -2386,6 +2386,66 @@ html.vendr-try-michroma .topbar-actions .action-btn{font-size:10px!important;let
  }).catch(function(){});
 })();
 </script>
+
+<!-- Typography pairing study: opt-in via URL; default preview stays unchanged. -->
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&family=Tomorrow:wght@400;500;600&family=Saira:wght@400;500;600&family=Bebas+Neue&family=Antonio:wght@500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html[data-vendr-body] body{
+ font-family:var(--vendr-body-type,Arial,Helvetica,sans-serif)!important;
+}
+/* Existing site-level Michroma titles, technical monospace labels and
+   the original logo remain outside the supporting-font experiment. */
+html[data-vendr-body] .hero-copy,
+html[data-vendr-body] .item-description,
+html[data-vendr-body] .mini-card p,
+html[data-vendr-body] .search-page-copy,
+html[data-vendr-body] .vendor-info-body>p,
+html[data-vendr-body] .item-shop-detail-copy{
+ font-family:var(--vendr-body-type,Arial,Helvetica,sans-serif)!important;
+}
+html[data-vendr-block] .home-nearby-name,
+html[data-vendr-block] .row-title,
+html[data-vendr-block] .stock-name,
+html[data-vendr-block] .catalogue-entry-info strong,
+html[data-vendr-block] .search-offer .item-name,
+html[data-vendr-block] .item-related strong,
+html[data-vendr-block] .related-items .catalogue-related strong,
+html[data-vendr-block] .mini-card h3,
+html[data-vendr-block] .search-offer .seller-name{
+ font-family:var(--vendr-block-type,Arial,Helvetica,sans-serif)!important;
+ font-weight:var(--vendr-block-weight,600)!important;
+ line-height:1.03!important;
+ letter-spacing:.005em!important;
+}
+html[data-vendr-block="bebas"] .home-nearby-name,
+html[data-vendr-block="bebas"] .row-title,
+html[data-vendr-block="bebas"] .stock-name,
+html[data-vendr-block="bebas"] .catalogue-entry-info strong{
+ font-size:clamp(20px,2.0vw,26px)!important;
+}
+html[data-vendr-block="teko"] .home-nearby-name,
+html[data-vendr-block="teko"] .row-title,
+html[data-vendr-block="teko"] .stock-name,
+html[data-vendr-block="teko"] .catalogue-entry-info strong{
+ font-size:clamp(21px,2.1vw,27px)!important;
+}
+html[data-vendr-block="antonio"] .home-nearby-name,
+html[data-vendr-block="antonio"] .row-title,
+html[data-vendr-block="antonio"] .stock-name,
+html[data-vendr-block="antonio"] .catalogue-entry-info strong{
+ font-size:clamp(17px,1.8vw,22px)!important;
+}
+</style>
+<script>
+(function(){
+ const p=new URLSearchParams(location.search),html=document.documentElement;
+ const body={exo:'"Exo 2",Arial,sans-serif',tomorrow:'"Tomorrow",Arial,sans-serif',saira:'"Saira",Arial,sans-serif'};
+ const block={bebas:'"Bebas Neue",Impact,sans-serif',antonio:'"Antonio",Impact,sans-serif',teko:'"Teko",Impact,sans-serif'};
+ const b=p.get('bodyfont'),d=p.get('blockfont');
+ if(Object.hasOwn(body,b)){html.dataset.vendrBody=b;html.style.setProperty('--vendr-body-type',body[b]);}
+ if(Object.hasOwn(block,d)){html.dataset.vendrBlock=d;html.style.setProperty('--vendr-block-type',block[d]);html.style.setProperty('--vendr-block-weight',d==='bebas'?'400':'600');}
+})();
+</script>
 </head>
 <body>
 
