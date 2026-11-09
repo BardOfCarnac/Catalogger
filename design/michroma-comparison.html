@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#19140f">
 <title>Vend-R / Michroma A–B typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#fff4d9;--ink:#19140f;--gold:#f7dc44;--orange:#e95e12}
 *{box-sizing:border-box}
@@ -74,55 +75,120 @@ button:focus-visible,select:focus-visible{outline:3px solid #ffe577;outline-offs
  .segment button{padding:9px 8px}
  .pane-header h2{font-size:15px}
 }
+
+.heading-studies{padding-top:16px}
+.heading-studies>h2{font-size:22px;line-height:1.1;margin:0 0 6px}
+.heading-studies>p{font:12px/1.5 Arial,sans-serif;color:#d4b994;margin:0 0 13px}
+.heading-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.heading-example{background:#fff5dc;border:1px solid #a69475;color:#1b130d;min-width:0}
+.heading-name{background:#f7d944;font:900 11px/1.3 ui-monospace,monospace;letter-spacing:.08em;padding:9px 12px;border-bottom:2px solid #1b130d}
+.mock-nav{padding:13px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:#fff3d9;border-bottom:1px solid #bcae92}
+.mock-logo{font:1000 26px/.85 Arial,sans-serif;letter-spacing:-.08em}
+.mock-logo small{display:block;font:800 8px/1.5 ui-monospace,monospace;letter-spacing:.08em;margin-top:7px}
+.mock-links{display:flex;gap:5px;flex-wrap:wrap}
+.mock-links span{padding:8px;background:#f7d944;border:1px solid #19130c;font:900 9px/1 Arial,sans-serif}
+.mock-hero{padding:23px 16px 18px}
+.mock-kicker{font:800 10px ui-monospace,monospace;color:#a94e0a}
+.mock-hero h1{font:1000 clamp(27px,3.7vw,49px)/.98 Arial,sans-serif;margin:10px 0 12px;letter-spacing:-.057em}
+.mock-hero p,.mock-shop p{font:13px/1.5 Arial,sans-serif;margin:0;color:#645848}
+.mock-section{margin-top:18px;border-top:3px solid #1b130d;padding-top:12px}
+.mock-section h2{font:1000 clamp(18px,2vw,28px)/1 Arial,sans-serif;margin:0 0 8px;letter-spacing:-.045em}
+.mock-list{margin-top:13px;padding:12px;background:#fffaf0;border-bottom:1px solid #ccbaa0}
+.mock-list strong{font:900 15px/1.2 Arial,sans-serif;display:block}
+.mock-list small{display:block;margin-top:6px;color:#746654;font:800 9px ui-monospace,monospace}
+.mock-shop{padding:22px 16px;background:linear-gradient(120deg,#48322b,#1b1f22);color:#fff3dd}
+.mock-shop small{font:900 10px ui-monospace,monospace;color:#f9cf3e}
+.mock-shop h2{font:1000 clamp(27px,3vw,39px)/1 Arial,sans-serif;letter-spacing:-.04em;margin:13px 0}
+.mock-shop p{color:#d9cdc0}
+.mock-search{padding:17px 16px}
+.mock-search h2{font:1000 clamp(18px,2vw,27px)/1 Arial,sans-serif;margin:0 0 12px}
+.mock-search .unchanged{padding:10px;background:#fffdf6;display:flex;justify-content:space-between;gap:7px;flex-wrap:wrap;font:900 11px Arial,sans-serif;border:1px solid #cbb69e}
+.mock-search .unchanged b{font-size:16px}
+.heading-example.michroma .mock-links span,
+.heading-example.michroma .mock-hero h1,
+.heading-example.michroma .mock-section h2,
+.heading-example.michroma .mock-shop h2,
+.heading-example.michroma .mock-search h2{font-family:Michroma,Arial,sans-serif;font-weight:400;font-synthesis:none;letter-spacing:-.04em;line-height:1.2}
+.heading-example.michroma .mock-links span{font-size:8px}
+.heading-example.michroma .mock-hero h1{font-size:clamp(25px,3.1vw,40px)}
+.heading-example.michroma .mock-section h2,.heading-example.michroma .mock-search h2{font-size:clamp(16px,1.55vw,21px)}
+.heading-example.michroma .mock-shop h2{font-size:clamp(23px,2.4vw,32px)}
+.heading-pair[data-layout=wide]{grid-template-columns:1fr}
+.heading-pair[data-layout=wide] .heading-example:not(.selected){display:none}
+@media(max-width:850px){
+ .heading-pair{grid-template-columns:1fr}
+ .heading-pair .heading-example:not(.selected){display:none}
+ .mock-hero h1{font-size:clamp(29px,7.5vw,42px)}
+ .heading-example.michroma .mock-hero h1{font-size:clamp(24px,6.6vw,35px)}
+ .mock-section h2,.mock-search h2{font-size:24px}
+ .heading-example.michroma .mock-section h2,.heading-example.michroma .mock-search h2{font-size:clamp(17px,4.5vw,22px)}
+ .mock-shop h2{font-size:35px}
+ .heading-example.michroma .mock-shop h2{font-size:clamp(24px,6vw,34px)}
+}
 </style>
 </head>
 <body>
-<header class="masthead"><div><div class="brand">VEND-R</div><div class="submark">TYPOGRAPHY / LIVE COMPONENT STUDY</div></div><div class="mast-note"><strong>MICHROMA · A/B</strong>DESIGN PREVIEW · NOT LIVE<br>Same pages, same data, same layouts</div></header>
+<header class="masthead"><div><div class="brand">VEND-R</div><div class="submark">TYPOGRAPHY / LIVE COMPONENT STUDY</div></div><div class="mast-note"><strong>MICHROMA · A/B</strong>DESIGN PREVIEW · NOT LIVE<br>Same website, different title lettering</div></header>
 <main class="shell">
-<section class="intro"><h1>The same Night City, in two typefaces.</h1><p>Compare the original Vend-R interface against Michroma on the working homepage and the 02B item-card gallery. Only display lettering changes: our VEND-R wordmark, cream image matting, photographs, § amounts, technical labels and descriptions stay in place.</p></section>
+<section class="intro"><h1>The site headings, in two typefaces.</h1><p>Compare site headings, shop-page titles and navigation in current Vend-R versus Michroma. Product names, § prices, technical labels and the VEND-R wordmark stay as they are. The heading specimens below display even without catalogue data.</p></section>
 <div class="controls" role="group" aria-label="Typography study controls">
- <div class="field"><div class="control-label">Page</div><div class="segment" id="pageModes"><button type="button" data-page="home" aria-pressed="true">Homepage</button><button type="button" data-page="cards" aria-pressed="false">02B item cards</button></div></div>
+ <div class="field"><div class="control-label">Page</div><div class="segment" id="pageModes"><button type="button" data-page="home" aria-pressed="true">Homepage</button><button type="button" data-page="search" aria-pressed="false">Search page</button></div></div>
  <div class="field"><div class="control-label">Layout</div><div class="segment" id="layoutModes"><button type="button" data-layout="split" aria-pressed="true">A/B split</button><button type="button" data-layout="wide" aria-pressed="false">Full width</button></div></div>
- <div class="field"><div class="control-label">Price typography</div><label class="price-switch"><input type="checkbox" id="priceMichroma">Also use Michroma for § prices</label></div>
+ 
  <div class="status" id="fontStatus" aria-live="polite">Michroma loads from Google Fonts. If unavailable, the existing typeface is used as fallback.</div>
 </div>
 <div class="mobile-switch"><div class="control-label">Showing</div><div class="segment" id="mobileModes"><button type="button" data-show="a" aria-pressed="false">A / Current</button><button type="button" data-show="b" aria-pressed="true">B / Michroma</button></div></div>
-<div class="legend"><p>The content in both panes is the real working review build; scroll inside either pane to inspect it. Click shop or item controls normally.</p><div class="note" id="pageSummary">Homepage · photographic shops and navigation</div></div>
+<section class="heading-studies" aria-label="Self-contained heading comparison">
+<h2>Headings first: no catalogue connection required</h2><p>The only differences below are top-level site headings, shop-page titles and navigation. The smaller shop/item name, VEND-R logo and § price are deliberately identical.</p>
+<div class="heading-pair" id="headingPair" data-layout="split"><article class="heading-example current" id="headingA">
+<div class="heading-name">A / CURRENT</div>
+<div class="mock-nav"><div class="mock-logo">VEND-R<small>NIGHT CITY MARKET</small></div><div class="mock-links"><span>BROWSE</span><span>SOURCES</span><span>LOCATION</span></div></div>
+<div class="mock-hero"><div class="mock-kicker">VEND-R LOCAL MARKET / 2045</div><h1>SHOPS NEAR YOU</h1><p>Discover goods, services and places throughout Night City.</p>
+<div class="mock-section"><h2>KNOWN SELLERS</h2><div class="mock-list"><strong>KABUKI ARMATURE &amp; SURPLUS</strong><small>TECH &amp; SURPLUS · 0.8 KM</small></div></div></div>
+<div class="mock-shop"><small>FEATURED LOCATION</small><h2>KAITO MARKET</h2><p>Independent traders and everyday commerce in Night City.</p></div>
+<div class="mock-search"><h2>SEARCH NIGHT CITY</h2><div class="unchanged"><span>MILITECH M-10AF</span><b>§1,240</b></div></div>
+</article><article class="heading-example michroma selected" id="headingB">
+<div class="heading-name">B / MICHROMA</div>
+<div class="mock-nav"><div class="mock-logo">VEND-R<small>NIGHT CITY MARKET</small></div><div class="mock-links"><span>BROWSE</span><span>SOURCES</span><span>LOCATION</span></div></div>
+<div class="mock-hero"><div class="mock-kicker">VEND-R LOCAL MARKET / 2045</div><h1>SHOPS NEAR YOU</h1><p>Discover goods, services and places throughout Night City.</p>
+<div class="mock-section"><h2>KNOWN SELLERS</h2><div class="mock-list"><strong>KABUKI ARMATURE &amp; SURPLUS</strong><small>TECH &amp; SURPLUS · 0.8 KM</small></div></div></div>
+<div class="mock-shop"><small>FEATURED LOCATION</small><h2>KAITO MARKET</h2><p>Independent traders and everyday commerce in Night City.</p></div>
+<div class="mock-search"><h2>SEARCH NIGHT CITY</h2><div class="unchanged"><span>MILITECH M-10AF</span><b>§1,240</b></div></div>
+</article></div></section>
+<div class="legend"><p>The specimens above do not need the live API. The working website underneath remains available for further context.</p><div class="note" id="pageSummary">Homepage · photographic shops and navigation</div></div>
 <div class="compare" id="compare" data-layout="split">
  <section class="pane pane-a" id="paneA" aria-label="Current Vend-R typography">
   <div class="pane-header"><div><span class="id">A / ORIGINAL</span><h2>Current Vend-R</h2></div><div class="micro">Arial / Helvetica<br>§ prices unchanged</div></div>
   <div class="frame"><iframe id="frameA" title="Current Vend-R design preview" loading="eager"></iframe></div>
-  <div class="pane-actions"><span>Unmodified type · same 02B cards</span><a id="openA" href="#" target="_blank" rel="noopener noreferrer">Open full page ↗</a></div>
+  <div class="pane-actions"><span>Unchanged catalogue and § pricing</span><a id="openA" href="#" target="_blank" rel="noopener noreferrer">Open full page ↗</a></div>
  </section>
  <section class="pane pane-b selected" id="paneB" aria-label="Michroma typography">
   <div class="pane-header"><div><span class="id">B / PROPOSED</span><h2>Michroma</h2></div><div class="micro" id="fontDetails">Display type only<br>§ prices unchanged</div></div>
   <div class="frame"><iframe id="frameB" title="Vend-R with Michroma design preview" loading="eager"></iframe></div>
-  <div class="pane-actions"><span>Same page · Michroma display</span><a id="openB" href="#" target="_blank" rel="noopener noreferrer">Open full page ↗</a></div>
+  <div class="pane-actions"><span>Michroma headlines and navigation</span><a id="openB" href="#" target="_blank" rel="noopener noreferrer">Open full page ↗</a></div>
  </section>
 </div>
-<footer class="footer">This is an independent comparison. It does not alter or publish changes to the live Vend-R site. It uses the existing design-review frontend; data and shop images still depend on its current API. Michroma is a single-weight typeface, so the comparison avoids synthesising extra bold faces. <a href="https://github.com/BardOfCarnac/Catalogger/pull/10" target="_blank" rel="noopener">Review branch ↗</a></footer>
+<footer class="footer">This comparison does not alter the live Vend-R site. The samples are self-contained, and only the website embeds depend on its API. Michroma is a single-weight typeface, so synthetic bolding is disabled. <a href="https://github.com/BardOfCarnac/Catalogger/pull/10" target="_blank" rel="noopener">Review branch ↗</a></footer>
 </main>
 <script>
 (function(){
  const params=new URLSearchParams(location.search);
  const state={
-   page: params.get('page')==='cards'?'cards':'home',
+   page: params.get('page')==='search'?'search':'home',
    layout: params.get('layout')==='wide'?'wide':'split',
-   price:params.get('price')==='1',
    active:params.get('side')==='a'?'a':'b'
  };
  const $=id=>document.getElementById(id);
  const root=$('compare');
  function path(mode){
    const url=new URL('./michroma-type-preview.html',location.href);
-   url.searchParams.set('view',state.page==='cards'?'search':'home');
-   if(state.page==='cards'){
+   url.searchParams.set('view',state.page);
+   if(state.page==='search'){
      url.searchParams.set('q','pistol');
      url.searchParams.set('preview','cards');
    }
    if(mode==='b'){
      url.searchParams.set('type','michroma');
-     if(state.price)url.searchParams.set('pricefont','michroma');
    }
    return url.href;
  }
@@ -130,12 +196,14 @@ button:focus-visible,select:focus-visible{outline:3px solid #ffe577;outline-offs
    document.querySelectorAll('[data-page]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.page===state.page)));
    document.querySelectorAll('[data-layout]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.layout===state.layout)));
    document.querySelectorAll('[data-show]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.show===state.active)));
-   $('priceMichroma').checked=state.price;
    root.dataset.layout=state.layout;
+   $('headingPair').dataset.layout=state.layout;
+   $('headingA').classList.toggle('selected',state.active==='a');
+   $('headingB').classList.toggle('selected',state.active==='b');
    $('paneA').classList.toggle('selected',state.active==='a');
    $('paneB').classList.toggle('selected',state.active==='b');
-   $('pageSummary').textContent=state.page==='cards'?'02B card gallery · image, type and yellow price strip':'Homepage · photographic shops and navigation';
-   $('fontDetails').innerHTML=state.price?'Display + price figures<br>§ remains unchanged':'Display type only<br>§ prices unchanged';
+   $('pageSummary').textContent=state.page==='search'?'Search page · titles and navigation':'Homepage · headings and navigation';
+   $('fontDetails').innerHTML='Website headings only<br>§ prices unchanged';
  }
  function refreshFrames(){
    const a=path('a'),b=path('b');
@@ -150,7 +218,6 @@ button:focus-visible,select:focus-visible{outline:3px solid #ffe577;outline-offs
    const url=new URL(location.href);
    url.searchParams.set('page',state.page);
    url.searchParams.set('layout',state.layout);
-   url.searchParams.set('price',state.price?'1':'0');
    url.searchParams.set('side',state.active);
    history.replaceState(null,'',url);
  }
@@ -163,7 +230,6 @@ button:focus-visible,select:focus-visible{outline:3px solid #ffe577;outline-offs
  document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>{
    state.active=b.dataset.show;render(false);
  }));
- $('priceMichroma').addEventListener('change',e=>{state.price=e.target.checked;render(true)});
  window.addEventListener('message',e=>{
    if(e.origin!==location.origin||!e.data||e.data.channel!=='vendr-type-study')return;
    $('fontStatus').textContent=e.data.fontAvailable?
